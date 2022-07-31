@@ -1,0 +1,7 @@
+*swp
+volumes/
+**/.env
+node_modules
+*del
+**/*.del
+*bak
