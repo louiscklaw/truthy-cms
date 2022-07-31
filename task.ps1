@@ -12,3 +12,4 @@
 # cd ..
 
 yarn docker_dev up -d
+yarn docker_dev logs -f
