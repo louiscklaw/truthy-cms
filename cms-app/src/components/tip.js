@@ -3,16 +3,14 @@ import { Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { LightBulb as LightBulbIcon } from '../icons/light-bulb';
 
-const TipRoot = styled('div')((({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark'
-    ? theme.palette.neutral[800]
-    : theme.palette.neutral[100],
+const TipRoot = styled('div')(({ theme }) => ({
+  backgroundColor: theme.palette.mode === 'dark' ? theme.palette.neutral[800] : theme.palette.neutral[100],
   borderRadius: theme.shape.borderRadius,
   display: 'flex',
-  padding: theme.spacing(1)
-})));
+  padding: theme.spacing(1),
+}));
 
-export const Tip = (props) => {
+export const Tip = props => {
   const { message } = props;
 
   return (
@@ -20,7 +18,7 @@ export const Tip = (props) => {
       <LightBulbIcon
         sx={{
           color: 'text.secondary',
-          mr: 1
+          mr: 1,
         }}
         fontSize="small"
       />
@@ -28,21 +26,17 @@ export const Tip = (props) => {
         color="textSecondary"
         sx={{
           '& span': {
-            fontWeight: 700
-          }
+            fontWeight: 700,
+          },
         }}
         variant="caption"
       >
-        <span>
-          Tip.
-        </span>
-        {' '}
-        {message}
+        <span>Tip.</span> {message}
       </Typography>
     </TipRoot>
   );
 };
 
 Tip.propTypes = {
-  message: PropTypes.string.isRequired
+  message: PropTypes.string.isRequired,
 };

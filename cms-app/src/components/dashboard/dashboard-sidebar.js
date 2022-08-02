@@ -31,50 +31,52 @@ import { Scrollbar } from '../scrollbar';
 import { DashboardSidebarSection } from './dashboard-sidebar-section';
 import { OrganizationPopover } from './organization-popover';
 
-const getSections = (t) => [
+const getSections = t => [
   {
     title: t('General'),
     items: [
       {
         title: t('Overview'),
         path: '/dashboard',
-        icon: <HomeIcon fontSize="small" />
+        icon: <HomeIcon fontSize="small" />,
       },
       {
         title: t('Analytics'),
         path: '/dashboard/analytics',
-        icon: <ChartBarIcon fontSize="small" />
+        icon: <ChartBarIcon fontSize="small" />,
       },
       {
         title: t('Finance'),
         path: '/dashboard/finance',
-        icon: <ChartPieIcon fontSize="small" />
+        icon: <ChartPieIcon fontSize="small" />,
       },
       {
         title: t('Logistics'),
         path: '/dashboard/logistics',
         icon: <TruckIcon fontSize="small" />,
-        chip: <Chip
-          color="secondary"
-          label={(
-            <Typography
-              sx={{
-                fontSize: '10px',
-                fontWeight: '600'
-              }}
-            >
-              NEW
-            </Typography>
-          )}
-          size="small"
-        />
+        chip: (
+          <Chip
+            color="secondary"
+            label={
+              <Typography
+                sx={{
+                  fontSize: '10px',
+                  fontWeight: '600',
+                }}
+              >
+                NEW
+              </Typography>
+            }
+            size="small"
+          />
+        ),
       },
       {
         title: t('Account'),
         path: '/dashboard/account',
-        icon: <UserCircleIcon fontSize="small" />
-      }
-    ]
+        icon: <UserCircleIcon fontSize="small" />,
+      },
+    ],
   },
   {
     title: t('Management'),
@@ -86,17 +88,17 @@ const getSections = (t) => [
         children: [
           {
             title: t('List'),
-            path: '/dashboard/customers'
+            path: '/dashboard/customers',
           },
           {
             title: t('Details'),
-            path: '/dashboard/customers/1'
+            path: '/dashboard/customers/1',
           },
           {
             title: t('Edit'),
-            path: '/dashboard/customers/1/edit'
-          }
-        ]
+            path: '/dashboard/customers/1/edit',
+          },
+        ],
       },
       {
         title: t('Products'),
@@ -105,13 +107,13 @@ const getSections = (t) => [
         children: [
           {
             title: t('List'),
-            path: '/dashboard/products'
+            path: '/dashboard/products',
           },
           {
             title: t('Create'),
-            path: '/dashboard/products/new'
-          }
-        ]
+            path: '/dashboard/products/new',
+          },
+        ],
       },
       {
         title: t('Orders'),
@@ -120,13 +122,13 @@ const getSections = (t) => [
         children: [
           {
             title: t('List'),
-            path: '/dashboard/orders'
+            path: '/dashboard/orders',
           },
           {
             title: t('Details'),
-            path: '/dashboard/orders/1'
-          }
-        ]
+            path: '/dashboard/orders/1',
+          },
+        ],
       },
       {
         title: t('Invoices'),
@@ -135,15 +137,15 @@ const getSections = (t) => [
         children: [
           {
             title: t('List'),
-            path: '/dashboard/invoices'
+            path: '/dashboard/invoices',
           },
           {
             title: t('Details'),
-            path: '/dashboard/invoices/1'
-          }
-        ]
-      }
-    ]
+            path: '/dashboard/invoices/1',
+          },
+        ],
+      },
+    ],
   },
   {
     title: t('Platforms'),
@@ -155,17 +157,17 @@ const getSections = (t) => [
         children: [
           {
             title: t('Browse'),
-            path: '/dashboard/jobs'
+            path: '/dashboard/jobs',
           },
           {
             title: t('Details'),
-            path: '/dashboard/jobs/companies/1'
+            path: '/dashboard/jobs/companies/1',
           },
           {
             title: t('Create'),
-            path: '/dashboard/jobs/new'
-          }
-        ]
+            path: '/dashboard/jobs/new',
+          },
+        ],
       },
       {
         title: t('Social Media'),
@@ -174,13 +176,13 @@ const getSections = (t) => [
         children: [
           {
             title: t('Profile'),
-            path: '/dashboard/social/profile'
+            path: '/dashboard/social/profile',
           },
           {
             title: t('Feed'),
-            path: '/dashboard/social/feed'
-          }
-        ]
+            path: '/dashboard/social/feed',
+          },
+        ],
       },
       {
         title: t('Blog'),
@@ -189,19 +191,19 @@ const getSections = (t) => [
         children: [
           {
             title: t('Post List'),
-            path: '/blog'
+            path: '/blog',
           },
           {
             title: t('Post Details'),
-            path: '/blog/1'
+            path: '/blog/1',
           },
           {
             title: t('Post Create'),
-            path: '/blog/new'
-          }
-        ]
-      }
-    ]
+            path: '/blog/new',
+          },
+        ],
+      },
+    ],
   },
   {
     title: t('Apps'),
@@ -209,24 +211,24 @@ const getSections = (t) => [
       {
         title: t('Kanban'),
         path: '/dashboard/kanban',
-        icon: <ClipboardListIcon fontSize="small" />
+        icon: <ClipboardListIcon fontSize="small" />,
       },
       {
         title: t('Mail'),
         path: '/dashboard/mail',
-        icon: <MailIcon fontSize="small" />
+        icon: <MailIcon fontSize="small" />,
       },
       {
         title: t('Chat'),
         path: '/dashboard/chat',
-        icon: <ChatAlt2Icon fontSize="small" />
+        icon: <ChatAlt2Icon fontSize="small" />,
       },
       {
         title: t('Calendar'),
         path: '/dashboard/calendar',
-        icon: <CalendarIcon fontSize="small" />
-      }
-    ]
+        icon: <CalendarIcon fontSize="small" />,
+      },
+    ],
   },
   {
     title: t('Pages'),
@@ -238,28 +240,28 @@ const getSections = (t) => [
         children: [
           {
             title: t('Register'),
-            path: '/authentication/register?disableGuard=true'
+            path: '/authentication/register?disableGuard=true',
           },
           {
             title: t('Login'),
-            path: '/authentication/login?disableGuard=true'
-          }
-        ]
+            path: '/authentication/login?disableGuard=true',
+          },
+        ],
       },
       {
         title: t('Pricing'),
         path: '/dashboard/pricing',
-        icon: <CreditCardIcon fontSize="small" />
+        icon: <CreditCardIcon fontSize="small" />,
       },
       {
         title: t('Checkout'),
         path: '/checkout',
-        icon: <CashIcon fontSize="small" />
+        icon: <CashIcon fontSize="small" />,
       },
       {
         title: t('Contact'),
         path: '/contact',
-        icon: <MailOpenIcon fontSize="small" />
+        icon: <MailOpenIcon fontSize="small" />,
       },
       {
         title: t('Error'),
@@ -268,28 +270,28 @@ const getSections = (t) => [
         children: [
           {
             title: '401',
-            path: '/401'
+            path: '/401',
           },
           {
             title: '404',
-            path: '/404'
+            path: '/404',
           },
           {
             title: '500',
-            path: '/500'
-          }
-        ]
-      }
-    ]
-  }
+            path: '/500',
+          },
+        ],
+      },
+    ],
+  },
 ];
 
-export const DashboardSidebar = (props) => {
+export const DashboardSidebar = props => {
   const { onClose, open } = props;
   const router = useRouter();
   const { t } = useTranslation();
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'), {
-    noSsr: true
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'), {
+    noSsr: true,
   });
   const sections = useMemo(() => getSections(t), [t]);
   const organizationsRef = useRef(null);
@@ -305,9 +307,11 @@ export const DashboardSidebar = (props) => {
     }
   };
 
-  useEffect(handlePathChange,
+  useEffect(
+    handlePathChange,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [router.isReady, router.asPath]);
+    [router.isReady, router.asPath],
+  );
 
   const handleOpenOrganizationsPopover = () => {
     setOpenOrganizationsPopover(true);
@@ -323,28 +327,25 @@ export const DashboardSidebar = (props) => {
         sx={{
           height: '100%',
           '& .simplebar-content': {
-            height: '100%'
-          }
+            height: '100%',
+          },
         }}
       >
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            height: '100%'
+            height: '100%',
           }}
         >
           <div>
             <Box sx={{ p: 3 }}>
-              <NextLink
-                href="/"
-                passHref
-              >
+              <NextLink href="/" passHref>
                 <a>
                   <Logo
                     sx={{
                       height: 42,
-                      width: 42
+                      width: 42,
                     }}
                   />
                 </a>
@@ -362,30 +363,22 @@ export const DashboardSidebar = (props) => {
                   justifyContent: 'space-between',
                   px: 3,
                   py: '11px',
-                  borderRadius: 1
+                  borderRadius: 1,
                 }}
               >
                 <div>
-                  <Typography
-                    color="inherit"
-                    variant="subtitle1"
-                  >
+                  <Typography color="inherit" variant="subtitle1">
                     Acme Inc
                   </Typography>
-                  <Typography
-                    color="neutral.400"
-                    variant="body2"
-                  >
-                    {t('Your tier')}
-                    {' '}
-                    : Premium
+                  <Typography color="neutral.400" variant="body2">
+                    {t('Your tier')} : Premium
                   </Typography>
                 </div>
                 <SelectorIcon
                   sx={{
                     color: 'neutral.500',
                     width: 14,
-                    height: 14
+                    height: 14,
                   }}
                 />
               </Box>
@@ -394,52 +387,38 @@ export const DashboardSidebar = (props) => {
           <Divider
             sx={{
               borderColor: '#2D3748',
-              my: 3
+              my: 3,
             }}
           />
           <Box sx={{ flexGrow: 1 }}>
-            {sections.map((section) => (
+            {sections.map(section => (
               <DashboardSidebarSection
                 key={section.title}
                 path={router.asPath}
                 sx={{
                   mt: 2,
                   '& + &': {
-                    mt: 2
-                  }
+                    mt: 2,
+                  },
                 }}
-                {...section} />
+                {...section}
+              />
             ))}
           </Box>
           <Divider
             sx={{
-              borderColor: '#2D3748'  // dark divider
+              borderColor: '#2D3748', // dark divider
             }}
           />
           <Box sx={{ p: 2 }}>
-            <Typography
-              color="neutral.100"
-              variant="subtitle2"
-            >
+            <Typography color="neutral.100" variant="subtitle2">
               {t('Need Help?')}
             </Typography>
-            <Typography
-              color="neutral.500"
-              variant="body2"
-            >
+            <Typography color="neutral.500" variant="body2">
               {t('Check our docs')}
             </Typography>
-            <NextLink
-              href="/docs/welcome"
-              passHref
-            >
-              <Button
-                color="secondary"
-                component="a"
-                fullWidth
-                sx={{ mt: 2 }}
-                variant="contained"
-              >
+            <NextLink href="/docs/welcome" passHref>
+              <Button color="secondary" component="a" fullWidth sx={{ mt: 2 }} variant="contained">
                 {t('Documentation')}
               </Button>
             </NextLink>
@@ -464,10 +443,10 @@ export const DashboardSidebar = (props) => {
             backgroundColor: 'neutral.900',
             borderRightColor: 'divider',
             borderRightStyle: 'solid',
-            borderRightWidth: (theme) => theme.palette.mode === 'dark' ? 1 : 0,
+            borderRightWidth: theme => (theme.palette.mode === 'dark' ? 1 : 0),
             color: '#FFFFFF',
-            width: 280
-          }
+            width: 280,
+          },
         }}
         variant="permanent"
       >
@@ -485,10 +464,10 @@ export const DashboardSidebar = (props) => {
         sx: {
           backgroundColor: 'neutral.900',
           color: '#FFFFFF',
-          width: 280
-        }
+          width: 280,
+        },
       }}
-      sx={{ zIndex: (theme) => theme.zIndex.appBar + 100 }}
+      sx={{ zIndex: theme => theme.zIndex.appBar + 100 }}
       variant="temporary"
     >
       {content}
@@ -498,5 +477,5 @@ export const DashboardSidebar = (props) => {
 
 DashboardSidebar.propTypes = {
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

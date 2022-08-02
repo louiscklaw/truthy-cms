@@ -6,12 +6,12 @@ const initialState = {
   activeThreadId: undefined,
   contacts: {
     byId: {},
-    allIds: []
+    allIds: [],
   },
   threads: {
     byId: {},
-    allIds: []
-  }
+    allIds: [],
+  },
 };
 
 const slice = createSlice({
@@ -59,25 +59,25 @@ const slice = createSlice({
       if (thread) {
         thread.messages.push(message);
       }
-    }
-  }
+    },
+  },
 });
 
 export const { reducer } = slice;
 
-export const getContacts = () => async (dispatch) => {
+export const getContacts = () => async dispatch => {
   const data = await chatApi.getContacts();
 
   dispatch(slice.actions.getContacts(data));
 };
 
-export const getThreads = () => async (dispatch) => {
+export const getThreads = () => async dispatch => {
   const data = await chatApi.getThreads();
 
   dispatch(slice.actions.getThreads(data));
 };
 
-export const getThread = (threadKey) => async (dispatch) => {
+export const getThread = threadKey => async dispatch => {
   const data = await chatApi.getThread(threadKey);
 
   dispatch(slice.actions.getThread(data));
@@ -85,24 +85,26 @@ export const getThread = (threadKey) => async (dispatch) => {
   return data?.id;
 };
 
-export const markThreadAsSeen = (threadId) => async (dispatch) => {
+export const markThreadAsSeen = threadId => async dispatch => {
   await chatApi.markThreadAsSeen(threadId);
 
   dispatch(slice.actions.markThreadAsSeen(threadId));
 };
 
-export const setActiveThread = (threadId) => (dispatch) => {
+export const setActiveThread = threadId => dispatch => {
   dispatch(slice.actions.setActiveThread(threadId));
 };
 
-export const addMessage = ({ threadId, recipientIds, body }) => async (dispatch) => {
-  const data = await chatApi.addMessage({
-    threadId,
-    recipientIds,
-    body
-  });
+export const addMessage =
+  ({ threadId, recipientIds, body }) =>
+  async dispatch => {
+    const data = await chatApi.addMessage({
+      threadId,
+      recipientIds,
+      body,
+    });
 
-  dispatch(slice.actions.addMessage(data));
+    dispatch(slice.actions.addMessage(data));
 
-  return data.threadId;
-};
+    return data.threadId;
+  };

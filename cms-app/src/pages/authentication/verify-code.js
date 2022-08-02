@@ -14,7 +14,7 @@ const platformIcons = {
   Amplify: '/static/icons/amplify.svg',
   Auth0: '/static/icons/auth0.svg',
   Firebase: '/static/icons/firebase.svg',
-  JWT: '/static/icons/jwt.svg'
+  JWT: '/static/icons/jwt.svg',
 };
 
 const VerifyCode = () => {
@@ -29,9 +29,7 @@ const VerifyCode = () => {
   return (
     <>
       <Head>
-        <title>
-          Verify Code | Material Kit Pro
-        </title>
+        <title>Verify Code | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
@@ -39,7 +37,7 @@ const VerifyCode = () => {
           backgroundColor: 'background.default',
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '100vh'
+          minHeight: '100vh',
         }}
       >
         <AuthBanner />
@@ -48,16 +46,14 @@ const VerifyCode = () => {
           sx={{
             py: {
               xs: '60px',
-              md: '120px'
-            }
+              md: '120px',
+            },
           }}
         >
           <Box
             sx={{
               alignItems: 'center',
-              backgroundColor: (theme) => theme.palette.mode === 'dark'
-                ? 'neutral.900'
-                : 'neutral.100',
+              backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.900' : 'neutral.100'),
               borderColor: 'divider',
               borderRadius: 1,
               borderStyle: 'solid',
@@ -71,61 +67,43 @@ const VerifyCode = () => {
                 height: 32,
                 width: 'auto',
                 flexGrow: 0,
-                flexShrink: 0
-              }
+                flexShrink: 0,
+              },
             }}
           >
-            <Typography
-              color="textSecondary"
-              variant="caption"
-            >
+            <Typography color="textSecondary" variant="caption">
               The app authenticates via {platform}
             </Typography>
-            <img
-              alt="Auth platform"
-              src={platformIcons[platform]}
-            />
+            <img alt="Auth platform" src={platformIcons[platform]} />
           </Box>
-          <Card
-            elevation={16}
-            sx={{ p: 4 }}
-          >
+          <Card elevation={16} sx={{ p: 4 }}>
             <Box
               sx={{
                 alignItems: 'center',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'center'
+                justifyContent: 'center',
               }}
             >
-              <NextLink
-                href="/"
-                passHref
-              >
+              <NextLink href="/" passHref>
                 <a>
                   <Logo
                     sx={{
                       height: 40,
-                      width: 40
+                      width: 40,
                     }}
                   />
                 </a>
               </NextLink>
-              <Typography variant="h4">
-                Verify Code
-              </Typography>
-              <Typography
-                color="textSecondary"
-                sx={{ mt: 2 }}
-                variant="body2"
-              >
+              <Typography variant="h4">Verify Code</Typography>
+              <Typography color="textSecondary" sx={{ mt: 2 }} variant="body2">
                 Confirm registration using your verification code
               </Typography>
             </Box>
             <Box
               sx={{
                 flexGrow: 1,
-                mt: 3
+                mt: 3,
               }}
             >
               {platform === 'Amplify' && <AmplifyVerifyCode />}
@@ -134,15 +112,10 @@ const VerifyCode = () => {
             {platform === 'Amplify' && (
               <div>
                 <NextLink
-                  href={disableGuard
-                    ? `/authentication/login?disableGuard=${disableGuard}`
-                    : '/authentication/login'}
+                  href={disableGuard ? `/authentication/login?disableGuard=${disableGuard}` : '/authentication/login'}
                   passHref
                 >
-                  <Link
-                    color="textSecondary"
-                    variant="body2"
-                  >
+                  <Link color="textSecondary" variant="body2">
                     Did you not receive the code?
                   </Link>
                 </NextLink>
@@ -155,10 +128,6 @@ const VerifyCode = () => {
   );
 };
 
-VerifyCode.getLayout = (page) => (
-  <GuestGuard>
-    {page}
-  </GuestGuard>
-);
+VerifyCode.getLayout = page => <GuestGuard>{page}</GuestGuard>;
 
 export default VerifyCode;

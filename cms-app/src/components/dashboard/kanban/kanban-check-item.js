@@ -13,24 +13,15 @@ const KanbanCheckItemRoot = styled('div')(({ theme }) => ({
   paddingBottom: theme.spacing(1),
   paddingLeft: theme.spacing(3),
   paddingRight: theme.spacing(3),
-  paddingTop: theme.spacing(1)
+  paddingTop: theme.spacing(1),
 }));
 
-export const KanbanCheckItem = (props) => {
-  const {
-    cardId,
-    checkItem,
-    checklistId,
-    editing,
-    onEditCancel,
-    onEditComplete,
-    onEditInit,
-    ...other
-  } = props;
+export const KanbanCheckItem = props => {
+  const { cardId, checkItem, checklistId, editing, onEditCancel, onEditComplete, onEditInit, ...other } = props;
   const dispatch = useDispatch();
   const [name, setName] = useState(checkItem.name);
 
-  const handleStateChange = async (event) => {
+  const handleStateChange = async event => {
     try {
       const state = event.target.checked ? 'complete' : 'incomplete';
 
@@ -42,7 +33,7 @@ export const KanbanCheckItem = (props) => {
     }
   };
 
-  const handleNameChange = (event) => {
+  const handleNameChange = event => {
     setName(event.target.value);
   };
 
@@ -74,89 +65,69 @@ export const KanbanCheckItem = (props) => {
 
   return (
     <KanbanCheckItemRoot {...other}>
-      <Checkbox
-        edge="start"
-        checked={checkItem.state === 'complete'}
-        onChange={handleStateChange}
-        sx={{ mr: 1 }}
-      />
-      {editing
-        ? (
-          <Box
+      <Checkbox edge="start" checked={checkItem.state === 'complete'} onChange={handleStateChange} sx={{ mr: 1 }} />
+      {editing ? (
+        <Box
+          sx={{
+            alignItems: 'center',
+            display: 'flex',
+            width: '100%',
+          }}
+        >
+          <OutlinedInput
+            onChange={handleNameChange}
+            value={name}
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              width: '100%'
+              flexGrow: 1,
+              my: '1px',
+              '& .MuiInputBase-input': {
+                px: 2,
+                py: 1,
+              },
             }}
-          >
-            <OutlinedInput
-              onChange={handleNameChange}
-              value={name}
-              sx={{
-                flexGrow: 1,
-                my: '1px',
-                '& .MuiInputBase-input': {
-                  px: 2,
-                  py: 1
-                }
-              }}
-            />
-            <Button
-              onClick={handleSave}
-              size="small"
-              sx={{ ml: 2 }}
-              variant="contained"
-            >
-              Update
-            </Button>
-            <Button
-              onClick={handleCancel}
-              size="small"
-              sx={{ ml: 2 }}
-            >
-              Cancel
-            </Button>
-          </Box>
-        )
-        : (
-          <Box
+          />
+          <Button onClick={handleSave} size="small" sx={{ ml: 2 }} variant="contained">
+            Update
+          </Button>
+          <Button onClick={handleCancel} size="small" sx={{ ml: 2 }}>
+            Cancel
+          </Button>
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            alignItems: 'center',
+            display: 'flex',
+            flexGrow: 1,
+          }}
+        >
+          <Input
+            disableUnderline
+            fullWidth
+            onClick={onEditInit}
+            value={checkItem.name}
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              flexGrow: 1
+              borderColor: 'transparent',
+              borderRadius: 1,
+              borderStyle: 'solid',
+              borderWidth: 1,
+              cursor: 'text',
+              m: '-1px',
+              '&:hover': {
+                backgroundColor: 'action.selected',
+              },
+              '& .MuiInputBase-input': {
+                fontWeight: 500,
+                px: 2,
+                py: 1,
+              },
             }}
-          >
-            <Input
-              disableUnderline
-              fullWidth
-              onClick={onEditInit}
-              value={checkItem.name}
-              sx={{
-                borderColor: 'transparent',
-                borderRadius: 1,
-                borderStyle: 'solid',
-                borderWidth: 1,
-                cursor: 'text',
-                m: '-1px',
-                '&:hover': {
-                  backgroundColor: 'action.selected'
-                },
-                '& .MuiInputBase-input': {
-                  fontWeight: 500,
-                  px: 2,
-                  py: 1
-                }
-              }}
-            />
-            <IconButton
-              onClick={handleDelete}
-              sx={{ ml: 2 }}
-              size="small"
-            >
-              <TrashIcon fontSize="small" />
-            </IconButton>
-          </Box>
-        )}
+          />
+          <IconButton onClick={handleDelete} sx={{ ml: 2 }} size="small">
+            <TrashIcon fontSize="small" />
+          </IconButton>
+        </Box>
+      )}
     </KanbanCheckItemRoot>
   );
 };
@@ -169,9 +140,9 @@ KanbanCheckItem.propTypes = {
   onEditCancel: PropTypes.func,
   onEditComplete: PropTypes.func,
   onEditInit: PropTypes.func,
-  sx: PropTypes.object
+  sx: PropTypes.object,
 };
 
 KanbanCheckItem.defaultProps = {
-  editing: false
+  editing: false,
 };

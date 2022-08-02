@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { Button } from '@mui/material';
 
-export const KanbanCardAction = (props) => {
+export const KanbanCardAction = props => {
   const { icon, children, ...other } = props;
 
   return (
@@ -11,11 +11,12 @@ export const KanbanCardAction = (props) => {
       sx={{
         justifyContent: 'flex-start',
         '& + &': {
-          mt: 2
-        }
+          mt: 2,
+        },
       }}
       variant="contained"
-      {...other}>
+      {...other}
+    >
       {children}
     </Button>
   );
@@ -23,5 +24,5 @@ export const KanbanCardAction = (props) => {
 
 KanbanCardAction.propTypes = {
   icon: PropTypes.element,
-  children: PropTypes.node
+  children: PropTypes.node,
 };

@@ -10,13 +10,13 @@ import {
   ListItemIcon,
   ListItemText,
   Tooltip,
-  Typography
+  Typography,
 } from '@mui/material';
 import { Duplicate as DuplicateIcon } from '../icons/duplicate';
 import { X as XIcon } from '../icons/x';
 import { bytesToSize } from '../utils/bytes-to-size';
 
-export const FileDropzone = (props) => {
+export const FileDropzone = props => {
   const {
     // Own props
     files = [],
@@ -58,7 +58,7 @@ export const FileDropzone = (props) => {
     maxFiles,
     maxSize,
     minSize,
-    onDrop
+    onDrop,
   });
 
   return (
@@ -77,41 +77,32 @@ export const FileDropzone = (props) => {
           p: 6,
           ...(isDragActive && {
             backgroundColor: 'action.active',
-            opacity: 0.5
+            opacity: 0.5,
           }),
           '&:hover': {
             backgroundColor: 'action.hover',
             cursor: 'pointer',
-            opacity: 0.5
-          }
+            opacity: 0.5,
+          },
         }}
-        {...getRootProps()}>
+        {...getRootProps()}
+      >
         <input {...getInputProps()} />
         <Box
           sx={{
             '& img': {
-              width: 100
-            }
+              width: 100,
+            },
           }}
         >
-          <img
-            alt="Select file"
-            src="/static/undraw_add_file2_gvbb.svg"
-          />
+          <img alt="Select file" src="/static/undraw_add_file2_gvbb.svg" />
         </Box>
         <Box sx={{ p: 2 }}>
-          <Typography variant="h6">
-            {`Select file${(maxFiles && maxFiles === 1) ? '' : 's'}`}
-          </Typography>
+          <Typography variant="h6">{`Select file${maxFiles && maxFiles === 1 ? '' : 's'}`}</Typography>
           <Box sx={{ mt: 2 }}>
             <Typography variant="body1">
-              {`Drop file${(maxFiles && maxFiles === 1) ? '' : 's'}`}
-              {' '}
-              <Link underline="always">
-                browse
-              </Link>
-              {' '}
-              thorough your machine
+              {`Drop file${maxFiles && maxFiles === 1 ? '' : 's'}`} <Link underline="always">browse</Link> thorough your
+              machine
             </Typography>
           </Box>
         </Box>
@@ -119,7 +110,7 @@ export const FileDropzone = (props) => {
       {files.length > 0 && (
         <Box sx={{ mt: 2 }}>
           <List>
-            {files.map((file) => (
+            {files.map(file => (
               <ListItem
                 key={file.path}
                 sx={{
@@ -127,8 +118,8 @@ export const FileDropzone = (props) => {
                   borderColor: 'divider',
                   borderRadius: 1,
                   '& + &': {
-                    mt: 1
-                  }
+                    mt: 1,
+                  },
                 }}
               >
                 <ListItemIcon>
@@ -138,15 +129,12 @@ export const FileDropzone = (props) => {
                   primary={file.name}
                   primaryTypographyProps={{
                     color: 'textPrimary',
-                    variant: 'subtitle2'
+                    variant: 'subtitle2',
                   }}
                   secondary={bytesToSize(file.size)}
                 />
                 <Tooltip title="Remove">
-                  <IconButton
-                    edge="end"
-                    onClick={() => onRemove?.(file)}
-                  >
+                  <IconButton edge="end" onClick={() => onRemove?.(file)}>
                     <XIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>
@@ -157,23 +145,13 @@ export const FileDropzone = (props) => {
             sx={{
               display: 'flex',
               justifyContent: 'flex-end',
-              mt: 2
+              mt: 2,
             }}
           >
-            <Button
-              onClick={onRemoveAll}
-              size="small"
-              type="button"
-            >
+            <Button onClick={onRemoveAll} size="small" type="button">
               Remove All
             </Button>
-            <Button
-              onClick={onUpload}
-              size="small"
-              sx={{ ml: 2 }}
-              type="button"
-              variant="contained"
-            >
+            <Button onClick={onUpload} size="small" sx={{ ml: 2 }} type="button" variant="contained">
               Upload
             </Button>
           </Box>
@@ -202,5 +180,5 @@ FileDropzone.propTypes = {
   onDropAccepted: PropTypes.func,
   onDropRejected: PropTypes.func,
   onFileDialogCancel: PropTypes.func,
-  preventDropOnDocument: PropTypes.bool
+  preventDropOnDocument: PropTypes.bool,
 };

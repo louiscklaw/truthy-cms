@@ -17,42 +17,29 @@ const BrowseButtons = () => {
   return (
     <>
       <Head>
-        <title>
-          Browse: Buttons | Material Kit Pro
-        </title>
+        <title>Browse: Buttons | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           backgroundColor: 'background.paper',
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
-          <WidgetPreviewer
-            element={<Buttons1 />}
-            name="Simple buttons"
-          />
-          <WidgetPreviewer
-            element={<Buttons2 />}
-            name="Buttons with text and icon"
-          />
-          <WidgetPreviewer
-            element={<Buttons3 />}
-            name="Button groups"
-          />
+          <WidgetPreviewer element={<Buttons1 />} name="Simple buttons" />
+          <WidgetPreviewer element={<Buttons2 />} name="Buttons with text and icon" />
+          <WidgetPreviewer element={<Buttons3 />} name="Button groups" />
         </Container>
       </Box>
     </>
   );
 };
 
-BrowseButtons.getLayout = (page) => (
+BrowseButtons.getLayout = page => (
   <MainLayout>
-    <BrowseLayout>
-      {page}
-    </BrowseLayout>
+    <BrowseLayout>{page}</BrowseLayout>
   </MainLayout>
 );
 

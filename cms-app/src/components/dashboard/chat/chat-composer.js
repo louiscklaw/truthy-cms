@@ -6,14 +6,14 @@ import { useDispatch } from '../../../store';
 import { ChatComposerToolbar } from './chat-composer-toolbar';
 import { ChatMessageAdd } from './chat-message-add';
 
-export const ChatComposer = (props) => {
+export const ChatComposer = props => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [recipients, setRecipients] = useState([]);
 
-  const handleAddRecipient = (recipient) => {
-    setRecipients((prevState) => {
-      const exists = prevState.find((_recipient) => _recipient.id === recipient.id);
+  const handleAddRecipient = recipient => {
+    setRecipients(prevState => {
+      const exists = prevState.find(_recipient => _recipient.id === recipient.id);
 
       if (!exists) {
         return [...recipients, recipient];
@@ -23,17 +23,19 @@ export const ChatComposer = (props) => {
     });
   };
 
-  const handleRemoveRecipient = (recipientId) => {
-    setRecipients((prevState) => prevState.filter((recipient) => recipient.id !== recipientId));
+  const handleRemoveRecipient = recipientId => {
+    setRecipients(prevState => prevState.filter(recipient => recipient.id !== recipientId));
   };
 
-  const handleSendMessage = async (body) => {
+  const handleSendMessage = async body => {
     try {
       // Handle send message and redirect to the new thread
-      const threadId = await dispatch(addMessage({
-        recipientIds: recipients.map((recipient) => recipient.id),
-        body
-      }));
+      const threadId = await dispatch(
+        addMessage({
+          recipientIds: recipients.map(recipient => recipient.id),
+          body,
+        }),
+      );
       router.push(`/dashboard/chat?threadKey=${threadId}`).catch(console.error);
     } catch (err) {
       console.error(err);
@@ -45,9 +47,10 @@ export const ChatComposer = (props) => {
       sx={{
         display: 'flex',
         flexDirection: 'column',
-        flexGrow: 1
+        flexGrow: 1,
       }}
-      {...props}>
+      {...props}
+    >
       <ChatComposerToolbar
         onAddRecipient={handleAddRecipient}
         onRemoveRecipient={handleRemoveRecipient}
@@ -56,14 +59,11 @@ export const ChatComposer = (props) => {
       <Box
         sx={{
           backgroundColor: 'background.default',
-          flexGrow: 1
+          flexGrow: 1,
         }}
       />
       <Divider />
-      <ChatMessageAdd
-        disabled={recipients.length === 0}
-        onSend={handleSendMessage}
-      />
+      <ChatMessageAdd disabled={recipients.length === 0} onSend={handleSendMessage} />
     </Box>
   );
 };

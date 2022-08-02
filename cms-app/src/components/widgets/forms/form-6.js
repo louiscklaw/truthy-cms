@@ -11,49 +11,30 @@ export const Form6 = () => {
       sx={{
         backgroundColor: 'background.paper',
         minHeight: '100%',
-        p: 3
+        p: 3,
       }}
     >
-      <form onSubmit={(event) => event.preventDefault()}>
-        <TextField
-          fullWidth
-          label="Title"
-          name="title"
-        />
+      <form onSubmit={event => event.preventDefault()}>
+        <TextField fullWidth label="Title" name="title" />
         <Box sx={{ mt: 2 }}>
-          <TextField
-            fullWidth
-            label="Description"
-            name="description"
-          />
+          <TextField fullWidth label="Description" name="description" />
         </Box>
         <Box sx={{ mt: 2 }}>
-          <FormControlLabel
-            control={<Switch name="allDay" />}
-            label="All day"
-          />
+          <FormControlLabel control={<Switch name="allDay" />} label="All day" />
         </Box>
         <Box sx={{ mt: 2 }}>
           <DateTimePicker
-            onChange={(newDate) => setStartDate(newDate)}
+            onChange={newDate => setStartDate(newDate)}
             label="Start date"
-            renderInput={(inputProps) => (
-              <TextField
-                fullWidth
-                {...inputProps} />
-            )}
+            renderInput={inputProps => <TextField fullWidth {...inputProps} />}
             value={startDate}
           />
         </Box>
         <Box sx={{ mt: 2 }}>
           <DateTimePicker
-            onChange={(newDate) => setEndDate(newDate)}
+            onChange={newDate => setEndDate(newDate)}
             label="End date"
-            renderInput={(inputProps) => (
-              <TextField
-                fullWidth
-                {...inputProps} />
-            )}
+            renderInput={inputProps => <TextField fullWidth {...inputProps} />}
             value={endDate}
           />
         </Box>
@@ -61,18 +42,12 @@ export const Form6 = () => {
         <Box
           sx={{
             alignItems: 'center',
-            display: 'flex'
+            display: 'flex',
           }}
         >
           <Box sx={{ flexGrow: 1 }} />
-          <Button>
-            Cancel
-          </Button>
-          <Button
-            sx={{ ml: 1 }}
-            type="submit"
-            variant="contained"
-          >
+          <Button>Cancel</Button>
+          <Button sx={{ ml: 1 }} type="submit" variant="contained">
             Confirm
           </Button>
         </Box>

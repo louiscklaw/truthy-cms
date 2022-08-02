@@ -10,7 +10,8 @@
     "export": "next export",
     "build-export": "next build && next export",
     "lint": "next lint",
-    "lint-fix": "next lint --fix"
+    "lint-fix": "next lint --fix",
+    "format": "prettier --loglevel warn --write \"**/*.{js,css,html,jsx,tsx,ts,json}\""
   },
   "browserslist": {
     "production": [
@@ -85,6 +86,7 @@
     "@svgr/webpack": "^6.2.1",
     "eslint": "^8.8.0",
     "eslint-config-next": "^12.0.10",
-    "next-transpile-modules": "^9.0.0"
+    "next-transpile-modules": "^9.0.0",
+    "prettier": "^2.7.1"
   }
 }

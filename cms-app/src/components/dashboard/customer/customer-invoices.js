@@ -11,7 +11,7 @@ import {
   TableCell,
   TableHead,
   TablePagination,
-  TableRow
+  TableRow,
 } from '@mui/material';
 import { customerApi } from '../../../__fake-api__/customer-api';
 import { useMounted } from '../../../hooks/use-mounted';
@@ -20,7 +20,7 @@ import { MoreMenu } from '../../more-menu';
 import { Scrollbar } from '../../scrollbar';
 import { SeverityPill } from '../../severity-pill';
 
-export const CustomerInvoices = (props) => {
+export const CustomerInvoices = props => {
   const isMounted = useMounted();
   const [invoices, setInvoices] = useState([]);
 
@@ -42,55 +42,30 @@ export const CustomerInvoices = (props) => {
 
   return (
     <Card {...props}>
-      <CardHeader
-        action={<MoreMenu />}
-        title="Recent Invoices"
-      />
+      <CardHeader action={<MoreMenu />} title="Recent Invoices" />
       <Divider />
       <Scrollbar>
         <Table sx={{ minWidth: 600 }}>
           <TableHead>
             <TableRow>
-              <TableCell>
-                ID
-              </TableCell>
-              <TableCell>
-                Date
-              </TableCell>
-              <TableCell>
-                Total
-              </TableCell>
-              <TableCell>
-                Status
-              </TableCell>
-              <TableCell align="right">
-                Actions
-              </TableCell>
+              <TableCell>ID</TableCell>
+              <TableCell>Date</TableCell>
+              <TableCell>Total</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {invoices.map((invoice) => (
+            {invoices.map(invoice => (
               <TableRow key={invoice.id}>
+                <TableCell>#{invoice.id}</TableCell>
+                <TableCell>{format(invoice.issueDate, 'MMM dd,yyyy')}</TableCell>
+                <TableCell>{invoice.amount}</TableCell>
                 <TableCell>
-                  #
-                  {invoice.id}
-                </TableCell>
-                <TableCell>
-                  {format(invoice.issueDate, 'MMM dd,yyyy')}
-                </TableCell>
-                <TableCell>
-                  {invoice.amount}
-                </TableCell>
-                <TableCell>
-                  <SeverityPill color={invoice.status === 'paid' ? 'success' : 'error'}>
-                    {invoice.status}
-                  </SeverityPill>
+                  <SeverityPill color={invoice.status === 'paid' ? 'success' : 'error'}>{invoice.status}</SeverityPill>
                 </TableCell>
                 <TableCell align="right">
-                  <NextLink
-                    href="/dashboard/invoices/1"
-                    passHref
-                  >
+                  <NextLink href="/dashboard/invoices/1" passHref>
                     <IconButton component="a">
                       <ArrowRightIcon fontSize="small" />
                     </IconButton>
@@ -104,10 +79,8 @@ export const CustomerInvoices = (props) => {
       <TablePagination
         component="div"
         count={invoices.length}
-        onPageChange={() => {
-        }}
-        onRowsPerPageChange={() => {
-        }}
+        onPageChange={() => {}}
+        onRowsPerPageChange={() => {}}
         page={0}
         rowsPerPage={5}
         rowsPerPageOptions={[5, 10, 25]}

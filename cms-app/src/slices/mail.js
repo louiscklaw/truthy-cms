@@ -5,11 +5,11 @@ import { objFromArray } from '../utils/obj-from-array';
 const initialState = {
   emails: {
     byId: {},
-    allIds: []
+    allIds: [],
   },
   labels: [],
   isSidebarOpen: true,
-  isComposeOpen: false
+  isComposeOpen: false,
 };
 
 const slice = createSlice({
@@ -45,42 +45,44 @@ const slice = createSlice({
     },
     closeCompose(state) {
       state.isComposeOpen = false;
-    }
-  }
+    },
+  },
 });
 
 export const { reducer } = slice;
 
-export const getLabels = () => async (dispatch) => {
+export const getLabels = () => async dispatch => {
   const data = await mailApi.getLabels();
 
   dispatch(slice.actions.getLabels(data));
 };
 
-export const getEmails = ({ label }) => async (dispatch) => {
-  const data = await mailApi.getEmails({ label });
+export const getEmails =
+  ({ label }) =>
+  async dispatch => {
+    const data = await mailApi.getEmails({ label });
 
-  dispatch(slice.actions.getEmails(data));
-};
+    dispatch(slice.actions.getEmails(data));
+  };
 
-export const getEmail = (emailId) => async (dispatch) => {
+export const getEmail = emailId => async dispatch => {
   const data = await mailApi.getEmail(emailId);
 
   dispatch(slice.actions.getEmail(data));
 };
 
-export const openSidebar = () => async (dispatch) => {
+export const openSidebar = () => async dispatch => {
   dispatch(slice.actions.openSidebar());
 };
 
-export const closeSidebar = () => async (dispatch) => {
+export const closeSidebar = () => async dispatch => {
   dispatch(slice.actions.closeSidebar());
 };
 
-export const openComposer = () => async (dispatch) => {
+export const openComposer = () => async dispatch => {
   dispatch(slice.actions.openCompose());
 };
 
-export const closeComposer = () => async (dispatch) => {
+export const closeComposer = () => async dispatch => {
   dispatch(slice.actions.closeCompose());
 };

@@ -19,10 +19,10 @@ const systemLabelIcons = {
   spam: ExclamationCircleIcon,
   sent: PaperAirplaneIcon,
   starred: StarIcon,
-  important: LabelImportantIcon
+  important: LabelImportantIcon,
 };
 
-const getIcon = (label) => {
+const getIcon = label => {
   if (label.type === 'system') {
     return systemLabelIcons[label.id];
   }
@@ -30,7 +30,7 @@ const getIcon = (label) => {
   return TagOutlinedIcon;
 };
 
-const getColor = (label) => {
+const getColor = label => {
   if (label.type === 'custom') {
     return label.color;
   }
@@ -38,15 +38,13 @@ const getColor = (label) => {
   return 'inherit';
 };
 
-export const MailLabel = (props) => {
+export const MailLabel = props => {
   const { active, label, ...other } = props;
 
   const Icon = getIcon(label);
   const color = getColor(label);
   const displayUnreadCount = Boolean(label.unreadCount && label.unreadCount > 0);
-  const href = label.id !== 'inbox'
-    ? `/dashboard/mail?label=${label.id}`
-    : '/dashboard/mail';
+  const href = label.id !== 'inbox' ? `/dashboard/mail?label=${label.id}` : '/dashboard/mail';
 
   return (
     <ListItem
@@ -54,14 +52,12 @@ export const MailLabel = (props) => {
       disablePadding
       sx={{
         '& + &': {
-          mt: 1
-        }
+          mt: 1,
+        },
       }}
-      {...other}>
-      <NextLink
-        href={href}
-        passHref
-      >
+      {...other}
+    >
+      <NextLink href={href} passHref>
         <ButtonBase
           component="a"
           href={href}
@@ -69,36 +65,31 @@ export const MailLabel = (props) => {
             borderRadius: 1,
             color: 'text.secondary',
             flexGrow: 1,
-            fontSize: (theme) => theme.typography.button.fontSize,
-            fontWeight: (theme) => theme.typography.button.fontWeight,
+            fontSize: theme => theme.typography.button.fontSize,
+            fontWeight: theme => theme.typography.button.fontWeight,
             justifyContent: 'flex-start',
-            lineHeight: (theme) => theme.typography.button.lineHeight,
+            lineHeight: theme => theme.typography.button.lineHeight,
             py: 1,
             px: 2,
             textAlign: 'left',
             '&:hover': {
-              backgroundColor: 'action.hover'
+              backgroundColor: 'action.hover',
             },
             ...(active && {
               backgroundColor: 'action.selected',
-              color: 'text.primary'
-            })
+              color: 'text.primary',
+            }),
           }}
         >
           <Icon
             sx={{
               color,
-              mr: 1
+              mr: 1,
             }}
           />
-          <Box sx={{ flexGrow: 1 }}>
-            {label.name}
-          </Box>
+          <Box sx={{ flexGrow: 1 }}>{label.name}</Box>
           {displayUnreadCount && (
-            <Typography
-              color="inherit"
-              variant="subtitle2"
-            >
+            <Typography color="inherit" variant="subtitle2">
               {label.unreadCount}
             </Typography>
           )}
@@ -112,5 +103,5 @@ MailLabel.propTypes = {
   active: PropTypes.bool,
   label: PropTypes.object.isRequired,
   href: PropTypes.string,
-  onClick: PropTypes.func
+  onClick: PropTypes.func,
 };

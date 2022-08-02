@@ -10,7 +10,7 @@ import {
   ListItemAvatar,
   ListItemText,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { Search as SearchIcon } from '../../../icons/search';
 import { Tip } from '../../tip';
@@ -20,7 +20,7 @@ export const ChatContactSearch = forwardRef((props, ref) => {
 
   const displaySearchResults = query && isFocused;
 
-  const handleSelect = (result) => {
+  const handleSelect = result => {
     if (onSelect) {
       onSelect(result);
     }
@@ -28,10 +28,7 @@ export const ChatContactSearch = forwardRef((props, ref) => {
 
   return (
     <ClickAwayListener onClickAway={() => onClickAway?.()}>
-      <Box
-        ref={ref}
-        sx={{ p: 2 }}
-        {...other}>
+      <Box ref={ref} sx={{ p: 2 }} {...other}>
         <TextField
           fullWidth
           onChange={onChange}
@@ -42,7 +39,7 @@ export const ChatContactSearch = forwardRef((props, ref) => {
               <InputAdornment position="start">
                 <SearchIcon fontSize="small" />
               </InputAdornment>
-            )
+            ),
           }}
           value={query}
         />
@@ -53,36 +50,25 @@ export const ChatContactSearch = forwardRef((props, ref) => {
         )}
         {Boolean(displaySearchResults && results.length === 0) && (
           <Box sx={{ py: 2 }}>
-            <Typography
-              color="textSecondary"
-              variant="body2"
-            >
-              We couldn&apos;t find any matches for &quot;{query}&quot;. Try checking for typos or using
-              complete words.
+            <Typography color="textSecondary" variant="body2">
+              We couldn&apos;t find any matches for &quot;{query}&quot;. Try checking for typos or using complete words.
             </Typography>
           </Box>
         )}
-        {(displaySearchResults && results.length > 0) && (
+        {displaySearchResults && results.length > 0 && (
           <Box sx={{ py: 2 }}>
-            <Typography
-              color="textSecondary"
-              variant="subtitle2"
-            >
+            <Typography color="textSecondary" variant="subtitle2">
               Contacts
             </Typography>
             <List>
-              {results.map((result) => (
-                <ListItem
-                  button
-                  key={result.id}
-                  onClick={() => handleSelect(result)}
-                >
+              {results.map(result => (
+                <ListItem button key={result.id} onClick={() => handleSelect(result)}>
                   <ListItemAvatar>
                     <Avatar
                       src={result.avatar}
                       sx={{
                         height: 32,
-                        width: 32
+                        width: 32,
                       }}
                     />
                   </ListItemAvatar>
@@ -90,7 +76,7 @@ export const ChatContactSearch = forwardRef((props, ref) => {
                     primary={result.name}
                     primaryTypographyProps={{
                       noWrap: true,
-                      variant: 'subtitle2'
+                      variant: 'subtitle2',
                     }}
                   />
                 </ListItem>
@@ -110,11 +96,11 @@ ChatContactSearch.propTypes = {
   onFocus: PropTypes.func,
   onSelect: PropTypes.func,
   query: PropTypes.string,
-  results: PropTypes.array.isRequired
+  results: PropTypes.array.isRequired,
 };
 
 ChatContactSearch.defaultProps = {
   isFocused: false,
   query: '',
-  results: []
+  results: [],
 };

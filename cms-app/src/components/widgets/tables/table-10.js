@@ -9,7 +9,7 @@ import {
   TableBody,
   TableCell,
   TableRow,
-  Typography
+  Typography,
 } from '@mui/material';
 import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
 import { Scrollbar } from '../../scrollbar';
@@ -25,7 +25,7 @@ const logs = [
     ip: '84.234.243.42',
     method: 'POST',
     route: '/api/purchase',
-    status: 200
+    status: 200,
   },
   {
     id: '5ece2d02510484b2952e1e05',
@@ -34,7 +34,7 @@ const logs = [
     ip: '84.234.243.42',
     method: 'POST',
     route: '/api/purchase',
-    status: 522
+    status: 522,
   },
   {
     id: '5ece2d08e2748e4e9788901a',
@@ -43,7 +43,7 @@ const logs = [
     ip: '84.234.243.42',
     method: 'DELETE',
     route: '/api/products/d65654e/remove',
-    status: 200
+    status: 200,
   },
   {
     id: '5ece2d0c47214e342c2d7f28',
@@ -52,7 +52,7 @@ const logs = [
     ip: '84.234.243.42',
     method: 'GET',
     route: '/api/products/d65654e/add',
-    status: 200
+    status: 200,
   },
   {
     id: '5ece2d11e4060a97b2b57623',
@@ -61,7 +61,7 @@ const logs = [
     ip: '84.234.243.42',
     method: 'GET',
     route: '/api/products/c85727f/add',
-    status: 200
+    status: 200,
   },
   {
     id: '5ece2d16cf6d53d8e33656af',
@@ -70,7 +70,7 @@ const logs = [
     ip: '84.234.243.42',
     method: 'GET',
     route: '/api/products/c85727f',
-    status: 200
+    status: 200,
   },
   {
     id: '5ece2d1b2ec5071be9286a96',
@@ -79,7 +79,7 @@ const logs = [
     ip: '84.234.243.42',
     method: 'GET',
     route: '/api/products',
-    status: 200
+    status: 200,
   },
   {
     id: '5ece2d22e68d5498917e47bc',
@@ -88,8 +88,8 @@ const logs = [
     ip: '84.234.243.42',
     method: 'POST',
     route: '/api/authentication/login',
-    status: 200
-  }
+    status: 200,
+  },
 ];
 
 export const Table10 = () => (
@@ -97,50 +97,34 @@ export const Table10 = () => (
     sx={{
       backgroundColor: 'background.default',
       minHeight: '100%',
-      p: 3
+      p: 3,
     }}
   >
     <Card>
       <CardHeader
-        action={(
+        action={
           <IconButton>
             <DotsHorizontalIcon fontSize="small" />
           </IconButton>
-        )}
+        }
         title="Logs"
       />
       <Divider />
       <Scrollbar>
         <Table sx={{ minWidth: 1150 }}>
           <TableBody>
-            {logs.map((log) => (
+            {logs.map(log => (
               <TableRow key={log.id}>
                 <TableCell width="100">
-                  <Typography variant="subtitle2">
-                    {log.method}
-                  </Typography>
+                  <Typography variant="subtitle2">{log.method}</Typography>
                 </TableCell>
                 <TableCell width="64">
-                  <SeverityPill
-                    color={log.status === 200
-                      ? 'success'
-                      : 'error'}
-                  >
-                    {log.status}
-                  </SeverityPill>
+                  <SeverityPill color={log.status === 200 ? 'success' : 'error'}>{log.status}</SeverityPill>
                 </TableCell>
-                <TableCell>
-                  {log.route}
-                </TableCell>
-                <TableCell>
-                  {log.description}
-                </TableCell>
-                <TableCell align="right">
-                  {log.ip}
-                </TableCell>
-                <TableCell align="right">
-                  {format(log.createdAt, 'yyyy/MM/dd | HH:mm:ss')}
-                </TableCell>
+                <TableCell>{log.route}</TableCell>
+                <TableCell>{log.description}</TableCell>
+                <TableCell align="right">{log.ip}</TableCell>
+                <TableCell align="right">{format(log.createdAt, 'yyyy/MM/dd | HH:mm:ss')}</TableCell>
               </TableRow>
             ))}
           </TableBody>

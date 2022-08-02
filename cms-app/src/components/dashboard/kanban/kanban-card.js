@@ -14,13 +14,13 @@ const cardSelector = (state, cardId) => {
 
   return {
     ...card,
-    members: card.memberIds.map((memberId) => members.byId[memberId])
+    members: card.memberIds.map(memberId => members.byId[memberId]),
   };
 };
 
 export const KanbanCard = forwardRef((props, ref) => {
   const { cardId, dragging, column, ...other } = props;
-  const card = useSelector((state) => cardSelector(state, cardId));
+  const card = useSelector(state => cardSelector(state, cardId));
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -36,33 +36,26 @@ export const KanbanCard = forwardRef((props, ref) => {
       ref={ref}
       sx={{
         outline: 'none',
-        py: 1
+        py: 1,
       }}
-      {...other}>
+      {...other}
+    >
       <Card
         onClick={handleOpen}
         raised={dragging}
         sx={{
           ...(dragging && {
-            backgroundColor: 'background.paper'
+            backgroundColor: 'background.paper',
           }),
           '&:hover': {
-            backgroundColor: 'background.default'
-          }
+            backgroundColor: 'background.default',
+          },
         }}
         variant="elevation"
       >
         <Box sx={{ p: 3 }}>
-          {card.cover && (
-            <CardMedia
-              image={card.cover}
-              sx={{ height: 120 }}
-            />
-          )}
-          <Typography
-            sx={{ mt: 1 }}
-            variant="subtitle1"
-          >
+          {card.cover && <CardMedia image={card.cover} sx={{ height: 120 }} />}
+          <Typography sx={{ mt: 1 }} variant="subtitle1">
             {card.name}
           </Typography>
           {card.labels.length > 0 && (
@@ -72,16 +65,11 @@ export const KanbanCard = forwardRef((props, ref) => {
                 display: 'flex',
                 flexWrap: 'wrap',
                 m: -1,
-                mt: 1
+                mt: 1,
               }}
             >
-              {card.labels.map((label) => (
-                <Chip
-                  key={label}
-                  label={label}
-                  size="small"
-                  sx={{ m: 1 }}
-                />
+              {card.labels.map(label => (
+                <Chip key={label} label={label} size="small" sx={{ m: 1 }} />
               ))}
             </Box>
           )}
@@ -92,8 +80,8 @@ export const KanbanCard = forwardRef((props, ref) => {
               mt: 2,
               color: 'action.active',
               '& svg:not(:first-of-type)': {
-                ml: 2
-              }
+                ml: 2,
+              },
             }}
           >
             {card.isSubscribed && <EyeIcon fontSize="small" />}
@@ -103,23 +91,15 @@ export const KanbanCard = forwardRef((props, ref) => {
             <Box sx={{ flexGrow: 1 }} />
             {card.members.length > 0 && (
               <AvatarGroup max={5}>
-                {card.members.map((member) => (
-                  <Avatar
-                    key={member.id}
-                    src={member.avatar || undefined}
-                  />
+                {card.members.map(member => (
+                  <Avatar key={member.id} src={member.avatar || undefined} />
                 ))}
               </AvatarGroup>
             )}
           </Box>
         </Box>
       </Card>
-      <KanbanCardModal
-        card={card}
-        column={column}
-        onClose={handleClose}
-        open={open}
-      />
+      <KanbanCardModal card={card} column={column} onClose={handleClose} open={open} />
     </Box>
   );
 });
@@ -129,9 +109,9 @@ KanbanCard.propTypes = {
   dragging: PropTypes.bool,
   index: PropTypes.number,
   column: PropTypes.object.isRequired,
-  style: PropTypes.object
+  style: PropTypes.object,
 };
 
 KanbanCard.defaultProps = {
-  dragging: false
+  dragging: false,
 };

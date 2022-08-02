@@ -5,23 +5,12 @@ import { Box, Button, Collapse, ListItem } from '@mui/material';
 import { ChevronDown as ChevronDownIcon } from '../../icons/chevron-down';
 import { ChevronRight as ChevronRightIcon } from '../../icons/chevron-right';
 
-export const DashboardSidebarItem = (props) => {
-  const {
-    active,
-    children,
-    chip,
-    depth,
-    icon,
-    info,
-    open: openProp,
-    path,
-    title,
-    ...other
-  } = props;
+export const DashboardSidebarItem = props => {
+  const { active, children, chip, depth, icon, info, open: openProp, path, title, ...other } = props;
   const [open, setOpen] = useState(!!openProp);
 
   const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
+    setOpen(prevOpen => !prevOpen);
   };
 
   let paddingLeft = 24;
@@ -39,13 +28,12 @@ export const DashboardSidebarItem = (props) => {
           display: 'block',
           mb: 0.5,
           py: 0,
-          px: 2
+          px: 2,
         }}
-        {...other}>
+        {...other}
+      >
         <Button
-          endIcon={!open
-            ? <ChevronRightIcon fontSize="small" />
-            : <ChevronDownIcon fontSize="small" />}
+          endIcon={!open ? <ChevronRightIcon fontSize="small" /> : <ChevronDownIcon fontSize="small" />}
           disableRipple
           onClick={handleToggle}
           startIcon={icon}
@@ -58,25 +46,20 @@ export const DashboardSidebarItem = (props) => {
             textTransform: 'none',
             width: '100%',
             '&:hover': {
-              backgroundColor: 'rgba(255,255,255, 0.08)'
+              backgroundColor: 'rgba(255,255,255, 0.08)',
             },
             '& .MuiButton-startIcon': {
-              color: active ? 'secondary.main' : 'neutral.400'
+              color: active ? 'secondary.main' : 'neutral.400',
             },
             '& .MuiButton-endIcon': {
-              color: 'neutral.400'
-            }
+              color: 'neutral.400',
+            },
           }}
         >
-          <Box sx={{ flexGrow: 1 }}>
-            {title}
-          </Box>
+          <Box sx={{ flexGrow: 1 }}>{title}</Box>
           {info}
         </Button>
-        <Collapse
-          in={open}
-          sx={{ mt: 0.5 }}
-        >
+        <Collapse in={open} sx={{ mt: 0.5 }}>
           {children}
         </Collapse>
       </ListItem>
@@ -91,13 +74,10 @@ export const DashboardSidebarItem = (props) => {
         display: 'flex',
         mb: 0.5,
         py: 0,
-        px: 2
+        px: 2,
       }}
     >
-      <NextLink
-        href={path}
-        passHref
-      >
+      <NextLink href={path} passHref>
         <Button
           component="a"
           startIcon={icon}
@@ -115,19 +95,17 @@ export const DashboardSidebarItem = (props) => {
             ...(active && {
               backgroundColor: 'rgba(255,255,255, 0.08)',
               color: 'secondary.main',
-              fontWeight: 'fontWeightBold'
+              fontWeight: 'fontWeightBold',
             }),
             '& .MuiButton-startIcon': {
-              color: active ? 'secondary.main' : 'neutral.400'
+              color: active ? 'secondary.main' : 'neutral.400',
             },
             '&:hover': {
-              backgroundColor: 'rgba(255,255,255, 0.08)'
-            }
+              backgroundColor: 'rgba(255,255,255, 0.08)',
+            },
           }}
         >
-          <Box sx={{ flexGrow: 1 }}>
-            {title}
-          </Box>
+          <Box sx={{ flexGrow: 1 }}>{title}</Box>
           {info}
         </Button>
       </NextLink>
@@ -143,10 +121,10 @@ DashboardSidebarItem.propTypes = {
   info: PropTypes.node,
   open: PropTypes.bool,
   path: PropTypes.string,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };
 
 DashboardSidebarItem.defaultProps = {
   active: false,
-  open: false
+  open: false,
 };

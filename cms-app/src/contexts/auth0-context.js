@@ -15,7 +15,7 @@ var ActionType;
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 const handlers = {
@@ -26,7 +26,7 @@ const handlers = {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   },
   LOGIN: (state, action) => {
@@ -35,29 +35,27 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
   },
-  LOGOUT: (state) => ({
+  LOGOUT: state => ({
     ...state,
     isAuthenticated: false,
-    user: null
-  })
+    user: null,
+  }),
 };
 
-const reducer = (state, action) => (handlers[action.type]
-  ? handlers[action.type](state, action)
-  : state);
+const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
 
 export const AuthContext = createContext({
   ...initialState,
   platform: 'Auth0',
   loginWithRedirect: () => Promise.resolve(),
   handleRedirectCallback: () => Promise.resolve(undefined),
-  logout: () => Promise.resolve()
+  logout: () => Promise.resolve(),
 });
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -68,7 +66,7 @@ export const AuthProvider = (props) => {
           redirect_uri: window.location.origin + '/authentication/authorize',
           domain: auth0Config.domain,
           client_id: auth0Config.client_id,
-          cacheLocation: 'localstorage'
+          cacheLocation: 'localstorage',
         });
 
         await auth0Client.checkSession();
@@ -91,17 +89,17 @@ export const AuthProvider = (props) => {
                 avatar: user.picture,
                 email: user.email,
                 name: 'Anika Visser',
-                plan: 'Premium'
-              }
-            }
+                plan: 'Premium',
+              },
+            },
           });
         } else {
           dispatch({
             type: ActionType.INITIALIZE,
             payload: {
               isAuthenticated,
-              user: null
-            }
+              user: null,
+            },
           });
         }
       } catch (err) {
@@ -110,8 +108,8 @@ export const AuthProvider = (props) => {
           type: ActionType.INITIALIZE,
           payload: {
             isAuthenticated: false,
-            user: null
-          }
+            user: null,
+          },
         });
       }
     };
@@ -119,9 +117,9 @@ export const AuthProvider = (props) => {
     initialize();
   }, []);
 
-  const loginWithRedirect = async (appState) => {
+  const loginWithRedirect = async appState => {
     await auth0Client.loginWithRedirect({
-      appState
+      appState,
     });
   };
 
@@ -140,9 +138,9 @@ export const AuthProvider = (props) => {
           avatar: user.picture,
           email: user.email,
           name: 'Anika Visser',
-          plan: 'Premium'
-        }
-      }
+          plan: 'Premium',
+        },
+      },
     });
 
     return result.appState;
@@ -151,7 +149,7 @@ export const AuthProvider = (props) => {
   const logout = async () => {
     await auth0Client.logout();
     dispatch({
-      type: ActionType.LOGOUT
+      type: ActionType.LOGOUT,
     });
   };
 
@@ -162,7 +160,7 @@ export const AuthProvider = (props) => {
         platform: 'Auth0',
         loginWithRedirect,
         handleRedirectCallback,
-        logout
+        logout,
       }}
     >
       {children}
@@ -171,7 +169,7 @@ export const AuthProvider = (props) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const AuthConsumer = AuthContext.Consumer;

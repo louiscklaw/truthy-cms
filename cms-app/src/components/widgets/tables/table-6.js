@@ -14,7 +14,7 @@ import {
   TablePagination,
   TableRow,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
@@ -30,107 +30,103 @@ const invoices = [
     currency: '$',
     customer: {
       email: 'contact@anahenisky.io',
-      name: 'Ana Henisky'
+      name: 'Ana Henisky',
     },
     issueDate: subHours(now, 1).getTime(),
     status: 'paid',
-    totalAmount: 55.50
+    totalAmount: 55.5,
   },
   {
     id: '5ecb868ada8deedee0638502',
     currency: '$',
     customer: {
       email: 'sales@matt-jason.com',
-      name: 'Matt Jason'
+      name: 'Matt Jason',
     },
     issueDate: subDays(subHours(now, 5), 2).getTime(),
     status: 'pending',
-    totalAmount: 19.76
+    totalAmount: 19.76,
   },
   {
     id: '5ecb868700aba84d0f1c0e48',
     currency: '$',
     customer: {
       email: 'support@terrythomas.io',
-      name: 'Terry Thomas'
+      name: 'Terry Thomas',
     },
     issueDate: subDays(subHours(now, 4), 6).getTime(),
     status: 'canceled',
-    totalAmount: 781.50
+    totalAmount: 781.5,
   },
   {
     id: '5ecb8682038e1ddf4e868764',
     currency: '$',
     customer: {
       email: 'contact@triv-shopper.co.uk',
-      name: 'Triv Shopper'
+      name: 'Triv Shopper',
     },
     issueDate: subDays(subHours(now, 2), 15).getTime(),
     status: 'paid',
-    totalAmount: 96.64
-  }
+    totalAmount: 96.64,
+  },
 ];
 
 const statusOptions = [
   {
     label: 'All',
-    value: 'all'
+    value: 'all',
   },
   {
     label: 'Paid',
-    value: 'paid'
+    value: 'paid',
   },
   {
     label: 'Pending',
-    value: 'pending'
+    value: 'pending',
   },
   {
     label: 'Canceled',
-    value: 'canceled'
-  }
+    value: 'canceled',
+  },
 ];
 
 const sortOptions = [
   {
     label: 'Newest first',
-    value: 'createdAt|desc'
+    value: 'createdAt|desc',
   },
   {
     label: 'Oldest first',
-    value: 'createdAt|asc'
-  }
+    value: 'createdAt|asc',
+  },
 ];
 
-const getStatusLabel = (invoiceStatus) => {
+const getStatusLabel = invoiceStatus => {
   const map = {
     canceled: {
       color: 'error',
-      text: 'Canceled'
+      text: 'Canceled',
     },
     paid: {
       color: 'success',
-      text: 'Paid'
+      text: 'Paid',
     },
     pending: {
       color: 'warning',
-      text: 'Pending'
-    }
+      text: 'Pending',
+    },
   };
 
   const { text, color } = map[invoiceStatus];
 
-  return (
-    <SeverityPill color={color}>
-      {text}
-    </SeverityPill>
-  );
+  return <SeverityPill color={color}>{text}</SeverityPill>;
 };
 
 export const Table6 = () => (
   <Box
     sx={{
       backgroundColor: 'background.default',
-      p: 3
+      p: 3,
     }}
   >
     <Card>
@@ -140,14 +136,14 @@ export const Table6 = () => (
           display: 'flex',
           flexWrap: 'wrap',
           m: -1,
-          p: 2
+          p: 2,
         }}
       >
         <Box
           sx={{
             m: 1,
             maxWidth: '100%',
-            width: 500
+            width: 500,
           }}
         >
           <TextField
@@ -157,7 +153,7 @@ export const Table6 = () => (
                 <InputAdornment position="start">
                   <SearchIcon fontSize="small" />
                 </InputAdornment>
-              )
+              ),
             }}
             placeholder="Search invoices by customer"
           />
@@ -166,21 +162,12 @@ export const Table6 = () => (
           sx={{
             m: 1,
             maxWidth: '100%',
-            width: 240
+            width: 240,
           }}
         >
-          <TextField
-            fullWidth
-            label="Sort By"
-            name="sort"
-            select
-            SelectProps={{ native: true }}
-          >
-            {sortOptions.map((option) => (
-              <option
-                key={option.value}
-                value={option.value}
-              >
+          <TextField fullWidth label="Sort By" name="sort" select SelectProps={{ native: true }}>
+            {sortOptions.map(option => (
+              <option key={option.value} value={option.value}>
                 {option.label}
               </option>
             ))}
@@ -190,21 +177,12 @@ export const Table6 = () => (
           sx={{
             m: 1,
             maxWidth: '100%',
-            width: 240
+            width: 240,
           }}
         >
-          <TextField
-            fullWidth
-            label="Status"
-            name="status"
-            select
-            SelectProps={{ native: true }}
-          >
-            {statusOptions.map((statusOption) => (
-              <option
-                key={statusOption.value}
-                value={statusOption.value}
-              >
+          <TextField fullWidth label="Status" name="status" select SelectProps={{ native: true }}>
+            {statusOptions.map(statusOption => (
+              <option key={statusOption.value} value={statusOption.value}>
                 {statusOption.label}
               </option>
             ))}
@@ -218,63 +196,32 @@ export const Table6 = () => (
               <TableCell padding="checkbox">
                 <Checkbox />
               </TableCell>
-              <TableCell>
-                Customer
-              </TableCell>
-              <TableCell>
-                Status
-              </TableCell>
-              <TableCell>
-                Amount
-              </TableCell>
-              <TableCell>
-                ID
-              </TableCell>
-              <TableCell>
-                Date
-              </TableCell>
-              <TableCell align="right">
-                Actions
-              </TableCell>
+              <TableCell>Customer</TableCell>
+              <TableCell>Status</TableCell>
+              <TableCell>Amount</TableCell>
+              <TableCell>ID</TableCell>
+              <TableCell>Date</TableCell>
+              <TableCell align="right">Actions</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {invoices.map((invoice) => (
-              <TableRow
-                hover
-                key={invoice.id}
-              >
+            {invoices.map(invoice => (
+              <TableRow hover key={invoice.id}>
                 <TableCell padding="checkbox">
                   <Checkbox />
                 </TableCell>
                 <TableCell>
-                  <Link
-                    color="textPrimary"
-                    underline="none"
-                    variant="subtitle2"
-                  >
+                  <Link color="textPrimary" underline="none" variant="subtitle2">
                     {invoice.customer.name}
                   </Link>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
+                  <Typography color="textSecondary" variant="body2">
                     {invoice.customer.email}
                   </Typography>
                 </TableCell>
-                <TableCell>
-                  {getStatusLabel(invoice.status)}
-                </TableCell>
-                <TableCell>
-                  {numeral(invoice.totalAmount)
-                    .format(`${invoice.currency}0,0.00`)}
-                </TableCell>
-                <TableCell>
-                  {invoice.id}
-                </TableCell>
-                <TableCell>
-                  {format(invoice.issueDate, 'dd/MM/yyyy')}
-                </TableCell>
+                <TableCell>{getStatusLabel(invoice.status)}</TableCell>
+                <TableCell>{numeral(invoice.totalAmount).format(`${invoice.currency}0,0.00`)}</TableCell>
+                <TableCell>{invoice.id}</TableCell>
+                <TableCell>{format(invoice.issueDate, 'dd/MM/yyyy')}</TableCell>
                 <TableCell align="right">
                   <IconButton>
                     <PencilAltIcon fontSize="small" />
@@ -291,10 +238,8 @@ export const Table6 = () => (
       <TablePagination
         component="div"
         count={invoices.length}
-        onPageChange={() => {
-        }}
-        onRowsPerPageChange={() => {
-        }}
+        onPageChange={() => {}}
+        onRowsPerPageChange={() => {}}
         page={0}
         rowsPerPage={5}
         rowsPerPageOptions={[5, 10, 25]}

@@ -23,19 +23,16 @@ export const SettingsButton = () => {
           size="medium"
           sx={{
             bottom: 0,
-            margin: (theme) => theme.spacing(4),
+            margin: theme => theme.spacing(4),
             position: 'fixed',
             right: 0,
-            zIndex: 1900
+            zIndex: 1900,
           }}
         >
           <AdjustmentsIcon fontSize="small" />
         </Fab>
       </Tooltip>
-      <SettingsDrawer
-        onClose={handleClose}
-        open={open}
-      />
+      <SettingsDrawer onClose={handleClose} open={open} />
     </>
   );
 };

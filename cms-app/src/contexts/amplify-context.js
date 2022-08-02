@@ -6,7 +6,7 @@ import { amplifyConfig } from '../config';
 Auth.configure({
   userPoolId: amplifyConfig.aws_user_pools_id,
   userPoolWebClientId: amplifyConfig.aws_user_pools_web_client_id,
-  region: amplifyConfig.aws_cognito_region
+  region: amplifyConfig.aws_cognito_region,
 });
 
 var ActionType;
@@ -19,7 +19,7 @@ var ActionType;
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 const handlers = {
@@ -30,7 +30,7 @@ const handlers = {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   },
   LOGIN: (state, action) => {
@@ -39,19 +39,17 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
   },
-  LOGOUT: (state) => ({
+  LOGOUT: state => ({
     ...state,
     isAuthenticated: false,
-    user: null
-  })
+    user: null,
+  }),
 };
 
-const reducer = (state, action) => (handlers[action.type]
-  ? handlers[action.type](state, action)
-  : state);
+const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
 
 export const AuthContext = createContext({
   ...initialState,
@@ -62,10 +60,10 @@ export const AuthContext = createContext({
   verifyCode: () => Promise.resolve(),
   resendCode: () => Promise.resolve(),
   passwordRecovery: () => Promise.resolve(),
-  passwordReset: () => Promise.resolve()
+  passwordReset: () => Promise.resolve(),
 });
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -87,17 +85,17 @@ export const AuthProvider = (props) => {
               avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
               email: user.attributes.email,
               name: 'Anika Visser',
-              plan: 'Premium'
-            }
-          }
+              plan: 'Premium',
+            },
+          },
         });
       } catch (error) {
         dispatch({
           type: ActionType.INITIALIZE,
           payload: {
             isAuthenticated: false,
-            user: null
-          }
+            user: null,
+          },
         });
       }
     };
@@ -109,7 +107,9 @@ export const AuthProvider = (props) => {
     const user = await Auth.signIn(email, password);
 
     if (user.challengeName) {
-      console.error(`Unable to login, because challenge "${user.challengeName}" is mandated and we did not handle this case.`);
+      console.error(
+        `Unable to login, because challenge "${user.challengeName}" is mandated and we did not handle this case.`,
+      );
       return;
     }
 
@@ -121,16 +121,16 @@ export const AuthProvider = (props) => {
           avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
           email: user.attributes.email,
           name: 'Anika Visser',
-          plan: 'Premium'
-        }
-      }
+          plan: 'Premium',
+        },
+      },
     });
   };
 
   const logout = async () => {
     await Auth.signOut();
     dispatch({
-      type: ActionType.LOGOUT
+      type: ActionType.LOGOUT,
     });
   };
 
@@ -138,7 +138,7 @@ export const AuthProvider = (props) => {
     await Auth.signUp({
       username: email,
       password,
-      attributes: { email }
+      attributes: { email },
     });
   };
 
@@ -146,11 +146,11 @@ export const AuthProvider = (props) => {
     await Auth.confirmSignUp(username, code);
   };
 
-  const resendCode = async (username) => {
+  const resendCode = async username => {
     await Auth.resendSignUp(username);
   };
 
-  const passwordRecovery = async (username) => {
+  const passwordRecovery = async username => {
     await Auth.forgotPassword(username);
   };
 
@@ -169,7 +169,7 @@ export const AuthProvider = (props) => {
         verifyCode,
         resendCode,
         passwordRecovery,
-        passwordReset
+        passwordReset,
       }}
     >
       {children}
@@ -178,7 +178,7 @@ export const AuthProvider = (props) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const AuthConsumer = AuthContext.Consumer;

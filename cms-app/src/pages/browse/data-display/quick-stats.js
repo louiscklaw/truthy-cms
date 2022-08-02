@@ -22,62 +22,34 @@ const BrowseQuickStats = () => {
   return (
     <>
       <Head>
-        <title>
-          Browse: Quick Stats | Material Kit Pro
-        </title>
+        <title>Browse: Quick Stats | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           backgroundColor: 'background.paper',
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
-          <WidgetPreviewer
-            element={<QuickStats1 />}
-            name="Stat card with donut chart"
-          />
-          <WidgetPreviewer
-            element={<QuickStats2 />}
-            name="Stat card with donut chart"
-          />
-          <WidgetPreviewer
-            element={<QuickStats3 />}
-            name="Stat card with multiple sections"
-          />
-          <WidgetPreviewer
-            element={<QuickStats4 />}
-            name="Stat card with multiple sections and chips"
-          />
-          <WidgetPreviewer
-            element={<QuickStats5 />}
-            name="Stat card with area charts"
-          />
-          <WidgetPreviewer
-            element={<QuickStats6 />}
-            name="Stat card with circular charts"
-          />
-          <WidgetPreviewer
-            element={<QuickStats7 />}
-            name="Progress bar card"
-          />
-          <WidgetPreviewer
-            element={<QuickStats8 />}
-            name="Card with line chart"
-          />
+          <WidgetPreviewer element={<QuickStats1 />} name="Stat card with donut chart" />
+          <WidgetPreviewer element={<QuickStats2 />} name="Stat card with donut chart" />
+          <WidgetPreviewer element={<QuickStats3 />} name="Stat card with multiple sections" />
+          <WidgetPreviewer element={<QuickStats4 />} name="Stat card with multiple sections and chips" />
+          <WidgetPreviewer element={<QuickStats5 />} name="Stat card with area charts" />
+          <WidgetPreviewer element={<QuickStats6 />} name="Stat card with circular charts" />
+          <WidgetPreviewer element={<QuickStats7 />} name="Progress bar card" />
+          <WidgetPreviewer element={<QuickStats8 />} name="Card with line chart" />
         </Container>
       </Box>
     </>
   );
 };
 
-BrowseQuickStats.getLayout = (page) => (
+BrowseQuickStats.getLayout = page => (
   <MainLayout>
-    <BrowseLayout>
-      {page}
-    </BrowseLayout>
+    <BrowseLayout>{page}</BrowseLayout>
   </MainLayout>
 );
 

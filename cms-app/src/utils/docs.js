@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 const articlesDirectory = join(process.cwd(), '_docs');
 
 export const getArticleSlugs = () => {
-    return readdirSync(articlesDirectory);
+  return readdirSync(articlesDirectory);
 };
 
 export const getArticleBySlug = (slug, fields = []) => {
@@ -16,7 +16,7 @@ export const getArticleBySlug = (slug, fields = []) => {
 
   const article = {};
 
-  fields.forEach((field) => {
+  fields.forEach(field => {
     if (field === 'slug') {
       article[field] = realSlug;
     }
@@ -36,5 +36,5 @@ export const getArticleBySlug = (slug, fields = []) => {
 export const getArticles = (fields = []) => {
   const slugs = getArticleSlugs();
 
-  return slugs.map((slug) => getArticleBySlug(slug, fields));
+  return slugs.map(slug => getArticleBySlug(slug, fields));
 };

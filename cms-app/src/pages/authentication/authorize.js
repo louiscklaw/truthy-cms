@@ -16,13 +16,13 @@ const Authorize = () => {
 
     if (query.includes('code=') && query.includes('state=')) {
       handleRedirectCallback()
-        .then((appState) => {
+        .then(appState => {
           if (isMounted()) {
             const returnUrl = appState?.returnUrl || '/dashboard';
             router.push(returnUrl).catch(console.error);
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
 
           if (isMounted()) {

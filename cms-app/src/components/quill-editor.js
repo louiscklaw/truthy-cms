@@ -18,7 +18,7 @@ const QuillEditorRoot = styled('div')(({ theme }) => ({
     display: 'flex',
     flex: 1,
     flexDirection: 'column',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   '& .ql-snow.ql-toolbar': {
     borderColor: theme.palette.divider,
@@ -26,47 +26,47 @@ const QuillEditorRoot = styled('div')(({ theme }) => ({
     borderRight: 'none',
     borderTop: 'none',
     '& .ql-picker-label:hover': {
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
     },
     '& .ql-picker-label.ql-active': {
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
     },
     '& .ql-picker-item:hover': {
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
     },
     '& .ql-picker-item.ql-selected': {
-      color: theme.palette.primary.main
+      color: theme.palette.primary.main,
     },
     '& button:hover': {
       color: theme.palette.primary.main,
       '& .ql-stroke': {
-        stroke: theme.palette.primary.main
-      }
+        stroke: theme.palette.primary.main,
+      },
     },
     '& button:focus': {
       color: theme.palette.primary.main,
       '& .ql-stroke': {
-        stroke: theme.palette.primary.main
-      }
+        stroke: theme.palette.primary.main,
+      },
     },
     '& button.ql-active': {
       '& .ql-stroke': {
-        stroke: theme.palette.primary.main
-      }
+        stroke: theme.palette.primary.main,
+      },
     },
     '& .ql-stroke': {
-      stroke: theme.palette.text.primary
+      stroke: theme.palette.text.primary,
     },
     '& .ql-picker': {
-      color: theme.palette.text.primary
+      color: theme.palette.text.primary,
     },
     '& .ql-picker-options': {
       backgroundColor: theme.palette.background.paper,
       border: 'none',
       borderRadius: theme.shape.borderRadius,
       boxShadow: theme.shadows[10],
-      padding: theme.spacing(2)
-    }
+      padding: theme.spacing(2),
+    },
   },
   '& .ql-snow.ql-container': {
     borderBottom: 'none',
@@ -89,27 +89,19 @@ const QuillEditorRoot = styled('div')(({ theme }) => ({
       '&.ql-blank::before': {
         color: theme.palette.text.secondary,
         fontStyle: 'normal',
-        left: theme.spacing(2)
-      }
-    }
-  }
+        left: theme.spacing(2),
+      },
+    },
+  },
 }));
 
-export const QuillEditor = (props) => {
+export const QuillEditor = props => {
   const { sx, onChange, placeholder, value, ...other } = props;
   const ref = useRef(null);
 
   return (
-    <QuillEditorRoot
-      sx={sx}
-      ref={ref}
-      {...other}>
-      <Quill
-        onChange={onChange}
-        placeholder={placeholder}
-        value={value}
-        bounds={ref.current || undefined}
-      />
+    <QuillEditorRoot sx={sx} ref={ref} {...other}>
+      <Quill onChange={onChange} placeholder={placeholder} value={value} bounds={ref.current || undefined} />
     </QuillEditorRoot>
   );
 };
@@ -118,5 +110,5 @@ QuillEditor.propTypes = {
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   sx: PropTypes.object,
-  value: PropTypes.string
+  value: PropTypes.string,
 };

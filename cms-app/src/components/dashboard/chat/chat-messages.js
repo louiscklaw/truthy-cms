@@ -2,22 +2,19 @@ import PropTypes from 'prop-types';
 import { Box } from '@mui/material';
 import { ChatMessage } from './chat-message';
 
-export const ChatMessages = (props) => {
+export const ChatMessages = props => {
   const { messages, participants, ...other } = props;
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
     avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-    name: 'Anika Visser'
+    name: 'Anika Visser',
   };
 
   return (
-    <Box
-      sx={{ p: 2 }}
-      {...other}>
-      {messages.map((message) => {
-        const participant = participants.find((_participant) => _participant.id
-          === message.authorId);
+    <Box sx={{ p: 2 }} {...other}>
+      {messages.map(message => {
+        const participant = participants.find(_participant => _participant.id === message.authorId);
         let authorAvatar;
         let authorName;
         let authorType;
@@ -52,5 +49,5 @@ export const ChatMessages = (props) => {
 
 ChatMessages.propTypes = {
   messages: PropTypes.array,
-  participants: PropTypes.array
+  participants: PropTypes.array,
 };

@@ -31,11 +31,13 @@ const CustomerEdit = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getCustomer();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   if (!customer) {
     return null;
@@ -44,39 +46,29 @@ const CustomerEdit = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Customer Edit | Material Kit Pro
-        </title>
+        <title>Dashboard: Customer Edit | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           backgroundColor: 'background.default',
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="md">
           <Box sx={{ mb: 4 }}>
-            <NextLink
-              href="/dashboard/customers"
-              passHref
-            >
+            <NextLink href="/dashboard/customers" passHref>
               <Link
                 color="textPrimary"
                 component="a"
                 sx={{
                   alignItems: 'center',
-                  display: 'flex'
+                  display: 'flex',
                 }}
               >
-                <ArrowBackIcon
-                  fontSize="small"
-                  sx={{ mr: 1 }}
-                />
-                <Typography variant="subtitle2">
-                  Customers
-                </Typography>
+                <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
+                <Typography variant="subtitle2">Customers</Typography>
               </Link>
             </NextLink>
           </Box>
@@ -84,7 +76,7 @@ const CustomerEdit = () => {
             sx={{
               alignItems: 'center',
               display: 'flex',
-              overflow: 'hidden'
+              overflow: 'hidden',
             }}
           >
             <Avatar
@@ -92,16 +84,13 @@ const CustomerEdit = () => {
               sx={{
                 height: 64,
                 mr: 2,
-                width: 64
+                width: 64,
               }}
             >
               {getInitials(customer.name)}
             </Avatar>
             <div>
-              <Typography
-                noWrap
-                variant="h4"
-              >
+              <Typography noWrap variant="h4">
                 {customer.email}
               </Typography>
               <Box
@@ -110,17 +99,11 @@ const CustomerEdit = () => {
                   display: 'flex',
                   overflow: 'hidden',
                   textOverflow: 'ellipsis',
-                  whiteSpace: 'nowrap'
+                  whiteSpace: 'nowrap',
                 }}
               >
-                <Typography variant="subtitle2">
-                  user_id:
-                </Typography>
-                <Chip
-                  label={customer.id}
-                  size="small"
-                  sx={{ ml: 1 }}
-                />
+                <Typography variant="subtitle2">user_id:</Typography>
+                <Chip label={customer.id} size="small" sx={{ ml: 1 }} />
               </Box>
             </div>
           </Box>
@@ -133,11 +116,9 @@ const CustomerEdit = () => {
   );
 };
 
-CustomerEdit.getLayout = (page) => (
+CustomerEdit.getLayout = page => (
   <AuthGuard>
-    <DashboardLayout>
-      {page}
-    </DashboardLayout>
+    <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 

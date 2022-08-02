@@ -3,28 +3,32 @@ import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useAuth } from '../../hooks/use-auth';
 
-export const AuthGuard = (props) => {
+export const AuthGuard = props => {
   const { children } = props;
   const auth = useAuth();
   const router = useRouter();
   const [checked, setChecked] = useState(false);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       if (!router.isReady) {
         return;
       }
 
       if (!auth.isAuthenticated) {
-        router.push({
-          pathname: '/authentication/login',
-          query: { returnUrl: router.asPath }
-        }).catch(console.error);
+        router
+          .push({
+            pathname: '/authentication/login',
+            query: { returnUrl: router.asPath },
+          })
+          .catch(console.error);
       } else {
         setChecked(true);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [router.isReady]);
+    [router.isReady],
+  );
 
   if (!checked) {
     return null;
@@ -37,5 +41,5 @@ export const AuthGuard = (props) => {
 };
 
 AuthGuard.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

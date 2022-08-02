@@ -15,21 +15,21 @@ const MailReplyTextarea = styled(TextareaAutosize)(({ theme }) => ({
   resize: 'none',
   width: '100%',
   '&::placeholder': {
-    color: theme.palette.text.secondary
-  }
+    color: theme.palette.text.secondary,
+  },
 }));
 
-export const MailReply = (props) => {
+export const MailReply = props => {
   const fileInputRef = useRef(null);
   const [value, setValue] = useState('');
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
     avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-    name: 'Anika Visser'
+    name: 'Anika Visser',
   };
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setValue(event.target.value);
   };
 
@@ -42,63 +42,44 @@ export const MailReply = (props) => {
       sx={{
         backgroundColor: 'background.default',
         display: 'flex',
-        p: 3
+        p: 3,
       }}
-      {...props}>
+      {...props}
+    >
       <Avatar src={user.avatar} />
       <Paper
         sx={{
           flexGrow: 1,
           ml: 2,
-          p: 2
+          p: 2,
         }}
         variant="outlined"
       >
-        <MailReplyTextarea
-          minRows={3}
-          onChange={handleChange}
-          placeholder="Leave a message"
-          value={value}
-        />
+        <MailReplyTextarea minRows={3} onChange={handleChange} placeholder="Leave a message" value={value} />
         <Box
           sx={{
             alignItems: 'center',
             display: 'flex',
             justifyContent: 'flex-end',
-            mt: 2
+            mt: 2,
           }}
         >
-          <Button
-            sx={{ mr: 1 }}
-            variant="contained"
-          >
+          <Button sx={{ mr: 1 }} variant="contained">
             Send
           </Button>
           <Tooltip title="Attach image">
-            <IconButton
-              onClick={handleAttach}
-              size="small"
-              sx={{ mr: 1 }}
-            >
+            <IconButton onClick={handleAttach} size="small" sx={{ mr: 1 }}>
               <AddPhotoIcon fontSize="small" />
             </IconButton>
           </Tooltip>
           <Tooltip title="Attach file">
-            <IconButton
-              onClick={handleAttach}
-              size="small"
-              sx={{ mr: 1 }}
-            >
+            <IconButton onClick={handleAttach} size="small" sx={{ mr: 1 }}>
               <AttachFileIcon fontSize="small" />
             </IconButton>
           </Tooltip>
         </Box>
       </Paper>
-      <input
-        hidden
-        ref={fileInputRef}
-        type="file"
-      />
+      <input hidden ref={fileInputRef} type="file" />
     </Box>
   );
 };

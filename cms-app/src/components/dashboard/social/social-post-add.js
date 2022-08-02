@@ -5,12 +5,12 @@ import { Link as LinkIcon } from '../../../icons/link';
 import { EmojiHappy as EmojiHappyIcon } from '../../../icons/emoji-happy';
 import { getInitials } from '../../../utils/get-initials';
 
-export const SocialPostAdd = (props) => {
+export const SocialPostAdd = props => {
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
     avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-    name: 'Anika Visser'
+    name: 'Anika Visser',
   };
 
   return (
@@ -21,36 +21,31 @@ export const SocialPostAdd = (props) => {
           sx={{
             height: 40,
             mr: 2,
-            width: 40
+            width: 40,
           }}
         >
           {getInitials(user.name)}
         </Avatar>
         <Box sx={{ flexGrow: 1 }}>
-          <TextField
-            fullWidth
-            multiline
-            placeholder="What's on your mind"
-            rows={3}
-          />
+          <TextField fullWidth multiline placeholder="What's on your mind" rows={3} />
           <Box
             sx={{
               alignItems: 'center',
               display: 'flex',
               justifyContent: 'space-between',
-              mt: 3
+              mt: 3,
             }}
           >
             <Box
               sx={{
                 display: {
                   xs: 'none',
-                  md: 'block'
+                  md: 'block',
                 },
                 m: -1,
                 '& > *': {
-                  m: 1
-                }
+                  m: 1,
+                },
               }}
             >
               <IconButton>
@@ -66,9 +61,7 @@ export const SocialPostAdd = (props) => {
                 <EmojiHappyIcon fontSize="small" />
               </IconButton>
             </Box>
-            <Button variant="contained">
-              Post
-            </Button>
+            <Button variant="contained">Post</Button>
           </Box>
         </Box>
       </CardContent>

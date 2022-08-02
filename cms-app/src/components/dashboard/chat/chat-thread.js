@@ -10,23 +10,23 @@ import { ChatMessageAdd } from './chat-message-add';
 import { ChatMessages } from './chat-messages';
 import { ChatThreadToolbar } from './chat-thread-toolbar';
 
-const threadSelector = (state) => {
+const threadSelector = state => {
   const { threads, activeThreadId } = state.chat;
 
   return threads.byId[activeThreadId];
 };
 
-export const ChatThread = (props) => {
+export const ChatThread = props => {
   const { threadKey } = props;
   const dispatch = useDispatch();
   const router = useRouter();
-  const thread = useSelector((state) => threadSelector(state));
+  const thread = useSelector(state => threadSelector(state));
   const messagesRef = useRef(null);
   const [participants, setParticipants] = useState([]);
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
-    id: '5e86809283e28b96d2d38537'
+    id: '5e86809283e28b96d2d38537',
   };
 
   const getDetails = async () => {
@@ -48,11 +48,13 @@ export const ChatThread = (props) => {
     }
   };
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getDetails();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [threadKey]);
+    [threadKey],
+  );
 
   useEffect(() => {
     // Scroll to bottom of the messages after loading the thread
@@ -66,22 +68,26 @@ export const ChatThread = (props) => {
   // If we have the thread, we use its ID to add a new message
   // Otherwise we use the recipients IDs. When using participant IDs, it means that we have to
   // get the thread.
-  const handleSendMessage = async (body) => {
+  const handleSendMessage = async body => {
     try {
       if (thread) {
-        await dispatch(addMessage({
-          threadId: thread.id,
-          body
-        }));
+        await dispatch(
+          addMessage({
+            threadId: thread.id,
+            body,
+          }),
+        );
       } else {
         const recipientIds = participants
-          .filter((participant) => participant.id !== user.id)
-          .map((participant) => participant.id);
+          .filter(participant => participant.id !== user.id)
+          .map(participant => participant.id);
 
-        const threadId = await dispatch(addMessage({
-          recipientIds,
-          body
-        }));
+        const threadId = await dispatch(
+          addMessage({
+            recipientIds,
+            body,
+          }),
+        );
 
         await dispatch(getThread(threadId));
         dispatch(setActiveThread(threadId));
@@ -93,7 +99,7 @@ export const ChatThread = (props) => {
 
         scrollElement.scrollTo({
           top: messagesRef.current.el.scrollHeight,
-          behavior: 'smooth'
+          behavior: 'smooth',
         });
       }
     } catch (err) {
@@ -107,36 +113,28 @@ export const ChatThread = (props) => {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: 1,
-        overflow: 'hidden'
+        overflow: 'hidden',
       }}
-      {...props}>
+      {...props}
+    >
       <ChatThreadToolbar participants={participants} />
       <Box
         sx={{
           backgroundColor: 'background.default',
           flexGrow: 1,
-          overflow: 'hidden'
+          overflow: 'hidden',
         }}
       >
-        <Scrollbar
-          ref={messagesRef}
-          sx={{ maxHeight: '100%' }}
-        >
-          <ChatMessages
-            messages={thread?.messages || []}
-            participants={thread?.participants || []}
-          />
+        <Scrollbar ref={messagesRef} sx={{ maxHeight: '100%' }}>
+          <ChatMessages messages={thread?.messages || []} participants={thread?.participants || []} />
         </Scrollbar>
       </Box>
       <Divider />
-      <ChatMessageAdd
-        disabled={false}
-        onSend={handleSendMessage}
-      />
+      <ChatMessageAdd disabled={false} onSend={handleSendMessage} />
     </Box>
   );
 };
 
 ChatThread.propTypes = {
-  threadKey: PropTypes.string.isRequired
+  threadKey: PropTypes.string.isRequired,
 };

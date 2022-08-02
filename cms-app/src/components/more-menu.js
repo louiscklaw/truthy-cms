@@ -6,7 +6,7 @@ import { DotsHorizontal as DotsHorizontalIcon } from '../icons/dots-horizontal';
 import { Download as DownloadIcon } from '../icons/download';
 import { Duplicate as DuplicateIcon } from '../icons/duplicate';
 
-export const MoreMenu = (props) => {
+export const MoreMenu = props => {
   const anchorRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -21,10 +21,7 @@ export const MoreMenu = (props) => {
   return (
     <>
       <Tooltip title="More options">
-        <IconButton
-          onClick={handleMenuOpen}
-          ref={anchorRef}
-          {...props}>
+        <IconButton onClick={handleMenuOpen} ref={anchorRef} {...props}>
           <DotsHorizontalIcon fontSize="small" />
         </IconButton>
       </Tooltip>
@@ -32,19 +29,19 @@ export const MoreMenu = (props) => {
         anchorEl={anchorRef.current}
         anchorOrigin={{
           horizontal: 'left',
-          vertical: 'top'
+          vertical: 'top',
         }}
         onClose={handleMenuClose}
         open={openMenu}
         PaperProps={{
           sx: {
             maxWidth: '100%',
-            width: 256
-          }
+            width: 256,
+          },
         }}
         transformOrigin={{
           horizontal: 'left',
-          vertical: 'top'
+          vertical: 'top',
         }}
       >
         <MenuItem>

@@ -24,19 +24,17 @@ const SeverityPillRoot = styled('span')(({ theme, ownerState }) => {
     paddingLeft: theme.spacing(1),
     paddingRight: theme.spacing(1),
     textTransform: 'uppercase',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
   };
 });
 
-export const SeverityPill = (props) => {
+export const SeverityPill = props => {
   const { color = 'primary', children, ...other } = props;
 
   const ownerState = { color };
 
   return (
-    <SeverityPillRoot
-      ownerState={ownerState}
-      {...other}>
+    <SeverityPillRoot ownerState={ownerState} {...other}>
       {children}
     </SeverityPillRoot>
   );
@@ -44,12 +42,5 @@ export const SeverityPill = (props) => {
 
 SeverityPill.propTypes = {
   children: PropTypes.node,
-  color: PropTypes.oneOf([
-    'primary',
-    'secondary',
-    'error',
-    'info',
-    'warning',
-    'success'
-  ])
+  color: PropTypes.oneOf(['primary', 'secondary', 'error', 'info', 'warning', 'success']),
 };

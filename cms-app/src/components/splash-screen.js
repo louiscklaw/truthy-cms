@@ -40,7 +40,7 @@ export const SplashScreen = () => (
       position: 'fixed',
       top: 0,
       width: '100vw',
-      zIndex: 2000
+      zIndex: 2000,
     }}
   >
     <Logo
@@ -48,11 +48,11 @@ export const SplashScreen = () => (
         height: 80,
         width: 80,
         '& path:nth-child(1)': {
-          animation: `${bounce1} 1s ease-in-out infinite`
+          animation: `${bounce1} 1s ease-in-out infinite`,
         },
         '& path:nth-child(3)': {
-          animation: `${bounce3} 1s ease-in-out infinite`
-        }
+          animation: `${bounce3} 1s ease-in-out infinite`,
+        },
       }}
     />
   </Box>

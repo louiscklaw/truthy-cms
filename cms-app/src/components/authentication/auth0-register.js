@@ -4,7 +4,7 @@ import { Box, Button, FormHelperText } from '@mui/material';
 import { useAuth } from '../../hooks/use-auth';
 import { useMounted } from '../../hooks/use-mounted';
 
-export const Auth0Register = (props) => {
+export const Auth0Register = props => {
   const isMounted = useMounted();
   const router = useRouter();
   const { loginWithRedirect } = useAuth();
@@ -13,7 +13,7 @@ export const Auth0Register = (props) => {
   const handleRegister = async () => {
     try {
       await loginWithRedirect({
-        returnUrl: router.query.returnUrl || '/dashboard'
+        returnUrl: router.query.returnUrl || '/dashboard',
       });
     } catch (err) {
       console.error(err);
@@ -28,21 +28,16 @@ export const Auth0Register = (props) => {
     <div {...props}>
       {error && (
         <Box sx={{ my: 3 }}>
-          <FormHelperText error>
-            {error}
-          </FormHelperText>
+          <FormHelperText error>{error}</FormHelperText>
         </Box>
       )}
       <Box
         sx={{
           display: 'flex',
-          justifyContent: 'center'
+          justifyContent: 'center',
         }}
       >
-        <Button
-          onClick={handleRegister}
-          variant="contained"
-        >
+        <Button onClick={handleRegister} variant="contained">
           Register
         </Button>
       </Box>

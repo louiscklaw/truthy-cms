@@ -1,16 +1,6 @@
 import { format, subDays } from 'date-fns';
 import numeral from 'numeral';
-import {
-  Box,
-  Card,
-  CardHeader,
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-  Typography
-} from '@mui/material';
+import { Box, Card, CardHeader, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
 import { Scrollbar } from '../../scrollbar';
 import { SeverityPill } from '../../severity-pill';
 
@@ -22,7 +12,7 @@ const transactions = [
     date: new Date(),
     sender: 'Devias',
     type: 'receive',
-    status: 'on hold'
+    status: 'on hold',
   },
   {
     id: 'b4b19b21656e44b487441c50',
@@ -31,7 +21,7 @@ const transactions = [
     date: subDays(new Date(), 1),
     sender: 'Zimbru',
     type: 'send',
-    status: 'confirmed'
+    status: 'confirmed',
   },
   {
     id: '56c09ad91f6d44cb313397db',
@@ -40,7 +30,7 @@ const transactions = [
     date: subDays(new Date(), 1),
     sender: 'Vertical Jelly',
     type: 'send',
-    status: 'failed'
+    status: 'failed',
   },
   {
     id: 'aaeb96c5a131a55d9623f44d',
@@ -49,102 +39,73 @@ const transactions = [
     date: subDays(new Date(), 3),
     sender: 'Devias',
     type: 'receive',
-    status: 'confirmed'
-  }
+    status: 'confirmed',
+  },
 ];
 
-export const OverviewLatestTransactions = (props) => (
+export const OverviewLatestTransactions = props => (
   <Card {...props}>
     <CardHeader title="Latest Transactions" />
     <Scrollbar>
       <Table sx={{ minWidth: 600 }}>
         <TableHead>
           <TableRow>
-            <TableCell colSpan={2}>
-              Transaction
-            </TableCell>
+            <TableCell colSpan={2}>Transaction</TableCell>
             <TableCell />
-            <TableCell>
-              Amount
-            </TableCell>
+            <TableCell>Amount</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {transactions.map((transaction) => (
+          {transactions.map(transaction => (
             <TableRow
               key={transaction.id}
               sx={{
                 '&:last-child td': {
-                  border: 0
-                }
+                  border: 0,
+                },
               }}
             >
               <TableCell width={100}>
                 <Box
                   sx={{
                     p: 1,
-                    backgroundColor: (theme) => theme.palette.mode === 'dark'
-                      ? 'neutral.800'
-                      : 'neutral.200',
+                    backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.200'),
                     borderRadius: 2,
-                    maxWidth: 'fit-content'
+                    maxWidth: 'fit-content',
                   }}
                 >
-                  <Typography
-                    align="center"
-                    color="textSecondary"
-                    variant="subtitle2"
-                  >
+                  <Typography align="center" color="textSecondary" variant="subtitle2">
                     {format(transaction.date, 'LLL').toUpperCase()}
                   </Typography>
-                  <Typography
-                    align="center"
-                    color="textSecondary"
-                    variant="h6"
-                  >
+                  <Typography align="center" color="textSecondary" variant="h6">
                     {format(transaction.date, 'd')}
                   </Typography>
                 </Box>
               </TableCell>
               <TableCell>
                 <div>
-                  <Typography variant="subtitle2">
-                    {transaction.sender}
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    {transaction.type === 'receive'
-                      ? 'Payment received'
-                      : 'Payment sent'}
+                  <Typography variant="subtitle2">{transaction.sender}</Typography>
+                  <Typography color="textSecondary" variant="body2">
+                    {transaction.type === 'receive' ? 'Payment received' : 'Payment sent'}
                   </Typography>
                 </div>
               </TableCell>
               <TableCell>
                 <SeverityPill
-                  color={(transaction.status === 'confirmed' && 'success')
-                    || (transaction.status === 'failed' && 'error')
-                    || 'warning'}
+                  color={
+                    (transaction.status === 'confirmed' && 'success') ||
+                    (transaction.status === 'failed' && 'error') ||
+                    'warning'
+                  }
                 >
                   {transaction.status}
                 </SeverityPill>
               </TableCell>
               <TableCell width={180}>
-                <Typography
-                  color={transaction.type === 'receive'
-                    ? 'success.main'
-                    : 'error.main'}
-                  variant="subtitle2"
-                >
-                  {transaction.type === 'receive' ? '+' : '-'}
-                  {' '}
-                  {numeral(transaction.amount).format('$0,0.00')}
+                <Typography color={transaction.type === 'receive' ? 'success.main' : 'error.main'} variant="subtitle2">
+                  {transaction.type === 'receive' ? '+' : '-'} {numeral(transaction.amount).format('$0,0.00')}
                 </Typography>
-                <Typography
-                  color="textSecondary"
-                  variant="body2"
-                >
+                <Typography color="textSecondary" variant="body2">
                   {transaction.currency.toUpperCase()}
                 </Typography>
               </TableCell>

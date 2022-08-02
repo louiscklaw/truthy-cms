@@ -5,7 +5,7 @@ import { Box, Button, Checkbox, FormHelperText, Link, TextField, Typography } fr
 import { useAuth } from '../../hooks/use-auth';
 import { useMounted } from '../../hooks/use-mounted';
 
-export const JWTRegister = (props) => {
+export const JWTRegister = props => {
   const isMounted = useMounted();
   const router = useRouter();
   const { register } = useAuth();
@@ -15,26 +15,13 @@ export const JWTRegister = (props) => {
       name: '',
       password: '',
       policy: false,
-      submit: null
+      submit: null,
     },
     validationSchema: Yup.object({
-      email: Yup
-        .string()
-        .email('Must be a valid email')
-        .max(255)
-        .required('Email is required'),
-      name: Yup
-        .string()
-        .max(255)
-        .required('Name is required'),
-      password: Yup
-        .string()
-        .min(7)
-        .max(255)
-        .required('Password is required'),
-      policy: Yup
-        .boolean()
-        .oneOf([true], 'This field must be checked')
+      email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+      name: Yup.string().max(255).required('Name is required'),
+      password: Yup.string().min(7).max(255).required('Password is required'),
+      policy: Yup.boolean().oneOf([true], 'This field must be checked'),
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -53,14 +40,11 @@ export const JWTRegister = (props) => {
           helpers.setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   return (
-    <form
-      noValidate
-      onSubmit={formik.handleSubmit}
-      {...props}>
+    <form noValidate onSubmit={formik.handleSubmit} {...props}>
       <TextField
         error={Boolean(formik.touched.name && formik.errors.name)}
         fullWidth
@@ -101,48 +85,27 @@ export const JWTRegister = (props) => {
           alignItems: 'center',
           display: 'flex',
           ml: -1,
-          mt: 2
+          mt: 2,
         }}
       >
-        <Checkbox
-          checked={formik.values.policy}
-          name="policy"
-          onChange={formik.handleChange}
-        />
-        <Typography
-          color="textSecondary"
-          variant="body2"
-        >
-          I have read the
-          {' '}
-          <Link
-            component="a"
-            href="#"
-          >
+        <Checkbox checked={formik.values.policy} name="policy" onChange={formik.handleChange} />
+        <Typography color="textSecondary" variant="body2">
+          I have read the{' '}
+          <Link component="a" href="#">
             Terms and Conditions
           </Link>
         </Typography>
       </Box>
       {Boolean(formik.touched.policy && formik.errors.policy) && (
-        <FormHelperText error>
-          {formik.errors.policy}
-        </FormHelperText>
+        <FormHelperText error>{formik.errors.policy}</FormHelperText>
       )}
       {formik.errors.submit && (
         <Box sx={{ mt: 3 }}>
-          <FormHelperText error>
-            {formik.errors.submit}
-          </FormHelperText>
+          <FormHelperText error>{formik.errors.submit}</FormHelperText>
         </Box>
       )}
       <Box sx={{ mt: 2 }}>
-        <Button
-          disabled={formik.isSubmitting}
-          fullWidth
-          size="large"
-          type="submit"
-          variant="contained"
-        >
+        <Button disabled={formik.isSubmitting} fullWidth size="large" type="submit" variant="contained">
           Register
         </Button>
       </Box>

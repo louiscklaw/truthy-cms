@@ -11,11 +11,11 @@ const DashboardLayoutRoot = styled('div')(({ theme }) => ({
   maxWidth: '100%',
   paddingTop: 64,
   [theme.breakpoints.up('lg')]: {
-    paddingLeft: 280
-  }
+    paddingLeft: 280,
+  },
 }));
 
-export const DashboardLayout = (props) => {
+export const DashboardLayout = props => {
   const { children } = props;
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
@@ -27,21 +27,18 @@ export const DashboardLayout = (props) => {
             display: 'flex',
             flex: '1 1 auto',
             flexDirection: 'column',
-            width: '100%'
+            width: '100%',
           }}
         >
           {children}
         </Box>
       </DashboardLayoutRoot>
       <DashboardNavbar onOpenSidebar={() => setIsSidebarOpen(true)} />
-      <DashboardSidebar
-        onClose={() => setIsSidebarOpen(false)}
-        open={isSidebarOpen}
-      />
+      <DashboardSidebar onClose={() => setIsSidebarOpen(false)} open={isSidebarOpen} />
     </>
   );
 };
 
 DashboardLayout.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

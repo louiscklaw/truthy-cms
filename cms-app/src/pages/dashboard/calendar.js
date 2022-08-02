@@ -24,7 +24,7 @@ import { useDispatch, useSelector } from '../../store';
 const FullCalendarWrapper = styled('div')(({ theme }) => ({
   marginTop: theme.spacing(3),
   '& .fc-license-message': {
-    display: 'none'
+    display: 'none',
   },
   '& .fc': {
     '--fc-bg-event-opacity': 1,
@@ -36,7 +36,7 @@ const FullCalendarWrapper = styled('div')(({ theme }) => ({
     '--fc-page-bg-color': theme.palette.background.default,
     '--fc-today-bg-color': alpha(theme.palette.primary.main, 0.25),
     color: theme.palette.text.primary,
-    fontFamily: theme.typography.fontFamily
+    fontFamily: theme.typography.fontFamily,
   },
   '& .fc .fc-col-header-cell-cushion': {
     paddingBottom: '10px',
@@ -45,50 +45,52 @@ const FullCalendarWrapper = styled('div')(({ theme }) => ({
     fontWeight: theme.typography.overline.fontWeight,
     letterSpacing: theme.typography.overline.letterSpacing,
     lineHeight: theme.typography.overline.lineHeight,
-    textTransform: theme.typography.overline.textTransform
+    textTransform: theme.typography.overline.textTransform,
   },
   '& .fc .fc-day-other .fc-daygrid-day-top': {
-    color: theme.palette.text.secondary
+    color: theme.palette.text.secondary,
   },
   '& .fc-daygrid-event': {
     borderRadius: theme.shape.borderRadius,
     padding: '0px 4px',
     fontSize: theme.typography.subtitle2.fontSize,
     fontWeight: theme.typography.subtitle2.fontWeight,
-    lineHeight: theme.typography.subtitle2.lineHeight
+    lineHeight: theme.typography.subtitle2.lineHeight,
   },
   '& .fc-daygrid-block-event .fc-event-time': {
     fontSize: theme.typography.body2.fontSize,
     fontWeight: theme.typography.body2.fontWeight,
-    lineHeight: theme.typography.body2.lineHeight
+    lineHeight: theme.typography.body2.lineHeight,
   },
   '& .fc-daygrid-day-frame': {
-    padding: '12px'
-  }
+    padding: '12px',
+  },
 }));
 
 const Calendar = () => {
   const dispatch = useDispatch();
   const calendarRef = useRef(null);
-  const smDown = useMediaQuery((theme) => theme.breakpoints.down('sm'));
-  const { events } = useSelector((state) => state.calendar);
+  const smDown = useMediaQuery(theme => theme.breakpoints.down('sm'));
+  const { events } = useSelector(state => state.calendar);
   const [date, setDate] = useState(new Date());
   const [view, setView] = useState(smDown ? 'timeGridDay' : 'dayGridMonth');
   const [dialog, setDialog] = useState({
     isOpen: false,
     eventId: undefined,
-    range: undefined
+    range: undefined,
   });
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
   }, []);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       dispatch(getEvents());
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   const handleResize = useCallback(() => {
     const calendarEl = calendarRef.current;
@@ -102,11 +104,13 @@ const Calendar = () => {
     }
   }, [calendarRef, smDown]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       handleResize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [smDown]);
+    [smDown],
+  );
 
   const handleDateToday = () => {
     const calendarEl = calendarRef.current;
@@ -119,7 +123,7 @@ const Calendar = () => {
     }
   };
 
-  const handleViewChange = (newView) => {
+  const handleViewChange = newView => {
     const calendarEl = calendarRef.current;
 
     if (calendarEl) {
@@ -154,11 +158,11 @@ const Calendar = () => {
 
   const handleAddClick = () => {
     setDialog({
-      isOpen: true
+      isOpen: true,
     });
   };
 
-  const handleRangeSelect = (arg) => {
+  const handleRangeSelect = arg => {
     const calendarEl = calendarRef.current;
 
     if (calendarEl) {
@@ -171,41 +175,45 @@ const Calendar = () => {
       isOpen: true,
       range: {
         start: arg.start.getTime(),
-        end: arg.end.getTime()
-      }
+        end: arg.end.getTime(),
+      },
     });
   };
 
-  const handleEventSelect = (arg) => {
+  const handleEventSelect = arg => {
     setDialog({
       isOpen: true,
-      eventId: arg.event.id
+      eventId: arg.event.id,
     });
   };
 
-  const handleEventResize = async (arg) => {
+  const handleEventResize = async arg => {
     const { event } = arg;
 
     try {
-      await dispatch(updateEvent(event.id, {
-        allDay: event.allDay,
-        start: event.start?.getTime(),
-        end: event.end?.getTime()
-      }));
+      await dispatch(
+        updateEvent(event.id, {
+          allDay: event.allDay,
+          start: event.start?.getTime(),
+          end: event.end?.getTime(),
+        }),
+      );
     } catch (err) {
       console.error(err);
     }
   };
 
-  const handleEventDrop = async (arg) => {
+  const handleEventDrop = async arg => {
     const { event } = arg;
 
     try {
-      await dispatch(updateEvent(event.id, {
-        allDay: event.allDay,
-        start: event.start?.getTime(),
-        end: event.end?.getTime()
-      }));
+      await dispatch(
+        updateEvent(event.id, {
+          allDay: event.allDay,
+          start: event.start?.getTime(),
+          end: event.end?.getTime(),
+        }),
+      );
     } catch (err) {
       console.error(err);
     }
@@ -213,25 +221,23 @@ const Calendar = () => {
 
   const handleCloseDialog = () => {
     setDialog({
-      isOpen: false
+      isOpen: false,
     });
   };
 
-  const selectedEvent = dialog.eventId && events.find((event) => event.id === dialog.eventId);
+  const selectedEvent = dialog.eventId && events.find(event => event.id === dialog.eventId);
 
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Calendar | Material Kit Pro
-        </title>
+        <title>Dashboard: Calendar | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           backgroundColor: 'background.paper',
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <CalendarToolbar
@@ -260,13 +266,7 @@ const Calendar = () => {
             height={800}
             initialDate={date}
             initialView={view}
-            plugins={[
-              dayGridPlugin,
-              interactionPlugin,
-              listPlugin,
-              timeGridPlugin,
-              timelinePlugin
-            ]}
+            plugins={[dayGridPlugin, interactionPlugin, listPlugin, timeGridPlugin, timelinePlugin]}
             ref={calendarRef}
             rerenderDelay={10}
             select={handleRangeSelect}
@@ -288,11 +288,9 @@ const Calendar = () => {
   );
 };
 
-Calendar.getLayout = (page) => (
+Calendar.getLayout = page => (
   <AuthGuard>
-    <DashboardLayout>
-      {page}
-    </DashboardLayout>
+    <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 

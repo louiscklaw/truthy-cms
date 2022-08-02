@@ -27,10 +27,10 @@ Router.events.on('routeChangeComplete', nProgress.done);
 
 const clientSideEmotionCache = createEmotionCache();
 
-const App = (props) => {
+const App = props => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
-  const getLayout = Component.getLayout ?? ((page) => page);
+  const getLayout = Component.getLayout ?? (page => page);
 
   useEffect(() => {
     gtm.initialize(gtmConfig);
@@ -39,13 +39,8 @@ const App = (props) => {
   return (
     <CacheProvider value={emotionCache}>
       <Head>
-        <title>
-          Material Kit Pro
-        </title>
-        <meta
-          name="viewport"
-          content="initial-scale=1, width=device-width"
-        />
+        <title>Material Kit Pro</title>
+        <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
       <ReduxProvider store={store}>
         <LocalizationProvider dateAdapter={AdapterDateFns}>
@@ -57,7 +52,7 @@ const App = (props) => {
                     theme={createTheme({
                       direction: settings.direction,
                       responsiveFontSizes: settings.responsiveFontSizes,
-                      mode: settings.theme
+                      mode: settings.theme,
                     })}
                   >
                     <RTL direction={settings.direction}>
@@ -65,11 +60,7 @@ const App = (props) => {
                       <Toaster position="top-center" />
                       <SettingsButton />
                       <AuthConsumer>
-                        {(auth) => !auth.isInitialized
-                          ? <SplashScreen />
-                          : getLayout(
-                            <Component {...pageProps} />
-                          )}
+                        {auth => (!auth.isInitialized ? <SplashScreen /> : getLayout(<Component {...pageProps} />))}
                       </AuthConsumer>
                     </RTL>
                   </ThemeProvider>

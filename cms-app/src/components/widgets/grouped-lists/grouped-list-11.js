@@ -8,7 +8,7 @@ import {
   TableBody,
   TableCell,
   TableRow,
-  Typography
+  Typography,
 } from '@mui/material';
 import { SeverityPill } from '../../severity-pill';
 
@@ -21,7 +21,7 @@ const campaigns = [
     name: 'Summer Active Health',
     platform: 'Google',
     status: 'draft',
-    target: 'Men Group'
+    target: 'Men Group',
   },
   {
     id: '4e1cd375bfa59e4347404e20',
@@ -31,7 +31,7 @@ const campaigns = [
     name: 'New prospects blog',
     platform: 'Facebook',
     status: 'active',
-    target: 'Woman Married Group'
+    target: 'Woman Married Group',
   },
   {
     id: '6b37fdf83195ca7e36622040',
@@ -41,7 +41,7 @@ const campaigns = [
     name: 'Amazon Gift Cards',
     platform: 'Facebook',
     status: 'stopped',
-    target: 'Young Group'
+    target: 'Young Group',
   },
   {
     id: 'e3651f8f9565cdbe8d2e5fea',
@@ -51,14 +51,14 @@ const campaigns = [
     name: 'Best Marketing Course Online',
     platform: 'Bing',
     status: 'draft',
-    target: 'Young Group'
-  }
+    target: 'Young Group',
+  },
 ];
 
 const labelColorsMap = {
   draft: 'secondary',
   active: 'success',
-  stopped: 'error'
+  stopped: 'error',
 };
 
 export const GroupedList11 = () => (
@@ -66,7 +66,7 @@ export const GroupedList11 = () => (
     sx={{
       backgroundColor: 'background.default',
       minHeight: '100%',
-      p: 3
+      p: 3,
     }}
   >
     <Card>
@@ -74,33 +74,27 @@ export const GroupedList11 = () => (
       <Divider />
       <Table>
         <TableBody>
-          {campaigns.map((campaign) => (
+          {campaigns.map(campaign => (
             <TableRow
               key={campaign.id}
               sx={{
                 '&:last-child td': {
-                  border: 0
-                }
+                  border: 0,
+                },
               }}
             >
               <TableCell>
-                <Typography
-                  sx={{ cursor: 'pointer' }}
-                  variant="subtitle2"
-                >
+                <Typography sx={{ cursor: 'pointer' }} variant="subtitle2">
                   {campaign.name}
                 </Typography>
                 <Box
                   sx={{
                     alignItems: 'center',
                     display: 'flex',
-                    mt: 1
+                    mt: 1,
                   }}
                 >
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
+                  <Typography color="textSecondary" variant="body2">
                     {campaign.platform}
                   </Typography>
                   <Box
@@ -109,53 +103,31 @@ export const GroupedList11 = () => (
                       width: 4,
                       borderRadius: 4,
                       backgroundColor: 'text.secondary',
-                      mx: 1
+                      mx: 1,
                     }}
                   />
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
+                  <Typography color="textSecondary" variant="body2">
                     {`${campaign.target}, ${campaign.createdAt}`}
                   </Typography>
                 </Box>
               </TableCell>
               <TableCell>
-                <SeverityPill color={labelColorsMap[campaign.status]}>
-                  {campaign.status}
-                </SeverityPill>
+                <SeverityPill color={labelColorsMap[campaign.status]}>{campaign.status}</SeverityPill>
               </TableCell>
               <TableCell>
-                <Typography variant="subtitle2">
-                  {campaign.clickRate}
-                  %
-                </Typography>
-                <Typography
-                  color="textSecondary"
-                  sx={{ mt: 1 }}
-                  variant="body2"
-                >
+                <Typography variant="subtitle2">{campaign.clickRate}%</Typography>
+                <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
                   Click Rate
                 </Typography>
               </TableCell>
               <TableCell>
-                <Typography variant="subtitle2">
-                  {campaign.conversionRate}
-                  %
-                </Typography>
-                <Typography
-                  color="textSecondary"
-                  sx={{ mt: 1 }}
-                  variant="body2"
-                >
+                <Typography variant="subtitle2">{campaign.conversionRate}%</Typography>
+                <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
                   Conversions
                 </Typography>
               </TableCell>
               <TableCell align="right">
-                <Button
-                  size="small"
-                  variant="outlined"
-                >
+                <Button size="small" variant="outlined">
                   View
                 </Button>
               </TableCell>

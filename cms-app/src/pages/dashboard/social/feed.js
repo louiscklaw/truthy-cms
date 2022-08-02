@@ -29,44 +29,36 @@ const SocialFeed = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getPosts();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Social Feed | Material Kit Pro
-        </title>
+        <title>Dashboard: Social Feed | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
           <Box sx={{ mb: 3 }}>
-            <Typography
-              color="textSecondary"
-              variant="overline"
-            >
+            <Typography color="textSecondary" variant="overline">
               Social Feed
             </Typography>
-            <Typography variant="h4">
-              Here&apos;s what your connections posted
-            </Typography>
+            <Typography variant="h4">Here&apos;s what your connections posted</Typography>
           </Box>
           <SocialPostAdd />
-          {posts.map((post) => (
-            <Box
-              key={post.id}
-              sx={{ mt: 3 }}
-            >
+          {posts.map(post => (
+            <Box key={post.id} sx={{ mt: 3 }}>
               <SocialPostCard
                 authorAvatar={post.author.avatar}
                 authorName={post.author.name}
@@ -85,11 +77,9 @@ const SocialFeed = () => {
   );
 };
 
-SocialFeed.getLayout = (page) => (
+SocialFeed.getLayout = page => (
   <AuthGuard>
-    <DashboardLayout>
-      {page}
-    </DashboardLayout>
+    <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 
