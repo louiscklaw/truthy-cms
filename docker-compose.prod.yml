@@ -17,3 +17,17 @@ services:
     ports:
       - 3000:3000
     command: ./start.sh
+
+  proxy:
+    build:
+      context: ./reverse-proxy/prod
+      dockerfile: dockerfile
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - cms-app-prod
+
+volumes:
+  pgdata:
+  redisdata:

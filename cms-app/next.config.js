@@ -9,6 +9,7 @@ const withTM = require("next-transpile-modules")([
 ]);
 
 nextConfigProd = withTM({
+  basePath: "/cms",
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
@@ -30,6 +31,7 @@ nextConfigProd = withTM({
 });
 
 nextConfigDev = withTM({
+  basePath: "/cms",
   reactStrictMode: true,
   webpack(config) {
     config.module.rules.push({
