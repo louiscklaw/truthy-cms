@@ -1,5 +1,5 @@
 services:
-  cms-app-prod:
+  cms-app:
     image: node:16-buster
     environment:
       ENV_VARIABLE: ${ENV_VARIABLE}
@@ -16,7 +16,62 @@ services:
     restart: always
     ports:
       - 3000:3000
-    command: ./start.sh
+    command: bash -c "./start.sh"
+
+  api:
+    restart: always
+    user: 1000:1000
+    build:
+      context: ./truthy
+      dockerfile: dockerfile
+    volumes:
+      - ./truthy:/usr/src/app
+    ports:
+      - 7777:7777
+    env_file:
+      - ./truthy/.env
+    command: bash -c "./start.sh"
+    depends_on:
+      - postgres
+      - redis
+
+  pgweb:
+    restart: always
+    image: sosedoff/pgweb
+    links:
+      - postgres:postgres # my database container is called postgres, not db
+    environment:
+      - DATABASE_URL=postgres://postgres:Aa1234567@postgres:5432/truthy?sslmode=disable
+    ports:
+      - '8081:8081'
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:12
+    restart: always
+    env_file:
+      - ./truthy/.env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Aa1234567
+      POSTGRES_DB: truthy
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    shm_size: '256m'
+
+  redis:
+    image: 'redis:alpine'
+    restart: always
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+    volumes:
+      - redisdata:/data
+    ports:
+      - 6379:6379
 
   proxy:
     build:
@@ -26,7 +81,8 @@ services:
     ports:
       - 80:80
     depends_on:
-      - cms-app-prod
+      - cms-app
+      - api
 
 volumes:
   pgdata:

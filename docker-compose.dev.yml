@@ -19,7 +19,7 @@ services:
     command: bash -c "./dev.sh"
 
   api:
-    container_name: api
+    restart: always
     user: 1000:1000
     build:
       context: ./truthy
@@ -36,7 +36,6 @@ services:
       - redis
 
   pgweb:
-    container_name: pgweb
     restart: always
     image: sosedoff/pgweb
     links:
@@ -44,12 +43,12 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres:Aa1234567@postgres:5432/truthy?sslmode=disable
     ports:
-      - "8081:8081"
+      - '8081:8081'
     depends_on:
       - postgres
 
   postgres:
-    container_name: postgres
+    restart: always
     image: postgres:12
     env_file:
       - ./truthy/.env
@@ -62,14 +61,13 @@ services:
       - 5432:5432
     volumes:
       - pgdata:/var/lib/postgresql/data
-    shm_size: "256m"
+    shm_size: '256m'
 
   redis:
-    image: "redis:alpine"
-    container_name: redis
+    image: 'redis:alpine'
     restart: always
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ['CMD', 'redis-cli', 'ping']
     volumes:
       - redisdata:/data
     ports:
