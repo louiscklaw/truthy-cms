@@ -1,10 +1,12 @@
 @PORT=7777
 @JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzciLCJhdWRpZW5jZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCIsInN1YmplY3QiOiIxIiwiaXNUd29GQUF1dGhlbnRpY2F0ZWQiOmZhbHNlLCJpYXQiOjE2NTkwMTQ0OTEsImV4cCI6MTY1OTAxNTM5MX0.m6szcrWRYAsedg4NwdsALxvr2fG328RFN9QdTASQbAo
-
-GET http://localhost:{{PORT}}
+@BASEURL=api
 
 ###
-POST http://localhost:{{PORT}}/auth/login
+GET http://localhost:{{PORT}}/{{BASEURL}}
+
+###
+POST http://localhost:{{PORT}}/{{BASEURL}}/auth/login
 content-type: application/json
 
 {
@@ -14,7 +16,7 @@ content-type: application/json
 }
 
 ###
-POST http://localhost/api/auth/login
+POST http://localhost/{{{{BASEURL}}}}/auth/login
 content-type: application/json
 
 {

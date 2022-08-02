@@ -13,6 +13,10 @@ async function bootstrap() {
   const port = process.env.PORT || serverConfig.port;
   const app = await NestFactory.create(AppModule);
   const apiConfig = config.get('app');
+
+  // baseurl
+  app.setGlobalPrefix('api');
+
   if (process.env.NODE_ENV === 'development') {
     app.enableCors({
       origin: true,

@@ -18,6 +18,23 @@ services:
       - 3001:3000
     command: bash -c "./dev.sh"
 
+  api:
+    container_name: api
+    user: 1000:1000
+    build:
+      context: ./truthy
+      dockerfile: dockerfile
+    volumes:
+      - ./truthy:/usr/src/app
+    ports:
+      - 7777:7777
+    env_file:
+      - ./truthy/.env
+    command: bash -c "./dev.sh"
+    depends_on:
+      - postgres
+      - redis
+
   pgweb:
     container_name: pgweb
     restart: always
@@ -67,6 +84,7 @@ services:
       - 80:80
     depends_on:
       - cms-app
+      - api
 
 volumes:
   pgdata:
