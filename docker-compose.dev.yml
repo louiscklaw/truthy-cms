@@ -18,6 +18,46 @@ services:
       - 3001:3000
     command: bash -c "./dev.sh"
 
+  pgweb:
+    container_name: pgweb
+    restart: always
+    image: sosedoff/pgweb
+    links:
+      - postgres:postgres # my database container is called postgres, not db
+    environment:
+      - DATABASE_URL=postgres://postgres:Aa1234567@postgres:5432/truthy?sslmode=disable
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:12
+    env_file:
+      - ./truthy/.env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Aa1234567
+      POSTGRES_DB: truthy
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    shm_size: "256m"
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+    volumes:
+      - redisdata:/data
+    ports:
+      - 6379:6379
+
   proxy:
     build:
       context: ./reverse-proxy/dev

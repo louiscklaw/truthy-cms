@@ -6,4 +6,4 @@
 docker compose -f docker-compose.dev.yml up -d --build
 
 # docker compose -f docker-compose.dev.yml logs -f proxy
-docker compose -f docker-compose.dev.yml logs -f cms-app
+docker compose -f docker-compose.dev.yml logs -f
