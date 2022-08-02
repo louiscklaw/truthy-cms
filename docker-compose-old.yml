@@ -1,0 +1,109 @@
+version: "3.7"
+
+services:
+  api:
+    container_name: api
+    user: 1000:1000
+    build:
+      context: ./truthy
+      dockerfile: dockerfile
+    volumes:
+      - ./truthy:/usr/src/app
+    ports:
+      - 7777:7777
+    env_file:
+      - ./truthy/.env
+    command: bash -c "./entry.dev.sh"
+    depends_on:
+      - postgres
+      - redis
+
+  pgweb:
+    container_name: pgweb
+    restart: always
+    image: sosedoff/pgweb
+    links:
+      - postgres:postgres # my database container is called postgres, not db
+    environment:
+      - DATABASE_URL=postgres://postgres:Aa1234567@postgres:5432/truthy?sslmode=disable
+    ports:
+      - "8081:8081"
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: postgres
+    image: postgres:12
+    env_file:
+      - ./truthy/.env
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Aa1234567
+      POSTGRES_DB: truthy
+      PG_DATA: /var/lib/postgresql/data
+    ports:
+      - 5432:5432
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    shm_size: "256m"
+
+  redis:
+    image: "redis:alpine"
+    container_name: redis
+    restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+    volumes:
+      - redisdata:/data
+    ports:
+      - 6379:6379
+
+  cms:
+    container_name: cms
+    user: 1000:1000
+    build:
+      context: ./cms
+      dockerfile: dockerfile
+    command: bash -c "./entry.dev.sh"
+    volumes:
+      - ./cms:/app
+    ports:
+      - 3003:3000
+    env_file:
+      - ./cms/.env
+
+  nextjs_client:
+    container_name: nextjs_client
+    user: 1000:1000
+    build:
+      context: ./nextjs-client
+      dockerfile: dockerfile
+    ports:
+      - 3002:3000
+    volumes:
+      - ./nextjs-client:/app
+    command: bash -c "./entry.dev.sh"
+
+  frontend:
+    container_name: frontend
+    user: 1000:1000
+    build:
+      context: ./truthy-react-frontend
+      dockerfile: dockerfile
+    ports:
+      - 3000:3000
+    env_file:
+      - ./truthy-react-frontend/.env
+
+  proxy:
+    build: reverse-proxy
+    restart: always
+    ports:
+      - 80:80
+    depends_on:
+      - cms
+      - api
+
+volumes:
+  pgdata:
+  redisdata:

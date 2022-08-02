@@ -1,0 +1,19 @@
+services:
+  next-prod:
+    image: node:16-buster
+    environment:
+      ENV_VARIABLE: ${ENV_VARIABLE}
+      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+    working_dir: /app
+    volumes:
+      - ./src:/app/src
+      - ./public:/app/public
+      - ./_docs:/app/_docs
+      - ./next.config.js:/app/next.config.js
+      - ./package.json:/app/package.json
+      - ./package-lock.json:/app/package-lock.json
+      - ./start.sh:/app/start.sh
+    restart: always
+    ports:
+      - 3000:3000
+    command: ./start.sh

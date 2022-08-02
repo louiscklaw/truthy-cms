@@ -1,0 +1,19 @@
+services:
+  cms-app-dev:
+    image: node:16-buster
+    environment:
+      ENV_VARIABLE: ${ENV_VARIABLE}
+      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+    working_dir: /app
+    volumes:
+      - ./cms-app/src:/app/src
+      - ./cms-app/public:/app/public
+      - ./cms-app/_docs:/app/_docs
+      - ./cms-app/next.config.js:/app/next.config.js
+      - ./cms-app/package.json:/app/package.json
+      - ./cms-app/package-lock.json:/app/package-lock.json
+      - ./cms-app/dev.sh:/app/dev.sh
+    restart: always
+    ports:
+      - 3001:3000
+    command: bash -c "./dev.sh"
