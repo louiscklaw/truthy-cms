@@ -1,15 +1,24 @@
-import { Box, Button, Card, CardContent, CardHeader, Container, Tooltip, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../../icons/information-circle-outlined';
-import { Chart } from '../../chart';
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined";
+import { Chart } from "../../chart";
 
 export const Chart8 = () => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       stacked: false,
       toolbar: {
         show: false,
@@ -20,7 +29,7 @@ export const Chart8 = () => {
       theme.palette.warning.light,
       theme.palette.success.light,
       theme.palette.info.light,
-      '#455a64',
+      "#455a64",
     ],
     dataLabels: {
       enabled: false,
@@ -28,7 +37,7 @@ export const Chart8 = () => {
     fill: {
       opacity: 1,
     },
-    labels: ['Linkedin', 'Facebook', 'Instagram', 'Twitter', 'Other'],
+    labels: ["Linkedin", "Facebook", "Instagram", "Twitter", "Other"],
     legend: {
       labels: {
         colors: theme.palette.text.secondary,
@@ -48,7 +57,7 @@ export const Chart8 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'background.default',
+        backgroundColor: "background.default",
         p: 3,
       }}
     >
@@ -59,9 +68,9 @@ export const Chart8 = () => {
             title={
               <Box
                 sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  justifyContent: 'space-between',
+                  alignItems: "center",
+                  display: "flex",
+                  justifyContent: "space-between",
                 }}
               >
                 <Typography variant="h6">Social Media Sources</Typography>
@@ -72,14 +81,21 @@ export const Chart8 = () => {
             }
           />
           <CardContent>
-            <Chart height={300} options={chartOptions} series={chartSeries} type="donut" />
+            <Chart
+              height={300}
+              options={chartOptions}
+              series={chartSeries}
+              type="donut"
+            />
             <Box
               sx={{
-                display: 'flex',
-                justifyContent: 'flex-end',
+                display: "flex",
+                justifyContent: "flex-end",
               }}
             >
-              <Button endIcon={<ArrowRightIcon fontSize="small" />}>See all</Button>
+              <Button endIcon={<ArrowRightIcon fontSize="small" />}>
+                See all
+              </Button>
             </Box>
           </CardContent>
         </Card>

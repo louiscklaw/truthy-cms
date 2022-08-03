@@ -1,11 +1,11 @@
-import Markdown from 'react-markdown';
-import { Box, Card, CardContent, Chip, Grid, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
+import Markdown from "react-markdown";
+import { Box, Card, CardContent, Chip, Grid, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-const MarkdownWrapper = styled('div')(({ theme }) => ({
+const MarkdownWrapper = styled("div")(({ theme }) => ({
   color: theme.palette.text.primary,
   fontFamily: theme.typography.fontFamily,
-  '& p': {
+  "& p": {
     marginBottom: theme.spacing(2),
   },
 }));
@@ -23,8 +23,8 @@ The project has been created in Sketch so let me know if there are any problems 
 export const DetailList6 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      minHeight: '100%',
+      backgroundColor: "background.default",
+      minHeight: "100%",
       p: 3,
     }}
   >
@@ -35,13 +35,15 @@ export const DetailList6 = () => (
             <Typography color="textSecondary" variant="overline">
               Project Name
             </Typography>
-            <Typography variant="subtitle2">Develop a PDF Export App</Typography>
+            <Typography variant="subtitle2">
+              Develop a PDF Export App
+            </Typography>
             <Box sx={{ mt: 3 }}>
               <Typography color="textSecondary" variant="overline">
                 Tags
               </Typography>
               <Box sx={{ mt: 1 }}>
-                {['React JS'].map(tag => (
+                {["React JS"].map((tag) => (
                   <Chip key={tag} label={tag} variant="outlined" />
                 ))}
               </Box>

@@ -1,15 +1,15 @@
-import NextLink from 'next/link';
-import PropTypes from 'prop-types';
-import { formatDistanceToNowStrict } from 'date-fns';
-import { Avatar, Box, Link, Typography } from '@mui/material';
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import { formatDistanceToNowStrict } from "date-fns";
+import { Avatar, Box, Link, Typography } from "@mui/material";
 
-export const SocialComment = props => {
+export const SocialComment = (props) => {
   const { authorAvatar, authorName, createdAt, message, ...other } = props;
 
   return (
     <Box
       sx={{
-        display: 'flex',
+        display: "flex",
         mt: 3,
       }}
       {...other}
@@ -19,7 +19,7 @@ export const SocialComment = props => {
       </NextLink>
       <Box
         sx={{
-          backgroundColor: 'background.default',
+          backgroundColor: "background.default",
           borderRadius: 1,
           flexGrow: 1,
           ml: 2,
@@ -28,8 +28,8 @@ export const SocialComment = props => {
       >
         <Box
           sx={{
-            alignItems: 'center',
-            display: 'flex',
+            alignItems: "center",
+            display: "flex",
             mb: 1,
           }}
         >

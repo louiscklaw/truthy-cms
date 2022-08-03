@@ -1,25 +1,32 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Button, Chip, InputAdornment, TextField, Typography } from '@mui/material';
-import MobileDatePicker from '@mui/lab/MobileDatePicker';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+import { useState } from "react";
+import PropTypes from "prop-types";
+import {
+  Box,
+  Button,
+  Chip,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
+import MobileDatePicker from "@mui/lab/MobileDatePicker";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
 
-export const JobDetailsStep = props => {
+export const JobDetailsStep = (props) => {
   const { onBack, onNext, ...other } = props;
-  const [tag, setTag] = useState('');
+  const [tag, setTag] = useState("");
   const [tagArray, setTagArray] = useState([]);
-  const [startDate, setStartDate] = useState(new Date('2021-09-22T11:41:50'));
-  const [endDate, setEndDate] = useState(new Date('2022-01-11T12:41:50'));
+  const [startDate, setStartDate] = useState(new Date("2021-09-22T11:41:50"));
+  const [endDate, setEndDate] = useState(new Date("2022-01-11T12:41:50"));
 
-  const handleStartDateChange = newValue => {
+  const handleStartDateChange = (newValue) => {
     setStartDate(newValue);
   };
 
-  const handleEndDateChange = newValue => {
+  const handleEndDateChange = (newValue) => {
     setEndDate(newValue);
   };
 
-  const handleTagAdd = newTag => {
+  const handleTagAdd = (newTag) => {
     tagArray.push(newTag);
     setTagArray(tagArray);
   };
@@ -28,7 +35,12 @@ export const JobDetailsStep = props => {
     <div {...other}>
       <Typography variant="h6">What is the job about?</Typography>
       <Box sx={{ mt: 3 }}>
-        <TextField fullWidth label="Job Title" name="jobTitle" placeholder="e.g Salesforce Analyst" />
+        <TextField
+          fullWidth
+          label="Job Title"
+          name="jobTitle"
+          placeholder="e.g Salesforce Analyst"
+        />
         <TextField
           fullWidth
           InputProps={{
@@ -42,7 +54,7 @@ export const JobDetailsStep = props => {
                     }
 
                     handleTagAdd(tag);
-                    setTag('');
+                    setTag("");
                   }}
                 >
                   Add
@@ -52,7 +64,7 @@ export const JobDetailsStep = props => {
           }}
           label="Tags"
           name="tags"
-          onChange={event => setTag(event.target.value)}
+          onChange={(event) => setTag(event.target.value)}
           sx={{ mt: 3 }}
           value={tag}
         />
@@ -60,7 +72,7 @@ export const JobDetailsStep = props => {
           {tagArray.map((_tag, i) => (
             <Chip
               onDelete={() => {
-                const newTags = tagArray.filter(t => t !== _tag);
+                const newTags = tagArray.filter((t) => t !== _tag);
                 setTagArray(newTags);
               }}
               // eslint-disable-next-line react/no-array-index-key
@@ -79,8 +91,8 @@ export const JobDetailsStep = props => {
         </Typography>
         <Box
           sx={{
-            alignItems: 'center',
-            display: 'flex',
+            alignItems: "center",
+            display: "flex",
             mt: 3,
           }}
         >
@@ -89,7 +101,7 @@ export const JobDetailsStep = props => {
             inputFormat="MM/dd/yyyy"
             value={startDate}
             onChange={handleStartDateChange}
-            renderInput={inputProps => <TextField {...inputProps} />}
+            renderInput={(inputProps) => <TextField {...inputProps} />}
           />
           <Box sx={{ ml: 2 }}>
             <MobileDatePicker
@@ -97,13 +109,17 @@ export const JobDetailsStep = props => {
               inputFormat="MM/dd/yyyy"
               value={endDate}
               onChange={handleEndDateChange}
-              renderInput={inputProps => <TextField {...inputProps} />}
+              renderInput={(inputProps) => <TextField {...inputProps} />}
             />
           </Box>
         </Box>
       </Box>
       <Box sx={{ mt: 3 }}>
-        <Button endIcon={<ArrowRightIcon fontSize="small" />} onClick={onNext} variant="contained">
+        <Button
+          endIcon={<ArrowRightIcon fontSize="small" />}
+          onClick={onNext}
+          variant="contained"
+        >
           Continue
         </Button>
         <Button onClick={onBack} sx={{ ml: 2 }}>

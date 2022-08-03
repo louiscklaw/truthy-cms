@@ -1,26 +1,36 @@
-import { Avatar, Box, Button, Card, CardActions, CardContent, Divider, Grid, Typography } from '@mui/material';
-import { alpha, useTheme } from '@mui/material/styles';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
-import { ChevronDown as ChevronDownIcon } from '../../../icons/chevron-down';
-import { ChevronUp as ChevronUpIcon } from '../../../icons/chevron-up';
-import { Chart } from '../../chart';
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  Divider,
+  Grid,
+  Typography,
+} from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { ChevronDown as ChevronDownIcon } from "../../../icons/chevron-down";
+import { ChevronUp as ChevronUpIcon } from "../../../icons/chevron-up";
+import { Chart } from "../../chart";
 
 export const QuickStats6 = () => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       stacked: false,
       toolbar: {
         show: false,
       },
     },
-    colors: ['#27c6db'],
+    colors: ["#27c6db"],
     fill: {
       opacity: 1,
     },
-    labels: [''],
+    labels: [""],
     plotOptions: {
       radialBar: {
         dataLabels: {
@@ -29,7 +39,7 @@ export const QuickStats6 = () => {
           },
         },
         hollow: {
-          size: '60%',
+          size: "60%",
         },
         track: {
           background: theme.palette.background.default,
@@ -46,7 +56,7 @@ export const QuickStats6 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'background.default',
+        backgroundColor: "background.default",
         p: 3,
       }}
     >
@@ -55,14 +65,20 @@ export const QuickStats6 = () => {
           <Card>
             <CardContent
               sx={{
-                alignItems: 'center',
-                display: 'flex',
+                alignItems: "center",
+                display: "flex",
               }}
             >
-              <Chart height={160} options={chartOptions} series={chartSeries} type="radialBar" width={160} />
+              <Chart
+                height={160}
+                options={chartOptions}
+                series={chartSeries}
+                type="radialBar"
+                width={160}
+              />
               <Box
                 sx={{
-                  display: 'flex',
+                  display: "flex",
                   flex: 1,
                 }}
               >
@@ -70,7 +86,11 @@ export const QuickStats6 = () => {
                   <Typography color="primary" variant="h4">
                     0.299 BTC
                   </Typography>
-                  <Typography color="textPrimary" sx={{ mt: 1 }} variant="subtitle2">
+                  <Typography
+                    color="textPrimary"
+                    sx={{ mt: 1 }}
+                    variant="subtitle2"
+                  >
                     Weekly earnings
                   </Typography>
                 </div>
@@ -78,7 +98,7 @@ export const QuickStats6 = () => {
                 <Avatar
                   sx={{
                     backgroundColor: alpha(theme.palette.success.main, 0.08),
-                    color: 'success.main',
+                    color: "success.main",
                   }}
                   variant="rounded"
                 >
@@ -88,7 +108,9 @@ export const QuickStats6 = () => {
             </CardContent>
             <Divider />
             <CardActions>
-              <Button endIcon={<ArrowRightIcon fontSize="small" />}>See all activity</Button>
+              <Button endIcon={<ArrowRightIcon fontSize="small" />}>
+                See all activity
+              </Button>
             </CardActions>
           </Card>
         </Grid>
@@ -96,14 +118,20 @@ export const QuickStats6 = () => {
           <Card>
             <CardContent
               sx={{
-                alignItems: 'center',
-                display: 'flex',
+                alignItems: "center",
+                display: "flex",
               }}
             >
-              <Chart height={160} options={chartOptions} series={chartSeries} type="radialBar" width={160} />
+              <Chart
+                height={160}
+                options={chartOptions}
+                series={chartSeries}
+                type="radialBar"
+                width={160}
+              />
               <Box
                 sx={{
-                  display: 'flex',
+                  display: "flex",
                   flex: 1,
                 }}
               >
@@ -117,7 +145,7 @@ export const QuickStats6 = () => {
                 <Avatar
                   sx={{
                     backgroundColor: alpha(theme.palette.error.main, 0.08),
-                    color: 'error.main',
+                    color: "error.main",
                   }}
                   variant="rounded"
                 >
@@ -127,7 +155,9 @@ export const QuickStats6 = () => {
             </CardContent>
             <Divider />
             <CardActions>
-              <Button endIcon={<ArrowRightIcon fontSize="small" />}>Withdraw money</Button>
+              <Button endIcon={<ArrowRightIcon fontSize="small" />}>
+                Withdraw money
+              </Button>
             </CardActions>
           </Card>
         </Grid>

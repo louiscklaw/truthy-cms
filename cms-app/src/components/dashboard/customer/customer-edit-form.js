@@ -1,8 +1,8 @@
-import NextLink from 'next/link';
-import PropTypes from 'prop-types';
-import toast from 'react-hot-toast';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import * as Yup from "yup";
+import { useFormik } from "formik";
 import {
   Box,
   Button,
@@ -15,32 +15,35 @@ import {
   Switch,
   TextField,
   Typography,
-} from '@mui/material';
-import { wait } from '../../../utils/wait';
+} from "@mui/material";
+import { wait } from "../../../utils/wait";
 
-export const CustomerEditForm = props => {
+export const CustomerEditForm = (props) => {
   const { customer, ...other } = props;
   const formik = useFormik({
     initialValues: {
-      address1: customer.address1 || '',
-      address2: customer.address2 || '',
-      country: customer.country || '',
-      email: customer.email || '',
+      address1: customer.address1 || "",
+      address2: customer.address2 || "",
+      country: customer.country || "",
+      email: customer.email || "",
       hasDiscount: customer.hasDiscount || false,
       isVerified: customer.isVerified || false,
-      name: customer.name || '',
-      phone: customer.phone || '',
-      state: customer.state || '',
+      name: customer.name || "",
+      phone: customer.phone || "",
+      state: customer.state || "",
       submit: null,
     },
     validationSchema: Yup.object({
       address1: Yup.string().max(255),
       address2: Yup.string().max(255),
       country: Yup.string().max(255),
-      email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+      email: Yup.string()
+        .email("Must be a valid email")
+        .max(255)
+        .required("Email is required"),
       hasDiscount: Yup.bool(),
       isVerified: Yup.bool(),
-      name: Yup.string().max(255).required('Name is required'),
+      name: Yup.string().max(255).required("Name is required"),
       phone: Yup.string().max(15),
       state: Yup.string().max(255),
     }),
@@ -50,10 +53,10 @@ export const CustomerEditForm = props => {
         await wait(500);
         helpers.setStatus({ success: true });
         helpers.setSubmitting(false);
-        toast.success('Customer updated!');
+        toast.success("Customer updated!");
       } catch (err) {
         console.error(err);
-        toast.error('Something went wrong!');
+        toast.error("Something went wrong!");
         helpers.setStatus({ success: false });
         helpers.setErrors({ submit: err.message });
         helpers.setSubmitting(false);
@@ -120,7 +123,9 @@ export const CustomerEditForm = props => {
             </Grid>
             <Grid item md={6} xs={12}>
               <TextField
-                error={Boolean(formik.touched.address1 && formik.errors.address1)}
+                error={Boolean(
+                  formik.touched.address1 && formik.errors.address1
+                )}
                 fullWidth
                 helperText={formik.touched.address1 && formik.errors.address1}
                 label="Address 1"
@@ -132,7 +137,9 @@ export const CustomerEditForm = props => {
             </Grid>
             <Grid item md={6} xs={12}>
               <TextField
-                error={Boolean(formik.touched.address2 && formik.errors.address2)}
+                error={Boolean(
+                  formik.touched.address2 && formik.errors.address2
+                )}
                 fullWidth
                 helperText={formik.touched.address2 && formik.errors.address2}
                 label="Address 2"
@@ -157,9 +164,9 @@ export const CustomerEditForm = props => {
           </Grid>
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "space-between",
               mt: 3,
             }}
           >
@@ -168,7 +175,8 @@ export const CustomerEditForm = props => {
                 Make Contact Info Public
               </Typography>
               <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
-                Means that anyone viewing your profile will be able to see your contacts details
+                Means that anyone viewing your profile will be able to see your
+                contacts details
               </Typography>
             </div>
             <Switch
@@ -183,9 +191,9 @@ export const CustomerEditForm = props => {
           <Divider sx={{ my: 3 }} />
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "space-between",
             }}
           >
             <div>
@@ -193,7 +201,8 @@ export const CustomerEditForm = props => {
                 Available to hire
               </Typography>
               <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
-                Toggling this will let your teammates know that you are available for acquiring new projects
+                Toggling this will let your teammates know that you are
+                available for acquiring new projects
               </Typography>
             </div>
             <Switch
@@ -208,11 +217,16 @@ export const CustomerEditForm = props => {
         </CardContent>
         <CardActions
           sx={{
-            flexWrap: 'wrap',
+            flexWrap: "wrap",
             m: -1,
           }}
         >
-          <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
+          <Button
+            disabled={formik.isSubmitting}
+            type="submit"
+            sx={{ m: 1 }}
+            variant="contained"
+          >
             Update
           </Button>
           <NextLink href="/dashboard/customers/1" passHref>
@@ -221,7 +235,7 @@ export const CustomerEditForm = props => {
               disabled={formik.isSubmitting}
               sx={{
                 m: 1,
-                mr: 'auto',
+                mr: "auto",
               }}
               variant="outlined"
             >

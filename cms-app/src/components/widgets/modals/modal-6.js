@@ -1,12 +1,21 @@
-import { Box, Button, Divider, ListItemIcon, ListItemText, MenuItem, Paper, Typography } from '@mui/material';
-import { Cog as CogIcon } from '../../../icons/cog';
-import { User as UserIcon } from '../../../icons/user';
+import {
+  Box,
+  Button,
+  Divider,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { Cog as CogIcon } from "../../../icons/cog";
+import { User as UserIcon } from "../../../icons/user";
 
 export const Modal6 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      minHeight: '100%',
+      backgroundColor: "background.default",
+      minHeight: "100%",
       p: 3,
     }}
   >
@@ -14,7 +23,7 @@ export const Modal6 = () => (
       elevation={12}
       sx={{
         maxWidth: 320,
-        mx: 'auto',
+        mx: "auto",
       }}
     >
       <Box sx={{ p: 2 }}>

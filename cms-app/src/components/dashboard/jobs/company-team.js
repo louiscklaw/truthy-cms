@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import { Avatar, Box, Chip, Grid, Typography } from '@mui/material';
-import { getInitials } from '../../../utils/get-initials';
+import PropTypes from "prop-types";
+import { Avatar, Box, Chip, Grid, Typography } from "@mui/material";
+import { getInitials } from "../../../utils/get-initials";
 
-export const CompanyTeam = props => {
+export const CompanyTeam = (props) => {
   const { members, ...other } = props;
 
   return (
@@ -12,13 +12,13 @@ export const CompanyTeam = props => {
       </div>
       <Box sx={{ mt: 3 }}>
         <Grid container spacing={3}>
-          {members.map(member => (
+          {members.map((member) => (
             <Grid item key={member.id} sm={6} xs={12}>
               <Box
                 sx={{
-                  borderColor: 'divider',
+                  borderColor: "divider",
                   borderRadius: 1,
-                  borderStyle: 'solid',
+                  borderStyle: "solid",
                   borderWidth: 1,
                   px: 3,
                   py: 4,
@@ -26,11 +26,13 @@ export const CompanyTeam = props => {
               >
                 <Box
                   sx={{
-                    alignItems: 'center',
-                    display: 'flex',
+                    alignItems: "center",
+                    display: "flex",
                   }}
                 >
-                  <Avatar src={member.avatar}>{getInitials(member.name)}</Avatar>
+                  <Avatar src={member.avatar}>
+                    {getInitials(member.name)}
+                  </Avatar>
                   <Box sx={{ ml: 2 }}>
                     <Typography variant="subtitle2">{member.name}</Typography>
                     <Typography color="textSecondary" variant="body2">
@@ -44,7 +46,7 @@ export const CompanyTeam = props => {
                     mt: 1,
                   }}
                 >
-                  {(member.skillSet || []).map(skill => (
+                  {(member.skillSet || []).map((skill) => (
                     <Chip key={skill} label={skill} sx={{ m: 1 }} />
                   ))}
                 </Box>

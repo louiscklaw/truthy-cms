@@ -1,18 +1,18 @@
-import NextLink from 'next/link';
-import PropTypes from 'prop-types';
-import { AppBar, Box, IconButton, Link, Toolbar } from '@mui/material';
-import { Menu as MenuIcon } from '../../icons/menu';
-import { Logo } from '../logo';
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import { AppBar, Box, IconButton, Link, Toolbar } from "@mui/material";
+import { Menu as MenuIcon } from "../../icons/menu";
+import { Logo } from "../logo";
 
 export const DocsNavbar = ({ onOpenSidebar }) => (
   <AppBar
     elevation={0}
     sx={{
-      backgroundColor: 'background.paper',
-      borderBottomColor: 'divider',
-      borderBottomStyle: 'solid',
+      backgroundColor: "background.paper",
+      borderBottomColor: "divider",
+      borderBottomStyle: "solid",
       borderBottomWidth: 1,
-      color: 'text.secondary',
+      color: "text.secondary",
     }}
   >
     <Toolbar sx={{ height: 64 }}>
@@ -33,7 +33,12 @@ export const DocsNavbar = ({ onOpenSidebar }) => (
         </Link>
       </NextLink>
       <NextLink href="/browse" passHref>
-        <Link color="textSecondary" sx={{ ml: 2 }} underline="none" variant="subtitle2">
+        <Link
+          color="textSecondary"
+          sx={{ ml: 2 }}
+          underline="none"
+          variant="subtitle2"
+        >
           Components
         </Link>
       </NextLink>
@@ -42,7 +47,7 @@ export const DocsNavbar = ({ onOpenSidebar }) => (
         onClick={onOpenSidebar}
         sx={{
           display: {
-            lg: 'none',
+            lg: "none",
           },
           ml: 2,
         }}

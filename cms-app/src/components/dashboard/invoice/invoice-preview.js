@@ -1,11 +1,21 @@
-import PropTypes from 'prop-types';
-import { format } from 'date-fns';
-import numeral from 'numeral';
-import { Box, Grid, Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography } from '@mui/material';
-import { Logo } from '../../logo';
-import { Scrollbar } from '../../scrollbar';
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import numeral from "numeral";
+import {
+  Box,
+  Grid,
+  Paper,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { Logo } from "../../logo";
+import { Scrollbar } from "../../scrollbar";
 
-export const InvoicePreview = props => {
+export const InvoicePreview = (props) => {
   const { invoice, ...other } = props;
 
   return (
@@ -65,13 +75,18 @@ export const InvoicePreview = props => {
                 <Typography gutterBottom variant="subtitle2">
                   Due date
                 </Typography>
-                <Typography variant="body2">{invoice.dueDate && format(invoice.dueDate, 'dd MMM yyyy')}</Typography>
+                <Typography variant="body2">
+                  {invoice.dueDate && format(invoice.dueDate, "dd MMM yyyy")}
+                </Typography>
               </Grid>
               <Grid item>
                 <Typography gutterBottom variant="subtitle2">
                   Date of issue
                 </Typography>
-                <Typography variant="body2">{invoice.issueDate && format(invoice.issueDate, 'dd MMM yyyy')}</Typography>
+                <Typography variant="body2">
+                  {invoice.issueDate &&
+                    format(invoice.issueDate, "dd MMM yyyy")}
+                </Typography>
               </Grid>
               <Grid item>
                 <Typography gutterBottom variant="subtitle2">
@@ -104,11 +119,15 @@ export const InvoicePreview = props => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {(invoice.items || []).map(items => (
+              {(invoice.items || []).map((items) => (
                 <TableRow key={items.id}>
                   <TableCell>{items.description}</TableCell>
                   <TableCell />
-                  <TableCell align="right">{numeral(items.unitAmount).format(`${items.currency}0,0.00`)}</TableCell>
+                  <TableCell align="right">
+                    {numeral(items.unitAmount).format(
+                      `${items.currency}0,0.00`
+                    )}
+                  </TableCell>
                 </TableRow>
               ))}
               <TableRow>
@@ -119,7 +138,9 @@ export const InvoicePreview = props => {
                   </Typography>
                 </TableCell>
                 <TableCell align="right">
-                  {numeral(invoice.subtotalAmount).format(`${invoice.currency}0,0.00`)}
+                  {numeral(invoice.subtotalAmount).format(
+                    `${invoice.currency}0,0.00`
+                  )}
                 </TableCell>
               </TableRow>
               <TableRow>
@@ -129,7 +150,11 @@ export const InvoicePreview = props => {
                     Taxes
                   </Typography>
                 </TableCell>
-                <TableCell align="right">{numeral(invoice.taxAmount).format(`${invoice.currency}0,0.00`)}</TableCell>
+                <TableCell align="right">
+                  {numeral(invoice.taxAmount).format(
+                    `${invoice.currency}0,0.00`
+                  )}
+                </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell />
@@ -138,7 +163,11 @@ export const InvoicePreview = props => {
                     Total
                   </Typography>
                 </TableCell>
-                <TableCell align="right">{numeral(invoice.totalAmount).format(`${invoice.currency}0,0.00`)}</TableCell>
+                <TableCell align="right">
+                  {numeral(invoice.totalAmount).format(
+                    `${invoice.currency}0,0.00`
+                  )}
+                </TableCell>
               </TableRow>
             </TableBody>
           </Table>
@@ -147,8 +176,8 @@ export const InvoicePreview = props => {
               Notes
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              Please make sure you have the right bank registration number as I had issues before and make sure you guys
-              cover transfer expenses.
+              Please make sure you have the right bank registration number as I
+              had issues before and make sure you guys cover transfer expenses.
             </Typography>
           </Box>
         </Box>

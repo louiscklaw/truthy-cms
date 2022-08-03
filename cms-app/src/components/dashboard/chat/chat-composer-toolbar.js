@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
+import { useRef, useState } from "react";
+import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
@@ -14,28 +14,31 @@ import {
   Popper,
   TextField,
   Typography,
-} from '@mui/material';
-import { chatApi } from '../../../__fake-api__/chat-api';
-import { Search as SearchIcon } from '../../../icons/search';
-import { Scrollbar } from '../../scrollbar';
+} from "@mui/material";
+import { chatApi } from "../../../__fake-api__/chat-api";
+import { Search as SearchIcon } from "../../../icons/search";
+import { Scrollbar } from "../../scrollbar";
 
 const filterSearchResults = (searchResults, recipients) => {
-  const recipientIds = recipients.reduce((acc, recipient) => [...acc, recipient.id], []);
+  const recipientIds = recipients.reduce(
+    (acc, recipient) => [...acc, recipient.id],
+    []
+  );
 
-  return searchResults.filter(result => !recipientIds.includes(result.id));
+  return searchResults.filter((result) => !recipientIds.includes(result.id));
 };
 
-export const ChatComposerToolbar = props => {
+export const ChatComposerToolbar = (props) => {
   const { onAddRecipient, onRemoveRecipient, recipients, ...other } = props;
   const containerRef = useRef(null);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [isSearchFocused, setIsSearchFocused] = useState(true);
   const [searchResults, setSearchResults] = useState([]);
 
   const displaySearchResults = query && isSearchFocused;
   const filteredSearchResults = filterSearchResults(searchResults, recipients);
 
-  const handleSearchChange = async event => {
+  const handleSearchChange = async (event) => {
     try {
       const { value } = event.target;
 
@@ -67,15 +70,15 @@ export const ChatComposerToolbar = props => {
     setIsSearchFocused(false);
   };
 
-  const handleAddRecipient = contact => {
-    setQuery('');
+  const handleAddRecipient = (contact) => {
+    setQuery("");
 
     if (onAddRecipient) {
       onAddRecipient(contact);
     }
   };
 
-  const handleRemoveRecipient = recipientId => {
+  const handleRemoveRecipient = (recipientId) => {
     if (onRemoveRecipient) {
       onRemoveRecipient(recipientId);
     }
@@ -85,8 +88,8 @@ export const ChatComposerToolbar = props => {
     <>
       <Box
         sx={{
-          borderBottomColor: 'divider',
-          borderBottomStyle: 'solid',
+          borderBottomColor: "divider",
+          borderBottomStyle: "solid",
           borderBottomWidth: 1,
         }}
         {...other}
@@ -94,19 +97,19 @@ export const ChatComposerToolbar = props => {
         <Scrollbar>
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
+              alignItems: "center",
+              display: "flex",
               p: 2,
             }}
           >
             <Box
               ref={containerRef}
               sx={{
-                alignItems: 'center',
-                display: 'flex',
+                alignItems: "center",
+                display: "flex",
                 mr: 1,
-                '& .MuiInputBase-root': {
-                  backgroundColor: 'background.paper',
+                "& .MuiInputBase-root": {
+                  backgroundColor: "background.paper",
                   height: 40,
                   minWidth: 260,
                 },
@@ -131,7 +134,7 @@ export const ChatComposerToolbar = props => {
             <Typography color="textSecondary" sx={{ mr: 2 }} variant="body2">
               To:
             </Typography>
-            {recipients.reverse().map(recipient => (
+            {recipients.reverse().map((recipient) => (
               <Chip
                 avatar={<Avatar src={recipient.avatar} />}
                 key={recipient.id}
@@ -145,14 +148,18 @@ export const ChatComposerToolbar = props => {
       </Box>
       {displaySearchResults && (
         <ClickAwayListener onClickAway={handleSearchResultsClickAway}>
-          <Popper anchorEl={containerRef?.current} open={isSearchFocused} placement="bottom-start">
+          <Popper
+            anchorEl={containerRef?.current}
+            open={isSearchFocused}
+            placement="bottom-start"
+          >
             <Paper
               elevation={16}
               sx={{
-                borderColor: 'divider',
-                borderStyle: 'solid',
+                borderColor: "divider",
+                borderStyle: "solid",
                 borderWidth: 1,
-                maxWidth: '100%',
+                maxWidth: "100%",
                 mt: 1,
                 width: 320,
               }}
@@ -161,7 +168,7 @@ export const ChatComposerToolbar = props => {
                 <Box
                   sx={{
                     p: 2,
-                    textAlign: 'center',
+                    textAlign: "center",
                   }}
                 >
                   <Typography gutterBottom variant="h6">
@@ -186,8 +193,12 @@ export const ChatComposerToolbar = props => {
                     </Typography>
                   </Box>
                   <List>
-                    {filteredSearchResults.map(result => (
-                      <ListItem button key={result.id} onClick={() => handleAddRecipient(result)}>
+                    {filteredSearchResults.map((result) => (
+                      <ListItem
+                        button
+                        key={result.id}
+                        onClick={() => handleAddRecipient(result)}
+                      >
                         <ListItemAvatar>
                           <Avatar src={result.avatar} />
                         </ListItemAvatar>
@@ -195,7 +206,7 @@ export const ChatComposerToolbar = props => {
                           primary={result.name}
                           primaryTypographyProps={{
                             noWrap: true,
-                            variant: 'subtitle2',
+                            variant: "subtitle2",
                           }}
                         />
                       </ListItem>

@@ -1,4 +1,12 @@
-import { Box, Card, CardContent, Divider, Grid, Switch, Typography } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardContent,
+  Divider,
+  Grid,
+  Switch,
+  Typography,
+} from "@mui/material";
 
 export const AccountNotificationsSettings = () => (
   <Card>
@@ -10,8 +18,8 @@ export const AccountNotificationsSettings = () => (
         <Grid item md={8} sm={12} xs={12}>
           <Box
             sx={{
-              display: 'flex',
-              justifyContent: 'space-between',
+              display: "flex",
+              justifyContent: "space-between",
               mb: 3,
             }}
           >
@@ -26,9 +34,9 @@ export const AccountNotificationsSettings = () => (
           <Divider />
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "space-between",
               mt: 3,
             }}
           >
@@ -50,9 +58,9 @@ export const AccountNotificationsSettings = () => (
         <Grid item md={8} sm={12} xs={12}>
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "space-between",
               mb: 3,
             }}
           >

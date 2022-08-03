@@ -1,26 +1,26 @@
-import { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Avatar, Box, IconButton, TextField, Tooltip } from '@mui/material';
-import { PaperAirplane as PaperAirplaneIcon } from '../../../icons/paper-airplane';
-import { Photograph as PhotographIcon } from '../../../icons/photograph';
-import { PaperClip as PaperClipIcon } from '../../../icons/paper-clip';
+import { useRef, useState } from "react";
+import PropTypes from "prop-types";
+import { Avatar, Box, IconButton, TextField, Tooltip } from "@mui/material";
+import { PaperAirplane as PaperAirplaneIcon } from "../../../icons/paper-airplane";
+import { Photograph as PhotographIcon } from "../../../icons/photograph";
+import { PaperClip as PaperClipIcon } from "../../../icons/paper-clip";
 
-export const ChatMessageAdd = props => {
+export const ChatMessageAdd = (props) => {
   const { disabled, onSend, ...other } = props;
   const fileInputRef = useRef(null);
-  const [body, setBody] = useState('');
+  const [body, setBody] = useState("");
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
-    avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-    name: 'Anika Visser',
+    avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
+    name: "Anika Visser",
   };
 
   const handleAttach = () => {
     fileInputRef.current?.click();
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setBody(event.target.value);
   };
 
@@ -30,11 +30,11 @@ export const ChatMessageAdd = props => {
     }
 
     onSend?.(body);
-    setBody('');
+    setBody("");
   };
 
-  const handleKeyUp = event => {
-    if (event.code === 'Enter') {
+  const handleKeyUp = (event) => {
+    if (event.code === "Enter") {
       handleSend();
     }
   };
@@ -42,9 +42,9 @@ export const ChatMessageAdd = props => {
   return (
     <Box
       sx={{
-        alignItems: 'center',
-        backgroundColor: 'background.paper',
-        display: 'flex',
+        alignItems: "center",
+        backgroundColor: "background.paper",
+        display: "flex",
         flexShrink: 0,
         p: 3,
       }}
@@ -53,8 +53,8 @@ export const ChatMessageAdd = props => {
       <Avatar
         sx={{
           display: {
-            xs: 'none',
-            sm: 'inline',
+            xs: "none",
+            sm: "inline",
           },
           mr: 2,
         }}
@@ -72,8 +72,8 @@ export const ChatMessageAdd = props => {
 
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           m: -2,
           ml: 2,
         }}
@@ -84,10 +84,10 @@ export const ChatMessageAdd = props => {
               color="primary"
               disabled={!body || disabled}
               sx={{
-                backgroundColor: 'primary.main',
-                color: 'primary.contrastText',
-                '&:hover': {
-                  backgroundColor: 'primary.dark',
+                backgroundColor: "primary.main",
+                color: "primary.contrastText",
+                "&:hover": {
+                  backgroundColor: "primary.dark",
                 },
               }}
               onClick={handleSend}
@@ -100,8 +100,8 @@ export const ChatMessageAdd = props => {
           <Box
             sx={{
               display: {
-                xs: 'none',
-                sm: 'inline-flex',
+                xs: "none",
+                sm: "inline-flex",
               },
               m: 1,
             }}
@@ -115,8 +115,8 @@ export const ChatMessageAdd = props => {
           <Box
             sx={{
               display: {
-                xs: 'none',
-                sm: 'inline-flex',
+                xs: "none",
+                sm: "inline-flex",
               },
               m: 1,
             }}

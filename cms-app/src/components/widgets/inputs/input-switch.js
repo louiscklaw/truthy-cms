@@ -1,9 +1,9 @@
-import { Box, Grid, Switch, Typography } from '@mui/material';
+import { Box, Grid, Switch, Typography } from "@mui/material";
 
 export const InputSwitch = () => (
   <Box
     sx={{
-      backgroundColor: 'background.paper',
+      backgroundColor: "background.paper",
       p: 3.5,
     }}
   >

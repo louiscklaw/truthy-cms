@@ -1,12 +1,19 @@
-import { useRef, useState } from 'react';
-import { IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Tooltip } from '@mui/material';
-import { Archive as ArchiveIcon } from '../icons/archive';
-import { DocumentText as DocumentTextIcon } from '../icons/document-text';
-import { DotsHorizontal as DotsHorizontalIcon } from '../icons/dots-horizontal';
-import { Download as DownloadIcon } from '../icons/download';
-import { Duplicate as DuplicateIcon } from '../icons/duplicate';
+import { useRef, useState } from "react";
+import {
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Tooltip,
+} from "@mui/material";
+import { Archive as ArchiveIcon } from "../icons/archive";
+import { DocumentText as DocumentTextIcon } from "../icons/document-text";
+import { DotsHorizontal as DotsHorizontalIcon } from "../icons/dots-horizontal";
+import { Download as DownloadIcon } from "../icons/download";
+import { Duplicate as DuplicateIcon } from "../icons/duplicate";
 
-export const MoreMenu = props => {
+export const MoreMenu = (props) => {
   const anchorRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
 
@@ -28,20 +35,20 @@ export const MoreMenu = props => {
       <Menu
         anchorEl={anchorRef.current}
         anchorOrigin={{
-          horizontal: 'left',
-          vertical: 'top',
+          horizontal: "left",
+          vertical: "top",
         }}
         onClose={handleMenuClose}
         open={openMenu}
         PaperProps={{
           sx: {
-            maxWidth: '100%',
+            maxWidth: "100%",
             width: 256,
           },
         }}
         transformOrigin={{
-          horizontal: 'left',
-          vertical: 'top',
+          horizontal: "left",
+          vertical: "top",
         }}
       >
         <MenuItem>

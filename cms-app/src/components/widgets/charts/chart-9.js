@@ -1,24 +1,24 @@
-import { Box, Card, CardContent, CardHeader } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { Chart } from '../../chart';
+import { Box, Card, CardContent, CardHeader } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 export const Chart9 = () => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       stacked: false,
       toolbar: {
         show: false,
       },
     },
-    colors: ['#ffb547', '#7783DB'],
+    colors: ["#ffb547", "#7783DB"],
     dataLabels: {
       enabled: false,
     },
     fill: {
-      type: 'solid',
+      type: "solid",
       opacity: 0,
     },
     grid: {
@@ -29,7 +29,7 @@ export const Chart9 = () => {
       size: 6,
     },
     stroke: {
-      curve: 'straight',
+      curve: "straight",
       width: 2,
     },
     theme: {
@@ -44,17 +44,30 @@ export const Chart9 = () => {
         color: theme.palette.divider,
         show: true,
       },
-      categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+      categories: [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+      ],
     },
   };
 
   const chartSeries = [
     {
-      name: 'New Customers',
+      name: "New Customers",
       data: [31, 40, 28, 51, 42, 109, 100, 120, 80, 42, 90, 140],
     },
     {
-      name: 'Up/Cross-Selling',
+      name: "Up/Cross-Selling",
       data: [11, 32, 45, 32, 34, 52, 41, 80, 96, 140, 30, 100],
     },
   ];
@@ -62,14 +75,19 @@ export const Chart9 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'background.default',
+        backgroundColor: "background.default",
         p: 3,
       }}
     >
       <Card>
         <CardHeader title="Sales Revenue" />
         <CardContent>
-          <Chart height={360} options={chartOptions} series={chartSeries} type="area" />
+          <Chart
+            height={360}
+            options={chartOptions}
+            series={chartSeries}
+            type="area"
+          />
         </CardContent>
       </Card>
     </Box>

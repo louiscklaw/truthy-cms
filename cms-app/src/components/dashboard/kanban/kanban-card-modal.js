@@ -1,7 +1,7 @@
-import { Fragment } from 'react';
-import PropTypes from 'prop-types';
-import toast from 'react-hot-toast';
-import debounce from 'lodash.debounce';
+import { Fragment } from "react";
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import debounce from "lodash.debounce";
 import {
   Box,
   Checkbox,
@@ -12,100 +12,105 @@ import {
   Grid,
   TextField,
   Typography,
-} from '@mui/material';
-import { Archive as ArchiveIcon } from '../../../icons/archive';
-import { Check as CheckIcon } from '../../../icons/check';
-import { DocumentText as DocumentTextIcon } from '../../../icons/document-text';
-import { Eye as EyeIcon } from '../../../icons/eye';
-import { EyeOff as EyeOffIcon } from '../../../icons/eye-off';
-import { Users as UsersIcon } from '../../../icons/users';
-import { addChecklist, deleteCard, moveCard, updateCard } from '../../../slices/kanban';
-import { useDispatch, useSelector } from '../../../store';
-import { KanbanCardAction } from './kanban-card-action';
-import { KanbanChecklist } from './kanban-checklist';
+} from "@mui/material";
+import { Archive as ArchiveIcon } from "../../../icons/archive";
+import { Check as CheckIcon } from "../../../icons/check";
+import { DocumentText as DocumentTextIcon } from "../../../icons/document-text";
+import { Eye as EyeIcon } from "../../../icons/eye";
+import { EyeOff as EyeOffIcon } from "../../../icons/eye-off";
+import { Users as UsersIcon } from "../../../icons/users";
+import {
+  addChecklist,
+  deleteCard,
+  moveCard,
+  updateCard,
+} from "../../../slices/kanban";
+import { useDispatch, useSelector } from "../../../store";
+import { KanbanCardAction } from "./kanban-card-action";
+import { KanbanChecklist } from "./kanban-checklist";
 
-const labels = ['Business', 'Planning', 'Frontend', 'Design'];
+const labels = ["Business", "Planning", "Frontend", "Design"];
 
-export const KanbanCardModal = props => {
+export const KanbanCardModal = (props) => {
   const { card, column, onClose, open, ...other } = props;
   const dispatch = useDispatch();
-  const { columns } = useSelector(state => state.kanban);
+  const { columns } = useSelector((state) => state.kanban);
 
-  const handleDetailsUpdate = debounce(async update => {
+  const handleDetailsUpdate = debounce(async (update) => {
     try {
       await dispatch(updateCard(card.id, update));
-      toast.success('Card updated!');
+      toast.success("Card updated!");
     } catch (err) {
       console.error(err);
-      toast.error('Something went wrong!');
+      toast.error("Something went wrong!");
     }
   }, 1000);
 
-  const handleColumnChange = async event => {
+  const handleColumnChange = async (event) => {
     try {
       await dispatch(moveCard(card.id, 0, event.target.value));
-      toast.success('Card moved!');
+      toast.success("Card moved!");
     } catch (err) {
       console.error(err);
-      toast.error('Something went wrong!');
+      toast.error("Something went wrong!");
     }
   };
 
   const handleSubscribe = async () => {
     try {
       await dispatch(updateCard(card.id, { isSubscribed: true }));
-      toast.success('Unsubscribed!');
+      toast.success("Unsubscribed!");
     } catch (err) {
       console.error(err);
-      toast.error('Something went wrong!');
+      toast.error("Something went wrong!");
     }
   };
 
   const handleUnsubscribe = async () => {
     try {
       await dispatch(updateCard(card.id, { isSubscribed: false }));
-      toast.success('Subscribed!');
+      toast.success("Subscribed!");
     } catch (err) {
       console.error(err);
-      toast.error('Something went wrong!');
+      toast.error("Something went wrong!");
     }
   };
 
   const handleDelete = async () => {
     try {
       await dispatch(deleteCard(card.id));
-      toast.success('Card archived!');
+      toast.success("Card archived!");
     } catch (err) {
       console.error(err);
-      toast.error('Something went wrong!');
+      toast.error("Something went wrong!");
     }
   };
 
   const handleAddChecklist = async () => {
     try {
-      await dispatch(addChecklist(card.id, 'Untitled Checklist'));
-      toast.success('Checklist added!');
+      await dispatch(addChecklist(card.id, "Untitled Checklist"));
+      toast.success("Checklist added!");
     } catch (err) {
       console.error(err);
-      toast.error('Something went wrong!');
+      toast.error("Something went wrong!");
     }
   };
 
-  const handleLabelsChange = async event => {
+  const handleLabelsChange = async (event) => {
     try {
       let newValue = [...card.labels];
 
       if (event.target.checked) {
         newValue.push(event.target.value);
       } else {
-        newValue = newValue.filter(item => item !== event.target.value);
+        newValue = newValue.filter((item) => item !== event.target.value);
       }
 
       await dispatch(updateCard(card.id, { labels: newValue }));
-      toast.success('Card updated!');
+      toast.success("Card updated!");
     } catch (err) {
       console.error(err);
-      toast.error('Something went wrong!');
+      toast.error("Something went wrong!");
     }
   };
 
@@ -123,14 +128,18 @@ export const KanbanCardModal = props => {
               defaultValue={card.name}
               fullWidth
               label="Task name"
-              onChange={event => handleDetailsUpdate({ name: event.target.value })}
+              onChange={(event) =>
+                handleDetailsUpdate({ name: event.target.value })
+              }
             />
             <TextField
               defaultValue={card.description}
               fullWidth
               label="Description"
               multiline
-              onChange={event => handleDetailsUpdate({ description: event.target.value })}
+              onChange={(event) =>
+                handleDetailsUpdate({ description: event.target.value })
+              }
               placeholder="Leave a message"
               rows={6}
               sx={{ mt: 3 }}
@@ -141,8 +150,13 @@ export const KanbanCardModal = props => {
                   Checklist
                 </Typography>
                 <div>
-                  {card.checklists.map(checklist => (
-                    <KanbanChecklist card={card} checklist={checklist} key={checklist.id} sx={{ mb: 3 }} />
+                  {card.checklists.map((checklist) => (
+                    <KanbanChecklist
+                      card={card}
+                      checklist={checklist}
+                      key={checklist.id}
+                      sx={{ mb: 3 }}
+                    />
                   ))}
                 </div>
               </>
@@ -152,10 +166,10 @@ export const KanbanCardModal = props => {
         <Grid item xs={12} sm={4}>
           <Box
             sx={{
-              backgroundColor: 'background.default',
+              backgroundColor: "background.default",
               px: 3,
               py: 4,
-              height: '100%',
+              height: "100%",
             }}
           >
             <Typography color="textSecondary" variant="overline">
@@ -172,7 +186,7 @@ export const KanbanCardModal = props => {
               sx={{ mt: 2 }}
               value={card.columnId}
             >
-              {Object.values(columns.byId).map(_column => (
+              {Object.values(columns.byId).map((_column) => (
                 <option key={_column.id} value={_column.id}>
                   {_column.name}
                 </option>
@@ -183,13 +197,22 @@ export const KanbanCardModal = props => {
                 Add
               </Typography>
               <Box sx={{ mt: 2 }}>
-                <KanbanCardAction icon={<CheckIcon fontSize="small" />} onClick={handleAddChecklist}>
+                <KanbanCardAction
+                  icon={<CheckIcon fontSize="small" />}
+                  onClick={handleAddChecklist}
+                >
                   Checklist
                 </KanbanCardAction>
-                <KanbanCardAction disabled icon={<UsersIcon fontSize="small" />}>
+                <KanbanCardAction
+                  disabled
+                  icon={<UsersIcon fontSize="small" />}
+                >
                   Members
                 </KanbanCardAction>
-                <KanbanCardAction disabled icon={<DocumentTextIcon fontSize="small" />}>
+                <KanbanCardAction
+                  disabled
+                  icon={<DocumentTextIcon fontSize="small" />}
+                >
                   Attachments
                 </KanbanCardAction>
               </Box>
@@ -207,25 +230,39 @@ export const KanbanCardModal = props => {
                 Actions
               </Typography>
               {card.isSubscribed ? (
-                <KanbanCardAction icon={<EyeOffIcon fontSize="small" />} onClick={handleUnsubscribe}>
+                <KanbanCardAction
+                  icon={<EyeOffIcon fontSize="small" />}
+                  onClick={handleUnsubscribe}
+                >
                   Unwatch
                 </KanbanCardAction>
               ) : (
-                <KanbanCardAction icon={<EyeIcon fontSize="small" />} onClick={handleSubscribe}>
+                <KanbanCardAction
+                  icon={<EyeIcon fontSize="small" />}
+                  onClick={handleSubscribe}
+                >
                   Watch
                 </KanbanCardAction>
               )}
-              <KanbanCardAction icon={<ArchiveIcon fontSize="small" />} onClick={handleDelete}>
+              <KanbanCardAction
+                icon={<ArchiveIcon fontSize="small" />}
+                onClick={handleDelete}
+              >
                 Archive
               </KanbanCardAction>
             </Box>
             <Box sx={{ mt: 2 }}>
-              <Typography color="textSecondary" component="h4" sx={{ mb: 2 }} variant="overline">
+              <Typography
+                color="textSecondary"
+                component="h4"
+                sx={{ mb: 2 }}
+                variant="overline"
+              >
                 Labels
               </Typography>
               <Box
                 sx={{
-                  backgroundColor: 'background.paper',
+                  backgroundColor: "background.paper",
                   borderRadius: 1,
                 }}
               >
@@ -233,7 +270,12 @@ export const KanbanCardModal = props => {
                   {labels.map((label, index) => (
                     <Fragment key={label}>
                       <FormControlLabel
-                        control={<Checkbox checked={card.labels.includes(label)} onChange={handleLabelsChange} />}
+                        control={
+                          <Checkbox
+                            checked={card.labels.includes(label)}
+                            onChange={handleLabelsChange}
+                          />
+                        }
                         label={<Typography variant="body2">{label}</Typography>}
                         sx={{
                           pl: 2,

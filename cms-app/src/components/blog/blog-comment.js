@@ -1,8 +1,8 @@
-import PropTypes from 'prop-types';
-import { formatDistanceToNow } from 'date-fns';
-import { Avatar, Box, Typography } from '@mui/material';
+import PropTypes from "prop-types";
+import { formatDistanceToNow } from "date-fns";
+import { Avatar, Box, Typography } from "@mui/material";
 
-export const BlogComment = props => {
+export const BlogComment = (props) => {
   const {
     authorAvatar,
     authorName,
@@ -17,7 +17,7 @@ export const BlogComment = props => {
   return (
     <Box
       sx={{
-        display: 'flex',
+        display: "flex",
         pb: 3,
       }}
       {...other}
@@ -25,18 +25,19 @@ export const BlogComment = props => {
       <Avatar src={authorAvatar} />
       <Box
         sx={{
-          backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.900' : 'neutral.100'),
+          backgroundColor: (theme) =>
+            theme.palette.mode === "dark" ? "neutral.900" : "neutral.100",
           borderRadius: 1,
           ml: 2,
           p: 2,
-          width: '100%',
+          width: "100%",
         }}
       >
         <Box
           sx={{
-            alignItems: 'flex-start',
-            display: 'flex',
-            justifyContent: 'space-between',
+            alignItems: "flex-start",
+            display: "flex",
+            justifyContent: "space-between",
           }}
         >
           <Typography variant="subtitle2">{authorName}</Typography>

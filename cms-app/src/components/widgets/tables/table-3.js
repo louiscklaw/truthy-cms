@@ -1,5 +1,5 @@
-import numeral from 'numeral';
-import { subDays, subHours } from 'date-fns';
+import numeral from "numeral";
+import { subDays, subHours } from "date-fns";
 import {
   Avatar,
   Box,
@@ -19,139 +19,139 @@ import {
   Tabs,
   TextField,
   Typography,
-} from '@mui/material';
-import { Scrollbar } from '../../scrollbar';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
-import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
-import { Search as SearchIcon } from '../../../icons/search';
+} from "@mui/material";
+import { Scrollbar } from "../../scrollbar";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
+import { Search as SearchIcon } from "../../../icons/search";
 
 const now = new Date();
 
 const customers = [
   {
-    id: '5e887ac47eed253091be10cb',
-    avatar: '/static/mock-images/avatars/avatar-carson_darrin.png',
-    city: 'Cleveland',
-    country: 'USA',
-    currency: '$',
-    email: 'carson.darrin@devias.io',
+    id: "5e887ac47eed253091be10cb",
+    avatar: "/static/mock-images/avatars/avatar-carson_darrin.png",
+    city: "Cleveland",
+    country: "USA",
+    currency: "$",
+    email: "carson.darrin@devias.io",
     hasAcceptedMarketing: true,
     isProspect: false,
     isReturning: true,
-    name: 'Carson Darrin',
-    state: 'Ohio',
+    name: "Carson Darrin",
+    state: "Ohio",
     totalAmountSpent: 300.0,
     totalOrders: 3,
     updatedAt: subDays(subHours(now, 7), 1).getTime(),
   },
   {
-    id: '5e887b209c28ac3dd97f6db5',
-    avatar: '/static/mock-images/avatars/avatar-fran_perez.png',
-    city: 'Atlanta',
-    country: 'USA',
-    currency: '$',
-    email: 'fran.perez@devias.io',
+    id: "5e887b209c28ac3dd97f6db5",
+    avatar: "/static/mock-images/avatars/avatar-fran_perez.png",
+    city: "Atlanta",
+    country: "USA",
+    currency: "$",
+    email: "fran.perez@devias.io",
     hasAcceptedMarketing: true,
     isProspect: true,
     isReturning: false,
-    name: 'Fran Perez',
-    state: 'Georgia',
+    name: "Fran Perez",
+    state: "Georgia",
     totalAmountSpent: 0.0,
     totalOrders: 0,
     updatedAt: subDays(subHours(now, 1), 2).getTime(),
   },
   {
-    id: '5e887b7602bdbc4dbb234b27',
-    avatar: '/static/mock-images/avatars/avatar-jie_yan_song.png',
-    city: 'North Canton',
-    country: 'USA',
-    currency: '$',
-    email: 'jie.yan.song@devias.io',
+    id: "5e887b7602bdbc4dbb234b27",
+    avatar: "/static/mock-images/avatars/avatar-jie_yan_song.png",
+    city: "North Canton",
+    country: "USA",
+    currency: "$",
+    email: "jie.yan.song@devias.io",
     hasAcceptedMarketing: false,
     isProspect: false,
     isReturning: false,
-    name: 'Jie Yan Song',
-    state: 'Ohio',
+    name: "Jie Yan Song",
+    state: "Ohio",
     totalAmountSpent: 5600.0,
     totalOrders: 6,
     updatedAt: subDays(subHours(now, 4), 2).getTime(),
   },
   {
-    id: '5e86809283e28b96d2d38537',
-    avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-    city: 'Madrid',
-    country: 'Spain',
-    currency: '$',
-    email: 'anika.visser@devias.io',
+    id: "5e86809283e28b96d2d38537",
+    avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
+    city: "Madrid",
+    country: "Spain",
+    currency: "$",
+    email: "anika.visser@devias.io",
     hasAcceptedMarketing: true,
     isProspect: false,
     isReturning: true,
-    name: 'Anika Visser',
-    state: 'Madrid',
+    name: "Anika Visser",
+    state: "Madrid",
     totalAmountSpent: 500.0,
     totalOrders: 1,
     updatedAt: subDays(subHours(now, 11), 2).getTime(),
   },
   {
-    id: '5e86805e2bafd54f66cc95c3',
-    avatar: '/static/mock-images/avatars/avatar-miron_vitold.png',
-    city: 'San Diego',
-    country: 'USA',
-    currency: '$',
-    email: 'miron.vitold@devias.io',
+    id: "5e86805e2bafd54f66cc95c3",
+    avatar: "/static/mock-images/avatars/avatar-miron_vitold.png",
+    city: "San Diego",
+    country: "USA",
+    currency: "$",
+    email: "miron.vitold@devias.io",
     hasAcceptedMarketing: true,
     isProspect: true,
     isReturning: false,
-    name: 'Miron Vitold',
+    name: "Miron Vitold",
     totalAmountSpent: 0.0,
     totalOrders: 0,
-    state: 'California',
+    state: "California",
     updatedAt: subDays(subHours(now, 7), 3).getTime(),
   },
 ];
 
 const tabs = [
   {
-    label: 'All',
-    value: 'all',
+    label: "All",
+    value: "all",
   },
   {
-    label: 'Accepts Marketing',
-    value: 'hasAcceptedMarketing',
+    label: "Accepts Marketing",
+    value: "hasAcceptedMarketing",
   },
   {
-    label: 'Prospect',
-    value: 'isProspect',
+    label: "Prospect",
+    value: "isProspect",
   },
   {
-    label: 'Returning',
-    value: 'isReturning',
+    label: "Returning",
+    value: "isReturning",
   },
 ];
 
 const sortOptions = [
   {
-    label: 'Last update (newest)',
-    value: 'updatedAt|desc',
+    label: "Last update (newest)",
+    value: "updatedAt|desc",
   },
   {
-    label: 'Last update (oldest)',
-    value: 'updatedAt|asc',
+    label: "Last update (oldest)",
+    value: "updatedAt|asc",
   },
   {
-    label: 'Total orders (highest)',
-    value: 'orders|desc',
+    label: "Total orders (highest)",
+    value: "orders|desc",
   },
   {
-    label: 'Total orders (lowest)',
-    value: 'orders|asc',
+    label: "Total orders (lowest)",
+    value: "orders|asc",
   },
 ];
 
 export const Table3 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
+      backgroundColor: "background.default",
       p: 3,
     }}
   >
@@ -164,16 +164,16 @@ export const Table3 = () => (
         sx={{ px: 3 }}
         variant="scrollable"
       >
-        {tabs.map(tab => (
+        {tabs.map((tab) => (
           <Tab key={tab.value} label={tab.label} value={tab.value} />
         ))}
       </Tabs>
       <Divider />
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
-          flexWrap: 'wrap',
+          alignItems: "center",
+          display: "flex",
+          flexWrap: "wrap",
           m: -1,
           p: 2,
         }}
@@ -181,7 +181,7 @@ export const Table3 = () => (
         <Box
           sx={{
             m: 1,
-            maxWidth: '100%',
+            maxWidth: "100%",
             width: 500,
           }}
         >
@@ -203,8 +203,13 @@ export const Table3 = () => (
             width: 240,
           }}
         >
-          <TextField label="Sort By" name="sort" select SelectProps={{ native: true }}>
-            {sortOptions.map(option => (
+          <TextField
+            label="Sort By"
+            name="sort"
+            select
+            SelectProps={{ native: true }}
+          >
+            {sortOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -227,7 +232,7 @@ export const Table3 = () => (
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map(customer => (
+            {customers.map((customer) => (
               <TableRow hover key={customer.id}>
                 <TableCell padding="checkbox">
                   <Checkbox />
@@ -235,8 +240,8 @@ export const Table3 = () => (
                 <TableCell>
                   <Box
                     sx={{
-                      alignItems: 'center',
-                      display: 'flex',
+                      alignItems: "center",
+                      display: "flex",
                     }}
                   >
                     <Avatar
@@ -258,7 +263,11 @@ export const Table3 = () => (
                 </TableCell>
                 <TableCell>{`${customer.city}, ${customer.state}, ${customer.country}`}</TableCell>
                 <TableCell>{customer.totalOrders}</TableCell>
-                <TableCell>{numeral(customer.totalAmountSpent).format(`${customer.currency}0,0.00`)}</TableCell>
+                <TableCell>
+                  {numeral(customer.totalAmountSpent).format(
+                    `${customer.currency}0,0.00`
+                  )}
+                </TableCell>
                 <TableCell align="right">
                   <IconButton>
                     <PencilAltIcon fontSize="small" />

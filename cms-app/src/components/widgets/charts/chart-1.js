@@ -1,18 +1,18 @@
-import { Box, Card, CardContent, CardHeader } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { Chart } from '../../chart';
+import { Box, Card, CardContent, CardHeader } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 export const Chart1 = () => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       toolbar: {
         show: false,
       },
     },
-    colors: ['#13affe', '#fbab49'],
+    colors: ["#13affe", "#fbab49"],
     dataLabels: {
       enabled: false,
     },
@@ -35,11 +35,11 @@ export const Chart1 = () => {
     },
     plotOptions: {
       bar: {
-        columnWidth: '40%',
+        columnWidth: "40%",
       },
     },
     stroke: {
-      colors: ['transparent'],
+      colors: ["transparent"],
       show: true,
       width: 2,
     },
@@ -55,7 +55,7 @@ export const Chart1 = () => {
         show: true,
         color: theme.palette.divider,
       },
-      categories: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      categories: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
       labels: {
         style: {
           colors: theme.palette.text.secondary,
@@ -82,25 +82,30 @@ export const Chart1 = () => {
   const chartSeries = [
     {
       data: [30, 40, 25, 50, 49, 21, 70, 51],
-      name: 'This week',
+      name: "This week",
     },
     {
       data: [23, 12, 54, 61, 32, 56, 81, 19],
-      name: 'Last week',
+      name: "Last week",
     },
   ];
 
   return (
     <Box
       sx={{
-        backgroundColor: 'background.default',
+        backgroundColor: "background.default",
         p: 3,
       }}
     >
       <Card>
         <CardHeader title="Sales" />
         <CardContent>
-          <Chart height={300} options={chartOptions} series={chartSeries} type="bar" />
+          <Chart
+            height={300}
+            options={chartOptions}
+            series={chartSeries}
+            type="bar"
+          />
         </CardContent>
       </Card>
     </Box>

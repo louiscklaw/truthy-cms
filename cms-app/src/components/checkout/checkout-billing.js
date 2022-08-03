@@ -1,40 +1,49 @@
-import PropTypes from 'prop-types';
-import { Box, Checkbox, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from '@mui/material';
+import PropTypes from "prop-types";
+import {
+  Box,
+  Checkbox,
+  FormControlLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 const paymentMethods = [
   {
-    label: 'Visa Credit/Debit Card',
-    value: 'visa',
+    label: "Visa Credit/Debit Card",
+    value: "visa",
   },
   {
-    label: 'PayPal',
-    value: 'paypal',
+    label: "PayPal",
+    value: "paypal",
   },
 ];
 
-export const CheckoutBilling = props => {
+export const CheckoutBilling = (props) => {
   const { billing, onChange, ...other } = props;
 
   return (
     <div {...other}>
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
         }}
       >
         <Box
           sx={{
-            alignItems: 'center',
-            border: theme => `1px solid ${theme.palette.divider}`,
+            alignItems: "center",
+            border: (theme) => `1px solid ${theme.palette.divider}`,
             borderRadius: 20,
-            display: 'flex',
+            display: "flex",
             height: 40,
-            justifyContent: 'center',
+            justifyContent: "center",
             width: 40,
           }}
         >
-          <Typography sx={{ fontWeight: 'fontWeightBold' }} variant="h6">
+          <Typography sx={{ fontWeight: "fontWeightBold" }} variant="h6">
             1
           </Typography>
         </Box>
@@ -45,13 +54,31 @@ export const CheckoutBilling = props => {
       <Box sx={{ mt: 3 }}>
         <Grid container spacing={3}>
           <Grid item sm={6} xs={12}>
-            <TextField fullWidth label="First Name" name="firstName" onChange={onChange} value={billing.firstName} />
+            <TextField
+              fullWidth
+              label="First Name"
+              name="firstName"
+              onChange={onChange}
+              value={billing.firstName}
+            />
           </Grid>
           <Grid item sm={6} xs={12}>
-            <TextField fullWidth label="Last Name" name="lastName" onChange={onChange} value={billing.lastName} />
+            <TextField
+              fullWidth
+              label="Last Name"
+              name="lastName"
+              onChange={onChange}
+              value={billing.lastName}
+            />
           </Grid>
           <Grid item sm={6} xs={12}>
-            <TextField fullWidth label="Street Address" name="address" onChange={onChange} value={billing.address} />
+            <TextField
+              fullWidth
+              label="Street Address"
+              name="address"
+              onChange={onChange}
+              value={billing.address}
+            />
           </Grid>
           <Grid item sm={6} xs={12}>
             <TextField
@@ -63,32 +90,44 @@ export const CheckoutBilling = props => {
             />
           </Grid>
           <Grid item sm={3} xs={12}>
-            <TextField fullWidth label="State" name="state" onChange={onChange} value={billing.state} />
+            <TextField
+              fullWidth
+              label="State"
+              name="state"
+              onChange={onChange}
+              value={billing.state}
+            />
           </Grid>
           <Grid item sm={3} xs={12}>
-            <TextField fullWidth label="Zip" name="zip" onChange={onChange} value={billing.zip} />
+            <TextField
+              fullWidth
+              label="Zip"
+              name="zip"
+              onChange={onChange}
+              value={billing.zip}
+            />
           </Grid>
         </Grid>
       </Box>
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           mt: 6,
         }}
       >
         <Box
           sx={{
-            alignItems: 'center',
-            border: theme => `1px solid ${theme.palette.divider}`,
+            alignItems: "center",
+            border: (theme) => `1px solid ${theme.palette.divider}`,
             borderRadius: 20,
-            display: 'flex',
+            display: "flex",
             height: 40,
-            justifyContent: 'center',
+            justifyContent: "center",
             width: 40,
           }}
         >
-          <Typography sx={{ fontWeight: 'fontWeightBold' }} variant="h6">
+          <Typography sx={{ fontWeight: "fontWeightBold" }} variant="h6">
             2
           </Typography>
         </Box>
@@ -98,31 +137,34 @@ export const CheckoutBilling = props => {
       </Box>
       <Box
         sx={{
-          color: 'text.primary',
+          color: "text.primary",
           mt: 3,
         }}
       >
-        <FormControlLabel control={<Checkbox defaultChecked />} label="Same as billing address" />
+        <FormControlLabel
+          control={<Checkbox defaultChecked />}
+          label="Same as billing address"
+        />
       </Box>
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           mt: 6,
         }}
       >
         <Box
           sx={{
-            alignItems: 'center',
-            border: theme => `1px solid ${theme.palette.divider}`,
+            alignItems: "center",
+            border: (theme) => `1px solid ${theme.palette.divider}`,
             borderRadius: 20,
-            display: 'flex',
+            display: "flex",
             height: 40,
-            justifyContent: 'center',
+            justifyContent: "center",
             width: 40,
           }}
         >
-          <Typography sx={{ fontWeight: 'fontWeightBold' }} variant="h6">
+          <Typography sx={{ fontWeight: "fontWeightBold" }} variant="h6">
             3
           </Typography>
         </Box>
@@ -134,14 +176,16 @@ export const CheckoutBilling = props => {
         <RadioGroup
           name="paymentMethod"
           onChange={onChange}
-          sx={{ flexDirection: 'row' }}
+          sx={{ flexDirection: "row" }}
           value={billing.paymentMethod}
         >
-          {paymentMethods.map(paymentMethod => (
+          {paymentMethods.map((paymentMethod) => (
             <FormControlLabel
               control={<Radio />}
               key={paymentMethod.value}
-              label={<Typography variant="body1">{paymentMethod.label}</Typography>}
+              label={
+                <Typography variant="body1">{paymentMethod.label}</Typography>
+              }
               value={paymentMethod.value}
             />
           ))}
@@ -150,11 +194,23 @@ export const CheckoutBilling = props => {
       <Box sx={{ mt: 3 }}>
         <Grid container spacing={3}>
           <Grid item sm={6} xs={12}>
-            <TextField fullWidth label="Name on Card" name="cardOwner" onChange={onChange} value={billing.cardOwner} />
+            <TextField
+              fullWidth
+              label="Name on Card"
+              name="cardOwner"
+              onChange={onChange}
+              value={billing.cardOwner}
+            />
           </Grid>
           <Grid item sm={6} />
           <Grid item sm={6} xs={12}>
-            <TextField fullWidth label="Card Number" name="cardNumber" onChange={onChange} value={billing.cardNumber} />
+            <TextField
+              fullWidth
+              label="Card Number"
+              name="cardNumber"
+              onChange={onChange}
+              value={billing.cardNumber}
+            />
           </Grid>
           <Grid item sm={6} />
           <Grid item sm={3} xs={12}>

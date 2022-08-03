@@ -1,34 +1,34 @@
-import { Card, CardHeader, Divider, Grid, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { Chart } from '../../chart';
+import { Card, CardHeader, Divider, Grid, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 const items = [
   {
-    color: '#4CAF50',
-    label: 'Very good',
-    subtitle: 'Excellent',
+    color: "#4CAF50",
+    label: "Very good",
+    subtitle: "Excellent",
     value: 85,
   },
   {
-    color: '#FF9800',
-    label: 'Good',
-    subtitle: 'Good condition',
+    color: "#FF9800",
+    label: "Good",
+    subtitle: "Good condition",
     value: 10,
   },
   {
-    color: '#F44336',
-    label: 'Needs attention ',
-    subtitle: 'Needs attention',
+    color: "#F44336",
+    label: "Needs attention ",
+    subtitle: "Needs attention",
     value: 5,
   },
 ];
 
-export const LogisticsVehiclesCondition = props => {
+export const LogisticsVehiclesCondition = (props) => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       stacked: false,
       toolbar: {
         show: false,
@@ -37,26 +37,26 @@ export const LogisticsVehiclesCondition = props => {
     fill: {
       opacity: 1,
     },
-    labels: ['Health'],
+    labels: ["Health"],
     plotOptions: {
       radialBar: {
         dataLabels: {
           name: {
             show: true,
             color: theme.palette.text.secondary,
-            fontSize: '12px',
+            fontSize: "12px",
             fontWeight: 400,
             offsetY: 20,
           },
           value: {
             color: theme.palette.text.primary,
-            fontSize: '18px',
+            fontSize: "18px",
             fontWeight: 600,
             offsetY: -20,
           },
         },
         hollow: {
-          size: '60%',
+          size: "60%",
         },
         track: {
           background: theme.palette.background.default,
@@ -66,13 +66,13 @@ export const LogisticsVehiclesCondition = props => {
     states: {
       active: {
         filter: {
-          type: 'none',
+          type: "none",
           value: 0,
         },
       },
       hover: {
         filter: {
-          type: 'none',
+          type: "none",
           value: 0,
         },
       },
@@ -87,13 +87,13 @@ export const LogisticsVehiclesCondition = props => {
       <CardHeader title="Vehicles Condition" />
       <Divider />
       <Grid container spacing={3} sx={{ p: 3 }}>
-        {items.map(item => (
+        {items.map((item) => (
           <Grid item key={item.label} md={4} xs={12}>
             <Card
               sx={{
-                alignItems: 'center',
-                display: 'flex',
-                flexDirection: 'column',
+                alignItems: "center",
+                display: "flex",
+                flexDirection: "column",
                 p: 2,
               }}
               variant="outlined"

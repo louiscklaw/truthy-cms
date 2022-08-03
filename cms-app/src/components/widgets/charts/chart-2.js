@@ -1,19 +1,19 @@
-import { Box, Card, CardContent, CardHeader } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { Chart } from '../../chart';
+import { Box, Card, CardContent, CardHeader } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 export const Chart2 = () => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       stacked: false,
       toolbar: {
         show: false,
       },
     },
-    colors: ['#1f87e6', '#ff5c7c'],
+    colors: ["#1f87e6", "#ff5c7c"],
     dataLabels: {
       enabled: false,
     },
@@ -29,11 +29,11 @@ export const Chart2 = () => {
       },
     },
     legend: {
-      horizontalAlign: 'right',
+      horizontalAlign: "right",
       labels: {
         colors: theme.palette.text.secondary,
       },
-      position: 'top',
+      position: "top",
       show: true,
     },
     markers: {
@@ -42,15 +42,15 @@ export const Chart2 = () => {
         sizeOffset: 2,
       },
       radius: 2,
-      shape: 'circle',
+      shape: "circle",
       size: 4,
-      strokeColors: ['#1f87e6', '#27c6db'],
+      strokeColors: ["#1f87e6", "#27c6db"],
       strokeWidth: 0,
     },
     stroke: {
-      curve: 'smooth',
+      curve: "smooth",
       dashArray: [0, 3],
-      lineCap: 'butt',
+      lineCap: "butt",
       width: 3,
     },
     theme: {
@@ -65,18 +65,18 @@ export const Chart2 = () => {
         show: true,
       },
       categories: [
-        '01 Jan',
-        '02 Jan',
-        '03 Jan',
-        '04 Jan',
-        '05 Jan',
-        '06 Jan',
-        '07 Jan',
-        '08 Jan',
-        '09 Jan',
-        '10 Jan',
-        '11 Jan',
-        '12 Jan',
+        "01 Jan",
+        "02 Jan",
+        "03 Jan",
+        "04 Jan",
+        "05 Jan",
+        "06 Jan",
+        "07 Jan",
+        "08 Jan",
+        "09 Jan",
+        "10 Jan",
+        "11 Jan",
+        "12 Jan",
       ],
       labels: {
         style: {
@@ -121,26 +121,33 @@ export const Chart2 = () => {
 
   const chartSeries = [
     {
-      data: [3350, 1840, 2254, 5780, 9349, 5241, 2770, 2051, 3764, 2385, 5912, 8323],
-      name: 'Page Views',
+      data: [
+        3350, 1840, 2254, 5780, 9349, 5241, 2770, 2051, 3764, 2385, 5912, 8323,
+      ],
+      name: "Page Views",
     },
     {
       data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35],
-      name: 'Session Duration',
+      name: "Session Duration",
     },
   ];
 
   return (
     <Box
       sx={{
-        backgroundColor: 'background.default',
+        backgroundColor: "background.default",
         p: 3,
       }}
     >
       <Card>
         <CardHeader title="Widget25" />
         <CardContent>
-          <Chart height={300} options={chartOptions} series={chartSeries} type="line" />
+          <Chart
+            height={300}
+            options={chartOptions}
+            series={chartSeries}
+            type="line"
+          />
         </CardContent>
       </Card>
     </Box>

@@ -1,14 +1,25 @@
-import { useState } from 'react';
-import Head from 'next/head';
-import { Avatar, Box, Button, Card, Grid, Step, StepContent, StepLabel, Stepper, Typography } from '@mui/material';
-import { AuthGuard } from '../../../components/authentication/auth-guard';
-import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
-import { JobCategoryStep } from '../../../components/dashboard/jobs/job-category-step';
-import { JobDetailsStep } from '../../../components/dashboard/jobs/job-details-step';
-import { JobDescriptionStep } from '../../../components/dashboard/jobs/job-description-step';
-import { Check as CheckIcon } from '../../../icons/check';
+import { useState } from "react";
+import Head from "next/head";
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  Grid,
+  Step,
+  StepContent,
+  StepLabel,
+  Stepper,
+  Typography,
+} from "@mui/material";
+import { AuthGuard } from "../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
+import { JobCategoryStep } from "../../../components/dashboard/jobs/job-category-step";
+import { JobDetailsStep } from "../../../components/dashboard/jobs/job-details-step";
+import { JobDescriptionStep } from "../../../components/dashboard/jobs/job-description-step";
+import { Check as CheckIcon } from "../../../icons/check";
 
-const StepIcon = props => {
+const StepIcon = (props) => {
   const { active, completed, icon } = props;
 
   const highlight = active || completed;
@@ -19,8 +30,8 @@ const StepIcon = props => {
         height: 40,
         width: 40,
         ...(highlight && {
-          backgroundColor: 'secondary.main',
-          color: 'secondary.contrastText',
+          backgroundColor: "secondary.main",
+          color: "secondary.contrastText",
         }),
       }}
       variant="rounded"
@@ -35,11 +46,11 @@ const JobCreate = () => {
   const [complete, setComplete] = useState(false);
 
   const handleNext = () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1);
+    setActiveStep((prevActiveStep) => prevActiveStep + 1);
   };
 
   const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1);
+    setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
 
   const handleComplete = () => {
@@ -48,16 +59,18 @@ const JobCreate = () => {
 
   const steps = [
     {
-      label: 'Category',
+      label: "Category",
       content: <JobCategoryStep onBack={handleBack} onNext={handleNext} />,
     },
     {
-      label: 'Job Details',
+      label: "Job Details",
       content: <JobDetailsStep onBack={handleBack} onNext={handleNext} />,
     },
     {
-      label: 'Description',
-      content: <JobDescriptionStep onBack={handleBack} onNext={handleComplete} />,
+      label: "Description",
+      content: (
+        <JobDescriptionStep onBack={handleBack} onNext={handleComplete} />
+      ),
     },
   ];
 
@@ -69,7 +82,7 @@ const JobCreate = () => {
       <Box
         component="main"
         sx={{
-          display: 'flex',
+          display: "flex",
           flexGrow: 1,
         }}
       >
@@ -79,13 +92,14 @@ const JobCreate = () => {
             sm={4}
             xs={12}
             sx={{
-              backgroundImage: 'url(/static/mock-images/jobs/create_job_background.png)',
-              backgroundPosition: 'center',
-              backgroundRepeat: 'no-repeat',
-              backgroundSize: 'cover',
+              backgroundImage:
+                "url(/static/mock-images/jobs/create_job_background.png)",
+              backgroundPosition: "center",
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "cover",
               display: {
-                xs: 'none',
-                md: 'block',
+                xs: "none",
+                md: "block",
               },
             }}
           />
@@ -110,9 +124,9 @@ const JobCreate = () => {
                   activeStep={activeStep}
                   orientation="vertical"
                   sx={{
-                    '& .MuiStepConnector-line': {
+                    "& .MuiStepConnector-line": {
                       ml: 1,
-                      borderLeftColor: 'divider',
+                      borderLeftColor: "divider",
                       borderLeftWidth: 2,
                     },
                   }}
@@ -126,8 +140,8 @@ const JobCreate = () => {
                       </StepLabel>
                       <StepContent
                         sx={{
-                          ml: '20px',
-                          borderLeftColor: 'divider',
+                          ml: "20px",
+                          borderLeftColor: "divider",
                           borderLeftWidth: 2,
                           ...(activeStep === index && {
                             py: 4,
@@ -143,8 +157,8 @@ const JobCreate = () => {
                 <div>
                   <Avatar
                     sx={{
-                      backgroundColor: 'success.main',
-                      color: 'success.contrastText',
+                      backgroundColor: "success.main",
+                      color: "success.contrastText",
                       height: 40,
                       width: 40,
                     }}
@@ -159,10 +173,10 @@ const JobCreate = () => {
                   </Typography>
                   <Card
                     sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                      flexWrap: 'wrap',
-                      justifyContent: 'space-between',
+                      alignItems: "center",
+                      display: "flex",
+                      flexWrap: "wrap",
+                      justifyContent: "space-between",
                       mt: 2,
                       px: 2,
                       py: 1.5,
@@ -170,16 +184,22 @@ const JobCreate = () => {
                     variant="outlined"
                   >
                     <div>
-                      <Typography variant="subtitle1">Senior Backend Engineer</Typography>
+                      <Typography variant="subtitle1">
+                        Senior Backend Engineer
+                      </Typography>
                       <Typography color="textSecondary" variant="caption">
-                        Remote possible{' '}
+                        Remote possible{" "}
                         <Typography color="inherit" noWrap variant="caption">
                           • $150k - $210K
                         </Typography>
                       </Typography>
                     </div>
                     <div>
-                      <Typography color="textSecondary" sx={{ mr: 2 }} variant="caption">
+                      <Typography
+                        color="textSecondary"
+                        sx={{ mr: 2 }}
+                        variant="caption"
+                      >
                         1 minute ago
                       </Typography>
                       <Button>Apply</Button>
@@ -195,7 +215,7 @@ const JobCreate = () => {
   );
 };
 
-JobCreate.getLayout = page => (
+JobCreate.getLayout = (page) => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>

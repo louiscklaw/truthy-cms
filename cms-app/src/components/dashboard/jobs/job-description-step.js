@@ -1,14 +1,14 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { Box, Button, Typography } from '@mui/material';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
-import { QuillEditor } from '../../quill-editor';
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Button, Typography } from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { QuillEditor } from "../../quill-editor";
 
-export const JobDescriptionStep = props => {
+export const JobDescriptionStep = (props) => {
   const { onBack, onNext, ...other } = props;
-  const [content, setContent] = useState('');
+  const [content, setContent] = useState("");
 
-  const handleChange = value => {
+  const handleChange = (value) => {
     setContent(value);
   };
 
@@ -25,7 +25,11 @@ export const JobDescriptionStep = props => {
         value={content}
       />
       <Box sx={{ mt: 2 }}>
-        <Button endIcon={<ArrowRightIcon fontSize="small" />} onClick={onNext} variant="contained">
+        <Button
+          endIcon={<ArrowRightIcon fontSize="small" />}
+          onClick={onNext}
+          variant="contained"
+        >
           Create Job
         </Button>
         <Button onClick={onBack} sx={{ ml: 2 }}>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -12,9 +12,9 @@ import {
   TableRow,
   TextField,
   Typography,
-} from '@mui/material';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
-import { Scrollbar } from '../../scrollbar';
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { Scrollbar } from "../../scrollbar";
 
 export const AccountSecuritySettings = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -34,8 +34,8 @@ export const AccountSecuritySettings = () => {
             <Grid item md={8} sm={12} xs={12}>
               <Box
                 sx={{
-                  display: 'flex',
-                  alignItems: 'center',
+                  display: "flex",
+                  alignItems: "center",
                 }}
               >
                 <TextField
@@ -48,13 +48,15 @@ export const AccountSecuritySettings = () => {
                     flexGrow: 1,
                     mr: 3,
                     ...(!isEditing && {
-                      '& .MuiOutlinedInput-notchedOutline': {
-                        borderStyle: 'dotted',
+                      "& .MuiOutlinedInput-notchedOutline": {
+                        borderStyle: "dotted",
                       },
                     }),
                   }}
                 />
-                <Button onClick={handleEdit}>{isEditing ? 'Save' : 'Edit'}</Button>
+                <Button onClick={handleEdit}>
+                  {isEditing ? "Save" : "Edit"}
+                </Button>
               </Box>
             </Grid>
           </Grid>
@@ -66,31 +68,35 @@ export const AccountSecuritySettings = () => {
           <Box sx={{ mt: 3 }}>
             <Grid container spacing={4}>
               <Grid item sm={6} xs={12}>
-                <Card sx={{ height: '100%' }} variant="outlined">
+                <Card sx={{ height: "100%" }} variant="outlined">
                   <CardContent>
                     <Box
                       sx={{
-                        display: 'block',
-                        position: 'relative',
+                        display: "block",
+                        position: "relative",
                       }}
                     >
                       <Box
                         sx={{
-                          '&::before': {
-                            backgroundColor: 'error.main',
-                            borderRadius: '50%',
+                          "&::before": {
+                            backgroundColor: "error.main",
+                            borderRadius: "50%",
                             content: '""',
-                            display: 'block',
+                            display: "block",
                             height: 8,
                             left: 4,
-                            position: 'absolute',
+                            position: "absolute",
                             top: 7,
                             width: 8,
                             zIndex: 1,
                           },
                         }}
                       >
-                        <Typography color="error" sx={{ ml: 3 }} variant="body2">
+                        <Typography
+                          color="error"
+                          sx={{ ml: 3 }}
+                          variant="body2"
+                        >
                           Off
                         </Typography>
                       </Box>
@@ -98,11 +104,19 @@ export const AccountSecuritySettings = () => {
                     <Typography sx={{ mt: 1 }} variant="subtitle2">
                       Authenticator App
                     </Typography>
-                    <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
-                      Use an authenticator app to generate one time security codes.
+                    <Typography
+                      color="textSecondary"
+                      sx={{ mt: 1 }}
+                      variant="body2"
+                    >
+                      Use an authenticator app to generate one time security
+                      codes.
                     </Typography>
                     <Box sx={{ mt: 4 }}>
-                      <Button endIcon={<ArrowRightIcon fontSize="small" />} variant="outlined">
+                      <Button
+                        endIcon={<ArrowRightIcon fontSize="small" />}
+                        variant="outlined"
+                      >
                         Set Up
                       </Button>
                     </Box>
@@ -110,26 +124,30 @@ export const AccountSecuritySettings = () => {
                 </Card>
               </Grid>
               <Grid item sm={6} xs={12}>
-                <Card sx={{ height: '100%' }} variant="outlined">
+                <Card sx={{ height: "100%" }} variant="outlined">
                   <CardContent>
-                    <Box sx={{ position: 'relative' }}>
+                    <Box sx={{ position: "relative" }}>
                       <Box
                         sx={{
-                          '&::before': {
-                            backgroundColor: 'error.main',
-                            borderRadius: '50%',
+                          "&::before": {
+                            backgroundColor: "error.main",
+                            borderRadius: "50%",
                             content: '""',
-                            display: 'block',
+                            display: "block",
                             height: 8,
                             left: 4,
-                            position: 'absolute',
+                            position: "absolute",
                             top: 7,
                             width: 8,
                             zIndex: 1,
                           },
                         }}
                       >
-                        <Typography color="error" sx={{ ml: 3 }} variant="body2">
+                        <Typography
+                          color="error"
+                          sx={{ ml: 3 }}
+                          variant="body2"
+                        >
                           Off
                         </Typography>
                       </Box>
@@ -137,11 +155,18 @@ export const AccountSecuritySettings = () => {
                     <Typography sx={{ mt: 1 }} variant="subtitle2">
                       Text Message
                     </Typography>
-                    <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
+                    <Typography
+                      color="textSecondary"
+                      sx={{ mt: 1 }}
+                      variant="body2"
+                    >
                       Use your mobile phone to receive security codes via SMS.
                     </Typography>
                     <Box sx={{ mt: 4 }}>
-                      <Button endIcon={<ArrowRightIcon fontSize="small" />} variant="outlined">
+                      <Button
+                        endIcon={<ArrowRightIcon fontSize="small" />}
+                        variant="outlined"
+                      >
                         Set Up
                       </Button>
                     </Box>

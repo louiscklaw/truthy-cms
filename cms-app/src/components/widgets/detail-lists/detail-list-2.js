@@ -9,16 +9,16 @@ import {
   TableCell,
   TableRow,
   Typography,
-} from '@mui/material';
-import { Lock as LockIcon } from '../../../icons/lock';
-import { User as UserIcon } from '../../../icons/user';
-import { SeverityPill } from '../../severity-pill';
+} from "@mui/material";
+import { Lock as LockIcon } from "../../../icons/lock";
+import { User as UserIcon } from "../../../icons/user";
+import { SeverityPill } from "../../severity-pill";
 
 export const DetailList2 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      minHeight: '100%',
+      backgroundColor: "background.default",
+      minHeight: "100%",
       p: 3,
     }}
   >
@@ -92,16 +92,20 @@ export const DetailList2 = () => (
       </Table>
       <Box
         sx={{
-          alignItems: 'flex-start',
-          display: 'flex',
-          flexDirection: 'column',
+          alignItems: "flex-start",
+          display: "flex",
+          flexDirection: "column",
           p: 1,
         }}
       >
         <Button color="inherit" startIcon={<LockIcon fontSize="small" />}>
           Reset &amp; Send Password
         </Button>
-        <Button color="inherit" startIcon={<UserIcon fontSize="small" />} sx={{ mt: 1 }}>
+        <Button
+          color="inherit"
+          startIcon={<UserIcon fontSize="small" />}
+          sx={{ mt: 1 }}
+        >
           Login as Customer
         </Button>
       </Box>

@@ -1,14 +1,14 @@
-import { createContext, useEffect, useReducer } from 'react';
-import PropTypes from 'prop-types';
-import { authApi as fakeAuthApi } from '../__fake-api__/auth-api';
-import { authApi } from '../api/auth-api';
+import { createContext, useEffect, useReducer } from "react";
+import PropTypes from "prop-types";
+import { authApi as fakeAuthApi } from "../__fake-api__/auth-api";
+import { authApi } from "../api/auth-api";
 
 var ActionType;
 (function (ActionType) {
-  ActionType['INITIALIZE'] = 'INITIALIZE';
-  ActionType['LOGIN'] = 'LOGIN';
-  ActionType['LOGOUT'] = 'LOGOUT';
-  ActionType['REGISTER'] = 'REGISTER';
+  ActionType["INITIALIZE"] = "INITIALIZE";
+  ActionType["LOGIN"] = "LOGIN";
+  ActionType["LOGOUT"] = "LOGOUT";
+  ActionType["REGISTER"] = "REGISTER";
 })(ActionType || (ActionType = {}));
 
 const initialState = {
@@ -37,7 +37,7 @@ const handlers = {
       user,
     };
   },
-  LOGOUT: state => ({
+  LOGOUT: (state) => ({
     ...state,
     isAuthenticated: false,
     user: null,
@@ -53,24 +53,25 @@ const handlers = {
   },
 };
 
-const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
+const reducer = (state, action) =>
+  handlers[action.type] ? handlers[action.type](state, action) : state;
 
 export const AuthContext = createContext({
   ...initialState,
-  platform: 'JWT',
+  platform: "JWT",
   login: () => Promise.resolve(),
   logout: () => Promise.resolve(),
   register: () => Promise.resolve(),
 });
 
-export const AuthProvider = props => {
+export const AuthProvider = (props) => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
     const initialize = async () => {
       try {
-        const accessToken = globalThis.localStorage.getItem('accessToken');
+        const accessToken = globalThis.localStorage.getItem("accessToken");
 
         if (accessToken) {
           const user = await authApi.me(accessToken);
@@ -113,7 +114,7 @@ export const AuthProvider = props => {
 
     const user = await authApi.me(accessToken);
 
-    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem("accessToken", accessToken);
 
     dispatch({
       type: ActionType.LOGIN,
@@ -124,7 +125,7 @@ export const AuthProvider = props => {
   const logout = async () => {
     await authApi.logout();
 
-    localStorage.removeItem('accessToken');
+    localStorage.removeItem("accessToken");
 
     dispatch({ type: ActionType.LOGOUT });
   };
@@ -133,7 +134,7 @@ export const AuthProvider = props => {
     const accessToken = await fakeAuthApi.register({ email, name, password });
     const user = await authApi.me(accessToken);
 
-    localStorage.setItem('accessToken', accessToken);
+    localStorage.setItem("accessToken", accessToken);
 
     dispatch({
       type: ActionType.REGISTER,
@@ -145,7 +146,7 @@ export const AuthProvider = props => {
     <AuthContext.Provider
       value={{
         ...state,
-        platform: 'JWT',
+        platform: "JWT",
         login,
         logout,
         register,

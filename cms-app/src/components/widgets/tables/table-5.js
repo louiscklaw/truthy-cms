@@ -1,5 +1,5 @@
-import numeral from 'numeral';
-import { subDays, subHours } from 'date-fns';
+import numeral from "numeral";
+import { subDays, subHours } from "date-fns";
 import {
   Box,
   Card,
@@ -16,76 +16,76 @@ import {
   TablePagination,
   TableRow,
   TextField,
-} from '@mui/material';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
-import { Image as ImageIcon } from '../../../icons/image';
-import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
-import { Search as SearchIcon } from '../../../icons/search';
-import { Scrollbar } from '../../scrollbar';
-import { SeverityPill } from '../../severity-pill';
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { Image as ImageIcon } from "../../../icons/image";
+import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
+import { Search as SearchIcon } from "../../../icons/search";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
 const now = new Date();
 
 const products = [
   {
-    id: '5ece2c077e39da27658aa8a9',
-    attributes: ['Cotton'],
-    category: 'dress',
-    currency: '$',
+    id: "5ece2c077e39da27658aa8a9",
+    attributes: ["Cotton"],
+    category: "dress",
+    currency: "$",
     createdAt: subDays(now, 1).getTime(),
-    image: '/static/mock-images/products/product_1.png',
-    inventoryType: 'in_stock',
+    image: "/static/mock-images/products/product_1.png",
+    inventoryType: "in_stock",
     isAvailable: true,
     isShippable: false,
-    name: 'Healthcare Erbology',
+    name: "Healthcare Erbology",
     price: 23.99,
     quantity: 85,
     updatedAt: subHours(now, 6).getTime(),
     variants: 2,
   },
   {
-    id: '5ece2c0d16f70bff2cf86cd8',
-    attributes: ['Cotton'],
-    category: 'dress',
-    currency: '$',
+    id: "5ece2c0d16f70bff2cf86cd8",
+    attributes: ["Cotton"],
+    category: "dress",
+    currency: "$",
     createdAt: subDays(now, 3).getTime(),
-    image: '/static/mock-images/products/product_2.png',
-    inventoryType: 'out_of_stock',
+    image: "/static/mock-images/products/product_2.png",
+    inventoryType: "out_of_stock",
     isAvailable: false,
     isShippable: true,
-    name: 'Makeup Lancome Rouge',
+    name: "Makeup Lancome Rouge",
     price: 95.0,
     quantity: 0,
     updatedAt: subDays(subHours(now, 8), 2).getTime(),
     variants: 1,
   },
   {
-    id: '5ece2c123fad30cbbff8d060',
-    attributes: ['Variety of styles'],
-    category: 'jewelry',
-    currency: '$',
+    id: "5ece2c123fad30cbbff8d060",
+    attributes: ["Variety of styles"],
+    category: "jewelry",
+    currency: "$",
     createdAt: subDays(now, 6).getTime(),
     image: null,
-    inventoryType: 'in_stock',
+    inventoryType: "in_stock",
     isAvailable: true,
     isShippable: false,
-    name: 'Layering Bracelets Collection',
+    name: "Layering Bracelets Collection",
     price: 155.0,
     quantity: 48,
     updatedAt: subDays(subHours(now, 2), 1).getTime(),
     variants: 5,
   },
   {
-    id: '5ece2c1be7996d1549d94e34',
-    attributes: ['Polyester and Spandex'],
-    category: 'blouse',
-    currency: '$',
+    id: "5ece2c1be7996d1549d94e34",
+    attributes: ["Polyester and Spandex"],
+    category: "blouse",
+    currency: "$",
     createdAt: subDays(now, 12).getTime(),
-    image: '/static/mock-images/products/product_4.png',
-    inventoryType: 'limited',
+    image: "/static/mock-images/products/product_4.png",
+    inventoryType: "limited",
     isAvailable: false,
     isShippable: true,
-    name: 'Skincare Necessaire',
+    name: "Skincare Necessaire",
     price: 17.99,
     quantity: 5,
     updatedAt: subDays(subHours(now, 7), 1).getTime(),
@@ -95,74 +95,74 @@ const products = [
 
 const categoryOptions = [
   {
-    label: 'All',
-    value: 'all',
+    label: "All",
+    value: "all",
   },
   {
-    label: 'Dress',
-    value: 'dress',
+    label: "Dress",
+    value: "dress",
   },
   {
-    label: 'Jewelry',
-    value: 'jewelry',
+    label: "Jewelry",
+    value: "jewelry",
   },
   {
-    label: 'Blouse',
-    value: 'blouse',
+    label: "Blouse",
+    value: "blouse",
   },
   {
-    label: 'Beauty',
-    value: 'beauty',
+    label: "Beauty",
+    value: "beauty",
   },
 ];
 
 const availabilityOptions = [
   {
-    label: 'All',
-    value: 'all',
+    label: "All",
+    value: "all",
   },
   {
-    label: 'Available',
-    value: 'available',
+    label: "Available",
+    value: "available",
   },
   {
-    label: 'Unavailable',
-    value: 'unavailable',
+    label: "Unavailable",
+    value: "unavailable",
   },
 ];
 
 const sortOptions = [
   {
-    label: 'Last update (newest first)',
-    value: 'updatedAt|desc',
+    label: "Last update (newest first)",
+    value: "updatedAt|desc",
   },
   {
-    label: 'Last update (oldest first)',
-    value: 'updatedAt|asc',
+    label: "Last update (oldest first)",
+    value: "updatedAt|asc",
   },
   {
-    label: 'Creation date (newest first)',
-    value: 'createdAt|desc',
+    label: "Creation date (newest first)",
+    value: "createdAt|desc",
   },
   {
-    label: 'Creation date (oldest first)',
-    value: 'createdAt|asc',
+    label: "Creation date (oldest first)",
+    value: "createdAt|asc",
   },
 ];
 
-const getInventoryLabel = inventoryType => {
+const getInventoryLabel = (inventoryType) => {
   const map = {
     in_stock: {
-      color: 'success',
-      text: 'In Stock',
+      color: "success",
+      text: "In Stock",
     },
     limited: {
-      color: 'warning',
-      text: 'Limited',
+      color: "warning",
+      text: "Limited",
     },
     out_of_stock: {
-      color: 'error',
-      text: 'Out of Stock',
+      color: "error",
+      text: "Out of Stock",
     },
   };
 
@@ -174,16 +174,16 @@ const getInventoryLabel = inventoryType => {
 export const Table5 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
+      backgroundColor: "background.default",
       p: 3,
     }}
   >
     <Card>
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
-          flexWrap: 'wrap',
+          alignItems: "center",
+          display: "flex",
+          flexWrap: "wrap",
           m: -1,
           p: 2,
         }}
@@ -191,7 +191,7 @@ export const Table5 = () => (
         <Box
           sx={{
             m: 1,
-            maxWidth: '100%',
+            maxWidth: "100%",
             width: 500,
           }}
         >
@@ -210,12 +210,17 @@ export const Table5 = () => (
         <Box
           sx={{
             m: 1,
-            maxWidth: '100%',
+            maxWidth: "100%",
             width: 240,
           }}
         >
-          <TextField label="Sort By" name="sort" select SelectProps={{ native: true }}>
-            {sortOptions.map(option => (
+          <TextField
+            label="Sort By"
+            name="sort"
+            select
+            SelectProps={{ native: true }}
+          >
+            {sortOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -225,12 +230,18 @@ export const Table5 = () => (
         <Box
           sx={{
             m: 1,
-            maxWidth: '100%',
+            maxWidth: "100%",
             width: 240,
           }}
         >
-          <TextField fullWidth label="Category" name="category" select SelectProps={{ native: true }}>
-            {categoryOptions.map(categoryOption => (
+          <TextField
+            fullWidth
+            label="Category"
+            name="category"
+            select
+            SelectProps={{ native: true }}
+          >
+            {categoryOptions.map((categoryOption) => (
               <option key={categoryOption.value} value={categoryOption.value}>
                 {categoryOption.label}
               </option>
@@ -240,23 +251,38 @@ export const Table5 = () => (
         <Box
           sx={{
             m: 1,
-            maxWidth: '100%',
+            maxWidth: "100%",
             width: 240,
           }}
         >
-          <TextField fullWidth label="Availability" name="availability" select SelectProps={{ native: true }}>
-            {availabilityOptions.map(availabilityOption => (
-              <option key={availabilityOption.value} value={availabilityOption.value}>
+          <TextField
+            fullWidth
+            label="Availability"
+            name="availability"
+            select
+            SelectProps={{ native: true }}
+          >
+            {availabilityOptions.map((availabilityOption) => (
+              <option
+                key={availabilityOption.value}
+                value={availabilityOption.value}
+              >
                 {availabilityOption.label}
               </option>
             ))}
           </TextField>
         </Box>
         <Box sx={{ m: 2 }}>
-          <FormControlLabel control={<Switch name="inStock" />} label="In Stock" />
+          <FormControlLabel
+            control={<Switch name="inStock" />}
+            label="In Stock"
+          />
         </Box>
         <Box sx={{ m: 2 }}>
-          <FormControlLabel control={<Switch name="Shippable" />} label="Shippable" />
+          <FormControlLabel
+            control={<Switch name="Shippable" />}
+            label="Shippable"
+          />
         </Box>
       </Box>
       <Scrollbar>
@@ -275,7 +301,7 @@ export const Table5 = () => (
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.map(product => (
+            {products.map((product) => (
               <TableRow hover key={product.id}>
                 <TableCell padding="checkbox">
                   <Checkbox />
@@ -283,23 +309,23 @@ export const Table5 = () => (
                 <TableCell>
                   <Box
                     sx={{
-                      alignItems: 'center',
-                      display: 'flex',
+                      alignItems: "center",
+                      display: "flex",
                     }}
                   >
                     {product.image ? (
                       <Box
                         sx={{
-                          alignItems: 'center',
-                          backgroundColor: 'background.default',
-                          display: 'flex',
+                          alignItems: "center",
+                          backgroundColor: "background.default",
+                          display: "flex",
                           height: 100,
-                          justifyContent: 'center',
-                          overflow: 'hidden',
+                          justifyContent: "center",
+                          overflow: "hidden",
                           width: 100,
-                          '& img': {
-                            height: 'auto',
-                            width: '100%',
+                          "& img": {
+                            height: "auto",
+                            width: "100%",
                           },
                         }}
                       >
@@ -308,29 +334,38 @@ export const Table5 = () => (
                     ) : (
                       <Box
                         sx={{
-                          alignItems: 'center',
-                          backgroundColor: 'background.default',
-                          display: 'flex',
+                          alignItems: "center",
+                          backgroundColor: "background.default",
+                          display: "flex",
                           height: 100,
-                          justifyContent: 'center',
+                          justifyContent: "center",
                           width: 100,
                         }}
                       >
                         <ImageIcon fontSize="small" />
                       </Box>
                     )}
-                    <Link color="textPrimary" underline="none" sx={{ ml: 2 }} variant="subtitle2">
+                    <Link
+                      color="textPrimary"
+                      underline="none"
+                      sx={{ ml: 2 }}
+                      variant="subtitle2"
+                    >
                       {product.name}
                     </Link>
                   </Box>
                 </TableCell>
-                <TableCell>{getInventoryLabel(product.inventoryType)}</TableCell>
+                <TableCell>
+                  {getInventoryLabel(product.inventoryType)}
+                </TableCell>
                 <TableCell>
                   {product.quantity} in stock
                   {product.variants > 1 && ` in ${product.variants} variants`}
                 </TableCell>
-                <TableCell>{product.attributes.map(attr => attr)}</TableCell>
-                <TableCell>{numeral(product.price).format(`${product.currency}0,0.00`)}</TableCell>
+                <TableCell>{product.attributes.map((attr) => attr)}</TableCell>
+                <TableCell>
+                  {numeral(product.price).format(`${product.currency}0,0.00`)}
+                </TableCell>
                 <TableCell align="right">
                   <IconButton>
                     <PencilAltIcon fontSize="small" />

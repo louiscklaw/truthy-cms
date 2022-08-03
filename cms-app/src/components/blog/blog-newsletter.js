@@ -1,5 +1,5 @@
-import { Box, Button, Card, Grid, TextField, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
+import { Box, Button, Card, Grid, TextField, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 export const BlogNewsletter = () => {
   const theme = useTheme();
@@ -12,13 +12,19 @@ export const BlogNewsletter = () => {
         px: 8,
       }}
     >
-      <Grid alignItems="center" container justifyContent="space-between" spacing={3} wrap="nowrap">
+      <Grid
+        alignItems="center"
+        container
+        justifyContent="space-between"
+        spacing={3}
+        wrap="nowrap"
+      >
         <Grid item md={8} xs={12}>
           <Box
             sx={{
-              alignItems: 'flex-start',
-              display: 'flex',
-              flexDirection: 'column',
+              alignItems: "flex-start",
+              display: "flex",
+              flexDirection: "column",
             }}
           >
             <Typography variant="h4">Join the developer list</Typography>
@@ -30,9 +36,16 @@ export const BlogNewsletter = () => {
                 mt: 1,
               }}
             >
-              Subscribe to our newsletter to make sure you don&apos;t miss anything.
+              Subscribe to our newsletter to make sure you don&apos;t miss
+              anything.
             </Typography>
-            <TextField fullWidth label="Email address" name="email" sx={{ flexGrow: 1 }} type="email" />
+            <TextField
+              fullWidth
+              label="Email address"
+              name="email"
+              sx={{ flexGrow: 1 }}
+              type="email"
+            />
             <Button fullWidth size="large" sx={{ mt: 2 }} variant="contained">
               Subscribe
             </Button>
@@ -43,20 +56,20 @@ export const BlogNewsletter = () => {
           md={4}
           sx={{
             display: {
-              md: 'block',
-              xs: 'none',
+              md: "block",
+              xs: "none",
             },
           }}
         >
           <Box
             sx={{
-              position: 'relative',
-              pt: 'calc(421 / 472 * 100%)',
-              '& img': {
-                height: 'auto',
-                position: 'absolute',
+              position: "relative",
+              pt: "calc(421 / 472 * 100%)",
+              "& img": {
+                height: "auto",
+                position: "absolute",
                 top: 0,
-                width: '100%',
+                width: "100%",
               },
             }}
           >

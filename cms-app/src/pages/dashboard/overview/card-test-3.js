@@ -1,14 +1,21 @@
-import { Avatar, Box, Card, CardActions, Divider, Typography } from '@mui/material';
-import { alpha, useTheme } from '@mui/material/styles';
-import { ChevronDown as ChevronDownIcon } from '../../../icons/chevron-down';
-import { Chart } from '../../chart';
+import {
+  Avatar,
+  Box,
+  Card,
+  CardActions,
+  Divider,
+  Typography,
+} from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
+import { ChevronDown as ChevronDownIcon } from "../../../icons/chevron-down";
+import { Chart } from "../../chart";
 
 const LineChart = () => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       toolbar: {
         show: false,
       },
@@ -16,7 +23,7 @@ const LineChart = () => {
         enabled: false,
       },
     },
-    colors: ['#2F3EB1'],
+    colors: ["#2F3EB1"],
     dataLabels: {
       enabled: false,
     },
@@ -53,7 +60,14 @@ const LineChart = () => {
 
   const chartSeries = [{ data: [0, 60, 30, 60, 0, 30, 10, 30, 0] }];
 
-  return <Chart options={chartOptions} series={chartSeries} type="line" width={120} />;
+  return (
+    <Chart
+      options={chartOptions}
+      series={chartSeries}
+      type="line"
+      width={120}
+    />
+  );
 };
 
 const BarChart = () => {
@@ -61,7 +75,7 @@ const BarChart = () => {
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       toolbar: {
         show: false,
       },
@@ -69,7 +83,7 @@ const BarChart = () => {
         enabled: false,
       },
     },
-    colors: ['#2F3EB1'],
+    colors: ["#2F3EB1"],
     dataLabels: {
       enabled: false,
     },
@@ -82,7 +96,7 @@ const BarChart = () => {
     states: {
       normal: {
         filter: {
-          type: 'none',
+          type: "none",
           value: 0,
         },
       },
@@ -114,16 +128,18 @@ const BarChart = () => {
 
   const chartSeries = [{ data: [10, 20, 30, 40, 50, 60, 5] }];
 
-  return <Chart options={chartOptions} series={chartSeries} type="bar" width={120} />;
+  return (
+    <Chart options={chartOptions} series={chartSeries} type="bar" width={120} />
+  );
 };
 
 export const CardTest3 = () => (
   <Card>
     <Box
       sx={{
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'space-between',
+        alignItems: "center",
+        display: "flex",
+        justifyContent: "space-between",
         px: 3,
         py: 2,
       }}
@@ -141,14 +157,14 @@ export const CardTest3 = () => (
     <Divider />
     <CardActions
       sx={{
-        alignItems: 'center',
-        display: 'flex',
+        alignItems: "center",
+        display: "flex",
       }}
     >
       <Avatar
         sx={{
-          backgroundColor: theme => alpha(theme.palette.error.main, 0.08),
-          color: 'error.main',
+          backgroundColor: (theme) => alpha(theme.palette.error.main, 0.08),
+          color: "error.main",
           height: 36,
           width: 36,
         }}

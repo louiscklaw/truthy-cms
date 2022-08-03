@@ -1,6 +1,6 @@
-import { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { formatDistanceToNowStrict } from 'date-fns';
+import { useRef, useState } from "react";
+import PropTypes from "prop-types";
+import { formatDistanceToNowStrict } from "date-fns";
 import {
   Avatar,
   AvatarGroup,
@@ -12,27 +12,31 @@ import {
   MenuItem,
   Tooltip,
   Typography,
-} from '@mui/material';
-import { Archive as ArchiveIcon } from '../../../icons/archive';
-import { Bell as BellIcon } from '../../../icons/bell';
-import { Ban as BanIcon } from '../../../icons/ban';
-import { Camera as CameraIcon } from '../../../icons/camera';
-import { Phone as PhoneIcon } from '../../../icons/phone';
-import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
-import { Trash as TrashIcon } from '../../../icons/trash';
+} from "@mui/material";
+import { Archive as ArchiveIcon } from "../../../icons/archive";
+import { Bell as BellIcon } from "../../../icons/bell";
+import { Ban as BanIcon } from "../../../icons/ban";
+import { Camera as CameraIcon } from "../../../icons/camera";
+import { Phone as PhoneIcon } from "../../../icons/phone";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Trash as TrashIcon } from "../../../icons/trash";
 
-export const ChatThreadToolbar = props => {
+export const ChatThreadToolbar = (props) => {
   const { participants, ...other } = props;
   const moreRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
-    id: '5e86809283e28b96d2d38537',
+    id: "5e86809283e28b96d2d38537",
   };
 
-  const recipients = participants.filter(participant => participant.id !== user.id);
-  const name = recipients.reduce((names, participant) => [...names, participant.name], []).join(', ');
+  const recipients = participants.filter(
+    (participant) => participant.id !== user.id
+  );
+  const name = recipients
+    .reduce((names, participant) => [...names, participant.name], [])
+    .join(", ");
 
   const handleMenuOpen = () => {
     setOpenMenu(true);
@@ -45,12 +49,12 @@ export const ChatThreadToolbar = props => {
   return (
     <Box
       sx={{
-        alignItems: 'center',
-        backgroundColor: 'background.paper',
-        borderBottomColor: 'divider',
-        borderBottomStyle: 'solid',
+        alignItems: "center",
+        backgroundColor: "background.paper",
+        borderBottomColor: "divider",
+        borderBottomStyle: "solid",
         borderBottomWidth: 1,
-        display: 'flex',
+        display: "flex",
         flexShrink: 0,
         minHeight: 64,
         px: 2,
@@ -60,25 +64,25 @@ export const ChatThreadToolbar = props => {
     >
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
         }}
       >
         <AvatarGroup
           max={2}
           sx={{
             ...(recipients.length > 1 && {
-              '& .MuiAvatar-root': {
+              "& .MuiAvatar-root": {
                 height: 30,
                 width: 30,
-                '&:nth-of-type(2)': {
-                  mt: '10px',
+                "&:nth-of-type(2)": {
+                  mt: "10px",
                 },
               },
             }),
           }}
         >
-          {recipients.map(recipient => (
+          {recipients.map((recipient) => (
             <Avatar key={recipient.id} src={recipient.avatar || undefined} />
           ))}
         </AvatarGroup>
@@ -86,7 +90,10 @@ export const ChatThreadToolbar = props => {
           <Typography variant="subtitle2">{name}</Typography>
           {Boolean(recipients.length === 1 && recipients[0].lastActivity) && (
             <Typography color="textSecondary" variant="caption">
-              Last active {formatDistanceToNowStrict(recipients[0].lastActivity, { addSuffix: true })}
+              Last active{" "}
+              {formatDistanceToNowStrict(recipients[0].lastActivity, {
+                addSuffix: true,
+              })}
             </Typography>
           )}
         </Box>
@@ -103,7 +110,12 @@ export const ChatThreadToolbar = props => {
           <DotsHorizontalIcon fontSize="small" />
         </IconButton>
       </Tooltip>
-      <Menu anchorEl={moreRef.current} keepMounted onClose={handleMenuClose} open={openMenu}>
+      <Menu
+        anchorEl={moreRef.current}
+        keepMounted
+        onClose={handleMenuClose}
+        open={openMenu}
+      >
         <MenuItem>
           <ListItemIcon>
             <BanIcon fontSize="small" />

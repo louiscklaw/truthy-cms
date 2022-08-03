@@ -9,63 +9,63 @@ import {
   ListItemAvatar,
   ListItemText,
   Typography,
-} from '@mui/material';
-import { alpha } from '@mui/material/styles';
-import { MinusOutlined as MinusOutlinedIcon } from '../icons/minus-outlined';
-import { Logo } from './logo';
+} from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import { MinusOutlined as MinusOutlinedIcon } from "../icons/minus-outlined";
+import { Logo } from "./logo";
 
 const sections = [
   {
-    title: 'Menu',
+    title: "Menu",
     links: [
       {
-        title: 'Browse Components',
-        href: '/browse',
+        title: "Browse Components",
+        href: "/browse",
       },
       {
-        title: 'Documentation',
-        href: '/docs/welcome',
+        title: "Documentation",
+        href: "/docs/welcome",
       },
     ],
   },
   {
-    title: 'Placeholders',
+    title: "Placeholders",
     links: [
       {
-        title: 'Terms & Conditions',
-        href: '#',
+        title: "Terms & Conditions",
+        href: "#",
       },
       {
-        title: 'License',
-        href: '#',
+        title: "License",
+        href: "#",
       },
       {
-        title: 'Contact',
-        href: '#',
+        title: "Contact",
+        href: "#",
       },
     ],
   },
   {
-    title: 'Social',
+    title: "Social",
     links: [
       {
-        title: 'Instagram',
-        href: '#',
+        title: "Instagram",
+        href: "#",
       },
       {
-        title: 'LinkedIn',
-        href: '#',
+        title: "LinkedIn",
+        href: "#",
       },
     ],
   },
 ];
 
-export const Footer = props => (
+export const Footer = (props) => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      borderTopColor: 'divider',
-      borderTopStyle: 'solid',
+      backgroundColor: "background.default",
+      borderTopColor: "divider",
+      borderTopStyle: "solid",
       borderTopWidth: 1,
       pb: 6,
       pt: {
@@ -82,8 +82,8 @@ export const Footer = props => (
           md={3}
           sm={4}
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             order: {
               md: 1,
               xs: 4,
@@ -114,7 +114,7 @@ export const Footer = props => (
               {section.title}
             </Typography>
             <List disablePadding>
-              {section.links.map(link => (
+              {section.links.map((link) => (
                 <ListItem
                   disableGutters
                   key={link.title}
@@ -125,8 +125,8 @@ export const Footer = props => (
                 >
                   <ListItemAvatar
                     sx={{
-                      alignItems: 'center',
-                      display: 'flex',
+                      alignItems: "center",
+                      display: "flex",
                       minWidth: 0,
                       mr: 0.5,
                     }}
@@ -135,7 +135,11 @@ export const Footer = props => (
                   </ListItemAvatar>
                   <ListItemText
                     primary={
-                      <Link href={link.href} color="textPrimary" variant="subtitle2">
+                      <Link
+                        href={link.href}
+                        color="textPrimary"
+                        variant="subtitle2"
+                      >
                         {link.title}
                       </Link>
                     }
@@ -148,7 +152,8 @@ export const Footer = props => (
       </Grid>
       <Divider
         sx={{
-          borderColor: theme => alpha(theme.palette.primary.contrastText, 0.12),
+          borderColor: (theme) =>
+            alpha(theme.palette.primary.contrastText, 0.12),
           my: 6,
         }}
       />

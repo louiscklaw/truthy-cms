@@ -1,9 +1,9 @@
-import { Box, Card, Container, Grid, Link, Typography } from '@mui/material';
+import { Box, Card, Container, Grid, Link, Typography } from "@mui/material";
 
-export const HomeClients = props => (
+export const HomeClients = (props) => (
   <Box
     sx={{
-      backgroundColor: 'background.paper',
+      backgroundColor: "background.paper",
       py: 15,
     }}
     {...props}
@@ -16,25 +16,30 @@ export const HomeClients = props => (
         <Grid item md={6} xs={12}>
           <Card
             sx={{
-              height: '100%',
+              height: "100%",
               p: 3,
-              position: 'relative',
+              position: "relative",
             }}
             variant="outlined"
           >
-            <Typography sx={{ color: 'textPrimary' }} variant="h5">
+            <Typography sx={{ color: "textPrimary" }} variant="h5">
               Documentation
             </Typography>
             <Typography
               sx={{
-                color: 'textPrimary',
+                color: "textPrimary",
                 py: 2,
               }}
               variant="body2"
             >
               Documentation for our project
             </Typography>
-            <Link href="/docs/welcome" color="textPrimary" underline="always" variant="body1">
+            <Link
+              href="/docs/welcome"
+              color="textPrimary"
+              underline="always"
+              variant="body1"
+            >
               Getting started guide
             </Link>
           </Card>
@@ -42,25 +47,30 @@ export const HomeClients = props => (
         <Grid item md={6} xs={12}>
           <Card
             sx={{
-              height: '100%',
+              height: "100%",
               p: 3,
-              position: 'relative',
+              position: "relative",
             }}
             variant="outlined"
           >
-            <Typography sx={{ color: 'textPrimary' }} variant="h5">
+            <Typography sx={{ color: "textPrimary" }} variant="h5">
               See live preview
             </Typography>
             <Typography
               sx={{
-                color: 'textPrimary',
+                color: "textPrimary",
                 py: 2,
               }}
               variant="body2"
             >
               Browse through endless possibilities
             </Typography>
-            <Link href="/browse" color="textPrimary" underline="always" variant="body1">
+            <Link
+              href="/browse"
+              color="textPrimary"
+              underline="always"
+              variant="body1"
+            >
               Browse Components
             </Link>
           </Card>

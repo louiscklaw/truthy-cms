@@ -1,17 +1,27 @@
-import { Box, Checkbox, FormControl, InputLabel, MenuItem, Select, Switch, TextField, Typography } from '@mui/material';
-import { DateTimePicker } from '@mui/lab';
+import {
+  Box,
+  Checkbox,
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  Switch,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { DateTimePicker } from "@mui/lab";
 
 export const InputMixed = () => (
   <Box
     sx={{
-      backgroundColor: 'background.paper',
+      backgroundColor: "background.paper",
       p: 3,
     }}
   >
     <Box
       sx={{
-        alignItems: 'center',
-        display: 'flex',
+        alignItems: "center",
+        display: "flex",
       }}
     >
       <Switch color="primary" />
@@ -21,7 +31,7 @@ export const InputMixed = () => (
       <DateTimePicker
         label="Start date"
         onChange={() => {}}
-        renderInput={inputProps => <TextField fullWidth {...inputProps} />}
+        renderInput={(inputProps) => <TextField fullWidth {...inputProps} />}
         value={new Date()}
       />
     </Box>
@@ -36,8 +46,8 @@ export const InputMixed = () => (
     </Box>
     <Box
       sx={{
-        alignItems: 'center',
-        display: 'flex',
+        alignItems: "center",
+        display: "flex",
         mt: 3,
       }}
     >
@@ -46,8 +56,8 @@ export const InputMixed = () => (
     </Box>
     <Box
       sx={{
-        alignItems: 'center',
-        display: 'flex',
+        alignItems: "center",
+        display: "flex",
         mt: 3,
       }}
     >

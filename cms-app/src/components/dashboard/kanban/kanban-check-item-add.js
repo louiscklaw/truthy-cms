@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import toast from 'react-hot-toast';
-import { Box, Button, OutlinedInput } from '@mui/material';
-import { Plus as PlusIcon } from '../../../icons/plus';
-import { addCheckItem } from '../../../slices/kanban';
-import { useDispatch } from '../../../store';
+import { useState } from "react";
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import { Box, Button, OutlinedInput } from "@mui/material";
+import { Plus as PlusIcon } from "../../../icons/plus";
+import { addCheckItem } from "../../../slices/kanban";
+import { useDispatch } from "../../../store";
 
-export const KanbanCheckItemAdd = props => {
+export const KanbanCheckItemAdd = (props) => {
   const { cardId, checklistId, ...other } = props;
   const dispatch = useDispatch();
-  const [name, setName] = useState('');
+  const [name, setName] = useState("");
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handleAdd = () => {
@@ -18,10 +18,10 @@ export const KanbanCheckItemAdd = props => {
 
   const handleCancel = () => {
     setIsExpanded(false);
-    setName('');
+    setName("");
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setName(event.target.value);
   };
 
@@ -33,22 +33,22 @@ export const KanbanCheckItemAdd = props => {
 
       await dispatch(addCheckItem(cardId, checklistId, name));
       setIsExpanded(false);
-      setName('');
-      toast.success('Check item added!');
+      setName("");
+      toast.success("Check item added!");
     } catch (err) {
       console.error(err);
-      toast.error('Something went wrong!');
+      toast.error("Something went wrong!");
     }
   };
 
   return (
-    <Box sx={{ width: '100%' }} {...other}>
+    <Box sx={{ width: "100%" }} {...other}>
       {isExpanded ? (
         <Box
           sx={{
-            alignItems: 'center',
-            display: 'flex',
-            width: '100%',
+            alignItems: "center",
+            display: "flex",
+            width: "100%",
           }}
         >
           <OutlinedInput
@@ -57,13 +57,18 @@ export const KanbanCheckItemAdd = props => {
             value={name}
             sx={{
               flexGrow: 1,
-              '& .MuiInputBase-input': {
+              "& .MuiInputBase-input": {
                 px: 2,
                 py: 1,
               },
             }}
           />
-          <Button onClick={handleSave} size="small" sx={{ ml: 2 }} variant="contained">
+          <Button
+            onClick={handleSave}
+            size="small"
+            sx={{ ml: 2 }}
+            variant="contained"
+          >
             Add
           </Button>
           <Button onClick={handleCancel} size="small" sx={{ ml: 2 }}>
@@ -71,7 +76,11 @@ export const KanbanCheckItemAdd = props => {
           </Button>
         </Box>
       ) : (
-        <Button onClick={handleAdd} size="small" startIcon={<PlusIcon fontSize="small" />}>
+        <Button
+          onClick={handleAdd}
+          size="small"
+          startIcon={<PlusIcon fontSize="small" />}
+        >
           Add Item
         </Button>
       )}

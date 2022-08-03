@@ -1,5 +1,5 @@
-import { format, subDays, subHours } from 'date-fns';
-import numeral from 'numeral';
+import { format, subDays, subHours } from "date-fns";
+import numeral from "numeral";
 import {
   Box,
   Card,
@@ -15,105 +15,105 @@ import {
   TableRow,
   TextField,
   Typography,
-} from '@mui/material';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
-import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
-import { Search as SearchIcon } from '../../../icons/search';
-import { Scrollbar } from '../../scrollbar';
-import { SeverityPill } from '../../severity-pill';
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
+import { Search as SearchIcon } from "../../../icons/search";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
 const now = new Date();
 
 const invoices = [
   {
-    id: '5ecb868d0f437390ef3ac62c',
-    currency: '$',
+    id: "5ecb868d0f437390ef3ac62c",
+    currency: "$",
     customer: {
-      email: 'contact@anahenisky.io',
-      name: 'Ana Henisky',
+      email: "contact@anahenisky.io",
+      name: "Ana Henisky",
     },
     issueDate: subHours(now, 1).getTime(),
-    status: 'paid',
+    status: "paid",
     totalAmount: 55.5,
   },
   {
-    id: '5ecb868ada8deedee0638502',
-    currency: '$',
+    id: "5ecb868ada8deedee0638502",
+    currency: "$",
     customer: {
-      email: 'sales@matt-jason.com',
-      name: 'Matt Jason',
+      email: "sales@matt-jason.com",
+      name: "Matt Jason",
     },
     issueDate: subDays(subHours(now, 5), 2).getTime(),
-    status: 'pending',
+    status: "pending",
     totalAmount: 19.76,
   },
   {
-    id: '5ecb868700aba84d0f1c0e48',
-    currency: '$',
+    id: "5ecb868700aba84d0f1c0e48",
+    currency: "$",
     customer: {
-      email: 'support@terrythomas.io',
-      name: 'Terry Thomas',
+      email: "support@terrythomas.io",
+      name: "Terry Thomas",
     },
     issueDate: subDays(subHours(now, 4), 6).getTime(),
-    status: 'canceled',
+    status: "canceled",
     totalAmount: 781.5,
   },
   {
-    id: '5ecb8682038e1ddf4e868764',
-    currency: '$',
+    id: "5ecb8682038e1ddf4e868764",
+    currency: "$",
     customer: {
-      email: 'contact@triv-shopper.co.uk',
-      name: 'Triv Shopper',
+      email: "contact@triv-shopper.co.uk",
+      name: "Triv Shopper",
     },
     issueDate: subDays(subHours(now, 2), 15).getTime(),
-    status: 'paid',
+    status: "paid",
     totalAmount: 96.64,
   },
 ];
 
 const statusOptions = [
   {
-    label: 'All',
-    value: 'all',
+    label: "All",
+    value: "all",
   },
   {
-    label: 'Paid',
-    value: 'paid',
+    label: "Paid",
+    value: "paid",
   },
   {
-    label: 'Pending',
-    value: 'pending',
+    label: "Pending",
+    value: "pending",
   },
   {
-    label: 'Canceled',
-    value: 'canceled',
+    label: "Canceled",
+    value: "canceled",
   },
 ];
 
 const sortOptions = [
   {
-    label: 'Newest first',
-    value: 'createdAt|desc',
+    label: "Newest first",
+    value: "createdAt|desc",
   },
   {
-    label: 'Oldest first',
-    value: 'createdAt|asc',
+    label: "Oldest first",
+    value: "createdAt|asc",
   },
 ];
 
-const getStatusLabel = invoiceStatus => {
+const getStatusLabel = (invoiceStatus) => {
   const map = {
     canceled: {
-      color: 'error',
-      text: 'Canceled',
+      color: "error",
+      text: "Canceled",
     },
     paid: {
-      color: 'success',
-      text: 'Paid',
+      color: "success",
+      text: "Paid",
     },
     pending: {
-      color: 'warning',
-      text: 'Pending',
+      color: "warning",
+      text: "Pending",
     },
   };
 
@@ -125,16 +125,16 @@ const getStatusLabel = invoiceStatus => {
 export const Table6 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
+      backgroundColor: "background.default",
       p: 3,
     }}
   >
     <Card>
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
-          flexWrap: 'wrap',
+          alignItems: "center",
+          display: "flex",
+          flexWrap: "wrap",
           m: -1,
           p: 2,
         }}
@@ -142,7 +142,7 @@ export const Table6 = () => (
         <Box
           sx={{
             m: 1,
-            maxWidth: '100%',
+            maxWidth: "100%",
             width: 500,
           }}
         >
@@ -161,12 +161,18 @@ export const Table6 = () => (
         <Box
           sx={{
             m: 1,
-            maxWidth: '100%',
+            maxWidth: "100%",
             width: 240,
           }}
         >
-          <TextField fullWidth label="Sort By" name="sort" select SelectProps={{ native: true }}>
-            {sortOptions.map(option => (
+          <TextField
+            fullWidth
+            label="Sort By"
+            name="sort"
+            select
+            SelectProps={{ native: true }}
+          >
+            {sortOptions.map((option) => (
               <option key={option.value} value={option.value}>
                 {option.label}
               </option>
@@ -176,12 +182,18 @@ export const Table6 = () => (
         <Box
           sx={{
             m: 1,
-            maxWidth: '100%',
+            maxWidth: "100%",
             width: 240,
           }}
         >
-          <TextField fullWidth label="Status" name="status" select SelectProps={{ native: true }}>
-            {statusOptions.map(statusOption => (
+          <TextField
+            fullWidth
+            label="Status"
+            name="status"
+            select
+            SelectProps={{ native: true }}
+          >
+            {statusOptions.map((statusOption) => (
               <option key={statusOption.value} value={statusOption.value}>
                 {statusOption.label}
               </option>
@@ -205,13 +217,17 @@ export const Table6 = () => (
             </TableRow>
           </TableHead>
           <TableBody>
-            {invoices.map(invoice => (
+            {invoices.map((invoice) => (
               <TableRow hover key={invoice.id}>
                 <TableCell padding="checkbox">
                   <Checkbox />
                 </TableCell>
                 <TableCell>
-                  <Link color="textPrimary" underline="none" variant="subtitle2">
+                  <Link
+                    color="textPrimary"
+                    underline="none"
+                    variant="subtitle2"
+                  >
                     {invoice.customer.name}
                   </Link>
                   <Typography color="textSecondary" variant="body2">
@@ -219,9 +235,13 @@ export const Table6 = () => (
                   </Typography>
                 </TableCell>
                 <TableCell>{getStatusLabel(invoice.status)}</TableCell>
-                <TableCell>{numeral(invoice.totalAmount).format(`${invoice.currency}0,0.00`)}</TableCell>
+                <TableCell>
+                  {numeral(invoice.totalAmount).format(
+                    `${invoice.currency}0,0.00`
+                  )}
+                </TableCell>
                 <TableCell>{invoice.id}</TableCell>
-                <TableCell>{format(invoice.issueDate, 'dd/MM/yyyy')}</TableCell>
+                <TableCell>{format(invoice.issueDate, "dd/MM/yyyy")}</TableCell>
                 <TableCell align="right">
                   <IconButton>
                     <PencilAltIcon fontSize="small" />

@@ -1,12 +1,19 @@
-import { Avatar, Box, Button, Container, Paper, Typography } from '@mui/material';
-import { alpha } from '@mui/material/styles';
-import WarningIcon from '@mui/icons-material/WarningOutlined';
+import {
+  Avatar,
+  Box,
+  Button,
+  Container,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import WarningIcon from "@mui/icons-material/WarningOutlined";
 
 export const Modal12 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      minHeight: '100%',
+      backgroundColor: "background.default",
+      minHeight: "100%",
       p: 3,
     }}
   >
@@ -14,7 +21,7 @@ export const Modal12 = () => (
       <Paper elevation={12}>
         <Box
           sx={{
-            display: 'flex',
+            display: "flex",
             pb: 2,
             pt: 3,
             px: 3,
@@ -22,8 +29,8 @@ export const Modal12 = () => (
         >
           <Avatar
             sx={{
-              backgroundColor: theme => alpha(theme.palette.error.main, 0.08),
-              color: 'error.main',
+              backgroundColor: (theme) => alpha(theme.palette.error.main, 0.08),
+              color: "error.main",
               mr: 2,
             }}
           >
@@ -32,14 +39,14 @@ export const Modal12 = () => (
           <div>
             <Typography variant="h5">Deactivate account</Typography>
             <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
-              Are you sure you want to deactivate your account? All of your data will be permanently removed. This
-              action cannot be undone.
+              Are you sure you want to deactivate your account? All of your data
+              will be permanently removed. This action cannot be undone.
             </Typography>
           </div>
         </Box>
         <Box
           sx={{
-            display: 'flex',
+            display: "flex",
             px: 3,
             py: 1.5,
           }}
@@ -49,9 +56,9 @@ export const Modal12 = () => (
           </Button>
           <Button
             sx={{
-              backgroundColor: 'error.main',
-              '&:hover': {
-                backgroundColor: 'error.dark',
+              backgroundColor: "error.main",
+              "&:hover": {
+                backgroundColor: "error.dark",
               },
             }}
             variant="contained"

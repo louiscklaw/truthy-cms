@@ -1,4 +1,4 @@
-import numeral from 'numeral';
+import numeral from "numeral";
 import {
   Badge,
   Box,
@@ -12,31 +12,31 @@ import {
   ListItem,
   ListItemText,
   Typography,
-} from '@mui/material';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
 
 const currencies = [
   {
     amount: 21500,
-    color: '#6c76c4',
-    name: 'US Dollars',
+    color: "#6c76c4",
+    name: "US Dollars",
   },
   {
     amount: 15300,
-    color: '#33bb78',
-    name: 'Bitcoin',
+    color: "#33bb78",
+    name: "Bitcoin",
   },
   {
     amount: 1076.81,
-    color: '#ff4081',
-    name: 'XRP Ripple',
+    color: "#ff4081",
+    name: "XRP Ripple",
   },
 ];
 
 export const DetailList1 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
+      backgroundColor: "background.default",
       p: 3,
     }}
   >
@@ -57,7 +57,7 @@ export const DetailList1 = () => (
             Available currency
           </Typography>
           <List disablePadding sx={{ pt: 2 }}>
-            {currencies.map(currency => (
+            {currencies.map((currency) => (
               <ListItem
                 disableGutters
                 key={currency.name}
@@ -71,29 +71,31 @@ export const DetailList1 = () => (
                   primary={
                     <Box
                       sx={{
-                        display: 'flex',
-                        justifyContent: 'space-between',
+                        display: "flex",
+                        justifyContent: "space-between",
                       }}
                     >
                       <Badge
                         anchorOrigin={{
-                          vertical: 'top',
-                          horizontal: 'left',
+                          vertical: "top",
+                          horizontal: "left",
                         }}
                         variant="dot"
                         sx={{
-                          pl: '20px',
-                          '& .MuiBadge-badge': {
+                          pl: "20px",
+                          "& .MuiBadge-badge": {
                             backgroundColor: currency.color,
                             left: 6,
                             top: 11,
                           },
                         }}
                       >
-                        <Typography variant="subtitle2">{currency.name}</Typography>
+                        <Typography variant="subtitle2">
+                          {currency.name}
+                        </Typography>
                       </Badge>
                       <Typography color="textSecondary" variant="subtitle2">
-                        {numeral(currency.amount).format('$0,0.00')}
+                        {numeral(currency.amount).format("$0,0.00")}
                       </Typography>
                     </Box>
                   }
@@ -104,14 +106,18 @@ export const DetailList1 = () => (
           <Divider />
           <Box
             sx={{
-              alignItems: 'flex-start',
-              display: 'flex',
-              flexDirection: 'column',
+              alignItems: "flex-start",
+              display: "flex",
+              flexDirection: "column",
               pt: 2,
             }}
           >
-            <Button endIcon={<ArrowRightIcon fontSize="small" />}>Add money</Button>
-            <Button endIcon={<ArrowRightIcon fontSize="small" />}>Withdraw funds</Button>
+            <Button endIcon={<ArrowRightIcon fontSize="small" />}>
+              Add money
+            </Button>
+            <Button endIcon={<ArrowRightIcon fontSize="small" />}>
+              Withdraw funds
+            </Button>
           </Box>
         </CardContent>
       </Card>

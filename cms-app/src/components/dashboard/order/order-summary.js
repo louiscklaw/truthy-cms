@@ -1,22 +1,31 @@
-import { useState } from 'react';
-import PropTypes from 'prop-types';
-import { format } from 'date-fns';
-import { Box, Button, Card, CardHeader, Divider, TextField, Typography, useMediaQuery } from '@mui/material';
-import { PropertyList } from '../../property-list';
-import { PropertyListItem } from '../../property-list-item';
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import {
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  Divider,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { PropertyList } from "../../property-list";
+import { PropertyListItem } from "../../property-list-item";
 
-const statusOptions = ['Canceled', 'Complete', 'Rejected'];
+const statusOptions = ["Canceled", "Complete", "Rejected"];
 
-export const OrderSummary = props => {
+export const OrderSummary = (props) => {
   const { order, ...other } = props;
-  const smDown = useMediaQuery(theme => theme.breakpoints.down('sm'));
+  const smDown = useMediaQuery((theme) => theme.breakpoints.down("sm"));
   const [status, setStatus] = useState(statusOptions[0]);
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     setStatus(event.target.value);
   };
 
-  const align = smDown ? 'vertical' : 'horizontal';
+  const align = smDown ? "vertical" : "horizontal";
 
   return (
     <Card {...other}>
@@ -42,22 +51,34 @@ export const OrderSummary = props => {
         <Divider />
         <PropertyListItem align={align} label="Invoice" value={order.number} />
         <Divider />
-        <PropertyListItem align={align} label="Date" value={format(order.createdAt, 'dd/MM/yyyy HH:mm')} />
+        <PropertyListItem
+          align={align}
+          label="Date"
+          value={format(order.createdAt, "dd/MM/yyyy HH:mm")}
+        />
         <Divider />
-        <PropertyListItem align={align} label="Promotion Code" value={order.promotionCode} />
+        <PropertyListItem
+          align={align}
+          label="Promotion Code"
+          value={order.promotionCode}
+        />
         <Divider />
-        <PropertyListItem align={align} label="Total Amount" value={`${order.currency}${order.totalAmount}`} />
+        <PropertyListItem
+          align={align}
+          label="Total Amount"
+          value={`${order.currency}${order.totalAmount}`}
+        />
         <Divider />
         <PropertyListItem align={align} label="Status">
           <Box
             sx={{
               alignItems: {
-                sm: 'center',
+                sm: "center",
               },
-              display: 'flex',
+              display: "flex",
               flexDirection: {
-                xs: 'column',
-                sm: 'row',
+                xs: "column",
+                sm: "row",
               },
               mx: -1,
             }}
@@ -76,7 +97,7 @@ export const OrderSummary = props => {
               }}
               value={status}
             >
-              {statusOptions.map(statusOption => (
+              {statusOptions.map((statusOption) => (
                 <option key={statusOption} value={statusOption}>
                   {statusOption}
                 </option>

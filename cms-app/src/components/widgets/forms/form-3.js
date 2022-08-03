@@ -9,17 +9,17 @@ import {
   FormControlLabel,
   Grid,
   Typography,
-} from '@mui/material';
+} from "@mui/material";
 
 export const Form3 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.paper',
-      minHeight: '100%',
+      backgroundColor: "background.paper",
+      minHeight: "100%",
       p: 3,
     }}
   >
-    <form onSubmit={event => event.preventDefault()}>
+    <form onSubmit={(event) => event.preventDefault()}>
       <CardHeader title="Notifications" />
       <Divider />
       <CardContent>
@@ -32,13 +32,22 @@ export const Form3 = () => (
               You will receive emails in your business email address
             </Typography>
             <div>
-              <FormControlLabel control={<Checkbox defaultChecked />} label="Email alerts" />
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Email alerts"
+              />
             </div>
             <div>
-              <FormControlLabel control={<Checkbox />} label="Push Notifications" />
+              <FormControlLabel
+                control={<Checkbox />}
+                label="Push Notifications"
+              />
             </div>
             <div>
-              <FormControlLabel control={<Checkbox defaultChecked />} label="Text message" />
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Text message"
+              />
             </div>
             <div>
               <FormControlLabel
@@ -62,10 +71,16 @@ export const Form3 = () => (
               You will receive emails in your business email address
             </Typography>
             <div>
-              <FormControlLabel control={<Checkbox defaultChecked />} label="Email" />
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Email"
+              />
             </div>
             <div>
-              <FormControlLabel control={<Checkbox defaultChecked />} label="Push notifications" />
+              <FormControlLabel
+                control={<Checkbox defaultChecked />}
+                label="Push notifications"
+              />
             </div>
           </Grid>
         </Grid>
@@ -73,7 +88,7 @@ export const Form3 = () => (
       <Divider />
       <CardActions
         sx={{
-          justifyContent: 'flex-end',
+          justifyContent: "flex-end",
           p: 2,
         }}
       >

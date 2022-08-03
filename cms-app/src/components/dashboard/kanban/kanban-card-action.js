@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
-import { Button } from '@mui/material';
+import PropTypes from "prop-types";
+import { Button } from "@mui/material";
 
-export const KanbanCardAction = props => {
+export const KanbanCardAction = (props) => {
   const { icon, children, ...other } = props;
 
   return (
@@ -9,8 +9,8 @@ export const KanbanCardAction = props => {
       fullWidth
       startIcon={icon}
       sx={{
-        justifyContent: 'flex-start',
-        '& + &': {
+        justifyContent: "flex-start",
+        "& + &": {
           mt: 2,
         },
       }}

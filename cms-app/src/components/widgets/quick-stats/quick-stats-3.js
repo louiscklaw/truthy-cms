@@ -1,10 +1,10 @@
-import { Box, Card, Grid, Typography } from '@mui/material';
-import { SeverityPill } from '../../severity-pill';
+import { Box, Card, Grid, Typography } from "@mui/material";
+import { SeverityPill } from "../../severity-pill";
 
 export const QuickStats3 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
+      backgroundColor: "background.default",
       p: 3,
     }}
   >
@@ -16,15 +16,15 @@ export const QuickStats3 = () => (
           sm={6}
           xs={12}
           sx={{
-            borderRight: theme => ({
+            borderRight: (theme) => ({
               md: `1px solid ${theme.palette.divider}`,
             }),
-            borderBottom: theme => ({
-              md: 'none',
+            borderBottom: (theme) => ({
+              md: "none",
               xs: `1px solid ${theme.palette.divider}`,
             }),
             p: 3,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
           <Typography color="textPrimary" variant="h5">
@@ -40,15 +40,15 @@ export const QuickStats3 = () => (
           sm={6}
           xs={12}
           sx={{
-            borderRight: theme => ({
+            borderRight: (theme) => ({
               md: `1px solid ${theme.palette.divider}`,
             }),
-            borderBottom: theme => ({
-              md: 'none',
+            borderBottom: (theme) => ({
+              md: "none",
               xs: `1px solid ${theme.palette.divider}`,
             }),
             p: 3,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
           <Typography color="textPrimary" variant="h5">
@@ -64,15 +64,15 @@ export const QuickStats3 = () => (
           sm={6}
           xs={12}
           sx={{
-            borderRight: theme => ({
+            borderRight: (theme) => ({
               md: `1px solid ${theme.palette.divider}`,
             }),
-            borderBottom: theme => ({
-              sm: 'none',
+            borderBottom: (theme) => ({
+              sm: "none",
               xs: `1px solid ${theme.palette.divider}`,
             }),
             p: 3,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
           <Typography color="textPrimary" variant="h5">
@@ -89,14 +89,14 @@ export const QuickStats3 = () => (
           xs={12}
           sx={{
             p: 3,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'center',
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Typography color="textPrimary" component="span" variant="h5">

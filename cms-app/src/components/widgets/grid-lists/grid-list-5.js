@@ -1,4 +1,4 @@
-import { formatDistanceToNowStrict, subHours } from 'date-fns';
+import { formatDistanceToNowStrict, subHours } from "date-fns";
 import {
   Avatar,
   Box,
@@ -11,51 +11,51 @@ import {
   Link,
   Tooltip,
   Typography,
-} from '@mui/material';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import { Clock as ClockIcon } from '../../../icons/clock';
-import { Share as ShareIcon } from '../../../icons/share';
+} from "@mui/material";
+import { red } from "@mui/material/colors";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Clock as ClockIcon } from "../../../icons/clock";
+import { Share as ShareIcon } from "../../../icons/share";
 
 const now = new Date();
 
 const posts = [
   {
-    id: '5e887faca2b7a1ddce01221a',
+    id: "5e887faca2b7a1ddce01221a",
     author: {
-      id: '5e86809283e28b96d2d38537',
-      avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-      name: 'Anika Visser',
+      id: "5e86809283e28b96d2d38537",
+      avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
+      name: "Anika Visser",
     },
     createdAt: subHours(now, 4).getTime(),
     likes: 24,
-    media: '/static/mock-images/social/post_1.png',
+    media: "/static/mock-images/social/post_1.png",
     message: "Hey guys! What's your favorite framework?",
   },
   {
-    id: '5e887faf03e78a5359765636',
+    id: "5e887faf03e78a5359765636",
     author: {
-      id: '5e86809283e28b96d2d38537',
-      avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-      name: 'Anika Visser',
+      id: "5e86809283e28b96d2d38537",
+      avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
+      name: "Anika Visser",
     },
     createdAt: subHours(now, 7).getTime(),
     likes: 65,
-    media: '/static/mock-images/social/post_2.jpg',
-    message: 'Just made this overview screen for a project, what-cha thinkin?',
+    media: "/static/mock-images/social/post_2.jpg",
+    message: "Just made this overview screen for a project, what-cha thinkin?",
   },
 ];
 
 export const GridList5 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      minHeight: '100%',
+      backgroundColor: "background.default",
+      minHeight: "100%",
       p: 3,
     }}
   >
     <Grid container spacing={3}>
-      {posts.map(post => (
+      {posts.map((post) => (
         <Grid item key={post.id} md={6} xs={12}>
           <Card>
             <CardHeader
@@ -64,13 +64,20 @@ export const GridList5 = () => (
               subheader={
                 <Box
                   sx={{
-                    alignItems: 'center',
-                    display: 'flex',
+                    alignItems: "center",
+                    display: "flex",
                     mt: 1,
                   }}
                 >
-                  <ClockIcon fontSize="small" sx={{ color: 'text.secondary' }} />
-                  <Typography color="textSecondary" sx={{ ml: '6px' }} variant="caption">
+                  <ClockIcon
+                    fontSize="small"
+                    sx={{ color: "text.secondary" }}
+                  />
+                  <Typography
+                    color="textSecondary"
+                    sx={{ ml: "6px" }}
+                    variant="caption"
+                  >
                     {formatDistanceToNowStrict(post.createdAt)} ago
                   </Typography>
                 </Box>
@@ -93,7 +100,7 @@ export const GridList5 = () => (
                   <CardMedia
                     image={post.media}
                     sx={{
-                      backgroundPosition: 'top',
+                      backgroundPosition: "top",
                       height: 350,
                     }}
                   />
@@ -101,13 +108,13 @@ export const GridList5 = () => (
               </Box>
               <Box
                 sx={{
-                  alignItems: 'center',
-                  display: 'flex',
+                  alignItems: "center",
+                  display: "flex",
                   mt: 2,
                 }}
               >
                 <Tooltip title="Unlike">
-                  <IconButton sx={{ color: red['600'] }}>
+                  <IconButton sx={{ color: red["600"] }}>
                     <FavoriteIcon fontSize="small" />
                   </IconButton>
                 </Tooltip>

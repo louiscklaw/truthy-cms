@@ -1,10 +1,18 @@
-import { Box, Card, CardContent, CardHeader, Divider, LinearProgress, Typography } from '@mui/material';
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  LinearProgress,
+  Typography,
+} from "@mui/material";
 
 export const QuickStats7 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      minHeight: '100%',
+      backgroundColor: "background.default",
+      minHeight: "100%",
       p: 3,
     }}
   >

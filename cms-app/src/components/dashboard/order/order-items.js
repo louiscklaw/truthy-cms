@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
-import numeral from 'numeral';
+import PropTypes from "prop-types";
+import numeral from "numeral";
 import {
   Box,
   Card,
@@ -12,10 +12,10 @@ import {
   TablePagination,
   TableRow,
   Typography,
-} from '@mui/material';
-import { Scrollbar } from '../../scrollbar';
+} from "@mui/material";
+import { Scrollbar } from "../../scrollbar";
 
-export const OrderItems = props => {
+export const OrderItems = (props) => {
   const { orderItems, ...other } = props;
 
   return (
@@ -33,7 +33,7 @@ export const OrderItems = props => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {orderItems.map(item => (
+              {orderItems.map((item) => (
                 <TableRow key={item.id}>
                   <TableCell>
                     <Typography variant="subtitle2">
@@ -41,7 +41,9 @@ export const OrderItems = props => {
                     </Typography>
                   </TableCell>
                   <TableCell>{item.billingCycle}</TableCell>
-                  <TableCell>{numeral(item.unitAmount).format(`${item.currency}0,0.00`)}</TableCell>
+                  <TableCell>
+                    {numeral(item.unitAmount).format(`${item.currency}0,0.00`)}
+                  </TableCell>
                 </TableRow>
               ))}
             </TableBody>

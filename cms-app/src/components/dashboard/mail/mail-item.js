@@ -1,18 +1,26 @@
-import PropTypes from 'prop-types';
-import NextLink from 'next/link';
-import { format } from 'date-fns';
-import { Avatar, Box, Checkbox, Chip, IconButton, Tooltip, Typography } from '@mui/material';
-import { amber } from '@mui/material/colors';
-import LabelImportantIcon from '@mui/icons-material/LabelImportant';
-import { PaperClip as PaperClipIcon } from '../../../icons/paper-clip';
-import { Star as StarIcon } from '../../../icons/star';
-import { StarOutlined as StarOutlinedIcon } from '../../../icons/star-outlined';
-import { getInitials } from '../../../utils/get-initials';
+import PropTypes from "prop-types";
+import NextLink from "next/link";
+import { format } from "date-fns";
+import {
+  Avatar,
+  Box,
+  Checkbox,
+  Chip,
+  IconButton,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { amber } from "@mui/material/colors";
+import LabelImportantIcon from "@mui/icons-material/LabelImportant";
+import { PaperClip as PaperClipIcon } from "../../../icons/paper-clip";
+import { Star as StarIcon } from "../../../icons/star";
+import { StarOutlined as StarOutlinedIcon } from "../../../icons/star-outlined";
+import { getInitials } from "../../../utils/get-initials";
 
-export const MailItem = props => {
+export const MailItem = (props) => {
   const { email, onDeselect, onSelect, selected, href, ...other } = props;
 
-  const handleCheckboxChange = event => {
+  const handleCheckboxChange = (event) => {
     const { checked } = event.target;
 
     if (checked && onSelect) {
@@ -35,43 +43,43 @@ export const MailItem = props => {
   return (
     <Box
       sx={{
-        alignItems: 'center',
-        backgroundColor: 'background.paper',
+        alignItems: "center",
+        backgroundColor: "background.paper",
         borderBottomWidth: 1,
-        borderBottomStyle: 'solid',
-        borderBottomColor: 'divider',
-        display: 'flex',
+        borderBottomStyle: "solid",
+        borderBottomColor: "divider",
+        display: "flex",
         p: 2,
         ...(!email.isUnread && {
-          position: 'relative',
-          '&:before': {
-            backgroundColor: 'primary.main',
+          position: "relative",
+          "&:before": {
+            backgroundColor: "primary.main",
             content: '" "',
-            height: '100%',
+            height: "100%",
             left: 0,
-            position: 'absolute',
+            position: "absolute",
             top: 0,
             width: 4,
           },
-          '& $name, & $subject': {
+          "& $name, & $subject": {
             fontWeight: 600,
           },
         }),
         ...(selected && {
-          backgroundColor: 'action.selected',
+          backgroundColor: "action.selected",
         }),
-        '&:hover': {
-          backgroundColor: 'action.hover',
+        "&:hover": {
+          backgroundColor: "action.hover",
         },
       }}
       {...other}
     >
       <Box
         sx={{
-          alignItems: 'center',
+          alignItems: "center",
           display: {
-            md: 'flex',
-            xs: 'none',
+            md: "flex",
+            xs: "none",
           },
           mr: 1,
         }}
@@ -100,25 +108,27 @@ export const MailItem = props => {
         <Box
           component="a"
           sx={{
-            alignItems: 'center',
-            cursor: 'pointer',
-            display: 'flex',
+            alignItems: "center",
+            cursor: "pointer",
+            display: "flex",
             flexGrow: 1,
             flexWrap: {
-              xs: 'wrap',
-              md: 'nowrap',
+              xs: "wrap",
+              md: "nowrap",
             },
             minWidth: 1,
-            textDecoration: 'none',
+            textDecoration: "none",
           }}
         >
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
+              alignItems: "center",
+              display: "flex",
             }}
           >
-            <Avatar src={email.from.avatar || undefined}>{getInitials(email.from.name)}</Avatar>
+            <Avatar src={email.from.avatar || undefined}>
+              {getInitials(email.from.name)}
+            </Avatar>
             <Typography
               color="textPrimary"
               sx={{
@@ -145,19 +155,19 @@ export const MailItem = props => {
                 xs: 2,
                 md: 0,
               },
-              overflow: 'hidden',
+              overflow: "hidden",
               width: {
-                xs: '100%',
-                md: 'auto',
+                xs: "100%",
+                md: "auto",
               },
             }}
           >
             <Box
               sx={{
-                alignItems: 'center',
-                display: 'flex',
+                alignItems: "center",
+                display: "flex",
                 maxWidth: 800,
-                width: '100%',
+                width: "100%",
               }}
             >
               <Typography
@@ -179,8 +189,14 @@ export const MailItem = props => {
             </Box>
             {Boolean(email.attachments && email.attachments.length > 0) && (
               <Box sx={{ mt: 1 }}>
-                <Chip icon={<PaperClipIcon fontSize="small" />} label={email.attachments[0].name} size="small" />
-                {email.attachments.length > 1 && <Chip label="+1" size="small" sx={{ ml: 1 }} />}
+                <Chip
+                  icon={<PaperClipIcon fontSize="small" />}
+                  label={email.attachments[0].name}
+                  size="small"
+                />
+                {email.attachments.length > 1 && (
+                  <Chip label="+1" size="small" sx={{ ml: 1 }} />
+                )}
               </Box>
             )}
           </Box>
@@ -188,16 +204,16 @@ export const MailItem = props => {
             color="textSecondary"
             variant="caption"
             sx={{
-              display: 'block',
+              display: "block",
               textAlign: {
-                xs: 'left',
-                md: 'right',
+                xs: "left",
+                md: "right",
               },
-              whiteSpace: 'nowrap',
+              whiteSpace: "nowrap",
               width: 100,
             }}
           >
-            {format(email.createdAt, 'dd MMM')}
+            {format(email.createdAt, "dd MMM")}
           </Typography>
         </Box>
       </NextLink>

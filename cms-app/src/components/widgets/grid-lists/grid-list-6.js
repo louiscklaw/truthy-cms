@@ -1,46 +1,55 @@
-import { Avatar, Box, Button, Grid, IconButton, Link, Paper, Typography } from '@mui/material';
-import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
+import {
+  Avatar,
+  Box,
+  Button,
+  Grid,
+  IconButton,
+  Link,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
 
 const connections = [
   {
-    id: '5e887ac47eed253091be10cb',
-    avatar: '/static/mock-images/avatars/avatar-carson_darrin.png',
+    id: "5e887ac47eed253091be10cb",
+    avatar: "/static/mock-images/avatars/avatar-carson_darrin.png",
     commonConnections: 10,
-    name: 'Carson Darrin',
-    status: 'Rejected',
+    name: "Carson Darrin",
+    status: "Rejected",
   },
   {
-    id: '5e887b209c28ac3dd97f6db5',
-    avatar: '/static/mock-images/avatars/avatar-fran_perez.png',
+    id: "5e887b209c28ac3dd97f6db5",
+    avatar: "/static/mock-images/avatars/avatar-fran_perez.png",
     commonConnections: 8,
-    name: 'Fran Perez',
-    status: 'pending',
+    name: "Fran Perez",
+    status: "pending",
   },
   {
-    id: '5e86805e2bafd54f66cc95c3',
-    avatar: '/static/mock-images/avatars/avatar-miron_vitold.png',
+    id: "5e86805e2bafd54f66cc95c3",
+    avatar: "/static/mock-images/avatars/avatar-miron_vitold.png",
     commonConnections: 5,
-    name: 'Miron Vitold',
-    status: 'Not connected',
+    name: "Miron Vitold",
+    status: "Not connected",
   },
 ];
 
 export const GridList6 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      minHeight: '100%',
+      backgroundColor: "background.default",
+      minHeight: "100%",
       p: 3,
     }}
   >
     <Grid container spacing={3}>
-      {connections.map(connection => (
+      {connections.map((connection) => (
         <Grid item key={connection.id} xs={12}>
           <Paper variant="outlined">
             <Box
               sx={{
-                alignItems: 'center',
-                display: 'flex',
+                alignItems: "center",
+                display: "flex",
                 p: 2,
               }}
             >

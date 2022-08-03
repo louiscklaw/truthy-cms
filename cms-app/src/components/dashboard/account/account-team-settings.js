@@ -14,12 +14,12 @@ import {
   TableRow,
   TextField,
   Typography,
-} from '@mui/material';
-import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
-import { Mail as MailIcon } from '../../../icons/mail';
-import { UserCircle as UserCircleIcon } from '../../../icons/user-circle';
-import { Scrollbar } from '../../scrollbar';
-import { SeverityPill } from '../../severity-pill';
+} from "@mui/material";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Mail as MailIcon } from "../../../icons/mail";
+import { UserCircle as UserCircleIcon } from "../../../icons/user-circle";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
 export const AccountTeamSettings = () => (
   <Card>
@@ -38,10 +38,10 @@ export const AccountTeamSettings = () => (
       />
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
-          flexWrap: 'wrap',
-          justifyContent: 'space-between',
+          alignItems: "center",
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "space-between",
           m: -3,
         }}
       >
@@ -80,8 +80,8 @@ export const AccountTeamSettings = () => (
             <TableCell>
               <Box
                 sx={{
-                  alignItems: 'center',
-                  display: 'flex',
+                  alignItems: "center",
+                  display: "flex",
                 }}
               >
                 <Avatar
@@ -114,8 +114,8 @@ export const AccountTeamSettings = () => (
             <TableCell>
               <Box
                 sx={{
-                  alignItems: 'center',
-                  display: 'flex',
+                  alignItems: "center",
+                  display: "flex",
                 }}
               >
                 <Avatar

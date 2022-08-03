@@ -1,22 +1,29 @@
-import { useCallback, useEffect, useState } from 'react';
-import Head from 'next/head';
-import NextLink from 'next/link';
-import { Box, Button, Card, Container, Divider, Typography } from '@mui/material';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { blogApi } from '../../__fake-api__/blog-api';
-import { BlogNewsletter } from '../../components/blog/blog-newsletter';
-import { BlogPostCard } from '../../components/blog/blog-post-card';
-import { useMounted } from '../../hooks/use-mounted';
-import { ArrowLeft as ArrowLeftIcon } from '../../icons/arrow-left';
-import { gtm } from '../../lib/gtm';
+import { useCallback, useEffect, useState } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import {
+  Box,
+  Button,
+  Card,
+  Container,
+  Divider,
+  Typography,
+} from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { blogApi } from "../../__fake-api__/blog-api";
+import { BlogNewsletter } from "../../components/blog/blog-newsletter";
+import { BlogPostCard } from "../../components/blog/blog-post-card";
+import { useMounted } from "../../hooks/use-mounted";
+import { ArrowLeft as ArrowLeftIcon } from "../../icons/arrow-left";
+import { gtm } from "../../lib/gtm";
 
 const BlogPostList = () => {
   const isMounted = useMounted();
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    gtm.push({ event: 'page_view' });
+    gtm.push({ event: "page_view" });
   }, []);
 
   const getPosts = useCallback(async () => {
@@ -49,7 +56,10 @@ const BlogPostList = () => {
       >
         <Container maxWidth="md">
           <NextLink href="/dashboard" passHref>
-            <Button component="a" startIcon={<ArrowLeftIcon fontSize="small" />}>
+            <Button
+              component="a"
+              startIcon={<ArrowLeftIcon fontSize="small" />}
+            >
               Dashboard
             </Button>
           </NextLink>
@@ -59,10 +69,10 @@ const BlogPostList = () => {
           <Card
             elevation={16}
             sx={{
-              alignItems: 'center',
+              alignItems: "center",
               borderRadius: 1,
-              display: 'flex',
-              justifyContent: 'space-between',
+              display: "flex",
+              justifyContent: "space-between",
               mb: 8,
               mt: 6,
               px: 3,
@@ -81,10 +91,11 @@ const BlogPostList = () => {
             Discover the latest news, tips and user research insights from Acme.
           </Typography>
           <Typography color="textSecondary" variant="subtitle1">
-            You will learn about web infrastructure, design systems and devops APIs best practices.
+            You will learn about web infrastructure, design systems and devops
+            APIs best practices.
           </Typography>
           <Divider sx={{ my: 3 }} />
-          {posts.map(post => (
+          {posts.map((post) => (
             <BlogPostCard
               authorAvatar={post.author.avatar}
               authorName={post.author.name}
@@ -99,9 +110,9 @@ const BlogPostList = () => {
           ))}
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'center',
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
               mt: 4,
               mb: 8,
             }}
@@ -109,7 +120,10 @@ const BlogPostList = () => {
             <Button disabled startIcon={<ArrowBackIcon fontSize="small" />}>
               Newer
             </Button>
-            <Button endIcon={<ArrowForwardIcon fontSize="small" />} sx={{ ml: 1 }}>
+            <Button
+              endIcon={<ArrowForwardIcon fontSize="small" />}
+              sx={{ ml: 1 }}
+            >
               Older posts
             </Button>
           </Box>

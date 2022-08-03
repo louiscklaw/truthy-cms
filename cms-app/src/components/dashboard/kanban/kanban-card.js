@@ -1,12 +1,20 @@
-import { forwardRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Avatar, AvatarGroup, Box, Card, CardMedia, Chip, Typography } from '@mui/material';
-import { Check as CheckIcon } from '../../../icons/check';
-import { ChatAlt as ChatAltIcon } from '../../../icons/chat-alt';
-import { DocumentText as DocumentTextIcon } from '../../../icons/document-text';
-import { Eye as EyeIcon } from '../../../icons/eye';
-import { useSelector } from '../../../store';
-import { KanbanCardModal } from './kanban-card-modal';
+import { forwardRef, useState } from "react";
+import PropTypes from "prop-types";
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Card,
+  CardMedia,
+  Chip,
+  Typography,
+} from "@mui/material";
+import { Check as CheckIcon } from "../../../icons/check";
+import { ChatAlt as ChatAltIcon } from "../../../icons/chat-alt";
+import { DocumentText as DocumentTextIcon } from "../../../icons/document-text";
+import { Eye as EyeIcon } from "../../../icons/eye";
+import { useSelector } from "../../../store";
+import { KanbanCardModal } from "./kanban-card-modal";
 
 const cardSelector = (state, cardId) => {
   const { cards, members } = state.kanban;
@@ -14,13 +22,13 @@ const cardSelector = (state, cardId) => {
 
   return {
     ...card,
-    members: card.memberIds.map(memberId => members.byId[memberId]),
+    members: card.memberIds.map((memberId) => members.byId[memberId]),
   };
 };
 
 export const KanbanCard = forwardRef((props, ref) => {
   const { cardId, dragging, column, ...other } = props;
-  const card = useSelector(state => cardSelector(state, cardId));
+  const card = useSelector((state) => cardSelector(state, cardId));
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -35,7 +43,7 @@ export const KanbanCard = forwardRef((props, ref) => {
     <Box
       ref={ref}
       sx={{
-        outline: 'none',
+        outline: "none",
         py: 1,
       }}
       {...other}
@@ -45,10 +53,10 @@ export const KanbanCard = forwardRef((props, ref) => {
         raised={dragging}
         sx={{
           ...(dragging && {
-            backgroundColor: 'background.paper',
+            backgroundColor: "background.paper",
           }),
-          '&:hover': {
-            backgroundColor: 'background.default',
+          "&:hover": {
+            backgroundColor: "background.default",
           },
         }}
         variant="elevation"
@@ -61,37 +69,39 @@ export const KanbanCard = forwardRef((props, ref) => {
           {card.labels.length > 0 && (
             <Box
               sx={{
-                alignItems: 'center',
-                display: 'flex',
-                flexWrap: 'wrap',
+                alignItems: "center",
+                display: "flex",
+                flexWrap: "wrap",
                 m: -1,
                 mt: 1,
               }}
             >
-              {card.labels.map(label => (
+              {card.labels.map((label) => (
                 <Chip key={label} label={label} size="small" sx={{ m: 1 }} />
               ))}
             </Box>
           )}
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
+              alignItems: "center",
+              display: "flex",
               mt: 2,
-              color: 'action.active',
-              '& svg:not(:first-of-type)': {
+              color: "action.active",
+              "& svg:not(:first-of-type)": {
                 ml: 2,
               },
             }}
           >
             {card.isSubscribed && <EyeIcon fontSize="small" />}
-            {card.attachments.length > 0 && <DocumentTextIcon fontSize="small" />}
+            {card.attachments.length > 0 && (
+              <DocumentTextIcon fontSize="small" />
+            )}
             {card.checklists.length > 0 && <CheckIcon fontSize="small" />}
             {card.comments.length > 0 && <ChatAltIcon fontSize="small" />}
             <Box sx={{ flexGrow: 1 }} />
             {card.members.length > 0 && (
               <AvatarGroup max={5}>
-                {card.members.map(member => (
+                {card.members.map((member) => (
                   <Avatar key={member.id} src={member.avatar || undefined} />
                 ))}
               </AvatarGroup>
@@ -99,7 +109,12 @@ export const KanbanCard = forwardRef((props, ref) => {
           </Box>
         </Box>
       </Card>
-      <KanbanCardModal card={card} column={column} onClose={handleClose} open={open} />
+      <KanbanCardModal
+        card={card}
+        column={column}
+        onClose={handleClose}
+        open={open}
+      />
     </Box>
   );
 });

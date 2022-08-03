@@ -1,43 +1,52 @@
-import { Box, Card, CardHeader, Divider, Grid, List, ListItem, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { Chart } from '../../chart';
+import {
+  Box,
+  Card,
+  CardHeader,
+  Divider,
+  Grid,
+  List,
+  ListItem,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 const data = {
   series: [
     {
-      color: '#688eff',
+      color: "#688eff",
       data: 38,
-      label: 'On route',
+      label: "On route",
     },
     {
-      color: '#4CAF50',
+      color: "#4CAF50",
       data: 50,
-      label: 'Available',
+      label: "Available",
     },
     {
-      color: '#FF9800',
+      color: "#FF9800",
       data: 12,
-      label: 'Out of service',
+      label: "Out of service",
     },
   ],
 };
 
-export const LogisticsTotalVehicles = props => {
+export const LogisticsTotalVehicles = (props) => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       stacked: false,
       toolbar: {
         show: false,
       },
     },
-    colors: data.series.map(item => item.color),
+    colors: data.series.map((item) => item.color),
     fill: {
       opacity: 1,
     },
-    labels: ['On route', 'Available', 'Out of service'],
+    labels: ["On route", "Available", "Out of service"],
     plotOptions: {
       radialBar: {
         track: {
@@ -50,15 +59,20 @@ export const LogisticsTotalVehicles = props => {
     },
   };
 
-  const chartSeries = data.series.map(item => item.data);
+  const chartSeries = data.series.map((item) => item.data);
 
   return (
-    <Card sx={{ height: '100%' }} {...props}>
+    <Card sx={{ height: "100%" }} {...props}>
       <CardHeader title="Total Vehicles" />
       <Divider />
       <Grid container spacing={3} sx={{ p: 3 }}>
         <Grid item md={6} xs={12}>
-          <Chart height={300} options={chartOptions} series={chartSeries} type="radialBar" />
+          <Chart
+            height={300}
+            options={chartOptions}
+            series={chartSeries}
+            type="radialBar"
+          />
         </Grid>
         <Grid item md={6} xs={12}>
           <Typography color="textSecondary" variant="body2">
@@ -72,13 +86,13 @@ export const LogisticsTotalVehicles = props => {
                 disableGutters
                 divider={index + 1 < data.series.length}
                 key={item.label}
-                sx={{ display: 'flex' }}
+                sx={{ display: "flex" }}
               >
                 <Box
                   sx={{
                     border: 3,
                     borderColor: item.color,
-                    borderRadius: '50%',
+                    borderRadius: "50%",
                     height: 16,
                     mr: 1,
                     width: 16,

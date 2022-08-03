@@ -1,16 +1,25 @@
-import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import toast from 'react-hot-toast';
-import { Avatar, Box, Divider, ListItemIcon, ListItemText, MenuItem, Popover, Typography } from '@mui/material';
-import LogoutIcon from '@mui/icons-material/Logout';
-import { useAuth } from '../../hooks/use-auth';
-import { Cog as CogIcon } from '../../icons/cog';
-import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
-import { SwitchHorizontalOutlined as SwitchHorizontalOutlinedIcon } from '../../icons/switch-horizontal-outlined';
-import { useTranslation } from 'react-i18next';
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import {
+  Avatar,
+  Box,
+  Divider,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  Popover,
+  Typography,
+} from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
+import { useAuth } from "../../hooks/use-auth";
+import { Cog as CogIcon } from "../../icons/cog";
+import { UserCircle as UserCircleIcon } from "../../icons/user-circle";
+import { SwitchHorizontalOutlined as SwitchHorizontalOutlinedIcon } from "../../icons/switch-horizontal-outlined";
+import { useTranslation } from "react-i18next";
 
-export const AccountPopover = props => {
+export const AccountPopover = (props) => {
   const { anchorEl, onClose, open, ...other } = props;
   const router = useRouter();
   const { logout } = useAuth();
@@ -22,17 +31,17 @@ export const AccountPopover = props => {
     try {
       onClose?.();
       await logout();
-      router.push('/').catch(console.error);
+      router.push("/").catch(console.error);
     } catch (err) {
       console.error(err);
-      toast.error('Unable to logout.');
+      toast.error("Unable to logout.");
     }
   };
 
   return (
     <Popover
       anchorEl={anchorEl}
-      anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
+      anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
       keepMounted
       onClose={onClose}
       open={!!open}
@@ -40,7 +49,7 @@ export const AccountPopover = props => {
       transitionDuration={0}
       {...other}
     >
-      <Box sx={{ alignItems: 'center', p: 2, display: 'flex' }}>
+      <Box sx={{ alignItems: "center", p: 2, display: "flex" }}>
         <Avatar src={user?.avatar} sx={{ height: 40, width: 40 }}>
           <UserCircleIcon fontSize="small" />
         </Avatar>
@@ -58,7 +67,9 @@ export const AccountPopover = props => {
             <ListItemIcon>
               <UserCircleIcon fontSize="small" />
             </ListItemIcon>
-            <ListItemText primary={<Typography variant="body1">Profile</Typography>} />
+            <ListItemText
+              primary={<Typography variant="body1">Profile</Typography>}
+            />
           </MenuItem>
         </NextLink>
         <NextLink href="/dashboard/account" passHref>
@@ -66,7 +77,9 @@ export const AccountPopover = props => {
             <ListItemIcon>
               <CogIcon fontSize="small" />
             </ListItemIcon>
-            <ListItemText primary={<Typography variant="body1">Settings</Typography>} />
+            <ListItemText
+              primary={<Typography variant="body1">Settings</Typography>}
+            />
           </MenuItem>
         </NextLink>
         <NextLink href="/dashboard" passHref>
@@ -74,7 +87,11 @@ export const AccountPopover = props => {
             <ListItemIcon>
               <SwitchHorizontalOutlinedIcon fontSize="small" />
             </ListItemIcon>
-            <ListItemText primary={<Typography variant="body1">Change organization</Typography>} />
+            <ListItemText
+              primary={
+                <Typography variant="body1">Change organization</Typography>
+              }
+            />
           </MenuItem>
         </NextLink>
         <Divider />
@@ -82,7 +99,9 @@ export const AccountPopover = props => {
           <ListItemIcon>
             <LogoutIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary={<Typography variant="body1">{t('Logout')}</Typography>} />
+          <ListItemText
+            primary={<Typography variant="body1">{t("Logout")}</Typography>}
+          />
         </MenuItem>
       </Box>
     </Popover>

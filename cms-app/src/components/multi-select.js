@@ -1,9 +1,15 @@
-import { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
-import { Button, Checkbox, FormControlLabel, Menu, MenuItem } from '@mui/material';
-import { ChevronDown as ChevronDownIcon } from '../icons/chevron-down';
+import { useRef, useState } from "react";
+import PropTypes from "prop-types";
+import {
+  Button,
+  Checkbox,
+  FormControlLabel,
+  Menu,
+  MenuItem,
+} from "@mui/material";
+import { ChevronDown as ChevronDownIcon } from "../icons/chevron-down";
 
-export const MultiSelect = props => {
+export const MultiSelect = (props) => {
   const { label, onChange, options, value = [], ...other } = props;
   const anchorRef = useRef(null);
   const [openMenu, setOpenMenu] = useState(false);
@@ -16,13 +22,13 @@ export const MultiSelect = props => {
     setOpenMenu(false);
   };
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     let newValue = [...value];
 
     if (event.target.checked) {
       newValue.push(event.target.value);
     } else {
-      newValue = newValue.filter(item => item !== event.target.value);
+      newValue = newValue.filter((item) => item !== event.target.value);
     }
 
     onChange?.(newValue);
@@ -45,10 +51,16 @@ export const MultiSelect = props => {
         open={openMenu}
         PaperProps={{ style: { width: 250 } }}
       >
-        {options.map(option => (
+        {options.map((option) => (
           <MenuItem key={option.label}>
             <FormControlLabel
-              control={<Checkbox checked={value.includes(option.value)} onChange={handleChange} value={option.value} />}
+              control={
+                <Checkbox
+                  checked={value.includes(option.value)}
+                  onChange={handleChange}
+                  value={option.value}
+                />
+              }
               label={option.label}
               sx={{
                 flexGrow: 1,

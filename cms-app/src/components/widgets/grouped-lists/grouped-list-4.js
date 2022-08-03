@@ -9,29 +9,29 @@ import {
   ListItemText,
   Tooltip,
   Typography,
-} from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
-import { CreditCard as CreditCardIcon } from '../../../icons/credit-card';
-import { Mail as MailIcon } from '../../../icons/mail';
-import { ChevronRight as ChevronRightIcon } from '../../../icons/chevron-right';
+} from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import { CreditCard as CreditCardIcon } from "../../../icons/credit-card";
+import { Mail as MailIcon } from "../../../icons/mail";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
 
 const notifications = [
   {
-    id: '5e8883a4f7877f898c408c27',
-    message: 'to send service quotes',
-    type: 'invite',
+    id: "5e8883a4f7877f898c408c27",
+    message: "to send service quotes",
+    type: "invite",
     value: 6,
   },
   {
-    id: '5e8883aa34190e0457a6e2b9',
-    message: 'from clients',
-    type: 'message',
+    id: "5e8883aa34190e0457a6e2b9",
+    message: "from clients",
+    type: "message",
     value: 2,
   },
   {
-    id: '5e8883af168cad3e1f4fe0ae',
-    message: 'that needs your confirmation',
-    type: 'payout',
+    id: "5e8883af168cad3e1f4fe0ae",
+    message: "that needs your confirmation",
+    type: "payout",
     value: 1,
   },
 ];
@@ -45,7 +45,7 @@ const iconsMap = {
 export const GroupedList4 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
+      backgroundColor: "background.default",
       p: 3,
     }}
   >
@@ -55,7 +55,10 @@ export const GroupedList4 = () => (
           const Icon = iconsMap[notification.type];
 
           return (
-            <ListItem divider={i < notifications.length - 1} key={notification.id}>
+            <ListItem
+              divider={i < notifications.length - 1}
+              key={notification.id}
+            >
               <ListItemIcon>
                 <Icon fontSize="small" />
               </ListItemIcon>

@@ -1,9 +1,9 @@
-import { Avatar, Box, Container, Typography } from '@mui/material';
+import { Avatar, Box, Container, Typography } from "@mui/material";
 
-export const HomeTestimonials = props => (
+export const HomeTestimonials = (props) => (
   <Box
     sx={{
-      backgroundColor: 'primary.main',
+      backgroundColor: "primary.main",
       py: 15,
     }}
     {...props}
@@ -11,22 +11,27 @@ export const HomeTestimonials = props => (
     <Container
       maxWidth="md"
       sx={{
-        alignItems: 'center',
-        display: 'flex',
-        flexDirection: 'column',
+        alignItems: "center",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Typography align="center" color="primary.contrastText" variant="h3">
-        &quot;Devias builds some of the best templates you can find for React. They will save you time.&quot;
+        &quot;Devias builds some of the best templates you can find for React.
+        They will save you time.&quot;
       </Typography>
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           mt: 3,
         }}
       >
-        <Avatar src="/static/home/olivier.png" sx={{ mr: 2 }} variant="rounded" />
+        <Avatar
+          src="/static/home/olivier.png"
+          sx={{ mr: 2 }}
+          variant="rounded"
+        />
         <div>
           <Typography color="primary.contrastText" variant="h6">
             Olivier Tassinari,

@@ -1,9 +1,9 @@
-import { Box, Button } from '@mui/material';
+import { Box, Button } from "@mui/material";
 
 export const Buttons1 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.paper',
+      backgroundColor: "background.paper",
       p: 3,
     }}
   >

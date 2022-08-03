@@ -1,10 +1,10 @@
-import { Box, Card, Grid, Typography } from '@mui/material';
-import { SeverityPill } from '../../severity-pill';
+import { Box, Card, Grid, Typography } from "@mui/material";
+import { SeverityPill } from "../../severity-pill";
 
 export const QuickStats4 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
+      backgroundColor: "background.default",
       p: 3,
     }}
   >
@@ -16,25 +16,30 @@ export const QuickStats4 = () => (
           sm={6}
           xs={12}
           sx={{
-            borderRight: theme => ({
+            borderRight: (theme) => ({
               md: `1px solid ${theme.palette.divider}`,
             }),
-            borderBottom: theme => ({
-              md: 'none',
+            borderBottom: (theme) => ({
+              md: "none",
               xs: `1px solid ${theme.palette.divider}`,
             }),
             p: 3,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
-          <Typography color="textSecondary" component="h2" gutterBottom variant="overline">
+          <Typography
+            color="textSecondary"
+            component="h2"
+            gutterBottom
+            variant="overline"
+          >
             Total Income
           </Typography>
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'center',
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Typography sx={{ mr: 1 }} variant="h5">
@@ -49,25 +54,30 @@ export const QuickStats4 = () => (
           sm={6}
           xs={12}
           sx={{
-            borderRight: theme => ({
+            borderRight: (theme) => ({
               md: `1px solid ${theme.palette.divider}`,
             }),
-            borderBottom: theme => ({
-              md: 'none',
+            borderBottom: (theme) => ({
+              md: "none",
               xs: `1px solid ${theme.palette.divider}`,
             }),
             p: 3,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
-          <Typography color="textSecondary" component="h5" gutterBottom variant="overline">
+          <Typography
+            color="textSecondary"
+            component="h5"
+            gutterBottom
+            variant="overline"
+          >
             Total Expanses
           </Typography>
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'center',
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Typography sx={{ mr: 1 }} variant="h5">
@@ -82,25 +92,30 @@ export const QuickStats4 = () => (
           sm={6}
           xs={12}
           sx={{
-            borderRight: theme => ({
+            borderRight: (theme) => ({
               md: `1px solid ${theme.palette.divider}`,
             }),
-            borderBottom: theme => ({
-              sm: 'none',
+            borderBottom: (theme) => ({
+              sm: "none",
               xs: `1px solid ${theme.palette.divider}`,
             }),
             p: 3,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
-          <Typography color="textSecondary" component="h2" gutterBottom variant="overline">
+          <Typography
+            color="textSecondary"
+            component="h2"
+            gutterBottom
+            variant="overline"
+          >
             Net Profit
           </Typography>
           <Box
             sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'center',
+              alignItems: "center",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
             <Typography sx={{ mr: 1 }} variant="h5">
@@ -116,10 +131,15 @@ export const QuickStats4 = () => (
           xs={12}
           sx={{
             p: 3,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
-          <Typography color="textSecondary" component="h2" gutterBottom variant="overline">
+          <Typography
+            color="textSecondary"
+            component="h2"
+            gutterBottom
+            variant="overline"
+          >
             Active Subscriptions
           </Typography>
           <Typography variant="h5">26,000</Typography>

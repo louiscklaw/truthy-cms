@@ -1,7 +1,16 @@
-import { Box, Button, Grid, Link, MenuItem, Select, TextField, Typography } from '@mui/material';
+import {
+  Box,
+  Button,
+  Grid,
+  Link,
+  MenuItem,
+  Select,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 export const ContactForm = () => {
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
   };
 
@@ -69,8 +78,8 @@ export const ContactForm = () => {
       </Grid>
       <Box
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
+          display: "flex",
+          justifyContent: "center",
           mt: 3,
         }}
       >
@@ -79,12 +88,22 @@ export const ContactForm = () => {
         </Button>
       </Box>
       <Typography color="textSecondary" sx={{ mt: 3 }} variant="body2">
-        By submitting this, you agree to the{' '}
-        <Link color="textPrimary" href="#" underline="always" variant="subtitle2">
+        By submitting this, you agree to the{" "}
+        <Link
+          color="textPrimary"
+          href="#"
+          underline="always"
+          variant="subtitle2"
+        >
           Privacy Policy
-        </Link>{' '}
-        and{' '}
-        <Link color="textPrimary" href="#" underline="always" variant="subtitle2">
+        </Link>{" "}
+        and{" "}
+        <Link
+          color="textPrimary"
+          href="#"
+          underline="always"
+          variant="subtitle2"
+        >
           Cookie Policy
         </Link>
         .

@@ -1,15 +1,28 @@
-import { Box, Card, CardHeader, IconButton } from '@mui/material';
-import { alpha, useTheme } from '@mui/material/styles';
-import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
-import { Chart } from '../../chart';
-import { Scrollbar } from '../../scrollbar';
+import { Box, Card, CardHeader, IconButton } from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Chart } from "../../chart";
+import { Scrollbar } from "../../scrollbar";
 
 const data = {
   series: [
     { data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20] },
     { data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13] },
   ],
-  categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  categories: [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ],
 };
 
 export const Chart6 = () => {
@@ -17,13 +30,13 @@ export const Chart6 = () => {
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       stacked: false,
       toolbar: {
         show: false,
       },
     },
-    colors: ['#00ab57', alpha('#00ab57', 0.25)],
+    colors: ["#00ab57", alpha("#00ab57", 0.25)],
     dataLabels: {
       enabled: false,
     },
@@ -37,12 +50,12 @@ export const Chart6 = () => {
     states: {
       active: {
         filter: {
-          type: 'none',
+          type: "none",
         },
       },
       hover: {
         filter: {
-          type: 'none',
+          type: "none",
         },
       },
     },
@@ -51,11 +64,11 @@ export const Chart6 = () => {
     },
     plotOptions: {
       bar: {
-        columnWidth: '20px',
+        columnWidth: "20px",
       },
     },
     stroke: {
-      colors: ['transparent'],
+      colors: ["transparent"],
       show: true,
       width: 2,
     },
@@ -81,7 +94,7 @@ export const Chart6 = () => {
     },
     yaxis: {
       labels: {
-        formatter: value => (value > 0 ? `${value}K` : `${value}`),
+        formatter: (value) => (value > 0 ? `${value}K` : `${value}`),
         offsetX: -10,
         style: {
           colors: theme.palette.text.secondary,
@@ -95,7 +108,7 @@ export const Chart6 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'background.default',
+        backgroundColor: "background.default",
         p: 3,
       }}
     >
@@ -115,7 +128,12 @@ export const Chart6 = () => {
               px: 2,
             }}
           >
-            <Chart height={375} options={chartOptions} series={chartSeries} type="bar" />
+            <Chart
+              height={375}
+              options={chartOptions}
+              series={chartSeries}
+              type="bar"
+            />
           </Box>
         </Scrollbar>
       </Card>

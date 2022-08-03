@@ -1,34 +1,45 @@
-import { useRouter } from 'next/router';
-import * as Yup from 'yup';
-import { useFormik } from 'formik';
-import { Box, Button, Checkbox, FormHelperText, Link, TextField, Typography } from '@mui/material';
-import { useAuth } from '../../hooks/use-auth';
-import { useMounted } from '../../hooks/use-mounted';
+import { useRouter } from "next/router";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import {
+  Box,
+  Button,
+  Checkbox,
+  FormHelperText,
+  Link,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { useAuth } from "../../hooks/use-auth";
+import { useMounted } from "../../hooks/use-mounted";
 
-export const JWTRegister = props => {
+export const JWTRegister = (props) => {
   const isMounted = useMounted();
   const router = useRouter();
   const { register } = useAuth();
   const formik = useFormik({
     initialValues: {
-      email: '',
-      name: '',
-      password: '',
+      email: "",
+      name: "",
+      password: "",
       policy: false,
       submit: null,
     },
     validationSchema: Yup.object({
-      email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-      name: Yup.string().max(255).required('Name is required'),
-      password: Yup.string().min(7).max(255).required('Password is required'),
-      policy: Yup.boolean().oneOf([true], 'This field must be checked'),
+      email: Yup.string()
+        .email("Must be a valid email")
+        .max(255)
+        .required("Email is required"),
+      name: Yup.string().max(255).required("Name is required"),
+      password: Yup.string().min(7).max(255).required("Password is required"),
+      policy: Yup.boolean().oneOf([true], "This field must be checked"),
     }),
     onSubmit: async (values, helpers) => {
       try {
         await register(values.email, values.name, values.password);
 
         if (isMounted()) {
-          const returnUrl = router.query.returnUrl || '/dashboard';
+          const returnUrl = router.query.returnUrl || "/dashboard";
           router.push(returnUrl).catch(console.error);
         }
       } catch (err) {
@@ -82,15 +93,19 @@ export const JWTRegister = props => {
       />
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           ml: -1,
           mt: 2,
         }}
       >
-        <Checkbox checked={formik.values.policy} name="policy" onChange={formik.handleChange} />
+        <Checkbox
+          checked={formik.values.policy}
+          name="policy"
+          onChange={formik.handleChange}
+        />
         <Typography color="textSecondary" variant="body2">
-          I have read the{' '}
+          I have read the{" "}
           <Link component="a" href="#">
             Terms and Conditions
           </Link>
@@ -105,7 +120,13 @@ export const JWTRegister = props => {
         </Box>
       )}
       <Box sx={{ mt: 2 }}>
-        <Button disabled={formik.isSubmitting} fullWidth size="large" type="submit" variant="contained">
+        <Button
+          disabled={formik.isSubmitting}
+          fullWidth
+          size="large"
+          type="submit"
+          variant="contained"
+        >
           Register
         </Button>
       </Box>

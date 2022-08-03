@@ -1,39 +1,46 @@
-import PropTypes from 'prop-types';
-import { toast } from 'react-hot-toast';
-import { useTranslation } from 'react-i18next';
-import { Box, ListItemIcon, ListItemText, MenuItem, Popover, Typography } from '@mui/material';
+import PropTypes from "prop-types";
+import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
+import {
+  Box,
+  ListItemIcon,
+  ListItemText,
+  MenuItem,
+  Popover,
+  Typography,
+} from "@mui/material";
 
 const languageOptions = {
   en: {
-    icon: '/static/icons/uk_flag.svg',
-    label: 'English',
+    icon: "/static/icons/uk_flag.svg",
+    label: "English",
   },
   de: {
-    icon: '/static/icons/de_flag.svg',
-    label: 'German',
+    icon: "/static/icons/de_flag.svg",
+    label: "German",
   },
   es: {
-    icon: '/static/icons/es_flag.svg',
-    label: 'Spanish',
+    icon: "/static/icons/es_flag.svg",
+    label: "Spanish",
   },
 };
 
-export const LanguagePopover = props => {
+export const LanguagePopover = (props) => {
   const { anchorEl, onClose, open, ...other } = props;
   const { i18n, t } = useTranslation();
 
-  const handleChange = async language => {
+  const handleChange = async (language) => {
     onClose?.();
     await i18n.changeLanguage(language);
-    toast.success(t('Language changed'));
+    toast.success(t("Language changed"));
   };
 
   return (
     <Popover
       anchorEl={anchorEl}
       anchorOrigin={{
-        horizontal: 'center',
-        vertical: 'bottom',
+        horizontal: "center",
+        vertical: "bottom",
       }}
       keepMounted
       onClose={onClose}
@@ -42,23 +49,32 @@ export const LanguagePopover = props => {
       transitionDuration={0}
       {...other}
     >
-      {Object.keys(languageOptions).map(language => (
+      {Object.keys(languageOptions).map((language) => (
         <MenuItem onClick={() => handleChange(language)} key={language}>
           <ListItemIcon>
             <Box
               sx={{
-                display: 'flex',
+                display: "flex",
                 height: 20,
                 width: 20,
-                '& img': {
-                  width: '100%',
+                "& img": {
+                  width: "100%",
                 },
               }}
             >
-              <img alt={languageOptions[language].label} src={languageOptions[language].icon} />
+              <img
+                alt={languageOptions[language].label}
+                src={languageOptions[language].icon}
+              />
             </Box>
           </ListItemIcon>
-          <ListItemText primary={<Typography variant="subtitle2">{languageOptions[language].label}</Typography>} />
+          <ListItemText
+            primary={
+              <Typography variant="subtitle2">
+                {languageOptions[language].label}
+              </Typography>
+            }
+          />
         </MenuItem>
       ))}
     </Popover>

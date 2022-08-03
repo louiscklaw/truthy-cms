@@ -1,34 +1,43 @@
-import { Box, Button, Divider, IconButton, Input, Paper, Tooltip, Typography } from '@mui/material';
-import AddPhotoIcon from '@mui/icons-material/AddPhotoAlternate';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
-import { QuillEditor } from '../../quill-editor';
-import { ArrowsExpand as ArrowsExpandIcon } from '../../../icons/arrows-expand';
-import { X as XIcon } from '../../../icons/x';
+import {
+  Box,
+  Button,
+  Divider,
+  IconButton,
+  Input,
+  Paper,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import AddPhotoIcon from "@mui/icons-material/AddPhotoAlternate";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import { QuillEditor } from "../../quill-editor";
+import { ArrowsExpand as ArrowsExpandIcon } from "../../../icons/arrows-expand";
+import { X as XIcon } from "../../../icons/x";
 
 export const Modal1 = () => (
   <Box
     sx={{
-      backgroundColor: 'background.default',
-      minHeight: '100%',
+      backgroundColor: "background.default",
+      minHeight: "100%",
       p: 3,
     }}
   >
     <Paper
       elevation={12}
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         margin: 3,
         minHeight: 500,
-        mx: 'auto',
-        outline: 'none',
+        mx: "auto",
+        outline: "none",
         width: 600,
       }}
     >
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           px: 2,
           py: 1,
         }}
@@ -49,7 +58,7 @@ export const Modal1 = () => (
         sx={{
           p: 1,
           borderBottom: 1,
-          borderColor: 'divider',
+          borderColor: "divider",
         }}
       />
       <Input
@@ -59,22 +68,22 @@ export const Modal1 = () => (
         sx={{
           p: 1,
           borderBottom: 1,
-          borderColor: 'divider',
+          borderColor: "divider",
         }}
       />
       <QuillEditor
         placeholder="Leave a message"
         sx={{
-          border: 'none',
+          border: "none",
           flexGrow: 1,
         }}
       />
       <Divider />
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
-          justifyContent: 'flex-end',
+          alignItems: "center",
+          display: "flex",
+          justifyContent: "flex-end",
           p: 2,
         }}
       >

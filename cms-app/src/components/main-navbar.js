@@ -1,21 +1,29 @@
-import PropTypes from 'prop-types';
-import NextLink from 'next/link';
-import { AppBar, Box, Button, Container, IconButton, Link, Toolbar } from '@mui/material';
-import { Menu as MenuIcon } from '../icons/menu';
-import { Logo } from './logo';
+import PropTypes from "prop-types";
+import NextLink from "next/link";
+import {
+  AppBar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Link,
+  Toolbar,
+} from "@mui/material";
+import { Menu as MenuIcon } from "../icons/menu";
+import { Logo } from "./logo";
 
-export const MainNavbar = props => {
+export const MainNavbar = (props) => {
   const { onOpenSidebar } = props;
 
   return (
     <AppBar
       elevation={0}
       sx={{
-        backgroundColor: 'background.paper',
-        borderBottomColor: 'divider',
-        borderBottomStyle: 'solid',
+        backgroundColor: "background.paper",
+        borderBottomColor: "divider",
+        borderBottomStyle: "solid",
         borderBottomWidth: 1,
-        color: 'text.secondary',
+        color: "text.secondary",
       }}
     >
       <Container maxWidth="lg">
@@ -25,8 +33,8 @@ export const MainNavbar = props => {
               <Logo
                 sx={{
                   display: {
-                    md: 'inline',
-                    xs: 'none',
+                    md: "inline",
+                    xs: "none",
                   },
                   height: 40,
                   width: 40,
@@ -40,7 +48,7 @@ export const MainNavbar = props => {
             onClick={onOpenSidebar}
             sx={{
               display: {
-                md: 'none',
+                md: "none",
               },
             }}
           >
@@ -48,10 +56,10 @@ export const MainNavbar = props => {
           </IconButton>
           <Box
             sx={{
-              alignItems: 'center',
+              alignItems: "center",
               display: {
-                md: 'flex',
-                xs: 'none',
+                md: "flex",
+                xs: "none",
               },
             }}
           >
@@ -61,12 +69,23 @@ export const MainNavbar = props => {
               </Link>
             </NextLink>
             <NextLink href="/browse" passHref>
-              <Link color="textSecondary" sx={{ ml: 2 }} underline="none" variant="subtitle2">
+              <Link
+                color="textSecondary"
+                sx={{ ml: 2 }}
+                underline="none"
+                variant="subtitle2"
+              >
                 Components
               </Link>
             </NextLink>
             <NextLink href="/docs/welcome" passHref>
-              <Link color="textSecondary" component="a" sx={{ ml: 2 }} underline="none" variant="subtitle2">
+              <Link
+                color="textSecondary"
+                component="a"
+                sx={{ ml: 2 }}
+                underline="none"
+                variant="subtitle2"
+              >
                 Documentation
               </Link>
             </NextLink>

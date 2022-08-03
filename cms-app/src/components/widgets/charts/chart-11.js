@@ -1,33 +1,40 @@
-import numeral from 'numeral';
-import { Box, Card, CardContent, CardHeader, Container, Typography } from '@mui/material';
-import { useTheme } from '@mui/material/styles';
-import { Chart } from '../../chart';
+import numeral from "numeral";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 const data = {
   series: [
     {
-      color: '#7783DB',
-      category: 'Email',
+      color: "#7783DB",
+      category: "Email",
       data: 37530,
     },
     {
-      color: '#7BC67E',
-      category: 'GDN',
+      color: "#7BC67E",
+      category: "GDN",
       data: 52717,
     },
     {
-      color: '#FFB547',
-      category: 'Instagram',
+      color: "#FFB547",
+      category: "Instagram",
       data: 62935,
     },
     {
-      color: '#F06191',
-      category: 'Facebook',
+      color: "#F06191",
+      category: "Facebook",
       data: 90590,
     },
     {
-      color: '#64B6F7',
-      category: 'Google Ads Search',
+      color: "#64B6F7",
+      category: "Google Ads Search",
       data: 13219,
     },
   ],
@@ -38,13 +45,13 @@ export const Chart11 = () => {
 
   const chartOptions = {
     chart: {
-      background: 'transparent',
+      background: "transparent",
       stacked: false,
       toolbar: {
         show: false,
       },
     },
-    colors: data.series.map(item => item.color),
+    colors: data.series.map((item) => item.color),
     dataLabels: {
       enabled: false,
     },
@@ -65,7 +72,7 @@ export const Chart11 = () => {
     plotOptions: {
       bar: {
         horizontal: true,
-        barHeight: '45',
+        barHeight: "45",
         distributed: true,
       },
     },
@@ -74,7 +81,7 @@ export const Chart11 = () => {
     },
     tooltip: {
       y: {
-        formatter: value => numeral(value).format('$0,0.00'),
+        formatter: (value) => numeral(value).format("$0,0.00"),
       },
     },
     xaxis: {
@@ -86,7 +93,7 @@ export const Chart11 = () => {
         color: theme.palette.divider,
         show: true,
       },
-      categories: data.series.map(item => item.category),
+      categories: data.series.map((item) => item.category),
     },
     yaxis: {
       labels: {
@@ -97,15 +104,15 @@ export const Chart11 = () => {
 
   const chartSeries = [
     {
-      data: data.series.map(item => item.data),
-      name: 'Sales',
+      data: data.series.map((item) => item.data),
+      name: "Sales",
     },
   ];
 
   return (
     <Box
       sx={{
-        backgroundColor: 'background.default',
+        backgroundColor: "background.default",
         p: 3,
       }}
     >
@@ -113,19 +120,19 @@ export const Chart11 = () => {
         <Card>
           <CardHeader title="Incremental Sales" />
           <CardContent>
-            {data.series.map(item => (
+            {data.series.map((item) => (
               <Box
                 key={item.category}
                 sx={{
-                  alignItems: 'center',
-                  display: 'flex',
+                  alignItems: "center",
+                  display: "flex",
                   p: 1,
                 }}
               >
                 <Box
                   sx={{
                     backgroundColor: item.color,
-                    borderRadius: '50%',
+                    borderRadius: "50%",
                     height: 8,
                     width: 8,
                   }}
@@ -135,7 +142,12 @@ export const Chart11 = () => {
                 </Typography>
               </Box>
             ))}
-            <Chart height={350} options={chartOptions} series={chartSeries} type="bar" />
+            <Chart
+              height={350}
+              options={chartOptions}
+              series={chartSeries}
+              type="bar"
+            />
           </CardContent>
         </Card>
       </Container>

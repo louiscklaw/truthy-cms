@@ -1,24 +1,38 @@
-import { useRef, useState } from 'react';
-import { Box, Button, ButtonGroup, ClickAwayListener, Grow, MenuItem, MenuList, Paper, Popper } from '@mui/material';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import { useRef, useState } from "react";
+import {
+  Box,
+  Button,
+  ButtonGroup,
+  ClickAwayListener,
+  Grow,
+  MenuItem,
+  MenuList,
+  Paper,
+  Popper,
+} from "@mui/material";
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-const options = ['Create a merge commit', 'Squash and merge', 'Rebase and merge'];
+const options = [
+  "Create a merge commit",
+  "Squash and merge",
+  "Rebase and merge",
+];
 
 export const Buttons3 = () => {
   const anchorRef = useRef(null);
   const [open, setOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(1);
 
-  const handleMenuItemClick = index => {
+  const handleMenuItemClick = (index) => {
     setSelectedIndex(index);
     setOpen(false);
   };
 
   const handleToggle = () => {
-    setOpen(prevOpen => !prevOpen);
+    setOpen((prevOpen) => !prevOpen);
   };
 
-  const handleClose = event => {
+  const handleClose = (event) => {
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
@@ -29,13 +43,17 @@ export const Buttons3 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: 'background.paper',
+        backgroundColor: "background.paper",
         p: 3,
       }}
     >
       <ButtonGroup ref={anchorRef} variant="contained">
         <Button>{options[selectedIndex]}</Button>
-        <Button onClick={handleToggle} size="small" sx={{ backgroundColor: 'primary.dark' }}>
+        <Button
+          onClick={handleToggle}
+          size="small"
+          sx={{ backgroundColor: "primary.dark" }}
+        >
           <ArrowDropDownIcon fontSize="small" />
         </Button>
       </ButtonGroup>
@@ -44,7 +62,8 @@ export const Buttons3 = () => {
           <Grow
             {...TransitionProps}
             style={{
-              transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
+              transformOrigin:
+                placement === "bottom" ? "center top" : "center bottom",
             }}
           >
             <Paper>

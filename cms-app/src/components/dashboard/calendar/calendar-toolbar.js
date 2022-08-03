@@ -1,63 +1,73 @@
-import PropTypes from 'prop-types';
-import { format } from 'date-fns';
-import { Box, Button, IconButton, TextField, Typography } from '@mui/material';
-import ViewConfigIcon from '@mui/icons-material/ViewComfy';
-import ViewWeekIcon from '@mui/icons-material/ViewWeek';
-import ViewDayIcon from '@mui/icons-material/ViewDay';
-import ViewAgendaIcon from '@mui/icons-material/ViewAgenda';
-import { ChevronLeft as ChevronLeftIcon } from '../../../icons/chevron-left';
-import { ChevronRight as ChevronRightIcon } from '../../../icons/chevron-right';
-import { Plus as PlusIcon } from '../../../icons/plus';
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
+import ViewConfigIcon from "@mui/icons-material/ViewComfy";
+import ViewWeekIcon from "@mui/icons-material/ViewWeek";
+import ViewDayIcon from "@mui/icons-material/ViewDay";
+import ViewAgendaIcon from "@mui/icons-material/ViewAgenda";
+import { ChevronLeft as ChevronLeftIcon } from "../../../icons/chevron-left";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
+import { Plus as PlusIcon } from "../../../icons/plus";
 
 const viewOptions = [
   {
     icon: ViewConfigIcon,
-    label: 'Month',
-    value: 'dayGridMonth',
+    label: "Month",
+    value: "dayGridMonth",
   },
   {
     icon: ViewWeekIcon,
-    label: 'Week',
-    value: 'timeGridWeek',
+    label: "Week",
+    value: "timeGridWeek",
   },
   {
     icon: ViewDayIcon,
-    label: 'Day',
-    value: 'timeGridDay',
+    label: "Day",
+    value: "timeGridDay",
   },
   {
     icon: ViewAgendaIcon,
-    label: 'Agenda',
-    value: 'listWeek',
+    label: "Agenda",
+    value: "listWeek",
   },
 ];
 
-export const CalendarToolbar = props => {
-  const { date, mobile, onAddClick, onDateNext, onDatePrev, onDateToday, onViewChange, view, ...other } = props;
+export const CalendarToolbar = (props) => {
+  const {
+    date,
+    mobile,
+    onAddClick,
+    onDateNext,
+    onDatePrev,
+    onDateToday,
+    onViewChange,
+    view,
+    ...other
+  } = props;
 
-  const handleViewChange = event => {
+  const handleViewChange = (event) => {
     onViewChange?.(event.target.value);
   };
 
   return (
     <Box
       sx={{
-        alignItems: 'center',
-        display: 'flex',
-        flexWrap: 'wrap',
-        justifyContent: 'space-between',
+        alignItems: "center",
+        display: "flex",
+        flexWrap: "wrap",
+        justifyContent: "space-between",
         px: 3,
         flexDirection: {
-          xs: 'column',
-          md: 'row',
+          xs: "column",
+          md: "row",
         },
       }}
       {...other}
     >
       <Box
         sx={{
-          alignItems: 'center',
-          display: 'flex',
+          alignItems: "center",
+          display: "flex",
           mb: {
             xs: 2,
             md: 0,
@@ -65,7 +75,7 @@ export const CalendarToolbar = props => {
           mr: 2,
         }}
       >
-        <Typography variant="h5">{format(date, 'MMMM')}</Typography>
+        <Typography variant="h5">{format(date, "MMMM")}</Typography>
         <Typography
           sx={{
             fontWeight: 400,
@@ -73,14 +83,14 @@ export const CalendarToolbar = props => {
           }}
           variant="h5"
         >
-          {format(date, 'y')}
+          {format(date, "y")}
         </Typography>
       </Box>
       <Box
         sx={{
-          alignItems: 'center',
-          flexWrap: 'wrap',
-          display: 'flex',
+          alignItems: "center",
+          flexWrap: "wrap",
+          display: "flex",
           m: -1,
         }}
       >
@@ -101,7 +111,7 @@ export const CalendarToolbar = props => {
           value={view}
           sx={{
             ml: {
-              xs: 'auto',
+              xs: "auto",
               md: 1,
             },
             m: 1,
@@ -109,9 +119,12 @@ export const CalendarToolbar = props => {
           }}
           SelectProps={{ native: true }}
         >
-          {viewOptions.map(viewOption => {
+          {viewOptions.map((viewOption) => {
             // On mobile allow only timeGridDay and agenda views
-            if (mobile && !['timeGridDay', 'listWeek'].includes(viewOption.value)) {
+            if (
+              mobile &&
+              !["timeGridDay", "listWeek"].includes(viewOption.value)
+            ) {
               return null;
             }
 
@@ -132,8 +145,8 @@ export const CalendarToolbar = props => {
               md: 0,
             },
             width: {
-              xs: '100%',
-              md: 'auto',
+              xs: "100%",
+              md: "auto",
             },
           }}
           variant="contained"
@@ -154,5 +167,10 @@ CalendarToolbar.propTypes = {
   onDatePrev: PropTypes.func,
   onDateToday: PropTypes.func,
   onViewChange: PropTypes.func,
-  view: PropTypes.oneOf(['dayGridMonth', 'timeGridWeek', 'timeGridDay', 'listWeek']).isRequired,
+  view: PropTypes.oneOf([
+    "dayGridMonth",
+    "timeGridWeek",
+    "timeGridDay",
+    "listWeek",
+  ]).isRequired,
 };

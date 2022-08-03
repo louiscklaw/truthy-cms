@@ -1,142 +1,142 @@
-import { useEffect } from 'react';
-import { useRouter } from 'next/router';
-import PropTypes from 'prop-types';
-import { Box, Drawer, useMediaQuery } from '@mui/material';
-import { DocsSidebarSection } from './docs-sidebar-section';
-import { Scrollbar } from '../scrollbar';
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import { Box, Drawer, useMediaQuery } from "@mui/material";
+import { DocsSidebarSection } from "./docs-sidebar-section";
+import { Scrollbar } from "../scrollbar";
 
 const sections = [
   {
-    title: 'Overview',
+    title: "Overview",
     items: [
       {
-        title: 'Welcome',
-        path: '/docs/welcome',
+        title: "Welcome",
+        path: "/docs/welcome",
       },
       {
-        title: 'Getting Started',
-        path: '/docs/getting-started',
+        title: "Getting Started",
+        path: "/docs/getting-started",
       },
       {
-        title: 'Dependencies',
-        path: '/docs/dependencies',
+        title: "Dependencies",
+        path: "/docs/dependencies",
       },
       {
-        title: 'Environment Variables',
-        path: '/docs/environment-variables',
+        title: "Environment Variables",
+        path: "/docs/environment-variables",
       },
       {
-        title: 'Deployment',
-        path: '/docs/deployment',
+        title: "Deployment",
+        path: "/docs/deployment",
       },
       {
-        title: 'Routing',
-        path: '/docs/routing',
+        title: "Routing",
+        path: "/docs/routing",
       },
       {
-        title: 'Theming',
-        path: '/docs/theming',
+        title: "Theming",
+        path: "/docs/theming",
       },
       {
-        title: 'Redux',
-        path: '/docs/redux',
+        title: "Redux",
+        path: "/docs/redux",
       },
       {
-        title: 'Server Calls',
-        path: '/docs/server-calls',
+        title: "Server Calls",
+        path: "/docs/server-calls",
       },
       {
-        title: 'Settings',
-        path: '/docs/settings',
+        title: "Settings",
+        path: "/docs/settings",
       },
       {
-        title: 'RTL',
-        path: '/docs/rtl',
+        title: "RTL",
+        path: "/docs/rtl",
       },
       {
-        title: 'Internationalization',
-        path: '/docs/internationalization',
+        title: "Internationalization",
+        path: "/docs/internationalization",
       },
     ],
   },
   {
-    title: 'Authentication',
+    title: "Authentication",
     items: [
       {
-        title: 'Amplify',
-        path: '/docs/authentication-amplify',
+        title: "Amplify",
+        path: "/docs/authentication-amplify",
       },
       {
-        title: 'Auth0',
-        path: '/docs/authentication-auth0',
+        title: "Auth0",
+        path: "/docs/authentication-auth0",
       },
       {
-        title: 'Firebase',
-        path: '/docs/authentication-firebase',
+        title: "Firebase",
+        path: "/docs/authentication-firebase",
       },
       {
-        title: 'JWT',
-        path: '/docs/authentication-jwt',
+        title: "JWT",
+        path: "/docs/authentication-jwt",
       },
     ],
   },
   {
-    title: 'Guards',
+    title: "Guards",
     items: [
       {
-        title: 'Guest Guard',
-        path: '/docs/guest-guard',
+        title: "Guest Guard",
+        path: "/docs/guest-guard",
       },
       {
-        title: 'Auth Guard',
-        path: '/docs/auth-guard',
+        title: "Auth Guard",
+        path: "/docs/auth-guard",
       },
       {
-        title: 'Role Based Guard',
-        path: '/docs/role-based-guard',
+        title: "Role Based Guard",
+        path: "/docs/role-based-guard",
       },
     ],
   },
   {
-    title: 'Analytics',
+    title: "Analytics",
     items: [
       {
-        title: 'Introduction',
-        path: '/docs/analytics-introduction',
+        title: "Introduction",
+        path: "/docs/analytics-introduction",
       },
       {
-        title: 'Configuration',
-        path: '/docs/analytics-configuration',
+        title: "Configuration",
+        path: "/docs/analytics-configuration",
       },
       {
-        title: 'Event Tracking',
-        path: '/docs/analytics-event-tracking',
+        title: "Event Tracking",
+        path: "/docs/analytics-event-tracking",
       },
     ],
   },
   {
-    title: 'Support',
+    title: "Support",
     items: [
       {
-        title: 'Changelog',
-        path: '/docs/changelog',
+        title: "Changelog",
+        path: "/docs/changelog",
       },
       {
-        title: 'Contact',
-        path: '/docs/contact',
+        title: "Contact",
+        path: "/docs/contact",
       },
       {
-        title: 'Further Support',
-        path: '/docs/further-support',
+        title: "Further Support",
+        path: "/docs/further-support",
       },
     ],
   },
 ];
 
-export const DocsSidebar = props => {
+export const DocsSidebar = (props) => {
   const { onClose, open } = props;
   const router = useRouter();
-  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'), {
+  const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"), {
     noSsr: true,
   });
 
@@ -153,32 +153,32 @@ export const DocsSidebar = props => {
   useEffect(
     handlePathChange,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [router.isReady, router.asPath],
+    [router.isReady, router.asPath]
   );
 
   const content = (
     <Scrollbar
       sx={{
-        height: '100%',
-        '& .simplebar-content': {
-          height: '100%',
+        height: "100%",
+        "& .simplebar-content": {
+          height: "100%",
         },
       }}
     >
       <Box
         sx={{
-          display: 'flex',
-          flexDirection: 'column',
-          height: '100%',
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
           py: 2,
         }}
       >
-        {sections.map(section => (
+        {sections.map((section) => (
           <DocsSidebarSection
             key={section.title}
             path={router.asPath}
             sx={{
-              '& + &': {
+              "& + &": {
                 mt: 3,
               },
             }}
@@ -197,9 +197,9 @@ export const DocsSidebar = props => {
         variant="permanent"
         PaperProps={{
           sx: {
-            backgroundColor: 'background.paper',
-            height: 'calc(100% - 64px) !important',
-            top: '64px !important',
+            backgroundColor: "background.paper",
+            height: "calc(100% - 64px) !important",
+            top: "64px !important",
             width: 256,
           },
         }}
@@ -217,12 +217,12 @@ export const DocsSidebar = props => {
       variant="temporary"
       PaperProps={{
         sx: {
-          backgroundColor: 'background.default',
+          backgroundColor: "background.default",
           width: 256,
         },
       }}
       sx={{
-        zIndex: theme => theme.zIndex.appBar + 100,
+        zIndex: (theme) => theme.zIndex.appBar + 100,
       }}
     >
       {content}

@@ -1,14 +1,21 @@
-import PropTypes from 'prop-types';
-import { format } from 'date-fns';
-import numeral from 'numeral';
-import { Document, Image, Page, StyleSheet, Text, View } from '@react-pdf/renderer';
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import numeral from "numeral";
+import {
+  Document,
+  Image,
+  Page,
+  StyleSheet,
+  Text,
+  View,
+} from "@react-pdf/renderer";
 
 const COL1_WIDTH = 60;
 const COLN_WIDTH = (100 - COL1_WIDTH) / 2;
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: '#ffffff',
+    backgroundColor: "#ffffff",
     padding: 24,
   },
   h4: {
@@ -34,21 +41,21 @@ const styles = StyleSheet.create({
     marginBottom: 4,
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   brand: {
     height: 32,
     width: 32,
   },
   company: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 32,
   },
   references: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
     marginTop: 32,
   },
   billing: {
@@ -61,16 +68,16 @@ const styles = StyleSheet.create({
     marginTop: 32,
   },
   table: {
-    display: 'flex',
-    width: 'auto',
+    display: "flex",
+    width: "auto",
   },
   tableHeader: {},
   tableBody: {},
   tableRow: {
     borderBottomWidth: 1,
-    borderColor: '#EEEEEE',
-    borderStyle: 'solid',
-    flexDirection: 'row',
+    borderColor: "#EEEEEE",
+    borderStyle: "solid",
+    flexDirection: "row",
   },
   tableCell1: {
     padding: 6,
@@ -81,11 +88,11 @@ const styles = StyleSheet.create({
     width: `${COLN_WIDTH}%`,
   },
   alignRight: {
-    textAlign: 'right',
+    textAlign: "right",
   },
 });
 
-export const InvoicePDF = props => {
+export const InvoicePDF = (props) => {
   const { invoice } = props;
 
   return (
@@ -118,12 +125,20 @@ export const InvoicePDF = props => {
         </View>
         <View style={styles.references}>
           <View>
-            <Text style={[styles.subtitle2, styles.gutterBottom]}>Due Date</Text>
-            <Text style={styles.body2}>{invoice.dueDate && format(invoice.dueDate, 'dd MMM yyyy')}</Text>
+            <Text style={[styles.subtitle2, styles.gutterBottom]}>
+              Due Date
+            </Text>
+            <Text style={styles.body2}>
+              {invoice.dueDate && format(invoice.dueDate, "dd MMM yyyy")}
+            </Text>
           </View>
           <View>
-            <Text style={[styles.subtitle2, styles.gutterBottom]}>Date of issue</Text>
-            <Text style={styles.body2}>{invoice.issueDate && format(invoice.issueDate, 'dd MMM yyyy')}</Text>
+            <Text style={[styles.subtitle2, styles.gutterBottom]}>
+              Date of issue
+            </Text>
+            <Text style={styles.body2}>
+              {invoice.issueDate && format(invoice.issueDate, "dd MMM yyyy")}
+            </Text>
           </View>
           <View>
             <Text style={[styles.subtitle2, styles.gutterBottom]}>Number</Text>
@@ -135,7 +150,9 @@ export const InvoicePDF = props => {
           <Text style={styles.body2}>Tracey Herman</Text>
           <Text style={styles.body2}>Countdown Grey Lynn</Text>
           <Text style={styles.body2}>6934656584231</Text>
-          <Text style={styles.body2}>271 Richmond Rd, Grey Lynn, Auckland 1022, New Zealand</Text>
+          <Text style={styles.body2}>
+            271 Richmond Rd, Grey Lynn, Auckland 1022, New Zealand
+          </Text>
         </View>
         <View style={styles.items}>
           <View style={styles.table}>
@@ -151,7 +168,7 @@ export const InvoicePDF = props => {
               </View>
             </View>
             <View style={styles.tableBody}>
-              {(invoice.items || []).map(item => (
+              {(invoice.items || []).map((item) => (
                 <View style={styles.tableRow} key={item.id}>
                   <View style={styles.tableCell1}>
                     <Text style={styles.body2}>{item.description}</Text>
@@ -159,7 +176,9 @@ export const InvoicePDF = props => {
                   <View style={styles.tableCellN} />
                   <View style={styles.tableCellN}>
                     <Text style={[styles.body2, styles.alignRight]}>
-                      {numeral(item.unitAmount).format(`${item.currency}0,0.00`)}
+                      {numeral(item.unitAmount).format(
+                        `${item.currency}0,0.00`
+                      )}
                     </Text>
                   </View>
                 </View>
@@ -171,7 +190,9 @@ export const InvoicePDF = props => {
                 </View>
                 <View style={styles.tableCellN}>
                   <Text style={[styles.body2, styles.alignRight]}>
-                    {numeral(invoice.subtotalAmount).format(`${invoice.currency}0,0.00`)}
+                    {numeral(invoice.subtotalAmount).format(
+                      `${invoice.currency}0,0.00`
+                    )}
                   </Text>
                 </View>
               </View>
@@ -182,7 +203,9 @@ export const InvoicePDF = props => {
                 </View>
                 <View style={styles.tableCellN}>
                   <Text style={[styles.body2, styles.alignRight]}>
-                    {numeral(invoice.taxAmount).format(`${invoice.currency}0,0.00`)}
+                    {numeral(invoice.taxAmount).format(
+                      `${invoice.currency}0,0.00`
+                    )}
                   </Text>
                 </View>
               </View>
@@ -193,7 +216,9 @@ export const InvoicePDF = props => {
                 </View>
                 <View style={styles.tableCellN}>
                   <Text style={[styles.body2, styles.alignRight]}>
-                    {numeral(invoice.totalAmount).format(`${invoice.currency}0,0.00`)}
+                    {numeral(invoice.totalAmount).format(
+                      `${invoice.currency}0,0.00`
+                    )}
                   </Text>
                 </View>
               </View>
@@ -203,8 +228,8 @@ export const InvoicePDF = props => {
         <View style={styles.notes}>
           <Text style={[styles.h6, styles.gutterBottom]}>Notes</Text>
           <Text style={styles.body2}>
-            Please make sure you have the right bank registration number as I had issues before and make sure you guys
-            cover transfer expenses.
+            Please make sure you have the right bank registration number as I
+            had issues before and make sure you guys cover transfer expenses.
           </Text>
         </View>
       </Page>
