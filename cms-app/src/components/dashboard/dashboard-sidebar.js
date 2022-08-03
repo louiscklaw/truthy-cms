@@ -57,16 +57,7 @@ const getSections = t => [
         chip: (
           <Chip
             color="secondary"
-            label={
-              <Typography
-                sx={{
-                  fontSize: '10px',
-                  fontWeight: '600',
-                }}
-              >
-                NEW
-              </Typography>
-            }
+            label={<Typography sx={{ fontSize: '10px', fontWeight: '600' }}>NEW</Typography>}
             size="small"
           />
         ),
@@ -86,18 +77,9 @@ const getSections = t => [
         path: '/dashboard/customers',
         icon: <UsersIcon fontSize="small" />,
         children: [
-          {
-            title: t('List'),
-            path: '/dashboard/customers',
-          },
-          {
-            title: t('Details'),
-            path: '/dashboard/customers/1',
-          },
-          {
-            title: t('Edit'),
-            path: '/dashboard/customers/1/edit',
-          },
+          { title: t('List'), path: '/dashboard/customers' },
+          { title: t('Details'), path: '/dashboard/customers/1' },
+          { title: t('Edit'), path: '/dashboard/customers/1/edit' },
         ],
       },
       {
@@ -105,14 +87,8 @@ const getSections = t => [
         path: '/dashboard/products',
         icon: <ShoppingBagIcon fontSize="small" />,
         children: [
-          {
-            title: t('List'),
-            path: '/dashboard/products',
-          },
-          {
-            title: t('Create'),
-            path: '/dashboard/products/new',
-          },
+          { title: t('List'), path: '/dashboard/products' },
+          { title: t('Create'), path: '/dashboard/products/new' },
         ],
       },
       {
@@ -120,14 +96,8 @@ const getSections = t => [
         icon: <ShoppingCartIcon fontSize="small" />,
         path: '/dashboard/orders',
         children: [
-          {
-            title: t('List'),
-            path: '/dashboard/orders',
-          },
-          {
-            title: t('Details'),
-            path: '/dashboard/orders/1',
-          },
+          { title: t('List'), path: '/dashboard/orders' },
+          { title: t('Details'), path: '/dashboard/orders/1' },
         ],
       },
       {
@@ -135,14 +105,8 @@ const getSections = t => [
         path: '/dashboard/invoices',
         icon: <ReceiptTaxIcon fontSize="small" />,
         children: [
-          {
-            title: t('List'),
-            path: '/dashboard/invoices',
-          },
-          {
-            title: t('Details'),
-            path: '/dashboard/invoices/1',
-          },
+          { title: t('List'), path: '/dashboard/invoices' },
+          { title: t('Details'), path: '/dashboard/invoices/1' },
         ],
       },
     ],
@@ -155,18 +119,9 @@ const getSections = t => [
         path: '/dashboard/jobs',
         icon: <OfficeBuildingIcon fontSize="small" />,
         children: [
-          {
-            title: t('Browse'),
-            path: '/dashboard/jobs',
-          },
-          {
-            title: t('Details'),
-            path: '/dashboard/jobs/companies/1',
-          },
-          {
-            title: t('Create'),
-            path: '/dashboard/jobs/new',
-          },
+          { title: t('Browse'), path: '/dashboard/jobs' },
+          { title: t('Details'), path: '/dashboard/jobs/companies/1' },
+          { title: t('Create'), path: '/dashboard/jobs/new' },
         ],
       },
       {
@@ -174,14 +129,8 @@ const getSections = t => [
         path: '/dashboard/social',
         icon: <ShareIcon fontSize="small" />,
         children: [
-          {
-            title: t('Profile'),
-            path: '/dashboard/social/profile',
-          },
-          {
-            title: t('Feed'),
-            path: '/dashboard/social/feed',
-          },
+          { title: t('Profile'), path: '/dashboard/social/profile' },
+          { title: t('Feed'), path: '/dashboard/social/feed' },
         ],
       },
       {
@@ -189,18 +138,9 @@ const getSections = t => [
         path: '/blog',
         icon: <NewspaperIcon fontSize="small" />,
         children: [
-          {
-            title: t('Post List'),
-            path: '/blog',
-          },
-          {
-            title: t('Post Details'),
-            path: '/blog/1',
-          },
-          {
-            title: t('Post Create'),
-            path: '/blog/new',
-          },
+          { title: t('Post List'), path: '/blog' },
+          { title: t('Post Details'), path: '/blog/1' },
+          { title: t('Post Create'), path: '/blog/new' },
         ],
       },
     ],
@@ -238,14 +178,8 @@ const getSections = t => [
         path: '/authentication',
         icon: <LockClosedIcon fontSize="small" />,
         children: [
-          {
-            title: t('Register'),
-            path: '/authentication/register?disableGuard=true',
-          },
-          {
-            title: t('Login'),
-            path: '/authentication/login?disableGuard=true',
-          },
+          { title: t('Register'), path: '/authentication/register?disableGuard=true' },
+          { title: t('Login'), path: '/authentication/login?disableGuard=true' },
         ],
       },
       {
@@ -268,18 +202,9 @@ const getSections = t => [
         path: '/error',
         icon: <XCircleIcon fontSize="small" />,
         children: [
-          {
-            title: '401',
-            path: '/401',
-          },
-          {
-            title: '404',
-            path: '/404',
-          },
-          {
-            title: '500',
-            path: '/500',
-          },
+          { title: '401', path: '/401' },
+          { title: '404', path: '/404' },
+          { title: '500', path: '/500' },
         ],
       },
     ],
@@ -323,31 +248,13 @@ export const DashboardSidebar = props => {
 
   const content = (
     <>
-      <Scrollbar
-        sx={{
-          height: '100%',
-          '& .simplebar-content': {
-            height: '100%',
-          },
-        }}
-      >
-        <Box
-          sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            height: '100%',
-          }}
-        >
+      <Scrollbar sx={{ height: '100%', '& .simplebar-content': { height: '100%' } }}>
+        <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           <div>
             <Box sx={{ p: 3 }}>
               <NextLink href="/" passHref>
                 <a>
-                  <Logo
-                    sx={{
-                      height: 42,
-                      width: 42,
-                    }}
-                  />
+                  <Logo sx={{ height: 42, width: 42 }} />
                 </a>
               </NextLink>
             </Box>
@@ -374,33 +281,17 @@ export const DashboardSidebar = props => {
                     {t('Your tier')} : Premium
                   </Typography>
                 </div>
-                <SelectorIcon
-                  sx={{
-                    color: 'neutral.500',
-                    width: 14,
-                    height: 14,
-                  }}
-                />
+                <SelectorIcon sx={{ color: 'neutral.500', width: 14, height: 14 }} />
               </Box>
             </Box>
           </div>
-          <Divider
-            sx={{
-              borderColor: '#2D3748',
-              my: 3,
-            }}
-          />
+          <Divider sx={{ borderColor: '#2D3748', my: 3 }} />
           <Box sx={{ flexGrow: 1 }}>
             {sections.map(section => (
               <DashboardSidebarSection
                 key={section.title}
                 path={router.asPath}
-                sx={{
-                  mt: 2,
-                  '& + &': {
-                    mt: 2,
-                  },
-                }}
+                sx={{ mt: 2, '& + &': { mt: 2 } }}
                 {...section}
               />
             ))}
@@ -460,13 +351,7 @@ export const DashboardSidebar = props => {
       anchor="left"
       onClose={onClose}
       open={open}
-      PaperProps={{
-        sx: {
-          backgroundColor: 'neutral.900',
-          color: '#FFFFFF',
-          width: 280,
-        },
-      }}
+      PaperProps={{ sx: { backgroundColor: 'neutral.900', color: '#FFFFFF', width: 280 } }}
       sx={{ zIndex: theme => theme.zIndex.appBar + 100 }}
       variant="temporary"
     >
