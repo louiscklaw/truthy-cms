@@ -29,6 +29,8 @@ export const AccountPopover = props => {
     }
   };
 
+  if (!user) return <></>;
+
   return (
     <Popover
       anchorEl={anchorEl}
@@ -45,7 +47,7 @@ export const AccountPopover = props => {
           <UserCircleIcon fontSize="small" />
         </Avatar>
         <Box sx={{ ml: 1 }}>
-          <Typography variant="body1">{user.name}</Typography>
+          <Typography variant="body1">{user?.name}</Typography>
           <Typography color="textSecondary" variant="body2">
             {user?.country}
           </Typography>
