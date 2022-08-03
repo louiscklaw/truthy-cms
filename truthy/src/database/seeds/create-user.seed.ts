@@ -45,6 +45,7 @@ export default class CreateUserSeed {
           salt: password_salt,
           name: 'user1_truthy',
           status: UserStatusEnum.ACTIVE,
+          contact_info_public: true,
           roleId: role_admin.id,
         },
       ])
