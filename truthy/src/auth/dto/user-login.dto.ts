@@ -5,8 +5,7 @@ import { IsLowercase, IsNotEmpty, IsBoolean } from 'class-validator';
  */
 export class UserLoginDto {
   @IsNotEmpty()
-  @IsLowercase()
-  username: string;
+  email: string;
 
   @IsNotEmpty()
   password: string;

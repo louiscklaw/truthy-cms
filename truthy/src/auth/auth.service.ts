@@ -127,7 +127,7 @@ export class AuthService {
     cookiePayload: string[];
     user: any;
   }> {
-    const usernameIPkey = `${userLoginDto.username}_${refreshTokenPayload.ip}`;
+    const usernameIPkey = `${userLoginDto.email}_${refreshTokenPayload.ip}`;
     const resUsernameAndIP = await this.rateLimiter.get(usernameIPkey);
     let retrySecs = 0;
     // Check if user is already blocked

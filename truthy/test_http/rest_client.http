@@ -10,17 +10,17 @@ POST http://localhost:{{PORT}}/{{BASEURL}}/auth/login
 content-type: application/json
 
 {
-  "username": "user1@truthy.com",
+  "email": "user1@truthy.com",
   "password": "Truthy@123",
   "remember":true
 }
 
 ###
-POST http://localhost/{{{{BASEURL}}}}/auth/login
+POST http://localhost/{{BASEURL}}/auth/login
 content-type: application/json
 
 {
-  "username": "user1@truthy.com",
+  "email": "user1@truthy.com",
   "password": "Truthy@123",
   "remember":true
 }

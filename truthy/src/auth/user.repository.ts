@@ -34,14 +34,11 @@ export class UserRepository extends BaseRepository<UserEntity, UserSerializer> {
    * @param userLoginDto
    */
   async login(userLoginDto: UserLoginDto): Promise<[user: UserEntity, error: string, code: number]> {
-    const { username, password } = userLoginDto;
+    const { email, password } = userLoginDto;
     const user = await this.findOne({
       where: [
         {
-          username: username,
-        },
-        {
-          email: username,
+          email: email,
         },
       ],
     });
