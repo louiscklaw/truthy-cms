@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import {
   Box,
   Card,
@@ -12,13 +12,13 @@ import {
   ListItemAvatar,
   ListItemText,
   Typography,
-} from "@mui/material";
-import { AcademicCap as AcademicCapIcon } from "../../../icons/academic-cap";
-import { Briefcase as BriefcaseIcon } from "../../../icons/briefcase";
-import { Home as HomeIcon } from "../../../icons/home";
-import { Mail as MailIcon } from "../../../icons/mail";
+} from '@mui/material';
+import { AcademicCap as AcademicCapIcon } from '../../../icons/academic-cap';
+import { Briefcase as BriefcaseIcon } from '../../../icons/briefcase';
+import { Home as HomeIcon } from '../../../icons/home';
+import { Mail as MailIcon } from '../../../icons/mail';
 
-export const SocialAbout = (props) => {
+export const SocialAbout = props => {
   const {
     currentCity,
     currentJobCompany,
@@ -58,14 +58,14 @@ export const SocialAbout = (props) => {
             </Typography>
             <List>
               <ListItem disableGutters divider>
-                <ListItemAvatar sx={{ color: "action.active" }}>
+                <ListItemAvatar sx={{ color: 'action.active' }}>
                   <BriefcaseIcon fontSize="small" />
                 </ListItemAvatar>
                 <ListItemText
                   disableTypography
                   primary={
                     <Typography variant="subtitle2">
-                      {currentJobTitle} at{" "}
+                      {currentJobTitle} at{' '}
                       <Link color="textPrimary" href="#" variant="subtitle2">
                         {currentJobCompany}
                       </Link>
@@ -74,7 +74,7 @@ export const SocialAbout = (props) => {
                   secondary={
                     <Typography color="textSecondary" variant="body2">
                       Past:
-                      {previousJobTitle}{" "}
+                      {previousJobTitle}{' '}
                       <Link color="textSecondary" href="#" variant="body2">
                         {previousJobCompany}
                       </Link>
@@ -83,30 +83,26 @@ export const SocialAbout = (props) => {
                 />
               </ListItem>
               <ListItem disableGutters divider>
-                <ListItemAvatar sx={{ color: "action.active" }}>
+                <ListItemAvatar sx={{ color: 'action.active' }}>
                   <AcademicCapIcon fontSize="small" />
                 </ListItemAvatar>
                 <ListItemText
                   primary={
-                    <Link
-                      color="textSecondary"
-                      sx={{ cursor: "pointer" }}
-                      variant="caption"
-                    >
+                    <Link color="textSecondary" sx={{ cursor: 'pointer' }} variant="caption">
                       Add school or collage
                     </Link>
                   }
                 />
               </ListItem>
               <ListItem disableGutters divider>
-                <ListItemAvatar sx={{ color: "action.active" }}>
+                <ListItemAvatar sx={{ color: 'action.active' }}>
                   <HomeIcon fontSize="small" />
                 </ListItemAvatar>
                 <ListItemText
                   disableTypography
                   primary={
                     <Typography variant="subtitle2">
-                      Lives in{" "}
+                      Lives in{' '}
                       <Link color="textPrimary" href="#" variant="subtitle2">
                         {currentCity}
                       </Link>
@@ -114,7 +110,7 @@ export const SocialAbout = (props) => {
                   }
                   secondary={
                     <Typography color="textSecondary" variant="body2">
-                      Originally from{" "}
+                      Originally from{' '}
                       <Link color="textSecondary" href="#" variant="body2">
                         {originCity}
                       </Link>
@@ -123,12 +119,10 @@ export const SocialAbout = (props) => {
                 />
               </ListItem>
               <ListItem disableGutters>
-                <ListItemAvatar sx={{ color: "action.active" }}>
+                <ListItemAvatar sx={{ color: 'action.active' }}>
                   <MailIcon fontSize="small" />
                 </ListItemAvatar>
-                <ListItemText
-                  primary={<Typography variant="subtitle2">{email}</Typography>}
-                />
+                <ListItemText primary={<Typography variant="subtitle2">{email}</Typography>} />
               </ListItem>
             </List>
           </CardContent>

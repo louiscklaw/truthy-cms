@@ -1,10 +1,10 @@
-import numeral from "numeral"
-import { Box, Grid, Typography, Card } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import numeral from "numeral";
+import { Box, Grid, Typography, Card } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 const ChartLine = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -50,12 +50,12 @@ const ChartLine = () => {
     yaxis: {
       show: false,
     },
-  }
+  };
 
-  const chartSeries = [{ data: [256, 282, 221, 245, 235, 274, 234, 256] }]
+  const chartSeries = [{ data: [256, 282, 221, 245, 235, 274, 234, 256] }];
 
-  return <Chart options={chartOptions} series={chartSeries} type="area" />
-}
+  return <Chart options={chartOptions} series={chartSeries} type="area" />;
+};
 
 const data = {
   sales: {
@@ -70,7 +70,7 @@ const data = {
     actualYear: 99700,
     lastYear: 68300,
   },
-}
+};
 
 export const FinanceOverview = props => (
   <Card {...props}>
@@ -190,4 +190,4 @@ export const FinanceOverview = props => (
       </Grid>
     </Grid>
   </Card>
-)
+);

@@ -1,11 +1,11 @@
-import { Avatar, Box, Button, Card, CardActions, Divider, Typography } from "@mui/material"
-import { alpha, useTheme } from "@mui/material/styles"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { ChevronUp as ChevronUpIcon } from "../../../icons/chevron-up"
-import { Chart } from "../../chart"
+import { Avatar, Box, Button, Card, CardActions, Divider, Typography } from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { ChevronUp as ChevronUpIcon } from "../../../icons/chevron-up";
+import { Chart } from "../../chart";
 
 export const OverviewCryptoWallet = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -36,9 +36,9 @@ export const OverviewCryptoWallet = props => {
     theme: {
       mode: theme.palette.mode,
     },
-  }
+  };
 
-  const chartSeries = [76]
+  const chartSeries = [76];
 
   return (
     <Card {...props}>
@@ -100,5 +100,5 @@ export const OverviewCryptoWallet = props => {
         <Button endIcon={<ArrowRightIcon fontSize="small" />}>See all activity</Button>
       </CardActions>
     </Card>
-  )
-}
+  );
+};

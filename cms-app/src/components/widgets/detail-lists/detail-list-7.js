@@ -1,30 +1,18 @@
-import { addDays, format, subMinutes } from "date-fns";
-import numeral from "numeral";
-import {
-  Avatar,
-  Box,
-  Card,
-  CardContent,
-  CardHeader,
-  Link,
-  List,
-  ListItem,
-  Typography,
-} from "@mui/material";
+import { addDays, format, subMinutes } from 'date-fns';
+import numeral from 'numeral';
+import { Avatar, Box, Card, CardContent, CardHeader, Link, List, ListItem, Typography } from '@mui/material';
 
 export const DetailList7 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
-      minHeight: "100%",
+      backgroundColor: 'background.default',
+      minHeight: '100%',
       p: 3,
     }}
   >
     <Card>
       <CardHeader
-        avatar={
-          <Avatar src="/static/mock-images/avatars/avatar-omar_darobe.png" />
-        }
+        avatar={<Avatar src="/static/mock-images/avatars/avatar-omar_darobe.png" />}
         disableTypography
         subheader={
           <Link color="textPrimary" underline="none" variant="subtitle2">
@@ -33,11 +21,7 @@ export const DetailList7 = () => (
         }
         style={{ paddingBottom: 0 }}
         title={
-          <Typography
-            color="textSecondary"
-            sx={{ display: "block" }}
-            variant="overline"
-          >
+          <Typography color="textSecondary" sx={{ display: 'block' }} variant="overline">
             Contest holder
           </Typography>
         }
@@ -48,38 +32,38 @@ export const DetailList7 = () => (
             disableGutters
             divider
             sx={{
-              justifyContent: "space-between",
+              justifyContent: 'space-between',
               padding: 2,
             }}
           >
             <Typography variant="subtitle2">Deadline</Typography>
             <Typography color="textSecondary" variant="body2">
-              {format(addDays(new Date(), 14).getTime(), "dd MMM yyyy")}
+              {format(addDays(new Date(), 14).getTime(), 'dd MMM yyyy')}
             </Typography>
           </ListItem>
           <ListItem
             disableGutters
             divider
             sx={{
-              justifyContent: "space-between",
+              justifyContent: 'space-between',
               padding: 2,
             }}
           >
             <Typography variant="subtitle2">Budget</Typography>
             <Typography color="textSecondary" variant="body2">
-              {numeral(12500.0).format("$0,0.00")}
+              {numeral(12500.0).format('$0,0.00')}
             </Typography>
           </ListItem>
           <ListItem
             disableGutters
             sx={{
-              justifyContent: "space-between",
+              justifyContent: 'space-between',
               padding: 2,
             }}
           >
             <Typography variant="subtitle2">Last Update</Typography>
             <Typography color="textSecondary" variant="body2">
-              {format(subMinutes(new Date(), 23).getTime(), "dd MMM yyyy")}
+              {format(subMinutes(new Date(), 23).getTime(), 'dd MMM yyyy')}
             </Typography>
           </ListItem>
         </List>

@@ -1,125 +1,125 @@
-import { deepCopy } from "../utils/deep-copy";
+import { deepCopy } from '../utils/deep-copy';
 
 const now = new Date();
 
 const labels = [
   {
-    id: "all",
-    name: "All Mail",
-    type: "system",
+    id: 'all',
+    name: 'All Mail',
+    type: 'system',
   },
   {
-    id: "inbox",
-    name: "Inbox",
+    id: 'inbox',
+    name: 'Inbox',
     totalCount: 0,
-    type: "system",
+    type: 'system',
     unreadCount: 1,
   },
   {
-    id: "sent",
-    name: "Sent",
+    id: 'sent',
+    name: 'Sent',
     totalCount: 0,
-    type: "system",
+    type: 'system',
     unreadCount: 0,
   },
   {
-    id: "drafts",
-    name: "Drafts",
+    id: 'drafts',
+    name: 'Drafts',
     totalCount: 0,
-    type: "system",
+    type: 'system',
     unreadCount: 0,
   },
   {
-    id: "trash",
-    name: "Trash",
+    id: 'trash',
+    name: 'Trash',
     totalCount: 1,
-    type: "system",
+    type: 'system',
     unreadCount: 0,
   },
   {
-    id: "spam",
-    name: "Spam",
+    id: 'spam',
+    name: 'Spam',
     totalCount: 0,
-    type: "system",
+    type: 'system',
     unreadCount: 0,
   },
   {
-    id: "important",
-    name: "Important",
+    id: 'important',
+    name: 'Important',
     totalCount: 1,
-    type: "system",
+    type: 'system',
     unreadCount: 0,
   },
   {
-    id: "starred",
-    name: "Starred",
+    id: 'starred',
+    name: 'Starred',
     totalCount: 1,
-    type: "system",
+    type: 'system',
     unreadCount: 1,
   },
   {
-    id: "work",
-    color: "#43a048",
-    name: "Work",
+    id: 'work',
+    color: '#43a048',
+    name: 'Work',
     totalCount: 1,
-    type: "custom",
+    type: 'custom',
     unreadCount: 0,
   },
   {
-    id: "business",
-    color: "#1e88e5",
-    name: "Business",
+    id: 'business',
+    color: '#1e88e5',
+    name: 'Business',
     totalCount: 2,
-    type: "custom",
+    type: 'custom',
     unreadCount: 1,
   },
   {
-    id: "personal",
-    color: "#fb8a00",
-    name: "Personal",
+    id: 'personal',
+    color: '#fb8a00',
+    name: 'Personal',
     totalCount: 1,
-    type: "custom",
+    type: 'custom',
     unreadCount: 0,
   },
 ];
 
 const emails = [
   {
-    id: "5e86bcc3e1b53b6365d71638",
+    id: '5e86bcc3e1b53b6365d71638',
     attachments: [
       {
-        id: "945d887e97f480359d3f591f",
-        type: "image",
-        url: "/static/mock-images/mail/attachment_1.jpg",
-        name: "working-sketch.jpg",
-        size: "128.5Kb",
+        id: '945d887e97f480359d3f591f',
+        type: 'image',
+        url: '/static/mock-images/mail/attachment_1.jpg',
+        name: 'working-sketch.jpg',
+        size: '128.5Kb',
       },
       {
-        id: "09223c93e60f815fdce487af",
-        type: "file",
-        url: "/static/mock-images/mail/attachment_2.pdf",
-        name: "summer-customers.pdf",
-        size: "782.3Kb",
+        id: '09223c93e60f815fdce487af',
+        type: 'file',
+        url: '/static/mock-images/mail/attachment_2.pdf',
+        name: 'summer-customers.pdf',
+        size: '782.3Kb',
       },
       {
-        id: "165adb24c7b6a2e9aebba766",
-        type: "image",
-        url: "/static/mock-images/mail/attachment_3.jpg",
-        name: "desktop-coffee.jpg",
-        size: "568.2Kb",
+        id: '165adb24c7b6a2e9aebba766',
+        type: 'image',
+        url: '/static/mock-images/mail/attachment_3.jpg',
+        name: 'desktop-coffee.jpg',
+        size: '568.2Kb',
       },
     ],
     createdAt: now.getTime(),
-    folder: "inbox",
+    folder: 'inbox',
     from: {
-      avatar: "/static/mock-images/avatars/avatar-marcus_finn.png",
-      email: "marcus.finn@devias.io",
-      name: "Marcus Finn",
+      avatar: '/static/mock-images/avatars/avatar-marcus_finn.png',
+      email: 'marcus.finn@devias.io',
+      name: 'Marcus Finn',
     },
     isImportant: true,
     isStarred: false,
     isUnread: true,
-    labelIds: ["work", "business"],
+    labelIds: ['work', 'business'],
     message: `
 Hi Matt, I saw your work on instagram and would be interested in getting a quote for Logo and slider
 
@@ -132,23 +132,23 @@ Kind regards,
 
 Marcus Finn
     `,
-    subject: "Website redesign. Interested in collaboration",
+    subject: 'Website redesign. Interested in collaboration',
     to: [
       {
-        avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
-        email: "anika.visser@devias.io",
-        name: "Anika Visser",
+        avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+        email: 'anika.visser@devias.io',
+        name: 'Anika Visser',
       },
     ],
   },
   {
-    id: "5e86bcbd8406cd3055f2b6c8",
+    id: '5e86bcbd8406cd3055f2b6c8',
     createdAt: now.getTime(),
-    folder: "spam",
+    folder: 'spam',
     from: {
-      avatar: "/static/mock-images/avatars/avatar-miron_vitold.png",
-      email: "miron.vitold@devias.io",
-      name: "Miron Vitold",
+      avatar: '/static/mock-images/avatars/avatar-miron_vitold.png',
+      email: 'miron.vitold@devias.io',
+      name: 'Miron Vitold',
     },
     isImportant: false,
     isStarred: true,
@@ -157,62 +157,62 @@ Marcus Finn
     message: `
 Hey, nice projects! I really liked the one in react. What's your quote on kinda similar project?
     `,
-    subject: "Amazing work",
+    subject: 'Amazing work',
     to: [
       {
-        avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
-        email: "anika.visser@devias.io",
-        name: "Anika Visser",
+        avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+        email: 'anika.visser@devias.io',
+        name: 'Anika Visser',
       },
     ],
   },
   {
-    id: "5e86bcb9fee1ec12453fa13b",
+    id: '5e86bcb9fee1ec12453fa13b',
     createdAt: now.getTime(),
-    folder: "inbox",
+    folder: 'inbox',
     from: {
-      avatar: "/static/mock-images/avatars/avatar-penjani_inyene.png",
-      email: "penjani.inyene@devias.io",
-      name: "Penjani Inyene",
+      avatar: '/static/mock-images/avatars/avatar-penjani_inyene.png',
+      email: 'penjani.inyene@devias.io',
+      name: 'Penjani Inyene',
     },
     isImportant: false,
     isStarred: false,
     isUnread: false,
-    labelIds: ["business"],
+    labelIds: ['business'],
     message: `
 Dear Anika, Your flight is coming up soon. Please don’t forget to check in for your scheduled flight.
     `,
-    subject: "Flight reminder",
+    subject: 'Flight reminder',
     to: [
       {
-        avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
-        email: "anika.visser@devias.io",
-        name: "Anika Visser",
+        avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+        email: 'anika.visser@devias.io',
+        name: 'Anika Visser',
       },
     ],
   },
   {
-    id: "5e86bcb5575181a5e527e24f",
+    id: '5e86bcb5575181a5e527e24f',
     createdAt: now.getTime(),
-    folder: "trash",
+    folder: 'trash',
     from: {
-      avatar: "/static/mock-images/avatars/avatar-carson_darrin.png",
-      email: "carson.darrin@devias.io",
-      name: "Carson Darrin",
+      avatar: '/static/mock-images/avatars/avatar-carson_darrin.png',
+      email: 'carson.darrin@devias.io',
+      name: 'Carson Darrin',
     },
     isImportant: false,
     isStarred: false,
     isUnread: true,
-    labelIds: ["personal"],
+    labelIds: ['personal'],
     message: `
 My market leading client has another fantastic opportunity for an experienced Software Developer to join them on a heavily remote basis
     `,
-    subject: "Possible candidates for the position",
+    subject: 'Possible candidates for the position',
     to: [
       {
-        avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
-        email: "anika.visser@devias.io",
-        name: "Anika Visser",
+        avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+        email: 'anika.visser@devias.io',
+        name: 'Anika Visser',
       },
     ],
   },
@@ -232,7 +232,7 @@ class MailApi {
 
         // Get all user custom labels
         const customLabels = labels.reduce((acc, label) => {
-          if (label.type === "custom") {
+          if (label.type === 'custom') {
             acc.push(label.id);
           }
 
@@ -240,37 +240,33 @@ class MailApi {
         }, []);
 
         if (label && customLabels.includes(label)) {
-          filteredEmails = emails.filter((email) =>
-            email.labelIds.includes(label)
-          );
+          filteredEmails = emails.filter(email => email.labelIds.includes(label));
         } else {
           switch (label) {
             case undefined:
-            case "inbox":
-              filteredEmails = emails.filter(
-                (email) => email.folder === "inbox"
-              );
+            case 'inbox':
+              filteredEmails = emails.filter(email => email.folder === 'inbox');
               break;
-            case "all":
+            case 'all':
               filteredEmails = [...emails];
               break;
-            case "sent":
-            case "trash":
-              filteredEmails = emails.filter((email) => email.folder === label);
+            case 'sent':
+            case 'trash':
+              filteredEmails = emails.filter(email => email.folder === label);
               break;
-            case "starred":
-              filteredEmails = emails.filter((email) => email.isStarred);
+            case 'starred':
+              filteredEmails = emails.filter(email => email.isStarred);
               break;
-            case "important":
-              filteredEmails = emails.filter((email) => email.isImportant);
+            case 'important':
+              filteredEmails = emails.filter(email => email.isImportant);
               break;
           }
         }
 
         resolve(deepCopy(filteredEmails));
       } catch (err) {
-        console.error("[Mail Api]: ", err);
-        reject(new Error("Internal server error"));
+        console.error('[Mail Api]: ', err);
+        reject(new Error('Internal server error'));
       }
     });
   }
@@ -279,17 +275,17 @@ class MailApi {
     return new Promise((resolve, reject) => {
       try {
         // Find the mail
-        const email = emails.find((_mail) => _mail.id === emailId);
+        const email = emails.find(_mail => _mail.id === emailId);
 
         if (!email) {
-          reject(new Error("Email not found"));
+          reject(new Error('Email not found'));
           return;
         }
 
         resolve(deepCopy(email));
       } catch (err) {
-        console.error("[Mail Api]: ", err);
-        reject(new Error("Internal server error"));
+        console.error('[Mail Api]: ', err);
+        reject(new Error('Internal server error'));
       }
     });
   }

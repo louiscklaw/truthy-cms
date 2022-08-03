@@ -1,4 +1,4 @@
-import numeral from "numeral";
+import numeral from 'numeral';
 import {
   Box,
   Card,
@@ -11,37 +11,37 @@ import {
   TableSortLabel,
   Tooltip,
   Typography,
-} from "@mui/material";
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined";
+} from '@mui/material';
+import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../../icons/information-circle-outlined';
 
 const countries = [
   {
-    flag: "/static/icons/us_flag.svg",
-    name: "United States",
+    flag: '/static/icons/us_flag.svg',
+    name: 'United States',
     seo: 40,
     visits: 31200,
   },
   {
-    flag: "/static/icons/uk_flag.svg",
-    name: "United Kingdom",
+    flag: '/static/icons/uk_flag.svg',
+    name: 'United Kingdom',
     seo: 47,
     visits: 12700,
   },
   {
-    flag: "/static/icons/ru_flag.svg",
-    name: "Russia",
+    flag: '/static/icons/ru_flag.svg',
+    name: 'Russia',
     seo: 65,
     visits: 10360,
   },
   {
-    flag: "/static/icons/ca_flag.svg",
-    name: "Canada",
+    flag: '/static/icons/ca_flag.svg',
+    name: 'Canada',
     seo: 23,
     visits: 5749,
   },
   {
-    flag: "/static/icons/de_flag.svg",
-    name: "Germany",
+    flag: '/static/icons/de_flag.svg',
+    name: 'Germany',
     seo: 45,
     visits: 2932,
   },
@@ -50,7 +50,7 @@ const countries = [
 export const Table8 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
+      backgroundColor: 'background.default',
       p: 3,
     }}
   >
@@ -60,9 +60,9 @@ export const Table8 = () => (
         title={
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "space-between",
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'space-between',
             }}
           >
             <Typography variant="h6">Visits by Country</Typography>
@@ -85,11 +85,11 @@ export const Table8 = () => (
           </TableRow>
         </TableHead>
         <TableBody>
-          {countries.map((country) => (
+          {countries.map(country => (
             <TableRow
               key={country.name}
               sx={{
-                "&:last-child td": {
+                '&:last-child td': {
                   border: 0,
                 },
               }}
@@ -97,15 +97,15 @@ export const Table8 = () => (
               <TableCell>
                 <Box
                   sx={{
-                    alignItems: "center",
-                    display: "flex",
+                    alignItems: 'center',
+                    display: 'flex',
                   }}
                 >
                   <Box
                     sx={{
                       height: 36,
                       width: 36,
-                      "& img": {
+                      '& img': {
                         height: 36,
                         width: 36,
                       },
@@ -118,7 +118,7 @@ export const Table8 = () => (
                   </Typography>
                 </Box>
               </TableCell>
-              <TableCell>{numeral(country.visits).format("0,0")}</TableCell>
+              <TableCell>{numeral(country.visits).format('0,0')}</TableCell>
               <TableCell>{country.seo}%</TableCell>
             </TableRow>
           ))}

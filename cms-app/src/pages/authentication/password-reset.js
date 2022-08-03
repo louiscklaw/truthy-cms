@@ -1,20 +1,20 @@
-import { useEffect } from "react";
-import Head from "next/head";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
-import { Box, Card, Container, Divider, Link, Typography } from "@mui/material";
-import { GuestGuard } from "../../components/authentication/guest-guard";
-import { AuthBanner } from "../../components/authentication/auth-banner";
-import { AmplifyPasswordReset } from "../../components/authentication/amplify-password-reset";
-import { Logo } from "../../components/logo";
-import { useAuth } from "../../hooks/use-auth";
-import { gtm } from "../../lib/gtm";
+import { useEffect } from 'react';
+import Head from 'next/head';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { Box, Card, Container, Divider, Link, Typography } from '@mui/material';
+import { GuestGuard } from '../../components/authentication/guest-guard';
+import { AuthBanner } from '../../components/authentication/auth-banner';
+import { AmplifyPasswordReset } from '../../components/authentication/amplify-password-reset';
+import { Logo } from '../../components/logo';
+import { useAuth } from '../../hooks/use-auth';
+import { gtm } from '../../lib/gtm';
 
 const platformIcons = {
-  Amplify: "/static/icons/amplify.svg",
-  Auth0: "/static/icons/auth0.svg",
-  Firebase: "/static/icons/firebase.svg",
-  JWT: "/static/icons/jwt.svg",
+  Amplify: '/static/icons/amplify.svg',
+  Auth0: '/static/icons/auth0.svg',
+  Firebase: '/static/icons/firebase.svg',
+  JWT: '/static/icons/jwt.svg',
 };
 
 const PasswordReset = () => {
@@ -23,7 +23,7 @@ const PasswordReset = () => {
   const { disableGuard } = router.query;
 
   useEffect(() => {
-    gtm.push({ event: "page_view" });
+    gtm.push({ event: 'page_view' });
   }, []);
 
   return (
@@ -34,10 +34,10 @@ const PasswordReset = () => {
       <Box
         component="main"
         sx={{
-          backgroundColor: "background.default",
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
+          backgroundColor: 'background.default',
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
         }}
       >
         <AuthBanner />
@@ -45,28 +45,27 @@ const PasswordReset = () => {
           maxWidth="sm"
           sx={{
             py: {
-              xs: "60px",
-              md: "120px",
+              xs: '60px',
+              md: '120px',
             },
           }}
         >
           <Box
             sx={{
-              alignItems: "center",
-              backgroundColor: (theme) =>
-                theme.palette.mode === "dark" ? "neutral.900" : "neutral.100",
-              borderColor: "divider",
+              alignItems: 'center',
+              backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.900' : 'neutral.100'),
+              borderColor: 'divider',
               borderRadius: 1,
-              borderStyle: "solid",
+              borderStyle: 'solid',
               borderWidth: 1,
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
               mb: 4,
               p: 2,
-              "& > img": {
+              '& > img': {
                 height: 32,
-                width: "auto",
+                width: 'auto',
                 flexGrow: 0,
                 flexShrink: 0,
               },
@@ -80,10 +79,10 @@ const PasswordReset = () => {
           <Card elevation={16} sx={{ p: 4 }}>
             <Box
               sx={{
-                alignItems: "center",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
+                alignItems: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
               }}
             >
               <NextLink href="/" passHref>
@@ -107,16 +106,16 @@ const PasswordReset = () => {
                 mt: 3,
               }}
             >
-              {platform === "Amplify" && <AmplifyPasswordReset />}
+              {platform === 'Amplify' && <AmplifyPasswordReset />}
             </Box>
             <Divider sx={{ my: 3 }} />
-            {platform === "Amplify" && (
+            {platform === 'Amplify' && (
               <div>
                 <NextLink
                   href={
                     disableGuard
                       ? `/authentication/password-recovery?disableGuard=${disableGuard}`
-                      : "/authentication/password-recovery"
+                      : '/authentication/password-recovery'
                   }
                   passHref
                 >
@@ -133,6 +132,6 @@ const PasswordReset = () => {
   );
 };
 
-PasswordReset.getLayout = (page) => <GuestGuard>{page}</GuestGuard>;
+PasswordReset.getLayout = page => <GuestGuard>{page}</GuestGuard>;
 
 export default PasswordReset;

@@ -1,18 +1,18 @@
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import numeral from "numeral"
-import { Box, Table, TableBody, TableCell, TablePagination, TableRow, Typography } from "@mui/material"
-import { SeverityPill } from "../../severity-pill"
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import numeral from "numeral";
+import { Box, Table, TableBody, TableCell, TablePagination, TableRow, Typography } from "@mui/material";
+import { SeverityPill } from "../../severity-pill";
 
 const severityMap = {
   complete: "success",
   pending: "info",
   canceled: "warning",
   rejected: "error",
-}
+};
 
 export const OrderListTable = props => {
-  const { onOpenDrawer, onPageChange, onRowsPerPageChange, orders, ordersCount, page, rowsPerPage, ...other } = props
+  const { onOpenDrawer, onPageChange, onRowsPerPageChange, orders, ordersCount, page, rowsPerPage, ...other } = props;
 
   return (
     <div {...other}>
@@ -66,8 +66,8 @@ export const OrderListTable = props => {
         rowsPerPageOptions={[5, 10, 25]}
       />
     </div>
-  )
-}
+  );
+};
 
 OrderListTable.propTypes = {
   onOpenDrawer: PropTypes.func,
@@ -77,4 +77,4 @@ OrderListTable.propTypes = {
   ordersCount: PropTypes.number.isRequired,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
-}
+};

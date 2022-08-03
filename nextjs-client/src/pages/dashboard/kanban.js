@@ -13,17 +13,19 @@ import { useDispatch, useSelector } from '../../store';
 
 const Kanban = () => {
   const dispatch = useDispatch();
-  const { columns } = useSelector((state) => state.kanban);
+  const { columns } = useSelector(state => state.kanban);
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
   }, []);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       dispatch(getBoard());
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   const handleDragEnd = async ({ source, destination, draggableId }) => {
     try {
@@ -55,9 +57,7 @@ const Kanban = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Kanban | Material Kit Pro
-        </title>
+        <title>Dashboard: Kanban | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
@@ -65,18 +65,16 @@ const Kanban = () => {
           display: 'flex',
           flexDirection: 'column',
           flexGrow: 1,
-          overflow: 'hidden'
+          overflow: 'hidden',
         }}
       >
         <Box
           sx={{
             pl: 3,
-            pt: 8
+            pt: 8,
           }}
         >
-          <Typography variant="h4">
-            Kanban
-          </Typography>
+          <Typography variant="h4">Kanban</Typography>
         </Box>
         <DragDropContext onDragEnd={handleDragEnd}>
           <Box
@@ -85,21 +83,18 @@ const Kanban = () => {
               flexGrow: 1,
               flexShrink: 1,
               overflowX: 'auto',
-              overflowY: 'hidden'
+              overflowY: 'hidden',
             }}
           >
             <Box
               sx={{
                 display: 'flex',
                 px: 1,
-                py: 3
+                py: 3,
               }}
             >
-              {columns.allIds.map((columnId) => (
-                <KanbanColumn
-                  columnId={columnId}
-                  key={columnId}
-                />
+              {columns.allIds.map(columnId => (
+                <KanbanColumn columnId={columnId} key={columnId} />
               ))}
               <KanbanColumnAdd />
             </Box>
@@ -110,11 +105,9 @@ const Kanban = () => {
   );
 };
 
-Kanban.getLayout = (page) => (
+Kanban.getLayout = page => (
   <AuthGuard>
-    <DashboardLayout>
-      {page}
-    </DashboardLayout>
+    <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 

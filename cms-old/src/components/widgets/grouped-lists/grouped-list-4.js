@@ -1,8 +1,19 @@
-import { Box, Card, IconButton, List, ListItem, ListItemIcon, ListItemSecondaryAction, ListItemText, Tooltip, Typography } from "@mui/material"
-import SendIcon from "@mui/icons-material/Send"
-import { CreditCard as CreditCardIcon } from "../../../icons/credit-card"
-import { Mail as MailIcon } from "../../../icons/mail"
-import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right"
+import {
+  Box,
+  Card,
+  IconButton,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemSecondaryAction,
+  ListItemText,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
+import { CreditCard as CreditCardIcon } from "../../../icons/credit-card";
+import { Mail as MailIcon } from "../../../icons/mail";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
 
 const notifications = [
   {
@@ -23,13 +34,13 @@ const notifications = [
     type: "payout",
     value: 1,
   },
-]
+];
 
 const iconsMap = {
   invite: SendIcon,
   message: MailIcon,
   payout: CreditCardIcon,
-}
+};
 
 export const GroupedList4 = () => (
   <Box
@@ -41,7 +52,7 @@ export const GroupedList4 = () => (
     <Card>
       <List>
         {notifications.map((notification, i) => {
-          const Icon = iconsMap[notification.type]
+          const Icon = iconsMap[notification.type];
 
           return (
             <ListItem divider={i < notifications.length - 1} key={notification.id}>
@@ -61,9 +72,9 @@ export const GroupedList4 = () => (
                 </Tooltip>
               </ListItemSecondaryAction>
             </ListItem>
-          )
+          );
         })}
       </List>
     </Card>
   </Box>
-)
+);

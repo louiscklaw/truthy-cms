@@ -1,16 +1,16 @@
-import { useCallback, useEffect, useRef, useState } from "react"
-import Head from "next/head"
-import { Box, Button, Divider, Grid, InputAdornment, Tab, Tabs, TextField, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { orderApi } from "../../../__fake-api__/order-api"
-import { AuthGuard } from "../../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../../components/dashboard/dashboard-layout"
-import { OrderDrawer } from "../../../components/dashboard/order/order-drawer"
-import { OrderListTable } from "../../../components/dashboard/order/order-list-table"
-import { useMounted } from "../../../hooks/use-mounted"
-import { Plus as PlusIcon } from "../../../icons/plus"
-import { Search as SearchIcon } from "../../../icons/search"
-import { gtm } from "../../../lib/gtm"
+import { useCallback, useEffect, useRef, useState } from "react";
+import Head from "next/head";
+import { Box, Button, Divider, Grid, InputAdornment, Tab, Tabs, TextField, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { orderApi } from "../../../__fake-api__/order-api";
+import { AuthGuard } from "../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
+import { OrderDrawer } from "../../../components/dashboard/order/order-drawer";
+import { OrderListTable } from "../../../components/dashboard/order/order-list-table";
+import { useMounted } from "../../../hooks/use-mounted";
+import { Plus as PlusIcon } from "../../../icons/plus";
+import { Search as SearchIcon } from "../../../icons/search";
+import { gtm } from "../../../lib/gtm";
 
 const tabs = [
   {
@@ -33,7 +33,7 @@ const tabs = [
     label: "Rejected",
     value: "rejected",
   },
-]
+];
 
 const sortOptions = [
   {
@@ -44,39 +44,40 @@ const sortOptions = [
     label: "Oldest",
     value: "asc",
   },
-]
+];
 
 const applyFilters = (orders, filters) =>
   orders.filter(order => {
     if (filters.query) {
       // Checks only the order number, but can be extended to support other fields, such as customer
       // name, email, etc.
-      const containsQuery = (order.number || "").toLowerCase().includes(filters.query.toLowerCase())
+      const containsQuery = (order.number || "").toLowerCase().includes(filters.query.toLowerCase());
 
       if (!containsQuery) {
-        return false
+        return false;
       }
     }
 
     if (typeof filters.status !== "undefined") {
-      const statusMatched = order.status === filters.status
+      const statusMatched = order.status === filters.status;
 
       if (!statusMatched) {
-        return false
+        return false;
       }
     }
 
-    return true
-  })
+    return true;
+  });
 
 const applySort = (orders, sortDir) =>
   orders.sort((a, b) => {
-    const comparator = a.createdAt > b.createdAt ? -1 : 1
+    const comparator = a.createdAt > b.createdAt ? -1 : 1;
 
-    return sortDir === "desc" ? comparator : -comparator
-  })
+    return sortDir === "desc" ? comparator : -comparator;
+  });
 
-const applyPagination = (orders, page, rowsPerPage) => orders.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+const applyPagination = (orders, page, rowsPerPage) =>
+  orders.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
 const OrderListInner = styled("div", { shouldForwardProp: prop => prop !== "open" })(({ theme, open }) => ({
   flexGrow: 1,
@@ -100,97 +101,97 @@ const OrderListInner = styled("div", { shouldForwardProp: prop => prop !== "open
       duration: theme.transitions.duration.enteringScreen,
     }),
   }),
-}))
+}));
 
 const OrderList = () => {
-  const isMounted = useMounted()
-  const rootRef = useRef(null)
-  const queryRef = useRef(null)
-  const [currentTab, setCurrentTab] = useState("all")
-  const [sort, setSort] = useState("desc")
-  const [page, setPage] = useState(0)
-  const [rowsPerPage, setRowsPerPage] = useState(5)
-  const [orders, setOrders] = useState([])
+  const isMounted = useMounted();
+  const rootRef = useRef(null);
+  const queryRef = useRef(null);
+  const [currentTab, setCurrentTab] = useState("all");
+  const [sort, setSort] = useState("desc");
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+  const [orders, setOrders] = useState([]);
   const [filters, setFilters] = useState({
     query: "",
     status: undefined,
-  })
+  });
   const [drawer, setDrawer] = useState({
     isOpen: false,
     orderId: undefined,
-  })
+  });
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const getOrders = useCallback(async () => {
     try {
-      const data = await orderApi.getOrders()
+      const data = await orderApi.getOrders();
 
       if (isMounted()) {
-        setOrders(data)
+        setOrders(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(
     () => {
-      getOrders()
+      getOrders();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   const handleTabsChange = (event, value) => {
-    setCurrentTab(value)
+    setCurrentTab(value);
     setFilters(prevState => ({
       ...prevState,
       status: value === "all" ? undefined : value,
-    }))
-  }
+    }));
+  };
 
   const handleQueryChange = event => {
-    event.preventDefault()
+    event.preventDefault();
     setFilters(prevState => ({
       ...prevState,
       query: queryRef.current?.value,
-    }))
-  }
+    }));
+  };
 
   const handleSortChange = event => {
-    const value = event.target.value
-    setSort(value)
-  }
+    const value = event.target.value;
+    setSort(value);
+  };
 
   const handlePageChange = (event, newPage) => {
-    setPage(newPage)
-  }
+    setPage(newPage);
+  };
 
   const handleRowsPerPageChange = event => {
-    setRowsPerPage(parseInt(event.target.value, 10))
-  }
+    setRowsPerPage(parseInt(event.target.value, 10));
+  };
 
   const handleOpenDrawer = orderId => {
     setDrawer({
       isOpen: true,
       orderId,
-    })
-  }
+    });
+  };
 
   const handleCloseDrawer = () => {
     setDrawer({
       isOpen: false,
       orderId: undefined,
-    })
-  }
+    });
+  };
 
   // Usually query is done on backend with indexing solutions
-  const filteredOrders = applyFilters(orders, filters)
-  const sortedOrders = applySort(filteredOrders, sort)
-  const paginatedOrders = applyPagination(sortedOrders, page, rowsPerPage)
+  const filteredOrders = applyFilters(orders, filters);
+  const sortedOrders = applySort(filteredOrders, sort);
+  const paginatedOrders = applyPagination(sortedOrders, page, rowsPerPage);
 
   return (
     <>
@@ -265,7 +266,15 @@ const OrderList = () => {
                 placeholder="Search by order number"
               />
             </Box>
-            <TextField label="Sort By" name="order" onChange={handleSortChange} select SelectProps={{ native: true }} sx={{ m: 1.5 }} value={sort}>
+            <TextField
+              label="Sort By"
+              name="order"
+              onChange={handleSortChange}
+              select
+              SelectProps={{ native: true }}
+              sx={{ m: 1.5 }}
+              value={sort}
+            >
               {sortOptions.map(option => (
                 <option key={option.value} value={option.value}>
                   {option.label}
@@ -284,16 +293,21 @@ const OrderList = () => {
             rowsPerPage={rowsPerPage}
           />
         </OrderListInner>
-        <OrderDrawer containerRef={rootRef} onClose={handleCloseDrawer} open={drawer.isOpen} order={orders.find(order => order.id === drawer.orderId)} />
+        <OrderDrawer
+          containerRef={rootRef}
+          onClose={handleCloseDrawer}
+          open={drawer.isOpen}
+          order={orders.find(order => order.id === drawer.orderId)}
+        />
       </Box>
     </>
-  )
-}
+  );
+};
 
 OrderList.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default OrderList
+export default OrderList;

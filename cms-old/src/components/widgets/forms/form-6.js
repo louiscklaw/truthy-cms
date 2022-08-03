@@ -1,10 +1,10 @@
-import { useState } from "react"
-import { Box, Button, Divider, FormControlLabel, Switch, TextField } from "@mui/material"
-import { DateTimePicker } from "@mui/lab"
+import { useState } from "react";
+import { Box, Button, Divider, FormControlLabel, Switch, TextField } from "@mui/material";
+import { DateTimePicker } from "@mui/lab";
 
 export const Form6 = () => {
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   return (
     <Box
@@ -53,5 +53,5 @@ export const Form6 = () => {
         </Box>
       </form>
     </Box>
-  )
-}
+  );
+};

@@ -1,7 +1,19 @@
-import numeral from "numeral"
-import { Box, Card, CardContent, CardHeader, Divider, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import numeral from "numeral";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 const data = {
   series: [
@@ -26,10 +38,10 @@ const data = {
       label: "Other",
     },
   ],
-}
+};
 
 export const FinanceCostBreakdown = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -56,9 +68,9 @@ export const FinanceCostBreakdown = props => {
     theme: {
       mode: theme.palette.mode,
     },
-  }
+  };
 
-  const chartSeries = data.series.map(item => item.data)
+  const chartSeries = data.series.map(item => item.data);
 
   return (
     <Card {...props}>
@@ -108,5 +120,5 @@ export const FinanceCostBreakdown = props => {
         </TableBody>
       </Table>
     </Card>
-  )
-}
+  );
+};

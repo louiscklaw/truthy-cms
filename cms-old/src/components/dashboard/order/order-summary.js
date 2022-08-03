@@ -1,22 +1,22 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import { Box, Button, Card, CardHeader, Divider, TextField, Typography, useMediaQuery } from "@mui/material"
-import { PropertyList } from "../../property-list"
-import { PropertyListItem } from "../../property-list-item"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import { Box, Button, Card, CardHeader, Divider, TextField, Typography, useMediaQuery } from "@mui/material";
+import { PropertyList } from "../../property-list";
+import { PropertyListItem } from "../../property-list-item";
 
-const statusOptions = ["Canceled", "Complete", "Rejected"]
+const statusOptions = ["Canceled", "Complete", "Rejected"];
 
 export const OrderSummary = props => {
-  const { order, ...other } = props
-  const smDown = useMediaQuery(theme => theme.breakpoints.down("sm"))
-  const [status, setStatus] = useState(statusOptions[0])
+  const { order, ...other } = props;
+  const smDown = useMediaQuery(theme => theme.breakpoints.down("sm"));
+  const [status, setStatus] = useState(statusOptions[0]);
 
   const handleChange = event => {
-    setStatus(event.target.value)
-  }
+    setStatus(event.target.value);
+  };
 
-  const align = smDown ? "vertical" : "horizontal"
+  const align = smDown ? "vertical" : "horizontal";
 
   return (
     <Card {...other}>
@@ -90,9 +90,9 @@ export const OrderSummary = props => {
         </PropertyListItem>
       </PropertyList>
     </Card>
-  )
-}
+  );
+};
 
 OrderSummary.propTypes = {
   order: PropTypes.object.isRequired,
-}
+};

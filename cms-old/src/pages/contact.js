@@ -1,16 +1,16 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import { Avatar, Box, Button, Container, Typography } from "@mui/material"
-import { ContactForm } from "../components/contact/contact-form"
-import { ArrowLeft as ArrowLeftIcon } from "../icons/arrow-left"
-import { Mail as MailIcon } from "../icons/mail"
-import { gtm } from "../lib/gtm"
-import NextLink from "next/link"
+import { useEffect } from "react";
+import Head from "next/head";
+import { Avatar, Box, Button, Container, Typography } from "@mui/material";
+import { ContactForm } from "../components/contact/contact-form";
+import { ArrowLeft as ArrowLeftIcon } from "../icons/arrow-left";
+import { Mail as MailIcon } from "../icons/mail";
+import { gtm } from "../lib/gtm";
+import NextLink from "next/link";
 
 const Contact = () => {
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -72,7 +72,8 @@ const Contact = () => {
             </Box>
             <Typography variant="h1">Talk to our account expert</Typography>
             <Typography sx={{ py: 3 }} variant="body1">
-              Have questions about integrating our APIs? Fill out the form and a senior web expert will be in touch shortly.
+              Have questions about integrating our APIs? Fill out the form and a senior web expert will be in touch
+              shortly.
             </Typography>
             <Typography sx={{ color: "primary.main" }} variant="h6">
               Join 3,000+ forward-thinking companies:
@@ -105,7 +106,7 @@ const Contact = () => {
         </Box>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default Contact
+export default Contact;

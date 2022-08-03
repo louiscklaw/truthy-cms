@@ -9,15 +9,15 @@ import {
   TableCell,
   TableRow,
   Typography,
-} from "@mui/material";
-import ReceiptIcon from "@mui/icons-material/Receipt";
-import { CurrencyDollar as CurrencyDollarIcon } from "../../../icons/currency-dollar";
+} from '@mui/material';
+import ReceiptIcon from '@mui/icons-material/Receipt';
+import { CurrencyDollar as CurrencyDollarIcon } from '../../../icons/currency-dollar';
 
 export const DetailList3 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
-      minHeight: "100%",
+      backgroundColor: 'background.default',
+      minHeight: '100%',
       p: 3,
     }}
   >
@@ -90,23 +90,16 @@ export const DetailList3 = () => (
       </Table>
       <Box
         sx={{
-          alignItems: "flex-start",
-          display: "flex",
-          flexDirection: "column",
+          alignItems: 'flex-start',
+          display: 'flex',
+          flexDirection: 'column',
           p: 1,
         }}
       >
-        <Button
-          color="inherit"
-          startIcon={<CurrencyDollarIcon fontSize="small" />}
-        >
+        <Button color="inherit" startIcon={<CurrencyDollarIcon fontSize="small" />}>
           Create Invoice
         </Button>
-        <Button
-          color="inherit"
-          startIcon={<ReceiptIcon fontSize="small" />}
-          sx={{ mt: 1 }}
-        >
+        <Button color="inherit" startIcon={<ReceiptIcon fontSize="small" />} sx={{ mt: 1 }}>
           Resend Due Invoices
         </Button>
       </Box>

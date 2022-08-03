@@ -1,8 +1,8 @@
-import { addDays, endOfDay, setHours, setMinutes, startOfDay, subDays } from "date-fns"
-import { createResourceId } from "../utils/create-resource-id"
-import { deepCopy } from "../utils/deep-copy"
+import { addDays, endOfDay, setHours, setMinutes, startOfDay, subDays } from "date-fns";
+import { createResourceId } from "../utils/create-resource-id";
+import { deepCopy } from "../utils/deep-copy";
 
-const now = new Date()
+const now = new Date();
 
 let events = [
   {
@@ -68,20 +68,20 @@ let events = [
     start: setHours(setMinutes(now, 30), 15).getTime(),
     title: "Visit Samantha",
   },
-]
+];
 
 class CalendarApi {
   getEvents() {
-    return Promise.resolve(deepCopy(events))
+    return Promise.resolve(deepCopy(events));
   }
 
   createEvent(data) {
     return new Promise((resolve, reject) => {
       try {
-        const { allDay, description, end, start, title } = data
+        const { allDay, description, end, start, title } = data;
 
         // Make a deep copy
-        const clonedEvents = deepCopy(events)
+        const clonedEvents = deepCopy(events);
 
         // Create the new event
         const event = {
@@ -91,76 +91,76 @@ class CalendarApi {
           end,
           start,
           title,
-        }
+        };
 
         // Add the new event to events
-        clonedEvents.push(event)
+        clonedEvents.push(event);
 
         // Save changes
-        events = clonedEvents
+        events = clonedEvents;
 
-        resolve(deepCopy(event))
+        resolve(deepCopy(event));
       } catch (err) {
-        console.error("[Calendar Api]: ", err)
-        reject(new Error("Internal server error"))
+        console.error("[Calendar Api]: ", err);
+        reject(new Error("Internal server error"));
       }
-    })
+    });
   }
 
   updateEvent({ eventId, update }) {
     return new Promise((resolve, reject) => {
       try {
         // Make a deep copy
-        const clonedEvents = deepCopy(events)
+        const clonedEvents = deepCopy(events);
 
         // Find the event that will be updated
-        const event = events.find(_event => _event.id === eventId)
+        const event = events.find(_event => _event.id === eventId);
 
         if (!event) {
-          reject(new Error("Event not found"))
-          return
+          reject(new Error("Event not found"));
+          return;
         }
 
         // Update the event
-        Object.assign(event, update)
+        Object.assign(event, update);
 
         // Save changes
-        events = clonedEvents
+        events = clonedEvents;
 
-        resolve(deepCopy(event))
+        resolve(deepCopy(event));
       } catch (err) {
-        console.error("[Calendar Api]: ", err)
-        reject(new Error("Internal server error"))
+        console.error("[Calendar Api]: ", err);
+        reject(new Error("Internal server error"));
       }
-    })
+    });
   }
 
   deleteEvent(eventId) {
     return new Promise((resolve, reject) => {
       try {
         // Make a deep copy
-        const clonedEvents = deepCopy(events)
+        const clonedEvents = deepCopy(events);
 
         // Find the event that will be removed
-        const event = events.find(_event => _event.id === eventId)
+        const event = events.find(_event => _event.id === eventId);
 
         if (!event) {
-          reject(new Error("Event not found"))
-          return
+          reject(new Error("Event not found"));
+          return;
         }
 
-        events = events.filter(_event => _event.id !== eventId)
+        events = events.filter(_event => _event.id !== eventId);
 
         // Save changes
-        events = clonedEvents
+        events = clonedEvents;
 
-        resolve(true)
+        resolve(true);
       } catch (err) {
-        console.error("[Calendar Api]: ", err)
-        reject(new Error("Internal server error"))
+        console.error("[Calendar Api]: ", err);
+        reject(new Error("Internal server error"));
       }
-    })
+    });
   }
 }
 
-export const calendarApi = new CalendarApi()
+export const calendarApi = new CalendarApi();

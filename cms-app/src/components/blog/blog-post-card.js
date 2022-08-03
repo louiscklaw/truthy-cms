@@ -1,35 +1,16 @@
-import NextLink from "next/link";
-import PropTypes from "prop-types";
-import { format } from "date-fns";
-import {
-  Avatar,
-  Box,
-  Card,
-  CardContent,
-  CardMedia,
-  Chip,
-  Link,
-  Typography,
-} from "@mui/material";
-import { getInitials } from "../../utils/get-initials";
+import NextLink from 'next/link';
+import PropTypes from 'prop-types';
+import { format } from 'date-fns';
+import { Avatar, Box, Card, CardContent, CardMedia, Chip, Link, Typography } from '@mui/material';
+import { getInitials } from '../../utils/get-initials';
 
-export const BlogPostCard = (props) => {
-  const {
-    authorAvatar,
-    authorName,
-    category,
-    cover,
-    publishedAt,
-    readTime,
-    shortDescription,
-    title,
-    ...other
-  } = props;
+export const BlogPostCard = props => {
+  const { authorAvatar, authorName, category, cover, publishedAt, readTime, shortDescription, title, ...other } = props;
 
   return (
     <Card
       sx={{
-        "& + &": {
+        '& + &': {
           mt: 6,
         },
       }}
@@ -52,9 +33,9 @@ export const BlogPostCard = (props) => {
           sx={{
             height: 48,
             mt: 1,
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-            WebkitBoxOrient: "vertical",
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+            WebkitBoxOrient: 'vertical',
             WebkitLineClamp: 2,
           }}
           variant="body1"
@@ -63,31 +44,26 @@ export const BlogPostCard = (props) => {
         </Typography>
         <Box
           sx={{
-            alignItems: "center",
-            display: "flex",
-            flexWrap: "wrap",
+            alignItems: 'center',
+            display: 'flex',
+            flexWrap: 'wrap',
             mt: 2,
           }}
         >
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
+              alignItems: 'center',
+              display: 'flex',
             }}
           >
             <Avatar src={authorAvatar} sx={{ mr: 2 }}>
               {getInitials(authorName)}
             </Avatar>
             <Typography variant="subtitle2">
-              By {authorName} • {format(publishedAt, "MMM d, yyyy")}
+              By {authorName} • {format(publishedAt, 'MMM d, yyyy')}
             </Typography>
           </Box>
-          <Typography
-            align="right"
-            color="textSecondary"
-            sx={{ flexGrow: 1 }}
-            variant="body2"
-          >
+          <Typography align="right" color="textSecondary" sx={{ flexGrow: 1 }} variant="body2">
             {`${readTime} read`}
           </Typography>
         </Box>

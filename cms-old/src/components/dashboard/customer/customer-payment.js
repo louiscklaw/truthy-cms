@@ -1,11 +1,11 @@
-import { Button, Card, CardActions, CardHeader, Divider, useMediaQuery } from "@mui/material"
-import { PropertyList } from "../../property-list"
-import { PropertyListItem } from "../../property-list-item"
+import { Button, Card, CardActions, CardHeader, Divider, useMediaQuery } from "@mui/material";
+import { PropertyList } from "../../property-list";
+import { PropertyListItem } from "../../property-list-item";
 
 export const CustomerPayment = props => {
-  const mdUp = useMediaQuery(theme => theme.breakpoints.up("md"))
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up("md"));
 
-  const align = mdUp ? "horizontal" : "vertical"
+  const align = mdUp ? "horizontal" : "vertical";
 
   return (
     <Card {...props}>
@@ -35,5 +35,5 @@ export const CustomerPayment = props => {
         <Button sx={{ m: 1 }}>Resend Due Invoices</Button>
       </CardActions>
     </Card>
-  )
-}
+  );
+};

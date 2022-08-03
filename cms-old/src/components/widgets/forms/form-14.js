@@ -1,4 +1,4 @@
-import numeral from "numeral"
+import numeral from "numeral";
 import {
   Box,
   Button,
@@ -14,7 +14,7 @@ import {
   Select,
   TextField,
   Typography,
-} from "@mui/material"
+} from "@mui/material";
 
 const products = [
   {
@@ -31,7 +31,7 @@ const products = [
     price: 95.0,
     quantity: 0,
   },
-]
+];
 
 export const Form14 = () => (
   <Box
@@ -149,4 +149,4 @@ export const Form14 = () => (
       </Box>
     </form>
   </Box>
-)
+);

@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { useRouter } from "next/router";
-import toast from "react-hot-toast";
-import * as Yup from "yup";
-import { useFormik } from "formik";
+import { useState } from 'react';
+import { useRouter } from 'next/router';
+import toast from 'react-hot-toast';
+import * as Yup from 'yup';
+import { useFormik } from 'formik';
 import {
   Box,
   Button,
@@ -15,50 +15,50 @@ import {
   Switch,
   TextField,
   Typography,
-} from "@mui/material";
-import { FileDropzone } from "../../file-dropzone";
-import { QuillEditor } from "../../quill-editor";
+} from '@mui/material';
+import { FileDropzone } from '../../file-dropzone';
+import { QuillEditor } from '../../quill-editor';
 
 const categoryOptions = [
   {
-    label: "Healthcare",
-    value: "healthcare",
+    label: 'Healthcare',
+    value: 'healthcare',
   },
   {
-    label: "Makeup",
-    value: "makeup",
+    label: 'Makeup',
+    value: 'makeup',
   },
   {
-    label: "Dress",
-    value: "dress",
+    label: 'Dress',
+    value: 'dress',
   },
   {
-    label: "Skincare",
-    value: "skincare",
+    label: 'Skincare',
+    value: 'skincare',
   },
   {
-    label: "Jewelry",
-    value: "jewelry",
+    label: 'Jewelry',
+    value: 'jewelry',
   },
   {
-    label: "Blouse",
-    value: "blouse",
+    label: 'Blouse',
+    value: 'blouse',
   },
 ];
 
-export const ProductCreateForm = (props) => {
+export const ProductCreateForm = props => {
   const router = useRouter();
   const [files, setFiles] = useState([]);
   const formik = useFormik({
     initialValues: {
-      barcode: "925487986526",
-      category: "",
-      description: "",
+      barcode: '925487986526',
+      category: '',
+      description: '',
       images: [],
-      name: "",
+      name: '',
       newPrice: 0,
       oldPrice: 0,
-      sku: "IYV-8745",
+      sku: 'IYV-8745',
       submit: null,
     },
     validationSchema: Yup.object({
@@ -74,11 +74,11 @@ export const ProductCreateForm = (props) => {
     onSubmit: async (values, helpers) => {
       try {
         // NOTE: Make API request
-        toast.success("Product created!");
-        router.push("/dashboard/products").catch(console.error);
+        toast.success('Product created!');
+        router.push('/dashboard/products').catch(console.error);
       } catch (err) {
         console.error(err);
-        toast.error("Something went wrong!");
+        toast.error('Something went wrong!');
         helpers.setStatus({ success: false });
         helpers.setErrors({ submit: err.message });
         helpers.setSubmitting(false);
@@ -86,14 +86,12 @@ export const ProductCreateForm = (props) => {
     },
   });
 
-  const handleDrop = (newFiles) => {
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+  const handleDrop = newFiles => {
+    setFiles(prevFiles => [...prevFiles, ...newFiles]);
   };
 
-  const handleRemove = (file) => {
-    setFiles((prevFiles) =>
-      prevFiles.filter((_file) => _file.path !== file.path)
-    );
+  const handleRemove = file => {
+    setFiles(prevFiles => prevFiles.filter(_file => _file.path !== file.path));
   };
 
   const handleRemoveAll = () => {
@@ -130,20 +128,16 @@ export const ProductCreateForm = (props) => {
                 Description
               </Typography>
               <QuillEditor
-                onChange={(value) => {
-                  formik.setFieldValue("description", value);
+                onChange={value => {
+                  formik.setFieldValue('description', value);
                 }}
                 placeholder="Write something"
                 sx={{ height: 400 }}
                 value={formik.values.description}
               />
-              {Boolean(
-                formik.touched.description && formik.errors.description
-              ) && (
+              {Boolean(formik.touched.description && formik.errors.description) && (
                 <Box sx={{ mt: 2 }}>
-                  <FormHelperText error>
-                    {formik.errors.description}
-                  </FormHelperText>
+                  <FormHelperText error>{formik.errors.description}</FormHelperText>
                 </Box>
               )}
             </Grid>
@@ -162,7 +156,7 @@ export const ProductCreateForm = (props) => {
             <Grid item md={8} xs={12}>
               <FileDropzone
                 accept={{
-                  "image/*": [],
+                  'image/*': [],
                 }}
                 files={files}
                 onDrop={handleDrop}
@@ -181,9 +175,7 @@ export const ProductCreateForm = (props) => {
             </Grid>
             <Grid item md={8} xs={12}>
               <TextField
-                error={Boolean(
-                  formik.touched.oldPrice && formik.errors.oldPrice
-                )}
+                error={Boolean(formik.touched.oldPrice && formik.errors.oldPrice)}
                 fullWidth
                 label="Old price"
                 name="oldPrice"
@@ -193,9 +185,7 @@ export const ProductCreateForm = (props) => {
                 value={formik.values.oldPrice}
               />
               <TextField
-                error={Boolean(
-                  formik.touched.newPrice && formik.errors.newPrice
-                )}
+                error={Boolean(formik.touched.newPrice && formik.errors.newPrice)}
                 fullWidth
                 label="New Price"
                 name="newPrice"
@@ -206,10 +196,7 @@ export const ProductCreateForm = (props) => {
                 value={formik.values.newPrice}
               />
               <Box sx={{ mt: 2 }}>
-                <FormControlLabel
-                  control={<Switch />}
-                  label="Keep selling when stock is empty"
-                />
+                <FormControlLabel control={<Switch />} label="Keep selling when stock is empty" />
               </Box>
             </Grid>
           </Grid>
@@ -223,9 +210,7 @@ export const ProductCreateForm = (props) => {
             </Grid>
             <Grid item md={8} xs={12}>
               <TextField
-                error={Boolean(
-                  formik.touched.category && formik.errors.category
-                )}
+                error={Boolean(formik.touched.category && formik.errors.category)}
                 fullWidth
                 label="Category"
                 name="category"
@@ -234,7 +219,7 @@ export const ProductCreateForm = (props) => {
                 select
                 value={formik.values.category}
               >
-                {categoryOptions.map((option) => (
+                {categoryOptions.map(option => (
                   <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>
@@ -268,9 +253,9 @@ export const ProductCreateForm = (props) => {
       </Card>
       <Box
         sx={{
-          display: "flex",
-          flexWrap: "wrap",
-          justifyContent: "space-between",
+          display: 'flex',
+          flexWrap: 'wrap',
+          justifyContent: 'space-between',
           mx: -1,
           mb: -1,
           mt: 3,
@@ -280,7 +265,7 @@ export const ProductCreateForm = (props) => {
           color="error"
           sx={{
             m: 1,
-            mr: "auto",
+            mr: 'auto',
           }}
         >
           Delete

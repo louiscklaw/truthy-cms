@@ -6,7 +6,7 @@ import { Moon as MoonIcon } from '../icons/moon';
 import { Sun as SunIcon } from '../icons/sun';
 import { createTheme } from '../theme';
 
-export const WidgetPreviewer = (props) => {
+export const WidgetPreviewer = props => {
   const { element, name, ...other } = props;
   const { settings } = useSettings();
   const [selectedTheme, setSelectedTheme] = useState(settings.theme);
@@ -16,40 +16,33 @@ export const WidgetPreviewer = (props) => {
   }, [settings.theme]);
 
   const handleSwitch = () => {
-    setSelectedTheme((prevSelectedTheme) => {
+    setSelectedTheme(prevSelectedTheme => {
       return prevSelectedTheme === 'light' ? 'dark' : 'light';
     });
   };
 
   const theme = createTheme({
     ...settings,
-    mode: selectedTheme
+    mode: selectedTheme,
   });
 
   return (
-    <Card
-      variant="outlined"
-      sx={{ mb: 8 }}
-      {...other}>
+    <Card variant="outlined" sx={{ mb: 8 }} {...other}>
       <CardHeader
-        action={(
+        action={
           <IconButton onClick={handleSwitch}>
-            {selectedTheme === 'light'
-              ? <MoonIcon fontSize="small" />
-              : <SunIcon fontSize="small" />}
+            {selectedTheme === 'light' ? <MoonIcon fontSize="small" /> : <SunIcon fontSize="small" />}
           </IconButton>
-        )}
+        }
         title={name}
       />
       <Divider />
-      <ThemeProvider theme={theme}>
-        {element}
-      </ThemeProvider>
+      <ThemeProvider theme={theme}>{element}</ThemeProvider>
     </Card>
   );
 };
 
 WidgetPreviewer.propTypes = {
   element: PropTypes.node.isRequired,
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 };

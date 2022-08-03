@@ -1,4 +1,4 @@
-import { Box, ListItemIcon, ListItemText, MenuItem, Paper, Typography } from "@mui/material"
+import { Box, ListItemIcon, ListItemText, MenuItem, Paper, Typography } from "@mui/material";
 
 const languageOptions = [
   {
@@ -13,7 +13,7 @@ const languageOptions = [
     icon: "/static/icons/es_flag.svg",
     label: "Spanish",
   },
-]
+];
 
 export const Modal2 = () => (
   <Box
@@ -57,4 +57,4 @@ export const Modal2 = () => (
       ))}
     </Paper>
   </Box>
-)
+);

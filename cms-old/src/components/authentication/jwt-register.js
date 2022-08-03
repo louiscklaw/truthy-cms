@@ -1,14 +1,14 @@
-import { useRouter } from "next/router"
-import * as Yup from "yup"
-import { useFormik } from "formik"
-import { Box, Button, Checkbox, FormHelperText, TextField, Typography, Link } from "@mui/material"
-import { useAuth } from "../../hooks/use-auth"
-import { useMounted } from "../../hooks/use-mounted"
+import { useRouter } from "next/router";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { Box, Button, Checkbox, FormHelperText, TextField, Typography, Link } from "@mui/material";
+import { useAuth } from "../../hooks/use-auth";
+import { useMounted } from "../../hooks/use-mounted";
 
 export const JWTRegister = props => {
-  const isMounted = useMounted()
-  const router = useRouter()
-  const { register } = useAuth()
+  const isMounted = useMounted();
+  const router = useRouter();
+  const { register } = useAuth();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -25,23 +25,23 @@ export const JWTRegister = props => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        await register(values.email, values.name, values.password)
+        await register(values.email, values.name, values.password);
 
         if (isMounted()) {
-          const returnUrl = router.query.returnUrl || "/dashboard"
-          router.push(returnUrl).catch(console.error)
+          const returnUrl = router.query.returnUrl || "/dashboard";
+          router.push(returnUrl).catch(console.error);
         }
       } catch (err) {
-        console.error(err)
+        console.error(err);
 
         if (isMounted()) {
-          helpers.setStatus({ success: false })
-          helpers.setErrors({ submit: err.message })
-          helpers.setSubmitting(false)
+          helpers.setStatus({ success: false });
+          helpers.setErrors({ submit: err.message });
+          helpers.setSubmitting(false);
         }
       }
     },
-  })
+  });
 
   return (
     <form noValidate onSubmit={formik.handleSubmit} {...props}>
@@ -96,7 +96,9 @@ export const JWTRegister = props => {
           </Link>
         </Typography>
       </Box>
-      {Boolean(formik.touched.policy && formik.errors.policy) && <FormHelperText error>{formik.errors.policy}</FormHelperText>}
+      {Boolean(formik.touched.policy && formik.errors.policy) && (
+        <FormHelperText error>{formik.errors.policy}</FormHelperText>
+      )}
       {formik.errors.submit && (
         <Box sx={{ mt: 3 }}>
           <FormHelperText error>{formik.errors.submit}</FormHelperText>
@@ -108,5 +110,5 @@ export const JWTRegister = props => {
         </Button>
       </Box>
     </form>
-  )
-}
+  );
+};

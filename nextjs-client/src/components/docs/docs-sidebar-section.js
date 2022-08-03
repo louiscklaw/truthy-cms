@@ -4,12 +4,16 @@ import { DocsSidebarItem } from './docs-sidebar-item';
 
 const renderNavItems = ({ depth = 0, items, path }) => (
   <List disablePadding>
-    {items.reduce((acc, item) => reduceChildRoutes({
-      acc,
-      depth,
-      item,
-      path
-    }), [])}
+    {items.reduce(
+      (acc, item) =>
+        reduceChildRoutes({
+          acc,
+          depth,
+          item,
+          path,
+        }),
+      [],
+    )}
   </List>
 );
 
@@ -34,9 +38,9 @@ const reduceChildRoutes = ({ acc, depth, item, path }) => {
         {renderNavItems({
           depth: depth + 1,
           items: item.children,
-          path
+          path,
         })}
-      </DocsSidebarItem>
+      </DocsSidebarItem>,
     );
   } else {
     acc.push(
@@ -49,19 +53,19 @@ const reduceChildRoutes = ({ acc, depth, item, path }) => {
         key={key}
         path={item.path}
         title={item.title}
-      />
+      />,
     );
   }
 
   return acc;
 };
 
-export const DocsSidebarSection = (props) => {
+export const DocsSidebarSection = props => {
   const { items, path, title, ...other } = props;
 
   return (
     <List
-      subheader={(
+      subheader={
         <ListSubheader
           disableGutters
           disableSticky
@@ -71,16 +75,17 @@ export const DocsSidebarSection = (props) => {
             fontWeight: 700,
             lineHeight: 2.5,
             ml: 4,
-            textTransform: 'uppercase'
+            textTransform: 'uppercase',
           }}
         >
           {title}
         </ListSubheader>
-      )}
-      {...other}>
+      }
+      {...other}
+    >
       {renderNavItems({
         items,
-        path
+        path,
       })}
     </List>
   );
@@ -89,5 +94,5 @@ export const DocsSidebarSection = (props) => {
 DocsSidebarSection.propTypes = {
   items: PropTypes.array,
   path: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
 };

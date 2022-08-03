@@ -1,6 +1,6 @@
-import { subHours, subMinutes } from "date-fns"
+import { subHours, subMinutes } from "date-fns";
 
-const now = new Date()
+const now = new Date();
 
 class SocialApi {
   getProfile() {
@@ -20,9 +20,9 @@ class SocialApi {
       previousJobTitle: "UX Designer",
       profileProgress: 50,
       quote: "Everyone thinks of changing the world, but no one thinks of changing himself.",
-    }
+    };
 
-    return Promise.resolve(profile)
+    return Promise.resolve(profile);
   }
 
   getConnections() {
@@ -55,9 +55,9 @@ class SocialApi {
         name: "Penjani Inyene",
         status: "connected",
       },
-    ]
+    ];
 
-    return Promise.resolve(connections)
+    return Promise.resolve(connections);
   }
 
   getPosts() {
@@ -132,9 +132,9 @@ class SocialApi {
         message:
           "As a human being, you are designed in a way that makes you incapable of experiencing any positive emotion unless you set an aim and progress towards it. What makes you happy is not, in fact, attaining it, but making progress towards it.",
       },
-    ]
+    ];
 
-    return Promise.resolve(posts)
+    return Promise.resolve(posts);
   }
 
   getFeed() {
@@ -233,10 +233,10 @@ class SocialApi {
         message:
           "As a human being, you are designed in a way that makes you incapable of experiencing any positive emotion unless you set an aim and progress towards it. What makes you happy is not, in fact, attaining it, but making progress towards it.",
       },
-    ]
+    ];
 
-    return Promise.resolve(posts)
+    return Promise.resolve(posts);
   }
 }
 
-export const socialApi = new SocialApi()
+export const socialApi = new SocialApi();

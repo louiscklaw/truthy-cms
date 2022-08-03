@@ -1,11 +1,11 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import { formatDistanceToNowStrict } from "date-fns"
-import { Avatar, Box, Card, CardMedia, Link, Typography } from "@mui/material"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { formatDistanceToNowStrict } from "date-fns";
+import { Avatar, Box, Card, CardMedia, Link, Typography } from "@mui/material";
 
 export const ChatMessage = props => {
-  const { body, contentType, createdAt, authorAvatar, authorName, authorType, ...other } = props
-  const [expandMedia, setExpandMedia] = useState(false)
+  const { body, contentType, createdAt, authorAvatar, authorName, authorType, ...other } = props;
+  const [expandMedia, setExpandMedia] = useState(false);
 
   return (
     <Box
@@ -63,8 +63,8 @@ export const ChatMessage = props => {
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 ChatMessage.propTypes = {
   authorAvatar: PropTypes.string.isRequired,
@@ -73,4 +73,4 @@ ChatMessage.propTypes = {
   body: PropTypes.string.isRequired,
   contentType: PropTypes.string.isRequired,
   createdAt: PropTypes.number.isRequired,
-}
+};

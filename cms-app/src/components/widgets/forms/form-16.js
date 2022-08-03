@@ -9,13 +9,13 @@ import {
   Link,
   TextField,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 export const Form16 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
-      minHeight: "100%",
+      backgroundColor: 'background.default',
+      minHeight: '100%',
       p: 3,
     }}
   >
@@ -23,16 +23,16 @@ export const Form16 = () => (
       <Card>
         <CardContent
           sx={{
-            display: "flex",
-            flexDirection: "column",
+            display: 'flex',
+            flexDirection: 'column',
             minHeight: 400,
             p: 4,
           }}
         >
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "space-between",
+              display: 'flex',
+              justifyContent: 'space-between',
             }}
           >
             <div>
@@ -45,8 +45,8 @@ export const Form16 = () => (
               alt="Amplify"
               src="/static/icons/amplify.svg"
               style={{
-                maxWidth: "53.62px",
-                width: "100%",
+                maxWidth: '53.62px',
+                width: '100%',
               }}
             />
           </Box>
@@ -56,26 +56,14 @@ export const Form16 = () => (
               mt: 3,
             }}
           >
-            <form onSubmit={(event) => event.preventDefault()}>
+            <form onSubmit={event => event.preventDefault()}>
               <TextField fullWidth label="Name" margin="normal" name="name" />
-              <TextField
-                fullWidth
-                label="Email Address"
-                margin="normal"
-                name="email"
-                type="email"
-              />
-              <TextField
-                fullWidth
-                label="Password"
-                margin="normal"
-                name="password"
-                type="password"
-              />
+              <TextField fullWidth label="Email Address" margin="normal" name="email" type="email" />
+              <TextField fullWidth label="Password" margin="normal" name="password" type="password" />
               <Box
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
+                  alignItems: 'center',
+                  display: 'flex',
                   ml: -1,
                   mt: 2,
                 }}
@@ -86,12 +74,7 @@ export const Form16 = () => (
                 </Typography>
               </Box>
               <Box sx={{ mt: 2 }}>
-                <Button
-                  fullWidth
-                  size="large"
-                  type="submit"
-                  variant="contained"
-                >
+                <Button fullWidth size="large" type="submit" variant="contained">
                   Register
                 </Button>
               </Box>

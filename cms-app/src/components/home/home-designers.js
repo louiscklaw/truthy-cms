@@ -1,14 +1,14 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { ExternalLink as ExternalLinkIcon } from "../../icons/external-link";
+import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { ExternalLink as ExternalLinkIcon } from '../../icons/external-link';
 
-export const HomeDesigners = (props) => {
+export const HomeDesigners = props => {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
-        backgroundColor: "background.paper",
+        backgroundColor: 'background.paper',
         py: 15,
       }}
       {...props}
@@ -18,36 +18,29 @@ export const HomeDesigners = (props) => {
           <Grid item md={6} sm={8} xs={12}>
             <Box
               sx={{
-                position: "relative",
-                pt: "calc(960 / 1225 * 100%)",
-                "& img": {
-                  height: "auto",
-                  position: "absolute",
+                position: 'relative',
+                pt: 'calc(960 / 1225 * 100%)',
+                '& img': {
+                  height: 'auto',
+                  position: 'absolute',
                   top: 0,
-                  width: "100%",
+                  width: '100%',
                 },
               }}
             >
-              <img
-                alt="For designers"
-                src={`/static/home/designers_${theme.palette.mode}.png`}
-              />
+              <img alt="For designers" src={`/static/home/designers_${theme.palette.mode}.png`} />
             </Box>
           </Grid>
           <Grid item md={6} xs={12}>
             <Typography variant="h3">For designers</Typography>
-            <Typography
-              color="textSecondary"
-              sx={{ my: 3 }}
-              variant="subtitle1"
-            >
-              We &apos; ve included the source Figma files to Plus & Extended
-              licenses so you can get creative! Build layouts with confidence.
+            <Typography color="textSecondary" sx={{ my: 3 }} variant="subtitle1">
+              We &apos; ve included the source Figma files to Plus & Extended licenses so you can get creative! Build
+              layouts with confidence.
             </Typography>
             <Box
               sx={{
-                display: "flex",
-                flexWrap: "wrap",
+                display: 'flex',
+                flexWrap: 'wrap',
                 m: -1,
               }}
             >

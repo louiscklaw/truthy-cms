@@ -10,30 +10,30 @@ import {
   Switch,
   TextField,
   Typography,
-} from "@mui/material";
+} from '@mui/material';
 
 const countries = [
-  { text: "Jersey", value: "JE" },
-  { text: "Jordan", value: "JO" },
-  { text: "Kazakhstan", value: "KZ" },
-  { text: "Kenya", value: "KE" },
-  { text: "Kiribati", value: "KI" },
-  { text: "Korea, Democratic People'S Republic of", value: "KP" },
-  { text: "Korea, Republic of", value: "KR" },
-  { text: "Kuwait", value: "KW" },
-  { text: "Kyrgyzstan", value: "KG" },
-  { text: "Lao People'S Democratic Republic", value: "LA" },
+  { text: 'Jersey', value: 'JE' },
+  { text: 'Jordan', value: 'JO' },
+  { text: 'Kazakhstan', value: 'KZ' },
+  { text: 'Kenya', value: 'KE' },
+  { text: 'Kiribati', value: 'KI' },
+  { text: "Korea, Democratic People'S Republic of", value: 'KP' },
+  { text: 'Korea, Republic of', value: 'KR' },
+  { text: 'Kuwait', value: 'KW' },
+  { text: 'Kyrgyzstan', value: 'KG' },
+  { text: "Lao People'S Democratic Republic", value: 'LA' },
 ];
 
 export const Form5 = () => (
   <Box
     sx={{
-      backgroundColor: "background.paper",
-      minHeight: "100%",
+      backgroundColor: 'background.paper',
+      minHeight: '100%',
       p: 3,
     }}
   >
-    <form onSubmit={(event) => event.preventDefault()}>
+    <form onSubmit={event => event.preventDefault()}>
       <CardHeader title="Profile" />
       <CardContent>
         <Grid container spacing={4}>
@@ -55,16 +55,9 @@ export const Form5 = () => (
           </Grid>
           <Grid item md={6} xs={12}>
             <Autocomplete
-              getOptionLabel={(option) => option.text}
+              getOptionLabel={option => option.text}
               options={countries}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  fullWidth
-                  label="Country"
-                  name="country"
-                />
-              )}
+              renderInput={params => <TextField {...params} fullWidth label="Country" name="country" />}
             />
           </Grid>
           <Grid item md={6} xs={12}>
@@ -78,8 +71,7 @@ export const Form5 = () => (
               Public Profile
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              Means that anyone viewing your profile will be able to see your
-              contacts details
+              Means that anyone viewing your profile will be able to see your contacts details
             </Typography>
             <Switch edge="start" name="isPublic" />
           </Grid>
@@ -88,8 +80,7 @@ export const Form5 = () => (
               Available to hire
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              Toggling this will let your teammates know that you are available
-              for acquiring new projects
+              Toggling this will let your teammates know that you are available for acquiring new projects
             </Typography>
             <Switch color="primary" edge="start" name="canHire" />
           </Grid>
@@ -98,7 +89,7 @@ export const Form5 = () => (
       <Divider />
       <CardActions
         sx={{
-          justifyContent: "flex-end",
+          justifyContent: 'flex-end',
           p: 2,
         }}
       >

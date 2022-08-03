@@ -1,10 +1,21 @@
-import numeral from "numeral"
-import { Box, Button, Card, CardHeader, IconButton, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material"
-import { CircularProgress } from "../../circular-progress"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Image as ImageIcon } from "../../../icons/image"
-import { Scrollbar } from "../../scrollbar"
+import numeral from "numeral";
+import {
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { CircularProgress } from "../../circular-progress";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Image as ImageIcon } from "../../../icons/image";
+import { Scrollbar } from "../../scrollbar";
 
 const products = [
   {
@@ -51,7 +62,7 @@ const products = [
     profit: 15200,
     sales: 254,
   },
-]
+];
 
 export const GroupedList5 = () => (
   <Box
@@ -171,4 +182,4 @@ export const GroupedList5 = () => (
       </Box>
     </Card>
   </Box>
-)
+);

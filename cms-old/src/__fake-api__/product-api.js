@@ -1,6 +1,6 @@
-import { subDays, subHours } from "date-fns"
+import { subDays, subHours } from "date-fns";
 
-const now = new Date()
+const now = new Date();
 
 class ProductsApi {
   getProducts() {
@@ -131,10 +131,10 @@ class ProductsApi {
         updatedAt: subDays(subHours(now, 5), 6).getTime(),
         variants: 1,
       },
-    ]
+    ];
 
-    return Promise.resolve(products)
+    return Promise.resolve(products);
   }
 }
 
-export const productApi = new ProductsApi()
+export const productApi = new ProductsApi();

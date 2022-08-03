@@ -1,8 +1,8 @@
-import { format, subDays } from "date-fns"
-import numeral from "numeral"
-import { Box, Card, CardHeader, Table, TableBody, TableHead, TableCell, TableRow, Typography } from "@mui/material"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+import { format, subDays } from "date-fns";
+import numeral from "numeral";
+import { Box, Card, CardHeader, Table, TableBody, TableHead, TableCell, TableRow, Typography } from "@mui/material";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
 const transactions = [
   {
@@ -41,7 +41,7 @@ const transactions = [
     type: "receive",
     status: "confirmed",
   },
-]
+];
 
 export const OverviewLatestTransactions = props => (
   <Card {...props}>
@@ -91,7 +91,13 @@ export const OverviewLatestTransactions = props => (
                 </div>
               </TableCell>
               <TableCell>
-                <SeverityPill color={(transaction.status === "confirmed" && "success") || (transaction.status === "failed" && "error") || "warning"}>
+                <SeverityPill
+                  color={
+                    (transaction.status === "confirmed" && "success") ||
+                    (transaction.status === "failed" && "error") ||
+                    "warning"
+                  }
+                >
                   {transaction.status}
                 </SeverityPill>
               </TableCell>
@@ -109,4 +115,4 @@ export const OverviewLatestTransactions = props => (
       </Table>
     </Scrollbar>
   </Card>
-)
+);

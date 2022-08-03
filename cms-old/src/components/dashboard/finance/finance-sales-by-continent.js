@@ -1,11 +1,11 @@
-import numeral from "numeral"
-import { Box, Card, CardContent, CardHeader, Divider } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
-import { WorldMap } from "./world-map"
+import numeral from "numeral";
+import { Box, Card, CardContent, CardHeader, Divider } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
+import { WorldMap } from "./world-map";
 
 export const FinanceSalesByContinent = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -51,14 +51,14 @@ export const FinanceSalesByContinent = props => {
       },
       categories: ["North America", "South America", "Europe", "Australia", "Asia", "Africa"],
     },
-  }
+  };
 
   const chartSeries = [
     {
       name: "Sales",
       data: [470, 440, 410, 380, 300, 187],
     },
-  ]
+  ];
 
   return (
     <Card {...props}>
@@ -85,5 +85,5 @@ export const FinanceSalesByContinent = props => {
         <Chart height={350} options={chartOptions} series={chartSeries} type="bar" />
       </CardContent>
     </Card>
-  )
-}
+  );
+};

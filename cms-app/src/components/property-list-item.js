@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { Box, ListItem, ListItemText, Typography } from "@mui/material";
+import PropTypes from 'prop-types';
+import { Box, ListItem, ListItemText, Typography } from '@mui/material';
 
-export const PropertyListItem = (props) => {
+export const PropertyListItem = props => {
   const { align, children, disableGutters, value, label, ...other } = props;
 
   return (
@@ -15,10 +15,7 @@ export const PropertyListItem = (props) => {
       <ListItemText
         disableTypography
         primary={
-          <Typography
-            sx={{ minWidth: align === "vertical" ? "inherit" : 180 }}
-            variant="subtitle2"
-          >
+          <Typography sx={{ minWidth: align === 'vertical' ? 'inherit' : 180 }} variant="subtitle2">
             {label}
           </Typography>
         }
@@ -26,7 +23,7 @@ export const PropertyListItem = (props) => {
           <Box
             sx={{
               flex: 1,
-              mt: align === "vertical" ? 0.5 : 0,
+              mt: align === 'vertical' ? 0.5 : 0,
             }}
           >
             {children || (
@@ -37,8 +34,8 @@ export const PropertyListItem = (props) => {
           </Box>
         }
         sx={{
-          display: "flex",
-          flexDirection: align === "vertical" ? "column" : "row",
+          display: 'flex',
+          flexDirection: align === 'vertical' ? 'column' : 'row',
           my: 0,
         }}
       />
@@ -47,11 +44,11 @@ export const PropertyListItem = (props) => {
 };
 
 PropertyListItem.defaultProps = {
-  align: "vertical",
+  align: 'vertical',
 };
 
 PropertyListItem.propTypes = {
-  align: PropTypes.oneOf(["horizontal", "vertical"]),
+  align: PropTypes.oneOf(['horizontal', 'vertical']),
   children: PropTypes.node,
   disableGutters: PropTypes.bool,
   label: PropTypes.string.isRequired,

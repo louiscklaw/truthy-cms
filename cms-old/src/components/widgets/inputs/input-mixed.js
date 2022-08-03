@@ -1,5 +1,5 @@
-import { Box, Checkbox, FormControl, InputLabel, MenuItem, Select, Switch, TextField, Typography } from "@mui/material"
-import { DateTimePicker } from "@mui/lab"
+import { Box, Checkbox, FormControl, InputLabel, MenuItem, Select, Switch, TextField, Typography } from "@mui/material";
+import { DateTimePicker } from "@mui/lab";
 
 export const InputMixed = () => (
   <Box
@@ -18,7 +18,12 @@ export const InputMixed = () => (
       <Typography variant="body1">Schedule Publish</Typography>
     </Box>
     <Box sx={{ mt: 3 }}>
-      <DateTimePicker label="Start date" onChange={() => {}} renderInput={inputProps => <TextField fullWidth {...inputProps} />} value={new Date()} />
+      <DateTimePicker
+        label="Start date"
+        onChange={() => {}}
+        renderInput={inputProps => <TextField fullWidth {...inputProps} />}
+        value={new Date()}
+      />
     </Box>
     <Box sx={{ mt: 3 }}>
       <FormControl fullWidth variant="outlined">
@@ -50,4 +55,4 @@ export const InputMixed = () => (
       <Typography variant="body1">Enable Contents</Typography>
     </Box>
   </Box>
-)
+);

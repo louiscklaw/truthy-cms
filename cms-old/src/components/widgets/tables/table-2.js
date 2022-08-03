@@ -1,5 +1,5 @@
-import { format, subDays, subHours, subMinutes, subSeconds } from "date-fns"
-import numeral from "numeral"
+import { format, subDays, subHours, subMinutes, subSeconds } from "date-fns";
+import numeral from "numeral";
 import {
   Avatar,
   Box,
@@ -16,12 +16,12 @@ import {
   TableSortLabel,
   Tooltip,
   Typography,
-} from "@mui/material"
-import { Scrollbar } from "../../scrollbar"
-import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
+} from "@mui/material";
+import { Scrollbar } from "../../scrollbar";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
 
-const now = new Date()
+const now = new Date();
 
 const projects = [
   {
@@ -84,7 +84,7 @@ const projects = [
     technologies: ["angular", "figma"],
     title: "Administrator Overview",
   },
-]
+];
 
 const technologyMap = {
   "html-css": "/static/icons/html.svg",
@@ -93,7 +93,7 @@ const technologyMap = {
   angular: "/static/icons/angular.svg",
   figma: "/static/icons/figma.svg",
   sketch: "/static/icons/sketch.svg",
-}
+};
 
 export const Table2 = () => (
   <Box
@@ -184,4 +184,4 @@ export const Table2 = () => (
       </Box>
     </Card>
   </Box>
-)
+);

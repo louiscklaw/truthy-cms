@@ -1,15 +1,15 @@
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css"
-import dynamic from "next/dynamic"
-import PropTypes from "prop-types"
-import { styled } from "@mui/material/styles"
+import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import dynamic from "next/dynamic";
+import PropTypes from "prop-types";
+import { styled } from "@mui/material/styles";
 
 const Editor = dynamic(
   async () => {
-    const m = await import("react-draft-wysiwyg")
-    return m.Editor
+    const m = await import("react-draft-wysiwyg");
+    return m.Editor;
   },
   { ssr: false },
-)
+);
 
 const DraftEditorRoot = styled("div")(({ theme }) => ({
   display: "flex",
@@ -118,18 +118,18 @@ const DraftEditorRoot = styled("div")(({ theme }) => ({
   "& .public-DraftStyleDefault-block": {
     margin: 0,
   },
-}))
+}));
 
 export const DraftEditor = props => {
-  const { sx, ...other } = props
+  const { sx, ...other } = props;
 
   return (
     <DraftEditorRoot sx={sx}>
       <Editor {...other} />
     </DraftEditorRoot>
-  )
-}
+  );
+};
 
 DraftEditor.propTypes = {
   sx: PropTypes.object,
-}
+};

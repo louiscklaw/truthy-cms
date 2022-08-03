@@ -1,6 +1,6 @@
-import { Box, Card, CardHeader, Divider, Grid, List, ListItem, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import { Box, Card, CardHeader, Divider, Grid, List, ListItem, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 const data = {
   series: [
@@ -20,10 +20,10 @@ const data = {
       label: "Out of service",
     },
   ],
-}
+};
 
 export const LogisticsTotalVehicles = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -48,9 +48,9 @@ export const LogisticsTotalVehicles = props => {
     theme: {
       mode: theme.palette.mode,
     },
-  }
+  };
 
-  const chartSeries = data.series.map(item => item.data)
+  const chartSeries = data.series.map(item => item.data);
 
   return (
     <Card sx={{ height: "100%" }} {...props}>
@@ -68,7 +68,12 @@ export const LogisticsTotalVehicles = props => {
           <Divider sx={{ mt: 1 }} />
           <List disablePadding>
             {data.series.map((item, index) => (
-              <ListItem disableGutters divider={index + 1 < data.series.length} key={item.label} sx={{ display: "flex" }}>
+              <ListItem
+                disableGutters
+                divider={index + 1 < data.series.length}
+                key={item.label}
+                sx={{ display: "flex" }}
+              >
                 <Box
                   sx={{
                     border: 3,
@@ -90,5 +95,5 @@ export const LogisticsTotalVehicles = props => {
         </Grid>
       </Grid>
     </Card>
-  )
-}
+  );
+};

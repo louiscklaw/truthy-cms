@@ -1,4 +1,4 @@
-import { createSvgIcon } from "@mui/material/utils"
+import { createSvgIcon } from "@mui/material/utils";
 
 export const Mail = createSvgIcon(
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -6,4 +6,4 @@ export const Mail = createSvgIcon(
     <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
   </svg>,
   "Mail",
-)
+);

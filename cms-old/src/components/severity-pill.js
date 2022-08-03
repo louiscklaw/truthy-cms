@@ -1,9 +1,9 @@
-import PropTypes from "prop-types"
-import { styled } from "@mui/material/styles"
+import PropTypes from "prop-types";
+import { styled } from "@mui/material/styles";
 
 const SeverityPillRoot = styled("span")(({ theme, ownerState }) => {
-  const backgroundColor = theme.palette[ownerState.color].main
-  const color = theme.palette[ownerState.color].contrastText
+  const backgroundColor = theme.palette[ownerState.color].main;
+  const color = theme.palette[ownerState.color].contrastText;
 
   return {
     alignItems: "center",
@@ -25,22 +25,22 @@ const SeverityPillRoot = styled("span")(({ theme, ownerState }) => {
     paddingRight: theme.spacing(1),
     textTransform: "uppercase",
     whiteSpace: "nowrap",
-  }
-})
+  };
+});
 
 export const SeverityPill = props => {
-  const { color = "primary", children, ...other } = props
+  const { color = "primary", children, ...other } = props;
 
-  const ownerState = { color }
+  const ownerState = { color };
 
   return (
     <SeverityPillRoot ownerState={ownerState} {...other}>
       {children}
     </SeverityPillRoot>
-  )
-}
+  );
+};
 
 SeverityPill.propTypes = {
   children: PropTypes.node,
   color: PropTypes.oneOf(["primary", "secondary", "error", "info", "warning", "success"]),
-}
+};

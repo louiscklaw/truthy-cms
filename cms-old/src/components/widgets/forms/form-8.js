@@ -1,11 +1,11 @@
-import { useState } from "react"
-import MobileDatePicker from "@mui/lab/MobileDatePicker"
-import { Avatar, Box, Button, Chip, IconButton, TextField, Typography } from "@mui/material"
-import { Plus as PlusIcon } from "../../../icons/plus"
+import { useState } from "react";
+import MobileDatePicker from "@mui/lab/MobileDatePicker";
+import { Avatar, Box, Button, Chip, IconButton, TextField, Typography } from "@mui/material";
+import { Plus as PlusIcon } from "../../../icons/plus";
 
 export const Form8 = () => {
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(new Date());
 
   return (
     <Box
@@ -85,5 +85,5 @@ export const Form8 = () => {
         </Box>
       </form>
     </Box>
-  )
-}
+  );
+};

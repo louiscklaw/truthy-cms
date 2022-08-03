@@ -8,7 +8,7 @@ import { MainSidebar } from './main-sidebar';
 const MainLayoutRoot = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.default,
   height: '100%',
-  paddingTop: 64
+  paddingTop: 64,
 }));
 
 export const MainLayout = ({ children }) => {
@@ -17,10 +17,7 @@ export const MainLayout = ({ children }) => {
   return (
     <MainLayoutRoot>
       <MainNavbar onOpenSidebar={() => setIsSidebarOpen(true)} />
-      <MainSidebar
-        onClose={() => setIsSidebarOpen(false)}
-        open={isSidebarOpen}
-      />
+      <MainSidebar onClose={() => setIsSidebarOpen(false)} open={isSidebarOpen} />
       {children}
       <Footer />
     </MainLayoutRoot>
@@ -28,5 +25,5 @@ export const MainLayout = ({ children }) => {
 };
 
 MainLayout.propTypes = {
-  children: PropTypes.node
+  children: PropTypes.node,
 };

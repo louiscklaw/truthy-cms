@@ -1,14 +1,14 @@
-import { useRouter } from "next/router"
-import * as Yup from "yup"
-import { useFormik } from "formik"
-import { Alert, Box, Button, FormHelperText, TextField } from "@mui/material"
-import { useAuth } from "../../hooks/use-auth"
-import { useMounted } from "../../hooks/use-mounted"
+import { useRouter } from "next/router";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { Alert, Box, Button, FormHelperText, TextField } from "@mui/material";
+import { useAuth } from "../../hooks/use-auth";
+import { useMounted } from "../../hooks/use-mounted";
 
 export const AmplifyLogin = props => {
-  const isMounted = useMounted()
-  const router = useRouter()
-  const { login } = useAuth()
+  const isMounted = useMounted();
+  const router = useRouter();
+  const { login } = useAuth();
   const formik = useFormik({
     initialValues: {
       email: "demo@devias.io",
@@ -20,29 +20,29 @@ export const AmplifyLogin = props => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        await login(values.email, values.password)
+        await login(values.email, values.password);
 
         if (isMounted()) {
-          const returnUrl = router.query.returnUrl || "/dashboard"
-          router.push(returnUrl).catch(console.error)
+          const returnUrl = router.query.returnUrl || "/dashboard";
+          router.push(returnUrl).catch(console.error);
         }
       } catch (err) {
-        console.error(err)
+        console.error(err);
 
         if (isMounted()) {
           if (err.code === "UserNotConfirmedException") {
-            sessionStorage.setItem("username", values.email)
-            router.push("/authentication/verify-code").catch(console.error)
-            return
+            sessionStorage.setItem("username", values.email);
+            router.push("/authentication/verify-code").catch(console.error);
+            return;
           }
 
-          helpers.setStatus({ success: false })
-          helpers.setErrors({ submit: err.message })
-          helpers.setSubmitting(false)
+          helpers.setStatus({ success: false });
+          helpers.setErrors({ submit: err.message });
+          helpers.setSubmitting(false);
         }
       }
     },
-  })
+  });
 
   return (
     <form noValidate onSubmit={formik.handleSubmit} {...props}>
@@ -89,5 +89,5 @@ export const AmplifyLogin = props => {
         </Alert>
       </Box>
     </form>
-  )
-}
+  );
+};

@@ -1,8 +1,19 @@
-import numeral from "numeral"
-import { Box, Card, CardHeader, Table, TableBody, TableCell, TableHead, TableRow, Tooltip, Typography } from "@mui/material"
-import { ExternalLink as ExternalLinkIcon } from "../../../icons/external-link"
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined"
-import { Scrollbar } from "../../scrollbar"
+import numeral from "numeral";
+import {
+  Box,
+  Card,
+  CardHeader,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { ExternalLink as ExternalLinkIcon } from "../../../icons/external-link";
+import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined";
+import { Scrollbar } from "../../scrollbar";
 
 const pages = [
   {
@@ -41,7 +52,7 @@ const pages = [
     url: "/blog/design-patterns",
     visitors: 49510,
   },
-]
+];
 
 export const AnalyticsMostVisited = () => (
   <Card>
@@ -100,4 +111,4 @@ export const AnalyticsMostVisited = () => (
       </Table>
     </Scrollbar>
   </Card>
-)
+);

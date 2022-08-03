@@ -1,9 +1,9 @@
-import { Avatar, Box, Button, Card, CardContent, IconButton, TextField } from "@mui/material"
-import { Photograph as PhotographIcon } from "../../../icons/photograph"
-import { PaperClip as PaperClipIcon } from "../../../icons/paper-clip"
-import { Link as LinkIcon } from "../../../icons/link"
-import { EmojiHappy as EmojiHappyIcon } from "../../../icons/emoji-happy"
-import { getInitials } from "../../../utils/get-initials"
+import { Avatar, Box, Button, Card, CardContent, IconButton, TextField } from "@mui/material";
+import { Photograph as PhotographIcon } from "../../../icons/photograph";
+import { PaperClip as PaperClipIcon } from "../../../icons/paper-clip";
+import { Link as LinkIcon } from "../../../icons/link";
+import { EmojiHappy as EmojiHappyIcon } from "../../../icons/emoji-happy";
+import { getInitials } from "../../../utils/get-initials";
 
 export const SocialPostAdd = props => {
   // To get the user from the authContext, you can use
@@ -11,7 +11,7 @@ export const SocialPostAdd = props => {
   const user = {
     avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
     name: "Anika Visser",
-  }
+  };
 
   return (
     <Card {...props}>
@@ -66,5 +66,5 @@ export const SocialPostAdd = props => {
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};

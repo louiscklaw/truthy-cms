@@ -1,5 +1,5 @@
-import { Box, Card, Grid, Typography } from "@mui/material"
-import { SeverityPill } from "../../severity-pill"
+import { Box, Card, Grid, Typography } from "@mui/material";
+import { SeverityPill } from "../../severity-pill";
 
 export const QuickStats4 = () => (
   <Box
@@ -127,4 +127,4 @@ export const QuickStats4 = () => (
       </Grid>
     </Card>
   </Box>
-)
+);

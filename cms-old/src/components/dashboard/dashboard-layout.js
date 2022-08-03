@@ -1,9 +1,9 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import { styled } from "@mui/material/styles"
-import { DashboardNavbar } from "./dashboard-navbar"
-import { DashboardSidebar } from "./dashboard-sidebar"
-import { Box } from "@mui/material"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { styled } from "@mui/material/styles";
+import { DashboardNavbar } from "./dashboard-navbar";
+import { DashboardSidebar } from "./dashboard-sidebar";
+import { Box } from "@mui/material";
 
 const DashboardLayoutRoot = styled("div")(({ theme }) => ({
   display: "flex",
@@ -13,11 +13,11 @@ const DashboardLayoutRoot = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
     paddingLeft: 280,
   },
-}))
+}));
 
 export const DashboardLayout = props => {
-  const { children } = props
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const { children } = props;
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <>
@@ -36,9 +36,9 @@ export const DashboardLayout = props => {
       <DashboardNavbar onOpenSidebar={() => setIsSidebarOpen(true)} />
       <DashboardSidebar onClose={() => setIsSidebarOpen(false)} open={isSidebarOpen} />
     </>
-  )
-}
+  );
+};
 
 DashboardLayout.propTypes = {
   children: PropTypes.node,
-}
+};

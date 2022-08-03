@@ -1,5 +1,5 @@
-import { Avatar, Box, Button, Grid, IconButton, Link, Paper, Typography } from "@mui/material"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
+import { Avatar, Box, Button, Grid, IconButton, Link, Paper, Typography } from "@mui/material";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
 
 const connections = [
   {
@@ -23,7 +23,7 @@ const connections = [
     name: "Miron Vitold",
     status: "Not connected",
   },
-]
+];
 
 export const GridList6 = () => (
   <Box
@@ -76,4 +76,4 @@ export const GridList6 = () => (
       ))}
     </Grid>
   </Box>
-)
+);

@@ -1,7 +1,7 @@
-import numeral from "numeral"
-import { Box, Card, CardContent, CardHeader, Container, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import numeral from "numeral";
+import { Box, Card, CardContent, CardHeader, Container, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 const data = {
   series: [
@@ -21,10 +21,10 @@ const data = {
       label: "Marketing",
     },
   ],
-}
+};
 
 export const Chart10 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -52,9 +52,9 @@ export const Chart10 = () => {
     theme: {
       mode: theme.palette.mode,
     },
-  }
+  };
 
-  const chartSeries = data.series.map(item => item.data)
+  const chartSeries = data.series.map(item => item.data);
 
   return (
     <Box
@@ -98,5 +98,5 @@ export const Chart10 = () => {
         </Card>
       </Container>
     </Box>
-  )
-}
+  );
+};

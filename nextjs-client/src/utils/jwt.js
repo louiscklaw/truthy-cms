@@ -11,18 +11,18 @@ export const sign = (payload, privateKey, header) => {
   header.expiresIn = new Date(now.getTime() + header.expiresIn);
   const encodedHeader = btoa(JSON.stringify(header));
   const encodedPayload = btoa(JSON.stringify(payload));
-  const signature = btoa(Array
-    .from(encodedPayload)
-    .map((item, key) => (String.fromCharCode(item.charCodeAt(0) ^ privateKey[key
-    % privateKey.length].charCodeAt(0))))
-    .join(''));
+  const signature = btoa(
+    Array.from(encodedPayload)
+      .map((item, key) => String.fromCharCode(item.charCodeAt(0) ^ privateKey[key % privateKey.length].charCodeAt(0)))
+      .join(''),
+  );
 
   return `${encodedHeader}.${encodedPayload}.${signature}`;
 };
 
 // Since we create a fake signed token, we have to implement a fake jwt decode
 // platform to simulate "jwt-decode" library.
-export const decode = (token) => {
+export const decode = token => {
   const [encodedHeader, encodedPayload, signature] = token.split('.');
   const header = JSON.parse(atob(encodedHeader));
   const payload = JSON.parse(atob(encodedPayload));
@@ -32,11 +32,11 @@ export const decode = (token) => {
     throw new Error('Expired token');
   }
 
-  const verifiedSignature = btoa(Array
-    .from(encodedPayload)
-    .map((item, key) => (String.fromCharCode(item.charCodeAt(0) ^ JWT_SECRET[key
-    % JWT_SECRET.length].charCodeAt(0))))
-    .join(''));
+  const verifiedSignature = btoa(
+    Array.from(encodedPayload)
+      .map((item, key) => String.fromCharCode(item.charCodeAt(0) ^ JWT_SECRET[key % JWT_SECRET.length].charCodeAt(0)))
+      .join(''),
+  );
 
   if (verifiedSignature !== signature) {
     throw new Error('Invalid signature');
@@ -55,11 +55,11 @@ export const verify = (token, privateKey) => {
     throw new Error('Expired token');
   }
 
-  const verifiedSignature = btoa(Array
-    .from(encodedPayload)
-    .map((item, key) => (String.fromCharCode(item.charCodeAt(0) ^ privateKey[key
-    % privateKey.length].charCodeAt(0))))
-    .join(''));
+  const verifiedSignature = btoa(
+    Array.from(encodedPayload)
+      .map((item, key) => String.fromCharCode(item.charCodeAt(0) ^ privateKey[key % privateKey.length].charCodeAt(0)))
+      .join(''),
+  );
 
   if (verifiedSignature !== signature) {
     throw new Error('Invalid signature');

@@ -1,11 +1,23 @@
-import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns"
-import numeral from "numeral"
-import { Avatar, Box, Card, CardMedia, Divider, Grid, IconButton, Link, Rating, Tooltip, Typography } from "@mui/material"
-import { red } from "@mui/material/colors"
-import FavoriteIcon from "@mui/icons-material/Favorite"
-import { Users as UsersIcon } from "../../../icons/users"
+import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns";
+import numeral from "numeral";
+import {
+  Avatar,
+  Box,
+  Card,
+  CardMedia,
+  Divider,
+  Grid,
+  IconButton,
+  Link,
+  Rating,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { red } from "@mui/material/colors";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Users as UsersIcon } from "../../../icons/users";
 
-const now = new Date()
+const now = new Date();
 
 const projects = [
   {
@@ -16,7 +28,8 @@ const projects = [
       name: "Jie Yan Song",
     },
     budget: 6125.0,
-    caption: "We're looking for experienced Developers and Product Designers to come aboard and help us build succesful businesses through software.",
+    caption:
+      "We're looking for experienced Developers and Product Designers to come aboard and help us build succesful businesses through software.",
     currency: "$",
     isLiked: true,
     likes: 7,
@@ -36,7 +49,8 @@ const projects = [
       name: "Omar Darobe",
     },
     budget: 4205.0,
-    caption: "We're looking for experienced Developers and Product Designers to come aboard and help us build succesful businesses through software.",
+    caption:
+      "We're looking for experienced Developers and Product Designers to come aboard and help us build succesful businesses through software.",
     currency: "$",
     isLiked: true,
     likes: 12,
@@ -56,7 +70,8 @@ const projects = [
       name: "Siegbert Gottfried",
     },
     budget: 2394.0,
-    caption: "We're looking for experienced Developers and Product Designers to come aboard and help us build succesful businesses through software.",
+    caption:
+      "We're looking for experienced Developers and Product Designers to come aboard and help us build succesful businesses through software.",
     currency: "$",
     isLiked: true,
     likes: 18,
@@ -68,7 +83,7 @@ const projects = [
     type: "Full-Time",
     updatedAt: subHours(now, 16).getTime(),
   },
-]
+];
 
 export const GridList2 = () => (
   <Box
@@ -130,7 +145,9 @@ export const GridList2 = () => (
             >
               <Grid alignItems="center" container justifyContent="space-between" spacing={3}>
                 <Grid item>
-                  <Typography variant="subtitle2">{numeral(project.budget).format(`${project.currency}0,0.00`)}</Typography>
+                  <Typography variant="subtitle2">
+                    {numeral(project.budget).format(`${project.currency}0,0.00`)}
+                  </Typography>
                   <Typography color="textSecondary" variant="body2">
                     Budget
                   </Typography>
@@ -194,4 +211,4 @@ export const GridList2 = () => (
       ))}
     </Grid>
   </Box>
-)
+);

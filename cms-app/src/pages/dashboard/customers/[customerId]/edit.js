@@ -1,22 +1,22 @@
-import { useCallback, useEffect, useState } from "react";
-import NextLink from "next/link";
-import Head from "next/head";
-import { Avatar, Box, Chip, Container, Link, Typography } from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { customerApi } from "../../../../__fake-api__/customer-api";
-import { AuthGuard } from "../../../../components/authentication/auth-guard";
-import { DashboardLayout } from "../../../../components/dashboard/dashboard-layout";
-import { CustomerEditForm } from "../../../../components/dashboard/customer/customer-edit-form";
-import { useMounted } from "../../../../hooks/use-mounted";
-import { gtm } from "../../../../lib/gtm";
-import { getInitials } from "../../../../utils/get-initials";
+import { useCallback, useEffect, useState } from 'react';
+import NextLink from 'next/link';
+import Head from 'next/head';
+import { Avatar, Box, Chip, Container, Link, Typography } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { customerApi } from '../../../../__fake-api__/customer-api';
+import { AuthGuard } from '../../../../components/authentication/auth-guard';
+import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
+import { CustomerEditForm } from '../../../../components/dashboard/customer/customer-edit-form';
+import { useMounted } from '../../../../hooks/use-mounted';
+import { gtm } from '../../../../lib/gtm';
+import { getInitials } from '../../../../utils/get-initials';
 
 const CustomerEdit = () => {
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" });
+    gtm.push({ event: 'page_view' });
   }, []);
 
   const getCustomer = useCallback(async () => {
@@ -36,7 +36,7 @@ const CustomerEdit = () => {
       getCustomer();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
 
   if (!customer) {
@@ -51,7 +51,7 @@ const CustomerEdit = () => {
       <Box
         component="main"
         sx={{
-          backgroundColor: "background.default",
+          backgroundColor: 'background.default',
           flexGrow: 1,
           py: 8,
         }}
@@ -63,8 +63,8 @@ const CustomerEdit = () => {
                 color="textPrimary"
                 component="a"
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
+                  alignItems: 'center',
+                  display: 'flex',
                 }}
               >
                 <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
@@ -74,9 +74,9 @@ const CustomerEdit = () => {
           </Box>
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              overflow: "hidden",
+              alignItems: 'center',
+              display: 'flex',
+              overflow: 'hidden',
             }}
           >
             <Avatar
@@ -95,11 +95,11 @@ const CustomerEdit = () => {
               </Typography>
               <Box
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  overflow: "hidden",
-                  textOverflow: "ellipsis",
-                  whiteSpace: "nowrap",
+                  alignItems: 'center',
+                  display: 'flex',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
                 }}
               >
                 <Typography variant="subtitle2">user_id:</Typography>
@@ -116,7 +116,7 @@ const CustomerEdit = () => {
   );
 };
 
-CustomerEdit.getLayout = (page) => (
+CustomerEdit.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>

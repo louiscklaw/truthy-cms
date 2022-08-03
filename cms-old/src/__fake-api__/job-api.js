@@ -1,6 +1,6 @@
-import { subDays, subHours, subMinutes, subSeconds } from "date-fns"
+import { subDays, subHours, subMinutes, subSeconds } from "date-fns";
 
-const now = new Date()
+const now = new Date();
 
 class JobApi {
   getCompanies() {
@@ -95,8 +95,8 @@ class JobApi {
         name: "Devias IO SRL",
         shortDescription: "Impact-ready developer tools and templates",
       },
-    ]
-    return Promise.resolve(companies)
+    ];
+    return Promise.resolve(companies);
   }
 
   getCompany() {
@@ -267,8 +267,8 @@ Our mission emphasizes seeking and hiring diverse voices, including those who ar
       ],
       shortDescription: "Building technologies and ideas that move us as the leaders in Augmented Reality",
       website: "https://augmastic.dev",
-    })
+    });
   }
 }
 
-export const jobApi = new JobApi()
+export const jobApi = new JobApi();

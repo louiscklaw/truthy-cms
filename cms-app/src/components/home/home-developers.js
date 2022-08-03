@@ -1,14 +1,14 @@
-import NextLink from "next/link";
-import { Box, Button, Container, Grid, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import NextLink from 'next/link';
+import { Box, Button, Container, Grid, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
-export const HomeDevelopers = (props) => {
+export const HomeDevelopers = props => {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
-        backgroundColor: "background.default",
+        backgroundColor: 'background.default',
         py: 15,
       }}
       {...props}
@@ -28,13 +28,9 @@ export const HomeDevelopers = (props) => {
           >
             <div>
               <Typography variant="h3">For Developers</Typography>
-              <Typography
-                color="textSecondary"
-                sx={{ my: 3 }}
-                variant="subtitle1"
-              >
-                Not just a set of tools, the package includes ready-to-deploy
-                conceptual applications written in JavaScript & TypeScript.
+              <Typography color="textSecondary" sx={{ my: 3 }} variant="subtitle1">
+                Not just a set of tools, the package includes ready-to-deploy conceptual applications written in
+                JavaScript & TypeScript.
               </Typography>
               <NextLink href="/browse" passHref>
                 <Button size="large" component="a" variant="contained">
@@ -57,20 +53,17 @@ export const HomeDevelopers = (props) => {
           >
             <Box
               sx={{
-                position: "relative",
-                pt: "calc(960 / 1225 * 100%)",
-                "& img": {
-                  height: "auto",
-                  position: "absolute",
+                position: 'relative',
+                pt: 'calc(960 / 1225 * 100%)',
+                '& img': {
+                  height: 'auto',
+                  position: 'absolute',
                   top: 0,
-                  width: "100%",
+                  width: '100%',
                 },
               }}
             >
-              <img
-                alt="For developers"
-                src={`/static/home/developers_${theme.palette.mode}.png`}
-              />
+              <img alt="For developers" src={`/static/home/developers_${theme.palette.mode}.png`} />
             </Box>
           </Grid>
         </Grid>

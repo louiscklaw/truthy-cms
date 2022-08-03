@@ -1,4 +1,4 @@
-import numeral from "numeral";
+import numeral from 'numeral';
 import {
   Box,
   Card,
@@ -10,46 +10,46 @@ import {
   TableRow,
   Tooltip,
   Typography,
-} from "@mui/material";
-import { ExternalLink as ExternalLinkIcon } from "../../../icons/external-link";
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined";
-import { Scrollbar } from "../../scrollbar";
+} from '@mui/material';
+import { ExternalLink as ExternalLinkIcon } from '../../../icons/external-link';
+import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../../../icons/information-circle-outlined';
+import { Scrollbar } from '../../scrollbar';
 
 const pages = [
   {
     bounceRate: 16,
     uniqueVisits: 8584,
-    url: "/",
+    url: '/',
     visitors: 95847,
   },
   {
     bounceRate: 5,
     uniqueVisits: 648,
-    url: "/authentication/login",
+    url: '/authentication/login',
     visitors: 7500,
   },
   {
     bounceRate: 2,
     uniqueVisits: 568,
-    url: "/dashboard",
+    url: '/dashboard',
     visitors: 85406,
   },
   {
     bounceRate: 12,
     uniqueVisits: 12322,
-    url: "/blog/top-5-react-frameworks",
+    url: '/blog/top-5-react-frameworks',
     visitors: 75050,
   },
   {
     bounceRate: 10,
     uniqueVisits: 11645,
-    url: "/blog/understand-programming-principles",
+    url: '/blog/understand-programming-principles',
     visitors: 68003,
   },
   {
     bounceRate: 8,
     uniqueVisits: 10259,
-    url: "/blog/design-patterns",
+    url: '/blog/design-patterns',
     visitors: 49510,
   },
 ];
@@ -60,7 +60,7 @@ export const AnalyticsMostVisited = () => (
       title="Most Visited Pages"
       action={
         <Tooltip title="Refresh rate is 24h">
-          <InformationCircleOutlinedIcon sx={{ color: "action.active" }} />
+          <InformationCircleOutlinedIcon sx={{ color: 'action.active' }} />
         </Tooltip>
       }
     />
@@ -75,11 +75,11 @@ export const AnalyticsMostVisited = () => (
           </TableRow>
         </TableHead>
         <TableBody>
-          {pages.map((page) => (
+          {pages.map(page => (
             <TableRow
               key={page.url}
               sx={{
-                "&:last-child td": {
+                '&:last-child td': {
                   border: 0,
                 },
               }}
@@ -87,14 +87,14 @@ export const AnalyticsMostVisited = () => (
               <TableCell>
                 <Box
                   sx={{
-                    alignItems: "center",
-                    display: "flex",
+                    alignItems: 'center',
+                    display: 'flex',
                   }}
                 >
                   <ExternalLinkIcon
                     sx={{
-                      color: "action.active",
-                      cursor: "pointer",
+                      color: 'action.active',
+                      cursor: 'pointer',
                     }}
                   />
                   <Typography sx={{ ml: 2 }} variant="body2">
@@ -102,8 +102,8 @@ export const AnalyticsMostVisited = () => (
                   </Typography>
                 </Box>
               </TableCell>
-              <TableCell>{numeral(page.visitors).format("0,0")}</TableCell>
-              <TableCell>{numeral(page.uniqueVisits).format("0,0")}</TableCell>
+              <TableCell>{numeral(page.visitors).format('0,0')}</TableCell>
+              <TableCell>{numeral(page.uniqueVisits).format('0,0')}</TableCell>
               <TableCell>{page.bounceRate}%</TableCell>
             </TableRow>
           ))}

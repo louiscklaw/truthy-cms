@@ -1,16 +1,16 @@
-import { Box, Card, CardContent, CardHeader, Divider, IconButton } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Chart } from "../../chart"
-import { Scrollbar } from "../../scrollbar"
+import { Box, Card, CardContent, CardHeader, Divider, IconButton } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Chart } from "../../chart";
+import { Scrollbar } from "../../scrollbar";
 
 const data = {
   series: [{ data: [10, 5, 11, 20, 13, 28, 18, 4, 13, 12, 13, 5] }],
   categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-}
+};
 
 export const Chart4 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -75,9 +75,9 @@ export const Chart4 = () => {
         },
       },
     },
-  }
+  };
 
-  const chartSeries = data.series
+  const chartSeries = data.series;
 
   return (
     <Box
@@ -111,5 +111,5 @@ export const Chart4 = () => {
         </CardContent>
       </Card>
     </Box>
-  )
-}
+  );
+};

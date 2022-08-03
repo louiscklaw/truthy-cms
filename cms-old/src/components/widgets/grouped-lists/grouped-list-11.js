@@ -1,5 +1,16 @@
-import { Box, Button, Card, CardHeader, Divider, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material"
-import { SeverityPill } from "../../severity-pill"
+import {
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { SeverityPill } from "../../severity-pill";
 
 const campaigns = [
   {
@@ -42,13 +53,13 @@ const campaigns = [
     status: "draft",
     target: "Young Group",
   },
-]
+];
 
 const labelColorsMap = {
   draft: "secondary",
   active: "success",
   stopped: "error",
-}
+};
 
 export const GroupedList11 = () => (
   <Box
@@ -126,4 +137,4 @@ export const GroupedList11 = () => (
       </Table>
     </Card>
   </Box>
-)
+);

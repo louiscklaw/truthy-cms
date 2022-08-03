@@ -1,5 +1,5 @@
-import { createContext, useEffect, useReducer } from "react"
-import PropTypes from "prop-types"
+import { createContext, useEffect, useReducer } from "react";
+import PropTypes from "prop-types";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -8,36 +8,36 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-} from "firebase/auth"
-import { firebaseApp } from "../lib/firebase"
+} from "firebase/auth";
+import { firebaseApp } from "../lib/firebase";
 
-const auth = getAuth(firebaseApp)
+const auth = getAuth(firebaseApp);
 
-var ActionType
-;(function (ActionType) {
-  ActionType["AUTH_STATE_CHANGED"] = "AUTH_STATE_CHANGED"
-})(ActionType || (ActionType = {}))
+var ActionType;
+(function (ActionType) {
+  ActionType["AUTH_STATE_CHANGED"] = "AUTH_STATE_CHANGED";
+})(ActionType || (ActionType = {}));
 
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
   user: null,
-}
+};
 
 const reducer = (state, action) => {
   if (action.type === "AUTH_STATE_CHANGED") {
-    const { isAuthenticated, user } = action.payload
+    const { isAuthenticated, user } = action.payload;
 
     return {
       ...state,
       isAuthenticated,
       isInitialized: true,
       user,
-    }
+    };
   }
 
-  return state
-}
+  return state;
+};
 
 export const AuthContext = createContext({
   ...initialState,
@@ -46,11 +46,11 @@ export const AuthContext = createContext({
   signInWithEmailAndPassword: () => Promise.resolve(),
   signInWithGoogle: () => Promise.resolve(),
   logout: () => Promise.resolve(),
-})
+});
 
 export const AuthProvider = props => {
-  const { children } = props
-  const [state, dispatch] = useReducer(reducer, initialState)
+  const { children } = props;
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(
     () =>
@@ -70,7 +70,7 @@ export const AuthProvider = props => {
                 plan: "Premium",
               },
             },
-          })
+          });
         } else {
           dispatch({
             type: ActionType.AUTH_STATE_CHANGED,
@@ -78,29 +78,29 @@ export const AuthProvider = props => {
               isAuthenticated: false,
               user: null,
             },
-          })
+          });
         }
       }),
     [dispatch],
-  )
+  );
 
   const _signInWithEmailAndPassword = async (email, password) => {
-    await signInWithEmailAndPassword(auth, email, password)
-  }
+    await signInWithEmailAndPassword(auth, email, password);
+  };
 
   const signInWithGoogle = async () => {
-    const provider = new GoogleAuthProvider()
+    const provider = new GoogleAuthProvider();
 
-    await signInWithPopup(auth, provider)
-  }
+    await signInWithPopup(auth, provider);
+  };
 
   const _createUserWithEmailAndPassword = async (email, password) => {
-    await createUserWithEmailAndPassword(auth, email, password)
-  }
+    await createUserWithEmailAndPassword(auth, email, password);
+  };
 
   const logout = async () => {
-    await signOut(auth)
-  }
+    await signOut(auth);
+  };
 
   return (
     <AuthContext.Provider
@@ -115,11 +115,11 @@ export const AuthProvider = props => {
     >
       {children}
     </AuthContext.Provider>
-  )
-}
+  );
+};
 
 AuthProvider.propTypes = {
   children: PropTypes.node.isRequired,
-}
+};
 
-export const AuthConsumer = AuthContext.Consumer
+export const AuthConsumer = AuthContext.Consumer;

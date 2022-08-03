@@ -1,5 +1,5 @@
-import { format, subDays, subHours, subMinutes, subSeconds } from "date-fns"
-import numeral from "numeral"
+import { format, subDays, subHours, subMinutes, subSeconds } from "date-fns";
+import numeral from "numeral";
 import {
   Box,
   Button,
@@ -15,13 +15,13 @@ import {
   TableSortLabel,
   Tooltip,
   Typography,
-} from "@mui/material"
-import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+} from "@mui/material";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
-const now = new Date()
+const now = new Date();
 
 const orders = [
   {
@@ -102,13 +102,13 @@ const orders = [
     status: "complete",
     totalAmount: 56.0,
   },
-]
+];
 
 const labelColors = {
   complete: "success",
   pending: "warning",
   rejected: "error",
-}
+};
 
 export const Table1 = () => (
   <Box
@@ -178,4 +178,4 @@ export const Table1 = () => (
       </Box>
     </Card>
   </Box>
-)
+);

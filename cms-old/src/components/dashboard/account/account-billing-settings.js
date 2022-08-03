@@ -1,9 +1,23 @@
-import { useState } from "react"
-import { Box, Button, Card, CardContent, Divider, Link, Grid, Table, TableCell, TableHead, TableRow, Typography, TableBody } from "@mui/material"
-import { Logo } from "../../logo"
-import { Pencil as PencilIcon } from "../../../icons/pencil"
-import { PropertyList } from "../../property-list"
-import { PropertyListItem } from "../../property-list-item"
+import { useState } from "react";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  Divider,
+  Link,
+  Grid,
+  Table,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+  TableBody,
+} from "@mui/material";
+import { Logo } from "../../logo";
+import { Pencil as PencilIcon } from "../../../icons/pencil";
+import { PropertyList } from "../../property-list";
+import { PropertyListItem } from "../../property-list-item";
 
 const plans = [
   {
@@ -24,10 +38,10 @@ const plans = [
     price: "29.99",
     current: false,
   },
-]
+];
 
 export const AccountBillingSettings = props => {
-  const [selected, setSelected] = useState("Standard")
+  const [selected, setSelected] = useState("Standard");
 
   return (
     <div {...props}>
@@ -160,8 +174,8 @@ export const AccountBillingSettings = props => {
           <div>
             <Typography variant="h6">Invoice history</Typography>
             <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
-              You can view and download all your previous invoices here. If you’ve just made a payment, it may take a few hours for it to appear in the table
-              below.
+              You can view and download all your previous invoices here. If you’ve just made a payment, it may take a
+              few hours for it to appear in the table below.
             </Typography>
           </div>
         </CardContent>
@@ -205,5 +219,5 @@ export const AccountBillingSettings = props => {
         </Table>
       </Card>
     </div>
-  )
-}
+  );
+};

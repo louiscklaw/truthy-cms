@@ -1,4 +1,4 @@
-import { subDays, subHours, subMinutes, subSeconds } from "date-fns";
+import { subDays, subHours, subMinutes, subSeconds } from 'date-fns';
 
 const now = new Date();
 
@@ -6,63 +6,60 @@ class BlogApi {
   getPosts() {
     const posts = [
       {
-        id: "24b76cac9a128cd949747080",
+        id: '24b76cac9a128cd949747080',
         author: {
-          avatar: "/static/mock-images/avatars/avatar-jie_yan_song.png",
-          name: "Jie Yan Song",
+          avatar: '/static/mock-images/avatars/avatar-jie_yan_song.png',
+          name: 'Jie Yan Song',
         },
-        category: "Programming",
-        cover: "/static/mock-images/blog/post_1.png",
+        category: 'Programming',
+        cover: '/static/mock-images/blog/post_1.png',
         publishedAt: subMinutes(subSeconds(now, 16), 45).getTime(),
-        readTime: "5 min",
+        readTime: '5 min',
         shortDescription:
-          "Aliquam dapibus elementum nulla at malesuada. Ut mi nisl, aliquet non mollis vel, feugiat non nibh. Vivamus sit amet tristique dui. Praesent in bibendum arcu, at placerat augue. Nam varius fermentum diam, at tristique libero ultrices non. Praesent scelerisque diam vitae posuere dignissim. In et purus ac sapien posuere accumsan sit amet id diam. Pellentesque sit amet nulla ante. Maecenas nec leo vitae quam volutpat pretium id vitae augue.",
-        title: "Why I Still Lisp, and You Should Too",
+          'Aliquam dapibus elementum nulla at malesuada. Ut mi nisl, aliquet non mollis vel, feugiat non nibh. Vivamus sit amet tristique dui. Praesent in bibendum arcu, at placerat augue. Nam varius fermentum diam, at tristique libero ultrices non. Praesent scelerisque diam vitae posuere dignissim. In et purus ac sapien posuere accumsan sit amet id diam. Pellentesque sit amet nulla ante. Maecenas nec leo vitae quam volutpat pretium id vitae augue.',
+        title: 'Why I Still Lisp, and You Should Too',
       },
       {
-        id: "a9c19d0caf2ca91020aacd1f",
+        id: 'a9c19d0caf2ca91020aacd1f',
         author: {
-          avatar: "/static/mock-images/avatars/avatar-omar_darboe.png",
-          name: "Omar Darobe",
+          avatar: '/static/mock-images/avatars/avatar-omar_darboe.png',
+          name: 'Omar Darobe',
         },
-        category: "Productivity",
-        cover: "/static/mock-images/blog/post_2.png",
+        category: 'Productivity',
+        cover: '/static/mock-images/blog/post_2.png',
         publishedAt: subHours(subMinutes(subSeconds(now, 29), 51), 6).getTime(),
-        readTime: "6 min",
+        readTime: '6 min',
         shortDescription:
-          "Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi in turpis ac quam luctus interdum. Nullam ac lorem ligula. Integer sed massa bibendum, blandit ipsum et, iaculis augue. Curabitur nec enim eget dolor tincidunt posuere eget nec dolor. Ut ullamcorper dignissim arcu vel laoreet. Sed ligula dolor, vulputate quis eros ac, maximus pharetra orci. Aenean lobortis volutpat vehicula. Suspendisse vel nunc enim. Cras ultrices metus libero, non aliquam diam condimentum vel. Vestibulum arcu leo, consectetur id diam a, semper elementum odio. Proin eleifend volutpat sapien tempor bibendum. Etiam sagittis nulla sit amet aliquam sollicitudin.",
-        title: "Scrum Has Hit the Glass Ceiling",
+          'Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Morbi in turpis ac quam luctus interdum. Nullam ac lorem ligula. Integer sed massa bibendum, blandit ipsum et, iaculis augue. Curabitur nec enim eget dolor tincidunt posuere eget nec dolor. Ut ullamcorper dignissim arcu vel laoreet. Sed ligula dolor, vulputate quis eros ac, maximus pharetra orci. Aenean lobortis volutpat vehicula. Suspendisse vel nunc enim. Cras ultrices metus libero, non aliquam diam condimentum vel. Vestibulum arcu leo, consectetur id diam a, semper elementum odio. Proin eleifend volutpat sapien tempor bibendum. Etiam sagittis nulla sit amet aliquam sollicitudin.',
+        title: 'Scrum Has Hit the Glass Ceiling',
       },
       {
-        id: "44df90cbf89963b8aa625c7d",
+        id: '44df90cbf89963b8aa625c7d',
         author: {
-          avatar: "/static/mock-images/avatars/avatar-siegbert_gottfried.png",
-          name: "Siegbert Gottfried",
+          avatar: '/static/mock-images/avatars/avatar-siegbert_gottfried.png',
+          name: 'Siegbert Gottfried',
         },
-        category: "Entrepreneurs",
-        cover: "/static/mock-images/blog/post_3.png",
+        category: 'Entrepreneurs',
+        cover: '/static/mock-images/blog/post_3.png',
         publishedAt: subHours(subMinutes(subSeconds(now, 6), 46), 16).getTime(),
-        readTime: "3 min",
+        readTime: '3 min',
         shortDescription:
-          "Praesent eget leo mauris. Morbi ac vulputate nibh. In hac habitasse platea dictumst. Praesent fermentum lacus eleifend erat cursus, congue rhoncus mi porta. Mauris rhoncus mollis nisl, vitae tempus tortor. Proin sit amet feugiat felis. Donec nunc urna, pretium sed viverra vel, blandit at urna. Integer pharetra placerat mauris, at fringilla arcu dignissim a. Morbi nec fermentum purus. Integer vel justo interdum lectus euismod bibendum.",
-        title: "How Model View Controller (MVC) Architectures Work",
+          'Praesent eget leo mauris. Morbi ac vulputate nibh. In hac habitasse platea dictumst. Praesent fermentum lacus eleifend erat cursus, congue rhoncus mi porta. Mauris rhoncus mollis nisl, vitae tempus tortor. Proin sit amet feugiat felis. Donec nunc urna, pretium sed viverra vel, blandit at urna. Integer pharetra placerat mauris, at fringilla arcu dignissim a. Morbi nec fermentum purus. Integer vel justo interdum lectus euismod bibendum.',
+        title: 'How Model View Controller (MVC) Architectures Work',
       },
       {
-        id: "c597c300fe3f817c41a2f01d",
+        id: 'c597c300fe3f817c41a2f01d',
         author: {
-          avatar: "/static/mock-images/avatars/avatar-iulia_albu.png",
-          name: "Iulia Albu",
+          avatar: '/static/mock-images/avatars/avatar-iulia_albu.png',
+          name: 'Iulia Albu',
         },
-        category: "Innovation",
-        cover: "/static/mock-images/blog/post_4.png",
-        publishedAt: subDays(
-          subHours(subMinutes(subSeconds(now, 52), 39), 7),
-          5
-        ).getTime(),
-        readTime: "1 min",
+        category: 'Innovation',
+        cover: '/static/mock-images/blog/post_4.png',
+        publishedAt: subDays(subHours(subMinutes(subSeconds(now, 52), 39), 7), 5).getTime(),
+        readTime: '1 min',
         shortDescription:
-          "Phasellus eu commodo lacus, eget tristique nunc. Ut ullamcorper semper nunc sit amet vehicula. Cras non nisl sed eros ultricies posuere sed quis quam. Morbi neque justo, volutpat eget pretium in, convallis vitae augue. Vestibulum sapien ligula, iaculis nec dui sed, ultrices euismod orci. Duis eget urna vulputate, venenatis est eu, luctus nunc. Nunc id ante ac leo viverra pharetra. Vestibulum blandit tellus ac nunc elementum, ut porta libero sagittis. Sed ultrices lacinia nunc, sed ornare nulla blandit blandit.",
-        title: "Generating Passive Income Is Hard, Here Is a Better Option",
+          'Phasellus eu commodo lacus, eget tristique nunc. Ut ullamcorper semper nunc sit amet vehicula. Cras non nisl sed eros ultricies posuere sed quis quam. Morbi neque justo, volutpat eget pretium in, convallis vitae augue. Vestibulum sapien ligula, iaculis nec dui sed, ultrices euismod orci. Duis eget urna vulputate, venenatis est eu, luctus nunc. Nunc id ante ac leo viverra pharetra. Vestibulum blandit tellus ac nunc elementum, ut porta libero sagittis. Sed ultrices lacinia nunc, sed ornare nulla blandit blandit.',
+        title: 'Generating Passive Income Is Hard, Here Is a Better Option',
       },
     ];
 
@@ -71,12 +68,12 @@ class BlogApi {
 
   getPost() {
     const post = {
-      id: "24b76cac9a128cd949747080",
+      id: '24b76cac9a128cd949747080',
       author: {
-        avatar: "/static/mock-images/avatars/avatar-jie_yan_song.png",
-        name: "Jie Yan Song",
+        avatar: '/static/mock-images/avatars/avatar-jie_yan_song.png',
+        name: 'Jie Yan Song',
       },
-      category: "Programming",
+      category: 'Programming',
       content: `
 ## Cras at molestie lacus. Phasellus feugiat leo quis sem iaculis, sed mattis nibh accumsan.
 
@@ -100,12 +97,12 @@ Duis placerat turpis non metus dapibus sagittis. Vestibulum ex massa, tempus pul
 
 Suspendisse pharetra dolor in massa molestie, vel molestie nunc accumsan. Cras varius aliquet pellentesque. Curabitur ac mi fermentum nibh congue pharetra in eu nunc. Vivamus mattis urna a fringilla facilisis. Cras finibus nulla in nulla imperdiet pharetra. Morbi vel tortor turpis.
 `,
-      cover: "/static/mock-images/blog/post_1.png",
+      cover: '/static/mock-images/blog/post_1.png',
       publishedAt: subMinutes(subSeconds(now, 16), 45).getTime(),
-      readTime: "5 min",
+      readTime: '5 min',
       shortDescription:
-        "Aliquam dapibus elementum nulla at malesuada. Ut mi nisl, aliquet non mollis vel, feugiat non nibh. Vivamus sit amet tristique dui. Praesent in bibendum arcu, at placerat augue. Nam varius ferum diam, at tristique libero ultrices non.",
-      title: "Why I Still Lisp, and You Should Too",
+        'Aliquam dapibus elementum nulla at malesuada. Ut mi nisl, aliquet non mollis vel, feugiat non nibh. Vivamus sit amet tristique dui. Praesent in bibendum arcu, at placerat augue. Nam varius ferum diam, at tristique libero ultrices non.',
+      title: 'Why I Still Lisp, and You Should Too',
     };
 
     return Promise.resolve(post);

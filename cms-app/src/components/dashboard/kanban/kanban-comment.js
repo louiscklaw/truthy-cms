@@ -1,7 +1,7 @@
-import PropTypes from "prop-types";
-import { format } from "date-fns";
-import { Avatar, Box, Paper, Typography } from "@mui/material";
-import { useSelector } from "../../../store";
+import PropTypes from 'prop-types';
+import { format } from 'date-fns';
+import { Avatar, Box, Paper, Typography } from '@mui/material';
+import { useSelector } from '../../../store';
 
 const memberSelector = (state, memberId) => {
   const { members } = state.kanban;
@@ -9,14 +9,14 @@ const memberSelector = (state, memberId) => {
   return members.byId[memberId];
 };
 
-export const KanbanComment = (props) => {
+export const KanbanComment = props => {
   const { createdAt, memberId, message, ...other } = props;
-  const member = useSelector((state) => memberSelector(state, memberId));
+  const member = useSelector(state => memberSelector(state, memberId));
 
   return (
     <Box
       sx={{
-        display: "flex",
+        display: 'flex',
         mb: 2,
       }}
       {...other}
@@ -31,7 +31,7 @@ export const KanbanComment = (props) => {
         <Typography variant="subtitle2">{member.name}</Typography>
         <Paper
           sx={{
-            backgroundColor: "background.default",
+            backgroundColor: 'background.default',
             mt: 1,
             p: 2,
           }}
@@ -39,12 +39,7 @@ export const KanbanComment = (props) => {
         >
           <Typography variant="body2">{message}</Typography>
         </Paper>
-        <Typography
-          color="textSecondary"
-          component="p"
-          sx={{ mt: 1 }}
-          variant="caption"
-        >
+        <Typography color="textSecondary" component="p" sx={{ mt: 1 }} variant="caption">
           {format(createdAt, "MMM dd, yyyy 'at' hh:mm a")}
         </Typography>
       </Box>

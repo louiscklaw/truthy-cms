@@ -1,10 +1,10 @@
-import NextLink from "next/link"
-import PropTypes from "prop-types"
-import { formatDistanceToNowStrict } from "date-fns"
-import { Avatar, Box, Link, Typography } from "@mui/material"
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import { formatDistanceToNowStrict } from "date-fns";
+import { Avatar, Box, Link, Typography } from "@mui/material";
 
 export const SocialComment = props => {
-  const { authorAvatar, authorName, createdAt, message, ...other } = props
+  const { authorAvatar, authorName, createdAt, message, ...other } = props;
 
   return (
     <Box
@@ -46,12 +46,12 @@ export const SocialComment = props => {
         <Typography variant="body2">{message}</Typography>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 SocialComment.propTypes = {
   authorAvatar: PropTypes.string.isRequired,
   authorName: PropTypes.string.isRequired,
   createdAt: PropTypes.number.isRequired,
   message: PropTypes.string.isRequired,
-}
+};

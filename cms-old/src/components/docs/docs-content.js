@@ -1,41 +1,47 @@
-import Markdown from "react-markdown"
-import PropTypes from "prop-types"
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
-import dracula from "react-syntax-highlighter/dist/esm/styles/prism/dracula"
-import { styled } from "@mui/material/styles"
+import Markdown from "react-markdown";
+import PropTypes from "prop-types";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import dracula from "react-syntax-highlighter/dist/esm/styles/prism/dracula";
+import { styled } from "@mui/material/styles";
 
 const Link = props => {
-  const { href, children } = props
+  const { href, children } = props;
 
   if (!href?.startsWith("http")) {
-    return <a href={href}>{children}</a>
+    return <a href={href}>{children}</a>;
   }
 
   return (
     <a href={href} rel="nofollow noreferrer noopener" target="_blank">
       {children}
     </a>
-  )
-}
+  );
+};
 
 const Code = props => {
-  const { node, inline, className, children, ...other } = props
+  const { node, inline, className, children, ...other } = props;
 
-  const match = /language-(\w+)/.exec(className || "")
+  const match = /language-(\w+)/.exec(className || "");
 
   return !inline && match ? (
-    <SyntaxHighlighter children={String(children).replace(/\n$/, "")} style={dracula} language={match[1]} PreTag="div" {...other} />
+    <SyntaxHighlighter
+      children={String(children).replace(/\n$/, "")}
+      style={dracula}
+      language={match[1]}
+      PreTag="div"
+      {...other}
+    />
   ) : (
     <code className={className} {...other}>
       {children}
     </code>
-  )
-}
+  );
+};
 
 const components = {
   link: Link,
   code: Code,
-}
+};
 
 const DocsContentRoot = styled("div")(({ theme }) => ({
   color: theme.palette.text.primary,
@@ -114,14 +120,14 @@ const DocsContentRoot = styled("div")(({ theme }) => ({
       color: theme.palette.secondary.main,
     },
   },
-}))
+}));
 
 export const DocsContent = props => {
-  const { content } = props
+  const { content } = props;
 
-  return <DocsContentRoot>{content && <Markdown components={components} children={content} />}</DocsContentRoot>
-}
+  return <DocsContentRoot>{content && <Markdown components={components} children={content} />}</DocsContentRoot>;
+};
 
 DocsContent.propTypes = {
   content: PropTypes.string,
-}
+};

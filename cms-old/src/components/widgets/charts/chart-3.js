@@ -1,9 +1,9 @@
-import { Box, Card, CardContent, Container, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import { Box, Card, CardContent, Container, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 export const Chart3 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -40,9 +40,9 @@ export const Chart3 = () => {
     theme: {
       mode: theme.palette.mode,
     },
-  }
+  };
 
-  const chartSeries = [83]
+  const chartSeries = [83];
 
   return (
     <Box
@@ -62,5 +62,5 @@ export const Chart3 = () => {
         </Card>
       </Container>
     </Box>
-  )
-}
+  );
+};

@@ -1,8 +1,8 @@
-import PropTypes from "prop-types"
-import { Box, Button, Card, Chip, Typography } from "@mui/material"
+import PropTypes from "prop-types";
+import { Box, Button, Card, Chip, Typography } from "@mui/material";
 
 export const OverviewBanner = props => {
-  const { onDismiss, ...other } = props
+  const { onDismiss, ...other } = props;
 
   return (
     <Card
@@ -49,9 +49,9 @@ export const OverviewBanner = props => {
         </Box>
       </div>
     </Card>
-  )
-}
+  );
+};
 
 OverviewBanner.propTypes = {
   onDismiss: PropTypes.func,
-}
+};

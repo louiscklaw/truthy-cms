@@ -1,7 +1,18 @@
-import { Box, Container, Divider, Grid, Link, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material"
-import { alpha } from "@mui/material/styles"
-import { MinusOutlined as MinusOutlinedIcon } from "../icons/minus-outlined"
-import { Logo } from "./logo"
+import {
+  Box,
+  Container,
+  Divider,
+  Grid,
+  Link,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import { MinusOutlined as MinusOutlinedIcon } from "../icons/minus-outlined";
+import { Logo } from "./logo";
 
 const sections = [
   {
@@ -47,7 +58,7 @@ const sections = [
       },
     ],
   },
-]
+];
 
 export const Footer = props => (
   <Box
@@ -146,4 +157,4 @@ export const Footer = props => (
       </Typography>
     </Container>
   </Box>
-)
+);

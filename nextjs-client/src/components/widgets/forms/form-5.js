@@ -9,7 +9,7 @@ import {
   Grid,
   Switch,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 
 const countries = [
@@ -18,11 +18,11 @@ const countries = [
   { text: 'Kazakhstan', value: 'KZ' },
   { text: 'Kenya', value: 'KE' },
   { text: 'Kiribati', value: 'KI' },
-  { text: 'Korea, Democratic People\'S Republic of', value: 'KP' },
+  { text: "Korea, Democratic People'S Republic of", value: 'KP' },
   { text: 'Korea, Republic of', value: 'KR' },
   { text: 'Kuwait', value: 'KW' },
   { text: 'Kyrgyzstan', value: 'KG' },
-  { text: 'Lao People\'S Democratic Republic', value: 'LA' }
+  { text: "Lao People'S Democratic Republic", value: 'LA' },
 ];
 
 export const Form5 = () => (
@@ -30,32 +30,17 @@ export const Form5 = () => (
     sx={{
       backgroundColor: 'background.paper',
       minHeight: '100%',
-      p: 3
+      p: 3,
     }}
   >
-    <form onSubmit={(event) => event.preventDefault()}>
+    <form onSubmit={event => event.preventDefault()}>
       <CardHeader title="Profile" />
       <CardContent>
-        <Grid
-          container
-          spacing={4}
-        >
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
-            <TextField
-              fullWidth
-              label="Name"
-              name="name"
-            />
+        <Grid container spacing={4}>
+          <Grid item md={6} xs={12}>
+            <TextField fullWidth label="Name" name="name" />
           </Grid>
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
+          <Grid item md={6} xs={12}>
             <TextField
               fullWidth
               helperText="We will use this email to contact you"
@@ -65,102 +50,39 @@ export const Form5 = () => (
               type="email"
             />
           </Grid>
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
-            <TextField
-              fullWidth
-              label="Phone Number"
-              name="phone"
-            />
+          <Grid item md={6} xs={12}>
+            <TextField fullWidth label="Phone Number" name="phone" />
           </Grid>
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
+          <Grid item md={6} xs={12}>
             <Autocomplete
-              getOptionLabel={(option) => option.text}
+              getOptionLabel={option => option.text}
               options={countries}
-              renderInput={(params) => (
-                <TextField {...params}
-                           fullWidth
-                           label="Country"
-                           name="country"
-                />
-              )}
+              renderInput={params => <TextField {...params} fullWidth label="Country" name="country" />}
             />
           </Grid>
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
-            <TextField
-              fullWidth
-              label="State/Region"
-              name="state"
-            />
+          <Grid item md={6} xs={12}>
+            <TextField fullWidth label="State/Region" name="state" />
           </Grid>
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
-            <TextField
-              fullWidth
-              label="City"
-              name="city"
-            />
+          <Grid item md={6} xs={12}>
+            <TextField fullWidth label="City" name="city" />
           </Grid>
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
-            <Typography
-              gutterBottom
-              variant="subtitle2"
-            >
+          <Grid item md={6} xs={12}>
+            <Typography gutterBottom variant="subtitle2">
               Public Profile
             </Typography>
-            <Typography
-              color="textSecondary"
-              variant="body2"
-            >
-              Means that anyone viewing your profile will
-              be able to see your contacts details
+            <Typography color="textSecondary" variant="body2">
+              Means that anyone viewing your profile will be able to see your contacts details
             </Typography>
-            <Switch
-              edge="start"
-              name="isPublic"
-            />
+            <Switch edge="start" name="isPublic" />
           </Grid>
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
-            <Typography
-              gutterBottom
-              variant="subtitle2"
-            >
+          <Grid item md={6} xs={12}>
+            <Typography gutterBottom variant="subtitle2">
               Available to hire
             </Typography>
-            <Typography
-              color="textSecondary"
-              variant="body2"
-            >
-              Toggling this will let your teammates know
-              that you are available for acquiring new projects
+            <Typography color="textSecondary" variant="body2">
+              Toggling this will let your teammates know that you are available for acquiring new projects
             </Typography>
-            <Switch
-              color="primary"
-              edge="start"
-              name="canHire"
-            />
+            <Switch color="primary" edge="start" name="canHire" />
           </Grid>
         </Grid>
       </CardContent>
@@ -168,14 +90,10 @@ export const Form5 = () => (
       <CardActions
         sx={{
           justifyContent: 'flex-end',
-          p: 2
+          p: 2,
         }}
       >
-        <Button
-          color="primary"
-          type="submit"
-          variant="contained"
-        >
+        <Button color="primary" type="submit" variant="contained">
           Save Settings
         </Button>
       </CardActions>

@@ -1,13 +1,13 @@
-import { useState, useEffect } from "react"
-import NextLink from "next/link"
-import Head from "next/head"
-import { Box, Button, Container, Grid, Typography } from "@mui/material"
-import { CheckoutBilling } from "../components/checkout/checkout-billing"
-import { CheckoutOrderSummary } from "../components/checkout/checkout-order-summary"
-import { ArrowLeft as ArrowLeftIcon } from "../icons/arrow-left"
-import { ArrowRight as ArrowRightIcon } from "../icons/arrow-right"
-import { Lock as LockIcon } from "../icons/lock"
-import { gtm } from "../lib/gtm"
+import { useState, useEffect } from "react";
+import NextLink from "next/link";
+import Head from "next/head";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { CheckoutBilling } from "../components/checkout/checkout-billing";
+import { CheckoutOrderSummary } from "../components/checkout/checkout-order-summary";
+import { ArrowLeft as ArrowLeftIcon } from "../icons/arrow-left";
+import { ArrowRight as ArrowRightIcon } from "../icons/arrow-right";
+import { Lock as LockIcon } from "../icons/lock";
+import { gtm } from "../lib/gtm";
 
 const productsData = [
   {
@@ -24,7 +24,7 @@ const productsData = [
     price: 95.0,
     quantity: 1,
   },
-]
+];
 
 const Checkout = () => {
   const [billing, setBilling] = useState({
@@ -39,19 +39,19 @@ const Checkout = () => {
     paymentMethod: "visa",
     state: "",
     zip: "",
-  })
-  const [products, setProducts] = useState(productsData)
+  });
+  const [products, setProducts] = useState(productsData);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const handleBillingChange = event => {
     setBilling(prevBilling => ({
       ...prevBilling,
       [event.target.name]: event.target.value,
-    }))
-  }
+    }));
+  };
 
   const handleProductQuantityChange = (event, productId) => {
     setProducts(prevProducts =>
@@ -60,21 +60,21 @@ const Checkout = () => {
           return {
             ...product,
             quantity: event.target.value,
-          }
+          };
         }
 
-        return product
+        return product;
       }),
-    )
-  }
+    );
+  };
 
   const handleSubmit = event => {
-    event.preventDefault()
-  }
+    event.preventDefault();
+  };
 
-  const subtotal = products.reduce((accumulator, product) => accumulator + product.price * product.quantity, 0)
-  const shippingTax = 12
-  const total = subtotal + shippingTax
+  const subtotal = products.reduce((accumulator, product) => accumulator + product.price * product.quantity, 0);
+  const shippingTax = 12;
+  const total = subtotal + shippingTax;
 
   return (
     <>
@@ -130,7 +130,14 @@ const Checkout = () => {
               <Typography color="textSecondary" sx={{ mt: 2 }} variant="body2">
                 Your purchases are secured by an industry best encryption service – Braintree
               </Typography>
-              <Button color="primary" endIcon={<ArrowRightIcon fontSize="small" />} size="large" sx={{ mt: 3 }} type="submit" variant="contained">
+              <Button
+                color="primary"
+                endIcon={<ArrowRightIcon fontSize="small" />}
+                size="large"
+                sx={{ mt: 3 }}
+                type="submit"
+                variant="contained"
+              >
                 Complete order
               </Button>
             </Box>
@@ -138,7 +145,7 @@ const Checkout = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default Checkout
+export default Checkout;

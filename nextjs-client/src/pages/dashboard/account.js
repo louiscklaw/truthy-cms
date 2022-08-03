@@ -15,7 +15,7 @@ const tabs = [
   { label: 'Billing', value: 'billing' },
   { label: 'Team', value: 'team' },
   { label: 'Notifications', value: 'notifications' },
-  { label: 'Security', value: 'security' }
+  { label: 'Security', value: 'security' },
 ];
 
 const Account = () => {
@@ -32,21 +32,17 @@ const Account = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Account | Material Kit Pro
-        </title>
+        <title>Dashboard: Account | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="md">
-          <Typography variant="h4">
-            Account
-          </Typography>
+          <Typography variant="h4">Account</Typography>
           <Tabs
             indicatorColor="primary"
             onChange={handleTabsChange}
@@ -56,12 +52,8 @@ const Account = () => {
             variant="scrollable"
             sx={{ mt: 3 }}
           >
-            {tabs.map((tab) => (
-              <Tab
-                key={tab.value}
-                label={tab.label}
-                value={tab.value}
-              />
+            {tabs.map(tab => (
+              <Tab key={tab.value} label={tab.label} value={tab.value} />
             ))}
           </Tabs>
           <Divider sx={{ mb: 3 }} />
@@ -76,11 +68,9 @@ const Account = () => {
   );
 };
 
-Account.getLayout = (page) => (
+Account.getLayout = page => (
   <AuthGuard>
-    <DashboardLayout>
-      {page}
-    </DashboardLayout>
+    <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 

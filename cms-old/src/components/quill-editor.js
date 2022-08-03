@@ -1,10 +1,10 @@
-import "react-quill/dist/quill.snow.css"
-import dynamic from "next/dynamic"
-import { styled } from "@mui/material/styles"
-import PropTypes from "prop-types"
-import { useRef } from "react"
+import "react-quill/dist/quill.snow.css";
+import dynamic from "next/dynamic";
+import { styled } from "@mui/material/styles";
+import PropTypes from "prop-types";
+import { useRef } from "react";
 
-const Quill = dynamic(() => import("react-quill"), { ssr: false })
+const Quill = dynamic(() => import("react-quill"), { ssr: false });
 
 const QuillEditorRoot = styled("div")(({ theme }) => ({
   border: 1,
@@ -93,22 +93,22 @@ const QuillEditorRoot = styled("div")(({ theme }) => ({
       },
     },
   },
-}))
+}));
 
 export const QuillEditor = props => {
-  const { sx, onChange, placeholder, value, ...other } = props
-  const ref = useRef(null)
+  const { sx, onChange, placeholder, value, ...other } = props;
+  const ref = useRef(null);
 
   return (
     <QuillEditorRoot sx={sx} ref={ref} {...other}>
       <Quill onChange={onChange} placeholder={placeholder} value={value} bounds={ref.current || undefined} />
     </QuillEditorRoot>
-  )
-}
+  );
+};
 
 QuillEditor.propTypes = {
   onChange: PropTypes.func,
   placeholder: PropTypes.string,
   sx: PropTypes.object,
   value: PropTypes.string,
-}
+};

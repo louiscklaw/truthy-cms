@@ -1,5 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import Head from "next/head";
+import { useCallback, useEffect, useRef, useState } from 'react';
+import Head from 'next/head';
 import {
   Box,
   Button,
@@ -12,66 +12,64 @@ import {
   Tabs,
   TextField,
   Typography,
-} from "@mui/material";
-import { customerApi } from "../../../__fake-api__/customer-api";
-import { AuthGuard } from "../../../components/authentication/auth-guard";
-import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
-import { CustomerListTable } from "../../../components/dashboard/customer/customer-list-table";
-import { useMounted } from "../../../hooks/use-mounted";
-import { Download as DownloadIcon } from "../../../icons/download";
-import { Plus as PlusIcon } from "../../../icons/plus";
-import { Search as SearchIcon } from "../../../icons/search";
-import { Upload as UploadIcon } from "../../../icons/upload";
-import { gtm } from "../../../lib/gtm";
+} from '@mui/material';
+import { customerApi } from '../../../__fake-api__/customer-api';
+import { AuthGuard } from '../../../components/authentication/auth-guard';
+import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
+import { CustomerListTable } from '../../../components/dashboard/customer/customer-list-table';
+import { useMounted } from '../../../hooks/use-mounted';
+import { Download as DownloadIcon } from '../../../icons/download';
+import { Plus as PlusIcon } from '../../../icons/plus';
+import { Search as SearchIcon } from '../../../icons/search';
+import { Upload as UploadIcon } from '../../../icons/upload';
+import { gtm } from '../../../lib/gtm';
 
 const tabs = [
   {
-    label: "All",
-    value: "all",
+    label: 'All',
+    value: 'all',
   },
   {
-    label: "Accepts Marketing",
-    value: "hasAcceptedMarketing",
+    label: 'Accepts Marketing',
+    value: 'hasAcceptedMarketing',
   },
   {
-    label: "Prospect",
-    value: "isProspect",
+    label: 'Prospect',
+    value: 'isProspect',
   },
   {
-    label: "Returning",
-    value: "isReturning",
+    label: 'Returning',
+    value: 'isReturning',
   },
 ];
 
 const sortOptions = [
   {
-    label: "Last update (newest)",
-    value: "updatedAt|desc",
+    label: 'Last update (newest)',
+    value: 'updatedAt|desc',
   },
   {
-    label: "Last update (oldest)",
-    value: "updatedAt|asc",
+    label: 'Last update (oldest)',
+    value: 'updatedAt|asc',
   },
   {
-    label: "Total orders (highest)",
-    value: "totalOrders|desc",
+    label: 'Total orders (highest)',
+    value: 'totalOrders|desc',
   },
   {
-    label: "Total orders (lowest)",
-    value: "totalOrders|asc",
+    label: 'Total orders (lowest)',
+    value: 'totalOrders|asc',
   },
 ];
 
 const applyFilters = (customers, filters) =>
-  customers.filter((customer) => {
+  customers.filter(customer => {
     if (filters.query) {
       let queryMatched = false;
-      const properties = ["email", "name"];
+      const properties = ['email', 'name'];
 
-      properties.forEach((property) => {
-        if (
-          customer[property].toLowerCase().includes(filters.query.toLowerCase())
-        ) {
+      properties.forEach(property => {
+        if (customer[property].toLowerCase().includes(filters.query.toLowerCase())) {
           queryMatched = true;
         }
       });
@@ -112,12 +110,10 @@ const descendingComparator = (a, b, sortBy) => {
 };
 
 const getComparator = (sortDir, sortBy) =>
-  sortDir === "desc"
-    ? (a, b) => descendingComparator(a, b, sortBy)
-    : (a, b) => -descendingComparator(a, b, sortBy);
+  sortDir === 'desc' ? (a, b) => descendingComparator(a, b, sortBy) : (a, b) => -descendingComparator(a, b, sortBy);
 
 const applySort = (customers, sort) => {
-  const [sortBy, sortDir] = sort.split("|");
+  const [sortBy, sortDir] = sort.split('|');
   const comparator = getComparator(sortDir, sortBy);
   const stabilizedThis = customers.map((el, index) => [el, index]);
 
@@ -131,7 +127,7 @@ const applySort = (customers, sort) => {
     return a[1] - b[1];
   });
 
-  return stabilizedThis.map((el) => el[0]);
+  return stabilizedThis.map(el => el[0]);
 };
 
 const applyPagination = (customers, page, rowsPerPage) =>
@@ -141,19 +137,19 @@ const CustomerList = () => {
   const isMounted = useMounted();
   const queryRef = useRef(null);
   const [customers, setCustomers] = useState([]);
-  const [currentTab, setCurrentTab] = useState("all");
+  const [currentTab, setCurrentTab] = useState('all');
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [sort, setSort] = useState(sortOptions[0].value);
   const [filters, setFilters] = useState({
-    query: "",
+    query: '',
     hasAcceptedMarketing: undefined,
     isProspect: undefined,
     isReturning: undefined,
   });
 
   useEffect(() => {
-    gtm.push({ event: "page_view" });
+    gtm.push({ event: 'page_view' });
   }, []);
 
   const getCustomers = useCallback(async () => {
@@ -173,7 +169,7 @@ const CustomerList = () => {
       getCustomers();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
 
   const handleTabsChange = (event, value) => {
@@ -184,7 +180,7 @@ const CustomerList = () => {
       isReturning: undefined,
     };
 
-    if (value !== "all") {
+    if (value !== 'all') {
       updatedFilters[value] = true;
     }
 
@@ -192,15 +188,15 @@ const CustomerList = () => {
     setCurrentTab(value);
   };
 
-  const handleQueryChange = (event) => {
+  const handleQueryChange = event => {
     event.preventDefault();
-    setFilters((prevState) => ({
+    setFilters(prevState => ({
       ...prevState,
       query: queryRef.current?.value,
     }));
   };
 
-  const handleSortChange = (event) => {
+  const handleSortChange = event => {
     setSort(event.target.value);
   };
 
@@ -208,18 +204,14 @@ const CustomerList = () => {
     setPage(newPage);
   };
 
-  const handleRowsPerPageChange = (event) => {
+  const handleRowsPerPageChange = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
   };
 
   // Usually query is done on backend with indexing solutions
   const filteredCustomers = applyFilters(customers, filters);
   const sortedCustomers = applySort(filteredCustomers, sort);
-  const paginatedCustomers = applyPagination(
-    sortedCustomers,
-    page,
-    rowsPerPage
-  );
+  const paginatedCustomers = applyPagination(sortedCustomers, page, rowsPerPage);
 
   return (
     <>
@@ -240,10 +232,7 @@ const CustomerList = () => {
                 <Typography variant="h4">Customers</Typography>
               </Grid>
               <Grid item>
-                <Button
-                  startIcon={<PlusIcon fontSize="small" />}
-                  variant="contained"
-                >
+                <Button startIcon={<PlusIcon fontSize="small" />} variant="contained">
                   Add
                 </Button>
               </Grid>
@@ -257,10 +246,7 @@ const CustomerList = () => {
               <Button startIcon={<UploadIcon fontSize="small" />} sx={{ m: 1 }}>
                 Import
               </Button>
-              <Button
-                startIcon={<DownloadIcon fontSize="small" />}
-                sx={{ m: 1 }}
-              >
+              <Button startIcon={<DownloadIcon fontSize="small" />} sx={{ m: 1 }}>
                 Export
               </Button>
             </Box>
@@ -275,16 +261,16 @@ const CustomerList = () => {
               value={currentTab}
               variant="scrollable"
             >
-              {tabs.map((tab) => (
+              {tabs.map(tab => (
                 <Tab key={tab.value} label={tab.label} value={tab.value} />
               ))}
             </Tabs>
             <Divider />
             <Box
               sx={{
-                alignItems: "center",
-                display: "flex",
-                flexWrap: "wrap",
+                alignItems: 'center',
+                display: 'flex',
+                flexWrap: 'wrap',
                 m: -1.5,
                 p: 3,
               }}
@@ -320,7 +306,7 @@ const CustomerList = () => {
                 sx={{ m: 1.5 }}
                 value={sort}
               >
-                {sortOptions.map((option) => (
+                {sortOptions.map(option => (
                   <option key={option.value} value={option.value}>
                     {option.label}
                   </option>
@@ -342,7 +328,7 @@ const CustomerList = () => {
   );
 };
 
-CustomerList.getLayout = (page) => (
+CustomerList.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>

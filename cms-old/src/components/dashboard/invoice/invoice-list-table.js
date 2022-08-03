@@ -1,32 +1,42 @@
-import { Fragment } from "react"
-import NextLink from "next/link"
-import { format } from "date-fns"
-import numeral from "numeral"
-import PropTypes from "prop-types"
-import { Avatar, Box, IconButton, Table, TableBody, TableCell, TablePagination, TableRow, Typography } from "@mui/material"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { getInitials } from "../../../utils/get-initials"
-import { Scrollbar } from "../../scrollbar"
+import { Fragment } from "react";
+import NextLink from "next/link";
+import { format } from "date-fns";
+import numeral from "numeral";
+import PropTypes from "prop-types";
+import {
+  Avatar,
+  Box,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TablePagination,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { getInitials } from "../../../utils/get-initials";
+import { Scrollbar } from "../../scrollbar";
 
 const groupInvoices = invoices =>
   invoices.reduce(
     (acc, invoice) => {
-      const { status } = invoice
+      const { status } = invoice;
 
       return {
         ...acc,
         [status]: [...acc[status], invoice],
-      }
+      };
     },
     {
       canceled: [],
       paid: [],
       pending: [],
     },
-  )
+  );
 
 const InvoiceRow = props => {
-  const { invoice } = props
+  const { invoice } = props;
 
   return (
     <TableRow
@@ -116,13 +126,13 @@ const InvoiceRow = props => {
         </NextLink>
       </TableCell>
     </TableRow>
-  )
-}
+  );
+};
 
 export const InvoiceListTable = props => {
-  const { group, invoices, invoicesCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props
+  const { group, invoices, invoicesCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props;
 
-  const groupedInvoices = group && groupInvoices(invoices)
+  const groupedInvoices = group && groupInvoices(invoices);
 
   return (
     <div {...other}>
@@ -173,8 +183,8 @@ export const InvoiceListTable = props => {
         rowsPerPageOptions={[5, 10, 25]}
       />
     </div>
-  )
-}
+  );
+};
 
 InvoiceListTable.propTypes = {
   group: PropTypes.bool,
@@ -184,4 +194,4 @@ InvoiceListTable.propTypes = {
   onRowsPerPageChange: PropTypes.func,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
-}
+};

@@ -1,33 +1,44 @@
-import { useState, useEffect, useCallback } from "react"
-import NextLink from "next/link"
-import { format } from "date-fns"
-import { Card, CardHeader, Divider, IconButton, Table, TableBody, TableCell, TableHead, TablePagination, TableRow } from "@mui/material"
-import { customerApi } from "../../../__fake-api__/customer-api"
-import { useMounted } from "../../../hooks/use-mounted"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { MoreMenu } from "../../more-menu"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+import { useState, useEffect, useCallback } from "react";
+import NextLink from "next/link";
+import { format } from "date-fns";
+import {
+  Card,
+  CardHeader,
+  Divider,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
+import { customerApi } from "../../../__fake-api__/customer-api";
+import { useMounted } from "../../../hooks/use-mounted";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { MoreMenu } from "../../more-menu";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
 export const CustomerInvoices = props => {
-  const isMounted = useMounted()
-  const [invoices, setInvoices] = useState([])
+  const isMounted = useMounted();
+  const [invoices, setInvoices] = useState([]);
 
   const getInvoices = useCallback(async () => {
     try {
-      const data = await customerApi.getCustomerInvoices()
+      const data = await customerApi.getCustomerInvoices();
 
       if (isMounted()) {
-        setInvoices(data)
+        setInvoices(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(() => {
-    getInvoices()
-  }, [getInvoices])
+    getInvoices();
+  }, [getInvoices]);
 
   return (
     <Card {...props}>
@@ -75,5 +86,5 @@ export const CustomerInvoices = props => {
         rowsPerPageOptions={[5, 10, 25]}
       />
     </Card>
-  )
-}
+  );
+};

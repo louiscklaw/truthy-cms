@@ -1,19 +1,30 @@
-import { forwardRef } from "react"
-import PropTypes from "prop-types"
-import { Avatar, Box, ClickAwayListener, InputAdornment, List, ListItem, ListItemAvatar, ListItemText, TextField, Typography } from "@mui/material"
-import { Search as SearchIcon } from "../../../icons/search"
-import { Tip } from "../../tip"
+import { forwardRef } from "react";
+import PropTypes from "prop-types";
+import {
+  Avatar,
+  Box,
+  ClickAwayListener,
+  InputAdornment,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Search as SearchIcon } from "../../../icons/search";
+import { Tip } from "../../tip";
 
 export const ChatContactSearch = forwardRef((props, ref) => {
-  const { isFocused, onChange, onClickAway, onFocus, onSelect, query, results, ...other } = props
+  const { isFocused, onChange, onClickAway, onFocus, onSelect, query, results, ...other } = props;
 
-  const displaySearchResults = query && isFocused
+  const displaySearchResults = query && isFocused;
 
   const handleSelect = result => {
     if (onSelect) {
-      onSelect(result)
+      onSelect(result);
     }
-  }
+  };
 
   return (
     <ClickAwayListener onClickAway={() => onClickAway?.()}>
@@ -75,8 +86,8 @@ export const ChatContactSearch = forwardRef((props, ref) => {
         )}
       </Box>
     </ClickAwayListener>
-  )
-})
+  );
+});
 
 ChatContactSearch.propTypes = {
   isFocused: PropTypes.bool,
@@ -86,10 +97,10 @@ ChatContactSearch.propTypes = {
   onSelect: PropTypes.func,
   query: PropTypes.string,
   results: PropTypes.array.isRequired,
-}
+};
 
 ChatContactSearch.defaultProps = {
   isFocused: false,
   query: "",
   results: [],
-}
+};

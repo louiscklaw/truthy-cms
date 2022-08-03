@@ -1,31 +1,31 @@
-import { useState, useEffect, useCallback } from "react"
-import { format } from "date-fns"
-import { Card, CardHeader, Divider, Typography, Table, TableBody, TableCell, TableRow } from "@mui/material"
-import { customerApi } from "../../../__fake-api__/customer-api"
-import { useMounted } from "../../../hooks/use-mounted"
-import { MoreMenu } from "../../more-menu"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+import { useState, useEffect, useCallback } from "react";
+import { format } from "date-fns";
+import { Card, CardHeader, Divider, Typography, Table, TableBody, TableCell, TableRow } from "@mui/material";
+import { customerApi } from "../../../__fake-api__/customer-api";
+import { useMounted } from "../../../hooks/use-mounted";
+import { MoreMenu } from "../../more-menu";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
 export const CustomerLogs = props => {
-  const isMounted = useMounted()
-  const [logs, setLogs] = useState([])
+  const isMounted = useMounted();
+  const [logs, setLogs] = useState([]);
 
   const getLogs = useCallback(async () => {
     try {
-      const data = await customerApi.getCustomerLogs()
+      const data = await customerApi.getCustomerLogs();
 
       if (isMounted()) {
-        setLogs(data)
+        setLogs(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(() => {
-    getLogs()
-  }, [getLogs])
+    getLogs();
+  }, [getLogs]);
 
   return (
     <Card {...props}>
@@ -42,7 +42,9 @@ export const CustomerLogs = props => {
                   </Typography>
                 </TableCell>
                 <TableCell width="64">
-                  <SeverityPill color={log.status >= 200 && log.status < 300 ? "success" : "error"}>{log.status}</SeverityPill>
+                  <SeverityPill color={log.status >= 200 && log.status < 300 ? "success" : "error"}>
+                    {log.status}
+                  </SeverityPill>
                 </TableCell>
                 <TableCell>{log.route}</TableCell>
                 <TableCell>{log.description}</TableCell>
@@ -54,5 +56,5 @@ export const CustomerLogs = props => {
         </Table>
       </Scrollbar>
     </Card>
-  )
-}
+  );
+};

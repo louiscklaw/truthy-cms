@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const initialSettings = {
   direction: 'ltr',
   responsiveFontSizes: true,
-  theme: 'light'
+  theme: 'light',
 };
 
 export const restoreSettings = () => {
@@ -19,9 +19,7 @@ export const restoreSettings = () => {
       settings = {
         direction: 'ltr',
         responsiveFontSizes: true,
-        theme: globalThis.matchMedia('(prefers-color-scheme: dark)').matches
-          ? 'dark'
-          : 'light'
+        theme: globalThis.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
       };
     }
   } catch (err) {
@@ -33,16 +31,16 @@ export const restoreSettings = () => {
   return settings;
 };
 
-export const storeSettings = (settings) => {
+export const storeSettings = settings => {
   globalThis.localStorage.setItem('settings', JSON.stringify(settings));
 };
 
 export const SettingsContext = createContext({
   settings: initialSettings,
-  saveSettings: () => { }
+  saveSettings: () => {},
 });
 
-export const SettingsProvider = (props) => {
+export const SettingsProvider = props => {
   const { children } = props;
   const [settings, setSettings] = useState(initialSettings);
 
@@ -54,7 +52,7 @@ export const SettingsProvider = (props) => {
     }
   }, []);
 
-  const saveSettings = (updatedSettings) => {
+  const saveSettings = updatedSettings => {
     setSettings(updatedSettings);
     storeSettings(updatedSettings);
   };
@@ -63,7 +61,7 @@ export const SettingsProvider = (props) => {
     <SettingsContext.Provider
       value={{
         settings,
-        saveSettings
+        saveSettings,
       }}
     >
       {children}
@@ -72,7 +70,7 @@ export const SettingsProvider = (props) => {
 };
 
 SettingsProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const SettingsConsumer = SettingsContext.Consumer;

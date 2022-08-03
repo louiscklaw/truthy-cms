@@ -1,20 +1,20 @@
-import { Box, Button } from "@mui/material";
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
-import { Trash as TrashIcon } from "../../../icons/trash";
+import { Box, Button } from '@mui/material';
+import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+import { Trash as TrashIcon } from '../../../icons/trash';
 
 export const Buttons2 = () => (
   <Box
     sx={{
-      backgroundColor: "background.paper",
+      backgroundColor: 'background.paper',
       p: 3,
     }}
   >
     <Button
       sx={{
-        backgroundColor: "error.main",
+        backgroundColor: 'error.main',
         mr: 3,
-        "&:hover": {
-          backgroundColor: "error.dark",
+        '&:hover': {
+          backgroundColor: 'error.dark',
         },
       }}
       size="small"
@@ -23,11 +23,7 @@ export const Buttons2 = () => (
     >
       Delete Account
     </Button>
-    <Button
-      endIcon={<ArrowRightIcon fontSize="small" />}
-      size="small"
-      variant="contained"
-    >
+    <Button endIcon={<ArrowRightIcon fontSize="small" />} size="small" variant="contained">
       Next Page
     </Button>
   </Box>

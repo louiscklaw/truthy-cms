@@ -1,6 +1,6 @@
-import { Avatar, Box, Button, Container, Paper, Typography } from "@mui/material"
-import { alpha } from "@mui/material/styles"
-import WarningIcon from "@mui/icons-material/WarningOutlined"
+import { Avatar, Box, Button, Container, Paper, Typography } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import WarningIcon from "@mui/icons-material/WarningOutlined";
 
 export const Modal12 = () => (
   <Box
@@ -32,7 +32,8 @@ export const Modal12 = () => (
           <div>
             <Typography variant="h5">Deactivate account</Typography>
             <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
-              Are you sure you want to deactivate your account? All of your data will be permanently removed. This action cannot be undone.
+              Are you sure you want to deactivate your account? All of your data will be permanently removed. This
+              action cannot be undone.
             </Typography>
           </div>
         </Box>
@@ -61,4 +62,4 @@ export const Modal12 = () => (
       </Paper>
     </Container>
   </Box>
-)
+);

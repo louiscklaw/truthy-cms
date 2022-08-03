@@ -1,39 +1,31 @@
-import { useEffect, useState } from "react";
-import {
-  Box,
-  Button,
-  Checkbox,
-  Drawer,
-  FormControlLabel,
-  IconButton,
-  Typography,
-} from "@mui/material";
-import { useSettings } from "../hooks/use-settings";
-import { X as XIcon } from "../icons/x";
-import LightThemeIcon from "../components/light-theme.svg";
-import DarkThemeIcon from "../components/dark-theme.svg";
-import PropTypes from "prop-types";
+import { useEffect, useState } from 'react';
+import { Box, Button, Checkbox, Drawer, FormControlLabel, IconButton, Typography } from '@mui/material';
+import { useSettings } from '../hooks/use-settings';
+import { X as XIcon } from '../icons/x';
+import LightThemeIcon from '../components/light-theme.svg';
+import DarkThemeIcon from '../components/dark-theme.svg';
+import PropTypes from 'prop-types';
 
 const themes = [
   {
-    label: "Light",
-    value: "light",
+    label: 'Light',
+    value: 'light',
     icon: LightThemeIcon,
   },
   {
-    label: "Dark",
-    value: "dark",
+    label: 'Dark',
+    value: 'dark',
     icon: DarkThemeIcon,
   },
 ];
 
-const getValues = (settings) => ({
+const getValues = settings => ({
   direction: settings.direction,
   responsiveFontSizes: settings.responsiveFontSizes,
   theme: settings.theme,
 });
 
-export const SettingsDrawer = (props) => {
+export const SettingsDrawer = props => {
   const { open, onClose, ...other } = props;
   const { settings, saveSettings } = useSettings();
   const [values, setValues] = useState(getValues(settings));
@@ -65,11 +57,11 @@ export const SettingsDrawer = (props) => {
     >
       <Box
         sx={{
-          alignItems: "center",
-          backgroundColor: "primary.main",
-          color: "primary.contrastText",
-          display: "flex",
-          justifyContent: "space-between",
+          alignItems: 'center',
+          backgroundColor: 'primary.main',
+          color: 'primary.contrastText',
+          display: 'flex',
+          justifyContent: 'space-between',
           px: 3,
           py: 2,
         }}
@@ -90,7 +82,7 @@ export const SettingsDrawer = (props) => {
         <Typography
           color="textSecondary"
           sx={{
-            display: "block",
+            display: 'block',
             mb: 1,
           }}
           variant="overline"
@@ -99,33 +91,32 @@ export const SettingsDrawer = (props) => {
         </Typography>
         <Box
           sx={{
-            alignItems: "center",
-            display: "flex",
+            alignItems: 'center',
+            display: 'flex',
             m: -1,
           }}
         >
-          {themes.map((theme) => {
+          {themes.map(theme => {
             const { label, icon: Icon, value } = theme;
 
             return (
               <div key={value}>
                 <Box
-                  onClick={() => handleChange("theme", value)}
+                  onClick={() => handleChange('theme', value)}
                   sx={{
-                    borderColor:
-                      values.theme === value ? "primary.main" : "divider",
+                    borderColor: values.theme === value ? 'primary.main' : 'divider',
                     borderRadius: 1,
-                    borderStyle: "solid",
+                    borderStyle: 'solid',
                     borderWidth: 2,
-                    cursor: "pointer",
+                    cursor: 'pointer',
                     flexGrow: 1,
                     fontSize: 0,
                     m: 1,
-                    overflow: "hidden",
+                    overflow: 'hidden',
                     p: 1,
-                    "& svg": {
-                      height: "auto",
-                      width: "100%",
+                    '& svg': {
+                      height: 'auto',
+                      width: '100%',
                     },
                   }}
                 >
@@ -141,7 +132,7 @@ export const SettingsDrawer = (props) => {
         <Typography
           color="textSecondary"
           sx={{
-            display: "block",
+            display: 'block',
             mb: 1,
             mt: 4,
           }}
@@ -153,19 +144,12 @@ export const SettingsDrawer = (props) => {
           <FormControlLabel
             control={
               <Checkbox
-                checked={values.direction === "rtl"}
+                checked={values.direction === 'rtl'}
                 name="direction"
-                onChange={(event) =>
-                  handleChange(
-                    "direction",
-                    event.target.checked ? "rtl" : "ltr"
-                  )
-                }
+                onChange={event => handleChange('direction', event.target.checked ? 'rtl' : 'ltr')}
               />
             }
-            label={
-              <Typography variant="subtitle2">Activate RTL content</Typography>
-            }
+            label={<Typography variant="subtitle2">Activate RTL content</Typography>}
           />
         </div>
         <div>
@@ -174,23 +158,13 @@ export const SettingsDrawer = (props) => {
               <Checkbox
                 checked={values.responsiveFontSizes}
                 name="direction"
-                onChange={(event) =>
-                  handleChange("responsiveFontSizes", event.target.checked)
-                }
+                onChange={event => handleChange('responsiveFontSizes', event.target.checked)}
               />
             }
-            label={
-              <Typography variant="subtitle2">Responsive font sizes</Typography>
-            }
+            label={<Typography variant="subtitle2">Responsive font sizes</Typography>}
           />
         </div>
-        <Button
-          color="primary"
-          fullWidth
-          onClick={handleSave}
-          sx={{ mt: 3 }}
-          variant="contained"
-        >
+        <Button color="primary" fullWidth onClick={handleSave} sx={{ mt: 3 }} variant="contained">
           Save Settings
         </Button>
       </Box>

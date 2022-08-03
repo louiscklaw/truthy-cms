@@ -1,32 +1,32 @@
-import { useState, useEffect, useCallback } from "react"
-import PropTypes from "prop-types"
-import { Box, Grid } from "@mui/material"
-import { socialApi } from "../../../__fake-api__/social-api"
-import { useMounted } from "../../../hooks/use-mounted"
-import { SocialPostAdd } from "./social-post-add"
-import { SocialPostCard } from "./social-post-card"
-import { SocialAbout } from "./social-about"
+import { useState, useEffect, useCallback } from "react";
+import PropTypes from "prop-types";
+import { Box, Grid } from "@mui/material";
+import { socialApi } from "../../../__fake-api__/social-api";
+import { useMounted } from "../../../hooks/use-mounted";
+import { SocialPostAdd } from "./social-post-add";
+import { SocialPostCard } from "./social-post-card";
+import { SocialAbout } from "./social-about";
 
 export const SocialTimeline = props => {
-  const isMounted = useMounted()
-  const { profile, ...other } = props
-  const [posts, setPosts] = useState([])
+  const isMounted = useMounted();
+  const { profile, ...other } = props;
+  const [posts, setPosts] = useState([]);
 
   const getPosts = useCallback(async () => {
     try {
-      const data = await socialApi.getPosts()
+      const data = await socialApi.getPosts();
 
       if (isMounted()) {
-        setPosts(data)
+        setPosts(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(() => {
-    getPosts()
-  }, [getPosts])
+    getPosts();
+  }, [getPosts]);
 
   return (
     <div {...other}>
@@ -63,9 +63,9 @@ export const SocialTimeline = props => {
         </Grid>
       </Grid>
     </div>
-  )
-}
+  );
+};
 
 SocialTimeline.propTypes = {
   profile: PropTypes.object.isRequired,
-}
+};

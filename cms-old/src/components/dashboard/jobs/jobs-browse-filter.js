@@ -1,7 +1,7 @@
-import { Box, Card, Checkbox, Chip, Divider, FormControlLabel, Input } from "@mui/material"
-import { Search as SearchIcon } from "../../../icons/search"
-import { MultiSelect } from "../../multi-select"
-import { useMemo } from "react"
+import { Box, Card, Checkbox, Chip, Divider, FormControlLabel, Input } from "@mui/material";
+import { Search as SearchIcon } from "../../../icons/search";
+import { MultiSelect } from "../../multi-select";
+import { useMemo } from "react";
 
 const typeOptions = [
   {
@@ -20,7 +20,7 @@ const typeOptions = [
     label: "Internship",
     value: "internship",
   },
-]
+];
 
 const levelOptions = [
   {
@@ -31,7 +31,7 @@ const levelOptions = [
     label: "Expert",
     value: "expert",
   },
-]
+];
 
 const locationOptions = [
   {
@@ -54,7 +54,7 @@ const locationOptions = [
     label: "South America",
     value: "southAmerica",
   },
-]
+];
 
 const roleOptions = [
   {
@@ -69,7 +69,7 @@ const roleOptions = [
     label: "iOS Developer",
     value: "iosDeveloper",
   },
-]
+];
 
 export const JobsBrowseFilter = props => {
   const filterItems = useMemo(
@@ -106,16 +106,28 @@ export const JobsBrowseFilter = props => {
       },
     ],
     [],
-  )
+  );
 
   // We memoize this part to prevent re-render issues
-  const typeValues = useMemo(() => filterItems.filter(filterItems => filterItems.field === "type").map(filterItems => filterItems.value), [filterItems])
+  const typeValues = useMemo(
+    () => filterItems.filter(filterItems => filterItems.field === "type").map(filterItems => filterItems.value),
+    [filterItems],
+  );
 
-  const levelValues = useMemo(() => filterItems.filter(filterItems => filterItems.field === "level").map(filterItems => filterItems.value), [filterItems])
+  const levelValues = useMemo(
+    () => filterItems.filter(filterItems => filterItems.field === "level").map(filterItems => filterItems.value),
+    [filterItems],
+  );
 
-  const locationValues = useMemo(() => filterItems.filter(filterItems => filterItems.field === "location").map(filterItems => filterItems.value), [filterItems])
+  const locationValues = useMemo(
+    () => filterItems.filter(filterItems => filterItems.field === "location").map(filterItems => filterItems.value),
+    [filterItems],
+  );
 
-  const roleValues = useMemo(() => filterItems.filter(filterItems => filterItems.field === "role").map(filterItems => filterItems.value), [filterItems])
+  const roleValues = useMemo(
+    () => filterItems.filter(filterItems => filterItems.field === "role").map(filterItems => filterItems.value),
+    [filterItems],
+  );
 
   return (
     <Card {...props}>
@@ -184,5 +196,5 @@ export const JobsBrowseFilter = props => {
         <FormControlLabel control={<Checkbox defaultChecked />} label="In network" />
       </Box>
     </Card>
-  )
-}
+  );
+};

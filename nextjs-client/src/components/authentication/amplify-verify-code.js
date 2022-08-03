@@ -6,7 +6,7 @@ import { Box, Button, FormHelperText, TextField, Typography } from '@mui/materia
 import { useAuth } from '../../hooks/use-auth';
 import { useMounted } from '../../hooks/use-mounted';
 
-export const AmplifyVerifyCode = (props) => {
+export const AmplifyVerifyCode = props => {
   const isMounted = useMounted();
   const router = useRouter();
   const { verifyCode } = useAuth();
@@ -17,17 +17,11 @@ export const AmplifyVerifyCode = (props) => {
     initialValues: {
       email: username,
       code: ['', '', '', '', '', ''],
-      submit: null
+      submit: null,
     },
     validationSchema: Yup.object({
-      email: Yup
-        .string()
-        .email('Must be a valid email')
-        .max(255)
-        .required('Email is required'),
-      code: Yup
-        .array()
-        .of(Yup.string().required('Code is required'))
+      email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
+      code: Yup.array().of(Yup.string().required('Code is required')),
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -45,7 +39,7 @@ export const AmplifyVerifyCode = (props) => {
           helpers.setSubmitting(false);
         }
       }
-    }
+    },
   });
 
   useEffect(() => {
@@ -81,7 +75,7 @@ export const AmplifyVerifyCode = (props) => {
     }
   };
 
-  const handlePaste = (event) => {
+  const handlePaste = event => {
     const paste = event.clipboardData.getData('text');
     const pasteArray = paste.split('');
 
@@ -91,7 +85,7 @@ export const AmplifyVerifyCode = (props) => {
 
     let valid = true;
 
-    pasteArray.forEach((x) => {
+    pasteArray.forEach(x => {
       if (!Number.isInteger(parseInt(x, 10))) {
         valid = false;
       }
@@ -104,39 +98,29 @@ export const AmplifyVerifyCode = (props) => {
   };
 
   return (
-    <form
-      noValidate
-      onSubmit={formik.handleSubmit}
-      {...props}>
-      {!username
-        ? (
-          <TextField
-            autoFocus
-            error={Boolean(formik.touched.email && formik.errors.email)}
-            fullWidth
-            helperText={formik.touched.email && formik.errors.email}
-            label="Email Address"
-            margin="normal"
-            name="email"
-            onBlur={formik.handleBlur}
-            onChange={formik.handleChange}
-            type="email"
-            value={formik.values.email}
-          />
-        )
-        : (
-          <TextField
-            disabled
-            fullWidth
-            margin="normal"
-            value={username}
-          />
-        )}
+    <form noValidate onSubmit={formik.handleSubmit} {...props}>
+      {!username ? (
+        <TextField
+          autoFocus
+          error={Boolean(formik.touched.email && formik.errors.email)}
+          fullWidth
+          helperText={formik.touched.email && formik.errors.email}
+          label="Email Address"
+          margin="normal"
+          name="email"
+          onBlur={formik.handleBlur}
+          onChange={formik.handleChange}
+          type="email"
+          value={formik.values.email}
+        />
+      ) : (
+        <TextField disabled fullWidth margin="normal" value={username} />
+      )}
       <Typography
         color="textSecondary"
         sx={{
           mb: 2,
-          mt: 3
+          mt: 3,
         }}
         variant="subtitle2"
       >
@@ -147,58 +131,45 @@ export const AmplifyVerifyCode = (props) => {
           columnGap: '16px',
           display: 'grid',
           gridTemplateColumns: 'repeat(7, 1fr)',
-          pt: 1
+          pt: 1,
         }}
       >
         {[1, 2, 3, 4, 5, 6].map((ref, index) => (
           <TextField
-            error={Boolean(Array.isArray(formik.touched.code)
-              && formik.touched.code.length === 6
-              && formik.errors.code)}
+            error={Boolean(
+              Array.isArray(formik.touched.code) && formik.touched.code.length === 6 && formik.errors.code,
+            )}
             fullWidth
-            inputRef={(el) => itemsRef.current[index] = el}
+            inputRef={el => (itemsRef.current[index] = el)}
             // eslint-disable-next-line react/no-array-index-key
             key={`code-${index}`}
             name={`code[${index}]`}
             onBlur={formik.handleBlur}
-            onKeyDown={(event) => handleKeyDown(event, index)}
+            onKeyDown={event => handleKeyDown(event, index)}
             onPaste={handlePaste}
             value={formik.values.code[index]}
             sx={{
               display: 'inline-block',
               textAlign: 'center',
               '& .MuiInputBase-input': {
-                textAlign: 'center'
-              }
+                textAlign: 'center',
+              },
             }}
           />
         ))}
       </Box>
-      {Boolean(Array.isArray(formik.touched.code)
-        && formik.touched.code.length === 6
-        && formik.errors.code) && (
-        <FormHelperText
-          error
-          sx={{ mx: '14px' }}
-        >
-          {Array.isArray(formik.errors.code) && formik.errors.code.find((x) => x !== undefined)}
+      {Boolean(Array.isArray(formik.touched.code) && formik.touched.code.length === 6 && formik.errors.code) && (
+        <FormHelperText error sx={{ mx: '14px' }}>
+          {Array.isArray(formik.errors.code) && formik.errors.code.find(x => x !== undefined)}
         </FormHelperText>
       )}
       {formik.errors.submit && (
         <Box sx={{ mt: 3 }}>
-          <FormHelperText error>
-            {formik.errors.submit}
-          </FormHelperText>
+          <FormHelperText error>{formik.errors.submit}</FormHelperText>
         </Box>
       )}
       <Box sx={{ mt: 3 }}>
-        <Button
-          disabled={formik.isSubmitting}
-          fullWidth
-          size="large"
-          type="submit"
-          variant="contained"
-        >
+        <Button disabled={formik.isSubmitting} fullWidth size="large" type="submit" variant="contained">
           Verify
         </Button>
       </Box>

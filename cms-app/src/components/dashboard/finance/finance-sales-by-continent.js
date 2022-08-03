@@ -1,21 +1,21 @@
-import numeral from "numeral";
-import { Box, Card, CardContent, CardHeader, Divider } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { Chart } from "../../chart";
-import { WorldMap } from "./world-map";
+import numeral from 'numeral';
+import { Box, Card, CardContent, CardHeader, Divider } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Chart } from '../../chart';
+import { WorldMap } from './world-map';
 
-export const FinanceSalesByContinent = (props) => {
+export const FinanceSalesByContinent = props => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       stacked: false,
       toolbar: {
         show: false,
       },
     },
-    colors: ["#2F3EB1", "#4655CE", "#6E7AD8", "#9DA4DD", "#B9BDDF", "#E6E8F0"],
+    colors: ['#2F3EB1', '#4655CE', '#6E7AD8', '#9DA4DD', '#B9BDDF', '#E6E8F0'],
     dataLabels: {
       enabled: false,
     },
@@ -27,7 +27,7 @@ export const FinanceSalesByContinent = (props) => {
     },
     plotOptions: {
       bar: {
-        barHeight: "65",
+        barHeight: '65',
         distributed: true,
         horizontal: true,
       },
@@ -37,7 +37,7 @@ export const FinanceSalesByContinent = (props) => {
     },
     tooltip: {
       y: {
-        formatter: (value) => numeral(value).format("$0,0.00"),
+        formatter: value => numeral(value).format('$0,0.00'),
       },
     },
     xaxis: {
@@ -49,20 +49,13 @@ export const FinanceSalesByContinent = (props) => {
         color: theme.palette.divider,
         show: true,
       },
-      categories: [
-        "North America",
-        "South America",
-        "Europe",
-        "Australia",
-        "Asia",
-        "Africa",
-      ],
+      categories: ['North America', 'South America', 'Europe', 'Australia', 'Asia', 'Africa'],
     },
   };
 
   const chartSeries = [
     {
-      name: "Sales",
+      name: 'Sales',
       data: [470, 440, 410, 380, 300, 187],
     },
   ];
@@ -74,27 +67,22 @@ export const FinanceSalesByContinent = (props) => {
       <CardContent>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
+            display: 'flex',
+            justifyContent: 'center',
           }}
         >
           <WorldMap
             colors={{
-              af: "#E6E8F0",
-              as: "#B9BDDF",
-              au: "#9DA4DD",
-              eu: "#6E7AD8",
-              na: "#2F3EB1",
-              sa: "#4655CE",
+              af: '#E6E8F0',
+              as: '#B9BDDF',
+              au: '#9DA4DD',
+              eu: '#6E7AD8',
+              na: '#2F3EB1',
+              sa: '#4655CE',
             }}
           />
         </Box>
-        <Chart
-          height={350}
-          options={chartOptions}
-          series={chartSeries}
-          type="bar"
-        />
+        <Chart height={350} options={chartOptions} series={chartSeries} type="bar" />
       </CardContent>
     </Card>
   );

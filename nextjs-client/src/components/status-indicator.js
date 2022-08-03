@@ -4,14 +4,14 @@ import { styled } from '@mui/material/styles';
 const sizes = {
   small: 8,
   medium: 16,
-  large: 23
+  large: 23,
 };
 
 const colors = {
   offline: '#fafafa',
   away: '#fb8c00',
   busy: '#e53935',
-  online: '#43a047'
+  online: '#43a047',
 };
 
 const StatusIndicatorRoot = styled('span')(({ ownerState }) => {
@@ -25,23 +25,19 @@ const StatusIndicatorRoot = styled('span')(({ ownerState }) => {
     flexGrow: 0,
     flexShrink: 0,
     height: size,
-    width: size
+    width: size,
   };
 });
 
-export const StatusIndicator = (props) => {
+export const StatusIndicator = props => {
   const { size = 'medium', status = 'offline', ...other } = props;
 
   const ownerState = { size, status };
 
-  return (
-    <StatusIndicatorRoot
-      ownerState={ownerState}
-      {...other} />
-  );
+  return <StatusIndicatorRoot ownerState={ownerState} {...other} />;
 };
 
 StatusIndicator.propTypes = {
   size: PropTypes.oneOf(['small', 'medium', 'large']),
-  status: PropTypes.oneOf(['online', 'offline', 'away', 'busy'])
+  status: PropTypes.oneOf(['online', 'offline', 'away', 'busy']),
 };

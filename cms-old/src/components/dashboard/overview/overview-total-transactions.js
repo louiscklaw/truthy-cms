@@ -1,16 +1,20 @@
-import { format } from "date-fns"
-import { Box, Card, CardHeader, Divider } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
-import { Scrollbar } from "../../scrollbar"
+import { format } from "date-fns";
+import { Box, Card, CardHeader, Divider } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
+import { Scrollbar } from "../../scrollbar";
 
 const data = {
-  series: [{ data: [12, 24, 36, 48, 60, 72, 84] }, { data: [12, 24, 36, 48, 60, 72, 84] }, { data: [12, 24, 36, 48, 60, 72, 84] }],
+  series: [
+    { data: [12, 24, 36, 48, 60, 72, 84] },
+    { data: [12, 24, 36, 48, 60, 72, 84] },
+    { data: [12, 24, 36, 48, 60, 72, 84] },
+  ],
   categories: ["Capital One", "Ally Bank", "ING", "Ridgewood", "BT Transilvania", "CEC", "CBC"],
-}
+};
 
 export const OverviewTotalTransactions = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -85,9 +89,9 @@ export const OverviewTotalTransactions = props => {
         },
       },
     },
-  }
+  };
 
-  const chartSeries = data.series
+  const chartSeries = data.series;
 
   return (
     <Card {...props}>
@@ -105,5 +109,5 @@ export const OverviewTotalTransactions = props => {
         </Box>
       </Scrollbar>
     </Card>
-  )
-}
+  );
+};

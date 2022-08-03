@@ -1,18 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import Head from 'next/head';
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  Divider,
-  IconButton,
-  Tab,
-  Tabs,
-  Tooltip,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, Button, Container, Divider, IconButton, Tab, Tabs, Tooltip, Typography } from '@mui/material';
 import { blueGrey } from '@mui/material/colors';
 import AddPhotoIcon from '@mui/icons-material/AddPhotoAlternate';
 import { socialApi } from '../../../__fake-api__/social-api';
@@ -28,7 +17,7 @@ import { gtm } from '../../../lib/gtm';
 
 const tabs = [
   { label: 'Timeline', value: 'timeline' },
-  { label: 'Connections', value: 'connections' }
+  { label: 'Connections', value: 'connections' },
 ];
 
 export const SocialProfile = () => {
@@ -53,16 +42,16 @@ export const SocialProfile = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getProfile();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [getProfile]);
+    [getProfile],
+  );
 
   const handleConnectToggle = () => {
-    setConnectedStatus((prevConnectedStatus) => (prevConnectedStatus === 'not_connected'
-      ? 'pending'
-      : 'not_connected'));
+    setConnectedStatus(prevConnectedStatus => (prevConnectedStatus === 'not_connected' ? 'pending' : 'not_connected'));
   };
 
   const handleTabsChange = (event, value) => {
@@ -76,15 +65,13 @@ export const SocialProfile = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Social Profile | Material Kit Pro
-        </title>
+        <title>Dashboard: Social Profile | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
@@ -99,9 +86,9 @@ export const SocialProfile = () => {
               position: 'relative',
               '&:hover': {
                 '& button': {
-                  visibility: 'visible'
-                }
-              }
+                  visibility: 'visible',
+                },
+              },
             }}
           >
             <Button
@@ -110,19 +97,19 @@ export const SocialProfile = () => {
                 backgroundColor: blueGrey[900],
                 bottom: {
                   lg: 24,
-                  xs: 'auto'
+                  xs: 'auto',
                 },
                 color: 'common.white',
                 position: 'absolute',
                 right: 24,
                 top: {
                   lg: 'auto',
-                  xs: 24
+                  xs: 24,
                 },
                 visibility: 'hidden',
                 '&:hover': {
-                  backgroundColor: blueGrey[900]
-                }
+                  backgroundColor: blueGrey[900],
+                },
               }}
               variant="contained"
             >
@@ -133,43 +120,36 @@ export const SocialProfile = () => {
             sx={{
               alignItems: 'center',
               display: 'flex',
-              mt: 5
+              mt: 5,
             }}
           >
             <Avatar
               src={profile.avatar}
               sx={{
                 height: 64,
-                width: 64
+                width: 64,
               }}
             />
             <Box sx={{ ml: 2 }}>
-              <Typography
-                color="textSecondary"
-                variant="overline"
-              >
+              <Typography color="textSecondary" variant="overline">
                 {profile.bio}
               </Typography>
-              <Typography variant="h6">
-                {profile.name}
-              </Typography>
+              <Typography variant="h6">{profile.name}</Typography>
             </Box>
             <Box sx={{ flexGrow: 1 }} />
             <Box
               sx={{
                 display: {
                   md: 'block',
-                  xs: 'none'
-                }
+                  xs: 'none',
+                },
               }}
             >
               {connectedStatus === 'not_connected' && (
                 <Button
                   onClick={handleConnectToggle}
                   size="small"
-                  startIcon={(
-                    <UserAddIcon fontSize="small" />
-                  )}
+                  startIcon={<UserAddIcon fontSize="small" />}
                   sx={{ ml: 2 }}
                   variant="outlined"
                 >
@@ -177,26 +157,15 @@ export const SocialProfile = () => {
                 </Button>
               )}
               {connectedStatus === 'pending' && (
-                <Button
-                  color="primary"
-                  onClick={handleConnectToggle}
-                  size="small"
-                  sx={{ ml: 2 }}
-                  variant="outlined"
-                >
+                <Button color="primary" onClick={handleConnectToggle} size="small" sx={{ ml: 2 }} variant="outlined">
                   Pending
                 </Button>
               )}
-              <NextLink
-                href="/dashboard/chat"
-                passHref
-              >
+              <NextLink href="/dashboard/chat" passHref>
                 <Button
                   component="a"
                   size="small"
-                  startIcon={(
-                    <ChatIcon fontSize="small" />
-                  )}
+                  startIcon={<ChatIcon fontSize="small" />}
                   sx={{ ml: 1 }}
                   variant="contained"
                 >
@@ -221,12 +190,8 @@ export const SocialProfile = () => {
               value={currentTab}
               variant="scrollable"
             >
-              {tabs.map((tab) => (
-                <Tab
-                  key={tab.value}
-                  label={tab.label}
-                  value={tab.value}
-                />
+              {tabs.map(tab => (
+                <Tab key={tab.value} label={tab.label} value={tab.value} />
               ))}
             </Tabs>
             <Divider />
@@ -241,11 +206,9 @@ export const SocialProfile = () => {
   );
 };
 
-SocialProfile.getLayout = (page) => (
+SocialProfile.getLayout = page => (
   <AuthGuard>
-    <DashboardLayout>
-      {page}
-    </DashboardLayout>
+    <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 

@@ -6,7 +6,7 @@ const withTM = require("next-transpile-modules")([
   "@fullcalendar/list",
   "@fullcalendar/timegrid",
   "@fullcalendar/timeline",
-])
+]);
 
 module.exports = withTM({
   basePath: "/cms",
@@ -16,8 +16,8 @@ module.exports = withTM({
     config.module.rules.push({
       test: /\.svg$/,
       use: ["@svgr/webpack"],
-    })
-    return config
+    });
+    return config;
   },
   async redirects() {
     return [
@@ -26,6 +26,6 @@ module.exports = withTM({
         destination: "/docs/welcome",
         permanent: true,
       },
-    ]
+    ];
   },
-})
+});

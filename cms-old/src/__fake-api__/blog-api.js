@@ -1,6 +1,6 @@
-import { subDays, subHours, subMinutes, subSeconds } from "date-fns"
+import { subDays, subHours, subMinutes, subSeconds } from "date-fns";
 
-const now = new Date()
+const now = new Date();
 
 class BlogApi {
   getPosts() {
@@ -61,9 +61,9 @@ class BlogApi {
           "Phasellus eu commodo lacus, eget tristique nunc. Ut ullamcorper semper nunc sit amet vehicula. Cras non nisl sed eros ultricies posuere sed quis quam. Morbi neque justo, volutpat eget pretium in, convallis vitae augue. Vestibulum sapien ligula, iaculis nec dui sed, ultrices euismod orci. Duis eget urna vulputate, venenatis est eu, luctus nunc. Nunc id ante ac leo viverra pharetra. Vestibulum blandit tellus ac nunc elementum, ut porta libero sagittis. Sed ultrices lacinia nunc, sed ornare nulla blandit blandit.",
         title: "Generating Passive Income Is Hard, Here Is a Better Option",
       },
-    ]
+    ];
 
-    return Promise.resolve(posts)
+    return Promise.resolve(posts);
   }
 
   getPost() {
@@ -103,10 +103,10 @@ Suspendisse pharetra dolor in massa molestie, vel molestie nunc accumsan. Cras v
       shortDescription:
         "Aliquam dapibus elementum nulla at malesuada. Ut mi nisl, aliquet non mollis vel, feugiat non nibh. Vivamus sit amet tristique dui. Praesent in bibendum arcu, at placerat augue. Nam varius ferum diam, at tristique libero ultrices non.",
       title: "Why I Still Lisp, and You Should Too",
-    }
+    };
 
-    return Promise.resolve(post)
+    return Promise.resolve(post);
   }
 }
 
-export const blogApi = new BlogApi()
+export const blogApi = new BlogApi();

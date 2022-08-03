@@ -1,10 +1,10 @@
-import PropTypes from "prop-types"
-import { Badge, Box, Button, Divider, Grid, IconButton, Typography } from "@mui/material"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Download as DownloadIcon } from "../../../icons/download"
+import PropTypes from "prop-types";
+import { Badge, Box, Button, Divider, Grid, IconButton, Typography } from "@mui/material";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Download as DownloadIcon } from "../../../icons/download";
 
 export const CompanyAssets = props => {
-  const { assets, ...other } = props
+  const { assets, ...other } = props;
 
   return (
     <div {...other}>
@@ -81,13 +81,13 @@ export const CompanyAssets = props => {
         </Grid>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 CompanyAssets.defaultProps = {
   assets: [],
-}
+};
 
 CompanyAssets.propTypes = {
   assets: PropTypes.array,
-}
+};

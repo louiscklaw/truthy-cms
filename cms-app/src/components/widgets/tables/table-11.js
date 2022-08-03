@@ -1,4 +1,4 @@
-import numeral from "numeral";
+import numeral from 'numeral';
 import {
   Box,
   Card,
@@ -11,23 +11,23 @@ import {
   TablePagination,
   TableRow,
   Typography,
-} from "@mui/material";
-import { Scrollbar } from "../../scrollbar";
+} from '@mui/material';
+import { Scrollbar } from '../../scrollbar';
 
 const orderItems = [
   {
-    id: "5ecb8abbdd6dfb1f9d6bf98b",
-    billingCycle: "monthly",
-    currency: "$",
-    name: "Project Points",
+    id: '5ecb8abbdd6dfb1f9d6bf98b',
+    billingCycle: 'monthly',
+    currency: '$',
+    name: 'Project Points',
     quantity: 25,
     unitAmount: 50.25,
   },
   {
-    id: "5ecb8ac10f116d04bed990eb",
-    billingCycle: "monthly",
-    currency: "$",
-    name: "Freelancer Subscription",
+    id: '5ecb8ac10f116d04bed990eb',
+    billingCycle: 'monthly',
+    currency: '$',
+    name: 'Freelancer Subscription',
     quantity: 1,
     unitAmount: 5.0,
   },
@@ -36,8 +36,8 @@ const orderItems = [
 export const Table11 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
-      minHeight: "100%",
+      backgroundColor: 'background.default',
+      minHeight: '100%',
       p: 3,
     }}
   >
@@ -54,7 +54,7 @@ export const Table11 = () => (
             </TableRow>
           </TableHead>
           <TableBody>
-            {orderItems.map((item) => (
+            {orderItems.map(item => (
               <TableRow key={item.id}>
                 <TableCell>
                   <Typography color="textPrimary" variant="subtitle2">
@@ -62,9 +62,7 @@ export const Table11 = () => (
                   </Typography>
                 </TableCell>
                 <TableCell>{item.billingCycle}</TableCell>
-                <TableCell>
-                  {numeral(item.unitAmount).format(`${item.currency}0,0.00`)}
-                </TableCell>
+                <TableCell>{numeral(item.unitAmount).format(`${item.currency}0,0.00`)}</TableCell>
               </TableRow>
             ))}
           </TableBody>

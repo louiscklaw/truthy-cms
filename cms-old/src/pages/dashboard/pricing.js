@@ -1,18 +1,18 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import { Badge, Box, Container, Divider, Grid, Switch, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { AuthGuard } from "../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../components/dashboard/dashboard-layout"
-import { PricingPlan } from "../../components/pricing/pricing-plan"
-import { gtm } from "../../lib/gtm"
+import { useEffect } from "react";
+import Head from "next/head";
+import { Badge, Box, Container, Divider, Grid, Switch, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { AuthGuard } from "../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../components/dashboard/dashboard-layout";
+import { PricingPlan } from "../../components/pricing/pricing-plan";
+import { gtm } from "../../lib/gtm";
 
 const Pricing = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -125,7 +125,13 @@ const Pricing = () => {
                 cta="Contact Us"
                 currency="$"
                 description="To familiarize yourself with our tools."
-                features={["All previous", "Unlimited contacts", "Analytics platform", "Public API access", "Send and sign unlimited contracts"]}
+                features={[
+                  "All previous",
+                  "Unlimited contacts",
+                  "Analytics platform",
+                  "Public API access",
+                  "Send and sign unlimited contracts",
+                ]}
                 image="/static/pricing/plan3.svg"
                 name="Business"
                 price="29.99"
@@ -143,13 +149,13 @@ const Pricing = () => {
         </Typography>
       </Box>
     </>
-  )
-}
+  );
+};
 
 Pricing.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default Pricing
+export default Pricing;

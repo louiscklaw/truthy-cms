@@ -1,5 +1,5 @@
-import { useState } from "react"
-import numeral from "numeral"
+import { useState } from "react";
+import numeral from "numeral";
 import {
   Box,
   Button,
@@ -15,24 +15,24 @@ import {
   TableSortLabel,
   Tooltip,
   Typography,
-} from "@mui/material"
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
+} from "@mui/material";
+import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
 
 const applySort = (countries, sortDir) =>
   countries.sort((a, b) => {
-    let newOrder = 0
+    let newOrder = 0;
 
     if (a.visits < b.visits) {
-      newOrder = -1
+      newOrder = -1;
     }
 
     if (a.visits > b.visits) {
-      newOrder = 1
+      newOrder = 1;
     }
 
-    return sortDir === "asc" ? newOrder : -newOrder
-  })
+    return sortDir === "asc" ? newOrder : -newOrder;
+  });
 
 const countries = [
   {
@@ -71,22 +71,22 @@ const countries = [
     seo: 56,
     visits: 200,
   },
-]
+];
 
 export const AnalyticsVisitsByCountry = props => {
-  const [sort, setSort] = useState("desc")
+  const [sort, setSort] = useState("desc");
 
   const handleSort = () => {
     setSort(prevOrder => {
       if (prevOrder === "asc") {
-        return "desc"
+        return "desc";
       }
 
-      return "asc"
-    })
-  }
+      return "asc";
+    });
+  };
 
-  const sortedCountries = applySort(countries, sort)
+  const sortedCountries = applySort(countries, sort);
 
   return (
     <Card {...props}>
@@ -155,5 +155,5 @@ export const AnalyticsVisitsByCountry = props => {
         <Button endIcon={<ArrowRightIcon fontSize="small" />}>See more</Button>
       </CardActions>
     </Card>
-  )
-}
+  );
+};

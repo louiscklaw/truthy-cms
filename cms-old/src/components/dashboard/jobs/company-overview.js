@@ -1,11 +1,11 @@
-import NextLink from "next/link"
-import PropTypes from "prop-types"
-import Markdown from "react-markdown"
-import { Avatar, Box, Chip, Divider, Grid, ImageList, ImageListItem, Link, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward"
-import { CompanyJobs } from "./company-jobs"
-import { getInitials } from "../../../utils/get-initials"
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import Markdown from "react-markdown";
+import { Avatar, Box, Chip, Divider, Grid, ImageList, ImageListItem, Link, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import { CompanyJobs } from "./company-jobs";
+import { getInitials } from "../../../utils/get-initials";
 
 const MarkdownWrapper = styled("div")(({ theme }) => ({
   color: theme.palette.text.secondary,
@@ -15,10 +15,10 @@ const MarkdownWrapper = styled("div")(({ theme }) => ({
     lineHeight: theme.typography.body1.lineHeight,
     marginBottom: theme.spacing(2),
   },
-}))
+}));
 
 export const CompanyOverview = props => {
-  const { company, ...other } = props
+  const { company, ...other } = props;
 
   return (
     <div {...other}>
@@ -29,7 +29,11 @@ export const CompanyOverview = props => {
       <ImageList cols={3} gap={24} variant="masonry">
         {(company.images || []).map(image => (
           <ImageListItem key={image}>
-            <img alt={`${company.name} gallery`} src={`${image}?w=248&fit=crop&auto=format`} srcSet={`${image}?w=248&fit=crop&auto=format&dpr=2 2x`} />
+            <img
+              alt={`${company.name} gallery`}
+              src={`${image}?w=248&fit=crop&auto=format`}
+              srcSet={`${image}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            />
           </ImageListItem>
         ))}
       </ImageList>
@@ -131,9 +135,9 @@ export const CompanyOverview = props => {
         </Grid>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 CompanyOverview.propTypes = {
   company: PropTypes.object.isRequired,
-}
+};

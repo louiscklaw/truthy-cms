@@ -1,17 +1,17 @@
-import { useState } from "react"
-import Head from "next/head"
-import { Avatar, Box, Button, Card, Grid, Step, StepContent, StepLabel, Stepper, Typography } from "@mui/material"
-import { AuthGuard } from "../../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../../components/dashboard/dashboard-layout"
-import { JobCategoryStep } from "../../../components/dashboard/jobs/job-category-step"
-import { JobDetailsStep } from "../../../components/dashboard/jobs/job-details-step"
-import { JobDescriptionStep } from "../../../components/dashboard/jobs/job-description-step"
-import { Check as CheckIcon } from "../../../icons/check"
+import { useState } from "react";
+import Head from "next/head";
+import { Avatar, Box, Button, Card, Grid, Step, StepContent, StepLabel, Stepper, Typography } from "@mui/material";
+import { AuthGuard } from "../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
+import { JobCategoryStep } from "../../../components/dashboard/jobs/job-category-step";
+import { JobDetailsStep } from "../../../components/dashboard/jobs/job-details-step";
+import { JobDescriptionStep } from "../../../components/dashboard/jobs/job-description-step";
+import { Check as CheckIcon } from "../../../icons/check";
 
 const StepIcon = props => {
-  const { active, completed, icon } = props
+  const { active, completed, icon } = props;
 
-  const highlight = active || completed
+  const highlight = active || completed;
 
   return (
     <Avatar
@@ -27,24 +27,24 @@ const StepIcon = props => {
     >
       {completed ? <CheckIcon fontSize="small" /> : icon}
     </Avatar>
-  )
-}
+  );
+};
 
 const JobCreate = () => {
-  const [activeStep, setActiveStep] = useState(0)
-  const [complete, setComplete] = useState(false)
+  const [activeStep, setActiveStep] = useState(0);
+  const [complete, setComplete] = useState(false);
 
   const handleNext = () => {
-    setActiveStep(prevActiveStep => prevActiveStep + 1)
-  }
+    setActiveStep(prevActiveStep => prevActiveStep + 1);
+  };
 
   const handleBack = () => {
-    setActiveStep(prevActiveStep => prevActiveStep - 1)
-  }
+    setActiveStep(prevActiveStep => prevActiveStep - 1);
+  };
 
   const handleComplete = () => {
-    setComplete(true)
-  }
+    setComplete(true);
+  };
 
   const steps = [
     {
@@ -59,7 +59,7 @@ const JobCreate = () => {
       label: "Description",
       content: <JobDescriptionStep onBack={handleBack} onNext={handleComplete} />,
     },
-  ]
+  ];
 
   return (
     <>
@@ -192,13 +192,13 @@ const JobCreate = () => {
         </Grid>
       </Box>
     </>
-  )
-}
+  );
+};
 
 JobCreate.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default JobCreate
+export default JobCreate;

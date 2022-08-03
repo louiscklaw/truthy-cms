@@ -1,19 +1,19 @@
-import PropTypes from "prop-types";
-import { Box, Button, Card, Chip, Typography } from "@mui/material";
+import PropTypes from 'prop-types';
+import { Box, Button, Card, Chip, Typography } from '@mui/material';
 
-export const OverviewBanner = (props) => {
+export const OverviewBanner = props => {
   const { onDismiss, ...other } = props;
 
   return (
     <Card
       sx={{
-        alignItems: "center",
-        backgroundColor: "primary.main",
-        color: "primary.contrastText",
-        display: "flex",
+        alignItems: 'center',
+        backgroundColor: 'primary.main',
+        color: 'primary.contrastText',
+        display: 'flex',
         flexDirection: {
-          xs: "column",
-          md: "row",
+          xs: 'column',
+          md: 'row',
         },
         p: 4,
       }}
@@ -24,9 +24,9 @@ export const OverviewBanner = (props) => {
           mr: 4,
           width: 200,
           height: 200,
-          "& img": {
+          '& img': {
             height: 200,
-            width: "auto",
+            width: 'auto',
           },
         }}
       >
@@ -40,8 +40,7 @@ export const OverviewBanner = (props) => {
           Welcome to Material Kit Pro v5!
         </Typography>
         <Typography color="inherit" sx={{ mt: 1 }} variant="subtitle2">
-          Your dashboard has been improved! Explore new features like
-          Notifications, Search, Jobs Platform and more.
+          Your dashboard has been improved! Explore new features like Notifications, Search, Jobs Platform and more.
         </Typography>
         <Box sx={{ mt: 2 }}>
           <Button color="secondary" onClick={onDismiss} variant="contained">

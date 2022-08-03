@@ -4,6 +4,6 @@ import { MenyServiceTypeController } from './meny_service_type.controller';
 
 @Module({
   controllers: [MenyServiceTypeController],
-  providers: [MenyServiceTypeService]
+  providers: [MenyServiceTypeService],
 })
 export class MenyServiceTypeModule {}

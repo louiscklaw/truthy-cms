@@ -1,11 +1,11 @@
-import PropTypes from "prop-types"
-import NextLink from "next/link"
-import { AppBar, Box, Button, Container, IconButton, Link, Toolbar } from "@mui/material"
-import { Menu as MenuIcon } from "../icons/menu"
-import { Logo } from "./logo"
+import PropTypes from "prop-types";
+import NextLink from "next/link";
+import { AppBar, Box, Button, Container, IconButton, Link, Toolbar } from "@mui/material";
+import { Menu as MenuIcon } from "../icons/menu";
+import { Logo } from "./logo";
 
 export const MainNavbar = props => {
-  const { onOpenSidebar } = props
+  const { onOpenSidebar } = props;
 
   return (
     <AppBar
@@ -70,16 +70,23 @@ export const MainNavbar = props => {
                 Documentation
               </Link>
             </NextLink>
-            <Button component="a" href="https://material-ui.com/store/items/devias-kit-pro" size="medium" sx={{ ml: 2 }} target="_blank" variant="contained">
+            <Button
+              component="a"
+              href="https://material-ui.com/store/items/devias-kit-pro"
+              size="medium"
+              sx={{ ml: 2 }}
+              target="_blank"
+              variant="contained"
+            >
               Buy Now
             </Button>
           </Box>
         </Toolbar>
       </Container>
     </AppBar>
-  )
-}
+  );
+};
 
 MainNavbar.propTypes = {
   onOpenSidebar: PropTypes.func,
-}
+};

@@ -1,7 +1,7 @@
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
 export const WorldMap = props => {
-  const { colors, ...other } = props
+  const { colors, ...other } = props;
 
   return (
     <svg width="342" height="221" viewBox="0 0 342 221" fill="none" xmlns="http://www.w3.org/2000/svg" {...other}>
@@ -30,9 +30,9 @@ export const WorldMap = props => {
         fill={colors.af}
       />
     </svg>
-  )
-}
+  );
+};
 
 WorldMap.propTypes = {
   colors: PropTypes.object.isRequired,
-}
+};

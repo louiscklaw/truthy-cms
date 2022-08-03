@@ -1,10 +1,10 @@
-import { Fragment } from "react"
-import PropTypes from "prop-types"
-import { formatDistanceStrict } from "date-fns"
-import { Box, Button, Card, Divider, Typography } from "@mui/material"
+import { Fragment } from "react";
+import PropTypes from "prop-types";
+import { formatDistanceStrict } from "date-fns";
+import { Box, Button, Card, Divider, Typography } from "@mui/material";
 
 export const CompanyJobs = props => {
-  const { jobs, ...other } = props
+  const { jobs, ...other } = props;
 
   return (
     <Card variant="outlined" {...other}>
@@ -42,13 +42,13 @@ export const CompanyJobs = props => {
         </Fragment>
       ))}
     </Card>
-  )
-}
+  );
+};
 
 CompanyJobs.defaultProps = {
   jobs: [],
-}
+};
 
 CompanyJobs.propTypes = {
   jobs: PropTypes.array,
-}
+};

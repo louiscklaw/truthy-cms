@@ -11,7 +11,7 @@ import {
   Grid,
   MenuItem,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { AuthGuard } from '../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../components/dashboard/dashboard-layout';
@@ -56,307 +56,179 @@ const Overview = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Overview | Material Kit Pro
-        </title>
+        <title>Dashboard: Overview | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="xl">
           <Box sx={{ mb: 4 }}>
-            <Grid
-              container
-              justifyContent="space-between"
-              spacing={3}
-            >
+            <Grid container justifyContent="space-between" spacing={3}>
               <Grid item>
-                <Typography variant="h4">
-                  Good Morning
-                </Typography>
+                <Typography variant="h4">Good Morning</Typography>
               </Grid>
               <Grid
                 item
                 sx={{
                   display: 'flex',
                   alignItems: 'center',
-                  m: -1
+                  m: -1,
                 }}
               >
-                <Button
-                  startIcon={<ReportsIcon fontSize="small" />}
-                  sx={{ m: 1 }}
-                  variant="outlined"
-                >
+                <Button startIcon={<ReportsIcon fontSize="small" />} sx={{ m: 1 }} variant="outlined">
                   Reports
                 </Button>
-                <TextField
-                  defaultValue="week"
-                  label="Period"
-                  select
-                  size="small"
-                  sx={{ m: 1 }}
-                >
-                  <MenuItem value="week">
-                    Last week
-                  </MenuItem>
-                  <MenuItem value="month">
-                    Last month
-                  </MenuItem>
-                  <MenuItem value="year">
-                    Last year
-                  </MenuItem>
+                <TextField defaultValue="week" label="Period" select size="small" sx={{ m: 1 }}>
+                  <MenuItem value="week">Last week</MenuItem>
+                  <MenuItem value="month">Last month</MenuItem>
+                  <MenuItem value="year">Last year</MenuItem>
                 </TextField>
               </Grid>
             </Grid>
           </Box>
-          <Grid
-            container
-            spacing={4}
-          >
+          <Grid container spacing={4}>
             {displayBanner && (
-              <Grid
-                item
-                xs={12}
-              >
+              <Grid item xs={12}>
                 <OverviewBanner onDismiss={handleDismissBanner} />
               </Grid>
             )}
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <OverviewCryptoWallet />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <OverviewPrivateWallet />
             </Grid>
-            <Grid
-              item
-              md={8}
-              xs={12}
-            >
+            <Grid item md={8} xs={12}>
               <OverviewTotalTransactions />
             </Grid>
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
+            <Grid item md={4} xs={12}>
               <OverviewTotalBalance />
             </Grid>
-            <Grid
-              item
-              md={8}
-              xs={12}
-            >
+            <Grid item md={8} xs={12}>
               <OverviewLatestTransactions />
             </Grid>
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
+            <Grid item md={4} xs={12}>
               <OverviewInbox />
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <Card>
                 <CardContent>
                   <Box
                     sx={{
                       alignItems: 'center',
-                      display: 'flex'
+                      display: 'flex',
                     }}
                   >
-                    <BriefcaseIcon
-                      color="primary"
-                      fontSize="small"
-                    />
-                    <Typography
-                      color="primary.main"
-                      sx={{ pl: 1 }}
-                      variant="subtitle2"
-                    >
+                    <BriefcaseIcon color="primary" fontSize="small" />
+                    <Typography color="primary.main" sx={{ pl: 1 }} variant="subtitle2">
                       Jobs
                     </Typography>
                   </Box>
-                  <Typography
-                    variant="h6"
-                    sx={{ mt: 2 }}
-                  >
+                  <Typography variant="h6" sx={{ mt: 2 }}>
                     Find your dream job
                   </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  <Typography color="textSecondary" variant="body2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
                   </Typography>
                 </CardContent>
                 <Divider />
                 <CardActions>
-                  <Button
-                    endIcon={<ArrowRightIcon fontSize="small" />}
-                    size="small"
-                  >
+                  <Button endIcon={<ArrowRightIcon fontSize="small" />} size="small">
                     Search Jobs
                   </Button>
                 </CardActions>
               </Card>
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <Card>
                 <CardContent>
                   <Box
                     sx={{
                       alignItems: 'center',
-                      display: 'flex'
+                      display: 'flex',
                     }}
                   >
                     <InformationCircleOutlinedIcon color="primary" />
-                    <Typography
-                      color="primary.main"
-                      sx={{ pl: 1 }}
-                      variant="subtitle2"
-                    >
+                    <Typography color="primary.main" sx={{ pl: 1 }} variant="subtitle2">
                       Help Center
                     </Typography>
                   </Box>
-                  <Typography
-                    sx={{ mt: 2 }}
-                    variant="h6"
-                  >
+                  <Typography sx={{ mt: 2 }} variant="h6">
                     Need help figuring things out?
                   </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  <Typography color="textSecondary" variant="body2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
                   </Typography>
                 </CardContent>
                 <Divider />
                 <CardActions>
-                  <Button
-                    endIcon={<ExternalLinkIcon fontSize="small" />}
-                    size="small"
-                  >
+                  <Button endIcon={<ExternalLinkIcon fontSize="small" />} size="small">
                     Help Center
                   </Button>
                 </CardActions>
               </Card>
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <Card>
                 <CardContent>
                   <Box
                     sx={{
                       alignItems: 'center',
-                      display: 'flex'
+                      display: 'flex',
                     }}
                   >
                     <DownloadIcon color="primary" />
-                    <Typography
-                      color="primary.main"
-                      sx={{ pl: 1 }}
-                      variant="subtitle2"
-                    >
+                    <Typography color="primary.main" sx={{ pl: 1 }} variant="subtitle2">
                       Download
                     </Typography>
                   </Box>
-                  <Typography
-                    sx={{ mt: 2 }}
-                    variant="h6"
-                  >
-                    Download our Free PDF and learn how to
-                    get more job leads
+                  <Typography sx={{ mt: 2 }} variant="h6">
+                    Download our Free PDF and learn how to get more job leads
                   </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  <Typography color="textSecondary" variant="body2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
                   </Typography>
                 </CardContent>
                 <Divider />
                 <CardActions>
-                  <Button
-                    endIcon={<DownloadIcon fontSize="small" />}
-                    size="small"
-                    variant="outlined"
-                  >
+                  <Button endIcon={<DownloadIcon fontSize="small" />} size="small" variant="outlined">
                     Download Free PDF
                   </Button>
                 </CardActions>
               </Card>
             </Grid>
-            <Grid
-              item
-              md={6}
-              xs={12}
-            >
+            <Grid item md={6} xs={12}>
               <Card>
                 <CardContent>
                   <Box
                     sx={{
                       alignItems: 'center',
-                      display: 'flex'
+                      display: 'flex',
                     }}
                   >
                     <UsersIcon color="primary" />
-                    <Typography
-                      color="primary.main"
-                      sx={{ pl: 1 }}
-                      variant="subtitle2"
-                    >
+                    <Typography color="primary.main" sx={{ pl: 1 }} variant="subtitle2">
                       Contacts
                     </Typography>
                   </Box>
-                  <Typography
-                    sx={{ mt: 2 }}
-                    variant="h6"
-                  >
+                  <Typography sx={{ mt: 2 }} variant="h6">
                     Contacts allow you to manage your company contracts
                   </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  <Typography color="textSecondary" variant="body2">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et dolore magna aliqua.
                   </Typography>
                 </CardContent>
                 <Divider />
                 <CardActions>
-                  <Button
-                    endIcon={<ArrowRightIcon fontSize="small" />}
-                    size="small"
-                    variant="outlined"
-                  >
+                  <Button endIcon={<ArrowRightIcon fontSize="small" />} size="small" variant="outlined">
                     My Contacts
                   </Button>
                 </CardActions>
@@ -369,11 +241,9 @@ const Overview = () => {
   );
 };
 
-Overview.getLayout = (page) => (
+Overview.getLayout = page => (
   <AuthGuard>
-    <DashboardLayout>
-      {page}
-    </DashboardLayout>
+    <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 

@@ -1,9 +1,9 @@
-import { Box, Card, CardContent, CardHeader } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import { Box, Card, CardContent, CardHeader } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 export const Chart1 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -77,7 +77,7 @@ export const Chart1 = () => {
         },
       },
     },
-  }
+  };
 
   const chartSeries = [
     {
@@ -88,7 +88,7 @@ export const Chart1 = () => {
       data: [23, 12, 54, 61, 32, 56, 81, 19],
       name: "Last week",
     },
-  ]
+  ];
 
   return (
     <Box
@@ -104,5 +104,5 @@ export const Chart1 = () => {
         </CardContent>
       </Card>
     </Box>
-  )
-}
+  );
+};

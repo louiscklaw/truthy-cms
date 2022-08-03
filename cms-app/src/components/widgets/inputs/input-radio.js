@@ -1,36 +1,27 @@
-import {
-  Box,
-  FormControlLabel,
-  Paper,
-  Radio,
-  RadioGroup,
-  Typography,
-} from "@mui/material";
+import { Box, FormControlLabel, Paper, Radio, RadioGroup, Typography } from '@mui/material';
 
 const typeOptions = [
   {
     description: "I'm looking for teammates to join in a personal project",
     title: "I'm a freelancer",
-    value: "freelancer",
+    value: 'freelancer',
   },
   {
-    description:
-      "I'm looking for freelancer or contractors to take care of my project",
-    title: "I’m a project owner",
-    value: "projectOwner",
+    description: "I'm looking for freelancer or contractors to take care of my project",
+    title: 'I’m a project owner',
+    value: 'projectOwner',
   },
   {
-    description:
-      "I'm looking for freelancer or contractors to take care of my project",
-    title: "I want to join affiliate",
-    value: "affiliate",
+    description: "I'm looking for freelancer or contractors to take care of my project",
+    title: 'I want to join affiliate',
+    value: 'affiliate',
   },
 ];
 
 export const InputRadio = () => (
   <Box
     sx={{
-      backgroundColor: "background.paper",
+      backgroundColor: 'background.paper',
       p: 2,
     }}
   >
@@ -43,12 +34,11 @@ export const InputRadio = () => (
       }}
       variant="body1"
     >
-      Proin tincidunt lacus sed ante efficitur efficitur. Quisque aliquam
-      fringilla velit sit amet euismod.
+      Proin tincidunt lacus sed ante efficitur efficitur. Quisque aliquam fringilla velit sit amet euismod.
     </Typography>
     <RadioGroup
       sx={{
-        "& > *:not(:last-child)": {
+        '& > *:not(:last-child)': {
           mb: 2,
         },
       }}
@@ -57,8 +47,8 @@ export const InputRadio = () => (
         <Paper
           key={typeOption.value}
           sx={{
-            alignItems: "flex-start",
-            display: "flex",
+            alignItems: 'flex-start',
+            display: 'flex',
             padding: 2,
           }}
           variant="outlined"
@@ -71,7 +61,7 @@ export const InputRadio = () => (
               <Box sx={{ ml: 2 }}>
                 <Typography
                   sx={{
-                    color: index === 2 ? "action.disabled" : "text.primary",
+                    color: index === 2 ? 'action.disabled' : 'text.primary',
                   }}
                   variant="subtitle2"
                 >
@@ -79,7 +69,7 @@ export const InputRadio = () => (
                 </Typography>
                 <Typography
                   sx={{
-                    color: index === 2 ? "action.disabled" : "text.secondary",
+                    color: index === 2 ? 'action.disabled' : 'text.secondary',
                   }}
                   variant="body2"
                 >

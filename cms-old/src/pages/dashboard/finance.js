@@ -1,23 +1,23 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import { Box, Button, Container, Grid, Typography } from "@mui/material"
-import { AuthGuard } from "../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../components/dashboard/dashboard-layout"
-import { FinanceCostBreakdown } from "../../components/dashboard/finance/finance-cost-breakdown"
-import { FinanceOverview } from "../../components/dashboard/finance/finance-overview"
-import { FinanceIncrementalSales } from "../../components/dashboard/finance/finance-incremental-sales"
-import { FinanceProfitableProducts } from "../../components/dashboard/finance/finance-profitable-products"
-import { FinanceSalesByContinent } from "../../components/dashboard/finance/finance-sales-by-continent"
-import { FinanceSalesRevenue } from "../../components/dashboard/finance/finance-sales-revenue"
-import { Download as DownloadIcon } from "../../icons/download"
-import { Reports as ReportsIcon } from "../../icons/reports"
-import { Cog as CogIcon } from "../../icons/cog"
-import { gtm } from "../../lib/gtm"
+import { useEffect } from "react";
+import Head from "next/head";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { AuthGuard } from "../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../components/dashboard/dashboard-layout";
+import { FinanceCostBreakdown } from "../../components/dashboard/finance/finance-cost-breakdown";
+import { FinanceOverview } from "../../components/dashboard/finance/finance-overview";
+import { FinanceIncrementalSales } from "../../components/dashboard/finance/finance-incremental-sales";
+import { FinanceProfitableProducts } from "../../components/dashboard/finance/finance-profitable-products";
+import { FinanceSalesByContinent } from "../../components/dashboard/finance/finance-sales-by-continent";
+import { FinanceSalesRevenue } from "../../components/dashboard/finance/finance-sales-revenue";
+import { Download as DownloadIcon } from "../../icons/download";
+import { Reports as ReportsIcon } from "../../icons/reports";
+import { Cog as CogIcon } from "../../icons/cog";
+import { gtm } from "../../lib/gtm";
 
 const Finance = () => {
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -80,13 +80,13 @@ const Finance = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 Finance.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default Finance
+export default Finance;

@@ -1,8 +1,8 @@
-import { Box, Button, Card, Grid, TextField, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
+import { Box, Button, Card, Grid, TextField, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 export const BlogNewsletter = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Card
@@ -65,5 +65,5 @@ export const BlogNewsletter = () => {
         </Grid>
       </Grid>
     </Card>
-  )
-}
+  );
+};

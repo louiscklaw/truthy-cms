@@ -1,28 +1,18 @@
 import { useState } from 'react';
-import {
-  Avatar,
-  Box,
-  Container,
-  Grid,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
 import { Cog as CogIcon } from '../../icons/cog';
 import { Lock as LockIcon } from '../../icons/lock';
 import { MinusOutlined as MinusOutlinedIcon } from '../../icons/minus-outlined';
 import { Template as TemplateIcon } from '../../icons/template';
 
-const getFeatures = (theme) => ([
+const getFeatures = theme => [
   {
     icon: LockIcon,
     image: `/static/home/auth_${theme}.png`,
     items: ['Amplify', 'Auth0', 'Firebase', 'JWT'],
     subheader: 'Identity services fully integrated. Choose from:',
-    title: 'Auth System'
+    title: 'Auth System',
   },
   {
     icon: CogIcon,
@@ -34,28 +24,28 @@ const getFeatures = (theme) => ([
       'Invoice Generator',
       'Charts API',
       'Landing/Home',
-      'And many more'
+      'And many more',
     ],
     subheader: 'Get started with ready-to-deploy templates.',
     image: `/static/home/flows_${theme}.png`,
-    title: 'Management Pages'
+    title: 'Management Pages',
   },
   {
     icon: TemplateIcon,
     image: `/static/home/landing_${theme}.png`,
     items: ['Home or Landing', 'Contact Us', 'Blog', 'Pricing'],
     subheader: 'We also have included all the necessary layouts for a startup.',
-    title: 'Landing Pages'
-  }
-]);
+    title: 'Landing Pages',
+  },
+];
 
-export const HomeFeatures = (props) => {
+export const HomeFeatures = props => {
   const theme = useTheme();
   const [selectedFeature, setSelectedFeature] = useState(0);
 
   const features = getFeatures(theme.palette.mode);
 
-  const handleChangeFeature = (index) => {
+  const handleChangeFeature = index => {
     setSelectedFeature(index);
   };
 
@@ -63,29 +53,17 @@ export const HomeFeatures = (props) => {
     <Box
       sx={{
         backgroundColor: 'background.default',
-        py: 15
+        py: 15,
       }}
-      {...props}>
+      {...props}
+    >
       <Container maxWidth="lg">
-        <Grid
-          container
-          spacing={3}
-        >
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
-            <Typography variant="h3">
-              Modern technology stack
-            </Typography>
-            <Typography
-              color="textSecondary"
-              sx={{ py: 2 }}
-              variant="subtitle1"
-            >
-              Comes packed with 21 custom templates and many individual components built to meet
-              almost any type of admin or customer application requirements.
+        <Grid container spacing={3}>
+          <Grid item md={6} xs={12}>
+            <Typography variant="h3">Modern technology stack</Typography>
+            <Typography color="textSecondary" sx={{ py: 2 }} variant="subtitle1">
+              Comes packed with 21 custom templates and many individual components built to meet almost any type of
+              admin or customer application requirements.
             </Typography>
             {features.map((feature, index) => {
               const { icon: Icon, items, subheader, title } = feature;
@@ -104,8 +82,8 @@ export const HomeFeatures = (props) => {
                     p: 2,
                     ...(selected && {
                       backgroundColor: alpha(theme.palette.primary.main, 0.08),
-                      cursor: 'default'
-                    })
+                      cursor: 'default',
+                    }),
                   }}
                 >
                   <Avatar
@@ -113,20 +91,15 @@ export const HomeFeatures = (props) => {
                       mr: 2,
                       ...(selected && {
                         backgroundColor: 'primary.main',
-                        color: 'primary.contrastText'
-                      })
+                        color: 'primary.contrastText',
+                      }),
                     }}
                   >
                     <Icon fontSize="small" />
                   </Avatar>
                   <div>
-                    <Typography variant="h6">
-                      {title}
-                    </Typography>
-                    <Typography
-                      color="textSecondary"
-                      variant="body2"
-                    >
+                    <Typography variant="h6">{title}</Typography>
+                    <Typography color="textSecondary" variant="body2">
                       {subheader}
                     </Typography>
                     {selected && (
@@ -137,33 +110,23 @@ export const HomeFeatures = (props) => {
                           gap: 1,
                           pt: 2,
                           ...(items.length > 4 && {
-                            sm: 'repeat(2, 1fr)'
-                          })
+                            sm: 'repeat(2, 1fr)',
+                          }),
                         }}
                       >
-                        {items.map((item) => (
-                          <ListItem
-                            disableGutters
-                            key={item}
-                            sx={{ py: 0 }}
-                          >
+                        {items.map(item => (
+                          <ListItem disableGutters key={item} sx={{ py: 0 }}>
                             <ListItemAvatar
                               sx={{
                                 alignItems: 'center',
                                 display: 'flex',
                                 minWidth: 0,
-                                mr: 0.5
+                                mr: 0.5,
                               }}
                             >
                               <MinusOutlinedIcon color="primary" />
                             </ListItemAvatar>
-                            <ListItemText
-                              primary={(
-                                <Typography variant="subtitle2">
-                                  {item}
-                                </Typography>
-                              )}
-                            />
+                            <ListItemText primary={<Typography variant="subtitle2">{item}</Typography>} />
                           </ListItem>
                         ))}
                       </List>
@@ -173,11 +136,7 @@ export const HomeFeatures = (props) => {
               );
             })}
           </Grid>
-          <Grid
-            item
-            md={6}
-            xs={12}
-          >
+          <Grid item md={6} xs={12}>
             <Box
               sx={{
                 position: 'relative',
@@ -186,14 +145,11 @@ export const HomeFeatures = (props) => {
                   height: 'auto',
                   position: 'absolute',
                   top: 0,
-                  width: '100%'
-                }
+                  width: '100%',
+                },
               }}
             >
-              <img
-                alt=""
-                src={features[selectedFeature].image}
-              />
+              <img alt="" src={features[selectedFeature].image} />
             </Box>
           </Grid>
         </Grid>

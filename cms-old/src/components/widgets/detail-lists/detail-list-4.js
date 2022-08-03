@@ -1,9 +1,22 @@
-import { useState } from "react"
-import { format, subDays, subHours, subMinutes } from "date-fns"
-import { Box, Button, Card, CardContent, CardHeader, Divider, Table, TableBody, TableCell, TableRow, TextField, Typography } from "@mui/material"
-import { Mail as MailIcon } from "../../../icons/mail"
+import { useState } from "react";
+import { format, subDays, subHours, subMinutes } from "date-fns";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Mail as MailIcon } from "../../../icons/mail";
 
-const now = new Date()
+const now = new Date();
 
 const emails = [
   {
@@ -16,12 +29,12 @@ const emails = [
     createdAt: subDays(subHours(subMinutes(now, 49), 11), 4).getTime(),
     description: "Order confirmation",
   },
-]
+];
 
-const emailOptions = ["Resend last invoice", "Send password reset", "Send verification"]
+const emailOptions = ["Resend last invoice", "Send password reset", "Send verification"];
 
 export const DetailList4 = () => {
-  const [emailOption, setEmailOption] = useState(emailOptions[0])
+  const [emailOption, setEmailOption] = useState(emailOptions[0]);
 
   return (
     <Box
@@ -35,7 +48,14 @@ export const DetailList4 = () => {
         <CardHeader title="Emails" />
         <Divider />
         <CardContent>
-          <TextField fullWidth name="option" onChange={event => setEmailOption(event.target.value)} select SelectProps={{ native: true }} value={emailOption}>
+          <TextField
+            fullWidth
+            name="option"
+            onChange={event => setEmailOption(event.target.value)}
+            select
+            SelectProps={{ native: true }}
+            value={emailOption}
+          >
             {emailOptions.map(option => (
               <option key={option} value={option}>
                 {option}
@@ -64,5 +84,5 @@ export const DetailList4 = () => {
         </CardContent>
       </Card>
     </Box>
-  )
-}
+  );
+};

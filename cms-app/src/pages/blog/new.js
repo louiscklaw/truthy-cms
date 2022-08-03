@@ -1,29 +1,19 @@
-import { useEffect, useState } from "react";
-import Head from "next/head";
-import NextLink from "next/link";
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Container,
-  Grid,
-  IconButton,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { FileDropzone } from "../../components/file-dropzone";
-import { QuillEditor } from "../../components/quill-editor";
-import { ArrowLeft as ArrowLeftIcon } from "../../icons/arrow-left";
-import { DotsVertical as DotsHorizontalIcon } from "../../icons/dots-vertical";
-import { gtm } from "../../lib/gtm";
-import { fileToBase64 } from "../../utils/file-to-base64";
+import { useEffect, useState } from 'react';
+import Head from 'next/head';
+import NextLink from 'next/link';
+import { Box, Button, Card, CardContent, Container, Grid, IconButton, TextField, Typography } from '@mui/material';
+import { FileDropzone } from '../../components/file-dropzone';
+import { QuillEditor } from '../../components/quill-editor';
+import { ArrowLeft as ArrowLeftIcon } from '../../icons/arrow-left';
+import { DotsVertical as DotsHorizontalIcon } from '../../icons/dots-vertical';
+import { gtm } from '../../lib/gtm';
+import { fileToBase64 } from '../../utils/file-to-base64';
 
 const BlogPostCreate = () => {
-  const [cover, setCover] = useState("/static/mock-images/covers/cover_4.jpeg");
+  const [cover, setCover] = useState('/static/mock-images/covers/cover_4.jpeg');
 
   useEffect(() => {
-    gtm.push({ event: "page_view" });
+    gtm.push({ event: 'page_view' });
   }, []);
 
   const handleDropCover = async ([file]) => {
@@ -49,10 +39,7 @@ const BlogPostCreate = () => {
       >
         <Container maxWidth="md">
           <NextLink href="/dashboard" passHref>
-            <Button
-              component="a"
-              startIcon={<ArrowLeftIcon fontSize="small" />}
-            >
+            <Button component="a" startIcon={<ArrowLeftIcon fontSize="small" />}>
               Dashboard
             </Button>
           </NextLink>
@@ -62,10 +49,10 @@ const BlogPostCreate = () => {
           <Card
             elevation={16}
             sx={{
-              alignItems: "center",
+              alignItems: 'center',
               borderRadius: 1,
-              display: "flex",
-              justifyContent: "space-between",
+              display: 'flex',
+              justifyContent: 'space-between',
               mb: 8,
               mt: 6,
               px: 3,
@@ -79,8 +66,8 @@ const BlogPostCreate = () => {
                   component="a"
                   sx={{
                     display: {
-                      xs: "none",
-                      sm: "inline-flex",
+                      xs: 'none',
+                      sm: 'inline-flex',
                     },
                     mr: 2,
                   }}
@@ -94,8 +81,8 @@ const BlogPostCreate = () => {
                   component="a"
                   sx={{
                     display: {
-                      xs: "none",
-                      sm: "inline-flex",
+                      xs: 'none',
+                      sm: 'inline-flex',
                     },
                     mr: 2,
                   }}
@@ -127,8 +114,8 @@ const BlogPostCreate = () => {
                 <Box
                   sx={{
                     backgroundImage: `url(${cover})`,
-                    backgroundPosition: "center",
-                    backgroundSize: "cover",
+                    backgroundPosition: 'center',
+                    backgroundSize: 'cover',
                     borderRadius: 1,
                     height: 230,
                     mt: 3,
@@ -137,14 +124,14 @@ const BlogPostCreate = () => {
               ) : (
                 <Box
                   sx={{
-                    alignItems: "center",
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
+                    alignItems: 'center',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'center',
                     border: 1,
                     borderRadius: 1,
-                    borderStyle: "dashed",
-                    borderColor: "divider",
+                    borderStyle: 'dashed',
+                    borderColor: 'divider',
                     height: 230,
                     mt: 3,
                     p: 3,
@@ -153,14 +140,8 @@ const BlogPostCreate = () => {
                   <Typography align="center" color="textSecondary" variant="h6">
                     Select a cover image
                   </Typography>
-                  <Typography
-                    align="center"
-                    color="textSecondary"
-                    sx={{ mt: 1 }}
-                    variant="subtitle1"
-                  >
-                    Image used for the blog post cover and also for Open Graph
-                    meta
+                  <Typography align="center" color="textSecondary" sx={{ mt: 1 }} variant="subtitle1">
+                    Image used for the blog post cover and also for Open Graph meta
                   </Typography>
                 </Box>
               )}
@@ -170,7 +151,7 @@ const BlogPostCreate = () => {
               <Box sx={{ mt: 3 }}>
                 <FileDropzone
                   accept={{
-                    "image/*": [],
+                    'image/*': [],
                   }}
                   maxFiles={1}
                   onDrop={handleDropCover}
@@ -206,7 +187,7 @@ const BlogPostCreate = () => {
           <Box
             sx={{
               display: {
-                sm: "none",
+                sm: 'none',
               },
               mt: 2,
             }}

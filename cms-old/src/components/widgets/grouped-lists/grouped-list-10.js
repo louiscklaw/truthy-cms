@@ -1,8 +1,8 @@
-import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns"
-import { Avatar, Box, Card, Link, Typography } from "@mui/material"
-import { Download as DownloadIcon } from "../../../icons/download"
+import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns";
+import { Avatar, Box, Card, Link, Typography } from "@mui/material";
+import { Download as DownloadIcon } from "../../../icons/download";
 
-const now = new Date()
+const now = new Date();
 
 const activities = [
   {
@@ -26,7 +26,7 @@ const activities = [
     subject: "Alexndru Robert",
     type: "join_team",
   },
-]
+];
 
 export const GroupedList10 = () => (
   <Box
@@ -68,4 +68,4 @@ export const GroupedList10 = () => (
       </Card>
     ))}
   </Box>
-)
+);

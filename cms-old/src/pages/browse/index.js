@@ -1,12 +1,12 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import NextLink from "next/link"
-import { Grid, Box, Card, Container, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { BrowseLayout } from "../../components/browse-layout"
-import { MainLayout } from "../../components/main-layout"
-import { ExternalLink as ExternalLinkIcon } from "../../icons/external-link"
-import { gtm } from "../../lib/gtm"
+import { useEffect } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import { Grid, Box, Card, Container, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { BrowseLayout } from "../../components/browse-layout";
+import { MainLayout } from "../../components/main-layout";
+import { ExternalLink as ExternalLinkIcon } from "../../icons/external-link";
+import { gtm } from "../../lib/gtm";
 
 const getSections = mode => [
   {
@@ -111,15 +111,15 @@ const getSections = mode => [
       },
     ],
   },
-]
+];
 
 const Browse = () => {
-  const theme = useTheme()
-  const sections = getSections(theme.palette.mode)
+  const theme = useTheme();
+  const sections = getSections(theme.palette.mode);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -220,13 +220,13 @@ const Browse = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 Browse.getLayout = page => (
   <MainLayout>
     <BrowseLayout>{page}</BrowseLayout>
   </MainLayout>
-)
+);
 
-export default Browse
+export default Browse;

@@ -1,7 +1,7 @@
-import { formatDistanceToNowStrict, subHours } from "date-fns"
-import { Avatar, Box, Card, CardHeader, Link, Rating, Typography } from "@mui/material"
+import { formatDistanceToNowStrict, subHours } from "date-fns";
+import { Avatar, Box, Card, CardHeader, Link, Rating, Typography } from "@mui/material";
 
-const now = new Date()
+const now = new Date();
 
 const reviews = [
   {
@@ -36,7 +36,7 @@ const reviews = [
     createdAt: subHours(now, 2).getTime(),
     value: 4,
   },
-]
+];
 
 export const GroupedList9 = () => (
   <Box
@@ -107,4 +107,4 @@ export const GroupedList9 = () => (
       </Card>
     ))}
   </Box>
-)
+);

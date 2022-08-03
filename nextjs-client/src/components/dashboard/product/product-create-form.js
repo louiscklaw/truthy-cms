@@ -14,7 +14,7 @@ import {
   MenuItem,
   Switch,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { FileDropzone } from '../../file-dropzone';
 import { QuillEditor } from '../../quill-editor';
@@ -22,31 +22,31 @@ import { QuillEditor } from '../../quill-editor';
 const categoryOptions = [
   {
     label: 'Healthcare',
-    value: 'healthcare'
+    value: 'healthcare',
   },
   {
     label: 'Makeup',
-    value: 'makeup'
+    value: 'makeup',
   },
   {
     label: 'Dress',
-    value: 'dress'
+    value: 'dress',
   },
   {
     label: 'Skincare',
-    value: 'skincare'
+    value: 'skincare',
   },
   {
     label: 'Jewelry',
-    value: 'jewelry'
+    value: 'jewelry',
   },
   {
     label: 'Blouse',
-    value: 'blouse'
-  }
+    value: 'blouse',
+  },
 ];
 
-export const ProductCreateForm = (props) => {
+export const ProductCreateForm = props => {
   const router = useRouter();
   const [files, setFiles] = useState([]);
   const formik = useFormik({
@@ -59,7 +59,7 @@ export const ProductCreateForm = (props) => {
       newPrice: 0,
       oldPrice: 0,
       sku: 'IYV-8745',
-      submit: null
+      submit: null,
     },
     validationSchema: Yup.object({
       barcode: Yup.string().max(255),
@@ -69,7 +69,7 @@ export const ProductCreateForm = (props) => {
       name: Yup.string().max(255).required(),
       newPrice: Yup.number().min(0).required(),
       oldPrice: Yup.number().min(0),
-      sku: Yup.string().max(255)
+      sku: Yup.string().max(255),
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -83,15 +83,15 @@ export const ProductCreateForm = (props) => {
         helpers.setErrors({ submit: err.message });
         helpers.setSubmitting(false);
       }
-    }
+    },
   });
 
-  const handleDrop = (newFiles) => {
-    setFiles((prevFiles) => [...prevFiles, ...newFiles]);
+  const handleDrop = newFiles => {
+    setFiles(prevFiles => [...prevFiles, ...newFiles]);
   };
 
-  const handleRemove = (file) => {
-    setFiles((prevFiles) => prevFiles.filter((_file) => _file.path !== file.path));
+  const handleRemove = file => {
+    setFiles(prevFiles => prevFiles.filter(_file => _file.path !== file.path));
   };
 
   const handleRemoveAll = () => {
@@ -99,29 +99,14 @@ export const ProductCreateForm = (props) => {
   };
 
   return (
-    <form
-      onSubmit={formik.handleSubmit}
-      {...props}>
+    <form onSubmit={formik.handleSubmit} {...props}>
       <Card>
         <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
-              <Typography variant="h6">
-                Basic details
-              </Typography>
+          <Grid container spacing={3}>
+            <Grid item md={4} xs={12}>
+              <Typography variant="h6">Basic details</Typography>
             </Grid>
-            <Grid
-              item
-              md={8}
-              xs={12}
-            >
+            <Grid item md={8} xs={12}>
               <TextField
                 error={Boolean(formik.touched.name && formik.errors.name)}
                 fullWidth
@@ -136,14 +121,14 @@ export const ProductCreateForm = (props) => {
                 color="textSecondary"
                 sx={{
                   mb: 2,
-                  mt: 3
+                  mt: 3,
                 }}
                 variant="subtitle2"
               >
                 Description
               </Typography>
               <QuillEditor
-                onChange={(value) => {
+                onChange={value => {
                   formik.setFieldValue('description', value);
                 }}
                 placeholder="Write something"
@@ -152,9 +137,7 @@ export const ProductCreateForm = (props) => {
               />
               {Boolean(formik.touched.description && formik.errors.description) && (
                 <Box sx={{ mt: 2 }}>
-                  <FormHelperText error>
-                    {formik.errors.description}
-                  </FormHelperText>
+                  <FormHelperText error>{formik.errors.description}</FormHelperText>
                 </Box>
               )}
             </Grid>
@@ -163,34 +146,17 @@ export const ProductCreateForm = (props) => {
       </Card>
       <Card sx={{ mt: 3 }}>
         <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
-              <Typography variant="h6">
-                Images
-              </Typography>
-              <Typography
-                color="textSecondary"
-                variant="body2"
-                sx={{ mt: 1 }}
-              >
+          <Grid container spacing={3}>
+            <Grid item md={4} xs={12}>
+              <Typography variant="h6">Images</Typography>
+              <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
                 Images will appear in the store front of your website.
               </Typography>
             </Grid>
-            <Grid
-              item
-              md={8}
-              xs={12}
-            >
+            <Grid item md={8} xs={12}>
               <FileDropzone
                 accept={{
-                  'image/*': []
+                  'image/*': [],
                 }}
                 files={files}
                 onDrop={handleDrop}
@@ -203,24 +169,11 @@ export const ProductCreateForm = (props) => {
       </Card>
       <Card sx={{ mt: 3 }}>
         <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
-              <Typography variant="h6">
-                Pricing
-              </Typography>
+          <Grid container spacing={3}>
+            <Grid item md={4} xs={12}>
+              <Typography variant="h6">Pricing</Typography>
             </Grid>
-            <Grid
-              item
-              md={8}
-              xs={12}
-            >
+            <Grid item md={8} xs={12}>
               <TextField
                 error={Boolean(formik.touched.oldPrice && formik.errors.oldPrice)}
                 fullWidth
@@ -243,10 +196,7 @@ export const ProductCreateForm = (props) => {
                 value={formik.values.newPrice}
               />
               <Box sx={{ mt: 2 }}>
-                <FormControlLabel
-                  control={<Switch />}
-                  label="Keep selling when stock is empty"
-                />
+                <FormControlLabel control={<Switch />} label="Keep selling when stock is empty" />
               </Box>
             </Grid>
           </Grid>
@@ -254,24 +204,11 @@ export const ProductCreateForm = (props) => {
       </Card>
       <Card sx={{ mt: 3 }}>
         <CardContent>
-          <Grid
-            container
-            spacing={3}
-          >
-            <Grid
-              item
-              md={4}
-              xs={12}
-            >
-              <Typography variant="h6">
-                Category
-              </Typography>
+          <Grid container spacing={3}>
+            <Grid item md={4} xs={12}>
+              <Typography variant="h6">Category</Typography>
             </Grid>
-            <Grid
-              item
-              md={8}
-              xs={12}
-            >
+            <Grid item md={8} xs={12}>
               <TextField
                 error={Boolean(formik.touched.category && formik.errors.category)}
                 fullWidth
@@ -282,11 +219,8 @@ export const ProductCreateForm = (props) => {
                 select
                 value={formik.values.category}
               >
-                {categoryOptions.map((option) => (
-                  <MenuItem
-                    key={option.value}
-                    value={option.value}
-                  >
+                {categoryOptions.map(option => (
+                  <MenuItem key={option.value} value={option.value}>
                     {option.label}
                   </MenuItem>
                 ))}
@@ -324,29 +258,22 @@ export const ProductCreateForm = (props) => {
           justifyContent: 'space-between',
           mx: -1,
           mb: -1,
-          mt: 3
+          mt: 3,
         }}
       >
         <Button
           color="error"
           sx={{
             m: 1,
-            mr: 'auto'
+            mr: 'auto',
           }}
         >
           Delete
         </Button>
-        <Button
-          sx={{ m: 1 }}
-          variant="outlined"
-        >
+        <Button sx={{ m: 1 }} variant="outlined">
           Cancel
         </Button>
-        <Button
-          sx={{ m: 1 }}
-          type="submit"
-          variant="contained"
-        >
+        <Button sx={{ m: 1 }} type="submit" variant="contained">
           Create
         </Button>
       </Box>

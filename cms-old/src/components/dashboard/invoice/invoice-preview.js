@@ -1,12 +1,12 @@
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import numeral from "numeral"
-import { Box, Grid, Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material"
-import { Logo } from "../../logo"
-import { Scrollbar } from "../../scrollbar"
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import numeral from "numeral";
+import { Box, Grid, Paper, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material";
+import { Logo } from "../../logo";
+import { Scrollbar } from "../../scrollbar";
 
 export const InvoicePreview = props => {
-  const { invoice, ...other } = props
+  const { invoice, ...other } = props;
 
   return (
     <Paper {...other}>
@@ -118,7 +118,9 @@ export const InvoicePreview = props => {
                     Subtotal
                   </Typography>
                 </TableCell>
-                <TableCell align="right">{numeral(invoice.subtotalAmount).format(`${invoice.currency}0,0.00`)}</TableCell>
+                <TableCell align="right">
+                  {numeral(invoice.subtotalAmount).format(`${invoice.currency}0,0.00`)}
+                </TableCell>
               </TableRow>
               <TableRow>
                 <TableCell />
@@ -145,15 +147,16 @@ export const InvoicePreview = props => {
               Notes
             </Typography>
             <Typography color="textSecondary" variant="body2">
-              Please make sure you have the right bank registration number as I had issues before and make sure you guys cover transfer expenses.
+              Please make sure you have the right bank registration number as I had issues before and make sure you guys
+              cover transfer expenses.
             </Typography>
           </Box>
         </Box>
       </Scrollbar>
     </Paper>
-  )
-}
+  );
+};
 
 InvoicePreview.propTypes = {
   invoice: PropTypes.object.isRequired,
-}
+};

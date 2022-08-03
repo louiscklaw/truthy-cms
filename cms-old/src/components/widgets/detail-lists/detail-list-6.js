@@ -1,6 +1,6 @@
-import Markdown from "react-markdown"
-import { Box, Card, CardContent, Chip, Grid, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import Markdown from "react-markdown";
+import { Box, Card, CardContent, Chip, Grid, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
 const MarkdownWrapper = styled("div")(({ theme }) => ({
   color: theme.palette.text.primary,
@@ -8,7 +8,7 @@ const MarkdownWrapper = styled("div")(({ theme }) => ({
   "& p": {
     marginBottom: theme.spacing(2),
   },
-}))
+}));
 
 const description = `
 Design files are attached in the files tab.
@@ -18,7 +18,7 @@ Develop the web app screens for our product called "PDFace". Please look at the 
 There's not many screens we need designed, but there will be modals and various other system triggered events that will need to be considered.
 
 The project has been created in Sketch so let me know if there are any problems opening this project and I'll try to convert into a usable file.
-`
+`;
 
 export const DetailList6 = () => (
   <Box
@@ -59,4 +59,4 @@ export const DetailList6 = () => (
       </CardContent>
     </Card>
   </Box>
-)
+);

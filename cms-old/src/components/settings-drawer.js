@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react"
-import { Box, Button, Checkbox, Drawer, FormControlLabel, IconButton, Typography } from "@mui/material"
-import { useSettings } from "../hooks/use-settings"
-import { X as XIcon } from "../icons/x"
-import LightThemeIcon from "../components/light-theme.svg"
-import DarkThemeIcon from "../components/dark-theme.svg"
-import PropTypes from "prop-types"
+import { useEffect, useState } from "react";
+import { Box, Button, Checkbox, Drawer, FormControlLabel, IconButton, Typography } from "@mui/material";
+import { useSettings } from "../hooks/use-settings";
+import { X as XIcon } from "../icons/x";
+import LightThemeIcon from "../components/light-theme.svg";
+import DarkThemeIcon from "../components/dark-theme.svg";
+import PropTypes from "prop-types";
 
 const themes = [
   {
@@ -17,37 +17,44 @@ const themes = [
     value: "dark",
     icon: DarkThemeIcon,
   },
-]
+];
 
 const getValues = settings => ({
   direction: settings.direction,
   responsiveFontSizes: settings.responsiveFontSizes,
   theme: settings.theme,
-})
+});
 
 export const SettingsDrawer = props => {
-  const { open, onClose, ...other } = props
-  const { settings, saveSettings } = useSettings()
-  const [values, setValues] = useState(getValues(settings))
+  const { open, onClose, ...other } = props;
+  const { settings, saveSettings } = useSettings();
+  const [values, setValues] = useState(getValues(settings));
 
   useEffect(() => {
-    setValues(getValues(settings))
-  }, [settings])
+    setValues(getValues(settings));
+  }, [settings]);
 
   const handleChange = (field, value) => {
     setValues({
       ...values,
       [field]: value,
-    })
-  }
+    });
+  };
 
   const handleSave = () => {
-    saveSettings(values)
-    onClose?.()
-  }
+    saveSettings(values);
+    onClose?.();
+  };
 
   return (
-    <Drawer anchor="right" onClose={onClose} open={open} ModalProps={{ sx: { zIndex: 2000 } }} PaperProps={{ sx: { width: 320 } }} {...other}>
+    <Drawer
+      anchor="right"
+      onClose={onClose}
+      open={open}
+      ModalProps={{ sx: { zIndex: 2000 } }}
+      PaperProps={{ sx: { width: 320 } }}
+      {...other}
+    >
       <Box
         sx={{
           alignItems: "center",
@@ -90,7 +97,7 @@ export const SettingsDrawer = props => {
           }}
         >
           {themes.map(theme => {
-            const { label, icon: Icon, value } = theme
+            const { label, icon: Icon, value } = theme;
 
             return (
               <div key={value}>
@@ -119,7 +126,7 @@ export const SettingsDrawer = props => {
                   {label}
                 </Typography>
               </div>
-            )
+            );
           })}
         </Box>
         <Typography
@@ -148,7 +155,11 @@ export const SettingsDrawer = props => {
         <div>
           <FormControlLabel
             control={
-              <Checkbox checked={values.responsiveFontSizes} name="direction" onChange={event => handleChange("responsiveFontSizes", event.target.checked)} />
+              <Checkbox
+                checked={values.responsiveFontSizes}
+                name="direction"
+                onChange={event => handleChange("responsiveFontSizes", event.target.checked)}
+              />
             }
             label={<Typography variant="subtitle2">Responsive font sizes</Typography>}
           />
@@ -158,10 +169,10 @@ export const SettingsDrawer = props => {
         </Button>
       </Box>
     </Drawer>
-  )
-}
+  );
+};
 
 SettingsDrawer.propTypes = {
   onClose: PropTypes.func,
   open: PropTypes.bool,
-}
+};

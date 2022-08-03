@@ -6,16 +6,16 @@ const initialState = {
   isLoaded: false,
   columns: {
     byId: {},
-    allIds: []
+    allIds: [],
   },
   cards: {
     byId: {},
-    allIds: []
+    allIds: [],
   },
   members: {
     byId: {},
-    allIds: []
-  }
+    allIds: [],
+  },
 };
 
 const slice = createSlice({
@@ -54,17 +54,17 @@ const slice = createSlice({
       state.columns.byId[columnId].cardIds = [];
 
       // Delete the cards from state
-      cardIds.forEach((cardId) => {
+      cardIds.forEach(cardId => {
         delete state.cards.byId[cardId];
       });
 
-      state.cards.allIds = state.cards.allIds.filter((cardId) => cardIds.includes(cardId));
+      state.cards.allIds = state.cards.allIds.filter(cardId => cardIds.includes(cardId));
     },
     deleteColumn(state, action) {
       const columnId = action.payload;
 
       delete state.columns.byId[columnId];
-      state.columns.allIds = state.columns.allIds.filter((_listId) => _listId !== columnId);
+      state.columns.allIds = state.columns.allIds.filter(_listId => _listId !== columnId);
     },
     createCard(state, action) {
       const card = action.payload;
@@ -85,8 +85,9 @@ const slice = createSlice({
       const sourceColumnId = state.cards.byId[cardId].columnId;
 
       // Remove card from source column
-      state.columns.byId[sourceColumnId].cardIds =
-        (state.columns.byId[sourceColumnId].cardIds.filter((_cardId) => _cardId !== cardId));
+      state.columns.byId[sourceColumnId].cardIds = state.columns.byId[sourceColumnId].cardIds.filter(
+        _cardId => _cardId !== cardId,
+      );
 
       // If columnId exists, it means that we have to add the card to the new column
       if (columnId) {
@@ -104,9 +105,8 @@ const slice = createSlice({
       const { columnId } = state.cards.byId[cardId];
 
       delete state.cards.byId[cardId];
-      state.cards.allIds = state.cards.allIds.filter((_cardId) => _cardId !== cardId);
-      state.columns.byId[columnId].cardIds =
-        (state.columns.byId[columnId].cardIds.filter((_cardId) => _cardId !== cardId));
+      state.cards.allIds = state.cards.allIds.filter(_cardId => _cardId !== cardId);
+      state.columns.byId[columnId].cardIds = state.columns.byId[columnId].cardIds.filter(_cardId => _cardId !== cardId);
     },
     addComment(state, action) {
       const comment = action.payload;
@@ -124,7 +124,7 @@ const slice = createSlice({
       const { cardId, checklist } = action.payload;
       const card = state.cards.byId[cardId];
 
-      card.checklists = card.checklists.map((_checklist) => {
+      card.checklists = card.checklists.map(_checklist => {
         if (_checklist.id === checklist.id) {
           return checklist;
         }
@@ -136,12 +136,12 @@ const slice = createSlice({
       const { cardId, checklistId } = action.payload;
       const card = state.cards.byId[cardId];
 
-      card.checklists = card.checklists.filter((checklist) => checklist.id !== checklistId);
+      card.checklists = card.checklists.filter(checklist => checklist.id !== checklistId);
     },
     addCheckItem(state, action) {
       const { cardId, checklistId, checkItem } = action.payload;
       const card = state.cards.byId[cardId];
-      const checklist = card.checklists.find((_checklist) => _checklist.id === checklistId);
+      const checklist = card.checklists.find(_checklist => _checklist.id === checklistId);
 
       if (!checklist) {
         return;
@@ -152,13 +152,13 @@ const slice = createSlice({
     updateCheckItem(state, action) {
       const { cardId, checklistId, checkItem } = action.payload;
       const card = state.cards.byId[cardId];
-      const checklist = card.checklists.find((_checklist) => _checklist.id === checklistId);
+      const checklist = card.checklists.find(_checklist => _checklist.id === checklistId);
 
       if (!checklist) {
         return;
       }
 
-      checklist.checkItems = checklist.checkItems.map((_checkItem) => {
+      checklist.checkItems = checklist.checkItems.map(_checkItem => {
         if (_checkItem.id === checkItem.id) {
           return checkItem;
         }
@@ -169,137 +169,150 @@ const slice = createSlice({
     deleteCheckItem(state, action) {
       const { cardId, checklistId, checkItemId } = action.payload;
       const card = state.cards.byId[cardId];
-      const checklist = card.checklists.find((_checklist) => _checklist.id === checklistId);
+      const checklist = card.checklists.find(_checklist => _checklist.id === checklistId);
 
       if (!checklist) {
         return;
       }
 
-      checklist.checkItems =
-        (checklist.checkItems.filter((checkItem) => checkItem.id !== checkItemId));
-    }
-  }
+      checklist.checkItems = checklist.checkItems.filter(checkItem => checkItem.id !== checkItemId);
+    },
+  },
 });
 
 export const { reducer } = slice;
 
-export const getBoard = () => async (dispatch) => {
+export const getBoard = () => async dispatch => {
   const data = await kanbanApi.getBoard();
 
   dispatch(slice.actions.getBoard(data));
 };
 
-export const createColumn = (name) => async (dispatch) => {
+export const createColumn = name => async dispatch => {
   const data = await kanbanApi.createColumn({ name });
 
   dispatch(slice.actions.createColumn(data));
 };
 
-export const updateColumn = (columnId, update) => async (dispatch) => {
+export const updateColumn = (columnId, update) => async dispatch => {
   const data = await kanbanApi.updateColumn({ columnId, update });
 
   dispatch(slice.actions.updateColumn(data));
 };
 
-export const clearColumn = (columnId) => async (dispatch) => {
+export const clearColumn = columnId => async dispatch => {
   await kanbanApi.clearColumn(columnId);
 
   dispatch(slice.actions.clearColumn(columnId));
 };
 
-export const deleteColumn = (columnId) => async (dispatch) => {
+export const deleteColumn = columnId => async dispatch => {
   await kanbanApi.deleteColumn(columnId);
 
   dispatch(slice.actions.deleteColumn(columnId));
 };
 
-export const createCard = (columnId, name) => async (dispatch) => {
+export const createCard = (columnId, name) => async dispatch => {
   const data = await kanbanApi.createCard({ columnId, name });
 
   dispatch(slice.actions.createCard(data));
 };
 
-export const updateCard = (cardId, update) => async (dispatch) => {
+export const updateCard = (cardId, update) => async dispatch => {
   const data = await kanbanApi.updateCard({ cardId, update });
 
   dispatch(slice.actions.updateCard(data));
 };
 
-export const moveCard = (cardId, position, columnId) => async (dispatch) => {
+export const moveCard = (cardId, position, columnId) => async dispatch => {
   await kanbanApi.moveCard({ cardId, position, columnId });
 
-  dispatch(slice.actions.moveCard({
-    cardId,
-    position,
-    columnId
-  }));
+  dispatch(
+    slice.actions.moveCard({
+      cardId,
+      position,
+      columnId,
+    }),
+  );
 };
 
-export const deleteCard = (cardId) => async (dispatch) => {
+export const deleteCard = cardId => async dispatch => {
   await kanbanApi.deleteCard(cardId);
 
   dispatch(slice.actions.deleteCard(cardId));
 };
 
-export const addComment = (cardId, message) => async (dispatch) => {
+export const addComment = (cardId, message) => async dispatch => {
   const data = await kanbanApi.addComment({ cardId, message });
 
   dispatch(slice.actions.addComment(data));
 };
 
-export const addChecklist = (cardId, name) => async (dispatch) => {
+export const addChecklist = (cardId, name) => async dispatch => {
   const data = await kanbanApi.addChecklist({ cardId, name });
 
-  dispatch(slice.actions.addChecklist({
-    cardId,
-    checklist: data
-  }));
+  dispatch(
+    slice.actions.addChecklist({
+      cardId,
+      checklist: data,
+    }),
+  );
 };
 
-export const updateChecklist = (cardId, checklistId, update) => async (dispatch) => {
+export const updateChecklist = (cardId, checklistId, update) => async dispatch => {
   const data = await kanbanApi.updateChecklist({ cardId, checklistId, update });
 
-  dispatch(slice.actions.updateChecklist({
-    cardId,
-    checklist: data
-  }));
+  dispatch(
+    slice.actions.updateChecklist({
+      cardId,
+      checklist: data,
+    }),
+  );
 };
 
-export const deleteChecklist = (cardId, checklistId) => async (dispatch) => {
+export const deleteChecklist = (cardId, checklistId) => async dispatch => {
   await kanbanApi.deleteChecklist({ cardId, checklistId });
 
-  dispatch(slice.actions.deleteChecklist({
-    cardId,
-    checklistId
-  }));
+  dispatch(
+    slice.actions.deleteChecklist({
+      cardId,
+      checklistId,
+    }),
+  );
 };
 
-export const addCheckItem = (cardId, checklistId, name) => async (dispatch) => {
+export const addCheckItem = (cardId, checklistId, name) => async dispatch => {
   const data = await kanbanApi.addCheckItem({ cardId, checklistId, name });
 
-  dispatch(slice.actions.addCheckItem({
-    cardId,
-    checklistId,
-    checkItem: data
-  }));
+  dispatch(
+    slice.actions.addCheckItem({
+      cardId,
+      checklistId,
+      checkItem: data,
+    }),
+  );
 };
 
-export const updateCheckItem = (cardId, checklistId, checkItemId, update) => async (dispatch) => {
+export const updateCheckItem = (cardId, checklistId, checkItemId, update) => async dispatch => {
   const data = await kanbanApi.updateCheckItem({ cardId, checklistId, checkItemId, update });
 
-  dispatch(slice.actions.updateCheckItem({
-    cardId,
-    checklistId,
-    checkItem: data
-  }));
+  dispatch(
+    slice.actions.updateCheckItem({
+      cardId,
+      checklistId,
+      checkItem: data,
+    }),
+  );
 };
 
-export const deleteCheckItem = (cardId, checklistId, checkItemId) => async (dispatch) => {
+export const deleteCheckItem = (cardId, checklistId, checkItemId) => async dispatch => {
   await kanbanApi.deleteCheckItem({ cardId, checklistId, checkItemId });
 
-  dispatch(slice.actions.deleteCheckItem({
-    cardId,
-    checklistId,
-    checkItemId
-  }));
+  dispatch(
+    slice.actions.deleteCheckItem({
+      cardId,
+      checklistId,
+      checkItemId,
+    }),
+  );
 };

@@ -1,5 +1,5 @@
 const warn = (...args) => {
-  if (process.env.NODE_ENV !== "development") {
+  if (process.env.NODE_ENV !== 'development') {
     return;
   }
 
@@ -13,7 +13,7 @@ class GTM {
 
   configure(config) {
     if (!config.containerId) {
-      warn("GTM requires a GTM ID to be loaded.");
+      warn('GTM requires a GTM ID to be loaded.');
       return;
     }
 
@@ -22,7 +22,7 @@ class GTM {
 
   initialize(config) {
     if (this.initialized) {
-      warn("GTM can only be initialized once.");
+      warn('GTM can only be initialized once.');
       return;
     }
 
@@ -32,7 +32,7 @@ class GTM {
     // For the moment we do not implement it, but in future we might add it.
 
     if (!document) {
-      warn("GTM can be initialized only on client side.");
+      warn('GTM can be initialized only on client side.');
       return;
     }
 
@@ -42,8 +42,8 @@ class GTM {
       return;
     }
 
-    const script = document.createElement("script");
-    const noscript = document.createElement("noscript");
+    const script = document.createElement('script');
+    const noscript = document.createElement('noscript');
 
     script.innerHTML = `
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -63,7 +63,7 @@ class GTM {
   // eslint-disable-next-line class-methods-use-this
   push(...args) {
     if (!window) {
-      warn("GTM push works only on client side.");
+      warn('GTM push works only on client side.');
       return;
     }
 

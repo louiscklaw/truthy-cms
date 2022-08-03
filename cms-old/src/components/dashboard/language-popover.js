@@ -1,7 +1,7 @@
-import PropTypes from "prop-types"
-import { toast } from "react-hot-toast"
-import { useTranslation } from "react-i18next"
-import { Box, ListItemIcon, ListItemText, MenuItem, Popover, Typography } from "@mui/material"
+import PropTypes from "prop-types";
+import { toast } from "react-hot-toast";
+import { useTranslation } from "react-i18next";
+import { Box, ListItemIcon, ListItemText, MenuItem, Popover, Typography } from "@mui/material";
 
 const languageOptions = {
   en: {
@@ -16,17 +16,17 @@ const languageOptions = {
     icon: "/static/icons/es_flag.svg",
     label: "Spanish",
   },
-}
+};
 
 export const LanguagePopover = props => {
-  const { anchorEl, onClose, open, ...other } = props
-  const { i18n, t } = useTranslation()
+  const { anchorEl, onClose, open, ...other } = props;
+  const { i18n, t } = useTranslation();
 
   const handleChange = async language => {
-    onClose?.()
-    await i18n.changeLanguage(language)
-    toast.success(t("Language changed"))
-  }
+    onClose?.();
+    await i18n.changeLanguage(language);
+    toast.success(t("Language changed"));
+  };
 
   return (
     <Popover
@@ -62,11 +62,11 @@ export const LanguagePopover = props => {
         </MenuItem>
       ))}
     </Popover>
-  )
-}
+  );
+};
 
 LanguagePopover.propTypes = {
   anchorEl: PropTypes.any,
   onClose: PropTypes.func,
   open: PropTypes.bool,
-}
+};

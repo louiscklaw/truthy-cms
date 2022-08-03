@@ -1,22 +1,22 @@
-import { Avatar, Box, Button, IconButton, TextField } from "@mui/material";
-import { EmojiHappy as EmojiHappyIcon } from "../../icons/emoji-happy";
-import { Link as LinkIcon } from "../../icons/link";
-import { PaperClip as PaperClipIcon } from "../../icons/paper-clip";
-import { Photograph as PhotographIcon } from "../../icons/photograph";
-import { Plus as PlusIcon } from "../../icons/plus";
-import { getInitials } from "../../utils/get-initials";
+import { Avatar, Box, Button, IconButton, TextField } from '@mui/material';
+import { EmojiHappy as EmojiHappyIcon } from '../../icons/emoji-happy';
+import { Link as LinkIcon } from '../../icons/link';
+import { PaperClip as PaperClipIcon } from '../../icons/paper-clip';
+import { Photograph as PhotographIcon } from '../../icons/photograph';
+import { Plus as PlusIcon } from '../../icons/plus';
+import { getInitials } from '../../utils/get-initials';
 
-export const BlogCommentAdd = (props) => {
+export const BlogCommentAdd = props => {
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
-    avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
-    name: "Anika Visser",
+    avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+    name: 'Anika Visser',
   };
 
   return (
     <div {...props}>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: 'flex' }}>
         <Avatar
           src={user.avatar}
           sx={{
@@ -34,24 +34,24 @@ export const BlogCommentAdd = (props) => {
             placeholder="Add a comment"
             rows={3}
             sx={{
-              "& .MuiOutlinedInput-root": {
-                backgroundColor: "background.paper",
+              '& .MuiOutlinedInput-root': {
+                backgroundColor: 'background.paper',
               },
             }}
           />
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "space-between",
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'space-between',
               mt: 3,
             }}
           >
             <IconButton
               sx={{
                 display: {
-                  xs: "inline-flex",
-                  sm: "none",
+                  xs: 'inline-flex',
+                  sm: 'none',
                 },
               }}
             >
@@ -60,11 +60,11 @@ export const BlogCommentAdd = (props) => {
             <Box
               sx={{
                 display: {
-                  xs: "none",
-                  sm: "block",
+                  xs: 'none',
+                  sm: 'block',
                 },
                 m: -1,
-                "& > *": {
+                '& > *': {
                   m: 1,
                 },
               }}

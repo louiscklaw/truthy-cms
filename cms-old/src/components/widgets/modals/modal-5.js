@@ -1,10 +1,21 @@
-import { subDays, subHours } from "date-fns"
-import { Avatar, Box, Button, Link, List, ListItem, ListItemAvatar, ListItemText, Paper, Typography } from "@mui/material"
-import { ChatAlt as ChatAltIcon } from "../../../icons/chat-alt"
-import { CreditCard as CreditCardIcon } from "../../../icons/credit-card"
-import { ShoppingCart as ShoppingCartIcon } from "../../../icons/shopping-cart"
+import { subDays, subHours } from "date-fns";
+import {
+  Avatar,
+  Box,
+  Button,
+  Link,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { ChatAlt as ChatAltIcon } from "../../../icons/chat-alt";
+import { CreditCard as CreditCardIcon } from "../../../icons/credit-card";
+import { ShoppingCart as ShoppingCartIcon } from "../../../icons/shopping-cart";
 
-const now = new Date()
+const now = new Date();
 
 const notifications = [
   {
@@ -35,13 +46,13 @@ const notifications = [
     title: "New message received",
     type: "new_message",
   },
-]
+];
 
 const iconsMap = {
   item_shipped: ShoppingCartIcon,
   new_message: ChatAltIcon,
   order_placed: CreditCardIcon,
-}
+};
 
 export const Modal5 = () => (
   <Box
@@ -65,7 +76,7 @@ export const Modal5 = () => (
       </Box>
       <List disablePadding>
         {notifications.map(notification => {
-          const Icon = iconsMap[notification.type]
+          const Icon = iconsMap[notification.type];
 
           return (
             <ListItem divider key={notification.id}>
@@ -88,7 +99,7 @@ export const Modal5 = () => (
                 secondary={notification.description}
               />
             </ListItem>
-          )
+          );
         })}
       </List>
       <Box
@@ -102,4 +113,4 @@ export const Modal5 = () => (
       </Box>
     </Paper>
   </Box>
-)
+);

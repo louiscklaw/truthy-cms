@@ -1,6 +1,18 @@
-import numeral from "numeral"
-import { Box, Card, CardHeader, Table, TableBody, TableCell, TableHead, TableRow, TableSortLabel, Tooltip, Typography } from "@mui/material"
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined"
+import numeral from "numeral";
+import {
+  Box,
+  Card,
+  CardHeader,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TableSortLabel,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined";
 
 const countries = [
   {
@@ -33,7 +45,7 @@ const countries = [
     seo: 45,
     visits: 2932,
   },
-]
+];
 
 export const Table8 = () => (
   <Box
@@ -114,4 +126,4 @@ export const Table8 = () => (
       </Table>
     </Card>
   </Box>
-)
+);

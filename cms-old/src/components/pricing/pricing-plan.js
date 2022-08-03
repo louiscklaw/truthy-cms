@@ -1,9 +1,9 @@
-import propTypes from "prop-types"
-import { Box, Button, Divider, Typography } from "@mui/material"
-import { Check as CheckIcon } from "../../icons/check"
+import propTypes from "prop-types";
+import { Box, Button, Divider, Typography } from "@mui/material";
+import { Check as CheckIcon } from "../../icons/check";
 
 export const PricingPlan = props => {
-  const { cta, currency, description, features, image, name, popular, price, sx, ...other } = props
+  const { cta, currency, description, features, image, name, popular, price, sx, ...other } = props;
 
   return (
     <Box
@@ -96,8 +96,8 @@ export const PricingPlan = props => {
         </Box>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 PricingPlan.propTypes = {
   cta: propTypes.string.isRequired,
@@ -109,4 +109,4 @@ PricingPlan.propTypes = {
   popular: propTypes.bool,
   price: propTypes.string.isRequired,
   sx: propTypes.object,
-}
+};

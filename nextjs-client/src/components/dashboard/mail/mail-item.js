@@ -9,10 +9,10 @@ import { Star as StarIcon } from '../../../icons/star';
 import { StarOutlined as StarOutlinedIcon } from '../../../icons/star-outlined';
 import { getInitials } from '../../../utils/get-initials';
 
-export const MailItem = (props) => {
+export const MailItem = props => {
   const { email, onDeselect, onSelect, selected, href, ...other } = props;
 
-  const handleCheckboxChange = (event) => {
+  const handleCheckboxChange = event => {
     const { checked } = event.target;
 
     if (checked && onSelect) {
@@ -51,65 +51,52 @@ export const MailItem = (props) => {
             left: 0,
             position: 'absolute',
             top: 0,
-            width: 4
+            width: 4,
           },
           '& $name, & $subject': {
-            fontWeight: 600
-          }
+            fontWeight: 600,
+          },
         }),
         ...(selected && {
-          backgroundColor: 'action.selected'
+          backgroundColor: 'action.selected',
         }),
         '&:hover': {
-          backgroundColor: 'action.hover'
-        }
+          backgroundColor: 'action.hover',
+        },
       }}
-      {...other}>
+      {...other}
+    >
       <Box
         sx={{
           alignItems: 'center',
           display: {
             md: 'flex',
-            xs: 'none'
+            xs: 'none',
           },
-          mr: 1
+          mr: 1,
         }}
       >
-        <Checkbox
-          checked={selected}
-          onChange={handleCheckboxChange}
-        />
+        <Checkbox checked={selected} onChange={handleCheckboxChange} />
         <Tooltip title="Starred">
           <IconButton onClick={handleStarToggle}>
-            {email.isStarred
-              ? (
-                <StarIcon
-                  fontSize="small"
-                  sx={{ color: amber[400] }}
-                />
-              )
-              : (
-                <StarOutlinedIcon fontSize="small" />
-              )}
+            {email.isStarred ? (
+              <StarIcon fontSize="small" sx={{ color: amber[400] }} />
+            ) : (
+              <StarOutlinedIcon fontSize="small" />
+            )}
           </IconButton>
         </Tooltip>
         <Tooltip title="Important">
           <IconButton onClick={handleImportantToggle}>
-            {email.isImportant
-              ? (
-                <LabelImportantIcon
-                  fontSize="small"
-                  sx={{ color: amber[400] }}
-                />
-              )
-              : <LabelImportantIcon fontSize="small" />}
+            {email.isImportant ? (
+              <LabelImportantIcon fontSize="small" sx={{ color: amber[400] }} />
+            ) : (
+              <LabelImportantIcon fontSize="small" />
+            )}
           </IconButton>
         </Tooltip>
       </Box>
-      <NextLink
-        href={href}
-        passHref
-      >
+      <NextLink href={href} passHref>
         <Box
           component="a"
           sx={{
@@ -119,29 +106,27 @@ export const MailItem = (props) => {
             flexGrow: 1,
             flexWrap: {
               xs: 'wrap',
-              md: 'nowrap'
+              md: 'nowrap',
             },
             minWidth: 1,
-            textDecoration: 'none'
+            textDecoration: 'none',
           }}
         >
           <Box
             sx={{
               alignItems: 'center',
-              display: 'flex'
+              display: 'flex',
             }}
           >
-            <Avatar src={email.from.avatar || undefined}>
-              {getInitials(email.from.name)}
-            </Avatar>
+            <Avatar src={email.from.avatar || undefined}>{getInitials(email.from.name)}</Avatar>
             <Typography
               color="textPrimary"
               sx={{
                 width: 120,
                 ml: 2,
                 ...(!email.isUnread && {
-                  fontWeight: 600
-                })
+                  fontWeight: 600,
+                }),
               }}
               noWrap
               variant="body2"
@@ -154,17 +139,17 @@ export const MailItem = (props) => {
               flexGrow: 1,
               ml: {
                 xs: 0,
-                md: 2
+                md: 2,
               },
               my: {
                 xs: 2,
-                md: 0
+                md: 0,
               },
               overflow: 'hidden',
               width: {
                 xs: '100%',
-                md: 'auto'
-              }
+                md: 'auto',
+              },
             }}
           >
             <Box
@@ -172,7 +157,7 @@ export const MailItem = (props) => {
                 alignItems: 'center',
                 display: 'flex',
                 maxWidth: 800,
-                width: '100%'
+                width: '100%',
               }}
             >
               <Typography
@@ -181,36 +166,21 @@ export const MailItem = (props) => {
                   fontWeight: 600,
                   minWidth: 100,
                   maxWidth: 400,
-                  mr: 1
+                  mr: 1,
                 }}
                 noWrap
                 variant="body2"
               >
                 {email.subject}
               </Typography>
-              <Typography
-                color="textSecondary"
-                noWrap
-                variant="body2"
-              >
-                —
-                {email.message}
+              <Typography color="textSecondary" noWrap variant="body2">
+                —{email.message}
               </Typography>
             </Box>
             {Boolean(email.attachments && email.attachments.length > 0) && (
               <Box sx={{ mt: 1 }}>
-                <Chip
-                  icon={<PaperClipIcon fontSize="small" />}
-                  label={email.attachments[0].name}
-                  size="small"
-                />
-                {email.attachments.length > 1 && (
-                  <Chip
-                    label="+1"
-                    size="small"
-                    sx={{ ml: 1 }}
-                  />
-                )}
+                <Chip icon={<PaperClipIcon fontSize="small" />} label={email.attachments[0].name} size="small" />
+                {email.attachments.length > 1 && <Chip label="+1" size="small" sx={{ ml: 1 }} />}
               </Box>
             )}
           </Box>
@@ -221,10 +191,10 @@ export const MailItem = (props) => {
               display: 'block',
               textAlign: {
                 xs: 'left',
-                md: 'right'
+                md: 'right',
               },
               whiteSpace: 'nowrap',
-              width: 100
+              width: 100,
             }}
           >
             {format(email.createdAt, 'dd MMM')}
@@ -240,5 +210,5 @@ MailItem.propTypes = {
   href: PropTypes.string.isRequired,
   onDeselect: PropTypes.func,
   onSelect: PropTypes.func,
-  selected: PropTypes.bool.isRequired
+  selected: PropTypes.bool.isRequired,
 };

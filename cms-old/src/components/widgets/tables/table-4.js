@@ -1,5 +1,5 @@
-import numeral from "numeral"
-import { format, subMinutes, subSeconds } from "date-fns"
+import numeral from "numeral";
+import { format, subMinutes, subSeconds } from "date-fns";
 import {
   Box,
   Card,
@@ -14,14 +14,14 @@ import {
   TablePagination,
   TableRow,
   Typography,
-} from "@mui/material"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
-const now = new Date()
+const now = new Date();
 
 const orders = [
   {
@@ -89,7 +89,7 @@ const orders = [
     status: "complete",
     totalAmount: 500.0,
   },
-]
+];
 
 const getStatusLabel = orderStatus => {
   const map = {
@@ -109,12 +109,12 @@ const getStatusLabel = orderStatus => {
       color: "error",
       text: "Rejected",
     },
-  }
+  };
 
-  const { text, color } = map[orderStatus]
+  const { text, color } = map[orderStatus];
 
-  return <SeverityPill color={color}>{text}</SeverityPill>
-}
+  return <SeverityPill color={color}>{text}</SeverityPill>;
+};
 
 export const Table4 = () => (
   <Box
@@ -193,4 +193,4 @@ export const Table4 = () => (
       />
     </Card>
   </Box>
-)
+);

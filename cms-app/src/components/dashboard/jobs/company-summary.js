@@ -1,17 +1,10 @@
-import PropTypes from "prop-types";
-import {
-  Avatar,
-  Box,
-  Card,
-  CardContent,
-  Divider,
-  Typography,
-} from "@mui/material";
-import { PropertyList } from "../../property-list";
-import { PropertyListItem } from "../../property-list-item";
-import { getInitials } from "../../../utils/get-initials";
+import PropTypes from 'prop-types';
+import { Avatar, Box, Card, CardContent, Divider, Typography } from '@mui/material';
+import { PropertyList } from '../../property-list';
+import { PropertyListItem } from '../../property-list-item';
+import { getInitials } from '../../../utils/get-initials';
 
-export const CompanySummary = (props) => {
+export const CompanySummary = props => {
   const { company, ...other } = props;
 
   return (
@@ -38,7 +31,7 @@ export const CompanySummary = (props) => {
               p: 0,
             }}
           >
-            {(company.locations || []).map((location) => (
+            {(company.locations || []).map(location => (
               <Typography key={location} color="textSecondary" variant="body2">
                 {location}
               </Typography>
@@ -59,12 +52,12 @@ export const CompanySummary = (props) => {
           Founders
         </Typography>
         <div>
-          {(company.founders || []).map((founder) => (
+          {(company.founders || []).map(founder => (
             <Box
               key={founder.id}
               sx={{
-                alignItems: "center",
-                display: "flex",
+                alignItems: 'center',
+                display: 'flex',
                 mt: 2,
               }}
             >

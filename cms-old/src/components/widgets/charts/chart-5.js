@@ -1,54 +1,54 @@
-import { useState, useEffect, useCallback } from "react"
-import { Box, Button, Card, CardHeader, Container, List, ListItem, ListItemText, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { useMounted } from "../../../hooks/use-mounted"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { Chart } from "../../chart"
+import { useState, useEffect, useCallback } from "react";
+import { Box, Button, Card, CardHeader, Container, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { useMounted } from "../../../hooks/use-mounted";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { Chart } from "../../chart";
 
 const getRandomInt = (min, max) => {
-  min = Math.ceil(min)
-  max = Math.floor(max)
+  min = Math.ceil(min);
+  max = Math.floor(max);
 
-  return Math.floor(Math.random() * (max - min + 1)) + min
-}
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 export const Chart5 = () => {
-  const isMounted = useMounted()
-  const theme = useTheme()
-  const [data, setData] = useState([163, 166, 161, 159, 99, 163, 173, 166, 167, 183, 176, 172])
+  const isMounted = useMounted();
+  const theme = useTheme();
+  const [data, setData] = useState([163, 166, 161, 159, 99, 163, 173, 166, 167, 183, 176, 172]);
 
   const getData = useCallback(() => {
     if (isMounted()) {
       setData(prevData => {
-        const newData = [...prevData]
+        const newData = [...prevData];
 
-        newData.shift()
-        newData.push(0)
+        newData.shift();
+        newData.push(0);
 
-        return newData
-      })
+        return newData;
+      });
     }
 
     setTimeout(() => {
       if (isMounted()) {
         setData(prevData => {
-          const newData = [...prevData]
-          const random = getRandomInt(100, 200)
+          const newData = [...prevData];
+          const random = getRandomInt(100, 200);
 
-          newData.pop()
-          newData.push(random)
+          newData.pop();
+          newData.push(random);
 
-          return newData
-        })
+          return newData;
+        });
       }
-    }, 500)
-  }, [isMounted])
+    }, 500);
+  }, [isMounted]);
 
   useEffect(() => {
-    setInterval(() => getData(), 2000)
-  }, [getData])
+    setInterval(() => getData(), 2000);
+  }, [getData]);
 
-  const labels = data.map((value, i) => i)
+  const labels = data.map((value, i) => i);
 
   const pages = [
     {
@@ -67,7 +67,7 @@ export const Chart5 = () => {
       pathname: "/checkout",
       views: "8",
     },
-  ]
+  ];
 
   const chartOptions = {
     chart: {
@@ -132,9 +132,9 @@ export const Chart5 = () => {
         show: false,
       },
     },
-  }
+  };
 
-  const chartSeries = [{ data }]
+  const chartSeries = [{ data }];
 
   return (
     <Box
@@ -161,7 +161,9 @@ export const Chart5 = () => {
                     Page views per second
                   </Typography>
                 </div>
-                <Typography variant="h6">{data[data.length - 1] === 0 ? data[data.length - 2] : data[data.length - 1]}</Typography>
+                <Typography variant="h6">
+                  {data[data.length - 1] === 0 ? data[data.length - 2] : data[data.length - 1]}
+                </Typography>
               </Box>
             }
           />
@@ -194,5 +196,5 @@ export const Chart5 = () => {
         </Card>
       </Container>
     </Box>
-  )
-}
+  );
+};

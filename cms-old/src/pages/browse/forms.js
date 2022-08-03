@@ -1,31 +1,31 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import { Box, Container } from "@mui/material"
-import { BrowseLayout } from "../../components/browse-layout"
-import { MainLayout } from "../../components/main-layout"
-import { WidgetPreviewer } from "../../components/widget-previewer"
-import { Form1 } from "../../components/widgets/forms/form-1"
-import { Form2 } from "../../components/widgets/forms/form-2"
-import { Form3 } from "../../components/widgets/forms/form-3"
-import { Form4 } from "../../components/widgets/forms/form-4"
-import { Form5 } from "../../components/widgets/forms/form-5"
-import { Form6 } from "../../components/widgets/forms/form-6"
-import { Form7 } from "../../components/widgets/forms/form-7"
-import { Form8 } from "../../components/widgets/forms/form-8"
-import { Form9 } from "../../components/widgets/forms/form-9"
-import { Form16 } from "../../components/widgets/forms/form-16"
-import { Form15 } from "../../components/widgets/forms/form-15"
-import { Form10 } from "../../components/widgets/forms/form-10"
-import { Form11 } from "../../components/widgets/forms/form-11"
-import { Form12 } from "../../components/widgets/forms/form-12"
-import { Form13 } from "../../components/widgets/forms/form-13"
-import { Form14 } from "../../components/widgets/forms/form-14"
-import { gtm } from "../../lib/gtm"
+import { useEffect } from "react";
+import Head from "next/head";
+import { Box, Container } from "@mui/material";
+import { BrowseLayout } from "../../components/browse-layout";
+import { MainLayout } from "../../components/main-layout";
+import { WidgetPreviewer } from "../../components/widget-previewer";
+import { Form1 } from "../../components/widgets/forms/form-1";
+import { Form2 } from "../../components/widgets/forms/form-2";
+import { Form3 } from "../../components/widgets/forms/form-3";
+import { Form4 } from "../../components/widgets/forms/form-4";
+import { Form5 } from "../../components/widgets/forms/form-5";
+import { Form6 } from "../../components/widgets/forms/form-6";
+import { Form7 } from "../../components/widgets/forms/form-7";
+import { Form8 } from "../../components/widgets/forms/form-8";
+import { Form9 } from "../../components/widgets/forms/form-9";
+import { Form16 } from "../../components/widgets/forms/form-16";
+import { Form15 } from "../../components/widgets/forms/form-15";
+import { Form10 } from "../../components/widgets/forms/form-10";
+import { Form11 } from "../../components/widgets/forms/form-11";
+import { Form12 } from "../../components/widgets/forms/form-12";
+import { Form13 } from "../../components/widgets/forms/form-13";
+import { Form14 } from "../../components/widgets/forms/form-14";
+import { gtm } from "../../lib/gtm";
 
 const BrowseForms = () => {
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -60,13 +60,13 @@ const BrowseForms = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 BrowseForms.getLayout = page => (
   <MainLayout>
     <BrowseLayout>{page}</BrowseLayout>
   </MainLayout>
-)
+);
 
-export default BrowseForms
+export default BrowseForms;

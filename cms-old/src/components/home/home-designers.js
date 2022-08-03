@@ -1,9 +1,9 @@
-import { Box, Button, Container, Grid, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { ExternalLink as ExternalLinkIcon } from "../../icons/external-link"
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { ExternalLink as ExternalLinkIcon } from "../../icons/external-link";
 
 export const HomeDesigners = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Box
@@ -34,7 +34,8 @@ export const HomeDesigners = props => {
           <Grid item md={6} xs={12}>
             <Typography variant="h3">For designers</Typography>
             <Typography color="textSecondary" sx={{ my: 3 }} variant="subtitle1">
-              We &apos; ve included the source Figma files to Plus & Extended licenses so you can get creative! Build layouts with confidence.
+              We &apos; ve included the source Figma files to Plus & Extended licenses so you can get creative! Build
+              layouts with confidence.
             </Typography>
             <Box
               sx={{
@@ -54,7 +55,13 @@ export const HomeDesigners = props => {
               >
                 Preview Figma
               </Button>
-              <Button disabled endIcon={<ExternalLinkIcon fontSize="small" />} size="large" sx={{ m: 1 }} variant="outlined">
+              <Button
+                disabled
+                endIcon={<ExternalLinkIcon fontSize="small" />}
+                size="large"
+                sx={{ m: 1 }}
+                variant="outlined"
+              >
                 Preview Sketch
               </Button>
             </Box>
@@ -62,5 +69,5 @@ export const HomeDesigners = props => {
         </Grid>
       </Container>
     </Box>
-  )
-}
+  );
+};

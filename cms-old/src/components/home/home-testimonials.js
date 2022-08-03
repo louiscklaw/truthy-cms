@@ -1,4 +1,4 @@
-import { Avatar, Box, Container, Typography } from "@mui/material"
+import { Avatar, Box, Container, Typography } from "@mui/material";
 
 export const HomeTestimonials = props => (
   <Box
@@ -38,4 +38,4 @@ export const HomeTestimonials = props => (
       </Box>
     </Container>
   </Box>
-)
+);

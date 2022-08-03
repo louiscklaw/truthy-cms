@@ -1,9 +1,9 @@
-import { useMemo, useState } from "react"
-import PropTypes from "prop-types"
-import { Box, Chip, Divider, Input, Typography } from "@mui/material"
-import { useUpdateEffect } from "../../../hooks/use-update-effect"
-import { Search as SearchIcon } from "../../../icons/search"
-import { MultiSelect } from "../../multi-select"
+import { useMemo, useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Chip, Divider, Input, Typography } from "@mui/material";
+import { useUpdateEffect } from "../../../hooks/use-update-effect";
+import { Search as SearchIcon } from "../../../icons/search";
+import { MultiSelect } from "../../multi-select";
 
 const categoryOptions = [
   {
@@ -30,7 +30,7 @@ const categoryOptions = [
     label: "Blouse",
     value: "blouse",
   },
-]
+];
 
 const statusOptions = [
   {
@@ -41,7 +41,7 @@ const statusOptions = [
     label: "Draft",
     value: "draft",
   },
-]
+];
 
 const stockOptions = [
   {
@@ -56,12 +56,12 @@ const stockOptions = [
     label: "Out of Stock",
     value: "outOfStock",
   },
-]
+];
 
 export const ProjectListFilters = props => {
-  const { onChange, ...other } = props
-  const [queryValue, setQueryValue] = useState("")
-  const [filterItems, setFilterItems] = useState([])
+  const { onChange, ...other } = props;
+  const [queryValue, setQueryValue] = useState("");
+  const [filterItems, setFilterItems] = useState([]);
 
   useUpdateEffect(
     () => {
@@ -70,7 +70,7 @@ export const ProjectListFilters = props => {
         category: [],
         status: [],
         inStock: undefined,
-      }
+      };
 
       // Transform the filter items in an object that can be used by the parent component to call the
       // serve with the updated filters
@@ -79,46 +79,46 @@ export const ProjectListFilters = props => {
           case "name":
             // There will (or should) be only one filter item with field "name"
             // so we can set up it directly
-            filters.name = filterItem.value
-            break
+            filters.name = filterItem.value;
+            break;
           case "category":
-            filters.category.push(filterItem.value)
-            break
+            filters.category.push(filterItem.value);
+            break;
           case "status":
-            filters.status.push(filterItem.value)
-            break
+            filters.status.push(filterItem.value);
+            break;
           case "inStock":
             // The value can be "available" or "outOfStock" and we transform it to a boolean
-            filters.inStock = filterItem.value === "available"
-            break
+            filters.inStock = filterItem.value === "available";
+            break;
           default:
-            break
+            break;
         }
-      })
+      });
 
-      onChange?.(filters)
+      onChange?.(filters);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [filterItems],
-  )
+  );
 
   const handleDelete = filterItem => {
     setFilterItems(prevState =>
       prevState.filter(_filterItem => {
-        return !(filterItem.field === _filterItem.field && filterItem.value === _filterItem.value)
+        return !(filterItem.field === _filterItem.field && filterItem.value === _filterItem.value);
       }),
-    )
-  }
+    );
+  };
 
   const handleQueryChange = event => {
-    setQueryValue(event.target.value)
-  }
+    setQueryValue(event.target.value);
+  };
 
   const handleQueryKeyup = event => {
     if (event.code === "Enter" && queryValue) {
       // We only allow one chip for the name field
 
-      const filterItem = filterItems.find(filterItem => filterItem.field === "name")
+      const filterItem = filterItems.find(filterItem => filterItem.field === "name");
 
       if (filterItem) {
         setFilterItems(prevState =>
@@ -127,12 +127,12 @@ export const ProjectListFilters = props => {
               return {
                 ...filterItem,
                 value: queryValue,
-              }
+              };
             }
 
-            return filterItem
+            return filterItem;
           }),
-        )
+        );
       } else {
         setFilterItems(prevState => [
           ...prevState,
@@ -141,94 +141,94 @@ export const ProjectListFilters = props => {
             field: "name",
             value: queryValue,
           },
-        ])
+        ]);
       }
 
-      setQueryValue("")
+      setQueryValue("");
     }
-  }
+  };
 
   const handleCategoryChange = values => {
     setFilterItems(prevState => {
-      const valuesFound = []
+      const valuesFound = [];
 
       // First cleanup the previous filter items
       const newFilterItems = prevState.filter(filterItem => {
         if (filterItem.field !== "category") {
-          return true
+          return true;
         }
 
-        const found = values.includes(filterItem.value)
+        const found = values.includes(filterItem.value);
 
         if (found) {
-          valuesFound.push(filterItem.value)
+          valuesFound.push(filterItem.value);
         }
 
-        return found
-      })
+        return found;
+      });
 
       // Nothing changed
       if (values.length === valuesFound.length) {
-        return newFilterItems
+        return newFilterItems;
       }
 
       values.forEach(value => {
         if (!valuesFound.includes(value)) {
-          const option = categoryOptions.find(option => option.value === value)
+          const option = categoryOptions.find(option => option.value === value);
 
           newFilterItems.push({
             label: "Category",
             field: "category",
             value,
             displayValue: option.label,
-          })
+          });
         }
-      })
+      });
 
-      return newFilterItems
-    })
-  }
+      return newFilterItems;
+    });
+  };
 
   const handleStatusChange = values => {
     setFilterItems(prevState => {
-      const valuesFound = []
+      const valuesFound = [];
 
       // First cleanup the previous filter items
       const newFilterItems = prevState.filter(filterItem => {
         if (filterItem.field !== "status") {
-          return true
+          return true;
         }
 
-        const found = values.includes(filterItem.value)
+        const found = values.includes(filterItem.value);
 
         if (found) {
-          valuesFound.push(filterItem.value)
+          valuesFound.push(filterItem.value);
         }
 
-        return found
-      })
+        return found;
+      });
 
       // Nothing changed
       if (values.length === valuesFound.length) {
-        return newFilterItems
+        return newFilterItems;
       }
 
       values.forEach(value => {
         if (!valuesFound.includes(value)) {
-          const option = statusOptions.find(option => option.value === value)
+          const option = statusOptions.find(option => option.value === value);
 
           newFilterItems.push({
             label: "Status",
             field: "status",
             value,
             displayValue: option.label,
-          })
+          });
         }
-      })
+      });
 
-      return newFilterItems
-    })
-  }
+      return newFilterItems;
+    });
+  };
 
   const handleStockChange = values => {
     // Stock can only have one value, even if displayed as multi-select, so we select the first one.
@@ -237,8 +237,8 @@ export const ProjectListFilters = props => {
 
     setFilterItems(prevState => {
       // First cleanup the previous filter items
-      const newFilterItems = prevState.filter(filterItem => filterItem.field !== "inStock")
-      const latestValue = values[values.length - 1]
+      const newFilterItems = prevState.filter(filterItem => filterItem.field !== "inStock");
+      const latestValue = values[values.length - 1];
 
       switch (latestValue) {
         case "available":
@@ -247,40 +247,48 @@ export const ProjectListFilters = props => {
             field: "inStock",
             value: "available",
             displayValue: "Available",
-          })
-          break
+          });
+          break;
         case "outOfStock":
           newFilterItems.push({
             label: "Stock",
             field: "inStock",
             value: "outOfStock",
             displayValue: "Out of Stock",
-          })
-          break
+          });
+          break;
         default:
           // Should be "all", so we do not add this filter
-          break
+          break;
       }
 
-      return newFilterItems
-    })
-  }
+      return newFilterItems;
+    });
+  };
 
   // We memoize this part to prevent re-render issues
-  const categoryValues = useMemo(() => filterItems.filter(filterItems => filterItems.field === "category").map(filterItems => filterItems.value), [filterItems])
+  const categoryValues = useMemo(
+    () => filterItems.filter(filterItems => filterItems.field === "category").map(filterItems => filterItems.value),
+    [filterItems],
+  );
 
-  const statusValues = useMemo(() => filterItems.filter(filterItems => filterItems.field === "status").map(filterItems => filterItems.value), [filterItems])
+  const statusValues = useMemo(
+    () => filterItems.filter(filterItems => filterItems.field === "status").map(filterItems => filterItems.value),
+    [filterItems],
+  );
 
   const stockValues = useMemo(() => {
-    const values = filterItems.filter(filterItems => filterItems.field === "inStock").map(filterItems => filterItems.value)
+    const values = filterItems
+      .filter(filterItems => filterItems.field === "inStock")
+      .map(filterItems => filterItems.value);
 
     // Since we do not display the "all" as chip, we add it to the multi-select as a selected value
     if (values.length === 0) {
-      values.unshift("all")
+      values.unshift("all");
     }
 
-    return values
-  }, [filterItems])
+    return values;
+  }, [filterItems]);
 
   return (
     <div {...other}>
@@ -298,7 +306,14 @@ export const ProjectListFilters = props => {
             ml: 3,
           }}
         >
-          <Input disableUnderline fullWidth onChange={handleQueryChange} onKeyUp={handleQueryKeyup} placeholder="Search by product name" value={queryValue} />
+          <Input
+            disableUnderline
+            fullWidth
+            onChange={handleQueryChange}
+            onKeyUp={handleQueryKeyup}
+            placeholder="Search by product name"
+            value={queryValue}
+          />
         </Box>
       </Box>
       <Divider />
@@ -349,14 +364,19 @@ export const ProjectListFilters = props => {
           p: 1,
         }}
       >
-        <MultiSelect label="Category" onChange={handleCategoryChange} options={categoryOptions} value={categoryValues} />
+        <MultiSelect
+          label="Category"
+          onChange={handleCategoryChange}
+          options={categoryOptions}
+          value={categoryValues}
+        />
         <MultiSelect label="Status" onChange={handleStatusChange} options={statusOptions} value={statusValues} />
         <MultiSelect label="Stock" onChange={handleStockChange} options={stockOptions} value={stockValues} />
       </Box>
     </div>
-  )
-}
+  );
+};
 
 ProjectListFilters.propTypes = {
   onChange: PropTypes.func,
-}
+};

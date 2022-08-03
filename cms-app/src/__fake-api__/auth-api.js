@@ -1,17 +1,17 @@
-import { createResourceId } from "../utils/create-resource-id";
-import { decode, JWT_EXPIRES_IN, JWT_SECRET, sign } from "../utils/jwt";
-import { wait } from "../utils/wait";
+import { createResourceId } from '../utils/create-resource-id';
+import { decode, JWT_EXPIRES_IN, JWT_SECRET, sign } from '../utils/jwt';
+import { wait } from '../utils/wait';
 
-import jwt_decode from "jwt-decode";
+import jwt_decode from 'jwt-decode';
 
 const users = [
   {
-    id: "5e86809283e28b96d2d38537",
-    avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
-    email: "demo@devias.io",
-    name: "Anika Visser",
-    password: "Password123!",
-    plan: "Premium",
+    id: '5e86809283e28b96d2d38537',
+    avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+    email: 'demo@devias.io',
+    name: 'Anika Visser',
+    password: 'Password123!',
+    plan: 'Premium',
   },
 ];
 
@@ -22,10 +22,10 @@ class AuthApi {
     return new Promise((resolve, reject) => {
       try {
         // Find the user
-        const user = users.find((_user) => _user.email === email);
+        const user = users.find(_user => _user.email === email);
 
         if (!user || user.password !== password) {
-          reject(new Error("Please check your email and password"));
+          reject(new Error('Please check your email and password'));
           return;
         }
 
@@ -36,8 +36,8 @@ class AuthApi {
 
         resolve(accessToken);
       } catch (err) {
-        console.error("[Auth Api]: ", err);
-        reject(new Error("Internal server error"));
+        console.error('[Auth Api]: ', err);
+        reject(new Error('Internal server error'));
       }
     });
   }
@@ -48,10 +48,10 @@ class AuthApi {
     return new Promise((resolve, reject) => {
       try {
         // Check if a user already exists
-        let user = users.find((_user) => _user.email === email);
+        let user = users.find(_user => _user.email === email);
 
         if (user) {
-          reject(new Error("User already exists"));
+          reject(new Error('User already exists'));
           return;
         }
 
@@ -61,7 +61,7 @@ class AuthApi {
           email,
           name,
           password,
-          plan: "Standard",
+          plan: 'Standard',
         };
 
         users.push(user);
@@ -72,8 +72,8 @@ class AuthApi {
 
         resolve(accessToken);
       } catch (err) {
-        console.error("[Auth Api]: ", err);
-        reject(new Error("Internal server error"));
+        console.error('[Auth Api]: ', err);
+        reject(new Error('Internal server error'));
       }
     });
   }
@@ -90,10 +90,10 @@ class AuthApi {
         console.log(jwt_decoded);
 
         // Find the user
-        const user = users.find((_user) => _user.id === userId);
+        const user = users.find(_user => _user.id === userId);
 
         if (!user) {
-          reject(new Error("Invalid authorization token"));
+          reject(new Error('Invalid authorization token'));
           return;
         }
 
@@ -105,8 +105,8 @@ class AuthApi {
           plan: user.plan,
         });
       } catch (err) {
-        console.error("[Auth Api]: ", err);
-        reject(new Error("Internal server error"));
+        console.error('[Auth Api]: ', err);
+        reject(new Error('Internal server error'));
       }
     });
   }

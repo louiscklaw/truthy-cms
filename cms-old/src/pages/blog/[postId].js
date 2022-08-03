@@ -1,17 +1,17 @@
-import { useCallback, useEffect, useState } from "react"
-import Head from "next/head"
-import NextLink from "next/link"
-import { format, subHours } from "date-fns"
-import Markdown from "react-markdown"
-import { Avatar, Box, Button, Card, Chip, Container, Divider, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { blogApi } from "../../__fake-api__/blog-api"
-import { BlogNewsletter } from "../../components/blog/blog-newsletter"
-import { BlogComment } from "../../components/blog/blog-comment"
-import { BlogCommentAdd } from "../../components/blog/blog-comment-add"
-import { ArrowLeft as ArrowLeftIcon } from "../../icons/arrow-left"
-import { useMounted } from "../../hooks/use-mounted"
-import { gtm } from "../../lib/gtm"
+import { useCallback, useEffect, useState } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import { format, subHours } from "date-fns";
+import Markdown from "react-markdown";
+import { Avatar, Box, Button, Card, Chip, Container, Divider, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { blogApi } from "../../__fake-api__/blog-api";
+import { BlogNewsletter } from "../../components/blog/blog-newsletter";
+import { BlogComment } from "../../components/blog/blog-comment";
+import { BlogCommentAdd } from "../../components/blog/blog-comment-add";
+import { ArrowLeft as ArrowLeftIcon } from "../../icons/arrow-left";
+import { useMounted } from "../../hooks/use-mounted";
+import { gtm } from "../../lib/gtm";
 
 const comments = [
   {
@@ -19,7 +19,8 @@ const comments = [
     authorAvatar: "/static/mock-images/avatars/avatar-alcides_antonio.png",
     authorName: "Alcides Antonio",
     authorRole: "Product Designer",
-    content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    content:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     createdAt: subHours(new Date(), 2).getTime(),
     isLiked: true,
     likes: 12,
@@ -34,7 +35,7 @@ const comments = [
     isLiked: false,
     likes: 8,
   },
-]
+];
 
 const MarkdownWrapper = styled("div")(({ theme }) => ({
   color: theme.palette.text.primary,
@@ -61,34 +62,34 @@ const MarkdownWrapper = styled("div")(({ theme }) => ({
     lineHeight: theme.typography.body1.lineHeight,
     marginBottom: theme.spacing(1),
   },
-}))
+}));
 
 const BlogPostDetails = () => {
-  const isMounted = useMounted()
-  const [post, setPost] = useState(null)
+  const isMounted = useMounted();
+  const [post, setPost] = useState(null);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const getPost = useCallback(async () => {
     try {
-      const data = await blogApi.getPost()
+      const data = await blogApi.getPost();
 
       if (isMounted()) {
-        setPost(data)
+        setPost(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(() => {
-    getPost()
-  }, [getPost])
+    getPost();
+  }, [getPost]);
 
   if (!post) {
-    return null
+    return null;
   }
 
   return (
@@ -181,7 +182,7 @@ const BlogPostDetails = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default BlogPostDetails
+export default BlogPostDetails;

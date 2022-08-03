@@ -1,25 +1,25 @@
-import "@fullcalendar/common/main.css"
-import "@fullcalendar/daygrid/main.css"
-import "@fullcalendar/timegrid/main.css"
-import "@fullcalendar/list/main.css"
-import "@fullcalendar/timeline/main.css"
-import { useState, useRef, useEffect, useCallback } from "react"
-import Head from "next/head"
-import FullCalendar from "@fullcalendar/react"
-import dayGridPlugin from "@fullcalendar/daygrid"
-import interactionPlugin from "@fullcalendar/interaction"
-import listPlugin from "@fullcalendar/list"
-import timeGridPlugin from "@fullcalendar/timegrid"
-import timelinePlugin from "@fullcalendar/timeline"
-import { Box, useMediaQuery } from "@mui/material"
-import { alpha, styled } from "@mui/material/styles"
-import { AuthGuard } from "../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../components/dashboard/dashboard-layout"
-import { CalendarEventDialog } from "../../components/dashboard/calendar/calendar-event-dialog"
-import { CalendarToolbar } from "../../components/dashboard/calendar/calendar-toolbar"
-import { gtm } from "../../lib/gtm"
-import { getEvents, updateEvent } from "../../slices/calendar"
-import { useDispatch, useSelector } from "../../store"
+import "@fullcalendar/common/main.css";
+import "@fullcalendar/daygrid/main.css";
+import "@fullcalendar/timegrid/main.css";
+import "@fullcalendar/list/main.css";
+import "@fullcalendar/timeline/main.css";
+import { useState, useRef, useEffect, useCallback } from "react";
+import Head from "next/head";
+import FullCalendar from "@fullcalendar/react";
+import dayGridPlugin from "@fullcalendar/daygrid";
+import interactionPlugin from "@fullcalendar/interaction";
+import listPlugin from "@fullcalendar/list";
+import timeGridPlugin from "@fullcalendar/timegrid";
+import timelinePlugin from "@fullcalendar/timeline";
+import { Box, useMediaQuery } from "@mui/material";
+import { alpha, styled } from "@mui/material/styles";
+import { AuthGuard } from "../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../components/dashboard/dashboard-layout";
+import { CalendarEventDialog } from "../../components/dashboard/calendar/calendar-event-dialog";
+import { CalendarToolbar } from "../../components/dashboard/calendar/calendar-toolbar";
+import { gtm } from "../../lib/gtm";
+import { getEvents, updateEvent } from "../../slices/calendar";
+import { useDispatch, useSelector } from "../../store";
 
 const FullCalendarWrapper = styled("div")(({ theme }) => ({
   marginTop: theme.spacing(3),
@@ -65,110 +65,110 @@ const FullCalendarWrapper = styled("div")(({ theme }) => ({
   "& .fc-daygrid-day-frame": {
     padding: "12px",
   },
-}))
+}));
 
 const Calendar = () => {
-  const dispatch = useDispatch()
-  const calendarRef = useRef(null)
-  const smDown = useMediaQuery(theme => theme.breakpoints.down("sm"))
-  const { events } = useSelector(state => state.calendar)
-  const [date, setDate] = useState(new Date())
-  const [view, setView] = useState(smDown ? "timeGridDay" : "dayGridMonth")
+  const dispatch = useDispatch();
+  const calendarRef = useRef(null);
+  const smDown = useMediaQuery(theme => theme.breakpoints.down("sm"));
+  const { events } = useSelector(state => state.calendar);
+  const [date, setDate] = useState(new Date());
+  const [view, setView] = useState(smDown ? "timeGridDay" : "dayGridMonth");
   const [dialog, setDialog] = useState({
     isOpen: false,
     eventId: undefined,
     range: undefined,
-  })
+  });
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   useEffect(
     () => {
-      dispatch(getEvents())
+      dispatch(getEvents());
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   const handleResize = useCallback(() => {
-    const calendarEl = calendarRef.current
+    const calendarEl = calendarRef.current;
 
     if (calendarEl) {
-      const calendarApi = calendarEl.getApi()
-      const newView = smDown ? "timeGridDay" : "dayGridMonth"
+      const calendarApi = calendarEl.getApi();
+      const newView = smDown ? "timeGridDay" : "dayGridMonth";
 
-      calendarApi.changeView(newView)
-      setView(newView)
+      calendarApi.changeView(newView);
+      setView(newView);
     }
-  }, [calendarRef, smDown])
+  }, [calendarRef, smDown]);
 
   useEffect(
     () => {
-      handleResize()
+      handleResize();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [smDown],
-  )
+  );
 
   const handleDateToday = () => {
-    const calendarEl = calendarRef.current
+    const calendarEl = calendarRef.current;
 
     if (calendarEl) {
-      const calendarApi = calendarEl.getApi()
+      const calendarApi = calendarEl.getApi();
 
-      calendarApi.today()
-      setDate(calendarApi.getDate())
+      calendarApi.today();
+      setDate(calendarApi.getDate());
     }
-  }
+  };
 
   const handleViewChange = newView => {
-    const calendarEl = calendarRef.current
+    const calendarEl = calendarRef.current;
 
     if (calendarEl) {
-      const calendarApi = calendarEl.getApi()
+      const calendarApi = calendarEl.getApi();
 
-      calendarApi.changeView(newView)
-      setView(newView)
+      calendarApi.changeView(newView);
+      setView(newView);
     }
-  }
+  };
 
   const handleDatePrev = () => {
-    const calendarEl = calendarRef.current
+    const calendarEl = calendarRef.current;
 
     if (calendarEl) {
-      const calendarApi = calendarEl.getApi()
+      const calendarApi = calendarEl.getApi();
 
-      calendarApi.prev()
-      setDate(calendarApi.getDate())
+      calendarApi.prev();
+      setDate(calendarApi.getDate());
     }
-  }
+  };
 
   const handleDateNext = () => {
-    const calendarEl = calendarRef.current
+    const calendarEl = calendarRef.current;
 
     if (calendarEl) {
-      const calendarApi = calendarEl.getApi()
+      const calendarApi = calendarEl.getApi();
 
-      calendarApi.next()
-      setDate(calendarApi.getDate())
+      calendarApi.next();
+      setDate(calendarApi.getDate());
     }
-  }
+  };
 
   const handleAddClick = () => {
     setDialog({
       isOpen: true,
-    })
-  }
+    });
+  };
 
   const handleRangeSelect = arg => {
-    const calendarEl = calendarRef.current
+    const calendarEl = calendarRef.current;
 
     if (calendarEl) {
-      const calendarApi = calendarEl.getApi()
+      const calendarApi = calendarEl.getApi();
 
-      calendarApi.unselect()
+      calendarApi.unselect();
     }
 
     setDialog({
@@ -177,18 +177,18 @@ const Calendar = () => {
         start: arg.start.getTime(),
         end: arg.end.getTime(),
       },
-    })
-  }
+    });
+  };
 
   const handleEventSelect = arg => {
     setDialog({
       isOpen: true,
       eventId: arg.event.id,
-    })
-  }
+    });
+  };
 
   const handleEventResize = async arg => {
-    const { event } = arg
+    const { event } = arg;
 
     try {
       await dispatch(
@@ -197,14 +197,14 @@ const Calendar = () => {
           start: event.start?.getTime(),
           end: event.end?.getTime(),
         }),
-      )
+      );
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   const handleEventDrop = async arg => {
-    const { event } = arg
+    const { event } = arg;
 
     try {
       await dispatch(
@@ -213,19 +213,19 @@ const Calendar = () => {
           start: event.start?.getTime(),
           end: event.end?.getTime(),
         }),
-      )
+      );
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   const handleCloseDialog = () => {
     setDialog({
       isOpen: false,
-    })
-  }
+    });
+  };
 
-  const selectedEvent = dialog.eventId && events.find(event => event.id === dialog.eventId)
+  const selectedEvent = dialog.eventId && events.find(event => event.id === dialog.eventId);
 
   return (
     <>
@@ -285,13 +285,13 @@ const Calendar = () => {
         range={dialog.range}
       />
     </>
-  )
-}
+  );
+};
 
 Calendar.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default Calendar
+export default Calendar;

@@ -1,4 +1,4 @@
-import { createSvgIcon } from "@mui/material/utils"
+import { createSvgIcon } from "@mui/material/utils";
 
 export const ChartPie = createSvgIcon(
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -6,4 +6,4 @@ export const ChartPie = createSvgIcon(
     <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z" />
   </svg>,
   "ChartPie",
-)
+);

@@ -1,10 +1,10 @@
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import numeral from "numeral"
-import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/renderer"
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import numeral from "numeral";
+import { Document, Page, View, Text, Image, StyleSheet } from "@react-pdf/renderer";
 
-const COL1_WIDTH = 60
-const COLN_WIDTH = (100 - COL1_WIDTH) / 2
+const COL1_WIDTH = 60;
+const COLN_WIDTH = (100 - COL1_WIDTH) / 2;
 
 const styles = StyleSheet.create({
   page: {
@@ -83,10 +83,10 @@ const styles = StyleSheet.create({
   alignRight: {
     textAlign: "right",
   },
-})
+});
 
 export const InvoicePDF = props => {
-  const { invoice } = props
+  const { invoice } = props;
 
   return (
     <Document>
@@ -158,7 +158,9 @@ export const InvoicePDF = props => {
                   </View>
                   <View style={styles.tableCellN} />
                   <View style={styles.tableCellN}>
-                    <Text style={[styles.body2, styles.alignRight]}>{numeral(item.unitAmount).format(`${item.currency}0,0.00`)}</Text>
+                    <Text style={[styles.body2, styles.alignRight]}>
+                      {numeral(item.unitAmount).format(`${item.currency}0,0.00`)}
+                    </Text>
                   </View>
                 </View>
               ))}
@@ -168,7 +170,9 @@ export const InvoicePDF = props => {
                   <Text style={styles.body2}>Subtotal</Text>
                 </View>
                 <View style={styles.tableCellN}>
-                  <Text style={[styles.body2, styles.alignRight]}>{numeral(invoice.subtotalAmount).format(`${invoice.currency}0,0.00`)}</Text>
+                  <Text style={[styles.body2, styles.alignRight]}>
+                    {numeral(invoice.subtotalAmount).format(`${invoice.currency}0,0.00`)}
+                  </Text>
                 </View>
               </View>
               <View style={styles.tableRow}>
@@ -177,7 +181,9 @@ export const InvoicePDF = props => {
                   <Text style={styles.body2}>Taxes</Text>
                 </View>
                 <View style={styles.tableCellN}>
-                  <Text style={[styles.body2, styles.alignRight]}>{numeral(invoice.taxAmount).format(`${invoice.currency}0,0.00`)}</Text>
+                  <Text style={[styles.body2, styles.alignRight]}>
+                    {numeral(invoice.taxAmount).format(`${invoice.currency}0,0.00`)}
+                  </Text>
                 </View>
               </View>
               <View style={styles.tableRow}>
@@ -186,7 +192,9 @@ export const InvoicePDF = props => {
                   <Text style={styles.body2}>Total</Text>
                 </View>
                 <View style={styles.tableCellN}>
-                  <Text style={[styles.body2, styles.alignRight]}>{numeral(invoice.totalAmount).format(`${invoice.currency}0,0.00`)}</Text>
+                  <Text style={[styles.body2, styles.alignRight]}>
+                    {numeral(invoice.totalAmount).format(`${invoice.currency}0,0.00`)}
+                  </Text>
                 </View>
               </View>
             </View>
@@ -195,14 +203,15 @@ export const InvoicePDF = props => {
         <View style={styles.notes}>
           <Text style={[styles.h6, styles.gutterBottom]}>Notes</Text>
           <Text style={styles.body2}>
-            Please make sure you have the right bank registration number as I had issues before and make sure you guys cover transfer expenses.
+            Please make sure you have the right bank registration number as I had issues before and make sure you guys
+            cover transfer expenses.
           </Text>
         </View>
       </Page>
     </Document>
-  )
-}
+  );
+};
 
 InvoicePDF.propTypes = {
   invoice: PropTypes.object.isRequired,
-}
+};

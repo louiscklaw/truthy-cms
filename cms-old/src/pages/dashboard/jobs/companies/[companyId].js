@@ -1,20 +1,33 @@
-import { useCallback, useEffect, useState } from "react"
-import Head from "next/head"
-import NextLink from "next/link"
-import { Avatar, Box, Card, CardContent, CardHeader, Container, Divider, Grid, Link, Tab, Tabs, Typography } from "@mui/material"
-import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import { jobApi } from "../../../../__fake-api__/job-api"
-import { AuthGuard } from "../../../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../../../components/dashboard/dashboard-layout"
-import { CompanyOverview } from "../../../../components/dashboard/jobs/company-overview"
-import { CompanyReviews } from "../../../../components/dashboard/jobs/company-reviews"
-import { CompanySummary } from "../../../../components/dashboard/jobs/company-summary"
-import { CompanyActivity } from "../../../../components/dashboard/jobs/company-activity"
-import { CompanyTeam } from "../../../../components/dashboard/jobs/company-team"
-import { CompanyAssets } from "../../../../components/dashboard/jobs/company-assets"
-import { useMounted } from "../../../../hooks/use-mounted"
-import { gtm } from "../../../../lib/gtm"
-import { getInitials } from "../../../../utils/get-initials"
+import { useCallback, useEffect, useState } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import {
+  Avatar,
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Divider,
+  Grid,
+  Link,
+  Tab,
+  Tabs,
+  Typography,
+} from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { jobApi } from "../../../../__fake-api__/job-api";
+import { AuthGuard } from "../../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../../components/dashboard/dashboard-layout";
+import { CompanyOverview } from "../../../../components/dashboard/jobs/company-overview";
+import { CompanyReviews } from "../../../../components/dashboard/jobs/company-reviews";
+import { CompanySummary } from "../../../../components/dashboard/jobs/company-summary";
+import { CompanyActivity } from "../../../../components/dashboard/jobs/company-activity";
+import { CompanyTeam } from "../../../../components/dashboard/jobs/company-team";
+import { CompanyAssets } from "../../../../components/dashboard/jobs/company-assets";
+import { useMounted } from "../../../../hooks/use-mounted";
+import { gtm } from "../../../../lib/gtm";
+import { getInitials } from "../../../../utils/get-initials";
 
 const tabs = [
   { label: "Overview", value: "overview" },
@@ -22,43 +35,43 @@ const tabs = [
   { label: "Activity", value: "activity" },
   { label: "Team", value: "team" },
   { label: "Assets", value: "assets" },
-]
+];
 
 const CompanyDetails = () => {
-  const isMounted = useMounted()
-  const [company, setCompany] = useState(null)
-  const [currentTab, setCurrentTab] = useState("overview")
+  const isMounted = useMounted();
+  const [company, setCompany] = useState(null);
+  const [currentTab, setCurrentTab] = useState("overview");
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const getCompany = useCallback(async () => {
     try {
-      const data = await jobApi.getCompany()
+      const data = await jobApi.getCompany();
 
       if (isMounted()) {
-        setCompany(data)
+        setCompany(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(
     () => {
-      getCompany()
+      getCompany();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   const handleTabsChange = (event, value) => {
-    setCurrentTab(value)
-  }
+    setCurrentTab(value);
+  };
 
   if (!company) {
-    return null
+    return null;
   }
 
   return (
@@ -131,7 +144,9 @@ const CompanyDetails = () => {
                 <Divider />
                 <CardContent>
                   {currentTab === "overview" && <CompanyOverview company={company} />}
-                  {currentTab === "reviews" && <CompanyReviews reviews={company.reviews || []} averageRating={company.averageRating} />}
+                  {currentTab === "reviews" && (
+                    <CompanyReviews reviews={company.reviews || []} averageRating={company.averageRating} />
+                  )}
                   {currentTab === "activity" && <CompanyActivity activities={company.activities || []} />}
                   {currentTab === "team" && <CompanyTeam members={company.members || []} />}
                   {currentTab === "assets" && <CompanyAssets assets={company.assets || []} />}
@@ -145,13 +160,13 @@ const CompanyDetails = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 CompanyDetails.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default CompanyDetails
+export default CompanyDetails;

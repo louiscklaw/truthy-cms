@@ -1,26 +1,15 @@
-import propTypes from "prop-types";
-import { Box, Button, Divider, Typography } from "@mui/material";
-import { Check as CheckIcon } from "../../icons/check";
+import propTypes from 'prop-types';
+import { Box, Button, Divider, Typography } from '@mui/material';
+import { Check as CheckIcon } from '../../icons/check';
 
-export const PricingPlan = (props) => {
-  const {
-    cta,
-    currency,
-    description,
-    features,
-    image,
-    name,
-    popular,
-    price,
-    sx,
-    ...other
-  } = props;
+export const PricingPlan = props => {
+  const { cta, currency, description, features, image, name, popular, price, sx, ...other } = props;
 
   return (
     <Box
       sx={{
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
         ...sx,
       }}
       {...other}
@@ -30,15 +19,15 @@ export const PricingPlan = (props) => {
           sx={{
             height: 52,
             width: 52,
-            "& img": {
-              height: "auto",
-              width: "100%",
+            '& img': {
+              height: 'auto',
+              width: '100%',
             },
           }}
         >
           <img alt="" src={image} />
         </Box>
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: 'flex' }}>
           <Typography variant="h4">
             {currency}
             {price}
@@ -46,7 +35,7 @@ export const PricingPlan = (props) => {
           <Typography
             color="textSecondary"
             sx={{
-              alignSelf: "flex-end",
+              alignSelf: 'flex-end',
               ml: 1,
             }}
             variant="subtitle2"
@@ -64,24 +53,24 @@ export const PricingPlan = (props) => {
       <Divider />
       <Box
         sx={{
-          display: "flex",
-          flexDirection: "column",
+          display: 'flex',
+          flexDirection: 'column',
           flexGrow: 1,
           p: 3,
         }}
       >
-        {features.map((feature) => (
+        {features.map(feature => (
           <Box
             key={feature}
             sx={{
-              alignItems: "center",
-              display: "flex",
-              "& + &": {
+              alignItems: 'center',
+              display: 'flex',
+              '& + &': {
                 mt: 2,
               },
             }}
           >
-            <CheckIcon fontSize="small" sx={{ color: "text.primary" }} />
+            <CheckIcon fontSize="small" sx={{ color: 'text.primary' }} />
             <Typography
               sx={{
                 fontWeight: 500,
@@ -96,12 +85,12 @@ export const PricingPlan = (props) => {
         <Box sx={{ flexGrow: 1 }} />
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "center",
+            display: 'flex',
+            justifyContent: 'center',
             mt: 6,
           }}
         >
-          <Button fullWidth variant={popular ? "contained" : "outlined"}>
+          <Button fullWidth variant={popular ? 'contained' : 'outlined'}>
             {cta}
           </Button>
         </Box>

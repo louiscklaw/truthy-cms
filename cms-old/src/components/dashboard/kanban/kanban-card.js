@@ -1,35 +1,35 @@
-import { forwardRef, useState } from "react"
-import PropTypes from "prop-types"
-import { Avatar, AvatarGroup, Box, Card, CardMedia, Chip, Typography } from "@mui/material"
-import { Check as CheckIcon } from "../../../icons/check"
-import { ChatAlt as ChatAltIcon } from "../../../icons/chat-alt"
-import { DocumentText as DocumentTextIcon } from "../../../icons/document-text"
-import { Eye as EyeIcon } from "../../../icons/eye"
-import { useSelector } from "../../../store"
-import { KanbanCardModal } from "./kanban-card-modal"
+import { forwardRef, useState } from "react";
+import PropTypes from "prop-types";
+import { Avatar, AvatarGroup, Box, Card, CardMedia, Chip, Typography } from "@mui/material";
+import { Check as CheckIcon } from "../../../icons/check";
+import { ChatAlt as ChatAltIcon } from "../../../icons/chat-alt";
+import { DocumentText as DocumentTextIcon } from "../../../icons/document-text";
+import { Eye as EyeIcon } from "../../../icons/eye";
+import { useSelector } from "../../../store";
+import { KanbanCardModal } from "./kanban-card-modal";
 
 const cardSelector = (state, cardId) => {
-  const { cards, members } = state.kanban
-  const card = cards.byId[cardId]
+  const { cards, members } = state.kanban;
+  const card = cards.byId[cardId];
 
   return {
     ...card,
     members: card.memberIds.map(memberId => members.byId[memberId]),
-  }
-}
+  };
+};
 
 export const KanbanCard = forwardRef((props, ref) => {
-  const { cardId, dragging, column, ...other } = props
-  const card = useSelector(state => cardSelector(state, cardId))
-  const [open, setOpen] = useState(false)
+  const { cardId, dragging, column, ...other } = props;
+  const card = useSelector(state => cardSelector(state, cardId));
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
 
   const handleClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
 
   return (
     <Box
@@ -101,8 +101,8 @@ export const KanbanCard = forwardRef((props, ref) => {
       </Card>
       <KanbanCardModal card={card} column={column} onClose={handleClose} open={open} />
     </Box>
-  )
-})
+  );
+});
 
 KanbanCard.propTypes = {
   cardId: PropTypes.string.isRequired,
@@ -110,8 +110,8 @@ KanbanCard.propTypes = {
   index: PropTypes.number,
   column: PropTypes.object.isRequired,
   style: PropTypes.object,
-}
+};
 
 KanbanCard.defaultProps = {
   dragging: false,
-}
+};

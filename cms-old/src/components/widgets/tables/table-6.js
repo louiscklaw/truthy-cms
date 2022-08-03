@@ -1,5 +1,5 @@
-import { format, subDays, subHours } from "date-fns"
-import numeral from "numeral"
+import { format, subDays, subHours } from "date-fns";
+import numeral from "numeral";
 import {
   Box,
   Card,
@@ -15,14 +15,14 @@ import {
   TableRow,
   TextField,
   Typography,
-} from "@mui/material"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt"
-import { Search as SearchIcon } from "../../../icons/search"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
+import { Search as SearchIcon } from "../../../icons/search";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
-const now = new Date()
+const now = new Date();
 
 const invoices = [
   {
@@ -69,7 +69,7 @@ const invoices = [
     status: "paid",
     totalAmount: 96.64,
   },
-]
+];
 
 const statusOptions = [
   {
@@ -88,7 +88,7 @@ const statusOptions = [
     label: "Canceled",
     value: "canceled",
   },
-]
+];
 
 const sortOptions = [
   {
@@ -99,7 +99,7 @@ const sortOptions = [
     label: "Oldest first",
     value: "createdAt|asc",
   },
-]
+];
 
 const getStatusLabel = invoiceStatus => {
   const map = {
@@ -115,12 +115,12 @@ const getStatusLabel = invoiceStatus => {
       color: "warning",
       text: "Pending",
     },
-  }
+  };
 
-  const { text, color } = map[invoiceStatus]
+  const { text, color } = map[invoiceStatus];
 
-  return <SeverityPill color={color}>{text}</SeverityPill>
-}
+  return <SeverityPill color={color}>{text}</SeverityPill>;
+};
 
 export const Table6 = () => (
   <Box
@@ -246,4 +246,4 @@ export const Table6 = () => (
       />
     </Card>
   </Box>
-)
+);

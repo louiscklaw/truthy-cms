@@ -1,8 +1,8 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import { Box, Button, Card, Radio, Typography } from "@mui/material"
-import { alpha } from "@mui/material/styles"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Button, Card, Radio, Typography } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
 
 const typeOptions = [
   {
@@ -20,15 +20,15 @@ const typeOptions = [
     title: "Employees",
     value: "employees",
   },
-]
+];
 
 export const JobCategoryStep = props => {
-  const { onBack, onNext, ...other } = props
-  const [type, setType] = useState(typeOptions[1].value)
+  const { onBack, onNext, ...other } = props;
+  const [type, setType] = useState(typeOptions[1].value);
 
   const handleChange = newType => {
-    setType(newType)
-  }
+    setType(newType);
+  };
 
   return (
     <div {...other}>
@@ -68,10 +68,10 @@ export const JobCategoryStep = props => {
         Continue
       </Button>
     </div>
-  )
-}
+  );
+};
 
 JobCategoryStep.propTypes = {
   onBack: PropTypes.func,
   onNext: PropTypes.func,
-}
+};

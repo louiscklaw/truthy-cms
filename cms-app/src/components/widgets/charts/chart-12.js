@@ -1,8 +1,8 @@
-import { format } from "date-fns";
-import { Box, Card, CardHeader, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { Chart } from "../../chart";
-import { Scrollbar } from "../../scrollbar";
+import { format } from 'date-fns';
+import { Box, Card, CardHeader, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Chart } from '../../chart';
+import { Scrollbar } from '../../scrollbar';
 
 const data = {
   series: [
@@ -16,15 +16,7 @@ const data = {
       data: [12, 24, 36, 48, 60, 72, 84],
     },
   ],
-  categories: [
-    "Capital One",
-    "Ally Bank",
-    "ING",
-    "Ridgewood",
-    "BT Transilvania",
-    "CEC",
-    "CBC",
-  ],
+  categories: ['Capital One', 'Ally Bank', 'ING', 'Ridgewood', 'BT Transilvania', 'CEC', 'CBC'],
 };
 
 export const Chart12 = () => {
@@ -32,13 +24,13 @@ export const Chart12 = () => {
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       stacked: true,
       toolbar: {
         show: false,
       },
     },
-    colors: ["#3C4693", "#5664D2", "#7783DB"],
+    colors: ['#3C4693', '#5664D2', '#7783DB'],
     dataLabels: {
       enabled: false,
     },
@@ -61,12 +53,12 @@ export const Chart12 = () => {
     states: {
       active: {
         filter: {
-          type: "none",
+          type: 'none',
         },
       },
       hover: {
         filter: {
-          type: "none",
+          type: 'none',
         },
       },
     },
@@ -74,7 +66,7 @@ export const Chart12 = () => {
       show: false,
     },
     stroke: {
-      colors: ["transparent"],
+      colors: ['transparent'],
       show: true,
       width: 2,
     },
@@ -110,7 +102,7 @@ export const Chart12 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "background.default",
+        backgroundColor: 'background.default',
         p: 3,
       }}
     >
@@ -118,7 +110,7 @@ export const Chart12 = () => {
         <CardHeader
           subheader={
             <Typography color="textSecondary" variant="body2">
-              {format(new Date(), "MMM yyyy")}
+              {format(new Date(), 'MMM yyyy')}
             </Typography>
           }
           title="Total Transactions"
@@ -131,12 +123,7 @@ export const Chart12 = () => {
               px: 2,
             }}
           >
-            <Chart
-              height={300}
-              options={chartOptions}
-              series={chartSeries}
-              type="bar"
-            />
+            <Chart height={300} options={chartOptions} series={chartSeries} type="bar" />
           </Box>
         </Scrollbar>
       </Card>

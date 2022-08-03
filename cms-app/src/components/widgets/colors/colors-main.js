@@ -1,31 +1,24 @@
-import {
-  Box,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Typography,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+import { Box, List, ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 export const ColorsMain = () => {
   const theme = useTheme();
 
   const colors = [
     {
-      name: "Primary",
+      name: 'Primary',
       code: theme.palette.primary.main,
     },
     {
-      name: "Text Primary",
+      name: 'Text Primary',
       code: theme.palette.text.primary,
     },
     {
-      name: "Text Secondary",
+      name: 'Text Secondary',
       code: theme.palette.text.secondary,
     },
     {
-      name: "Divider",
+      name: 'Divider',
       code: theme.palette.divider,
     },
   ];
@@ -33,29 +26,29 @@ export const ColorsMain = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "background.paper",
+        backgroundColor: 'background.paper',
         p: 3,
       }}
     >
       <List
         disablePadding
         sx={{
-          "& li:not(:last-child)": {
-            pb: "33px",
+          '& li:not(:last-child)': {
+            pb: '33px',
             pt: 0,
           },
-          "& li:last-child": {
+          '& li:last-child': {
             py: 0,
           },
         }}
       >
-        {colors.map((color) => (
+        {colors.map(color => (
           <ListItem disableGutters key={color.code}>
             <ListItemAvatar>
               <Box
                 sx={{
                   backgroundColor: color.code,
-                  borderRadius: "10px",
+                  borderRadius: '10px',
                   height: 46,
                   mr: 2,
                   width: 46,
@@ -63,9 +56,7 @@ export const ColorsMain = () => {
               />
             </ListItemAvatar>
             <ListItemText
-              primary={
-                <Typography variant="subtitle2">{color.name}</Typography>
-              }
+              primary={<Typography variant="subtitle2">{color.name}</Typography>}
               secondary={
                 <Typography color="textSecondary" variant="caption">
                   {color.code}

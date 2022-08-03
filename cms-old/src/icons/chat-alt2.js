@@ -1,4 +1,4 @@
-import { createSvgIcon } from "@mui/material/utils"
+import { createSvgIcon } from "@mui/material/utils";
 
 export const ChatAlt2 = createSvgIcon(
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -6,4 +6,4 @@ export const ChatAlt2 = createSvgIcon(
     <path d="M15 7v2a4 4 0 01-4 4H9.828l-1.766 1.767c.28.149.599.233.938.233h2l3 3v-3h2a2 2 0 002-2V9a2 2 0 00-2-2h-1z" />
   </svg>,
   "ChatAlt2",
-)
+);

@@ -1,7 +1,19 @@
-import { Avatar, Box, Card, CardHeader, LinearProgress, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material"
-import { Truck as TruckIcon } from "../../../icons/truck"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+import {
+  Avatar,
+  Box,
+  Card,
+  CardHeader,
+  LinearProgress,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { Truck as TruckIcon } from "../../../icons/truck";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
 const vehicles = [
   {
@@ -38,7 +50,7 @@ const vehicles = [
     temperature: 8,
     temperatureLabel: "Very Good",
   },
-]
+];
 
 export const LogisticsOnRouteVehicles = () => (
   <Card>
@@ -106,4 +118,4 @@ export const LogisticsOnRouteVehicles = () => (
       </Box>
     </Scrollbar>
   </Card>
-)
+);

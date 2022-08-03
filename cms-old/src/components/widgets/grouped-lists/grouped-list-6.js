@@ -1,6 +1,6 @@
-import { format, subDays } from "date-fns"
-import numeral from "numeral"
-import { Box, Card, CardHeader, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material"
+import { format, subDays } from "date-fns";
+import numeral from "numeral";
+import { Box, Card, CardHeader, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material";
 
 const transactions = [
   {
@@ -35,7 +35,7 @@ const transactions = [
     sender: "Devias",
     type: "receive",
   },
-]
+];
 
 export const GroupedList6 = () => (
   <Box
@@ -87,4 +87,4 @@ export const GroupedList6 = () => (
       </Table>
     </Card>
   </Box>
-)
+);

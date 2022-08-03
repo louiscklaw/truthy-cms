@@ -1,19 +1,12 @@
-import {
-  Avatar,
-  Box,
-  Card,
-  Grid,
-  LinearProgress,
-  Typography,
-} from "@mui/material";
-import { CurrencyDollar as CurrencyDollarIcon } from "../../../icons/currency-dollar";
-import { FolderOpen as FolderOpenIcon } from "../../../icons/folder-open";
-import { SeverityPill } from "../../severity-pill";
+import { Avatar, Box, Card, Grid, LinearProgress, Typography } from '@mui/material';
+import { CurrencyDollar as CurrencyDollarIcon } from '../../../icons/currency-dollar';
+import { FolderOpen as FolderOpenIcon } from '../../../icons/folder-open';
+import { SeverityPill } from '../../severity-pill';
 
 export const QuickStats2 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
+      backgroundColor: 'background.default',
       p: 3,
     }}
   >
@@ -21,9 +14,9 @@ export const QuickStats2 = () => (
       <Grid item xs={12} md={6} lg={3}>
         <Card
           sx={{
-            alignItems: "center",
-            display: "flex",
-            justifyContent: "space-between",
+            alignItems: 'center',
+            display: 'flex',
+            justifyContent: 'space-between',
             p: 3,
           }}
         >
@@ -33,9 +26,9 @@ export const QuickStats2 = () => (
             </Typography>
             <Box
               sx={{
-                alignItems: "center",
-                display: "flex",
-                flexWrap: "wrap",
+                alignItems: 'center',
+                display: 'flex',
+                flexWrap: 'wrap',
               }}
             >
               <Typography sx={{ mr: 1 }} variant="h5">
@@ -46,8 +39,8 @@ export const QuickStats2 = () => (
           </Box>
           <Avatar
             sx={{
-              backgroundColor: "primary.main",
-              color: "primary.contrastText",
+              backgroundColor: 'primary.main',
+              color: 'primary.contrastText',
               height: 48,
               width: 48,
             }}
@@ -59,9 +52,9 @@ export const QuickStats2 = () => (
       <Grid item xs={12} md={6} lg={3}>
         <Card
           sx={{
-            alignItems: "center",
-            display: "flex",
-            justifyContent: "space-between",
+            alignItems: 'center',
+            display: 'flex',
+            justifyContent: 'space-between',
             p: 3,
           }}
         >
@@ -71,9 +64,9 @@ export const QuickStats2 = () => (
             </Typography>
             <Box
               sx={{
-                alignItems: "center",
-                display: "flex",
-                flexWrap: "wrap",
+                alignItems: 'center',
+                display: 'flex',
+                flexWrap: 'wrap',
               }}
             >
               <Typography sx={{ mr: 1 }} variant="h5">
@@ -84,8 +77,8 @@ export const QuickStats2 = () => (
           </Box>
           <Avatar
             sx={{
-              backgroundColor: "primary.main",
-              color: "primary.contrastText",
+              backgroundColor: 'primary.main',
+              color: 'primary.contrastText',
               height: 48,
               width: 48,
             }}
@@ -101,20 +94,16 @@ export const QuickStats2 = () => (
           </Typography>
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              flexWrap: "wrap",
+              alignItems: 'center',
+              display: 'flex',
+              flexWrap: 'wrap',
             }}
           >
             <Typography sx={{ mr: 1 }} variant="h5">
               74%
             </Typography>
             <Box sx={{ flexGrow: 1 }}>
-              <LinearProgress
-                color="primary"
-                value={74}
-                variant="determinate"
-              />
+              <LinearProgress color="primary" value={74} variant="determinate" />
             </Box>
           </Box>
         </Card>
@@ -122,11 +111,11 @@ export const QuickStats2 = () => (
       <Grid item xs={12} md={6} lg={3}>
         <Card
           sx={{
-            alignItems: "center",
-            backgroundColor: "primary.main",
-            color: "primary.contrastText",
-            display: "flex",
-            justifyContent: "space-between",
+            alignItems: 'center',
+            backgroundColor: 'primary.main',
+            color: 'primary.contrastText',
+            display: 'flex',
+            justifyContent: 'space-between',
             p: 3,
           }}
         >
@@ -136,9 +125,9 @@ export const QuickStats2 = () => (
             </Typography>
             <Box
               sx={{
-                display: "flex",
-                alignItems: "center",
-                flexWrap: "wrap",
+                display: 'flex',
+                alignItems: 'center',
+                flexWrap: 'wrap',
               }}
             >
               <Typography color="inherit" variant="h5">
@@ -148,8 +137,8 @@ export const QuickStats2 = () => (
           </Box>
           <Avatar
             sx={{
-              backgroundColor: "primary.contrastText",
-              color: "primary.main",
+              backgroundColor: 'primary.contrastText',
+              color: 'primary.main',
               height: 48,
               width: 48,
             }}

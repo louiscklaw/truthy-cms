@@ -1,4 +1,4 @@
-import { createSvgIcon } from "@mui/material/utils"
+import { createSvgIcon } from "@mui/material/utils";
 
 export const Duplicate = createSvgIcon(
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
@@ -6,4 +6,4 @@ export const Duplicate = createSvgIcon(
     <path d="M5 3a2 2 0 00-2 2v6a2 2 0 002 2V5h8a2 2 0 00-2-2H5z" />
   </svg>,
   "Duplicate",
-)
+);

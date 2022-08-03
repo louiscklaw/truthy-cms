@@ -1,9 +1,9 @@
-import PropTypes from "prop-types"
-import { Avatar, Box, Chip, Grid, Typography } from "@mui/material"
-import { getInitials } from "../../../utils/get-initials"
+import PropTypes from "prop-types";
+import { Avatar, Box, Chip, Grid, Typography } from "@mui/material";
+import { getInitials } from "../../../utils/get-initials";
 
 export const CompanyTeam = props => {
-  const { members, ...other } = props
+  const { members, ...other } = props;
 
   return (
     <div {...other}>
@@ -54,13 +54,13 @@ export const CompanyTeam = props => {
         </Grid>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 CompanyTeam.defaultProps = {
   members: [],
-}
+};
 
 CompanyTeam.propTypes = {
   members: PropTypes.array.isRequired,
-}
+};

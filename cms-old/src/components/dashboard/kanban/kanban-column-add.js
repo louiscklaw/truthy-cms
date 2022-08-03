@@ -1,39 +1,39 @@
-import { useState } from "react"
-import toast from "react-hot-toast"
-import { Box, Button, Link, OutlinedInput, Typography } from "@mui/material"
-import { Plus as PlusIcon } from "../../../icons/plus"
-import { createColumn } from "../../../slices/kanban"
-import { useDispatch } from "../../../store"
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { Box, Button, Link, OutlinedInput, Typography } from "@mui/material";
+import { Plus as PlusIcon } from "../../../icons/plus";
+import { createColumn } from "../../../slices/kanban";
+import { useDispatch } from "../../../store";
 
 export const KanbanColumnAdd = props => {
-  const dispatch = useDispatch()
-  const [isExpanded, setIsExpanded] = useState(false)
-  const [name, setName] = useState("")
+  const dispatch = useDispatch();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [name, setName] = useState("");
 
   const handleChange = event => {
-    setName(event.target.value)
-  }
+    setName(event.target.value);
+  };
 
   const handleAddInit = () => {
-    setIsExpanded(true)
-  }
+    setIsExpanded(true);
+  };
 
   const handleAddCancel = () => {
-    setIsExpanded(false)
-    setName("")
-  }
+    setIsExpanded(false);
+    setName("");
+  };
 
   const handleAddConfirm = async () => {
     try {
-      await dispatch(createColumn(name || "Untitled column"))
-      setIsExpanded(false)
-      setName("")
-      toast.success("Column created!")
+      await dispatch(createColumn(name || "Untitled column"));
+      setIsExpanded(false);
+      setName("");
+      toast.success("Column created!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   return (
     <div {...props}>
@@ -77,7 +77,12 @@ export const KanbanColumnAdd = props => {
                   mt: 2,
                 }}
               >
-                <Button onClick={handleAddConfirm} size="small" startIcon={<PlusIcon fontSize="small" />} variant="contained">
+                <Button
+                  onClick={handleAddConfirm}
+                  size="small"
+                  startIcon={<PlusIcon fontSize="small" />}
+                  variant="contained"
+                >
                   Add Column
                 </Button>
                 <Button onClick={handleAddCancel} size="small" sx={{ ml: 2 }}>
@@ -105,5 +110,5 @@ export const KanbanColumnAdd = props => {
         </Box>
       </Box>
     </div>
-  )
-}
+  );
+};

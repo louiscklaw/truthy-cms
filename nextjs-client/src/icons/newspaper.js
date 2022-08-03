@@ -8,4 +8,6 @@ export const Newspaper = createSvgIcon(
       clipRule="evenodd"
     />
     <path d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
-  </svg>, 'Newspaper');
+  </svg>,
+  'Newspaper',
+);

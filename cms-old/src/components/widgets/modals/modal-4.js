@@ -1,8 +1,8 @@
-import { formatDistanceToNowStrict, subDays, subHours, subMinutes } from "date-fns"
-import { Avatar, Box, Link, List, ListItem, ListItemAvatar, ListItemText, Paper, Typography } from "@mui/material"
-import { StatusIndicator } from "../../status-indicator"
+import { formatDistanceToNowStrict, subDays, subHours, subMinutes } from "date-fns";
+import { Avatar, Box, Link, List, ListItem, ListItemAvatar, ListItemText, Paper, Typography } from "@mui/material";
+import { StatusIndicator } from "../../status-indicator";
 
-const now = new Date()
+const now = new Date();
 
 const contacts = [
   {
@@ -82,7 +82,7 @@ const contacts = [
     lastActivity: now.getTime(),
     name: "Nasimiyu Danai",
   },
-]
+];
 
 export const Modal4 = () => (
   <Box
@@ -129,4 +129,4 @@ export const Modal4 = () => (
       </Box>
     </Paper>
   </Box>
-)
+);

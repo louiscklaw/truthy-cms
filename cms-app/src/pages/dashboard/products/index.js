@@ -1,24 +1,22 @@
-import { useCallback, useEffect, useState } from "react";
-import Head from "next/head";
-import NextLink from "next/link";
-import { Box, Button, Card, Container, Grid, Typography } from "@mui/material";
-import { productApi } from "../../../__fake-api__/product-api";
-import { AuthGuard } from "../../../components/authentication/auth-guard";
-import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
-import { ProjectListFilters } from "../../../components/dashboard/product/product-list-filters";
-import { ProductListTable } from "../../../components/dashboard/product/product-list-table";
-import { useMounted } from "../../../hooks/use-mounted";
-import { Download as DownloadIcon } from "../../../icons/download";
-import { Upload as UploadIcon } from "../../../icons/upload";
-import { Plus as PlusIcon } from "../../../icons/plus";
-import { gtm } from "../../../lib/gtm";
+import { useCallback, useEffect, useState } from 'react';
+import Head from 'next/head';
+import NextLink from 'next/link';
+import { Box, Button, Card, Container, Grid, Typography } from '@mui/material';
+import { productApi } from '../../../__fake-api__/product-api';
+import { AuthGuard } from '../../../components/authentication/auth-guard';
+import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
+import { ProjectListFilters } from '../../../components/dashboard/product/product-list-filters';
+import { ProductListTable } from '../../../components/dashboard/product/product-list-table';
+import { useMounted } from '../../../hooks/use-mounted';
+import { Download as DownloadIcon } from '../../../icons/download';
+import { Upload as UploadIcon } from '../../../icons/upload';
+import { Plus as PlusIcon } from '../../../icons/plus';
+import { gtm } from '../../../lib/gtm';
 
 const applyFilters = (products, filters) =>
-  products.filter((product) => {
+  products.filter(product => {
     if (filters.name) {
-      const nameMatched = product.name
-        .toLowerCase()
-        .includes(filters.name.toLowerCase());
+      const nameMatched = product.name.toLowerCase().includes(filters.name.toLowerCase());
 
       if (!nameMatched) {
         return false;
@@ -44,7 +42,7 @@ const applyFilters = (products, filters) =>
     }
 
     // Present only if filter required
-    if (typeof filters.inStock !== "undefined") {
+    if (typeof filters.inStock !== 'undefined') {
       const stockMatched = product.inStock === filters.inStock;
 
       if (!stockMatched) {
@@ -71,7 +69,7 @@ const ProductList = () => {
   });
 
   useEffect(() => {
-    gtm.push({ event: "page_view" });
+    gtm.push({ event: 'page_view' });
   }, []);
 
   const getProducts = useCallback(async () => {
@@ -91,10 +89,10 @@ const ProductList = () => {
       getProducts();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
 
-  const handleFiltersChange = (filters) => {
+  const handleFiltersChange = filters => {
     setFilters(filters);
   };
 
@@ -102,17 +100,13 @@ const ProductList = () => {
     setPage(newPage);
   };
 
-  const handleRowsPerPageChange = (event) => {
+  const handleRowsPerPageChange = event => {
     setRowsPerPage(parseInt(event.target.value, 10));
   };
 
   // Usually query is done on backend with indexing solutions
   const filteredProducts = applyFilters(products, filters);
-  const paginatedProducts = applyPagination(
-    filteredProducts,
-    page,
-    rowsPerPage
-  );
+  const paginatedProducts = applyPagination(filteredProducts, page, rowsPerPage);
 
   return (
     <>
@@ -134,11 +128,7 @@ const ProductList = () => {
               </Grid>
               <Grid item>
                 <NextLink href="/dashboard/products/new" passHref>
-                  <Button
-                    component="a"
-                    startIcon={<PlusIcon fontSize="small" />}
-                    variant="contained"
-                  >
+                  <Button component="a" startIcon={<PlusIcon fontSize="small" />} variant="contained">
                     Add
                   </Button>
                 </NextLink>
@@ -153,10 +143,7 @@ const ProductList = () => {
               <Button startIcon={<UploadIcon fontSize="small" />} sx={{ m: 1 }}>
                 Import
               </Button>
-              <Button
-                startIcon={<DownloadIcon fontSize="small" />}
-                sx={{ m: 1 }}
-              >
+              <Button startIcon={<DownloadIcon fontSize="small" />} sx={{ m: 1 }}>
                 Export
               </Button>
             </Box>
@@ -178,7 +165,7 @@ const ProductList = () => {
   );
 };
 
-ProductList.getLayout = (page) => (
+ProductList.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>

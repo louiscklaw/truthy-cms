@@ -1,4 +1,15 @@
-import { Box, Button, CardActions, CardContent, CardHeader, Checkbox, Divider, FormControlLabel, Grid, Typography } from "@mui/material"
+import {
+  Box,
+  Button,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Checkbox,
+  Divider,
+  FormControlLabel,
+  Grid,
+  Typography,
+} from "@mui/material";
 
 export const Form3 = () => (
   <Box
@@ -72,4 +83,4 @@ export const Form3 = () => (
       </CardActions>
     </form>
   </Box>
-)
+);

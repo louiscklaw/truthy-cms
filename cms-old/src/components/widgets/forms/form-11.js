@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, FormControlLabel, Grid, TextField } from "@mui/material"
+import { Box, Button, Checkbox, FormControlLabel, Grid, TextField } from "@mui/material";
 
 export const Form11 = () => (
   <Box
@@ -36,4 +36,4 @@ export const Form11 = () => (
       </Box>
     </form>
   </Box>
-)
+);

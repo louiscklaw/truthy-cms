@@ -1,8 +1,21 @@
-import { useState } from "react"
-import { format } from "date-fns"
-import numeral from "numeral"
-import { Box, Button, Card, CardActions, CardHeader, Divider, Table, TableBody, TableCell, TableRow, TextField, Typography } from "@mui/material"
-import ReceiptIcon from "@mui/icons-material/Receipt"
+import { useState } from "react";
+import { format } from "date-fns";
+import numeral from "numeral";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardHeader,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  TextField,
+  Typography,
+} from "@mui/material";
+import ReceiptIcon from "@mui/icons-material/Receipt";
 
 const order = {
   id: "5ecb8a6879877087d4aa2690",
@@ -39,16 +52,16 @@ const order = {
   paymentMethod: "CreditCard",
   status: "pending",
   totalAmount: 500.0,
-}
+};
 
-const statusOptions = ["Canceled", "Completed", "Rejected"]
+const statusOptions = ["Canceled", "Completed", "Rejected"];
 
 export const DetailList5 = () => {
-  const [status, setStatus] = useState(statusOptions[0])
+  const [status, setStatus] = useState(statusOptions[0]);
 
   const handleChange = event => {
-    setStatus(event.target.value)
-  }
+    setStatus(event.target.value);
+  };
 
   return (
     <Box
@@ -109,7 +122,14 @@ export const DetailList5 = () => {
                 <Typography variant="subtitle2">Status</Typography>
               </TableCell>
               <TableCell>
-                <TextField fullWidth name="option" onChange={handleChange} select SelectProps={{ native: true }} value={status}>
+                <TextField
+                  fullWidth
+                  name="option"
+                  onChange={handleChange}
+                  select
+                  SelectProps={{ native: true }}
+                  value={status}
+                >
                   {statusOptions.map(option => (
                     <option key={option} value={option}>
                       {option}
@@ -125,5 +145,5 @@ export const DetailList5 = () => {
         </CardActions>
       </Card>
     </Box>
-  )
-}
+  );
+};

@@ -1,5 +1,5 @@
-import { useRef } from "react";
-import PropTypes from "prop-types";
+import { useRef } from 'react';
+import PropTypes from 'prop-types';
 import {
   Box,
   Checkbox,
@@ -13,55 +13,48 @@ import {
   TextField,
   Typography,
   useMediaQuery,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { DatePicker } from "@mui/lab";
-import { Search as SearchIcon } from "../../../icons/search";
-import { X } from "../../../icons/x";
-import { Scrollbar } from "../../scrollbar";
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { DatePicker } from '@mui/lab';
+import { Search as SearchIcon } from '../../../icons/search';
+import { X } from '../../../icons/x';
+import { Scrollbar } from '../../scrollbar';
 
 const customers = [
-  "Blind Spots Inc.",
-  "Dispatcher Inc.",
-  "ACME SRL",
-  "Novelty I.S",
-  "Beauty Clinic SRL",
-  "Division Inc.",
+  'Blind Spots Inc.',
+  'Dispatcher Inc.',
+  'ACME SRL',
+  'Novelty I.S',
+  'Beauty Clinic SRL',
+  'Division Inc.',
 ];
 
 const FiltersDrawerDesktop = styled(Drawer)({
   flexShrink: 0,
   width: 380,
-  "& .MuiDrawer-paper": {
-    position: "relative",
+  '& .MuiDrawer-paper': {
+    position: 'relative',
     width: 380,
   },
 });
 
 const FiltersDrawerMobile = styled(Drawer)({
-  maxWidth: "100%",
+  maxWidth: '100%',
   width: 380,
-  "& .MuiDrawer-paper": {
-    height: "calc(100% - 64px)",
-    maxWidth: "100%",
+  '& .MuiDrawer-paper': {
+    height: 'calc(100% - 64px)',
+    maxWidth: '100%',
     top: 64,
     width: 380,
   },
 });
 
-export const InvoiceListFilters = (props) => {
-  const {
-    containerRef,
-    filters = {},
-    onChange,
-    onClose,
-    open,
-    ...other
-  } = props;
+export const InvoiceListFilters = props => {
+  const { containerRef, filters = {}, onChange, onClose, open, ...other } = props;
   const queryRef = useRef(null);
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'));
 
-  const handleQueryChange = (event) => {
+  const handleQueryChange = event => {
     event.preventDefault();
     onChange?.({
       ...filters,
@@ -69,7 +62,7 @@ export const InvoiceListFilters = (props) => {
     });
   };
 
-  const handleStartDateChange = (date) => {
+  const handleStartDateChange = date => {
     const newFilters = {
       ...filters,
       startDate: date,
@@ -83,7 +76,7 @@ export const InvoiceListFilters = (props) => {
     onChange?.(newFilters);
   };
 
-  const handleEndDateChange = (date) => {
+  const handleEndDateChange = date => {
     const newFilters = {
       ...filters,
       endDate: date,
@@ -97,7 +90,7 @@ export const InvoiceListFilters = (props) => {
     onChange?.(newFilters);
   };
 
-  const handleCustomerChange = (event) => {
+  const handleCustomerChange = event => {
     if (event.target.checked) {
       onChange?.({
         ...filters,
@@ -106,17 +99,15 @@ export const InvoiceListFilters = (props) => {
     } else {
       onChange?.({
         ...filters,
-        customer: (filters.customer || []).filter(
-          (customer) => customer !== event.target.value
-        ),
+        customer: (filters.customer || []).filter(customer => customer !== event.target.value),
       });
     }
   };
 
-  const handleStatusChange = (event) => {
+  const handleStatusChange = event => {
     onChange?.({
       ...filters,
-      status: event.target.checked ? "paid" : undefined,
+      status: event.target.checked ? 'paid' : undefined,
     });
   };
 
@@ -134,7 +125,7 @@ export const InvoiceListFilters = (props) => {
       <Box
         sx={{
           display: {
-            lg: "none",
+            lg: 'none',
           },
           mb: 2,
         }}
@@ -167,14 +158,14 @@ export const InvoiceListFilters = (props) => {
           inputFormat="dd/MM/yyyy"
           label="From"
           onChange={handleStartDateChange}
-          renderInput={(inputProps) => <TextField {...inputProps} />}
+          renderInput={inputProps => <TextField {...inputProps} />}
           value={filters.startDate}
         />
         <DatePicker
           inputFormat="dd/MM/yyyy"
           label="To"
           onChange={handleEndDateChange}
-          renderInput={(inputProps) => <TextField {...inputProps} />}
+          renderInput={inputProps => <TextField {...inputProps} />}
           value={filters.endDate}
         />
       </Stack>
@@ -183,10 +174,10 @@ export const InvoiceListFilters = (props) => {
       </Typography>
       <Box
         sx={{
-          backgroundColor: "background.default",
-          borderColor: "divider",
+          backgroundColor: 'background.default',
+          borderColor: 'divider',
           borderRadius: 1,
-          borderStyle: "solid",
+          borderStyle: 'solid',
           borderWidth: 1,
           mt: 2,
         }}
@@ -198,14 +189,9 @@ export const InvoiceListFilters = (props) => {
               px: 1.5,
             }}
           >
-            {customers.map((customer) => (
+            {customers.map(customer => (
               <FormControlLabel
-                control={
-                  <Checkbox
-                    checked={filters.customer?.includes(customer)}
-                    onChange={handleCustomerChange}
-                  />
-                }
+                control={<Checkbox checked={filters.customer?.includes(customer)} onChange={handleCustomerChange} />}
                 key={customer}
                 label={customer}
                 value={customer}
@@ -215,12 +201,7 @@ export const InvoiceListFilters = (props) => {
         </Scrollbar>
       </Box>
       <FormControlLabel
-        control={
-          <Switch
-            checked={filters.status === "paid"}
-            onChange={handleStatusChange}
-          />
-        }
+        control={<Switch checked={filters.status === 'paid'} onChange={handleStatusChange} />}
         label="Show paid only"
         sx={{ mt: 2 }}
       />

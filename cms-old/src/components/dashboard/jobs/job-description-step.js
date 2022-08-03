@@ -1,16 +1,16 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import { Box, Button, Typography } from "@mui/material"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { QuillEditor } from "../../quill-editor"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Button, Typography } from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { QuillEditor } from "../../quill-editor";
 
 export const JobDescriptionStep = props => {
-  const { onBack, onNext, ...other } = props
-  const [content, setContent] = useState("")
+  const { onBack, onNext, ...other } = props;
+  const [content, setContent] = useState("");
 
   const handleChange = value => {
-    setContent(value)
-  }
+    setContent(value);
+  };
 
   return (
     <div {...other}>
@@ -33,10 +33,10 @@ export const JobDescriptionStep = props => {
         </Button>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 JobDescriptionStep.propTypes = {
   onBack: PropTypes.func,
   onNext: PropTypes.func,
-}
+};

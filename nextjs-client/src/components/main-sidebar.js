@@ -10,14 +10,14 @@ const MainSidebarLink = styled(Link)(({ theme }) => ({
   display: 'block',
   padding: theme.spacing(1.5),
   '&:hover': {
-    backgroundColor: theme.palette.action.hover
-  }
+    backgroundColor: theme.palette.action.hover,
+  },
 }));
 
-export const MainSidebar = (props) => {
+export const MainSidebar = props => {
   const { onClose, open } = props;
   const router = useRouter();
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'));
 
   const handlePathChange = () => {
     if (open) {
@@ -25,9 +25,11 @@ export const MainSidebar = (props) => {
     }
   };
 
-  useEffect(handlePathChange,
+  useEffect(
+    handlePathChange,
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [router.asPath]);
+    [router.asPath],
+  );
 
   return (
     <Drawer
@@ -36,44 +38,23 @@ export const MainSidebar = (props) => {
       open={!lgUp && open}
       PaperProps={{ sx: { width: 256 } }}
       sx={{
-        zIndex: (theme) => theme.zIndex.appBar + 100
+        zIndex: theme => theme.zIndex.appBar + 100,
       }}
       variant="temporary"
     >
       <Box sx={{ p: 2 }}>
-        <NextLink
-          href="/dashboard"
-          passHref
-        >
-          <MainSidebarLink
-            color="textSecondary"
-            underline="none"
-            variant="subtitle2"
-          >
+        <NextLink href="/dashboard" passHref>
+          <MainSidebarLink color="textSecondary" underline="none" variant="subtitle2">
             Live Demo
           </MainSidebarLink>
         </NextLink>
-        <NextLink
-          href="/browse"
-          passHref
-        >
-          <MainSidebarLink
-            color="textSecondary"
-            underline="none"
-            variant="subtitle2"
-          >
+        <NextLink href="/browse" passHref>
+          <MainSidebarLink color="textSecondary" underline="none" variant="subtitle2">
             Components
           </MainSidebarLink>
         </NextLink>
-        <NextLink
-          href="/docs/welcome"
-          passHref
-        >
-          <MainSidebarLink
-            color="textSecondary"
-            underline="none"
-            variant="subtitle2"
-          >
+        <NextLink href="/docs/welcome" passHref>
+          <MainSidebarLink color="textSecondary" underline="none" variant="subtitle2">
             Documentation
           </MainSidebarLink>
         </NextLink>
@@ -94,5 +75,5 @@ export const MainSidebar = (props) => {
 
 MainSidebar.propTypes = {
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

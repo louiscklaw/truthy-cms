@@ -1,10 +1,21 @@
-import { format, subDays, subMinutes, subSeconds } from "date-fns"
-import { Box, Card, CardHeader, Divider, IconButton, Table, TableBody, TableCell, TableRow, Typography } from "@mui/material"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+import { format, subDays, subMinutes, subSeconds } from "date-fns";
+import {
+  Box,
+  Card,
+  CardHeader,
+  Divider,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
-const now = new Date()
+const now = new Date();
 
 const logs = [
   {
@@ -79,7 +90,7 @@ const logs = [
     route: "/api/authentication/login",
     status: 200,
   },
-]
+];
 
 export const Table10 = () => (
   <Box
@@ -121,4 +132,4 @@ export const Table10 = () => (
       </Scrollbar>
     </Card>
   </Box>
-)
+);

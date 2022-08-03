@@ -1,23 +1,15 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  CardActions,
-  Divider,
-  Typography,
-} from "@mui/material";
-import { alpha, useTheme } from "@mui/material/styles";
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
-import { ChevronUp as ChevronUpIcon } from "../../../icons/chevron-up";
-import { Chart } from "../../chart";
+import { Avatar, Box, Button, Card, CardActions, Divider, Typography } from '@mui/material';
+import { alpha, useTheme } from '@mui/material/styles';
+import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+import { ChevronUp as ChevronUpIcon } from '../../../icons/chevron-up';
+import { Chart } from '../../chart';
 
-export const OverviewCryptoWallet = (props) => {
+export const OverviewCryptoWallet = props => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       stacked: false,
       toolbar: {
         show: false,
@@ -34,7 +26,7 @@ export const OverviewCryptoWallet = (props) => {
           show: false,
         },
         hollow: {
-          size: "40%",
+          size: '40%',
         },
         track: {
           background: theme.palette.primary.dark,
@@ -53,26 +45,20 @@ export const OverviewCryptoWallet = (props) => {
       <Box
         sx={{
           alignItems: {
-            sm: "center",
+            sm: 'center',
           },
-          display: "flex",
-          flexWrap: "wrap",
+          display: 'flex',
+          flexWrap: 'wrap',
           flexDirection: {
-            xs: "column",
-            sm: "row",
+            xs: 'column',
+            sm: 'row',
           },
         }}
       >
-        <Chart
-          height={160}
-          options={chartOptions}
-          series={chartSeries}
-          type="radialBar"
-          width={160}
-        />
+        <Chart height={160} options={chartOptions} series={chartSeries} type="radialBar" width={160} />
         <Box
           sx={{
-            display: "flex",
+            display: 'flex',
             flexGrow: 1,
             pt: {
               sm: 3,
@@ -101,7 +87,7 @@ export const OverviewCryptoWallet = (props) => {
           <Avatar
             sx={{
               backgroundColor: alpha(theme.palette.success.main, 0.08),
-              color: "success.main",
+              color: 'success.main',
             }}
             variant="rounded"
           >
@@ -111,9 +97,7 @@ export const OverviewCryptoWallet = (props) => {
       </Box>
       <Divider />
       <CardActions>
-        <Button endIcon={<ArrowRightIcon fontSize="small" />}>
-          See all activity
-        </Button>
+        <Button endIcon={<ArrowRightIcon fontSize="small" />}>See all activity</Button>
       </CardActions>
     </Card>
   );

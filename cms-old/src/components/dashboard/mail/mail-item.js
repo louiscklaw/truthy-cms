@@ -1,36 +1,36 @@
-import PropTypes from "prop-types"
-import NextLink from "next/link"
-import { format } from "date-fns"
-import { Avatar, Box, Checkbox, Chip, IconButton, Tooltip, Typography } from "@mui/material"
-import { amber } from "@mui/material/colors"
-import LabelImportantIcon from "@mui/icons-material/LabelImportant"
-import { PaperClip as PaperClipIcon } from "../../../icons/paper-clip"
-import { Star as StarIcon } from "../../../icons/star"
-import { StarOutlined as StarOutlinedIcon } from "../../../icons/star-outlined"
-import { getInitials } from "../../../utils/get-initials"
+import PropTypes from "prop-types";
+import NextLink from "next/link";
+import { format } from "date-fns";
+import { Avatar, Box, Checkbox, Chip, IconButton, Tooltip, Typography } from "@mui/material";
+import { amber } from "@mui/material/colors";
+import LabelImportantIcon from "@mui/icons-material/LabelImportant";
+import { PaperClip as PaperClipIcon } from "../../../icons/paper-clip";
+import { Star as StarIcon } from "../../../icons/star";
+import { StarOutlined as StarOutlinedIcon } from "../../../icons/star-outlined";
+import { getInitials } from "../../../utils/get-initials";
 
 export const MailItem = props => {
-  const { email, onDeselect, onSelect, selected, href, ...other } = props
+  const { email, onDeselect, onSelect, selected, href, ...other } = props;
 
   const handleCheckboxChange = event => {
-    const { checked } = event.target
+    const { checked } = event.target;
 
     if (checked && onSelect) {
-      onSelect()
+      onSelect();
     }
 
     if (!checked && onDeselect) {
-      onDeselect()
+      onDeselect();
     }
-  }
+  };
 
   const handleStarToggle = () => {
     // dispatch action
-  }
+  };
 
   const handleImportantToggle = () => {
     // dispatch action
-  }
+  };
 
   return (
     <Box
@@ -79,12 +79,20 @@ export const MailItem = props => {
         <Checkbox checked={selected} onChange={handleCheckboxChange} />
         <Tooltip title="Starred">
           <IconButton onClick={handleStarToggle}>
-            {email.isStarred ? <StarIcon fontSize="small" sx={{ color: amber[400] }} /> : <StarOutlinedIcon fontSize="small" />}
+            {email.isStarred ? (
+              <StarIcon fontSize="small" sx={{ color: amber[400] }} />
+            ) : (
+              <StarOutlinedIcon fontSize="small" />
+            )}
           </IconButton>
         </Tooltip>
         <Tooltip title="Important">
           <IconButton onClick={handleImportantToggle}>
-            {email.isImportant ? <LabelImportantIcon fontSize="small" sx={{ color: amber[400] }} /> : <LabelImportantIcon fontSize="small" />}
+            {email.isImportant ? (
+              <LabelImportantIcon fontSize="small" sx={{ color: amber[400] }} />
+            ) : (
+              <LabelImportantIcon fontSize="small" />
+            )}
           </IconButton>
         </Tooltip>
       </Box>
@@ -194,8 +202,8 @@ export const MailItem = props => {
         </Box>
       </NextLink>
     </Box>
-  )
-}
+  );
+};
 
 MailItem.propTypes = {
   email: PropTypes.object.isRequired,
@@ -203,4 +211,4 @@ MailItem.propTypes = {
   onDeselect: PropTypes.func,
   onSelect: PropTypes.func,
   selected: PropTypes.bool.isRequired,
-}
+};

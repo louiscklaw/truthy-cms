@@ -1,4 +1,4 @@
-import { Box, FormControlLabel, Paper, Radio, RadioGroup, Typography } from "@mui/material"
+import { Box, FormControlLabel, Paper, Radio, RadioGroup, Typography } from "@mui/material";
 
 const typeOptions = [
   {
@@ -16,7 +16,7 @@ const typeOptions = [
     title: "I want to join affiliate",
     value: "affiliate",
   },
-]
+];
 
 export const InputRadio = () => (
   <Box
@@ -83,4 +83,4 @@ export const InputRadio = () => (
       ))}
     </RadioGroup>
   </Box>
-)
+);

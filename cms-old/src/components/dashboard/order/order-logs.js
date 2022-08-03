@@ -1,8 +1,8 @@
-import PropTypes from "prop-types"
-import { format, subHours } from "date-fns"
-import { Avatar, Button, Card, CardContent, CardHeader, Divider, Typography } from "@mui/material"
-import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from "@mui/lab"
-import { ShoppingCart as ShoppingCartIcon } from "../../../icons/shopping-cart"
+import PropTypes from "prop-types";
+import { format, subHours } from "date-fns";
+import { Avatar, Button, Card, CardContent, CardHeader, Divider, Typography } from "@mui/material";
+import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from "@mui/lab";
+import { ShoppingCart as ShoppingCartIcon } from "../../../icons/shopping-cart";
 
 const activities = [
   {
@@ -13,10 +13,10 @@ const activities = [
     log: "Order status changed from Pending payment to Completed.",
     date: subHours(Date.now(), 21).getTime(),
   },
-]
+];
 
 export const OrderLogs = props => {
-  const { order, ...other } = props
+  const { order, ...other } = props;
 
   return (
     <Card {...other}>
@@ -70,9 +70,9 @@ export const OrderLogs = props => {
         <Button sx={{ mt: 2 }}>Load more</Button>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 OrderLogs.propTypes = {
   order: PropTypes.object.isRequired,
-}
+};

@@ -1,103 +1,113 @@
-import { Fragment } from "react"
-import PropTypes from "prop-types"
-import toast from "react-hot-toast"
-import debounce from "lodash.debounce"
-import { Box, Checkbox, Dialog, Divider, FormControlLabel, FormGroup, Grid, TextField, Typography } from "@mui/material"
-import { Archive as ArchiveIcon } from "../../../icons/archive"
-import { Check as CheckIcon } from "../../../icons/check"
-import { DocumentText as DocumentTextIcon } from "../../../icons/document-text"
-import { Eye as EyeIcon } from "../../../icons/eye"
-import { EyeOff as EyeOffIcon } from "../../../icons/eye-off"
-import { Users as UsersIcon } from "../../../icons/users"
-import { addChecklist, deleteCard, moveCard, updateCard } from "../../../slices/kanban"
-import { useDispatch, useSelector } from "../../../store"
-import { KanbanCardAction } from "./kanban-card-action"
-import { KanbanChecklist } from "./kanban-checklist"
+import { Fragment } from "react";
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import debounce from "lodash.debounce";
+import {
+  Box,
+  Checkbox,
+  Dialog,
+  Divider,
+  FormControlLabel,
+  FormGroup,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Archive as ArchiveIcon } from "../../../icons/archive";
+import { Check as CheckIcon } from "../../../icons/check";
+import { DocumentText as DocumentTextIcon } from "../../../icons/document-text";
+import { Eye as EyeIcon } from "../../../icons/eye";
+import { EyeOff as EyeOffIcon } from "../../../icons/eye-off";
+import { Users as UsersIcon } from "../../../icons/users";
+import { addChecklist, deleteCard, moveCard, updateCard } from "../../../slices/kanban";
+import { useDispatch, useSelector } from "../../../store";
+import { KanbanCardAction } from "./kanban-card-action";
+import { KanbanChecklist } from "./kanban-checklist";
 
-const labels = ["Business", "Planning", "Frontend", "Design"]
+const labels = ["Business", "Planning", "Frontend", "Design"];
 
 export const KanbanCardModal = props => {
-  const { card, column, onClose, open, ...other } = props
-  const dispatch = useDispatch()
-  const { columns } = useSelector(state => state.kanban)
+  const { card, column, onClose, open, ...other } = props;
+  const dispatch = useDispatch();
+  const { columns } = useSelector(state => state.kanban);
 
   const handleDetailsUpdate = debounce(async update => {
     try {
-      await dispatch(updateCard(card.id, update))
-      toast.success("Card updated!")
+      await dispatch(updateCard(card.id, update));
+      toast.success("Card updated!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }, 1000)
+  }, 1000);
 
   const handleColumnChange = async event => {
     try {
-      await dispatch(moveCard(card.id, 0, event.target.value))
-      toast.success("Card moved!")
+      await dispatch(moveCard(card.id, 0, event.target.value));
+      toast.success("Card moved!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   const handleSubscribe = async () => {
     try {
-      await dispatch(updateCard(card.id, { isSubscribed: true }))
-      toast.success("Unsubscribed!")
+      await dispatch(updateCard(card.id, { isSubscribed: true }));
+      toast.success("Unsubscribed!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   const handleUnsubscribe = async () => {
     try {
-      await dispatch(updateCard(card.id, { isSubscribed: false }))
-      toast.success("Subscribed!")
+      await dispatch(updateCard(card.id, { isSubscribed: false }));
+      toast.success("Subscribed!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   const handleDelete = async () => {
     try {
-      await dispatch(deleteCard(card.id))
-      toast.success("Card archived!")
+      await dispatch(deleteCard(card.id));
+      toast.success("Card archived!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   const handleAddChecklist = async () => {
     try {
-      await dispatch(addChecklist(card.id, "Untitled Checklist"))
-      toast.success("Checklist added!")
+      await dispatch(addChecklist(card.id, "Untitled Checklist"));
+      toast.success("Checklist added!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   const handleLabelsChange = async event => {
     try {
-      let newValue = [...card.labels]
+      let newValue = [...card.labels];
 
       if (event.target.checked) {
-        newValue.push(event.target.value)
+        newValue.push(event.target.value);
       } else {
-        newValue = newValue.filter(item => item !== event.target.value)
+        newValue = newValue.filter(item => item !== event.target.value);
       }
 
-      await dispatch(updateCard(card.id, { labels: newValue }))
-      toast.success("Card updated!")
+      await dispatch(updateCard(card.id, { labels: newValue }));
+      toast.success("Card updated!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   return (
     <Dialog fullWidth maxWidth="md" onClose={onClose} open={open} {...other}>
@@ -109,7 +119,12 @@ export const KanbanCardModal = props => {
               px: 3,
             }}
           >
-            <TextField defaultValue={card.name} fullWidth label="Task name" onChange={event => handleDetailsUpdate({ name: event.target.value })} />
+            <TextField
+              defaultValue={card.name}
+              fullWidth
+              label="Task name"
+              onChange={event => handleDetailsUpdate({ name: event.target.value })}
+            />
             <TextField
               defaultValue={card.description}
               fullWidth
@@ -237,16 +252,16 @@ export const KanbanCardModal = props => {
         </Grid>
       </Grid>
     </Dialog>
-  )
-}
+  );
+};
 
 KanbanCardModal.propTypes = {
   card: PropTypes.object.isRequired,
   column: PropTypes.object.isRequired,
   onClose: PropTypes.func,
   open: PropTypes.bool.isRequired,
-}
+};
 
 KanbanCardModal.defaultProps = {
   open: false,
-}
+};

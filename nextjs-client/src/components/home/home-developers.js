@@ -2,23 +2,19 @@ import NextLink from 'next/link';
 import { Box, Button, Container, Grid, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-export const HomeDevelopers = (props) => {
+export const HomeDevelopers = props => {
   const theme = useTheme();
 
   return (
     <Box
       sx={{
         backgroundColor: 'background.default',
-        py: 15
+        py: 15,
       }}
-      {...props}>
+      {...props}
+    >
       <Container maxWidth="lg">
-        <Grid
-          alignItems="center"
-          container
-          justifyContent="center"
-          spacing={3}
-        >
+        <Grid alignItems="center" container justifyContent="center" spacing={3}>
           <Grid
             item
             md={6}
@@ -26,31 +22,18 @@ export const HomeDevelopers = (props) => {
             sx={{
               order: {
                 xs: 2,
-                md: 1
-              }
+                md: 1,
+              },
             }}
           >
             <div>
-              <Typography variant="h3">
-                For Developers
+              <Typography variant="h3">For Developers</Typography>
+              <Typography color="textSecondary" sx={{ my: 3 }} variant="subtitle1">
+                Not just a set of tools, the package includes ready-to-deploy conceptual applications written in
+                JavaScript & TypeScript.
               </Typography>
-              <Typography
-                color="textSecondary"
-                sx={{ my: 3 }}
-                variant="subtitle1"
-              >
-                Not just a set of tools, the package includes ready-to-deploy conceptual
-                applications written in JavaScript & TypeScript.
-              </Typography>
-              <NextLink
-                href="/browse"
-                passHref
-              >
-                <Button
-                  size="large"
-                  component="a"
-                  variant="contained"
-                >
+              <NextLink href="/browse" passHref>
+                <Button size="large" component="a" variant="contained">
                   Browse Components
                 </Button>
               </NextLink>
@@ -64,8 +47,8 @@ export const HomeDevelopers = (props) => {
             sx={{
               order: {
                 xs: 1,
-                md: 2
-              }
+                md: 2,
+              },
             }}
           >
             <Box
@@ -76,14 +59,11 @@ export const HomeDevelopers = (props) => {
                   height: 'auto',
                   position: 'absolute',
                   top: 0,
-                  width: '100%'
-                }
+                  width: '100%',
+                },
               }}
             >
-              <img
-                alt="For developers"
-                src={`/static/home/developers_${theme.palette.mode}.png`}
-              />
+              <img alt="For developers" src={`/static/home/developers_${theme.palette.mode}.png`} />
             </Box>
           </Grid>
         </Grid>

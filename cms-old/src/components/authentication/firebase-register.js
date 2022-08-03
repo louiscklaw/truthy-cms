@@ -1,14 +1,14 @@
-import { useRouter } from "next/router"
-import * as Yup from "yup"
-import { useFormik } from "formik"
-import { Box, Button, Checkbox, Divider, FormHelperText, Link, TextField, Typography } from "@mui/material"
-import { useAuth } from "../../hooks/use-auth"
-import { useMounted } from "../../hooks/use-mounted"
+import { useRouter } from "next/router";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { Box, Button, Checkbox, Divider, FormHelperText, Link, TextField, Typography } from "@mui/material";
+import { useAuth } from "../../hooks/use-auth";
+import { useMounted } from "../../hooks/use-mounted";
 
 export const FirebaseRegister = props => {
-  const isMounted = useMounted()
-  const router = useRouter()
-  const { createUserWithEmailAndPassword, signInWithGoogle } = useAuth()
+  const isMounted = useMounted();
+  const router = useRouter();
+  const { createUserWithEmailAndPassword, signInWithGoogle } = useAuth();
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -23,31 +23,31 @@ export const FirebaseRegister = props => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        await createUserWithEmailAndPassword(values.email, values.password)
+        await createUserWithEmailAndPassword(values.email, values.password);
 
         if (isMounted()) {
-          const returnUrl = router.query.returnUrl || "/dashboard"
-          router.push(returnUrl).catch(console.error)
+          const returnUrl = router.query.returnUrl || "/dashboard";
+          router.push(returnUrl).catch(console.error);
         }
       } catch (err) {
-        console.error(err)
+        console.error(err);
 
         if (isMounted()) {
-          helpers.setStatus({ success: false })
-          helpers.setErrors({ submit: err.message })
-          helpers.setSubmitting(false)
+          helpers.setStatus({ success: false });
+          helpers.setErrors({ submit: err.message });
+          helpers.setSubmitting(false);
         }
       }
     },
-  })
+  });
 
   const handleGoogleClick = async () => {
     try {
-      await signInWithGoogle()
+      await signInWithGoogle();
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   return (
     <div {...props}>
@@ -126,7 +126,9 @@ export const FirebaseRegister = props => {
             </Link>
           </Typography>
         </Box>
-        {Boolean(formik.touched.policy && formik.errors.policy) && <FormHelperText error>{formik.errors.policy}</FormHelperText>}
+        {Boolean(formik.touched.policy && formik.errors.policy) && (
+          <FormHelperText error>{formik.errors.policy}</FormHelperText>
+        )}
         {formik.errors.submit && (
           <Box sx={{ mt: 3 }}>
             <FormHelperText error>{formik.errors.submit}</FormHelperText>
@@ -139,5 +141,5 @@ export const FirebaseRegister = props => {
         </Box>
       </form>
     </div>
-  )
-}
+  );
+};

@@ -13,7 +13,7 @@ var ActionType;
 const initialState = {
   isAuthenticated: false,
   isInitialized: false,
-  user: null
+  user: null,
 };
 
 const handlers = {
@@ -24,7 +24,7 @@ const handlers = {
       ...state,
       isAuthenticated,
       isInitialized: true,
-      user
+      user,
     };
   },
   LOGIN: (state, action) => {
@@ -33,13 +33,13 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
   },
-  LOGOUT: (state) => ({
+  LOGOUT: state => ({
     ...state,
     isAuthenticated: false,
-    user: null
+    user: null,
   }),
   REGISTER: (state, action) => {
     const { user } = action.payload;
@@ -47,24 +47,22 @@ const handlers = {
     return {
       ...state,
       isAuthenticated: true,
-      user
+      user,
     };
-  }
+  },
 };
 
-const reducer = (state, action) => (handlers[action.type]
-  ? handlers[action.type](state, action)
-  : state);
+const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
 
 export const AuthContext = createContext({
   ...initialState,
   platform: 'JWT',
   login: () => Promise.resolve(),
   logout: () => Promise.resolve(),
-  register: () => Promise.resolve()
+  register: () => Promise.resolve(),
 });
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -80,16 +78,16 @@ export const AuthProvider = (props) => {
             type: ActionType.INITIALIZE,
             payload: {
               isAuthenticated: true,
-              user
-            }
+              user,
+            },
           });
         } else {
           dispatch({
             type: ActionType.INITIALIZE,
             payload: {
               isAuthenticated: false,
-              user: null
-            }
+              user: null,
+            },
           });
         }
       } catch (err) {
@@ -98,8 +96,8 @@ export const AuthProvider = (props) => {
           type: ActionType.INITIALIZE,
           payload: {
             isAuthenticated: false,
-            user: null
-          }
+            user: null,
+          },
         });
       }
     };
@@ -116,8 +114,8 @@ export const AuthProvider = (props) => {
     dispatch({
       type: ActionType.LOGIN,
       payload: {
-        user
-      }
+        user,
+      },
     });
   };
 
@@ -135,8 +133,8 @@ export const AuthProvider = (props) => {
     dispatch({
       type: ActionType.REGISTER,
       payload: {
-        user
-      }
+        user,
+      },
     });
   };
 
@@ -147,7 +145,7 @@ export const AuthProvider = (props) => {
         platform: 'JWT',
         login,
         logout,
-        register
+        register,
       }}
     >
       {children}
@@ -156,7 +154,7 @@ export const AuthProvider = (props) => {
 };
 
 AuthProvider.propTypes = {
-  children: PropTypes.node.isRequired
+  children: PropTypes.node.isRequired,
 };
 
 export const AuthConsumer = AuthContext.Consumer;

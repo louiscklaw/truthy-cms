@@ -1,8 +1,8 @@
-import { format, subHours, subMinutes, subSeconds } from "date-fns"
-import { Avatar, Box, Card, CardMedia, Chip, Grid, Link, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles"
+import { format, subHours, subMinutes, subSeconds } from "date-fns";
+import { Avatar, Box, Card, CardMedia, Chip, Grid, Link, Typography } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-const now = new Date()
+const now = new Date();
 
 const posts = [
   {
@@ -47,12 +47,12 @@ const posts = [
       "Praesent eget leo mauris. Morbi ac vulputate nibh. In hac habitasse platea dictumst. Praesent fermentum lacus eleifend erat cursus, congue rhoncus mi porta. Mauris rhoncus mollis nisl, vitae tempus tortor. Proin sit amet feugiat felis. Donec nunc urna, pretium sed viverra vel, blandit at urna. Integer pharetra placerat mauris, at fringilla arcu dignissim a. Morbi nec fermentum purus. Integer vel justo interdum lectus euismod bibendum.",
     title: "How Model View Controller (MVC) Architectures Work",
   },
-]
+];
 
 const BlogPostCardMediaWrapper = styled("div")({
   paddingTop: "calc(100% * 4 / 4)",
   position: "relative",
-})
+});
 
 export const GridList1 = () => (
   <Box
@@ -122,4 +122,4 @@ export const GridList1 = () => (
       ))}
     </Grid>
   </Box>
-)
+);

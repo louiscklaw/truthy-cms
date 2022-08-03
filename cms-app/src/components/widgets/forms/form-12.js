@@ -1,25 +1,25 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, TextField } from '@mui/material';
 
 const categoryOptions = [
   {
-    value: "shirts",
-    label: "Shirts",
+    value: 'shirts',
+    label: 'Shirts',
   },
   {
-    label: "Phones",
-    value: "phones",
+    label: 'Phones',
+    value: 'phones',
   },
   {
-    label: "Cars",
-    value: "cars",
+    label: 'Cars',
+    value: 'cars',
   },
 ];
 
 export const Form12 = () => (
   <Box
     sx={{
-      backgroundColor: "background.paper",
-      minHeight: "100%",
+      backgroundColor: 'background.paper',
+      minHeight: '100%',
       p: 3,
     }}
   >
@@ -30,15 +30,9 @@ export const Form12 = () => (
         px: 2,
       }}
     >
-      <form onSubmit={(event) => event.preventDefault()}>
-        <TextField
-          fullWidth
-          label="Category"
-          name="category"
-          select
-          SelectProps={{ native: true }}
-        >
-          {categoryOptions.map((category) => (
+      <form onSubmit={event => event.preventDefault()}>
+        <TextField fullWidth label="Category" name="category" select SelectProps={{ native: true }}>
+          {categoryOptions.map(category => (
             <option key={category.value} value={category.value}>
               {category.label}
             </option>

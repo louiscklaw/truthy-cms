@@ -1,9 +1,9 @@
-import { Box, Card, CardContent, CardHeader } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import { Box, Card, CardContent, CardHeader } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 export const Chart2 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -64,7 +64,20 @@ export const Chart2 = () => {
         color: theme.palette.divider,
         show: true,
       },
-      categories: ["01 Jan", "02 Jan", "03 Jan", "04 Jan", "05 Jan", "06 Jan", "07 Jan", "08 Jan", "09 Jan", "10 Jan", "11 Jan", "12 Jan"],
+      categories: [
+        "01 Jan",
+        "02 Jan",
+        "03 Jan",
+        "04 Jan",
+        "05 Jan",
+        "06 Jan",
+        "07 Jan",
+        "08 Jan",
+        "09 Jan",
+        "10 Jan",
+        "11 Jan",
+        "12 Jan",
+      ],
       labels: {
         style: {
           colors: theme.palette.text.secondary,
@@ -104,7 +117,7 @@ export const Chart2 = () => {
         opposite: true,
       },
     ],
-  }
+  };
 
   const chartSeries = [
     {
@@ -115,7 +128,7 @@ export const Chart2 = () => {
       data: [35, 41, 62, 42, 13, 18, 29, 37, 36, 51, 32, 35],
       name: "Session Duration",
     },
-  ]
+  ];
 
   return (
     <Box
@@ -131,5 +144,5 @@ export const Chart2 = () => {
         </CardContent>
       </Card>
     </Box>
-  )
-}
+  );
+};

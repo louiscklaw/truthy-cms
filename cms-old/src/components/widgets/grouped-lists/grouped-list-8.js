@@ -13,7 +13,7 @@ import {
   ListItemAvatar,
   ListItemText,
   Typography,
-} from "@mui/material"
+} from "@mui/material";
 
 const members = [
   {
@@ -34,7 +34,7 @@ const members = [
     job: "Copyright",
     name: "Jie Yan Song",
   },
-]
+];
 
 export const GroupedList8 = () => (
   <Box
@@ -73,4 +73,4 @@ export const GroupedList8 = () => (
       </Card>
     </Container>
   </Box>
-)
+);

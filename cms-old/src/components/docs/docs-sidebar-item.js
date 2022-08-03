@@ -1,22 +1,22 @@
-import { useState } from "react"
-import NextLink from "next/link"
-import PropTypes from "prop-types"
-import { Box, Button, Collapse, ListItem } from "@mui/material"
-import { ChevronDown as ChevronDownIcon } from "../../icons/chevron-down"
-import { ChevronRight as ChevronRightIcon } from "../../icons/chevron-right"
+import { useState } from "react";
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import { Box, Button, Collapse, ListItem } from "@mui/material";
+import { ChevronDown as ChevronDownIcon } from "../../icons/chevron-down";
+import { ChevronRight as ChevronRightIcon } from "../../icons/chevron-right";
 
 export const DocsSidebarItem = props => {
-  const { active, chip, children, depth, icon, info, open: openProp, path, title, ...other } = props
-  const [open, setOpen] = useState(!!openProp)
+  const { active, chip, children, depth, icon, info, open: openProp, path, title, ...other } = props;
+  const [open, setOpen] = useState(!!openProp);
 
   const handleToggle = () => {
-    setOpen(prevOpen => !prevOpen)
-  }
+    setOpen(prevOpen => !prevOpen);
+  };
 
-  let paddingLeft = 24
+  let paddingLeft = 24;
 
   if (depth > 0) {
-    paddingLeft = 32 + 8 * depth
+    paddingLeft = 32 + 8 * depth;
   }
 
   // Branch
@@ -63,7 +63,7 @@ export const DocsSidebarItem = props => {
           {children}
         </Collapse>
       </ListItem>
-    )
+    );
   }
 
   // Leaf
@@ -110,8 +110,8 @@ export const DocsSidebarItem = props => {
         </Button>
       </NextLink>
     </ListItem>
-  )
-}
+  );
+};
 
 DocsSidebarItem.propTypes = {
   active: PropTypes.bool,
@@ -122,9 +122,9 @@ DocsSidebarItem.propTypes = {
   open: PropTypes.bool,
   path: PropTypes.string,
   title: PropTypes.string.isRequired,
-}
+};
 
 DocsSidebarItem.defaultProps = {
   active: false,
   open: false,
-}
+};

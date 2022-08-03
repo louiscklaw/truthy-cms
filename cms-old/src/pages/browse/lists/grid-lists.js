@@ -1,21 +1,21 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import { Box, Container } from "@mui/material"
-import { BrowseLayout } from "../../../components/browse-layout"
-import { MainLayout } from "../../../components/main-layout"
-import { WidgetPreviewer } from "../../../components/widget-previewer"
-import { GridList1 } from "../../../components/widgets/grid-lists/grid-list-1"
-import { GridList2 } from "../../../components/widgets/grid-lists/grid-list-2"
-import { GridList3 } from "../../../components/widgets/grid-lists/grid-list-3"
-import { GridList4 } from "../../../components/widgets/grid-lists/grid-list-4"
-import { GridList5 } from "../../../components/widgets/grid-lists/grid-list-5"
-import { GridList6 } from "../../../components/widgets/grid-lists/grid-list-6"
-import { gtm } from "../../../lib/gtm"
+import { useEffect } from "react";
+import Head from "next/head";
+import { Box, Container } from "@mui/material";
+import { BrowseLayout } from "../../../components/browse-layout";
+import { MainLayout } from "../../../components/main-layout";
+import { WidgetPreviewer } from "../../../components/widget-previewer";
+import { GridList1 } from "../../../components/widgets/grid-lists/grid-list-1";
+import { GridList2 } from "../../../components/widgets/grid-lists/grid-list-2";
+import { GridList3 } from "../../../components/widgets/grid-lists/grid-list-3";
+import { GridList4 } from "../../../components/widgets/grid-lists/grid-list-4";
+import { GridList5 } from "../../../components/widgets/grid-lists/grid-list-5";
+import { GridList6 } from "../../../components/widgets/grid-lists/grid-list-6";
+import { gtm } from "../../../lib/gtm";
 
 const BrowseGridLists = () => {
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -40,13 +40,13 @@ const BrowseGridLists = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 BrowseGridLists.getLayout = page => (
   <MainLayout>
     <BrowseLayout>{page}</BrowseLayout>
   </MainLayout>
-)
+);
 
-export default BrowseGridLists
+export default BrowseGridLists;

@@ -1,28 +1,18 @@
-import { useCallback, useEffect, useState } from "react";
-import NextLink from "next/link";
-import Head from "next/head";
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  Dialog,
-  Divider,
-  Grid,
-  Link,
-  Typography,
-} from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { invoiceApi } from "../../../__fake-api__/invoice-api";
-import { AuthGuard } from "../../../components/authentication/auth-guard";
-import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
-import { InvoicePDF } from "../../../components/dashboard/invoice/invoice-pdf";
-import { InvoicePreview } from "../../../components/dashboard/invoice/invoice-preview";
-import { useMounted } from "../../../hooks/use-mounted";
-import { ArrowLeft as ArrowLeftIcon } from "../../../icons/arrow-left";
-import { gtm } from "../../../lib/gtm";
-import { getInitials } from "../../../utils/get-initials";
+import { useCallback, useEffect, useState } from 'react';
+import NextLink from 'next/link';
+import Head from 'next/head';
+import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
+import { Avatar, Box, Button, Container, Dialog, Divider, Grid, Link, Typography } from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { invoiceApi } from '../../../__fake-api__/invoice-api';
+import { AuthGuard } from '../../../components/authentication/auth-guard';
+import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
+import { InvoicePDF } from '../../../components/dashboard/invoice/invoice-pdf';
+import { InvoicePreview } from '../../../components/dashboard/invoice/invoice-preview';
+import { useMounted } from '../../../hooks/use-mounted';
+import { ArrowLeft as ArrowLeftIcon } from '../../../icons/arrow-left';
+import { gtm } from '../../../lib/gtm';
+import { getInitials } from '../../../utils/get-initials';
 
 const InvoiceDetails = () => {
   const isMounted = useMounted();
@@ -30,7 +20,7 @@ const InvoiceDetails = () => {
   const [viewPDF, setViewPDF] = useState(false);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" });
+    gtm.push({ event: 'page_view' });
   }, []);
 
   const getInvoice = useCallback(async () => {
@@ -50,7 +40,7 @@ const InvoiceDetails = () => {
       getInvoice();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
 
   if (!invoice) {
@@ -76,8 +66,8 @@ const InvoiceDetails = () => {
                 <Link color="textPrimary" variant="subtitle2">
                   <Box
                     sx={{
-                      alignItems: "center",
-                      display: "flex",
+                      alignItems: 'center',
+                      display: 'flex',
                     }}
                   >
                     <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
@@ -90,8 +80,8 @@ const InvoiceDetails = () => {
               <Grid
                 item
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
+                  alignItems: 'center',
+                  display: 'flex',
                 }}
               >
                 <Avatar
@@ -107,8 +97,8 @@ const InvoiceDetails = () => {
                   <Typography variant="h4">{invoice.number}</Typography>
                   <Box
                     sx={{
-                      display: "flex",
-                      alignItems: "center",
+                      display: 'flex',
+                      alignItems: 'center',
                     }}
                   >
                     <Typography color="textSecondary" variant="body2">
@@ -118,17 +108,13 @@ const InvoiceDetails = () => {
                 </div>
               </Grid>
               <Grid item sx={{ m: -1 }}>
-                <Button
-                  onClick={() => setViewPDF(true)}
-                  sx={{ m: 1 }}
-                  variant="outlined"
-                >
+                <Button onClick={() => setViewPDF(true)} sx={{ m: 1 }} variant="outlined">
                   Preview
                 </Button>
                 <PDFDownloadLink
                   document={<InvoicePDF invoice={invoice} />}
                   fileName="invoice"
-                  style={{ textDecoration: "none" }}
+                  style={{ textDecoration: 'none' }}
                 >
                   <Button color="primary" sx={{ m: 1 }} variant="contained">
                     Download
@@ -144,14 +130,14 @@ const InvoiceDetails = () => {
       <Dialog fullScreen open={viewPDF}>
         <Box
           sx={{
-            display: "flex",
-            flexDirection: "column",
-            height: "100%",
+            display: 'flex',
+            flexDirection: 'column',
+            height: '100%',
           }}
         >
           <Box
             sx={{
-              backgroundColor: "background.default",
+              backgroundColor: 'background.default',
               p: 2,
             }}
           >
@@ -164,7 +150,7 @@ const InvoiceDetails = () => {
             </Button>
           </Box>
           <Box sx={{ flexGrow: 1 }}>
-            <PDFViewer height="100%" style={{ border: "none" }} width="100%">
+            <PDFViewer height="100%" style={{ border: 'none' }} width="100%">
               <InvoicePDF invoice={invoice} />
             </PDFViewer>
           </Box>
@@ -174,7 +160,7 @@ const InvoiceDetails = () => {
   );
 };
 
-InvoiceDetails.getLayout = (page) => (
+InvoiceDetails.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>

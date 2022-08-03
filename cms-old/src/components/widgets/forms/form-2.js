@@ -1,7 +1,7 @@
-import { useMemo } from "react"
-import { Box, Checkbox, Chip, Divider, FormControlLabel, Input } from "@mui/material"
-import { MultiSelect } from "../../multi-select"
-import { Search as SearchIcon } from "../../../icons/search"
+import { useMemo } from "react";
+import { Box, Checkbox, Chip, Divider, FormControlLabel, Input } from "@mui/material";
+import { MultiSelect } from "../../multi-select";
+import { Search as SearchIcon } from "../../../icons/search";
 
 const categoryOptions = [
   {
@@ -12,7 +12,7 @@ const categoryOptions = [
     label: "Service",
     value: "service",
   },
-]
+];
 
 const statusOptions = [
   {
@@ -23,7 +23,7 @@ const statusOptions = [
     label: "Draft",
     value: "draft",
   },
-]
+];
 
 const stockOptions = [
   {
@@ -38,7 +38,7 @@ const stockOptions = [
     label: "Out of Stock",
     value: "outOfStock",
   },
-]
+];
 
 export const Form2 = () => {
   // We memoize this part to prevent re-render issues
@@ -70,13 +70,22 @@ export const Form2 = () => {
       },
     ],
     [],
-  )
+  );
 
-  const categoryValues = useMemo(() => filterItems.filter(filterItems => filterItems.field === "category").map(filterItems => filterItems.value), [filterItems])
+  const categoryValues = useMemo(
+    () => filterItems.filter(filterItems => filterItems.field === "category").map(filterItems => filterItems.value),
+    [filterItems],
+  );
 
-  const statusValues = useMemo(() => filterItems.filter(filterItems => filterItems.field === "status").map(filterItems => filterItems.value), [filterItems])
+  const statusValues = useMemo(
+    () => filterItems.filter(filterItems => filterItems.field === "status").map(filterItems => filterItems.value),
+    [filterItems],
+  );
 
-  const stockValues = useMemo(() => filterItems.filter(filterItems => filterItems.field === "inStock").map(filterItems => filterItems.value), [filterItems])
+  const stockValues = useMemo(
+    () => filterItems.filter(filterItems => filterItems.field === "inStock").map(filterItems => filterItems.value),
+    [filterItems],
+  );
 
   return (
     <Box
@@ -151,5 +160,5 @@ export const Form2 = () => {
         <FormControlLabel control={<Checkbox defaultChecked />} label="In network" />
       </Box>
     </Box>
-  )
-}
+  );
+};

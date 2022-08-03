@@ -1,28 +1,28 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import { Box, Button, Chip, InputAdornment, TextField, Typography } from "@mui/material"
-import MobileDatePicker from "@mui/lab/MobileDatePicker"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Button, Chip, InputAdornment, TextField, Typography } from "@mui/material";
+import MobileDatePicker from "@mui/lab/MobileDatePicker";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
 
 export const JobDetailsStep = props => {
-  const { onBack, onNext, ...other } = props
-  const [tag, setTag] = useState("")
-  const [tagArray, setTagArray] = useState([])
-  const [startDate, setStartDate] = useState(new Date("2021-09-22T11:41:50"))
-  const [endDate, setEndDate] = useState(new Date("2022-01-11T12:41:50"))
+  const { onBack, onNext, ...other } = props;
+  const [tag, setTag] = useState("");
+  const [tagArray, setTagArray] = useState([]);
+  const [startDate, setStartDate] = useState(new Date("2021-09-22T11:41:50"));
+  const [endDate, setEndDate] = useState(new Date("2022-01-11T12:41:50"));
 
   const handleStartDateChange = newValue => {
-    setStartDate(newValue)
-  }
+    setStartDate(newValue);
+  };
 
   const handleEndDateChange = newValue => {
-    setEndDate(newValue)
-  }
+    setEndDate(newValue);
+  };
 
   const handleTagAdd = newTag => {
-    tagArray.push(newTag)
-    setTagArray(tagArray)
-  }
+    tagArray.push(newTag);
+    setTagArray(tagArray);
+  };
 
   return (
     <div {...other}>
@@ -38,11 +38,11 @@ export const JobDetailsStep = props => {
                   sx={{ ml: 2 }}
                   onClick={() => {
                     if (!tag) {
-                      return
+                      return;
                     }
 
-                    handleTagAdd(tag)
-                    setTag("")
+                    handleTagAdd(tag);
+                    setTag("");
                   }}
                 >
                   Add
@@ -60,8 +60,8 @@ export const JobDetailsStep = props => {
           {tagArray.map((_tag, i) => (
             <Chip
               onDelete={() => {
-                const newTags = tagArray.filter(t => t !== _tag)
-                setTagArray(newTags)
+                const newTags = tagArray.filter(t => t !== _tag);
+                setTagArray(newTags);
               }}
               // eslint-disable-next-line react/no-array-index-key
               key={i}
@@ -111,10 +111,10 @@ export const JobDetailsStep = props => {
         </Button>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 JobDetailsStep.propTypes = {
   onBack: PropTypes.func,
   onNext: PropTypes.func,
-}
+};

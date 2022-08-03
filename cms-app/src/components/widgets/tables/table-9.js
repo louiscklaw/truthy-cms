@@ -1,4 +1,4 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 import {
   Box,
   Card,
@@ -11,31 +11,31 @@ import {
   TableHead,
   TablePagination,
   TableRow,
-} from "@mui/material";
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
-import { Scrollbar } from "../../scrollbar";
-import { SeverityPill } from "../../severity-pill";
+} from '@mui/material';
+import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
+import { Scrollbar } from '../../scrollbar';
+import { SeverityPill } from '../../severity-pill';
 
 const now = new Date();
 
 const invoices = [
   {
-    id: "5ece2cef3e562cbd61996259",
-    currency: "$",
-    description: "Freelancer Subscription (12/05/2019 - 11/06/2019)",
+    id: '5ece2cef3e562cbd61996259',
+    currency: '$',
+    description: 'Freelancer Subscription (12/05/2019 - 11/06/2019)',
     issueDate: now.getTime(),
-    paymentMethod: "Credit Card",
-    status: "paid",
+    paymentMethod: 'Credit Card',
+    status: 'paid',
     value: 5.25,
   },
   {
-    id: "5ece2cf461b9484866f2968c",
-    currency: "$",
-    description: "Freelancer Subscription (12/05/2019 - 11/06/2019)",
+    id: '5ece2cf461b9484866f2968c',
+    currency: '$',
+    description: 'Freelancer Subscription (12/05/2019 - 11/06/2019)',
     issueDate: now.getTime(),
-    paymentMethod: "Credit Card",
-    status: "paid",
+    paymentMethod: 'Credit Card',
+    status: 'paid',
     value: 5.25,
   },
 ];
@@ -43,8 +43,8 @@ const invoices = [
 export const Table9 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
-      minHeight: "100%",
+      backgroundColor: 'background.default',
+      minHeight: '100%',
       p: 3,
     }}
   >
@@ -72,12 +72,10 @@ export const Table9 = () => (
             </TableRow>
           </TableHead>
           <TableBody>
-            {invoices.map((invoice) => (
+            {invoices.map(invoice => (
               <TableRow key={invoice.id}>
                 <TableCell>#{invoice.id}</TableCell>
-                <TableCell>
-                  {format(invoice.issueDate, "dd/MM/yyyy | HH:mm")}
-                </TableCell>
+                <TableCell>{format(invoice.issueDate, 'dd/MM/yyyy | HH:mm')}</TableCell>
                 <TableCell>{invoice.description}</TableCell>
                 <TableCell>{invoice.paymentMethod}</TableCell>
                 <TableCell>

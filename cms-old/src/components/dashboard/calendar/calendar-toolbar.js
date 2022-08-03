@@ -1,13 +1,13 @@
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import { Box, Button, IconButton, TextField, Typography } from "@mui/material"
-import ViewConfigIcon from "@mui/icons-material/ViewComfy"
-import ViewWeekIcon from "@mui/icons-material/ViewWeek"
-import ViewDayIcon from "@mui/icons-material/ViewDay"
-import ViewAgendaIcon from "@mui/icons-material/ViewAgenda"
-import { ChevronLeft as ChevronLeftIcon } from "../../../icons/chevron-left"
-import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right"
-import { Plus as PlusIcon } from "../../../icons/plus"
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
+import ViewConfigIcon from "@mui/icons-material/ViewComfy";
+import ViewWeekIcon from "@mui/icons-material/ViewWeek";
+import ViewDayIcon from "@mui/icons-material/ViewDay";
+import ViewAgendaIcon from "@mui/icons-material/ViewAgenda";
+import { ChevronLeft as ChevronLeftIcon } from "../../../icons/chevron-left";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
+import { Plus as PlusIcon } from "../../../icons/plus";
 
 const viewOptions = [
   {
@@ -30,14 +30,14 @@ const viewOptions = [
     label: "Agenda",
     value: "listWeek",
   },
-]
+];
 
 export const CalendarToolbar = props => {
-  const { date, mobile, onAddClick, onDateNext, onDatePrev, onDateToday, onViewChange, view, ...other } = props
+  const { date, mobile, onAddClick, onDateNext, onDatePrev, onDateToday, onViewChange, view, ...other } = props;
 
   const handleViewChange = event => {
-    onViewChange?.(event.target.value)
-  }
+    onViewChange?.(event.target.value);
+  };
 
   return (
     <Box
@@ -112,14 +112,14 @@ export const CalendarToolbar = props => {
           {viewOptions.map(viewOption => {
             // On mobile allow only timeGridDay and agenda views
             if (mobile && !["timeGridDay", "listWeek"].includes(viewOption.value)) {
-              return null
+              return null;
             }
 
             return (
               <option key={viewOption.value} value={viewOption.value}>
                 {viewOption.label}
               </option>
-            )
+            );
           })}
         </TextField>
         <Button
@@ -142,8 +142,8 @@ export const CalendarToolbar = props => {
         </Button>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 CalendarToolbar.propTypes = {
   children: PropTypes.node,
@@ -155,4 +155,4 @@ CalendarToolbar.propTypes = {
   onDateToday: PropTypes.func,
   onViewChange: PropTypes.func,
   view: PropTypes.oneOf(["dayGridMonth", "timeGridWeek", "timeGridDay", "listWeek"]).isRequired,
-}
+};

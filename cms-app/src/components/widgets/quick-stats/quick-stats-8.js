@@ -1,15 +1,15 @@
-import { format, subDays } from "date-fns";
-import { Avatar, Box, Card, Container, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { Refresh as RefreshIcon } from "../../../icons/refresh";
-import { Chart } from "../../chart";
+import { format, subDays } from 'date-fns';
+import { Avatar, Box, Card, Container, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Refresh as RefreshIcon } from '../../../icons/refresh';
+import { Chart } from '../../chart';
 
 const getCategories = () => {
   const now = new Date();
   const categories = [];
 
   for (let i = 6; i >= 0; i--) {
-    categories.push(format(subDays(now, i), "dd/MM/yyyy"));
+    categories.push(format(subDays(now, i), 'dd/MM/yyyy'));
   }
 
   return categories;
@@ -20,7 +20,7 @@ export const QuickStats8 = () => {
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       toolbar: {
         show: false,
       },
@@ -48,7 +48,7 @@ export const QuickStats8 = () => {
     },
     stroke: {
       width: 2,
-      colors: ["#f44336"],
+      colors: ['#f44336'],
     },
     theme: {
       mode: theme.palette.mode,
@@ -75,15 +75,15 @@ export const QuickStats8 = () => {
   const chartSeries = [
     {
       data: [14, 43, 98, 68, 155, 18, 8],
-      name: "Conversions",
+      name: 'Conversions',
     },
   ];
 
   return (
     <Box
       sx={{
-        backgroundColor: "background.default",
-        minHeight: "100%",
+        backgroundColor: 'background.default',
+        minHeight: '100%',
         p: 3,
       }}
     >
@@ -91,22 +91,22 @@ export const QuickStats8 = () => {
         <Card sx={{ p: 2 }}>
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
             }}
           >
             <Box
               sx={{
-                alignItems: "center",
-                display: "flex",
+                alignItems: 'center',
+                display: 'flex',
               }}
             >
               <Avatar
                 sx={{
-                  backgroundColor: "primary.main",
-                  color: "primary.contrastText",
+                  backgroundColor: 'primary.main',
+                  color: 'primary.contrastText',
                 }}
               >
                 <RefreshIcon fontSize="small" />
@@ -119,12 +119,7 @@ export const QuickStats8 = () => {
               </Box>
             </Box>
             <Box sx={{ maxWidth: 200 }}>
-              <Chart
-                height={100}
-                type="line"
-                options={chartOptions}
-                series={chartSeries}
-              />
+              <Chart height={100} type="line" options={chartOptions} series={chartSeries} />
             </Box>
           </Box>
         </Card>

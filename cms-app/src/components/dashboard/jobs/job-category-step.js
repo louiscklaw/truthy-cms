@@ -1,32 +1,32 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { Box, Button, Card, Radio, Typography } from "@mui/material";
-import { alpha } from "@mui/material/styles";
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { Box, Button, Card, Radio, Typography } from '@mui/material';
+import { alpha } from '@mui/material/styles';
+import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 
 const typeOptions = [
   {
-    description: "Best for small, friendly-pocket projects",
-    title: "Freelancers",
-    value: "freelancers",
+    description: 'Best for small, friendly-pocket projects',
+    title: 'Freelancers',
+    value: 'freelancers',
   },
   {
-    description: "Limited-time projects with highly experienced individuals",
-    title: "Contractor",
-    value: "contractor",
+    description: 'Limited-time projects with highly experienced individuals',
+    title: 'Contractor',
+    value: 'contractor',
   },
   {
-    description: "Unlimited term contracts",
-    title: "Employees",
-    value: "employees",
+    description: 'Unlimited term contracts',
+    title: 'Employees',
+    value: 'employees',
   },
 ];
 
-export const JobCategoryStep = (props) => {
+export const JobCategoryStep = props => {
   const { onBack, onNext, ...other } = props;
   const [type, setType] = useState(typeOptions[1].value);
 
-  const handleChange = (newType) => {
+  const handleChange = newType => {
     setType(newType);
   };
 
@@ -34,21 +34,20 @@ export const JobCategoryStep = (props) => {
     <div {...other}>
       <Typography variant="h6">I’m looking for...</Typography>
       <Box sx={{ mt: 3 }}>
-        {typeOptions.map((typeOption) => (
+        {typeOptions.map(typeOption => (
           <Box key={typeOption.value} sx={{ mb: 2 }}>
             <Card
               key={typeOption.value}
               sx={{
-                alignItems: "center",
-                cursor: "pointer",
-                display: "flex",
+                alignItems: 'center',
+                cursor: 'pointer',
+                display: 'flex',
                 p: 2,
                 ...(type === typeOption.value && {
-                  borderColor: "primary.main",
+                  borderColor: 'primary.main',
                   borderWidth: 2,
-                  backgroundColor: (theme) =>
-                    alpha(theme.palette.primary.main, 0.08),
-                  m: "-1px",
+                  backgroundColor: theme => alpha(theme.palette.primary.main, 0.08),
+                  m: '-1px',
                 }),
               }}
               onClick={() => handleChange(typeOption.value)}
@@ -65,11 +64,7 @@ export const JobCategoryStep = (props) => {
           </Box>
         ))}
       </Box>
-      <Button
-        endIcon={<ArrowRightIcon fontSize="small" />}
-        onClick={onNext}
-        variant="contained"
-      >
+      <Button endIcon={<ArrowRightIcon fontSize="small" />} onClick={onNext} variant="contained">
         Continue
       </Button>
     </div>

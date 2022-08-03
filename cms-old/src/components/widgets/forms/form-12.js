@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material"
+import { Box, Button, TextField } from "@mui/material";
 
 const categoryOptions = [
   {
@@ -13,7 +13,7 @@ const categoryOptions = [
     label: "Cars",
     value: "cars",
   },
-]
+];
 
 export const Form12 = () => (
   <Box
@@ -50,4 +50,4 @@ export const Form12 = () => (
       </form>
     </Box>
   </Box>
-)
+);

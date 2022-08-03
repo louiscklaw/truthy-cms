@@ -1,7 +1,7 @@
-import { createContext, useEffect, useReducer } from "react";
-import PropTypes from "prop-types";
-import Auth from "@aws-amplify/auth";
-import { amplifyConfig } from "../config";
+import { createContext, useEffect, useReducer } from 'react';
+import PropTypes from 'prop-types';
+import Auth from '@aws-amplify/auth';
+import { amplifyConfig } from '../config';
 
 Auth.configure({
   userPoolId: amplifyConfig.aws_user_pools_id,
@@ -11,9 +11,9 @@ Auth.configure({
 
 var ActionType;
 (function (ActionType) {
-  ActionType["INITIALIZE"] = "INITIALIZE";
-  ActionType["LOGIN"] = "LOGIN";
-  ActionType["LOGOUT"] = "LOGOUT";
+  ActionType['INITIALIZE'] = 'INITIALIZE';
+  ActionType['LOGIN'] = 'LOGIN';
+  ActionType['LOGOUT'] = 'LOGOUT';
 })(ActionType || (ActionType = {}));
 
 const initialState = {
@@ -42,19 +42,18 @@ const handlers = {
       user,
     };
   },
-  LOGOUT: (state) => ({
+  LOGOUT: state => ({
     ...state,
     isAuthenticated: false,
     user: null,
   }),
 };
 
-const reducer = (state, action) =>
-  handlers[action.type] ? handlers[action.type](state, action) : state;
+const reducer = (state, action) => (handlers[action.type] ? handlers[action.type](state, action) : state);
 
 export const AuthContext = createContext({
   ...initialState,
-  platform: "Amplify",
+  platform: 'Amplify',
   login: () => Promise.resolve(),
   logout: () => Promise.resolve(),
   register: () => Promise.resolve(),
@@ -64,7 +63,7 @@ export const AuthContext = createContext({
   passwordReset: () => Promise.resolve(),
 });
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
@@ -83,10 +82,10 @@ export const AuthProvider = (props) => {
             isAuthenticated: true,
             user: {
               id: user.sub,
-              avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
+              avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
               email: user.attributes.email,
-              name: "Anika Visser",
-              plan: "Premium",
+              name: 'Anika Visser',
+              plan: 'Premium',
             },
           },
         });
@@ -109,7 +108,7 @@ export const AuthProvider = (props) => {
 
     if (user.challengeName) {
       console.error(
-        `Unable to login, because challenge "${user.challengeName}" is mandated and we did not handle this case.`
+        `Unable to login, because challenge "${user.challengeName}" is mandated and we did not handle this case.`,
       );
       return;
     }
@@ -119,10 +118,10 @@ export const AuthProvider = (props) => {
       payload: {
         user: {
           id: user.attributes.sub,
-          avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
+          avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
           email: user.attributes.email,
-          name: "Anika Visser",
-          plan: "Premium",
+          name: 'Anika Visser',
+          plan: 'Premium',
         },
       },
     });
@@ -147,11 +146,11 @@ export const AuthProvider = (props) => {
     await Auth.confirmSignUp(username, code);
   };
 
-  const resendCode = async (username) => {
+  const resendCode = async username => {
     await Auth.resendSignUp(username);
   };
 
-  const passwordRecovery = async (username) => {
+  const passwordRecovery = async username => {
     await Auth.forgotPassword(username);
   };
 
@@ -163,7 +162,7 @@ export const AuthProvider = (props) => {
     <AuthContext.Provider
       value={{
         ...state,
-        platform: "Amplify",
+        platform: 'Amplify',
         login,
         logout,
         register,

@@ -1,6 +1,19 @@
-import numeral from "numeral"
-import { Badge, Box, Button, Card, CardContent, CardHeader, Container, Divider, List, ListItem, ListItemText, Typography } from "@mui/material"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
+import numeral from "numeral";
+import {
+  Badge,
+  Box,
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  Container,
+  Divider,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
 
 const currencies = [
   {
@@ -18,7 +31,7 @@ const currencies = [
     color: "#ff4081",
     name: "XRP Ripple",
   },
-]
+];
 
 export const DetailList1 = () => (
   <Box
@@ -104,4 +117,4 @@ export const DetailList1 = () => (
       </Card>
     </Container>
   </Box>
-)
+);

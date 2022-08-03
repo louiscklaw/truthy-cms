@@ -4,7 +4,7 @@ import { AppBar, Box, Button, Container, IconButton, Link, Toolbar } from '@mui/
 import { Menu as MenuIcon } from '../icons/menu';
 import { Logo } from './logo';
 
-export const MainNavbar = (props) => {
+export const MainNavbar = props => {
   const { onOpenSidebar } = props;
 
   return (
@@ -15,27 +15,21 @@ export const MainNavbar = (props) => {
         borderBottomColor: 'divider',
         borderBottomStyle: 'solid',
         borderBottomWidth: 1,
-        color: 'text.secondary'
+        color: 'text.secondary',
       }}
     >
       <Container maxWidth="lg">
-        <Toolbar
-          disableGutters
-          sx={{ minHeight: 64 }}
-        >
-          <NextLink
-            href="/"
-            passHref
-          >
+        <Toolbar disableGutters sx={{ minHeight: 64 }}>
+          <NextLink href="/" passHref>
             <a>
               <Logo
                 sx={{
                   display: {
                     md: 'inline',
-                    xs: 'none'
+                    xs: 'none',
                   },
                   height: 40,
-                  width: 40
+                  width: 40,
                 }}
               />
             </a>
@@ -46,8 +40,8 @@ export const MainNavbar = (props) => {
             onClick={onOpenSidebar}
             sx={{
               display: {
-                md: 'none'
-              }
+                md: 'none',
+              },
             }}
           >
             <MenuIcon fontSize="small" />
@@ -57,46 +51,22 @@ export const MainNavbar = (props) => {
               alignItems: 'center',
               display: {
                 md: 'flex',
-                xs: 'none'
-              }
+                xs: 'none',
+              },
             }}
           >
-            <NextLink
-              href="/dashboard"
-              passHref
-            >
-              <Link
-                color="textSecondary"
-                underline="none"
-                variant="subtitle2"
-              >
+            <NextLink href="/dashboard" passHref>
+              <Link color="textSecondary" underline="none" variant="subtitle2">
                 Live Demo
               </Link>
             </NextLink>
-            <NextLink
-              href="/browse"
-              passHref
-            >
-              <Link
-                color="textSecondary"
-                sx={{ ml: 2 }}
-                underline="none"
-                variant="subtitle2"
-              >
+            <NextLink href="/browse" passHref>
+              <Link color="textSecondary" sx={{ ml: 2 }} underline="none" variant="subtitle2">
                 Components
               </Link>
             </NextLink>
-            <NextLink
-              href="/docs/welcome"
-              passHref
-            >
-              <Link
-                color="textSecondary"
-                component="a"
-                sx={{ ml: 2 }}
-                underline="none"
-                variant="subtitle2"
-              >
+            <NextLink href="/docs/welcome" passHref>
+              <Link color="textSecondary" component="a" sx={{ ml: 2 }} underline="none" variant="subtitle2">
                 Documentation
               </Link>
             </NextLink>
@@ -118,5 +88,5 @@ export const MainNavbar = (props) => {
 };
 
 MainNavbar.propTypes = {
-  onOpenSidebar: PropTypes.func
+  onOpenSidebar: PropTypes.func,
 };

@@ -11,7 +11,7 @@ import {
   Input,
   LinearProgress,
   OutlinedInput,
-  Typography
+  Typography,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { deleteChecklist, updateChecklist } from '../../../slices/kanban';
@@ -22,7 +22,7 @@ import { Trash as TrashIcon } from '../../../icons/trash';
 
 const KanbanChecklistRoot = styled('div')``;
 
-export const KanbanChecklist = (props) => {
+export const KanbanChecklist = props => {
   const { card, checklist, ...other } = props;
   const dispatch = useDispatch();
   const [name, setName] = useState(checklist.name);
@@ -33,7 +33,7 @@ export const KanbanChecklist = (props) => {
     setEditingName(true);
   };
 
-  const handleNameChange = (event) => {
+  const handleNameChange = event => {
     setName(event.target.value);
   };
 
@@ -69,7 +69,7 @@ export const KanbanChecklist = (props) => {
     }
   };
 
-  const handleCheckItemEditInit = (checkItemId) => {
+  const handleCheckItemEditInit = checkItemId => {
     setEditingCheckItem(checkItemId);
   };
 
@@ -82,12 +82,8 @@ export const KanbanChecklist = (props) => {
   };
 
   const totalCheckItems = checklist.checkItems.length;
-  const completedCheckItems = (checklist
-    .checkItems
-    .filter((checkItem) => checkItem.state === 'complete')).length;
-  const completePercentage = totalCheckItems === 0
-    ? 100
-    : (completedCheckItems / totalCheckItems) * 100;
+  const completedCheckItems = checklist.checkItems.filter(checkItem => checkItem.state === 'complete').length;
+  const completePercentage = totalCheckItems === 0 ? 100 : (completedCheckItems / totalCheckItems) * 100;
 
   return (
     <KanbanChecklistRoot {...other}>
@@ -96,104 +92,85 @@ export const KanbanChecklist = (props) => {
           <Box
             sx={{
               alignItems: 'center',
-              display: 'flex'
+              display: 'flex',
             }}
           >
-            {editingName
-              ? (
-                <Box
+            {editingName ? (
+              <Box
+                sx={{
+                  alignItems: 'center',
+                  display: 'flex',
+                  width: '100%',
+                }}
+              >
+                <OutlinedInput
+                  onChange={handleNameChange}
+                  value={name}
                   sx={{
-                    alignItems: 'center',
-                    display: 'flex',
-                    width: '100%'
+                    flexGrow: 1,
+                    '& .MuiInputBase-input': {
+                      px: 2,
+                      py: 1,
+                    },
                   }}
-                >
-                  <OutlinedInput
-                    onChange={handleNameChange}
-                    value={name}
-                    sx={{
-                      flexGrow: 1,
-                      '& .MuiInputBase-input': {
-                        px: 2,
-                        py: 1
-                      }
-                    }}
-                  />
-                  <Button
-                    onClick={handleNameSave}
-                    size="small"
-                    sx={{ ml: 2 }}
-                    variant="contained"
-                  >
-                    Save
-                  </Button>
-                  <Button
-                    onClick={handleCancel}
-                    size="small"
-                    sx={{ ml: 2 }}
-                  >
-                    Cancel
-                  </Button>
-                </Box>
-              )
-              : (
-                <Box
+                />
+                <Button onClick={handleNameSave} size="small" sx={{ ml: 2 }} variant="contained">
+                  Save
+                </Button>
+                <Button onClick={handleCancel} size="small" sx={{ ml: 2 }}>
+                  Cancel
+                </Button>
+              </Box>
+            ) : (
+              <Box
+                sx={{
+                  alignItems: 'center',
+                  display: 'flex',
+                  flexGrow: 1,
+                }}
+              >
+                <Input
+                  disableUnderline
+                  fullWidth
+                  onClick={handleNameEdit}
+                  value={checklist.name}
                   sx={{
-                    alignItems: 'center',
-                    display: 'flex',
-                    flexGrow: 1
+                    borderColor: 'transparent',
+                    borderRadius: 1,
+                    borderStyle: 'solid',
+                    borderWidth: 1,
+                    cursor: 'text',
+                    m: '-1px',
+                    '&:hover': {
+                      backgroundColor: 'action.selected',
+                    },
+                    '& .MuiInputBase-input': {
+                      fontWeight: 500,
+                      px: 2,
+                      py: 1,
+                    },
                   }}
-                >
-                  <Input
-                    disableUnderline
-                    fullWidth
-                    onClick={handleNameEdit}
-                    value={checklist.name}
-                    sx={{
-                      borderColor: 'transparent',
-                      borderRadius: 1,
-                      borderStyle: 'solid',
-                      borderWidth: 1,
-                      cursor: 'text',
-                      m: '-1px',
-                      '&:hover': {
-                        backgroundColor: 'action.selected'
-                      },
-                      '& .MuiInputBase-input': {
-                        fontWeight: 500,
-                        px: 2,
-                        py: 1
-                      }
-                    }}
-                  />
-                  <IconButton
-                    onClick={handleDelete}
-                    sx={{ ml: 2 }}
-                    size="small"
-                  >
-                    <TrashIcon fontSize="small" />
-                  </IconButton>
-                </Box>
-              )}
+                />
+                <IconButton onClick={handleDelete} sx={{ ml: 2 }} size="small">
+                  <TrashIcon fontSize="small" />
+                </IconButton>
+              </Box>
+            )}
           </Box>
           <Box
             sx={{
               alignItems: 'center',
               display: 'flex',
-              mt: 3
+              mt: 3,
             }}
           >
-            <Typography
-              color="textSecondary"
-              variant="caption"
-            >
-              {Math.round(completePercentage)}
-              %
+            <Typography color="textSecondary" variant="caption">
+              {Math.round(completePercentage)}%
             </Typography>
             <Box
               sx={{
                 flexGrow: 1,
-                ml: 2
+                ml: 2,
               }}
             >
               <LinearProgress
@@ -202,8 +179,8 @@ export const KanbanChecklist = (props) => {
                   borderRadius: 1,
                   height: 8,
                   '& .MuiLinearProgress-bar': {
-                    borderRadius: 'inherit'
-                  }
+                    borderRadius: 'inherit',
+                  },
                 }}
                 value={completePercentage}
                 variant="determinate"
@@ -212,7 +189,7 @@ export const KanbanChecklist = (props) => {
           </Box>
         </Box>
         <Divider />
-        {checklist.checkItems.map((checkItem) => (
+        {checklist.checkItems.map(checkItem => (
           <Fragment key={checkItem.id}>
             <KanbanCheckItem
               cardId={card.id}
@@ -227,10 +204,7 @@ export const KanbanChecklist = (props) => {
           </Fragment>
         ))}
         <CardActions>
-          <KanbanCheckItemAdd
-            cardId={card.id}
-            checklistId={checklist.id}
-          />
+          <KanbanCheckItemAdd cardId={card.id} checklistId={checklist.id} />
         </CardActions>
       </Card>
     </KanbanChecklistRoot>
@@ -240,5 +214,5 @@ export const KanbanChecklist = (props) => {
 KanbanChecklist.propTypes = {
   card: PropTypes.object.isRequired,
   checklist: PropTypes.object.isRequired,
-  sx: PropTypes.object
+  sx: PropTypes.object,
 };

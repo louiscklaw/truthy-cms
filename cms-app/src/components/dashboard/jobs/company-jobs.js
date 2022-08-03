@@ -1,9 +1,9 @@
-import { Fragment } from "react";
-import PropTypes from "prop-types";
-import { formatDistanceStrict } from "date-fns";
-import { Box, Button, Card, Divider, Typography } from "@mui/material";
+import { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import { formatDistanceStrict } from 'date-fns';
+import { Box, Button, Card, Divider, Typography } from '@mui/material';
 
-export const CompanyJobs = (props) => {
+export const CompanyJobs = props => {
   const { jobs, ...other } = props;
 
   return (
@@ -12,10 +12,10 @@ export const CompanyJobs = (props) => {
         <Fragment key={job.id}>
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "space-between",
-              flexWrap: "wrap",
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
               px: 2,
               py: 1.5,
             }}
@@ -23,9 +23,7 @@ export const CompanyJobs = (props) => {
             <div>
               <Typography variant="subtitle1">{job.title}</Typography>
               <Typography color="textSecondary" variant="caption">
-                {job.isRemote
-                  ? "Remote possible"
-                  : `${job.country}, ${job.city}`}{" "}
+                {job.isRemote ? 'Remote possible' : `${job.country}, ${job.city}`}{' '}
                 <Typography color="inherit" noWrap variant="caption">
                   • {job.currency}
                   {job.salaryMin} - {job.currency}
@@ -34,11 +32,7 @@ export const CompanyJobs = (props) => {
               </Typography>
             </div>
             <div>
-              <Typography
-                color="textSecondary"
-                sx={{ mr: 2 }}
-                variant="caption"
-              >
+              <Typography color="textSecondary" sx={{ mr: 2 }} variant="caption">
                 {formatDistanceStrict(job.publishedAt, new Date(), {
                   addSuffix: true,
                 })}

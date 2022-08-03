@@ -1,9 +1,20 @@
-import PropTypes from "prop-types"
-import { useDropzone } from "react-dropzone"
-import { Box, Button, IconButton, Link, List, ListItem, ListItemIcon, ListItemText, Tooltip, Typography } from "@mui/material"
-import { Duplicate as DuplicateIcon } from "../icons/duplicate"
-import { X as XIcon } from "../icons/x"
-import { bytesToSize } from "../utils/bytes-to-size"
+import PropTypes from "prop-types";
+import { useDropzone } from "react-dropzone";
+import {
+  Box,
+  Button,
+  IconButton,
+  Link,
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { Duplicate as DuplicateIcon } from "../icons/duplicate";
+import { X as XIcon } from "../icons/x";
+import { bytesToSize } from "../utils/bytes-to-size";
 
 export const FileDropzone = props => {
   const {
@@ -27,7 +38,7 @@ export const FileDropzone = props => {
     onUpload,
     preventDropOnDocument,
     ...other
-  } = props
+  } = props;
 
   // We did not add the remaining props to avoid component complexity
   // but you can simply add it if you need to.
@@ -37,7 +48,7 @@ export const FileDropzone = props => {
     maxSize,
     minSize,
     onDrop,
-  })
+  });
 
   return (
     <div {...other}>
@@ -79,7 +90,8 @@ export const FileDropzone = props => {
           <Typography variant="h6">{`Select file${maxFiles && maxFiles === 1 ? "" : "s"}`}</Typography>
           <Box sx={{ mt: 2 }}>
             <Typography variant="body1">
-              {`Drop file${maxFiles && maxFiles === 1 ? "" : "s"}`} <Link underline="always">browse</Link> thorough your machine
+              {`Drop file${maxFiles && maxFiles === 1 ? "" : "s"}`} <Link underline="always">browse</Link> thorough your
+              machine
             </Typography>
           </Box>
         </Box>
@@ -135,8 +147,8 @@ export const FileDropzone = props => {
         </Box>
       )}
     </div>
-  )
-}
+  );
+};
 
 FileDropzone.propTypes = {
   accept: PropTypes.oneOfType([PropTypes.string, PropTypes.arrayOf(PropTypes.string.isRequired)]),
@@ -158,4 +170,4 @@ FileDropzone.propTypes = {
   onRemoveAll: PropTypes.func,
   onUpload: PropTypes.func,
   preventDropOnDocument: PropTypes.bool,
-}
+};

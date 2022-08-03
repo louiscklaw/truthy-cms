@@ -1,13 +1,13 @@
-import Markdown from "react-markdown";
-import PropTypes from "prop-types";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import dracula from "react-syntax-highlighter/dist/cjs/styles/prism/dracula";
-import { styled } from "@mui/material/styles";
+import Markdown from 'react-markdown';
+import PropTypes from 'prop-types';
+import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import dracula from 'react-syntax-highlighter/dist/cjs/styles/prism/dracula';
+import { styled } from '@mui/material/styles';
 
-const Link = (props) => {
+const Link = props => {
   const { href, children } = props;
 
-  if (!href?.startsWith("http")) {
+  if (!href?.startsWith('http')) {
     return <a href={href}>{children}</a>;
   }
 
@@ -18,14 +18,14 @@ const Link = (props) => {
   );
 };
 
-const Code = (props) => {
+const Code = props => {
   const { node, inline, className, children, ...other } = props;
 
-  const match = /language-(\w+)/.exec(className || "");
+  const match = /language-(\w+)/.exec(className || '');
 
   return !inline && match ? (
     <SyntaxHighlighter
-      children={String(children).replace(/\n$/, "")}
+      children={String(children).replace(/\n$/, '')}
       style={dracula}
       language={match[1]}
       PreTag="div"
@@ -43,94 +43,89 @@ const components = {
   code: Code,
 };
 
-const DocsContentRoot = styled("div")(({ theme }) => ({
+const DocsContentRoot = styled('div')(({ theme }) => ({
   color: theme.palette.text.primary,
   fontFamily: theme.typography.fontFamily,
-  "& blockquote": {
+  '& blockquote': {
     borderLeft: `4px solid ${theme.palette.text.secondary}`,
     marginBottom: theme.spacing(2),
     paddingBottom: theme.spacing(1),
     paddingLeft: theme.spacing(2),
     paddingTop: theme.spacing(1),
-    "& > p": {
+    '& > p': {
       color: theme.palette.text.secondary,
       marginBottom: 0,
     },
   },
-  "& code": {
-    color: "#01ab56",
-    fontFamily:
-      "Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace",
+  '& code': {
+    color: '#01ab56',
+    fontFamily: "Inconsolata, Monaco, Consolas, 'Courier New', Courier, monospace",
     fontSize: 14,
     paddingLeft: 2,
     paddingRight: 2,
   },
-  "& h1": {
+  '& h1': {
     fontSize: 35,
     fontWeight: 500,
-    letterSpacing: "-0.24px",
+    letterSpacing: '-0.24px',
     marginBottom: theme.spacing(2),
     marginTop: theme.spacing(6),
   },
-  "& h2": {
+  '& h2': {
     fontSize: 29,
     fontWeight: 500,
-    letterSpacing: "-0.24px",
+    letterSpacing: '-0.24px',
     marginBottom: theme.spacing(2),
     marginTop: theme.spacing(6),
   },
-  "& h3": {
+  '& h3': {
     fontSize: 24,
     fontWeight: 500,
-    letterSpacing: "-0.06px",
+    letterSpacing: '-0.06px',
     marginBottom: theme.spacing(2),
     marginTop: theme.spacing(6),
   },
-  "& h4": {
+  '& h4': {
     fontSize: 20,
     fontWeight: 500,
-    letterSpacing: "-0.06px",
+    letterSpacing: '-0.06px',
     marginBottom: theme.spacing(2),
     marginTop: theme.spacing(4),
   },
-  "& h5": {
+  '& h5': {
     fontSize: 16,
     fontWeight: 500,
-    letterSpacing: "-0.05px",
+    letterSpacing: '-0.05px',
     marginBottom: theme.spacing(2),
     marginTop: theme.spacing(2),
   },
-  "& h6": {
+  '& h6': {
     fontSize: 14,
     fontWeight: 500,
-    letterSpacing: "-0.05px",
+    letterSpacing: '-0.05px',
     marginBottom: theme.spacing(2),
     marginTop: theme.spacing(2),
   },
-  "& li": {
+  '& li': {
     fontSize: 14,
     lineHeight: 1.5,
     marginBottom: theme.spacing(2),
     marginLeft: theme.spacing(4),
   },
-  "& p": {
+  '& p': {
     fontSize: 14,
     lineHeight: 1.5,
     marginBottom: theme.spacing(2),
-    "& > a": {
+    '& > a': {
       color: theme.palette.secondary.main,
     },
   },
 }));
 
-export const DocsContent = (props) => {
+export const DocsContent = props => {
   const { content } = props;
 
-  return (
-    <DocsContentRoot>
-      {content && <Markdown components={components} children={content} />}
-    </DocsContentRoot>
-  );
+  return <DocsContentRoot>{content && <Markdown components={components} children={content} />}</DocsContentRoot>;
 };
 
 DocsContent.propTypes = {

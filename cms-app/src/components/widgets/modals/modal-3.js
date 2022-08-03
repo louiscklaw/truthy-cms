@@ -1,20 +1,12 @@
-import {
-  Box,
-  Button,
-  Container,
-  IconButton,
-  InputAdornment,
-  Paper,
-  TextField,
-} from "@mui/material";
-import { Search as SearchIcon } from "../../../icons/search";
-import { X as XIcon } from "../../../icons/x";
+import { Box, Button, Container, IconButton, InputAdornment, Paper, TextField } from '@mui/material';
+import { Search as SearchIcon } from '../../../icons/search';
+import { X as XIcon } from '../../../icons/x';
 
 export const Modal3 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
-      minHeight: "100%",
+      backgroundColor: 'background.default',
+      minHeight: '100%',
       p: 3,
     }}
   >
@@ -22,8 +14,8 @@ export const Modal3 = () => (
       <Box sx={{ p: 3 }}>
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "flex-end",
+            display: 'flex',
+            justifyContent: 'flex-end',
           }}
         >
           <IconButton>
@@ -35,8 +27,8 @@ export const Modal3 = () => (
         <Container maxWidth="md">
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
+              alignItems: 'center',
+              display: 'flex',
             }}
           >
             <TextField

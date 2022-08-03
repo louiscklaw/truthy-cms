@@ -1,51 +1,51 @@
-import { useCallback, useEffect, useState } from "react"
-import NextLink from "next/link"
-import Head from "next/head"
-import { format } from "date-fns"
-import { Box, Button, Container, Grid, Link, Typography } from "@mui/material"
-import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import { orderApi } from "../../../__fake-api__/order-api"
-import { AuthGuard } from "../../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../../components/dashboard/dashboard-layout"
-import { OrderItems } from "../../../components/dashboard/order/order-items"
-import { OrderLogs } from "../../../components/dashboard/order/order-logs"
-import { OrderSummary } from "../../../components/dashboard/order/order-summary"
-import { useMounted } from "../../../hooks/use-mounted"
-import { Calendar as CalendarIcon } from "../../../icons/calendar"
-import { ChevronDown as ChevronDownIcon } from "../../../icons/chevron-down"
-import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt"
-import { gtm } from "../../../lib/gtm"
+import { useCallback, useEffect, useState } from "react";
+import NextLink from "next/link";
+import Head from "next/head";
+import { format } from "date-fns";
+import { Box, Button, Container, Grid, Link, Typography } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { orderApi } from "../../../__fake-api__/order-api";
+import { AuthGuard } from "../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
+import { OrderItems } from "../../../components/dashboard/order/order-items";
+import { OrderLogs } from "../../../components/dashboard/order/order-logs";
+import { OrderSummary } from "../../../components/dashboard/order/order-summary";
+import { useMounted } from "../../../hooks/use-mounted";
+import { Calendar as CalendarIcon } from "../../../icons/calendar";
+import { ChevronDown as ChevronDownIcon } from "../../../icons/chevron-down";
+import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
+import { gtm } from "../../../lib/gtm";
 
 const OrderDetails = () => {
-  const isMounted = useMounted()
-  const [order, setOrder] = useState(null)
+  const isMounted = useMounted();
+  const [order, setOrder] = useState(null);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const getOrder = useCallback(async () => {
     try {
-      const data = await orderApi.getOrder()
+      const data = await orderApi.getOrder();
 
       if (isMounted()) {
-        setOrder(data)
+        setOrder(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(
     () => {
-      getOrder()
+      getOrder();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   if (!order) {
-    return null
+    return null;
   }
 
   return (
@@ -117,13 +117,13 @@ const OrderDetails = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 OrderDetails.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default OrderDetails
+export default OrderDetails;

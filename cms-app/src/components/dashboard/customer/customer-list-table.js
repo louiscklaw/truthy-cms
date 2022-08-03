@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import NextLink from "next/link";
-import numeral from "numeral";
-import PropTypes from "prop-types";
+import { useEffect, useState } from 'react';
+import NextLink from 'next/link';
+import numeral from 'numeral';
+import PropTypes from 'prop-types';
 import {
   Avatar,
   Box,
@@ -16,22 +16,14 @@ import {
   TablePagination,
   TableRow,
   Typography,
-} from "@mui/material";
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
-import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
-import { getInitials } from "../../../utils/get-initials";
-import { Scrollbar } from "../../scrollbar";
+} from '@mui/material';
+import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
+import { getInitials } from '../../../utils/get-initials';
+import { Scrollbar } from '../../scrollbar';
 
-export const CustomerListTable = (props) => {
-  const {
-    customers,
-    customersCount,
-    onPageChange,
-    onRowsPerPageChange,
-    page,
-    rowsPerPage,
-    ...other
-  } = props;
+export const CustomerListTable = props => {
+  const { customers, customersCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props;
   const [selectedCustomers, setSelectedCustomers] = useState([]);
 
   // Reset selected customers when customers change
@@ -42,37 +34,31 @@ export const CustomerListTable = (props) => {
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [customers]
+    [customers],
   );
 
-  const handleSelectAllCustomers = (event) => {
-    setSelectedCustomers(
-      event.target.checked ? customers.map((customer) => customer.id) : []
-    );
+  const handleSelectAllCustomers = event => {
+    setSelectedCustomers(event.target.checked ? customers.map(customer => customer.id) : []);
   };
 
   const handleSelectOneCustomer = (event, customerId) => {
     if (!selectedCustomers.includes(customerId)) {
-      setSelectedCustomers((prevSelected) => [...prevSelected, customerId]);
+      setSelectedCustomers(prevSelected => [...prevSelected, customerId]);
     } else {
-      setSelectedCustomers((prevSelected) =>
-        prevSelected.filter((id) => id !== customerId)
-      );
+      setSelectedCustomers(prevSelected => prevSelected.filter(id => id !== customerId));
     }
   };
 
   const enableBulkActions = selectedCustomers.length > 0;
-  const selectedSomeCustomers =
-    selectedCustomers.length > 0 && selectedCustomers.length < customers.length;
+  const selectedSomeCustomers = selectedCustomers.length > 0 && selectedCustomers.length < customers.length;
   const selectedAllCustomers = selectedCustomers.length === customers.length;
 
   return (
     <div {...other}>
       <Box
         sx={{
-          backgroundColor: (theme) =>
-            theme.palette.mode === "dark" ? "neutral.800" : "neutral.100",
-          display: enableBulkActions ? "block" : "none",
+          backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
+          display: enableBulkActions ? 'block' : 'none',
           px: 2,
           py: 0.5,
         }}
@@ -91,9 +77,7 @@ export const CustomerListTable = (props) => {
       </Box>
       <Scrollbar>
         <Table sx={{ minWidth: 700 }}>
-          <TableHead
-            sx={{ visibility: enableBulkActions ? "collapse" : "visible" }}
-          >
+          <TableHead sx={{ visibility: enableBulkActions ? 'collapse' : 'visible' }}>
             <TableRow>
               <TableCell padding="checkbox">
                 <Checkbox
@@ -110,27 +94,23 @@ export const CustomerListTable = (props) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map((customer) => {
-              const isCustomerSelected = selectedCustomers.includes(
-                customer.id
-              );
+            {customers.map(customer => {
+              const isCustomerSelected = selectedCustomers.includes(customer.id);
 
               return (
                 <TableRow hover key={customer.id} selected={isCustomerSelected}>
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={isCustomerSelected}
-                      onChange={(event) =>
-                        handleSelectOneCustomer(event, customer.id)
-                      }
+                      onChange={event => handleSelectOneCustomer(event, customer.id)}
                       value={isCustomerSelected}
                     />
                   </TableCell>
                   <TableCell>
                     <Box
                       sx={{
-                        alignItems: "center",
-                        display: "flex",
+                        alignItems: 'center',
+                        display: 'flex',
                       }}
                     >
                       <Avatar
@@ -158,9 +138,7 @@ export const CustomerListTable = (props) => {
                   <TableCell>{customer.totalOrders}</TableCell>
                   <TableCell>
                     <Typography color="success.main" variant="subtitle2">
-                      {numeral(customer.totalAmountSpent).format(
-                        `${customer.currency}0,0.00`
-                      )}
+                      {numeral(customer.totalAmountSpent).format(`${customer.currency}0,0.00`)}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">

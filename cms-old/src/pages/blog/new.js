@@ -1,29 +1,29 @@
-import { useEffect, useState } from "react"
-import Head from "next/head"
-import NextLink from "next/link"
-import { Box, Button, Card, CardContent, Container, Grid, IconButton, TextField, Typography } from "@mui/material"
-import { FileDropzone } from "../../components/file-dropzone"
-import { QuillEditor } from "../../components/quill-editor"
-import { ArrowLeft as ArrowLeftIcon } from "../../icons/arrow-left"
-import { DotsVertical as DotsHorizontalIcon } from "../../icons/dots-vertical"
-import { gtm } from "../../lib/gtm"
-import { fileToBase64 } from "../../utils/file-to-base64"
+import { useEffect, useState } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import { Box, Button, Card, CardContent, Container, Grid, IconButton, TextField, Typography } from "@mui/material";
+import { FileDropzone } from "../../components/file-dropzone";
+import { QuillEditor } from "../../components/quill-editor";
+import { ArrowLeft as ArrowLeftIcon } from "../../icons/arrow-left";
+import { DotsVertical as DotsHorizontalIcon } from "../../icons/dots-vertical";
+import { gtm } from "../../lib/gtm";
+import { fileToBase64 } from "../../utils/file-to-base64";
 
 const BlogPostCreate = () => {
-  const [cover, setCover] = useState("/static/mock-images/covers/cover_4.jpeg")
+  const [cover, setCover] = useState("/static/mock-images/covers/cover_4.jpeg");
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const handleDropCover = async ([file]) => {
-    const data = await fileToBase64(file)
-    setCover(data)
-  }
+    const data = await fileToBase64(file);
+    setCover(data);
+  };
 
   const handleRemove = () => {
-    setCover(null)
-  }
+    setCover(null);
+  };
 
   return (
     <>
@@ -195,7 +195,7 @@ const BlogPostCreate = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
-export default BlogPostCreate
+export default BlogPostCreate;

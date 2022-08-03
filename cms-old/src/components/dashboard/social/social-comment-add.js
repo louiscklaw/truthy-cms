@@ -1,10 +1,10 @@
-import { Avatar, Box, Button, IconButton, TextField } from "@mui/material"
-import { EmojiHappy as EmojiHappyIcon } from "../../../icons/emoji-happy"
-import { Link as LinkIcon } from "../../../icons/link"
-import { PaperClip as PaperClipIcon } from "../../../icons/paper-clip"
-import { Photograph as PhotographIcon } from "../../../icons/photograph"
-import { Plus as PlusIcon } from "../../../icons/plus"
-import { getInitials } from "../../../utils/get-initials"
+import { Avatar, Box, Button, IconButton, TextField } from "@mui/material";
+import { EmojiHappy as EmojiHappyIcon } from "../../../icons/emoji-happy";
+import { Link as LinkIcon } from "../../../icons/link";
+import { PaperClip as PaperClipIcon } from "../../../icons/paper-clip";
+import { Photograph as PhotographIcon } from "../../../icons/photograph";
+import { Plus as PlusIcon } from "../../../icons/plus";
+import { getInitials } from "../../../utils/get-initials";
 
 export const SocialCommentAdd = props => {
   // To get the user from the authContext, you can use
@@ -12,7 +12,7 @@ export const SocialCommentAdd = props => {
   const user = {
     avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
     name: "Anika Visser",
-  }
+  };
 
   return (
     <div {...props}>
@@ -77,5 +77,5 @@ export const SocialCommentAdd = props => {
         </Box>
       </Box>
     </div>
-  )
-}
+  );
+};

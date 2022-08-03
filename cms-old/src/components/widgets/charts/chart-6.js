@@ -1,16 +1,19 @@
-import { Box, Card, CardHeader, IconButton } from "@mui/material"
-import { alpha, useTheme } from "@mui/material/styles"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Chart } from "../../chart"
-import { Scrollbar } from "../../scrollbar"
+import { Box, Card, CardHeader, IconButton } from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Chart } from "../../chart";
+import { Scrollbar } from "../../scrollbar";
 
 const data = {
-  series: [{ data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20] }, { data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13] }],
+  series: [
+    { data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20] },
+    { data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13] },
+  ],
   categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-}
+};
 
 export const Chart6 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -85,9 +88,9 @@ export const Chart6 = () => {
         },
       },
     },
-  }
+  };
 
-  const chartSeries = data.series
+  const chartSeries = data.series;
 
   return (
     <Box
@@ -117,5 +120,5 @@ export const Chart6 = () => {
         </Scrollbar>
       </Card>
     </Box>
-  )
-}
+  );
+};

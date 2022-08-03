@@ -1,22 +1,22 @@
-import { format, subDays } from "date-fns"
-import { Avatar, Box, Card, Container, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Refresh as RefreshIcon } from "../../../icons/refresh"
-import { Chart } from "../../chart"
+import { format, subDays } from "date-fns";
+import { Avatar, Box, Card, Container, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Refresh as RefreshIcon } from "../../../icons/refresh";
+import { Chart } from "../../chart";
 
 const getCategories = () => {
-  const now = new Date()
-  const categories = []
+  const now = new Date();
+  const categories = [];
 
   for (let i = 6; i >= 0; i--) {
-    categories.push(format(subDays(now, i), "dd/MM/yyyy"))
+    categories.push(format(subDays(now, i), "dd/MM/yyyy"));
   }
 
-  return categories
-}
+  return categories;
+};
 
 export const QuickStats8 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -70,14 +70,14 @@ export const QuickStats8 = () => {
         show: false,
       },
     },
-  }
+  };
 
   const chartSeries = [
     {
       data: [14, 43, 98, 68, 155, 18, 8],
       name: "Conversions",
     },
-  ]
+  ];
 
   return (
     <Box
@@ -125,5 +125,5 @@ export const QuickStats8 = () => {
         </Card>
       </Container>
     </Box>
-  )
-}
+  );
+};

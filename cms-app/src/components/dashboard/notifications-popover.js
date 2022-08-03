@@ -1,6 +1,6 @@
-import { useEffect, useMemo, useState } from "react";
-import PropTypes from "prop-types";
-import { format, subDays, subHours } from "date-fns";
+import { useEffect, useMemo, useState } from 'react';
+import PropTypes from 'prop-types';
+import { format, subDays, subHours } from 'date-fns';
 import {
   Avatar,
   Box,
@@ -13,55 +13,55 @@ import {
   Popover,
   Tooltip,
   Typography,
-} from "@mui/material";
-import { ChatAlt as ChatAltIcon } from "../../icons/chat-alt";
-import { MailOpen as MailOpenIcon } from "../../icons/mail-open";
-import { X as XIcon } from "../../icons/x";
-import { UserCircle as UserCircleIcon } from "../../icons/user-circle";
-import { Scrollbar } from "../scrollbar";
+} from '@mui/material';
+import { ChatAlt as ChatAltIcon } from '../../icons/chat-alt';
+import { MailOpen as MailOpenIcon } from '../../icons/mail-open';
+import { X as XIcon } from '../../icons/x';
+import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
+import { Scrollbar } from '../scrollbar';
 
 const now = new Date();
 
 const data = [
   {
-    id: "5e8883f1b51cc1956a5a1ec0",
-    author: "Jie Yang Song",
-    avatar: "/static/mock-images/avatars/avatar-jie_yan_song.png",
+    id: '5e8883f1b51cc1956a5a1ec0',
+    author: 'Jie Yang Song',
+    avatar: '/static/mock-images/avatars/avatar-jie_yan_song.png',
     createdAt: subHours(now, 2).getTime(),
-    job: "Remote React / React Native Developer",
+    job: 'Remote React / React Native Developer',
     read: true,
-    type: "job_add",
+    type: 'job_add',
   },
   {
-    id: "bfb21a370c017acc416757c7",
-    author: "Jie Yang Song",
-    avatar: "/static/mock-images/avatars/avatar-jie_yan_song.png",
+    id: 'bfb21a370c017acc416757c7',
+    author: 'Jie Yang Song',
+    avatar: '/static/mock-images/avatars/avatar-jie_yan_song.png',
     createdAt: subHours(now, 2).getTime(),
-    job: "Senior Golang Backend Engineer",
+    job: 'Senior Golang Backend Engineer',
     read: false,
-    type: "job_add",
+    type: 'job_add',
   },
   {
-    id: "20d9df4f23fff19668d7031c",
+    id: '20d9df4f23fff19668d7031c',
     createdAt: subDays(now, 1).getTime(),
-    description: "Logistics management is now available",
+    description: 'Logistics management is now available',
     read: true,
-    type: "new_feature",
+    type: 'new_feature',
   },
   {
-    id: "5e8883fca0e8612044248ecf",
-    author: "Jie Yang Song",
-    avatar: "/static/mock-images/avatars/avatar-jie_yan_song.png",
-    company: "Augmastic Inc",
+    id: '5e8883fca0e8612044248ecf',
+    author: 'Jie Yang Song',
+    avatar: '/static/mock-images/avatars/avatar-jie_yan_song.png',
+    company: 'Augmastic Inc',
     createdAt: subHours(now, 2).getTime(),
     read: false,
-    type: "company_created",
+    type: 'company_created',
   },
 ];
 
-const getNotificationContent = (notification) => {
+const getNotificationContent = notification => {
   switch (notification.type) {
-    case "job_add":
+    case 'job_add':
       return (
         <>
           <ListItemAvatar sx={{ mt: 0.5 }}>
@@ -73,9 +73,9 @@ const getNotificationContent = (notification) => {
             primary={
               <Box
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  flexWrap: "wrap",
+                  alignItems: 'center',
+                  display: 'flex',
+                  flexWrap: 'wrap',
                 }}
               >
                 <Typography sx={{ mr: 0.5 }} variant="subtitle2">
@@ -91,14 +91,14 @@ const getNotificationContent = (notification) => {
             }
             secondary={
               <Typography color="textSecondary" variant="caption">
-                {format(notification.createdAt, "MMM dd, h:mm a")}
+                {format(notification.createdAt, 'MMM dd, h:mm a')}
               </Typography>
             }
             sx={{ my: 0 }}
           />
         </>
       );
-    case "new_feature":
+    case 'new_feature':
       return (
         <>
           <ListItemAvatar sx={{ mt: 0.5 }}>
@@ -110,29 +110,27 @@ const getNotificationContent = (notification) => {
             primary={
               <Box
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  flexWrap: "wrap",
+                  alignItems: 'center',
+                  display: 'flex',
+                  flexWrap: 'wrap',
                 }}
               >
                 <Typography variant="subtitle2" sx={{ mr: 0.5 }}>
                   New feature!
                 </Typography>
-                <Typography variant="body2">
-                  {notification.description}
-                </Typography>
+                <Typography variant="body2">{notification.description}</Typography>
               </Box>
             }
             secondary={
               <Typography color="textSecondary" variant="caption">
-                {format(notification.createdAt, "MMM dd, h:mm a")}
+                {format(notification.createdAt, 'MMM dd, h:mm a')}
               </Typography>
             }
             sx={{ my: 0 }}
           />
         </>
       );
-    case "company_created":
+    case 'company_created':
       return (
         <>
           <ListItemAvatar sx={{ mt: 0.5 }}>
@@ -144,9 +142,9 @@ const getNotificationContent = (notification) => {
             primary={
               <Box
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  flexWrap: "wrap",
+                  alignItems: 'center',
+                  display: 'flex',
+                  flexWrap: 'wrap',
                   m: 0,
                 }}
               >
@@ -163,7 +161,7 @@ const getNotificationContent = (notification) => {
             }
             secondary={
               <Typography color="textSecondary" variant="caption">
-                {format(notification.createdAt, "MMM dd, h:mm a")}
+                {format(notification.createdAt, 'MMM dd, h:mm a')}
               </Typography>
             }
             sx={{ my: 0 }}
@@ -175,16 +173,12 @@ const getNotificationContent = (notification) => {
   }
 };
 
-export const NotificationsPopover = (props) => {
+export const NotificationsPopover = props => {
   const { anchorEl, onClose, onUpdateUnread, open, ...other } = props;
   const [notifications, setNotifications] = useState(data);
   const unread = useMemo(
-    () =>
-      notifications.reduce(
-        (acc, notification) => acc + (notification.read ? 0 : 1),
-        0
-      ),
-    [notifications]
+    () => notifications.reduce((acc, notification) => acc + (notification.read ? 0 : 1), 0),
+    [notifications],
   );
 
   useEffect(() => {
@@ -192,26 +186,24 @@ export const NotificationsPopover = (props) => {
   }, [onUpdateUnread, unread]);
 
   const handleMarkAllAsRead = () => {
-    setNotifications((prevState) =>
-      prevState.map((notification) => ({
+    setNotifications(prevState =>
+      prevState.map(notification => ({
         ...notification,
         read: true,
-      }))
+      })),
     );
   };
 
-  const handleRemoveOne = (notificationId) => {
-    setNotifications((prevState) =>
-      prevState.filter((notification) => notification.id !== notificationId)
-    );
+  const handleRemoveOne = notificationId => {
+    setNotifications(prevState => prevState.filter(notification => notification.id !== notificationId));
   };
 
   return (
     <Popover
       anchorEl={anchorEl}
       anchorOrigin={{
-        horizontal: "left",
-        vertical: "bottom",
+        horizontal: 'left',
+        vertical: 'bottom',
       }}
       onClose={onClose}
       open={!!open}
@@ -221,11 +213,11 @@ export const NotificationsPopover = (props) => {
     >
       <Box
         sx={{
-          alignItems: "center",
-          backgroundColor: "primary.main",
-          color: "primary.contrastText",
-          display: "flex",
-          justifyContent: "space-between",
+          alignItems: 'center',
+          backgroundColor: 'primary.main',
+          color: 'primary.contrastText',
+          display: 'flex',
+          justifyContent: 'space-between',
           px: 3,
           py: 2,
         }}
@@ -234,44 +226,34 @@ export const NotificationsPopover = (props) => {
           Notifications
         </Typography>
         <Tooltip title="Mark all as read">
-          <IconButton
-            onClick={handleMarkAllAsRead}
-            size="small"
-            sx={{ color: "inherit" }}
-          >
+          <IconButton onClick={handleMarkAllAsRead} size="small" sx={{ color: 'inherit' }}>
             <MailOpenIcon fontSize="small" />
           </IconButton>
         </Tooltip>
       </Box>
       {notifications.length === 0 ? (
         <Box sx={{ p: 2 }}>
-          <Typography variant="subtitle2">
-            There are no notifications
-          </Typography>
+          <Typography variant="subtitle2">There are no notifications</Typography>
         </Box>
       ) : (
         <Scrollbar sx={{ maxHeight: 400 }}>
           <List disablePadding>
-            {notifications.map((notification) => (
+            {notifications.map(notification => (
               <ListItem
                 divider
                 key={notification.id}
                 sx={{
-                  alignItems: "flex-start",
-                  "&:hover": {
-                    backgroundColor: "action.hover",
+                  alignItems: 'flex-start',
+                  '&:hover': {
+                    backgroundColor: 'action.hover',
                   },
-                  "& .MuiListItemSecondaryAction-root": {
-                    top: "24%",
+                  '& .MuiListItemSecondaryAction-root': {
+                    top: '24%',
                   },
                 }}
                 secondaryAction={
                   <Tooltip title="Remove">
-                    <IconButton
-                      edge="end"
-                      onClick={() => handleRemoveOne(notification.id)}
-                      size="small"
-                    >
+                    <IconButton edge="end" onClick={() => handleRemoveOne(notification.id)} size="small">
                       <XIcon sx={{ fontSize: 14 }} />
                     </IconButton>
                   </Tooltip>

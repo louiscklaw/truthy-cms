@@ -1,4 +1,16 @@
-import { Autocomplete, Box, Button, CardActions, CardContent, CardHeader, Divider, Grid, Switch, TextField, Typography } from "@mui/material"
+import {
+  Autocomplete,
+  Box,
+  Button,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Divider,
+  Grid,
+  Switch,
+  TextField,
+  Typography,
+} from "@mui/material";
 
 const countries = [
   { text: "Jersey", value: "JE" },
@@ -11,7 +23,7 @@ const countries = [
   { text: "Kuwait", value: "KW" },
   { text: "Kyrgyzstan", value: "KG" },
   { text: "Lao People'S Democratic Republic", value: "LA" },
-]
+];
 
 export const Form5 = () => (
   <Box
@@ -29,7 +41,14 @@ export const Form5 = () => (
             <TextField fullWidth label="Name" name="name" />
           </Grid>
           <Grid item md={6} xs={12}>
-            <TextField fullWidth helperText="We will use this email to contact you" label="Email Address" name="email" required type="email" />
+            <TextField
+              fullWidth
+              helperText="We will use this email to contact you"
+              label="Email Address"
+              name="email"
+              required
+              type="email"
+            />
           </Grid>
           <Grid item md={6} xs={12}>
             <TextField fullWidth label="Phone Number" name="phone" />
@@ -80,4 +99,4 @@ export const Form5 = () => (
       </CardActions>
     </form>
   </Box>
-)
+);

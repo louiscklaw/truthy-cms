@@ -1,23 +1,23 @@
-import { useEffect } from "react"
-import { formatDistanceToNowStrict } from "date-fns"
-import PropTypes from "prop-types"
-import { Avatar, Box, Link, List, ListItem, ListItemAvatar, ListItemText, Popover, Typography } from "@mui/material"
-import { getContacts } from "../../slices/chat"
-import { useDispatch, useSelector } from "../../store"
-import { StatusIndicator } from "../status-indicator"
+import { useEffect } from "react";
+import { formatDistanceToNowStrict } from "date-fns";
+import PropTypes from "prop-types";
+import { Avatar, Box, Link, List, ListItem, ListItemAvatar, ListItemText, Popover, Typography } from "@mui/material";
+import { getContacts } from "../../slices/chat";
+import { useDispatch, useSelector } from "../../store";
+import { StatusIndicator } from "../status-indicator";
 
 export const ContactsPopover = props => {
-  const { anchorEl, onClose, open, ...other } = props
-  const dispatch = useDispatch()
-  const { contacts } = useSelector(state => state.chat)
+  const { anchorEl, onClose, open, ...other } = props;
+  const dispatch = useDispatch();
+  const { contacts } = useSelector(state => state.chat);
 
   useEffect(
     () => {
-      dispatch(getContacts())
+      dispatch(getContacts());
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   return (
     <Popover
@@ -41,7 +41,7 @@ export const ContactsPopover = props => {
       <Box sx={{ mt: 2 }}>
         <List disablePadding>
           {contacts.allIds.map(contactId => {
-            const contact = contacts.byId[contactId]
+            const contact = contacts.byId[contactId];
 
             return (
               <ListItem disableGutters key={contact.id}>
@@ -66,16 +66,16 @@ export const ContactsPopover = props => {
                   )
                 )}
               </ListItem>
-            )
+            );
           })}
         </List>
       </Box>
     </Popover>
-  )
-}
+  );
+};
 
 ContactsPopover.propTypes = {
   anchorEl: PropTypes.any,
   onClose: PropTypes.func,
   open: PropTypes.bool,
-}
+};

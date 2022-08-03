@@ -1,6 +1,6 @@
-import { format, addDays, subMinutes } from "date-fns"
-import numeral from "numeral"
-import { Avatar, Box, Card, CardContent, CardHeader, Link, List, ListItem, Typography } from "@mui/material"
+import { format, addDays, subMinutes } from "date-fns";
+import numeral from "numeral";
+import { Avatar, Box, Card, CardContent, CardHeader, Link, List, ListItem, Typography } from "@mui/material";
 
 export const DetailList7 = () => (
   <Box
@@ -70,4 +70,4 @@ export const DetailList7 = () => (
       </CardContent>
     </Card>
   </Box>
-)
+);

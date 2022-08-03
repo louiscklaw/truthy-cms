@@ -5,7 +5,7 @@ import { PaperAirplane as PaperAirplaneIcon } from '../../../icons/paper-airplan
 import { Photograph as PhotographIcon } from '../../../icons/photograph';
 import { PaperClip as PaperClipIcon } from '../../../icons/paper-clip';
 
-export const ChatMessageAdd = (props) => {
+export const ChatMessageAdd = props => {
   const { disabled, onSend, ...other } = props;
   const fileInputRef = useRef(null);
   const [body, setBody] = useState('');
@@ -13,14 +13,14 @@ export const ChatMessageAdd = (props) => {
   // `const { user } = useAuth();`
   const user = {
     avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-    name: 'Anika Visser'
+    name: 'Anika Visser',
   };
 
   const handleAttach = () => {
     fileInputRef.current?.click();
   };
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setBody(event.target.value);
   };
 
@@ -33,7 +33,7 @@ export const ChatMessageAdd = (props) => {
     setBody('');
   };
 
-  const handleKeyUp = (event) => {
+  const handleKeyUp = event => {
     if (event.code === 'Enter') {
       handleSend();
     }
@@ -46,16 +46,17 @@ export const ChatMessageAdd = (props) => {
         backgroundColor: 'background.paper',
         display: 'flex',
         flexShrink: 0,
-        p: 3
+        p: 3,
       }}
-      {...other}>
+      {...other}
+    >
       <Avatar
         sx={{
           display: {
             xs: 'none',
-            sm: 'inline'
+            sm: 'inline',
           },
-          mr: 2
+          mr: 2,
         }}
         src={user.avatar}
       />
@@ -74,7 +75,7 @@ export const ChatMessageAdd = (props) => {
           alignItems: 'center',
           display: 'flex',
           m: -2,
-          ml: 2
+          ml: 2,
         }}
       >
         <Tooltip title="Send">
@@ -86,8 +87,8 @@ export const ChatMessageAdd = (props) => {
                 backgroundColor: 'primary.main',
                 color: 'primary.contrastText',
                 '&:hover': {
-                  backgroundColor: 'primary.dark'
-                }
+                  backgroundColor: 'primary.dark',
+                },
               }}
               onClick={handleSend}
             >
@@ -100,16 +101,12 @@ export const ChatMessageAdd = (props) => {
             sx={{
               display: {
                 xs: 'none',
-                sm: 'inline-flex'
+                sm: 'inline-flex',
               },
-              m: 1
+              m: 1,
             }}
           >
-            <IconButton
-              disabled={disabled}
-              edge="end"
-              onClick={handleAttach}
-            >
+            <IconButton disabled={disabled} edge="end" onClick={handleAttach}>
               <PhotographIcon fontSize="small" />
             </IconButton>
           </Box>
@@ -119,35 +116,27 @@ export const ChatMessageAdd = (props) => {
             sx={{
               display: {
                 xs: 'none',
-                sm: 'inline-flex'
+                sm: 'inline-flex',
               },
-              m: 1
+              m: 1,
             }}
           >
-            <IconButton
-              disabled={disabled}
-              edge="end"
-              onClick={handleAttach}
-            >
+            <IconButton disabled={disabled} edge="end" onClick={handleAttach}>
               <PaperClipIcon fontSize="small" />
             </IconButton>
           </Box>
         </Tooltip>
       </Box>
-      <input
-        hidden
-        ref={fileInputRef}
-        type="file"
-      />
+      <input hidden ref={fileInputRef} type="file" />
     </Box>
   );
 };
 
 ChatMessageAdd.propTypes = {
   disabled: PropTypes.bool,
-  onSend: PropTypes.func
+  onSend: PropTypes.func,
 };
 
 ChatMessageAdd.defaultProps = {
-  disabled: false
+  disabled: false,
 };

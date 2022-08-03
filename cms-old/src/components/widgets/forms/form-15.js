@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, Container, Divider, Link, TextField, Typography } from "@mui/material"
+import { Box, Button, Card, CardContent, Container, Divider, Link, TextField, Typography } from "@mui/material";
 
 export const Form15 = () => (
   <Box
@@ -63,4 +63,4 @@ export const Form15 = () => (
       </Card>
     </Container>
   </Box>
-)
+);

@@ -12,7 +12,7 @@ import {
   Switch,
   TextField,
   Typography,
-  useMediaQuery
+  useMediaQuery,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { DatePicker } from '@mui/lab';
@@ -26,7 +26,7 @@ const customers = [
   'ACME SRL',
   'Novelty I.S',
   'Beauty Clinic SRL',
-  'Division Inc.'
+  'Division Inc.',
 ];
 
 const FiltersDrawerDesktop = styled(Drawer)({
@@ -34,8 +34,8 @@ const FiltersDrawerDesktop = styled(Drawer)({
   width: 380,
   '& .MuiDrawer-paper': {
     position: 'relative',
-    width: 380
-  }
+    width: 380,
+  },
 });
 
 const FiltersDrawerMobile = styled(Drawer)({
@@ -45,27 +45,27 @@ const FiltersDrawerMobile = styled(Drawer)({
     height: 'calc(100% - 64px)',
     maxWidth: '100%',
     top: 64,
-    width: 380
-  }
+    width: 380,
+  },
 });
 
-export const InvoiceListFilters = (props) => {
+export const InvoiceListFilters = props => {
   const { containerRef, filters = {}, onChange, onClose, open, ...other } = props;
   const queryRef = useRef(null);
-  const lgUp = useMediaQuery((theme) => theme.breakpoints.up('lg'));
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up('lg'));
 
-  const handleQueryChange = (event) => {
+  const handleQueryChange = event => {
     event.preventDefault();
     onChange?.({
       ...filters,
-      query: queryRef.current?.value
+      query: queryRef.current?.value,
     });
   };
 
-  const handleStartDateChange = (date) => {
+  const handleStartDateChange = date => {
     const newFilters = {
       ...filters,
-      startDate: date
+      startDate: date,
     };
 
     // Prevent end date to be before start date
@@ -76,10 +76,10 @@ export const InvoiceListFilters = (props) => {
     onChange?.(newFilters);
   };
 
-  const handleEndDateChange = (date) => {
+  const handleEndDateChange = date => {
     const newFilters = {
       ...filters,
-      endDate: date
+      endDate: date,
     };
 
     // Prevent start date to be after end date
@@ -90,24 +90,24 @@ export const InvoiceListFilters = (props) => {
     onChange?.(newFilters);
   };
 
-  const handleCustomerChange = (event) => {
+  const handleCustomerChange = event => {
     if (event.target.checked) {
       onChange?.({
         ...filters,
-        customer: [...(filters.customer || []), event.target.value]
+        customer: [...(filters.customer || []), event.target.value],
       });
     } else {
       onChange?.({
         ...filters,
-        customer: (filters.customer || []).filter((customer) => customer !== event.target.value)
+        customer: (filters.customer || []).filter(customer => customer !== event.target.value),
       });
     }
   };
 
-  const handleStatusChange = (event) => {
+  const handleStatusChange = event => {
     onChange?.({
       ...filters,
-      status: event.target.checked ? 'paid' : undefined
+      status: event.target.checked ? 'paid' : undefined,
     });
   };
 
@@ -117,27 +117,24 @@ export const InvoiceListFilters = (props) => {
         pb: 3,
         pt: {
           xs: 3,
-          lg: 8
+          lg: 8,
         },
-        px: 3
+        px: 3,
       }}
     >
       <Box
         sx={{
           display: {
-            lg: 'none'
+            lg: 'none',
           },
-          mb: 2
+          mb: 2,
         }}
       >
         <IconButton onClick={onClose}>
           <X fontSize="small" />
         </IconButton>
       </Box>
-      <Box
-        component="form"
-        onSubmit={handleQueryChange}
-      >
+      <Box component="form" onSubmit={handleQueryChange}>
         <TextField
           defaultValue=""
           fullWidth
@@ -147,43 +144,32 @@ export const InvoiceListFilters = (props) => {
               <InputAdornment position="start">
                 <SearchIcon fontSize="small" />
               </InputAdornment>
-            )
+            ),
           }}
           label="Search"
           placeholder="Search by invoice number"
         />
       </Box>
-      <Typography
-        color="textSecondary"
-        sx={{ mt: 3 }}
-        variant="subtitle2"
-      >
+      <Typography color="textSecondary" sx={{ mt: 3 }} variant="subtitle2">
         Issue date
       </Typography>
-      <Stack
-        spacing={2}
-        sx={{ mt: 2 }}
-      >
+      <Stack spacing={2} sx={{ mt: 2 }}>
         <DatePicker
           inputFormat="dd/MM/yyyy"
           label="From"
           onChange={handleStartDateChange}
-          renderInput={(inputProps) => <TextField {...inputProps} />}
+          renderInput={inputProps => <TextField {...inputProps} />}
           value={filters.startDate}
         />
         <DatePicker
           inputFormat="dd/MM/yyyy"
           label="To"
           onChange={handleEndDateChange}
-          renderInput={(inputProps) => <TextField {...inputProps} />}
+          renderInput={inputProps => <TextField {...inputProps} />}
           value={filters.endDate}
         />
       </Stack>
-      <Typography
-        color="textSecondary"
-        sx={{ mt: 3 }}
-        variant="subtitle2"
-      >
+      <Typography color="textSecondary" sx={{ mt: 3 }} variant="subtitle2">
         From customer
       </Typography>
       <Box
@@ -193,24 +179,19 @@ export const InvoiceListFilters = (props) => {
           borderRadius: 1,
           borderStyle: 'solid',
           borderWidth: 1,
-          mt: 2
+          mt: 2,
         }}
       >
         <Scrollbar sx={{ maxHeight: 200 }}>
           <FormGroup
             sx={{
               py: 1,
-              px: 1.5
+              px: 1.5,
             }}
           >
-            {customers.map((customer) => (
+            {customers.map(customer => (
               <FormControlLabel
-                control={(
-                  <Checkbox
-                    checked={filters.customer?.includes(customer)}
-                    onChange={handleCustomerChange}
-                  />
-                )}
+                control={<Checkbox checked={filters.customer?.includes(customer)} onChange={handleCustomerChange} />}
                 key={customer}
                 label={customer}
                 value={customer}
@@ -220,12 +201,7 @@ export const InvoiceListFilters = (props) => {
         </Scrollbar>
       </Box>
       <FormControlLabel
-        control={(
-          <Switch
-            checked={filters.status === 'paid'}
-            onChange={handleStatusChange}
-          />
-        )}
+        control={<Switch checked={filters.status === 'paid'} onChange={handleStatusChange} />}
         label="Show paid only"
         sx={{ mt: 2 }}
       />
@@ -239,7 +215,8 @@ export const InvoiceListFilters = (props) => {
         open={open}
         SlideProps={{ container: containerRef?.current }}
         variant="persistent"
-        {...other}>
+        {...other}
+      >
         {content}
       </FiltersDrawerDesktop>
     );
@@ -253,7 +230,8 @@ export const InvoiceListFilters = (props) => {
       open={open}
       SlideProps={{ container: containerRef?.current }}
       variant="temporary"
-      {...other}>
+      {...other}
+    >
       {content}
     </FiltersDrawerMobile>
   );
@@ -264,5 +242,5 @@ InvoiceListFilters.propTypes = {
   filters: PropTypes.object,
   onChange: PropTypes.func,
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

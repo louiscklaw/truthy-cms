@@ -1,18 +1,29 @@
-import PropTypes from "prop-types"
-import toast from "react-hot-toast"
-import { addMinutes } from "date-fns"
-import * as Yup from "yup"
-import { useFormik } from "formik"
-import { Box, Button, Dialog, Divider, FormControlLabel, FormHelperText, IconButton, Switch, TextField, Typography } from "@mui/material"
-import { DateTimePicker } from "@mui/lab"
-import { Trash as TrashIcon } from "../../../icons/trash"
-import { createEvent, deleteEvent, updateEvent } from "../../../slices/calendar"
-import { useDispatch } from "../../../store"
-import { useMemo } from "react"
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import { addMinutes } from "date-fns";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import {
+  Box,
+  Button,
+  Dialog,
+  Divider,
+  FormControlLabel,
+  FormHelperText,
+  IconButton,
+  Switch,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { DateTimePicker } from "@mui/lab";
+import { Trash as TrashIcon } from "../../../icons/trash";
+import { createEvent, deleteEvent, updateEvent } from "../../../slices/calendar";
+import { useDispatch } from "../../../store";
+import { useMemo } from "react";
 
 export const CalendarEventDialog = props => {
-  const { event, onAddComplete, onClose, onDeleteComplete, onEditComplete, open, range } = props
-  const dispatch = useDispatch()
+  const { event, onAddComplete, onClose, onDeleteComplete, onEditComplete, open, range } = props;
+  const dispatch = useDispatch();
   const initialValues = useMemo(() => {
     if (event) {
       return {
@@ -23,7 +34,7 @@ export const CalendarEventDialog = props => {
         start: event.start ? new Date(event.start) : new Date(),
         title: event.title || "",
         submit: null,
-      }
+      };
     }
 
     if (range) {
@@ -35,7 +46,7 @@ export const CalendarEventDialog = props => {
         start: new Date(range.start),
         title: "",
         submit: null,
-      }
+      };
     }
 
     return {
@@ -46,8 +57,8 @@ export const CalendarEventDialog = props => {
       start: new Date(),
       title: "",
       submit: null,
-    }
-  }, [event, range])
+    };
+  }, [event, range]);
   const formik = useFormik({
     enableReinitialize: true,
     initialValues,
@@ -66,63 +77,63 @@ export const CalendarEventDialog = props => {
           end: values.end.getTime(),
           start: values.start.getTime(),
           title: values.title,
-        }
+        };
 
         if (event) {
-          await dispatch(updateEvent(event.id, data))
-          toast.success("Event updated!")
+          await dispatch(updateEvent(event.id, data));
+          toast.success("Event updated!");
         } else {
-          await dispatch(createEvent(data))
-          toast.success("Event added!")
+          await dispatch(createEvent(data));
+          toast.success("Event added!");
         }
 
         if (!event && onAddComplete) {
-          onAddComplete()
+          onAddComplete();
         }
 
         if (event && onEditComplete) {
-          onEditComplete()
+          onEditComplete();
         }
       } catch (err) {
-        console.error(err)
-        toast.error("Something went wrong!")
-        helpers.setStatus({ success: false })
-        helpers.setErrors({ submit: err.message })
-        helpers.setSubmitting(false)
+        console.error(err);
+        toast.error("Something went wrong!");
+        helpers.setStatus({ success: false });
+        helpers.setErrors({ submit: err.message });
+        helpers.setSubmitting(false);
       }
     },
-  })
+  });
 
   const handleStartDateChange = date => {
-    formik.setFieldValue("start", date)
+    formik.setFieldValue("start", date);
 
     // Prevent end date to be before start date
     if (formik.values.end && date && date > formik.values.end) {
-      formik.setFieldValue("end", date)
+      formik.setFieldValue("end", date);
     }
-  }
+  };
 
   const handleEndDateChange = date => {
-    formik.setFieldValue("end", date)
+    formik.setFieldValue("end", date);
 
     // Prevent start date to be after end date
     if (formik.values.start && date && date < formik.values.start) {
-      formik.setFieldValue("start", date)
+      formik.setFieldValue("start", date);
     }
-  }
+  };
 
   const handleDelete = async () => {
     try {
       if (!event) {
-        return
+        return;
       }
 
-      await dispatch(deleteEvent(event.id))
-      onDeleteComplete?.()
+      await dispatch(deleteEvent(event.id));
+      onDeleteComplete?.();
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   return (
     <Dialog fullWidth maxWidth="sm" onClose={onClose} open={!!open}>
@@ -156,7 +167,10 @@ export const CalendarEventDialog = props => {
             />
           </Box>
           <Box sx={{ mt: 2 }}>
-            <FormControlLabel control={<Switch checked={formik.values.allDay} name="allDay" onChange={formik.handleChange} />} label="All day" />
+            <FormControlLabel
+              control={<Switch checked={formik.values.allDay} name="allDay" onChange={formik.handleChange} />}
+              label="All day"
+            />
           </Box>
           <Box sx={{ mt: 2 }}>
             <DateTimePicker
@@ -201,8 +215,8 @@ export const CalendarEventDialog = props => {
         </Box>
       </form>
     </Dialog>
-  )
-}
+  );
+};
 
 CalendarEventDialog.propTypes = {
   event: PropTypes.object,
@@ -212,4 +226,4 @@ CalendarEventDialog.propTypes = {
   onEditComplete: PropTypes.func,
   open: PropTypes.bool,
   range: PropTypes.object,
-}
+};

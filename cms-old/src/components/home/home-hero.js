@@ -1,13 +1,13 @@
-import NextLink from "next/link"
-import { Avatar, Box, Button, Container, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { CheckCircleOutlined as CheckCircleOutlinedIcon } from "../../icons/check-circle-outlined"
-import { Users as UsersIcon } from "../../icons/users"
-import { Star as StarIcon } from "../../icons/star"
-import { Template as TemplateIcon } from "../../icons/template"
+import NextLink from "next/link";
+import { Avatar, Box, Button, Container, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { CheckCircleOutlined as CheckCircleOutlinedIcon } from "../../icons/check-circle-outlined";
+import { Users as UsersIcon } from "../../icons/users";
+import { Star as StarIcon } from "../../icons/star";
+import { Template as TemplateIcon } from "../../icons/template";
 
 export const HomeHero = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   return (
     <Box
@@ -32,8 +32,8 @@ export const HomeHero = props => {
           Material Kit Pro v5.1
         </Typography>
         <Typography align="center" color="textSecondary" variant="subtitle1" sx={{ py: 3 }}>
-          A professional kit that comes with ready-to-use MUI© components developed with one common goal in mind, help you build faster &amp; beautiful
-          applications.
+          A professional kit that comes with ready-to-use MUI© components developed with one common goal in mind, help
+          you build faster &amp; beautiful applications.
         </Typography>
         <Box
           sx={{
@@ -258,5 +258,5 @@ export const HomeHero = props => {
         </Container>
       </Box>
     </Box>
-  )
-}
+  );
+};

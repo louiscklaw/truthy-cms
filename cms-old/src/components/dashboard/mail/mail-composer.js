@@ -1,33 +1,33 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import { Backdrop, Box, Button, Divider, IconButton, Input, Paper, Tooltip, Typography } from "@mui/material"
-import Portal from "@mui/material/Portal"
-import AddPhotoIcon from "@mui/icons-material/AddPhotoAlternate"
-import AttachFileIcon from "@mui/icons-material/AttachFile"
-import MinimizeIcon from "@mui/icons-material/Minimize"
-import { ArrowsExpand as ArrowsExpandIcon } from "../../../icons/arrows-expand"
-import { X as XIcon } from "../../../icons/x"
-import { QuillEditor } from "../../quill-editor"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { Backdrop, Box, Button, Divider, IconButton, Input, Paper, Tooltip, Typography } from "@mui/material";
+import Portal from "@mui/material/Portal";
+import AddPhotoIcon from "@mui/icons-material/AddPhotoAlternate";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
+import MinimizeIcon from "@mui/icons-material/Minimize";
+import { ArrowsExpand as ArrowsExpandIcon } from "../../../icons/arrows-expand";
+import { X as XIcon } from "../../../icons/x";
+import { QuillEditor } from "../../quill-editor";
 
 export const MailComposer = props => {
-  const { open, onClose } = props
-  const [isFullScreen, setIsFullScreen] = useState(false)
-  const [messageBody, setMessageBody] = useState("")
+  const { open, onClose } = props;
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [messageBody, setMessageBody] = useState("");
 
   const handleChange = value => {
-    setMessageBody(value)
-  }
+    setMessageBody(value);
+  };
 
   const handleExitFullScreen = () => {
-    setIsFullScreen(false)
-  }
+    setIsFullScreen(false);
+  };
 
   const handleEnterFullScreen = () => {
-    setIsFullScreen(true)
-  }
+    setIsFullScreen(true);
+  };
 
   if (!open) {
-    return null
+    return null;
   }
 
   return (
@@ -134,10 +134,10 @@ export const MailComposer = props => {
         </Box>
       </Paper>
     </Portal>
-  )
-}
+  );
+};
 
 MailComposer.propTypes = {
   open: PropTypes.bool,
   onClose: PropTypes.func,
-}
+};

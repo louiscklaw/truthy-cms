@@ -1,7 +1,7 @@
-import { useState } from "react";
-import NextLink from "next/link";
-import PropTypes from "prop-types";
-import { formatDistanceToNowStrict } from "date-fns";
+import { useState } from 'react';
+import NextLink from 'next/link';
+import PropTypes from 'prop-types';
+import { formatDistanceToNowStrict } from 'date-fns';
 import {
   Avatar,
   Box,
@@ -14,15 +14,15 @@ import {
   Link,
   Tooltip,
   Typography,
-} from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import { Clock as ClockIcon } from "../../../icons/clock";
-import { Share as ShareIcon } from "../../../icons/share";
-import { SocialComment } from "./social-comment";
-import { SocialCommentAdd } from "./social-comment-add";
+} from '@mui/material';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
+import { Clock as ClockIcon } from '../../../icons/clock';
+import { Share as ShareIcon } from '../../../icons/share';
+import { SocialComment } from './social-comment';
+import { SocialCommentAdd } from './social-comment-add';
 
-export const SocialPostCard = (props) => {
+export const SocialPostCard = props => {
   const {
     authorAvatar,
     authorName,
@@ -40,12 +40,12 @@ export const SocialPostCard = (props) => {
 
   const handleLike = () => {
     setIsLiked(true);
-    setLikes((prevLikes) => prevLikes + 1);
+    setLikes(prevLikes => prevLikes + 1);
   };
 
   const handleUnlike = () => {
     setIsLiked(false);
-    setLikes((prevLikes) => prevLikes - 1);
+    setLikes(prevLikes => prevLikes - 1);
   };
 
   return (
@@ -60,17 +60,13 @@ export const SocialPostCard = (props) => {
         subheader={
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
+              alignItems: 'center',
+              display: 'flex',
               mt: 1,
             }}
           >
-            <ClockIcon fontSize="small" sx={{ color: "text.secondary" }} />
-            <Typography
-              color="textSecondary"
-              sx={{ ml: "6px" }}
-              variant="caption"
-            >
+            <ClockIcon fontSize="small" sx={{ color: 'text.secondary' }} />
+            <Typography color="textSecondary" sx={{ ml: '6px' }} variant="caption">
               {formatDistanceToNowStrict(createdAt)} ago
             </Typography>
           </Box>
@@ -78,8 +74,8 @@ export const SocialPostCard = (props) => {
         title={
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
+              alignItems: 'center',
+              display: 'flex',
             }}
           >
             <NextLink href="#" passHref>
@@ -106,7 +102,7 @@ export const SocialPostCard = (props) => {
               <CardMedia
                 image={media}
                 sx={{
-                  backgroundPosition: "top",
+                  backgroundPosition: 'top',
                   height: 500,
                 }}
               />
@@ -115,14 +111,14 @@ export const SocialPostCard = (props) => {
         )}
         <Box
           sx={{
-            alignItems: "center",
-            display: "flex",
+            alignItems: 'center',
+            display: 'flex',
             mt: 2,
           }}
         >
           {isLiked ? (
             <Tooltip title="Unlike">
-              <IconButton onClick={handleUnlike} sx={{ color: "error.main" }}>
+              <IconButton onClick={handleUnlike} sx={{ color: 'error.main' }}>
                 <FavoriteIcon fontSize="small" />
               </IconButton>
             </Tooltip>
@@ -142,7 +138,7 @@ export const SocialPostCard = (props) => {
           </IconButton>
         </Box>
         <Divider sx={{ my: 3 }} />
-        {comments.map((comment) => (
+        {comments.map(comment => (
           <SocialComment
             authorAvatar={comment.author.avatar}
             authorName={comment.author.name}

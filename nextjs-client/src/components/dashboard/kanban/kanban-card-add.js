@@ -6,13 +6,13 @@ import { Plus as PlusIcon } from '../../../icons/plus';
 import { createCard } from '../../../slices/kanban';
 import { useDispatch } from '../../../store';
 
-export const KanbanCardAdd = (props) => {
+export const KanbanCardAdd = props => {
   const { columnId, ...other } = props;
   const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false);
   const [name, setName] = useState('');
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setName(event.target.value);
   };
 
@@ -39,78 +39,67 @@ export const KanbanCardAdd = (props) => {
 
   return (
     <div {...other}>
-      {isExpanded
-        ? (
-          <>
-            <OutlinedInput
-              autoFocus
-              fullWidth
-              placeholder="My new task"
-              name="cardName"
-              onChange={handleChange}
-              sx={{
-                backgroundColor: 'background.paper',
-                '& .MuiInputBase-input': {
-                  px: 2,
-                  py: 1
-                },
-                '& .MuiOutlinedInput-notchedOutline': {
-                  borderColor: 'neutral.400'
-                }
-              }}
-              value={name}
-            />
-            <Box
-              sx={{
-                alignItems: 'center',
-                display: 'flex',
-                mt: 2
-              }}
-            >
-              <Button
-                onClick={handleAddConfirm}
-                size="small"
-                startIcon={(
-                  <PlusIcon fontSize="small" />
-                )}
-                variant="contained"
-              >
-                Add Card
-              </Button>
-              <Button
-                onClick={handleAddCancel}
-                size="small"
-                sx={{ ml: 2 }}
-              >
-                Cancel
-              </Button>
-            </Box>
-          </>
-        )
-        : (
-          <Link
-            onClick={handleAddInit}
+      {isExpanded ? (
+        <>
+          <OutlinedInput
+            autoFocus
+            fullWidth
+            placeholder="My new task"
+            name="cardName"
+            onChange={handleChange}
+            sx={{
+              backgroundColor: 'background.paper',
+              '& .MuiInputBase-input': {
+                px: 2,
+                py: 1,
+              },
+              '& .MuiOutlinedInput-notchedOutline': {
+                borderColor: 'neutral.400',
+              },
+            }}
+            value={name}
+          />
+          <Box
             sx={{
               alignItems: 'center',
-              cursor: 'pointer',
               display: 'flex',
-              justifyContent: 'flex-start'
+              mt: 2,
             }}
-            underline="none"
           >
-            <PlusIcon sx={{ color: 'action.active' }} />
-            <Typography
-              color="textSecondary"
-              variant="subtitle1"
+            <Button
+              onClick={handleAddConfirm}
+              size="small"
+              startIcon={<PlusIcon fontSize="small" />}
+              variant="contained"
             >
               Add Card
-            </Typography>
-          </Link>
-        )}
+            </Button>
+            <Button onClick={handleAddCancel} size="small" sx={{ ml: 2 }}>
+              Cancel
+            </Button>
+          </Box>
+        </>
+      ) : (
+        <Link
+          onClick={handleAddInit}
+          sx={{
+            alignItems: 'center',
+            cursor: 'pointer',
+            display: 'flex',
+            justifyContent: 'flex-start',
+          }}
+          underline="none"
+        >
+          <PlusIcon sx={{ color: 'action.active' }} />
+          <Typography color="textSecondary" variant="subtitle1">
+            Add Card
+          </Typography>
+        </Link>
+      )}
     </div>
   );
 };
 
 KanbanCardAdd.propTypes = {
-  columnId: PropTypes.string.isRequired
+  columnId: PropTypes.string.isRequired,
 };

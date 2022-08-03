@@ -1,6 +1,19 @@
-import numeral from "numeral"
-import { Avatar, Box, Card, CardHeader, Container, Divider, IconButton, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
+import numeral from "numeral";
+import {
+  Avatar,
+  Box,
+  Card,
+  CardHeader,
+  Container,
+  Divider,
+  IconButton,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
 
 const referrals = [
   {
@@ -51,7 +64,7 @@ const referrals = [
     name: "Medium",
     value: 1654,
   },
-]
+];
 
 export const GroupedList2 = () => (
   <Box
@@ -107,4 +120,4 @@ export const GroupedList2 = () => (
       </Card>
     </Container>
   </Box>
-)
+);

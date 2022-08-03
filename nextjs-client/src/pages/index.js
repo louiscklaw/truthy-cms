@@ -18,9 +18,7 @@ const Home = () => {
   return (
     <>
       <Head>
-        <title>
-          Material Kit Pro
-        </title>
+        <title>Material Kit Pro</title>
       </Head>
       <main>
         <HomeHero />
@@ -37,10 +35,6 @@ const Home = () => {
   );
 };
 
-Home.getLayout = (page) => (
-  <MainLayout>
-    {page}
-  </MainLayout>
-);
+Home.getLayout = page => <MainLayout>{page}</MainLayout>;
 
 export default Home;

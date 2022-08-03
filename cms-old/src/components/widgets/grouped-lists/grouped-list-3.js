@@ -1,9 +1,22 @@
-import { addDays, addHours, differenceInDays, isAfter } from "date-fns"
-import { Avatar, AvatarGroup, Box, Card, CardHeader, Divider, IconButton, Link, List, ListItem, ListItemText, Tooltip } from "@mui/material"
-import { Scrollbar } from "../../scrollbar"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
+import { addDays, addHours, differenceInDays, isAfter } from "date-fns";
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  Card,
+  CardHeader,
+  Divider,
+  IconButton,
+  Link,
+  List,
+  ListItem,
+  ListItemText,
+  Tooltip,
+} from "@mui/material";
+import { Scrollbar } from "../../scrollbar";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
 
-const now = new Date()
+const now = new Date();
 
 const tasks = [
   {
@@ -96,21 +109,21 @@ const tasks = [
     ],
     title: "Redesign Landing Page",
   },
-]
+];
 
 const getDeadline = task => {
-  let deadline = ""
+  let deadline = "";
 
   if (task.deadline) {
-    const deadlineDate = task.deadline
+    const deadlineDate = task.deadline;
 
     if (isAfter(deadlineDate, now) && differenceInDays(deadlineDate, now) < 3) {
-      deadline = `${differenceInDays(deadlineDate, now)} days remaining`
+      deadline = `${differenceInDays(deadlineDate, now)} days remaining`;
     }
   }
 
-  return deadline
-}
+  return deadline;
+};
 
 export const GroupedList3 = () => (
   <Box
@@ -154,4 +167,4 @@ export const GroupedList3 = () => (
       </Scrollbar>
     </Card>
   </Box>
-)
+);

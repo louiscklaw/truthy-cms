@@ -1,18 +1,12 @@
-import { useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import {
-  Card,
-  CardHeader,
-  Divider,
-  IconButton,
-  ThemeProvider,
-} from "@mui/material";
-import { useSettings } from "../hooks/use-settings";
-import { Moon as MoonIcon } from "../icons/moon";
-import { Sun as SunIcon } from "../icons/sun";
-import { createTheme } from "../theme";
+import { useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Card, CardHeader, Divider, IconButton, ThemeProvider } from '@mui/material';
+import { useSettings } from '../hooks/use-settings';
+import { Moon as MoonIcon } from '../icons/moon';
+import { Sun as SunIcon } from '../icons/sun';
+import { createTheme } from '../theme';
 
-export const WidgetPreviewer = (props) => {
+export const WidgetPreviewer = props => {
   const { element, name, ...other } = props;
   const { settings } = useSettings();
   const [selectedTheme, setSelectedTheme] = useState(settings.theme);
@@ -22,8 +16,8 @@ export const WidgetPreviewer = (props) => {
   }, [settings.theme]);
 
   const handleSwitch = () => {
-    setSelectedTheme((prevSelectedTheme) => {
-      return prevSelectedTheme === "light" ? "dark" : "light";
+    setSelectedTheme(prevSelectedTheme => {
+      return prevSelectedTheme === 'light' ? 'dark' : 'light';
     });
   };
 
@@ -37,11 +31,7 @@ export const WidgetPreviewer = (props) => {
       <CardHeader
         action={
           <IconButton onClick={handleSwitch}>
-            {selectedTheme === "light" ? (
-              <MoonIcon fontSize="small" />
-            ) : (
-              <SunIcon fontSize="small" />
-            )}
+            {selectedTheme === 'light' ? <MoonIcon fontSize="small" /> : <SunIcon fontSize="small" />}
           </IconButton>
         }
         title={name}

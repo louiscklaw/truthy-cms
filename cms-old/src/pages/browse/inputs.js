@@ -1,20 +1,20 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import { Box, Container } from "@mui/material"
-import { BrowseLayout } from "../../components/browse-layout"
-import { MainLayout } from "../../components/main-layout"
-import { WidgetPreviewer } from "../../components/widget-previewer"
-import { InputCheckbox } from "../../components/widgets/inputs/input-checkbox"
-import { InputRadio } from "../../components/widgets/inputs/input-radio"
-import { InputSwitch } from "../../components/widgets/inputs/input-switch"
-import { InputTextField } from "../../components/widgets/inputs/input-text-field"
-import { InputMixed } from "../../components/widgets/inputs/input-mixed"
-import { gtm } from "../../lib/gtm"
+import { useEffect } from "react";
+import Head from "next/head";
+import { Box, Container } from "@mui/material";
+import { BrowseLayout } from "../../components/browse-layout";
+import { MainLayout } from "../../components/main-layout";
+import { WidgetPreviewer } from "../../components/widget-previewer";
+import { InputCheckbox } from "../../components/widgets/inputs/input-checkbox";
+import { InputRadio } from "../../components/widgets/inputs/input-radio";
+import { InputSwitch } from "../../components/widgets/inputs/input-switch";
+import { InputTextField } from "../../components/widgets/inputs/input-text-field";
+import { InputMixed } from "../../components/widgets/inputs/input-mixed";
+import { gtm } from "../../lib/gtm";
 
 const BrowseInputs = () => {
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -38,13 +38,13 @@ const BrowseInputs = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 BrowseInputs.getLayout = page => (
   <MainLayout>
     <BrowseLayout>{page}</BrowseLayout>
   </MainLayout>
-)
+);
 
-export default BrowseInputs
+export default BrowseInputs;

@@ -1,54 +1,68 @@
-import { useState, useEffect, useCallback } from "react"
-import NextLink from "next/link"
-import toast from "react-hot-toast"
-import { Avatar, Box, Button, Card, CardHeader, Divider, Grid, IconButton, Input, Link, Paper, Typography } from "@mui/material"
-import { socialApi } from "../../../__fake-api__/social-api"
-import { useMounted } from "../../../hooks/use-mounted"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Search as SearchIcon } from "../../../icons/search"
+import { useState, useEffect, useCallback } from "react";
+import NextLink from "next/link";
+import toast from "react-hot-toast";
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  Divider,
+  Grid,
+  IconButton,
+  Input,
+  Link,
+  Paper,
+  Typography,
+} from "@mui/material";
+import { socialApi } from "../../../__fake-api__/social-api";
+import { useMounted } from "../../../hooks/use-mounted";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Search as SearchIcon } from "../../../icons/search";
 
 const connectStatusMap = {
   connected: "Connected",
   not_connected: "Connect",
   pending: "Pending",
-}
+};
 
 export const SocialConnections = props => {
-  const isMounted = useMounted()
-  const [connections, setConnections] = useState([])
-  const [search, setSearch] = useState("")
+  const isMounted = useMounted();
+  const [connections, setConnections] = useState([]);
+  const [search, setSearch] = useState("");
 
   const getConnections = useCallback(async () => {
-    const data = await socialApi.getConnections()
+    const data = await socialApi.getConnections();
 
     if (isMounted()) {
-      setConnections(data)
+      setConnections(data);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(() => {
-    getConnections()
-  }, [getConnections])
+    getConnections();
+  }, [getConnections]);
 
   const handleConnectToggle = connectionId => {
     setConnections(prevConnections =>
       prevConnections.map(connection => {
         if (connection.id === connectionId) {
-          const updatedConnection = { ...connection }
+          const updatedConnection = { ...connection };
 
-          updatedConnection.status = connection.status === "connected" || connection.status === "pending" ? "not_connected" : "pending"
+          updatedConnection.status =
+            connection.status === "connected" || connection.status === "pending" ? "not_connected" : "pending";
 
           if (updatedConnection.status === "pending") {
-            toast.success("Request sent!")
+            toast.success("Request sent!");
           }
 
-          return updatedConnection
+          return updatedConnection;
         }
 
-        return connection
+        return connection;
       }),
-    )
-  }
+    );
+  };
 
   return (
     <Card {...props}>
@@ -64,7 +78,12 @@ export const SocialConnections = props => {
       >
         <SearchIcon fontSize="small" />
         <Box sx={{ ml: 2 }}>
-          <Input disableUnderline onChange={event => setSearch(event.target.value)} placeholder="Search connections" value={search} />
+          <Input
+            disableUnderline
+            onChange={event => setSearch(event.target.value)}
+            placeholder="Search connections"
+            value={search}
+          />
         </Box>
       </Box>
       <Divider />
@@ -121,5 +140,5 @@ export const SocialConnections = props => {
         </Grid>
       </Box>
     </Card>
-  )
-}
+  );
+};

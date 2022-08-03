@@ -1,4 +1,4 @@
-import { Box, Card, Container, Grid, Link, Typography } from "@mui/material"
+import { Box, Card, Container, Grid, Link, Typography } from "@mui/material";
 
 export const HomeClients = props => (
   <Box
@@ -68,4 +68,4 @@ export const HomeClients = props => (
       </Grid>
     </Container>
   </Box>
-)
+);

@@ -1,6 +1,6 @@
-import { Fragment, useState } from "react";
-import PropTypes from "prop-types";
-import toast from "react-hot-toast";
+import { Fragment, useState } from 'react';
+import PropTypes from 'prop-types';
+import toast from 'react-hot-toast';
 import {
   Box,
   Button,
@@ -12,17 +12,17 @@ import {
   LinearProgress,
   OutlinedInput,
   Typography,
-} from "@mui/material";
-import { styled } from "@mui/material/styles";
-import { deleteChecklist, updateChecklist } from "../../../slices/kanban";
-import { useDispatch } from "../../../store";
-import { KanbanCheckItem } from "./kanban-check-item";
-import { KanbanCheckItemAdd } from "./kanban-check-item-add";
-import { Trash as TrashIcon } from "../../../icons/trash";
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import { deleteChecklist, updateChecklist } from '../../../slices/kanban';
+import { useDispatch } from '../../../store';
+import { KanbanCheckItem } from './kanban-check-item';
+import { KanbanCheckItemAdd } from './kanban-check-item-add';
+import { Trash as TrashIcon } from '../../../icons/trash';
 
-const KanbanChecklistRoot = styled("div")``;
+const KanbanChecklistRoot = styled('div')``;
 
-export const KanbanChecklist = (props) => {
+export const KanbanChecklist = props => {
   const { card, checklist, ...other } = props;
   const dispatch = useDispatch();
   const [name, setName] = useState(checklist.name);
@@ -33,7 +33,7 @@ export const KanbanChecklist = (props) => {
     setEditingName(true);
   };
 
-  const handleNameChange = (event) => {
+  const handleNameChange = event => {
     setName(event.target.value);
   };
 
@@ -47,10 +47,10 @@ export const KanbanChecklist = (props) => {
 
       setEditingName(false);
       await dispatch(updateChecklist(card.id, checklist.id, { name }));
-      toast.success("Checklist updated!");
+      toast.success('Checklist updated!');
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong!");
+      toast.error('Something went wrong!');
     }
   };
 
@@ -62,14 +62,14 @@ export const KanbanChecklist = (props) => {
   const handleDelete = async () => {
     try {
       await dispatch(deleteChecklist(card.id, checklist.id));
-      toast.success("Checklist deleted!");
+      toast.success('Checklist deleted!');
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong!");
+      toast.error('Something went wrong!');
     }
   };
 
-  const handleCheckItemEditInit = (checkItemId) => {
+  const handleCheckItemEditInit = checkItemId => {
     setEditingCheckItem(checkItemId);
   };
 
@@ -82,11 +82,8 @@ export const KanbanChecklist = (props) => {
   };
 
   const totalCheckItems = checklist.checkItems.length;
-  const completedCheckItems = checklist.checkItems.filter(
-    (checkItem) => checkItem.state === "complete"
-  ).length;
-  const completePercentage =
-    totalCheckItems === 0 ? 100 : (completedCheckItems / totalCheckItems) * 100;
+  const completedCheckItems = checklist.checkItems.filter(checkItem => checkItem.state === 'complete').length;
+  const completePercentage = totalCheckItems === 0 ? 100 : (completedCheckItems / totalCheckItems) * 100;
 
   return (
     <KanbanChecklistRoot {...other}>
@@ -94,16 +91,16 @@ export const KanbanChecklist = (props) => {
         <Box sx={{ p: 3 }}>
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
+              alignItems: 'center',
+              display: 'flex',
             }}
           >
             {editingName ? (
               <Box
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
-                  width: "100%",
+                  alignItems: 'center',
+                  display: 'flex',
+                  width: '100%',
                 }}
               >
                 <OutlinedInput
@@ -111,18 +108,13 @@ export const KanbanChecklist = (props) => {
                   value={name}
                   sx={{
                     flexGrow: 1,
-                    "& .MuiInputBase-input": {
+                    '& .MuiInputBase-input': {
                       px: 2,
                       py: 1,
                     },
                   }}
                 />
-                <Button
-                  onClick={handleNameSave}
-                  size="small"
-                  sx={{ ml: 2 }}
-                  variant="contained"
-                >
+                <Button onClick={handleNameSave} size="small" sx={{ ml: 2 }} variant="contained">
                   Save
                 </Button>
                 <Button onClick={handleCancel} size="small" sx={{ ml: 2 }}>
@@ -132,8 +124,8 @@ export const KanbanChecklist = (props) => {
             ) : (
               <Box
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
+                  alignItems: 'center',
+                  display: 'flex',
                   flexGrow: 1,
                 }}
               >
@@ -143,16 +135,16 @@ export const KanbanChecklist = (props) => {
                   onClick={handleNameEdit}
                   value={checklist.name}
                   sx={{
-                    borderColor: "transparent",
+                    borderColor: 'transparent',
                     borderRadius: 1,
-                    borderStyle: "solid",
+                    borderStyle: 'solid',
                     borderWidth: 1,
-                    cursor: "text",
-                    m: "-1px",
-                    "&:hover": {
-                      backgroundColor: "action.selected",
+                    cursor: 'text',
+                    m: '-1px',
+                    '&:hover': {
+                      backgroundColor: 'action.selected',
                     },
-                    "& .MuiInputBase-input": {
+                    '& .MuiInputBase-input': {
                       fontWeight: 500,
                       px: 2,
                       py: 1,
@@ -167,8 +159,8 @@ export const KanbanChecklist = (props) => {
           </Box>
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
+              alignItems: 'center',
+              display: 'flex',
               mt: 3,
             }}
           >
@@ -186,8 +178,8 @@ export const KanbanChecklist = (props) => {
                 sx={{
                   borderRadius: 1,
                   height: 8,
-                  "& .MuiLinearProgress-bar": {
-                    borderRadius: "inherit",
+                  '& .MuiLinearProgress-bar': {
+                    borderRadius: 'inherit',
                   },
                 }}
                 value={completePercentage}
@@ -197,7 +189,7 @@ export const KanbanChecklist = (props) => {
           </Box>
         </Box>
         <Divider />
-        {checklist.checkItems.map((checkItem) => (
+        {checklist.checkItems.map(checkItem => (
           <Fragment key={checkItem.id}>
             <KanbanCheckItem
               cardId={card.id}

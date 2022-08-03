@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import Head from "next/head";
-import NextLink from "next/link";
+import { useCallback, useEffect, useState } from 'react';
+import Head from 'next/head';
+import NextLink from 'next/link';
 import {
   Avatar,
   Box,
@@ -14,36 +14,36 @@ import {
   Tab,
   Tabs,
   Typography,
-} from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import { jobApi } from "../../../../__fake-api__/job-api";
-import { AuthGuard } from "../../../../components/authentication/auth-guard";
-import { DashboardLayout } from "../../../../components/dashboard/dashboard-layout";
-import { CompanyOverview } from "../../../../components/dashboard/jobs/company-overview";
-import { CompanyReviews } from "../../../../components/dashboard/jobs/company-reviews";
-import { CompanySummary } from "../../../../components/dashboard/jobs/company-summary";
-import { CompanyActivity } from "../../../../components/dashboard/jobs/company-activity";
-import { CompanyTeam } from "../../../../components/dashboard/jobs/company-team";
-import { CompanyAssets } from "../../../../components/dashboard/jobs/company-assets";
-import { useMounted } from "../../../../hooks/use-mounted";
-import { gtm } from "../../../../lib/gtm";
-import { getInitials } from "../../../../utils/get-initials";
+} from '@mui/material';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { jobApi } from '../../../../__fake-api__/job-api';
+import { AuthGuard } from '../../../../components/authentication/auth-guard';
+import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
+import { CompanyOverview } from '../../../../components/dashboard/jobs/company-overview';
+import { CompanyReviews } from '../../../../components/dashboard/jobs/company-reviews';
+import { CompanySummary } from '../../../../components/dashboard/jobs/company-summary';
+import { CompanyActivity } from '../../../../components/dashboard/jobs/company-activity';
+import { CompanyTeam } from '../../../../components/dashboard/jobs/company-team';
+import { CompanyAssets } from '../../../../components/dashboard/jobs/company-assets';
+import { useMounted } from '../../../../hooks/use-mounted';
+import { gtm } from '../../../../lib/gtm';
+import { getInitials } from '../../../../utils/get-initials';
 
 const tabs = [
-  { label: "Overview", value: "overview" },
-  { label: "Reviews", value: "reviews" },
-  { label: "Activity", value: "activity" },
-  { label: "Team", value: "team" },
-  { label: "Assets", value: "assets" },
+  { label: 'Overview', value: 'overview' },
+  { label: 'Reviews', value: 'reviews' },
+  { label: 'Activity', value: 'activity' },
+  { label: 'Team', value: 'team' },
+  { label: 'Assets', value: 'assets' },
 ];
 
 const CompanyDetails = () => {
   const isMounted = useMounted();
   const [company, setCompany] = useState(null);
-  const [currentTab, setCurrentTab] = useState("overview");
+  const [currentTab, setCurrentTab] = useState('overview');
 
   useEffect(() => {
-    gtm.push({ event: "page_view" });
+    gtm.push({ event: 'page_view' });
   }, []);
 
   const getCompany = useCallback(async () => {
@@ -63,7 +63,7 @@ const CompanyDetails = () => {
       getCompany();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []
+    [],
   );
 
   const handleTabsChange = (event, value) => {
@@ -92,8 +92,8 @@ const CompanyDetails = () => {
               <Link
                 color="textPrimary"
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
+                  alignItems: 'center',
+                  display: 'flex',
                 }}
               >
                 <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
@@ -107,11 +107,11 @@ const CompanyDetails = () => {
                 <CardHeader
                   disableTypography
                   title={
-                    <Box sx={{ display: "flex" }}>
+                    <Box sx={{ display: 'flex' }}>
                       <Avatar
                         src={company.logo}
                         sx={{
-                          background: "transparent",
+                          background: 'transparent',
                           mr: 2,
                         }}
                         variant="rounded"
@@ -137,30 +137,19 @@ const CompanyDetails = () => {
                   value={currentTab}
                   variant="scrollable"
                 >
-                  {tabs.map((tab) => (
+                  {tabs.map(tab => (
                     <Tab key={tab.value} label={tab.label} value={tab.value} />
                   ))}
                 </Tabs>
                 <Divider />
                 <CardContent>
-                  {currentTab === "overview" && (
-                    <CompanyOverview company={company} />
+                  {currentTab === 'overview' && <CompanyOverview company={company} />}
+                  {currentTab === 'reviews' && (
+                    <CompanyReviews reviews={company.reviews || []} averageRating={company.averageRating} />
                   )}
-                  {currentTab === "reviews" && (
-                    <CompanyReviews
-                      reviews={company.reviews || []}
-                      averageRating={company.averageRating}
-                    />
-                  )}
-                  {currentTab === "activity" && (
-                    <CompanyActivity activities={company.activities || []} />
-                  )}
-                  {currentTab === "team" && (
-                    <CompanyTeam members={company.members || []} />
-                  )}
-                  {currentTab === "assets" && (
-                    <CompanyAssets assets={company.assets || []} />
-                  )}
+                  {currentTab === 'activity' && <CompanyActivity activities={company.activities || []} />}
+                  {currentTab === 'team' && <CompanyTeam members={company.members || []} />}
+                  {currentTab === 'assets' && <CompanyAssets assets={company.assets || []} />}
                 </CardContent>
               </Card>
             </Grid>
@@ -174,7 +163,7 @@ const CompanyDetails = () => {
   );
 };
 
-CompanyDetails.getLayout = (page) => (
+CompanyDetails.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>

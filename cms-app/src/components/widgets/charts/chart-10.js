@@ -1,31 +1,24 @@
-import numeral from "numeral";
-import {
-  Box,
-  Card,
-  CardContent,
-  CardHeader,
-  Container,
-  Typography,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { Chart } from "../../chart";
+import numeral from 'numeral';
+import { Box, Card, CardContent, CardHeader, Container, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Chart } from '../../chart';
 
 const data = {
   series: [
     {
-      color: "#FFB547",
+      color: '#FFB547',
       data: 14859,
-      label: "Strategy",
+      label: 'Strategy',
     },
     {
-      color: "#7BC67E",
+      color: '#7BC67E',
       data: 35690,
-      label: "Outsourcing",
+      label: 'Outsourcing',
     },
     {
-      color: "#7783DB",
+      color: '#7783DB',
       data: 45120,
-      label: "Marketing",
+      label: 'Marketing',
     },
   ],
 };
@@ -35,20 +28,20 @@ export const Chart10 = () => {
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       stacked: false,
       toolbar: {
         show: false,
       },
     },
-    colors: data.series.map((item) => item.color),
+    colors: data.series.map(item => item.color),
     dataLabels: {
       enabled: false,
     },
     fill: {
       opacity: 1,
     },
-    labels: data.series.map((item) => item.label),
+    labels: data.series.map(item => item.label),
     legend: {
       show: false,
     },
@@ -61,12 +54,12 @@ export const Chart10 = () => {
     },
   };
 
-  const chartSeries = data.series.map((item) => item.data);
+  const chartSeries = data.series.map(item => item.data);
 
   return (
     <Box
       sx={{
-        backgroundColor: "background.default",
+        backgroundColor: 'background.default',
         p: 3,
       }}
     >
@@ -74,25 +67,20 @@ export const Chart10 = () => {
         <Card>
           <CardHeader title="Cost Breakdown" />
           <CardContent>
-            <Chart
-              height={260}
-              options={chartOptions}
-              series={chartSeries}
-              type="pie"
-            />
-            {data.series.map((item) => (
+            <Chart height={260} options={chartOptions} series={chartSeries} type="pie" />
+            {data.series.map(item => (
               <Box
                 key={item.label}
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
+                  alignItems: 'center',
+                  display: 'flex',
                   p: 1,
                 }}
               >
                 <Box
                   sx={{
                     backgroundColor: item.color,
-                    borderRadius: "50%",
+                    borderRadius: '50%',
                     height: 8,
                     width: 8,
                   }}
@@ -102,7 +90,7 @@ export const Chart10 = () => {
                 </Typography>
                 <Box sx={{ flexGrow: 1 }} />
                 <Typography color="textSecondary" variant="subtitle2">
-                  {numeral(item.data).format("$0,0.00")}
+                  {numeral(item.data).format('$0,0.00')}
                 </Typography>
               </Box>
             ))}

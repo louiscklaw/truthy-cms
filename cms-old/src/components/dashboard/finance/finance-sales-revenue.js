@@ -1,9 +1,9 @@
-import { Card, CardContent, CardHeader, Divider } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import { Card, CardContent, CardHeader, Divider } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 export const FinanceSalesRevenue = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -38,7 +38,7 @@ export const FinanceSalesRevenue = props => {
       },
       categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
     },
-  }
+  };
 
   const chartSeries = [
     {
@@ -49,7 +49,7 @@ export const FinanceSalesRevenue = props => {
       name: "Up/Cross-Selling",
       data: [90, 32, 2, 22, 90, 33, 25, 8, 1, 21, 21, 100],
     },
-  ]
+  ];
 
   return (
     <Card {...props}>
@@ -59,5 +59,5 @@ export const FinanceSalesRevenue = props => {
         <Chart height={467} options={chartOptions} series={chartSeries} type="area" />
       </CardContent>
     </Card>
-  )
-}
+  );
+};

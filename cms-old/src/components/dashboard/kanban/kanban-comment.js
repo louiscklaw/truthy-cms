@@ -1,17 +1,17 @@
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import { Avatar, Box, Paper, Typography } from "@mui/material"
-import { useSelector } from "../../../store"
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import { Avatar, Box, Paper, Typography } from "@mui/material";
+import { useSelector } from "../../../store";
 
 const memberSelector = (state, memberId) => {
-  const { members } = state.kanban
+  const { members } = state.kanban;
 
-  return members.byId[memberId]
-}
+  return members.byId[memberId];
+};
 
 export const KanbanComment = props => {
-  const { createdAt, memberId, message, ...other } = props
-  const member = useSelector(state => memberSelector(state, memberId))
+  const { createdAt, memberId, message, ...other } = props;
+  const member = useSelector(state => memberSelector(state, memberId));
 
   return (
     <Box
@@ -44,11 +44,11 @@ export const KanbanComment = props => {
         </Typography>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 KanbanComment.propTypes = {
   createdAt: PropTypes.number.isRequired,
   memberId: PropTypes.string.isRequired,
   message: PropTypes.string.isRequired,
-}
+};

@@ -1,12 +1,36 @@
-import PropTypes from "prop-types"
-import { Box, Card, CardContent, CardHeader, Divider, LinearProgress, Link, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material"
-import { AcademicCap as AcademicCapIcon } from "../../../icons/academic-cap"
-import { Briefcase as BriefcaseIcon } from "../../../icons/briefcase"
-import { Home as HomeIcon } from "../../../icons/home"
-import { Mail as MailIcon } from "../../../icons/mail"
+import PropTypes from "prop-types";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  LinearProgress,
+  Link,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import { AcademicCap as AcademicCapIcon } from "../../../icons/academic-cap";
+import { Briefcase as BriefcaseIcon } from "../../../icons/briefcase";
+import { Home as HomeIcon } from "../../../icons/home";
+import { Mail as MailIcon } from "../../../icons/mail";
 
 export const SocialAbout = props => {
-  const { currentCity, currentJobCompany, currentJobTitle, email, originCity, previousJobCompany, previousJobTitle, profileProgress, quote, ...other } = props
+  const {
+    currentCity,
+    currentJobCompany,
+    currentJobTitle,
+    email,
+    originCity,
+    previousJobCompany,
+    previousJobTitle,
+    profileProgress,
+    quote,
+    ...other
+  } = props;
 
   return (
     <div {...other}>
@@ -105,8 +129,8 @@ export const SocialAbout = props => {
         </Card>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 SocialAbout.propTypes = {
   currentCity: PropTypes.string.isRequired,
@@ -118,4 +142,4 @@ SocialAbout.propTypes = {
   previousJobTitle: PropTypes.string.isRequired,
   profileProgress: PropTypes.number.isRequired,
   quote: PropTypes.string.isRequired,
-}
+};

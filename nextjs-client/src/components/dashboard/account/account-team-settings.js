@@ -13,7 +13,7 @@ import {
   TableHead,
   TableRow,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
 import { Mail as MailIcon } from '../../../icons/mail';
@@ -25,21 +25,15 @@ export const AccountTeamSettings = () => (
   <Card>
     <CardContent>
       <div>
-        <Typography variant="h6">
-          Invite members
-        </Typography>
-        <Typography
-          color="textSecondary"
-          variant="body2"
-          sx={{ mt: 1 }}
-        >
+        <Typography variant="h6">Invite members</Typography>
+        <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
           You currently pay for 2 Editor Seats.
         </Typography>
       </div>
       <Divider
         sx={{
           mt: 3,
-          mb: 3
+          mb: 3,
         }}
       />
       <Box
@@ -48,7 +42,7 @@ export const AccountTeamSettings = () => (
           display: 'flex',
           flexWrap: 'wrap',
           justifyContent: 'space-between',
-          m: -3
+          m: -3,
         }}
       >
         <TextField
@@ -57,20 +51,17 @@ export const AccountTeamSettings = () => (
           size="small"
           sx={{
             m: 1.5,
-            flexGrow: 1
+            flexGrow: 1,
           }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
                 <MailIcon fontSize="small" />
               </InputAdornment>
-            )
+            ),
           }}
         />
-        <Button
-          sx={{ m: 1.5 }}
-          variant="contained"
-        >
+        <Button sx={{ m: 1.5 }} variant="contained">
           Send Invite
         </Button>
       </Box>
@@ -79,12 +70,8 @@ export const AccountTeamSettings = () => (
       <Table sx={{ minWidth: 400 }}>
         <TableHead>
           <TableRow>
-            <TableCell>
-              Member
-            </TableCell>
-            <TableCell>
-              Role
-            </TableCell>
+            <TableCell>Member</TableCell>
+            <TableCell>Role</TableCell>
             <TableCell />
           </TableRow>
         </TableHead>
@@ -94,35 +81,28 @@ export const AccountTeamSettings = () => (
               <Box
                 sx={{
                   alignItems: 'center',
-                  display: 'flex'
+                  display: 'flex',
                 }}
               >
                 <Avatar
                   sx={{
                     height: 40,
                     width: 40,
-                    mr: 1
+                    mr: 1,
                   }}
                 >
                   <UserCircleIcon fontSize="small" />
                 </Avatar>
                 <div>
-                  <Typography variant="subtitle2">
-                    Cao Yu
-                  </Typography>
-                  <Typography
-                    color="textSecondary"
-                    variant="body2"
-                  >
+                  <Typography variant="subtitle2">Cao Yu</Typography>
+                  <Typography color="textSecondary" variant="body2">
                     cao.yu@devias.io
                   </Typography>
                 </div>
               </Box>
             </TableCell>
             <TableCell>
-              <SeverityPill>
-                owner
-              </SeverityPill>
+              <SeverityPill>owner</SeverityPill>
             </TableCell>
             <TableCell align="right">
               <IconButton>
@@ -135,7 +115,7 @@ export const AccountTeamSettings = () => (
               <Box
                 sx={{
                   alignItems: 'center',
-                  display: 'flex'
+                  display: 'flex',
                 }}
               >
                 <Avatar
@@ -144,27 +124,19 @@ export const AccountTeamSettings = () => (
                   sx={{
                     height: 40,
                     width: 40,
-                    mr: 1
+                    mr: 1,
                   }}
                 />
                 <div>
-                  <Typography variant="subtitle2">
-                    Cao Yu
-                  </Typography>
-                  <Typography
-                    variant="body2"
-                    color="textSecondary"
-                  >
+                  <Typography variant="subtitle2">Cao Yu</Typography>
+                  <Typography variant="body2" color="textSecondary">
                     cao.yu@devias.io
                   </Typography>
                 </div>
               </Box>
             </TableCell>
             <TableCell>
-              <Typography
-                color="textSecondary"
-                variant="body2"
-              >
+              <Typography color="textSecondary" variant="body2">
                 Editor
               </Typography>
             </TableCell>

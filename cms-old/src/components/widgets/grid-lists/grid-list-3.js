@@ -1,4 +1,4 @@
-import { useRef, useState } from "react"
+import { useRef, useState } from "react";
 import {
   Box,
   Button,
@@ -15,15 +15,15 @@ import {
   MenuItem,
   Tooltip,
   Typography,
-} from "@mui/material"
-import { blueGrey } from "@mui/material/colors"
-import { Archive as ArchiveIcon } from "../../../icons/archive"
-import { DocumentText as DocumentTextIcon } from "../../../icons/document-text"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Download as DownloadIcon } from "../../../icons/download"
-import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt"
-import { Trash as TrashIcon } from "../../../icons/trash"
-import { bytesToSize } from "../../../utils/bytes-to-size"
+} from "@mui/material";
+import { blueGrey } from "@mui/material/colors";
+import { Archive as ArchiveIcon } from "../../../icons/archive";
+import { DocumentText as DocumentTextIcon } from "../../../icons/document-text";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Download as DownloadIcon } from "../../../icons/download";
+import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
+import { Trash as TrashIcon } from "../../../icons/trash";
+import { bytesToSize } from "../../../utils/bytes-to-size";
 
 const files = [
   {
@@ -47,19 +47,19 @@ const files = [
     size: 1024 * 1024 * 2,
     url: "/static/mock-images/projects/project_1.png",
   },
-]
+];
 
 export const GridList3 = () => {
-  const moreRef = useRef(null)
-  const [openMenu, setOpenMenu] = useState(false)
+  const moreRef = useRef(null);
+  const [openMenu, setOpenMenu] = useState(false);
 
   const handleMenuOpen = () => {
-    setOpenMenu(true)
-  }
+    setOpenMenu(true);
+  };
 
   const handleMenuClose = () => {
-    setOpenMenu(false)
-  }
+    setOpenMenu(false);
+  };
 
   return (
     <Box
@@ -161,5 +161,5 @@ export const GridList3 = () => {
         ))}
       </Grid>
     </Box>
-  )
-}
+  );
+};

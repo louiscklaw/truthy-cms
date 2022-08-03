@@ -1,6 +1,6 @@
-import numeral from "numeral"
-import { Box, Button, Card, CardContent, Divider, List, ListItem, ListItemText, Typography } from "@mui/material"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
+import numeral from "numeral";
+import { Box, Button, Card, CardContent, Divider, List, ListItem, ListItemText, Typography } from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
 
 const currencies = [
   {
@@ -18,7 +18,7 @@ const currencies = [
     color: "#7BC67E",
     name: "XRP Ripple",
   },
-]
+];
 
 export const OverviewTotalBalance = props => (
   <Card {...props}>
@@ -95,4 +95,4 @@ export const OverviewTotalBalance = props => (
       </Box>
     </CardContent>
   </Card>
-)
+);

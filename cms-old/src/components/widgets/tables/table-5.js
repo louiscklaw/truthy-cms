@@ -1,5 +1,5 @@
-import numeral from "numeral"
-import { subDays, subHours } from "date-fns"
+import numeral from "numeral";
+import { subDays, subHours } from "date-fns";
 import {
   Box,
   Card,
@@ -16,15 +16,15 @@ import {
   TablePagination,
   TableRow,
   TextField,
-} from "@mui/material"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { Image as ImageIcon } from "../../../icons/image"
-import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt"
-import { Search as SearchIcon } from "../../../icons/search"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { Image as ImageIcon } from "../../../icons/image";
+import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
+import { Search as SearchIcon } from "../../../icons/search";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
-const now = new Date()
+const now = new Date();
 
 const products = [
   {
@@ -91,7 +91,7 @@ const products = [
     updatedAt: subDays(subHours(now, 7), 1).getTime(),
     variants: 1,
   },
-]
+];
 
 const categoryOptions = [
   {
@@ -114,7 +114,7 @@ const categoryOptions = [
     label: "Beauty",
     value: "beauty",
   },
-]
+];
 
 const availabilityOptions = [
   {
@@ -129,7 +129,7 @@ const availabilityOptions = [
     label: "Unavailable",
     value: "unavailable",
   },
-]
+];
 
 const sortOptions = [
   {
@@ -148,7 +148,7 @@ const sortOptions = [
     label: "Creation date (oldest first)",
     value: "createdAt|asc",
   },
-]
+];
 
 const getInventoryLabel = inventoryType => {
   const map = {
@@ -164,12 +164,12 @@ const getInventoryLabel = inventoryType => {
       color: "error",
       text: "Out of Stock",
     },
-  }
+  };
 
-  const { text, color } = map[inventoryType]
+  const { text, color } = map[inventoryType];
 
-  return <SeverityPill color={color}>{text}</SeverityPill>
-}
+  return <SeverityPill color={color}>{text}</SeverityPill>;
+};
 
 export const Table5 = () => (
   <Box
@@ -355,4 +355,4 @@ export const Table5 = () => (
       />
     </Card>
   </Box>
-)
+);

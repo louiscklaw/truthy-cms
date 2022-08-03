@@ -1,8 +1,8 @@
-import PropTypes from "prop-types"
-import { Button } from "@mui/material"
+import PropTypes from "prop-types";
+import { Button } from "@mui/material";
 
 export const KanbanCardAction = props => {
-  const { icon, children, ...other } = props
+  const { icon, children, ...other } = props;
 
   return (
     <Button
@@ -19,10 +19,10 @@ export const KanbanCardAction = props => {
     >
       {children}
     </Button>
-  )
-}
+  );
+};
 
 KanbanCardAction.propTypes = {
   icon: PropTypes.element,
   children: PropTypes.node,
-}
+};

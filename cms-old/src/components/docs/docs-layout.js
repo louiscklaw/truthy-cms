@@ -1,7 +1,7 @@
-import { useState } from "react"
-import { styled } from "@mui/material/styles"
-import { DocsNavbar } from "./docs-navbar"
-import { DocsSidebar } from "./docs-sidebar"
+import { useState } from "react";
+import { styled } from "@mui/material/styles";
+import { DocsNavbar } from "./docs-navbar";
+import { DocsSidebar } from "./docs-sidebar";
 
 const DocsLayoutRoot = styled("div")(({ theme }) => ({
   minHeight: "calc(100vh - 64px)",
@@ -9,11 +9,11 @@ const DocsLayoutRoot = styled("div")(({ theme }) => ({
   [theme.breakpoints.up("lg")]: {
     marginLeft: 256,
   },
-}))
+}));
 
 export const DocsLayout = props => {
-  const { children } = props
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false)
+  const { children } = props;
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   return (
     <DocsLayoutRoot>
@@ -21,5 +21,5 @@ export const DocsLayout = props => {
       <DocsSidebar onClose={() => setIsSidebarOpen(false)} open={isSidebarOpen} />
       {children}
     </DocsLayoutRoot>
-  )
-}
+  );
+};

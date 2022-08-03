@@ -1,27 +1,18 @@
-import { useState } from "react";
-import PropTypes from "prop-types";
-import { formatDistanceStrict } from "date-fns";
-import {
-  Avatar,
-  Box,
-  Button,
-  Card,
-  CardContent,
-  Rating,
-  TextField,
-  Typography,
-} from "@mui/material";
-import { Star as StarIcon } from "../../../icons/star";
-import { getInitials } from "../../../utils/get-initials";
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import { formatDistanceStrict } from 'date-fns';
+import { Avatar, Box, Button, Card, CardContent, Rating, TextField, Typography } from '@mui/material';
+import { Star as StarIcon } from '../../../icons/star';
+import { getInitials } from '../../../utils/get-initials';
 
-export const CompanyReviews = (props) => {
+export const CompanyReviews = props => {
   const { reviews, averageRating, ...other } = props;
   const [rating, setRating] = useState(null);
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
-    avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
-    name: "Anika Visser",
+    avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+    name: 'Anika Visser',
   };
 
   const handleRatingChange = (event, newRating) => {
@@ -37,17 +28,17 @@ export const CompanyReviews = (props) => {
         <CardContent
           sx={{
             alignItems: {
-              xs: "flex-start",
-              sm: "center",
+              xs: 'flex-start',
+              sm: 'center',
             },
-            display: "flex",
-            flexWrap: "wrap",
+            display: 'flex',
+            flexWrap: 'wrap',
             flexDirection: {
-              xs: "column",
-              sm: "row",
+              xs: 'column',
+              sm: 'row',
             },
             mt: -1,
-            "& > *": {
+            '& > *': {
               mr: 2,
               mt: 1,
             },
@@ -56,17 +47,11 @@ export const CompanyReviews = (props) => {
           <Typography variant="subtitle2">Overall reviews</Typography>
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
+              alignItems: 'center',
+              display: 'flex',
             }}
           >
-            <Rating
-              value={averageRating / 5}
-              precision={0.1}
-              readOnly
-              max={1}
-              sx={{ mr: 1 }}
-            />
+            <Rating value={averageRating / 5} precision={0.1} readOnly max={1} sx={{ mr: 1 }} />
             <Typography variant="subtitle2">
               {averageRating}
               /5
@@ -77,19 +62,19 @@ export const CompanyReviews = (props) => {
           </Typography>
         </CardContent>
       </Card>
-      {reviews.slice(0, 2).map((review) => (
+      {reviews.slice(0, 2).map(review => (
         <Card key={review.id} sx={{ mt: 3 }} variant="outlined">
           <CardContent>
             <Box
               sx={{
                 alignItems: {
-                  xs: "flex-start",
-                  sm: "center",
+                  xs: 'flex-start',
+                  sm: 'center',
                 },
-                display: "flex",
+                display: 'flex',
                 flexDirection: {
-                  xs: "column",
-                  sm: "row",
+                  xs: 'column',
+                  sm: 'row',
                 },
               }}
             >
@@ -100,17 +85,17 @@ export const CompanyReviews = (props) => {
                 <Typography variant="subtitle1">{review.title}</Typography>
                 <Box
                   sx={{
-                    alignItems: "center",
-                    display: "flex",
-                    flexWrap: "wrap",
+                    alignItems: 'center',
+                    display: 'flex',
+                    flexWrap: 'wrap',
                     ml: -2,
                     mt: -1,
                   }}
                 >
                   <Box
                     sx={{
-                      alignItems: "center",
-                      display: "flex",
+                      alignItems: 'center',
+                      display: 'flex',
                       ml: 2,
                       mt: 1,
                     }}
@@ -140,7 +125,7 @@ export const CompanyReviews = (props) => {
                     }}
                     variant="body2"
                   >
-                    •{" "}
+                    •{' '}
                     {formatDistanceStrict(review.createdAt, new Date(), {
                       addSuffix: true,
                     })}
@@ -159,7 +144,7 @@ export const CompanyReviews = (props) => {
       </Box>
       <Box
         sx={{
-          display: "flex",
+          display: 'flex',
           mt: 3,
         }}
       >
@@ -167,27 +152,18 @@ export const CompanyReviews = (props) => {
           {getInitials(user.name)}
         </Avatar>
         <Box sx={{ flexGrow: 1 }}>
-          <TextField
-            fullWidth
-            placeholder="Send your review"
-            multiline
-            rows={3}
-          />
+          <TextField fullWidth placeholder="Send your review" multiline rows={3} />
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
+              alignItems: 'center',
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
               m: -1,
               mt: 3,
             }}
           >
-            <Rating
-              onChange={handleRatingChange}
-              sx={{ m: 1 }}
-              value={rating}
-            />
+            <Rating onChange={handleRatingChange} sx={{ m: 1 }} value={rating} />
             <Button variant="contained" sx={{ m: 1 }}>
               Send Review
             </Button>

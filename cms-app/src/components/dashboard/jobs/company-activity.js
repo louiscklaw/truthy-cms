@@ -1,26 +1,19 @@
-import NextLink from "next/link";
-import PropTypes from "prop-types";
-import { format } from "date-fns";
-import { Avatar, Box, Button, Link, Typography } from "@mui/material";
-import {
-  Timeline,
-  TimelineConnector,
-  TimelineContent,
-  TimelineDot,
-  TimelineItem,
-  TimelineSeparator,
-} from "@mui/lab";
-import { getInitials } from "../../../utils/get-initials";
+import NextLink from 'next/link';
+import PropTypes from 'prop-types';
+import { format } from 'date-fns';
+import { Avatar, Box, Button, Link, Typography } from '@mui/material';
+import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from '@mui/lab';
+import { getInitials } from '../../../utils/get-initials';
 
-const getActivityContent = (activity) => {
+const getActivityContent = activity => {
   switch (activity.action) {
-    case "new_job":
+    case 'new_job':
       return (
         <Box
           sx={{
-            alignItems: "center",
-            display: "flex",
-            flexWrap: "wrap",
+            alignItems: 'center',
+            display: 'flex',
+            flexWrap: 'wrap',
           }}
         >
           <Typography sx={{ mr: 0.5 }} variant="subtitle2">
@@ -36,13 +29,13 @@ const getActivityContent = (activity) => {
           </Typography>
         </Box>
       );
-    case "new_team_member":
+    case 'new_team_member':
       return (
         <Box
           sx={{
-            alignItems: "center",
-            display: "flex",
-            flexWrap: "wrap",
+            alignItems: 'center',
+            display: 'flex',
+            flexWrap: 'wrap',
           }}
         >
           <Typography sx={{ mr: 0.5 }} variant="subtitle2">
@@ -57,13 +50,13 @@ const getActivityContent = (activity) => {
           <Typography variant="body2">as a team member</Typography>
         </Box>
       );
-    case "created":
+    case 'created':
       return (
         <Box
           sx={{
-            alignItems: "center",
-            display: "flex",
-            flexWrap: "wrap",
+            alignItems: 'center',
+            display: 'flex',
+            flexWrap: 'wrap',
           }}
         >
           <Typography sx={{ mr: 0.5 }} variant="subtitle2">
@@ -80,7 +73,7 @@ const getActivityContent = (activity) => {
   }
 };
 
-export const CompanyActivity = (props) => {
+export const CompanyActivity = props => {
   const { activities, ...other } = props;
 
   return (
@@ -99,8 +92,8 @@ export const CompanyActivity = (props) => {
           <TimelineItem
             key={activity.id}
             sx={{
-              "&:before": {
-                display: "none",
+              '&:before': {
+                display: 'none',
               },
             }}
           >
@@ -111,14 +104,12 @@ export const CompanyActivity = (props) => {
                   p: 0,
                 }}
               >
-                <Avatar src={activity.avatar}>
-                  {getInitials(activity.author)}
-                </Avatar>
+                <Avatar src={activity.avatar}>{getInitials(activity.author)}</Avatar>
               </TimelineDot>
               {activities.length - 1 > index && (
                 <TimelineConnector
                   sx={{
-                    backgroundColor: "divider",
+                    backgroundColor: 'divider',
                     minHeight: 30,
                   }}
                 />
@@ -126,12 +117,8 @@ export const CompanyActivity = (props) => {
             </TimelineSeparator>
             <TimelineContent>
               {getActivityContent(activity)}
-              <Typography
-                color="textSecondary"
-                variant="caption"
-                sx={{ mt: 1 }}
-              >
-                {format(activity.date, "MMM dd, HH:mm a")}
+              <Typography color="textSecondary" variant="caption" sx={{ mt: 1 }}>
+                {format(activity.date, 'MMM dd, HH:mm a')}
               </Typography>
             </TimelineContent>
           </TimelineItem>

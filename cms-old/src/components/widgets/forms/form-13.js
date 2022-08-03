@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material"
+import { Box, Button, Checkbox, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material";
 
 const paymentMethods = [
   {
@@ -9,7 +9,7 @@ const paymentMethods = [
     label: "PayPal",
     value: "paypal",
   },
-]
+];
 
 export const Form13 = () => (
   <Box
@@ -170,4 +170,4 @@ export const Form13 = () => (
       </Box>
     </form>
   </Box>
-)
+);

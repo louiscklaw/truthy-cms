@@ -1,8 +1,8 @@
-import { useRef, useState } from "react"
-import { Avatar, Box, Button, IconButton, Paper, TextareaAutosize, Tooltip } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import AddPhotoIcon from "@mui/icons-material/AddPhotoAlternate"
-import AttachFileIcon from "@mui/icons-material/AttachFile"
+import { useRef, useState } from "react";
+import { Avatar, Box, Button, IconButton, Paper, TextareaAutosize, Tooltip } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import AddPhotoIcon from "@mui/icons-material/AddPhotoAlternate";
+import AttachFileIcon from "@mui/icons-material/AttachFile";
 
 const MailReplyTextarea = styled(TextareaAutosize)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -17,25 +17,25 @@ const MailReplyTextarea = styled(TextareaAutosize)(({ theme }) => ({
   "&::placeholder": {
     color: theme.palette.text.secondary,
   },
-}))
+}));
 
 export const MailReply = props => {
-  const fileInputRef = useRef(null)
-  const [value, setValue] = useState("")
+  const fileInputRef = useRef(null);
+  const [value, setValue] = useState("");
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
     avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
     name: "Anika Visser",
-  }
+  };
 
   const handleChange = event => {
-    setValue(event.target.value)
-  }
+    setValue(event.target.value);
+  };
 
   const handleAttach = () => {
-    fileInputRef.current?.click()
-  }
+    fileInputRef.current?.click();
+  };
 
   return (
     <Box
@@ -81,5 +81,5 @@ export const MailReply = props => {
       </Paper>
       <input hidden ref={fileInputRef} type="file" />
     </Box>
-  )
-}
+  );
+};

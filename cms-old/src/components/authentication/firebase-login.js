@@ -1,14 +1,14 @@
-import { useRouter } from "next/router"
-import * as Yup from "yup"
-import { useFormik } from "formik"
-import { Alert, Box, Button, Divider, FormHelperText, TextField, Typography } from "@mui/material"
-import { useAuth } from "../../hooks/use-auth"
-import { useMounted } from "../../hooks/use-mounted"
+import { useRouter } from "next/router";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import { Alert, Box, Button, Divider, FormHelperText, TextField, Typography } from "@mui/material";
+import { useAuth } from "../../hooks/use-auth";
+import { useMounted } from "../../hooks/use-mounted";
 
 export const FirebaseLogin = props => {
-  const isMounted = useMounted()
-  const router = useRouter()
-  const { signInWithEmailAndPassword, signInWithGoogle } = useAuth()
+  const isMounted = useMounted();
+  const router = useRouter();
+  const { signInWithEmailAndPassword, signInWithGoogle } = useAuth();
   const formik = useFormik({
     initialValues: {
       email: "demo@devias.io",
@@ -21,36 +21,36 @@ export const FirebaseLogin = props => {
     }),
     onSubmit: async (values, helpers) => {
       try {
-        await signInWithEmailAndPassword(values.email, values.password)
+        await signInWithEmailAndPassword(values.email, values.password);
 
         if (isMounted()) {
-          const returnUrl = router.query.returnUrl || "/dashboard"
-          router.push(returnUrl).catch(console.error)
+          const returnUrl = router.query.returnUrl || "/dashboard";
+          router.push(returnUrl).catch(console.error);
         }
       } catch (err) {
-        console.error(err)
+        console.error(err);
 
         if (isMounted()) {
-          helpers.setStatus({ success: false })
-          helpers.setErrors({ submit: err.message })
-          helpers.setSubmitting(false)
+          helpers.setStatus({ success: false });
+          helpers.setErrors({ submit: err.message });
+          helpers.setSubmitting(false);
         }
       }
     },
-  })
+  });
 
   const handleGoogleClick = async () => {
     try {
-      await signInWithGoogle()
+      await signInWithGoogle();
 
       if (isMounted()) {
-        const returnUrl = router.query.returnUrl || "/dashboard"
-        router.push(returnUrl).catch(console.error)
+        const returnUrl = router.query.returnUrl || "/dashboard";
+        router.push(returnUrl).catch(console.error);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   return (
     <div {...props}>
@@ -132,5 +132,5 @@ export const FirebaseLogin = props => {
         </Box>
       </form>
     </div>
-  )
-}
+  );
+};

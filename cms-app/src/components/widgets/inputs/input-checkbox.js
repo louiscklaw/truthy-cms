@@ -1,15 +1,9 @@
-import {
-  Box,
-  Checkbox,
-  FormControlLabel,
-  FormGroup,
-  Typography,
-} from "@mui/material";
+import { Box, Checkbox, FormControlLabel, FormGroup, Typography } from '@mui/material';
 
 export const InputCheckbox = () => (
   <Box
     sx={{
-      backgroundColor: "background.paper",
+      backgroundColor: 'background.paper',
       p: 2,
     }}
   >
@@ -22,10 +16,7 @@ export const InputCheckbox = () => (
         control={<Checkbox defaultChecked />}
         label={<Typography variant="body1">Email alerts</Typography>}
       />
-      <FormControlLabel
-        control={<Checkbox />}
-        label={<Typography variant="body1">Push Notifications</Typography>}
-      />
+      <FormControlLabel control={<Checkbox />} label={<Typography variant="body1">Push Notifications</Typography>} />
       <FormControlLabel
         control={<Checkbox defaultChecked />}
         label={<Typography variant="body1">Text message</Typography>}

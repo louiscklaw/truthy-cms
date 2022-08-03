@@ -1,50 +1,50 @@
-import { useState, useEffect, useCallback } from "react"
-import NextLink from "next/link"
-import Head from "next/head"
-import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer"
-import { Avatar, Box, Button, Container, Dialog, Divider, Grid, Link, Typography } from "@mui/material"
-import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import { invoiceApi } from "../../../__fake-api__/invoice-api"
-import { AuthGuard } from "../../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../../components/dashboard/dashboard-layout"
-import { InvoicePDF } from "../../../components/dashboard/invoice/invoice-pdf"
-import { InvoicePreview } from "../../../components/dashboard/invoice/invoice-preview"
-import { useMounted } from "../../../hooks/use-mounted"
-import { ArrowLeft as ArrowLeftIcon } from "../../../icons/arrow-left"
-import { gtm } from "../../../lib/gtm"
-import { getInitials } from "../../../utils/get-initials"
+import { useState, useEffect, useCallback } from "react";
+import NextLink from "next/link";
+import Head from "next/head";
+import { PDFDownloadLink, PDFViewer } from "@react-pdf/renderer";
+import { Avatar, Box, Button, Container, Dialog, Divider, Grid, Link, Typography } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { invoiceApi } from "../../../__fake-api__/invoice-api";
+import { AuthGuard } from "../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
+import { InvoicePDF } from "../../../components/dashboard/invoice/invoice-pdf";
+import { InvoicePreview } from "../../../components/dashboard/invoice/invoice-preview";
+import { useMounted } from "../../../hooks/use-mounted";
+import { ArrowLeft as ArrowLeftIcon } from "../../../icons/arrow-left";
+import { gtm } from "../../../lib/gtm";
+import { getInitials } from "../../../utils/get-initials";
 
 const InvoiceDetails = () => {
-  const isMounted = useMounted()
-  const [invoice, setInvoice] = useState(null)
-  const [viewPDF, setViewPDF] = useState(false)
+  const isMounted = useMounted();
+  const [invoice, setInvoice] = useState(null);
+  const [viewPDF, setViewPDF] = useState(false);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const getInvoice = useCallback(async () => {
     try {
-      const data = await invoiceApi.getInvoice()
+      const data = await invoiceApi.getInvoice();
 
       if (isMounted()) {
-        setInvoice(data)
+        setInvoice(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(
     () => {
-      getInvoice()
+      getInvoice();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   if (!invoice) {
-    return null
+    return null;
   }
 
   return (
@@ -111,7 +111,11 @@ const InvoiceDetails = () => {
                 <Button onClick={() => setViewPDF(true)} sx={{ m: 1 }} variant="outlined">
                   Preview
                 </Button>
-                <PDFDownloadLink document={<InvoicePDF invoice={invoice} />} fileName="invoice" style={{ textDecoration: "none" }}>
+                <PDFDownloadLink
+                  document={<InvoicePDF invoice={invoice} />}
+                  fileName="invoice"
+                  style={{ textDecoration: "none" }}
+                >
                   <Button color="primary" sx={{ m: 1 }} variant="contained">
                     Download
                   </Button>
@@ -137,7 +141,11 @@ const InvoiceDetails = () => {
               p: 2,
             }}
           >
-            <Button startIcon={<ArrowLeftIcon fontSize="small" />} onClick={() => setViewPDF(false)} variant="contained">
+            <Button
+              startIcon={<ArrowLeftIcon fontSize="small" />}
+              onClick={() => setViewPDF(false)}
+              variant="contained"
+            >
               Back
             </Button>
           </Box>
@@ -149,13 +157,13 @@ const InvoiceDetails = () => {
         </Box>
       </Dialog>
     </>
-  )
-}
+  );
+};
 
 InvoiceDetails.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default InvoiceDetails
+export default InvoiceDetails;

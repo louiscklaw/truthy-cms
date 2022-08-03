@@ -1,5 +1,18 @@
-import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns"
-import { Avatar, Box, Button, Card, CardActions, CardHeader, Divider, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material"
+import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns";
+import {
+  Avatar,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardHeader,
+  Divider,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 
 const messages = [
   {
@@ -42,7 +55,7 @@ const messages = [
     senderName: "Jie Yan Song",
     unread: false,
   },
-]
+];
 
 export const OverviewInbox = props => (
   <Card {...props}>
@@ -95,4 +108,4 @@ export const OverviewInbox = props => (
       <Button>Go to chat</Button>
     </CardActions>
   </Card>
-)
+);

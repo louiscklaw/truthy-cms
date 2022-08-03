@@ -1,35 +1,46 @@
-import { useRef, useState } from "react"
-import PropTypes from "prop-types"
-import { formatDistanceToNowStrict } from "date-fns"
-import { Avatar, AvatarGroup, Box, IconButton, ListItemIcon, ListItemText, Menu, MenuItem, Tooltip, Typography } from "@mui/material"
-import { Archive as ArchiveIcon } from "../../../icons/archive"
-import { Bell as BellIcon } from "../../../icons/bell"
-import { Ban as BanIcon } from "../../../icons/ban"
-import { Camera as CameraIcon } from "../../../icons/camera"
-import { Phone as PhoneIcon } from "../../../icons/phone"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Trash as TrashIcon } from "../../../icons/trash"
+import { useRef, useState } from "react";
+import PropTypes from "prop-types";
+import { formatDistanceToNowStrict } from "date-fns";
+import {
+  Avatar,
+  AvatarGroup,
+  Box,
+  IconButton,
+  ListItemIcon,
+  ListItemText,
+  Menu,
+  MenuItem,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { Archive as ArchiveIcon } from "../../../icons/archive";
+import { Bell as BellIcon } from "../../../icons/bell";
+import { Ban as BanIcon } from "../../../icons/ban";
+import { Camera as CameraIcon } from "../../../icons/camera";
+import { Phone as PhoneIcon } from "../../../icons/phone";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Trash as TrashIcon } from "../../../icons/trash";
 
 export const ChatThreadToolbar = props => {
-  const { participants, ...other } = props
-  const moreRef = useRef(null)
-  const [openMenu, setOpenMenu] = useState(false)
+  const { participants, ...other } = props;
+  const moreRef = useRef(null);
+  const [openMenu, setOpenMenu] = useState(false);
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
     id: "5e86809283e28b96d2d38537",
-  }
+  };
 
-  const recipients = participants.filter(participant => participant.id !== user.id)
-  const name = recipients.reduce((names, participant) => [...names, participant.name], []).join(", ")
+  const recipients = participants.filter(participant => participant.id !== user.id);
+  const name = recipients.reduce((names, participant) => [...names, participant.name], []).join(", ");
 
   const handleMenuOpen = () => {
-    setOpenMenu(true)
-  }
+    setOpenMenu(true);
+  };
 
   const handleMenuClose = () => {
-    setOpenMenu(false)
-  }
+    setOpenMenu(false);
+  };
 
   return (
     <Box
@@ -119,13 +130,13 @@ export const ChatThreadToolbar = props => {
         </MenuItem>
       </Menu>
     </Box>
-  )
-}
+  );
+};
 
 ChatThreadToolbar.propTypes = {
   participants: PropTypes.array,
-}
+};
 
 ChatThreadToolbar.defaultProps = {
   participants: [],
-}
+};

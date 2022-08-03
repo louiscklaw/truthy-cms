@@ -1,9 +1,9 @@
-import NextLink from "next/link"
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import { Avatar, Box, Button, Link, Typography } from "@mui/material"
-import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from "@mui/lab"
-import { getInitials } from "../../../utils/get-initials"
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import { Avatar, Box, Button, Link, Typography } from "@mui/material";
+import { Timeline, TimelineConnector, TimelineContent, TimelineDot, TimelineItem, TimelineSeparator } from "@mui/lab";
+import { getInitials } from "../../../utils/get-initials";
 
 const getActivityContent = activity => {
   switch (activity.action) {
@@ -28,7 +28,7 @@ const getActivityContent = activity => {
             </NextLink>
           </Typography>
         </Box>
-      )
+      );
     case "new_team_member":
       return (
         <Box
@@ -49,7 +49,7 @@ const getActivityContent = activity => {
           </Typography>
           <Typography variant="body2">as a team member</Typography>
         </Box>
-      )
+      );
     case "created":
       return (
         <Box
@@ -67,14 +67,14 @@ const getActivityContent = activity => {
           </Typography>
           <Typography variant="subtitle2">{activity.createdCompany}</Typography>
         </Box>
-      )
+      );
     default:
-      return null
+      return null;
   }
-}
+};
 
 export const CompanyActivity = props => {
-  const { activities, ...other } = props
+  const { activities, ...other } = props;
 
   return (
     <div {...other}>
@@ -128,13 +128,13 @@ export const CompanyActivity = props => {
         <Button>Load more</Button>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 CompanyActivity.defaultProps = {
   activities: [],
-}
+};
 
 CompanyActivity.propTypes = {
   activities: PropTypes.array,
-}
+};

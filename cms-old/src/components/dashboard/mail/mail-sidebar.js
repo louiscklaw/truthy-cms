@@ -1,9 +1,9 @@
-import { Fragment } from "react"
-import PropTypes from "prop-types"
-import { Box, Button, Drawer, List, ListSubheader, Typography, useMediaQuery } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import AddIcon from "@mui/icons-material/Add"
-import { MailLabel } from "./mail-label"
+import { Fragment } from "react";
+import PropTypes from "prop-types";
+import { Box, Button, Drawer, List, ListSubheader, Typography, useMediaQuery } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import AddIcon from "@mui/icons-material/Add";
+import { MailLabel } from "./mail-label";
 
 const MailSidebarDesktop = styled(Drawer)({
   flexShrink: 0,
@@ -12,7 +12,7 @@ const MailSidebarDesktop = styled(Drawer)({
     position: "relative",
     width: 280,
   },
-})
+});
 
 const MailSidebarMobile = styled(Drawer)({
   width: 280,
@@ -21,36 +21,36 @@ const MailSidebarMobile = styled(Drawer)({
     height: "calc(100% - 64px)",
     width: 280,
   },
-})
+});
 
 const groupLabels = labels => {
   const groups = {
     system: [],
     custom: [],
-  }
+  };
 
   labels.forEach(label => {
     if (label.type === "system") {
-      groups.system.push(label)
+      groups.system.push(label);
     } else {
-      groups.custom.push(label)
+      groups.custom.push(label);
     }
-  })
+  });
 
-  return groups
-}
+  return groups;
+};
 
 export const MailSidebar = props => {
-  const { containerRef, label: currentLabel, labels, open, onCompose, onClose, ...other } = props
-  const mdUp = useMediaQuery(theme => theme.breakpoints.up("md"))
+  const { containerRef, label: currentLabel, labels, open, onCompose, onClose, ...other } = props;
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up("md"));
 
   const handleLabelClick = () => {
     if (!mdUp) {
-      onClose?.()
+      onClose?.();
     }
-  }
+  };
 
-  const groupedLabels = groupLabels(labels)
+  const groupedLabels = groupLabels(labels);
 
   const content = (
     <div>
@@ -89,14 +89,20 @@ export const MailSidebar = props => {
         ))}
       </Box>
     </div>
-  )
+  );
 
   if (mdUp) {
     return (
-      <MailSidebarDesktop anchor="left" open={open} SlideProps={{ container: containerRef?.current }} variant="persistent" {...other}>
+      <MailSidebarDesktop
+        anchor="left"
+        open={open}
+        SlideProps={{ container: containerRef?.current }}
+        variant="persistent"
+        {...other}
+      >
         {content}
       </MailSidebarDesktop>
-    )
+    );
   }
 
   return (
@@ -111,8 +117,8 @@ export const MailSidebar = props => {
     >
       {content}
     </MailSidebarMobile>
-  )
-}
+  );
+};
 
 MailSidebar.propTypes = {
   containerRef: PropTypes.any,
@@ -121,4 +127,4 @@ MailSidebar.propTypes = {
   onClose: PropTypes.func,
   onCompose: PropTypes.func,
   open: PropTypes.bool,
-}
+};

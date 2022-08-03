@@ -1,8 +1,19 @@
-import { Box, Button, Card, CardActions, CardContent, CardHeader, Divider, Grid, Tooltip, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined"
-import { Chart } from "../../chart"
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  CardHeader,
+  Divider,
+  Grid,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined";
+import { Chart } from "../../chart";
 
 const data = {
   series: [
@@ -32,10 +43,10 @@ const data = {
       label: "Other",
     },
   ],
-}
+};
 
 export const AnalyticsSocialSources = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -62,9 +73,9 @@ export const AnalyticsSocialSources = () => {
     theme: {
       mode: theme.palette.mode,
     },
-  }
+  };
 
-  const chartSeries = data.series.map(item => item.data)
+  const chartSeries = data.series.map(item => item.data);
 
   return (
     <Card>
@@ -111,5 +122,5 @@ export const AnalyticsSocialSources = () => {
         <Button endIcon={<ArrowRightIcon fontSize="small" />}>See all visits</Button>
       </CardActions>
     </Card>
-  )
-}
+  );
+};

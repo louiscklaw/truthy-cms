@@ -1,23 +1,34 @@
-import { useEffect } from "react"
-import NextLink from "next/link"
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import Markdown from "react-markdown"
-import { Avatar, Box, Button, Divider, IconButton, InputAdornment, Link, TextField, Tooltip, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import ReplyAllIcon from "@mui/icons-material/ReplyAll"
-import ReplyIcon from "@mui/icons-material/Reply"
-import { ArrowLeft as ArrowLeftIcon } from "../../../icons/arrow-left"
-import { ChevronLeft as ChevronLeftIcon } from "../../../icons/chevron-left"
-import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Download as DownloadIcon } from "../../../icons/download"
-import { Search as SearchIcon } from "../../../icons/search"
-import { Trash as TrashIcon } from "../../../icons/trash"
-import { getEmail } from "../../../slices/mail"
-import { useDispatch, useSelector } from "../../../store"
-import { getInitials } from "../../../utils/get-initials"
-import { MailReply } from "./mail-reply"
+import { useEffect } from "react";
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import Markdown from "react-markdown";
+import {
+  Avatar,
+  Box,
+  Button,
+  Divider,
+  IconButton,
+  InputAdornment,
+  Link,
+  TextField,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import ReplyAllIcon from "@mui/icons-material/ReplyAll";
+import ReplyIcon from "@mui/icons-material/Reply";
+import { ArrowLeft as ArrowLeftIcon } from "../../../icons/arrow-left";
+import { ChevronLeft as ChevronLeftIcon } from "../../../icons/chevron-left";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Download as DownloadIcon } from "../../../icons/download";
+import { Search as SearchIcon } from "../../../icons/search";
+import { Trash as TrashIcon } from "../../../icons/trash";
+import { getEmail } from "../../../slices/mail";
+import { useDispatch, useSelector } from "../../../store";
+import { getInitials } from "../../../utils/get-initials";
+import { MailReply } from "./mail-reply";
 
 const MarkdownWrapper = styled("div")(({ theme }) => ({
   color: theme.palette.text.primary,
@@ -27,26 +38,26 @@ const MarkdownWrapper = styled("div")(({ theme }) => ({
     lineHeight: theme.typography.body1.lineHeight,
     marginBottom: theme.spacing(2),
   },
-}))
+}));
 
 export const MailDetails = props => {
-  const { emailId, label } = props
-  const dispatch = useDispatch()
-  const email = useSelector(state => state.mail.emails.byId[emailId])
+  const { emailId, label } = props;
+  const dispatch = useDispatch();
+  const email = useSelector(state => state.mail.emails.byId[emailId]);
 
   useEffect(
     () => {
-      dispatch(getEmail(emailId))
+      dispatch(getEmail(emailId));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [emailId],
-  )
+  );
 
   if (!email) {
-    return null
+    return null;
   }
 
-  const backHref = label && label !== "inbox" ? `/dashboard/mail?label=${label}` : "/dashboard/mail"
+  const backHref = label && label !== "inbox" ? `/dashboard/mail?label=${label}` : "/dashboard/mail";
 
   return (
     <Box
@@ -248,10 +259,10 @@ export const MailDetails = props => {
       <Divider />
       <MailReply />
     </Box>
-  )
-}
+  );
+};
 
 MailDetails.propTypes = {
   emailId: PropTypes.string.isRequired,
   label: PropTypes.string,
-}
+};

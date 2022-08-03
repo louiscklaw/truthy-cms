@@ -10,17 +10,17 @@ import {
   ListItemAvatar,
   ListItemText,
   Typography,
-} from "@mui/material";
-import { AcademicCap as AcademicCapIcon } from "../../../icons/academic-cap";
-import { Briefcase as BriefcaseIcon } from "../../../icons/briefcase";
-import { Home as HomeIcon } from "../../../icons/home";
-import { Mail as MailIcon } from "../../../icons/mail";
+} from '@mui/material';
+import { AcademicCap as AcademicCapIcon } from '../../../icons/academic-cap';
+import { Briefcase as BriefcaseIcon } from '../../../icons/briefcase';
+import { Home as HomeIcon } from '../../../icons/home';
+import { Mail as MailIcon } from '../../../icons/mail';
 
 export const DetailList8 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
-      minHeight: "100%",
+      backgroundColor: 'background.default',
+      minHeight: '100%',
       p: 3,
     }}
   >
@@ -29,8 +29,7 @@ export const DetailList8 = () => (
       <Divider />
       <CardContent>
         <Typography color="textSecondary" variant="subtitle2">
-          &quot; Everyone thinks of changing the world, but no one thinks of
-          changing himself. &quot;
+          &quot; Everyone thinks of changing the world, but no one thinks of changing himself. &quot;
         </Typography>
         <List>
           <ListItem disableGutters divider>
@@ -41,7 +40,7 @@ export const DetailList8 = () => (
               disableTypography
               primary={
                 <Typography variant="subtitle2">
-                  Product Designer at{" "}
+                  Product Designer at{' '}
                   <Link color="textPrimary" href="#" variant="subtitle2">
                     Devias
                   </Link>
@@ -49,7 +48,7 @@ export const DetailList8 = () => (
               }
               secondary={
                 <Typography color="textSecondary" variant="caption">
-                  Past: UX Designer{" "}
+                  Past: UX Designer{' '}
                   <Link color="textSecondary" href="#" variant="caption">
                     Focus Aesthetic Dynamics
                   </Link>
@@ -63,11 +62,7 @@ export const DetailList8 = () => (
             </ListItemAvatar>
             <ListItemText
               primary={
-                <Link
-                  color="textSecondary"
-                  sx={{ cursor: "pointer" }}
-                  variant="body2"
-                >
+                <Link color="textSecondary" sx={{ cursor: 'pointer' }} variant="body2">
                   Add school or collage
                 </Link>
               }
@@ -81,7 +76,7 @@ export const DetailList8 = () => (
               disableTypography
               primary={
                 <Typography variant="subtitle2">
-                  Lives in{" "}
+                  Lives in{' '}
                   <Link color="textPrimary" href="#" variant="subtitle2">
                     Bucharest
                   </Link>
@@ -89,7 +84,7 @@ export const DetailList8 = () => (
               }
               secondary={
                 <Typography color="textSecondary" variant="caption">
-                  Originally from{" "}
+                  Originally from{' '}
                   <Link color="textSecondary" href="#" variant="caption">
                     Rm. Valcea
                   </Link>
@@ -101,13 +96,7 @@ export const DetailList8 = () => (
             <ListItemAvatar>
               <MailIcon fontFamily="small" />
             </ListItemAvatar>
-            <ListItemText
-              primary={
-                <Typography variant="subtitle2">
-                  katarina.smith@devias.io
-                </Typography>
-              }
-            />
+            <ListItemText primary={<Typography variant="subtitle2">katarina.smith@devias.io</Typography>} />
           </ListItem>
         </List>
       </CardContent>

@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, Divider, Grid, Switch, Typography } from "@mui/material"
+import { Box, Card, CardContent, Divider, Grid, Switch, Typography } from "@mui/material";
 
 export const AccountNotificationsSettings = () => (
   <Card>
@@ -68,4 +68,4 @@ export const AccountNotificationsSettings = () => (
       </Grid>
     </CardContent>
   </Card>
-)
+);

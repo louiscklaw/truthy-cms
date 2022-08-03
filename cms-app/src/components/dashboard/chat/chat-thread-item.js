@@ -1,32 +1,25 @@
-import PropTypes from "prop-types";
-import { formatDistanceStrict } from "date-fns";
-import locale from "date-fns/locale/en-US";
-import {
-  Avatar,
-  AvatarGroup,
-  Box,
-  ListItem,
-  ListItemAvatar,
-  Typography,
-} from "@mui/material";
+import PropTypes from 'prop-types';
+import { formatDistanceStrict } from 'date-fns';
+import locale from 'date-fns/locale/en-US';
+import { Avatar, AvatarGroup, Box, ListItem, ListItemAvatar, Typography } from '@mui/material';
 
 const formatDistanceLocale = {
-  lessThanXSeconds: "{{count}}s",
-  xSeconds: "{{count}}s",
-  halfAMinute: "30s",
-  lessThanXMinutes: "{{count}}m",
-  xMinutes: "{{count}}m",
-  aboutXHours: "{{count}}h",
-  xHours: "{{count}}h",
-  xDays: "{{count}}d",
-  aboutXWeeks: "{{count}}w",
-  xWeeks: "{{count}}w",
-  aboutXMonths: "{{count}}m",
-  xMonths: "{{count}}m",
-  aboutXYears: "{{count}}y",
-  xYears: "{{count}}y",
-  overXYears: "{{count}}y",
-  almostXYears: "{{count}}y",
+  lessThanXSeconds: '{{count}}s',
+  xSeconds: '{{count}}s',
+  halfAMinute: '30s',
+  lessThanXMinutes: '{{count}}m',
+  xMinutes: '{{count}}m',
+  aboutXHours: '{{count}}h',
+  xHours: '{{count}}h',
+  xDays: '{{count}}d',
+  aboutXWeeks: '{{count}}w',
+  xWeeks: '{{count}}w',
+  aboutXMonths: '{{count}}m',
+  xMonths: '{{count}}m',
+  aboutXYears: '{{count}}y',
+  xYears: '{{count}}y',
+  overXYears: '{{count}}y',
+  almostXYears: '{{count}}y',
 };
 
 const customLocale = {
@@ -34,13 +27,13 @@ const customLocale = {
   formatDistance: (token, count, options) => {
     options = options || {};
 
-    const result = formatDistanceLocale[token].replace("{{count}}", count);
+    const result = formatDistanceLocale[token].replace('{{count}}', count);
 
     if (options.addSuffix) {
       if (options.comparison > 0) {
-        return "in " + result;
+        return 'in ' + result;
       } else {
-        return result + " ago";
+        return result + ' ago';
       }
     }
 
@@ -48,27 +41,22 @@ const customLocale = {
   },
 };
 
-export const ChatThreadItem = (props) => {
+export const ChatThreadItem = props => {
   const { active, thread, onSelect, ...other } = props;
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
-    id: "5e86809283e28b96d2d38537",
+    id: '5e86809283e28b96d2d38537',
   };
 
-  const recipients = thread.participants.filter(
-    (participant) => participant.id !== user.id
-  );
+  const recipients = thread.participants.filter(participant => participant.id !== user.id);
   const lastMessage = thread.messages[thread.messages.length - 1];
-  const name = recipients
-    .reduce((names, participant) => [...names, participant.name], [])
-    .join(", ");
-  let content = "";
+  const name = recipients.reduce((names, participant) => [...names, participant.name], []).join(', ');
+  let content = '';
 
   if (lastMessage) {
-    const author = lastMessage.authorId === user.id ? "Me: " : "";
-    const message =
-      lastMessage.contentType === "image" ? "Sent a photo" : lastMessage.body;
+    const author = lastMessage.authorId === user.id ? 'Me: ' : '';
+    const message = lastMessage.contentType === 'image' ? 'Sent a photo' : lastMessage.body;
 
     content = `${author}${message}`;
   }
@@ -81,10 +69,10 @@ export const ChatThreadItem = (props) => {
       onClick={onSelect}
       sx={{
         ...(active && {
-          backgroundColor: "action.selected",
+          backgroundColor: 'action.selected',
         }),
-        cursor: "pointer",
-        overflow: "hidden",
+        cursor: 'pointer',
+        overflow: 'hidden',
         px: 2,
         py: 3,
       }}
@@ -92,23 +80,23 @@ export const ChatThreadItem = (props) => {
     >
       <ListItemAvatar
         sx={{
-          display: "flex",
+          display: 'flex',
           justifyContent: {
-            sm: "flex-start",
-            xs: "center",
+            sm: 'flex-start',
+            xs: 'center',
           },
         }}
       >
         <AvatarGroup
           max={2}
           sx={{
-            "& .MuiAvatar-root":
+            '& .MuiAvatar-root':
               recipients.length > 1
                 ? {
                     height: 26,
                     width: 26,
-                    "&:nth-of-type(2)": {
-                      mt: "10px",
+                    '&:nth-of-type(2)': {
+                      mt: '10px',
                     },
                   }
                 : {
@@ -117,7 +105,7 @@ export const ChatThreadItem = (props) => {
                   },
           }}
         >
-          {recipients.map((recipient) => (
+          {recipients.map(recipient => (
             <Avatar key={recipient.id} src={recipient.avatar || undefined} />
           ))}
         </AvatarGroup>
@@ -126,7 +114,7 @@ export const ChatThreadItem = (props) => {
         sx={{
           flexGrow: 1,
           mr: 2,
-          overflow: "hidden",
+          overflow: 'hidden',
         }}
       >
         <Typography noWrap variant="subtitle2">
@@ -134,36 +122,27 @@ export const ChatThreadItem = (props) => {
         </Typography>
         <Box
           sx={{
-            alignItems: "center",
-            display: "flex",
+            alignItems: 'center',
+            display: 'flex',
           }}
         >
           {Boolean(thread.unreadCount && thread.unreadCount > 0) && (
             <Box
               sx={{
-                backgroundColor: "primary.main",
-                borderRadius: "50%",
+                backgroundColor: 'primary.main',
+                borderRadius: '50%',
                 height: 8,
                 mr: 1,
                 width: 8,
               }}
             />
           )}
-          <Typography
-            color="textSecondary"
-            noWrap
-            sx={{ flexGrow: 1 }}
-            variant="subtitle2"
-          >
+          <Typography color="textSecondary" noWrap sx={{ flexGrow: 1 }} variant="subtitle2">
             {content}
           </Typography>
         </Box>
       </Box>
-      <Typography
-        color="textSecondary"
-        sx={{ whiteSpace: "nowrap" }}
-        variant="caption"
-      >
+      <Typography color="textSecondary" sx={{ whiteSpace: 'nowrap' }} variant="caption">
         {formatDistanceStrict(lastMessage.createdAt, new Date(), {
           addSuffix: false,
           locale: customLocale,

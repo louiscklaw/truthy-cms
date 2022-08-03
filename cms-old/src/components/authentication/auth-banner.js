@@ -1,12 +1,12 @@
-import NextLink from "next/link"
-import { Box, Chip, Container, Link, Tooltip, Typography } from "@mui/material"
+import NextLink from "next/link";
+import { Box, Chip, Container, Link, Tooltip, Typography } from "@mui/material";
 
 const platformIcons = {
   Amplify: "/static/icons/amplify.svg",
   Auth0: "/static/icons/auth0.svg",
   Firebase: "/static/icons/firebase.svg",
   JWT: "/static/icons/jwt.svg",
-}
+};
 
 export const AuthBanner = () => (
   <Box
@@ -60,4 +60,4 @@ export const AuthBanner = () => (
       </Box>
     </Container>
   </Box>
-)
+);

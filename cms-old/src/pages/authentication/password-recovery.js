@@ -1,27 +1,27 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import NextLink from "next/link"
-import { Box, Card, Container, Typography } from "@mui/material"
-import { GuestGuard } from "../../components/authentication/guest-guard"
-import { AuthBanner } from "../../components/authentication/auth-banner"
-import { AmplifyPasswordRecovery } from "../../components/authentication/amplify-password-recovery"
-import { Logo } from "../../components/logo"
-import { useAuth } from "../../hooks/use-auth"
-import { gtm } from "../../lib/gtm"
+import { useEffect } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import { Box, Card, Container, Typography } from "@mui/material";
+import { GuestGuard } from "../../components/authentication/guest-guard";
+import { AuthBanner } from "../../components/authentication/auth-banner";
+import { AmplifyPasswordRecovery } from "../../components/authentication/amplify-password-recovery";
+import { Logo } from "../../components/logo";
+import { useAuth } from "../../hooks/use-auth";
+import { gtm } from "../../lib/gtm";
 
 const platformIcons = {
   Amplify: "/static/icons/amplify.svg",
   Auth0: "/static/icons/auth0.svg",
   Firebase: "/static/icons/firebase.svg",
   JWT: "/static/icons/jwt.svg",
-}
+};
 
 const PasswordRecovery = () => {
-  const { platform } = useAuth()
+  const { platform } = useAuth();
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -109,9 +109,9 @@ const PasswordRecovery = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
-PasswordRecovery.getLayout = page => <GuestGuard>{page}</GuestGuard>
+PasswordRecovery.getLayout = page => <GuestGuard>{page}</GuestGuard>;
 
-export default PasswordRecovery
+export default PasswordRecovery;

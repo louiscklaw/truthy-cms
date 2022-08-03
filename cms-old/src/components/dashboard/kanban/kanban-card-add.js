@@ -1,41 +1,41 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import toast from "react-hot-toast"
-import { Box, Button, Link, OutlinedInput, Typography } from "@mui/material"
-import { Plus as PlusIcon } from "../../../icons/plus"
-import { createCard } from "../../../slices/kanban"
-import { useDispatch } from "../../../store"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import { Box, Button, Link, OutlinedInput, Typography } from "@mui/material";
+import { Plus as PlusIcon } from "../../../icons/plus";
+import { createCard } from "../../../slices/kanban";
+import { useDispatch } from "../../../store";
 
 export const KanbanCardAdd = props => {
-  const { columnId, ...other } = props
-  const dispatch = useDispatch()
-  const [isExpanded, setIsExpanded] = useState(false)
-  const [name, setName] = useState("")
+  const { columnId, ...other } = props;
+  const dispatch = useDispatch();
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [name, setName] = useState("");
 
   const handleChange = event => {
-    setName(event.target.value)
-  }
+    setName(event.target.value);
+  };
 
   const handleAddInit = () => {
-    setIsExpanded(true)
-  }
+    setIsExpanded(true);
+  };
 
   const handleAddCancel = () => {
-    setIsExpanded(false)
-    setName("")
-  }
+    setIsExpanded(false);
+    setName("");
+  };
 
   const handleAddConfirm = async () => {
     try {
-      await dispatch(createCard(columnId, name || "Untitled Card"))
-      setIsExpanded(false)
-      setName("")
-      toast.success("Card created!")
+      await dispatch(createCard(columnId, name || "Untitled Card"));
+      setIsExpanded(false);
+      setName("");
+      toast.success("Card created!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   return (
     <div {...other}>
@@ -66,7 +66,12 @@ export const KanbanCardAdd = props => {
               mt: 2,
             }}
           >
-            <Button onClick={handleAddConfirm} size="small" startIcon={<PlusIcon fontSize="small" />} variant="contained">
+            <Button
+              onClick={handleAddConfirm}
+              size="small"
+              startIcon={<PlusIcon fontSize="small" />}
+              variant="contained"
+            >
               Add Card
             </Button>
             <Button onClick={handleAddCancel} size="small" sx={{ ml: 2 }}>
@@ -92,9 +97,9 @@ export const KanbanCardAdd = props => {
         </Link>
       )}
     </div>
-  )
-}
+  );
+};
 
 KanbanCardAdd.propTypes = {
   columnId: PropTypes.string.isRequired,
-}
+};

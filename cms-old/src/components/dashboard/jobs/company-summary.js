@@ -1,11 +1,11 @@
-import PropTypes from "prop-types"
-import { Avatar, Box, Card, CardContent, Divider, Typography } from "@mui/material"
-import { PropertyList } from "../../property-list"
-import { PropertyListItem } from "../../property-list-item"
-import { getInitials } from "../../../utils/get-initials"
+import PropTypes from "prop-types";
+import { Avatar, Box, Card, CardContent, Divider, Typography } from "@mui/material";
+import { PropertyList } from "../../property-list";
+import { PropertyListItem } from "../../property-list-item";
+import { getInitials } from "../../../utils/get-initials";
 
 export const CompanySummary = props => {
-  const { company, ...other } = props
+  const { company, ...other } = props;
 
   return (
     <Card {...other}>
@@ -75,9 +75,9 @@ export const CompanySummary = props => {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 CompanySummary.propTypes = {
   company: PropTypes.object.isRequired,
-}
+};

@@ -1,4 +1,4 @@
-import { Avatar, Box, Card, CardContent, CardMedia, Grid, Chip, Divider, Link, Typography } from "@mui/material"
+import { Avatar, Box, Card, CardContent, CardMedia, Grid, Chip, Divider, Link, Typography } from "@mui/material";
 
 const applicants = [
   {
@@ -25,7 +25,7 @@ const applicants = [
     name: "Anika Visser",
     skills: ["BackEnd development", "Firebase", "MongoDB", "ExpressJS"],
   },
-]
+];
 
 export const GridList4 = () => (
   <Box
@@ -77,4 +77,4 @@ export const GridList4 = () => (
       ))}
     </Grid>
   </Box>
-)
+);

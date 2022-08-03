@@ -1,9 +1,9 @@
-import { Box, Button, Grid, Link, MenuItem, Select, TextField, Typography } from "@mui/material"
+import { Box, Button, Grid, Link, MenuItem, Select, TextField, Typography } from "@mui/material";
 
 export const ContactForm = () => {
   const handleSubmit = event => {
-    event.preventDefault()
-  }
+    event.preventDefault();
+  };
 
   return (
     <form onSubmit={handleSubmit}>
@@ -90,5 +90,5 @@ export const ContactForm = () => {
         .
       </Typography>
     </form>
-  )
-}
+  );
+};

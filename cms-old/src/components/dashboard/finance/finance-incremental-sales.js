@@ -1,7 +1,19 @@
-import numeral from "numeral"
-import { Box, Card, CardContent, CardHeader, Divider, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import numeral from "numeral";
+import {
+  Box,
+  Card,
+  CardContent,
+  CardHeader,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 const data = {
   series: [
@@ -31,10 +43,10 @@ const data = {
       data: 13219,
     },
   ],
-}
+};
 
 export const FinanceIncrementalSales = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -93,14 +105,14 @@ export const FinanceIncrementalSales = props => {
         show: false,
       },
     },
-  }
+  };
 
   const chartSeries = [
     {
       data: data.series.map(item => item.data),
       name: "Sales",
     },
-  ]
+  ];
 
   return (
     <Card {...props}>
@@ -150,5 +162,5 @@ export const FinanceIncrementalSales = props => {
         </TableBody>
       </Table>
     </Card>
-  )
-}
+  );
+};

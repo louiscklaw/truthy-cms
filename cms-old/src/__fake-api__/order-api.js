@@ -1,6 +1,6 @@
-import { subDays, subHours } from "date-fns"
+import { subDays, subHours } from "date-fns";
 
-const now = new Date()
+const now = new Date();
 
 class OrderApi {
   getOrders() {
@@ -355,9 +355,9 @@ class OrderApi {
         status: "canceled",
         totalAmount: 500.0,
       },
-    ]
+    ];
 
-    return Promise.resolve(orders)
+    return Promise.resolve(orders);
   }
 
   getOrder() {
@@ -397,10 +397,10 @@ class OrderApi {
       promotionCode: "PROMO1",
       status: "pending",
       totalAmount: 500.0,
-    }
+    };
 
-    return Promise.resolve(order)
+    return Promise.resolve(order);
   }
 }
 
-export const orderApi = new OrderApi()
+export const orderApi = new OrderApi();

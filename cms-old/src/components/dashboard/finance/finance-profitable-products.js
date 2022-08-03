@@ -1,10 +1,21 @@
-import numeral from "numeral"
-import { Box, Button, Card, CardHeader, Table, TableBody, TableCell, TableHead, TableRow, Typography } from "@mui/material"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { Image as ImageIcon } from "../../../icons/image"
-import { CircularProgress } from "../../circular-progress"
-import { MoreMenu } from "../../more-menu"
-import { Scrollbar } from "../../scrollbar"
+import numeral from "numeral";
+import {
+  Box,
+  Button,
+  Card,
+  CardHeader,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { Image as ImageIcon } from "../../../icons/image";
+import { CircularProgress } from "../../circular-progress";
+import { MoreMenu } from "../../more-menu";
+import { Scrollbar } from "../../scrollbar";
 
 const products = [
   {
@@ -51,7 +62,7 @@ const products = [
     profit: 15200,
     sales: 254,
   },
-]
+];
 
 export const FinanceProfitableProducts = props => (
   <Card {...props}>
@@ -164,4 +175,4 @@ export const FinanceProfitableProducts = props => (
       </Button>
     </Box>
   </Card>
-)
+);

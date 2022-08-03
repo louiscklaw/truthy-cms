@@ -1,5 +1,18 @@
-import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns"
-import { Avatar, Badge, Box, Button, Card, CardActions, CardHeader, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material"
+import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns";
+import {
+  Avatar,
+  Badge,
+  Box,
+  Button,
+  Card,
+  CardActions,
+  CardHeader,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 
 const messages = [
   {
@@ -37,7 +50,7 @@ const messages = [
     senderAvatar: "/static/mock-images/avatars/avatar-jie_yan_song.png",
     senderName: "Jie Yan Song",
   },
-]
+];
 
 export const GroupedList7 = () => (
   <Box
@@ -113,4 +126,4 @@ export const GroupedList7 = () => (
       </CardActions>
     </Card>
   </Box>
-)
+);

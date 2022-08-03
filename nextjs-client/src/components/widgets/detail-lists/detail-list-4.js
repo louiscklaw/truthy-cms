@@ -12,7 +12,7 @@ import {
   TableCell,
   TableRow,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { Mail as MailIcon } from '../../../icons/mail';
 
@@ -22,20 +22,16 @@ const emails = [
   {
     id: '5ece2ce3613486d95ffaea58',
     createdAt: subDays(subHours(subMinutes(now, 34), 5), 3).getTime(),
-    description: 'Order confirmation'
+    description: 'Order confirmation',
   },
   {
     id: '5ece2ce8cebf7ad1d100c0cd',
     createdAt: subDays(subHours(subMinutes(now, 49), 11), 4).getTime(),
-    description: 'Order confirmation'
-  }
+    description: 'Order confirmation',
+  },
 ];
 
-const emailOptions = [
-  'Resend last invoice',
-  'Send password reset',
-  'Send verification'
-];
+const emailOptions = ['Resend last invoice', 'Send password reset', 'Send verification'];
 
 export const DetailList4 = () => {
   const [emailOption, setEmailOption] = useState(emailOptions[0]);
@@ -45,7 +41,7 @@ export const DetailList4 = () => {
       sx={{
         backgroundColor: 'background.default',
         minHeight: '100%',
-        p: 3
+        p: 3,
       }}
     >
       <Card>
@@ -55,41 +51,31 @@ export const DetailList4 = () => {
           <TextField
             fullWidth
             name="option"
-            onChange={(event) => setEmailOption(event.target.value)}
+            onChange={event => setEmailOption(event.target.value)}
             select
             SelectProps={{ native: true }}
             value={emailOption}
           >
-            {emailOptions.map((option) => (
-              <option
-                key={option}
-                value={option}
-              >
+            {emailOptions.map(option => (
+              <option key={option} value={option}>
                 {option}
               </option>
             ))}
           </TextField>
           <Box sx={{ mt: 2 }}>
-            <Button
-              startIcon={<MailIcon fontSize="small" />}
-              variant="contained"
-            >
+            <Button startIcon={<MailIcon fontSize="small" />} variant="contained">
               Send email
             </Button>
           </Box>
           <Box sx={{ mt: 2 }}>
             <Table>
               <TableBody>
-                {emails.map((email) => (
+                {emails.map(email => (
                   <TableRow key={email.id}>
                     <TableCell>
-                      <Typography variant="subtitle2">
-                        {email.description}
-                      </Typography>
+                      <Typography variant="subtitle2">{email.description}</Typography>
                     </TableCell>
-                    <TableCell>
-                      {format(email.createdAt, 'dd/MM/yyyy | HH:mm')}
-                    </TableCell>
+                    <TableCell>{format(email.createdAt, 'dd/MM/yyyy | HH:mm')}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

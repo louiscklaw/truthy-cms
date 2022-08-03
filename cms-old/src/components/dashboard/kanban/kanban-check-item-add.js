@@ -1,45 +1,45 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import toast from "react-hot-toast"
-import { Box, Button, OutlinedInput } from "@mui/material"
-import { Plus as PlusIcon } from "../../../icons/plus"
-import { addCheckItem } from "../../../slices/kanban"
-import { useDispatch } from "../../../store"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import { Box, Button, OutlinedInput } from "@mui/material";
+import { Plus as PlusIcon } from "../../../icons/plus";
+import { addCheckItem } from "../../../slices/kanban";
+import { useDispatch } from "../../../store";
 
 export const KanbanCheckItemAdd = props => {
-  const { cardId, checklistId, ...other } = props
-  const dispatch = useDispatch()
-  const [name, setName] = useState("")
-  const [isExpanded, setIsExpanded] = useState(false)
+  const { cardId, checklistId, ...other } = props;
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
+  const [isExpanded, setIsExpanded] = useState(false);
 
   const handleAdd = () => {
-    setIsExpanded(true)
-  }
+    setIsExpanded(true);
+  };
 
   const handleCancel = () => {
-    setIsExpanded(false)
-    setName("")
-  }
+    setIsExpanded(false);
+    setName("");
+  };
 
   const handleChange = event => {
-    setName(event.target.value)
-  }
+    setName(event.target.value);
+  };
 
   const handleSave = async () => {
     try {
       if (!name) {
-        return
+        return;
       }
 
-      await dispatch(addCheckItem(cardId, checklistId, name))
-      setIsExpanded(false)
-      setName("")
-      toast.success("Check item added!")
+      await dispatch(addCheckItem(cardId, checklistId, name));
+      setIsExpanded(false);
+      setName("");
+      toast.success("Check item added!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   return (
     <Box sx={{ width: "100%" }} {...other}>
@@ -76,10 +76,10 @@ export const KanbanCheckItemAdd = props => {
         </Button>
       )}
     </Box>
-  )
-}
+  );
+};
 
 KanbanCheckItemAdd.propTypes = {
   cardId: PropTypes.string.isRequired,
   checklistId: PropTypes.string.isRequired,
-}
+};

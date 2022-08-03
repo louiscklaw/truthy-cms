@@ -1,8 +1,8 @@
-import { format } from "date-fns"
-import { Box, Card, CardHeader, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
-import { Scrollbar } from "../../scrollbar"
+import { format } from "date-fns";
+import { Box, Card, CardHeader, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
+import { Scrollbar } from "../../scrollbar";
 
 const data = {
   series: [
@@ -17,10 +17,10 @@ const data = {
     },
   ],
   categories: ["Capital One", "Ally Bank", "ING", "Ridgewood", "BT Transilvania", "CEC", "CBC"],
-}
+};
 
 export const Chart12 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -95,9 +95,9 @@ export const Chart12 = () => {
         },
       },
     },
-  }
+  };
 
-  const chartSeries = data.series
+  const chartSeries = data.series;
 
   return (
     <Box
@@ -128,5 +128,5 @@ export const Chart12 = () => {
         </Scrollbar>
       </Card>
     </Box>
-  )
-}
+  );
+};

@@ -1,11 +1,23 @@
-import { subHours, formatDistanceToNowStrict } from "date-fns"
-import { Avatar, Box, Card, CardActionArea, CardHeader, CardMedia, Grid, IconButton, Link, Tooltip, Typography } from "@mui/material"
-import { red } from "@mui/material/colors"
-import FavoriteIcon from "@mui/icons-material/Favorite"
-import { Clock as ClockIcon } from "../../../icons/clock"
-import { Share as ShareIcon } from "../../../icons/share"
+import { subHours, formatDistanceToNowStrict } from "date-fns";
+import {
+  Avatar,
+  Box,
+  Card,
+  CardActionArea,
+  CardHeader,
+  CardMedia,
+  Grid,
+  IconButton,
+  Link,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { red } from "@mui/material/colors";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import { Clock as ClockIcon } from "../../../icons/clock";
+import { Share as ShareIcon } from "../../../icons/share";
 
-const now = new Date()
+const now = new Date();
 
 const posts = [
   {
@@ -32,7 +44,7 @@ const posts = [
     media: "/static/mock-images/social/post_2.jpg",
     message: "Just made this overview screen for a project, what-cha thinkin?",
   },
-]
+];
 
 export const GridList5 = () => (
   <Box
@@ -113,4 +125,4 @@ export const GridList5 = () => (
       ))}
     </Grid>
   </Box>
-)
+);

@@ -1,14 +1,26 @@
-import { useEffect, useMemo, useState } from "react"
-import PropTypes from "prop-types"
-import { format, subDays, subHours } from "date-fns"
-import { Avatar, Box, IconButton, Link, List, ListItem, ListItemAvatar, ListItemText, Popover, Tooltip, Typography } from "@mui/material"
-import { ChatAlt as ChatAltIcon } from "../../icons/chat-alt"
-import { MailOpen as MailOpenIcon } from "../../icons/mail-open"
-import { X as XIcon } from "../../icons/x"
-import { UserCircle as UserCircleIcon } from "../../icons/user-circle"
-import { Scrollbar } from "../scrollbar"
+import { useEffect, useMemo, useState } from "react";
+import PropTypes from "prop-types";
+import { format, subDays, subHours } from "date-fns";
+import {
+  Avatar,
+  Box,
+  IconButton,
+  Link,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Popover,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import { ChatAlt as ChatAltIcon } from "../../icons/chat-alt";
+import { MailOpen as MailOpenIcon } from "../../icons/mail-open";
+import { X as XIcon } from "../../icons/x";
+import { UserCircle as UserCircleIcon } from "../../icons/user-circle";
+import { Scrollbar } from "../scrollbar";
 
-const now = new Date()
+const now = new Date();
 
 const data = [
   {
@@ -45,7 +57,7 @@ const data = [
     read: false,
     type: "company_created",
   },
-]
+];
 
 const getNotificationContent = notification => {
   switch (notification.type) {
@@ -85,7 +97,7 @@ const getNotificationContent = notification => {
             sx={{ my: 0 }}
           />
         </>
-      )
+      );
     case "new_feature":
       return (
         <>
@@ -117,7 +129,7 @@ const getNotificationContent = notification => {
             sx={{ my: 0 }}
           />
         </>
-      )
+      );
     case "company_created":
       return (
         <>
@@ -155,20 +167,23 @@ const getNotificationContent = notification => {
             sx={{ my: 0 }}
           />
         </>
-      )
+      );
     default:
-      return null
+      return null;
   }
-}
+};
 
 export const NotificationsPopover = props => {
-  const { anchorEl, onClose, onUpdateUnread, open, ...other } = props
-  const [notifications, setNotifications] = useState(data)
-  const unread = useMemo(() => notifications.reduce((acc, notification) => acc + (notification.read ? 0 : 1), 0), [notifications])
+  const { anchorEl, onClose, onUpdateUnread, open, ...other } = props;
+  const [notifications, setNotifications] = useState(data);
+  const unread = useMemo(
+    () => notifications.reduce((acc, notification) => acc + (notification.read ? 0 : 1), 0),
+    [notifications],
+  );
 
   useEffect(() => {
-    onUpdateUnread?.(unread)
-  }, [onUpdateUnread, unread])
+    onUpdateUnread?.(unread);
+  }, [onUpdateUnread, unread]);
 
   const handleMarkAllAsRead = () => {
     setNotifications(prevState =>
@@ -176,12 +191,12 @@ export const NotificationsPopover = props => {
         ...notification,
         read: true,
       })),
-    )
-  }
+    );
+  };
 
   const handleRemoveOne = notificationId => {
-    setNotifications(prevState => prevState.filter(notification => notification.id !== notificationId))
-  }
+    setNotifications(prevState => prevState.filter(notification => notification.id !== notificationId));
+  };
 
   return (
     <Popover
@@ -251,12 +266,12 @@ export const NotificationsPopover = props => {
         </Scrollbar>
       )}
     </Popover>
-  )
-}
+  );
+};
 
 NotificationsPopover.propTypes = {
   anchorEl: PropTypes.any,
   onClose: PropTypes.func,
   onUpdateUnread: PropTypes.func,
   open: PropTypes.bool,
-}
+};

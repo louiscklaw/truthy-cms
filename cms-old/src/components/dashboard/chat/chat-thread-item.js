@@ -1,7 +1,7 @@
-import PropTypes from "prop-types"
-import { formatDistanceStrict } from "date-fns"
-import locale from "date-fns/locale/en-US"
-import { Avatar, AvatarGroup, Box, ListItem, ListItemAvatar, Typography } from "@mui/material"
+import PropTypes from "prop-types";
+import { formatDistanceStrict } from "date-fns";
+import locale from "date-fns/locale/en-US";
+import { Avatar, AvatarGroup, Box, ListItem, ListItemAvatar, Typography } from "@mui/material";
 
 const formatDistanceLocale = {
   lessThanXSeconds: "{{count}}s",
@@ -20,45 +20,45 @@ const formatDistanceLocale = {
   xYears: "{{count}}y",
   overXYears: "{{count}}y",
   almostXYears: "{{count}}y",
-}
+};
 
 const customLocale = {
   ...locale,
   formatDistance: (token, count, options) => {
-    options = options || {}
+    options = options || {};
 
-    const result = formatDistanceLocale[token].replace("{{count}}", count)
+    const result = formatDistanceLocale[token].replace("{{count}}", count);
 
     if (options.addSuffix) {
       if (options.comparison > 0) {
-        return "in " + result
+        return "in " + result;
       } else {
-        return result + " ago"
+        return result + " ago";
       }
     }
 
-    return result
+    return result;
   },
-}
+};
 
 export const ChatThreadItem = props => {
-  const { active, thread, onSelect, ...other } = props
+  const { active, thread, onSelect, ...other } = props;
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
     id: "5e86809283e28b96d2d38537",
-  }
+  };
 
-  const recipients = thread.participants.filter(participant => participant.id !== user.id)
-  const lastMessage = thread.messages[thread.messages.length - 1]
-  const name = recipients.reduce((names, participant) => [...names, participant.name], []).join(", ")
-  let content = ""
+  const recipients = thread.participants.filter(participant => participant.id !== user.id);
+  const lastMessage = thread.messages[thread.messages.length - 1];
+  const name = recipients.reduce((names, participant) => [...names, participant.name], []).join(", ");
+  let content = "";
 
   if (lastMessage) {
-    const author = lastMessage.authorId === user.id ? "Me: " : ""
-    const message = lastMessage.contentType === "image" ? "Sent a photo" : lastMessage.body
+    const author = lastMessage.authorId === user.id ? "Me: " : "";
+    const message = lastMessage.contentType === "image" ? "Sent a photo" : lastMessage.body;
 
-    content = `${author}${message}`
+    content = `${author}${message}`;
   }
 
   return (
@@ -149,15 +149,15 @@ export const ChatThreadItem = props => {
         })}
       </Typography>
     </ListItem>
-  )
-}
+  );
+};
 
 ChatThreadItem.propTypes = {
   active: PropTypes.bool,
   onSelect: PropTypes.func,
   thread: PropTypes.object.isRequired,
-}
+};
 
 ChatThreadItem.defaultProps = {
   active: false,
-}
+};

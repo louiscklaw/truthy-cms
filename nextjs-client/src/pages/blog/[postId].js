@@ -19,10 +19,11 @@ const comments = [
     authorAvatar: '/static/mock-images/avatars/avatar-alcides_antonio.png',
     authorName: 'Alcides Antonio',
     authorRole: 'Product Designer',
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     createdAt: subHours(new Date(), 2).getTime(),
     isLiked: true,
-    likes: 12
+    likes: 12,
   },
   {
     id: '3ac1e17289e38a84108efdf3',
@@ -32,8 +33,8 @@ const comments = [
     content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.',
     createdAt: subHours(new Date(), 8).getTime(),
     isLiked: false,
-    likes: 8
-  }
+    likes: 8,
+  },
 ];
 
 const MarkdownWrapper = styled('div')(({ theme }) => ({
@@ -43,24 +44,24 @@ const MarkdownWrapper = styled('div')(({ theme }) => ({
     fontSize: theme.typography.h5.fontSize,
     fontWeight: theme.typography.fontWeightBold,
     lineHeight: theme.typography.h5.lineHeight,
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(3),
   },
   '& h3': {
     fontSize: theme.typography.h3.fontSize,
     fontWeight: theme.typography.fontWeightBold,
     lineHeight: theme.typography.h3.lineHeight,
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(3),
   },
   '& p': {
     fontSize: theme.typography.body1.fontSize,
     lineHeight: theme.typography.body1.lineHeight,
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   '& li': {
     fontSize: theme.typography.body1.fontSize,
     lineHeight: theme.typography.body1.lineHeight,
-    marginBottom: theme.spacing(1)
-  }
+    marginBottom: theme.spacing(1),
+  },
 }));
 
 const BlogPostDetails = () => {
@@ -94,33 +95,22 @@ const BlogPostDetails = () => {
   return (
     <>
       <Head>
-        <title>
-          Blog: Post Details | Material Kit Pro
-        </title>
+        <title>Blog: Post Details | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="md">
-          <NextLink
-            href="/dashboard"
-            passHref
-          >
-            <Button
-              component="a"
-              startIcon={<ArrowLeftIcon fontSize="small" />}
-            >
+          <NextLink href="/dashboard" passHref>
+            <Button component="a" startIcon={<ArrowLeftIcon fontSize="small" />}>
               Dashboard
             </Button>
           </NextLink>
-          <Typography
-            variant="h3"
-            sx={{ mt: 3 }}
-          >
+          <Typography variant="h3" sx={{ mt: 3 }}>
             Blog Post
           </Typography>
           <Card
@@ -133,60 +123,36 @@ const BlogPostDetails = () => {
               mb: 8,
               mt: 6,
               px: 3,
-              py: 2
+              py: 2,
             }}
           >
-            <Typography variant="subtitle1">
-              Hello, Admin
-            </Typography>
-            <NextLink
-              href="/blog/new"
-              passHref
-            >
-              <Button
-                component="a"
-                variant="contained"
-              >
+            <Typography variant="subtitle1">Hello, Admin</Typography>
+            <NextLink href="/blog/new" passHref>
+              <Button component="a" variant="contained">
                 Edit Post
               </Button>
             </NextLink>
           </Card>
           <Chip label={post.category} />
-          <Typography
-            sx={{ mt: 3 }}
-            variant="h3"
-          >
+          <Typography sx={{ mt: 3 }} variant="h3">
             {post.title}
           </Typography>
-          <Typography
-            color="textSecondary"
-            sx={{ mt: 3 }}
-            variant="subtitle1"
-          >
+          <Typography color="textSecondary" sx={{ mt: 3 }} variant="subtitle1">
             {post.shortDescription}
           </Typography>
           <Box
             sx={{
               alignItems: 'center',
               display: 'flex',
-              mt: 3
+              mt: 3,
             }}
           >
             <Avatar src={post.author.avatar} />
             <Box sx={{ ml: 2 }}>
               <Typography variant="subtitle2">
-                By
-                {' '}
-                {post.author.name}
-                {' '}
-                •
-                {' '}
-                {format(post.publishedAt, 'MMMM d, yyyy')}
+                By {post.author.name} • {format(post.publishedAt, 'MMMM d, yyyy')}
               </Typography>
-              <Typography
-                color="textSecondary"
-                variant="body2"
-              >
+              <Typography color="textSecondary" variant="body2">
                 {`${post.readTime} read`}
               </Typography>
             </Box>
@@ -198,21 +164,15 @@ const BlogPostDetails = () => {
               backgroundSize: 'cover',
               borderRadius: 1,
               height: 380,
-              mt: 3
+              mt: 3,
             }}
           />
           <Box sx={{ py: 3 }}>
-            <MarkdownWrapper>
-              {post.content && (
-                <Markdown children={post.content} />
-              )}
-            </MarkdownWrapper>
+            <MarkdownWrapper>{post.content && <Markdown children={post.content} />}</MarkdownWrapper>
           </Box>
           <Divider sx={{ my: 3 }} />
-          {comments.map((comment) => (
-            <BlogComment
-              key={comment.id}
-              {...comment} />
+          {comments.map(comment => (
+            <BlogComment key={comment.id} {...comment} />
           ))}
           <Divider sx={{ my: 3 }} />
           <BlogCommentAdd />

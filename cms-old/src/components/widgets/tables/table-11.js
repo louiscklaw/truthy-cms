@@ -1,6 +1,18 @@
-import numeral from "numeral"
-import { Box, Card, CardHeader, Divider, Table, TableBody, TableCell, TableHead, TablePagination, TableRow, Typography } from "@mui/material"
-import { Scrollbar } from "../../scrollbar"
+import numeral from "numeral";
+import {
+  Box,
+  Card,
+  CardHeader,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { Scrollbar } from "../../scrollbar";
 
 const orderItems = [
   {
@@ -19,7 +31,7 @@ const orderItems = [
     quantity: 1,
     unitAmount: 5.0,
   },
-]
+];
 
 export const Table11 = () => (
   <Box
@@ -67,4 +79,4 @@ export const Table11 = () => (
       />
     </Card>
   </Box>
-)
+);

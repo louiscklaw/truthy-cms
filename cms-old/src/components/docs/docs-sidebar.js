@@ -1,9 +1,9 @@
-import { useEffect } from "react"
-import { useRouter } from "next/router"
-import PropTypes from "prop-types"
-import { Box, Drawer, useMediaQuery } from "@mui/material"
-import { DocsSidebarSection } from "./docs-sidebar-section"
-import { Scrollbar } from "../scrollbar"
+import { useEffect } from "react";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import { Box, Drawer, useMediaQuery } from "@mui/material";
+import { DocsSidebarSection } from "./docs-sidebar-section";
+import { Scrollbar } from "../scrollbar";
 
 const sections = [
   {
@@ -131,30 +131,30 @@ const sections = [
       },
     ],
   },
-]
+];
 
 export const DocsSidebar = props => {
-  const { onClose, open } = props
-  const router = useRouter()
+  const { onClose, open } = props;
+  const router = useRouter();
   const lgUp = useMediaQuery(theme => theme.breakpoints.up("lg"), {
     noSsr: true,
-  })
+  });
 
   const handlePathChange = () => {
     if (!router.isReady) {
-      return
+      return;
     }
 
     if (open) {
-      onClose?.()
+      onClose?.();
     }
-  }
+  };
 
   useEffect(
     handlePathChange,
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [router.isReady, router.asPath],
-  )
+  );
 
   const content = (
     <Scrollbar
@@ -187,7 +187,7 @@ export const DocsSidebar = props => {
         ))}
       </Box>
     </Scrollbar>
-  )
+  );
 
   if (lgUp) {
     return (
@@ -206,7 +206,7 @@ export const DocsSidebar = props => {
       >
         {content}
       </Drawer>
-    )
+    );
   }
 
   return (
@@ -227,10 +227,10 @@ export const DocsSidebar = props => {
     >
       {content}
     </Drawer>
-  )
-}
+  );
+};
 
 DocsSidebar.propTypes = {
   onClose: PropTypes.func,
   open: PropTypes.bool,
-}
+};

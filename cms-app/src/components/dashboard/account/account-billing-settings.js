@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 import {
   Box,
   Button,
@@ -13,35 +13,35 @@ import {
   TableHead,
   TableRow,
   Typography,
-} from "@mui/material";
-import { Logo } from "../../logo";
-import { Pencil as PencilIcon } from "../../../icons/pencil";
-import { PropertyList } from "../../property-list";
-import { PropertyListItem } from "../../property-list-item";
+} from '@mui/material';
+import { Logo } from '../../logo';
+import { Pencil as PencilIcon } from '../../../icons/pencil';
+import { PropertyList } from '../../property-list';
+import { PropertyListItem } from '../../property-list-item';
 
 const plans = [
   {
     image: <Logo />,
-    name: "Startup",
-    price: "0",
+    name: 'Startup',
+    price: '0',
     current: true,
   },
   {
     image: <Logo />,
-    name: "Standard",
-    price: "4.99",
+    name: 'Standard',
+    price: '4.99',
     current: false,
   },
   {
     image: <Logo />,
-    name: "Business",
-    price: "29.99",
+    name: 'Business',
+    price: '29.99',
     current: false,
   },
 ];
 
-export const AccountBillingSettings = (props) => {
-  const [selected, setSelected] = useState("Standard");
+export const AccountBillingSettings = props => {
+  const [selected, setSelected] = useState('Standard');
 
   return (
     <div {...props}>
@@ -55,18 +55,18 @@ export const AccountBillingSettings = (props) => {
           </div>
           <Box sx={{ mt: 3 }}>
             <Grid container spacing={3}>
-              {plans.map((plan) => (
+              {plans.map(plan => (
                 <Grid item key={plan.name} sm={4} xs={12}>
                   <Card
                     elevation={0}
                     onClick={() => setSelected(plan.name)}
                     variant="outlined"
                     sx={{
-                      cursor: "pointer",
+                      cursor: 'pointer',
                       ...(selected === plan.name && {
-                        borderColor: "primary.main",
+                        borderColor: 'primary.main',
                         borderWidth: 2,
-                        m: "-1px",
+                        m: '-1px',
                       }),
                     }}
                   >
@@ -74,7 +74,7 @@ export const AccountBillingSettings = (props) => {
                       <Logo />
                       <Box
                         sx={{
-                          display: "flex",
+                          display: 'flex',
                           mb: 1,
                           mt: 1,
                         }}
@@ -83,8 +83,8 @@ export const AccountBillingSettings = (props) => {
                         <Typography
                           color="textSecondary"
                           sx={{
-                            mt: "auto",
-                            ml: "4px",
+                            mt: 'auto',
+                            ml: '4px',
                           }}
                           variant="body2"
                         >
@@ -93,9 +93,9 @@ export const AccountBillingSettings = (props) => {
                       </Box>
                       <Box
                         sx={{
-                          alignItems: "center",
-                          display: "flex",
-                          justifyContent: "space-between",
+                          alignItems: 'center',
+                          display: 'flex',
+                          justifyContent: 'space-between',
                         }}
                       >
                         <Typography variant="overline">{plan.name}</Typography>
@@ -119,9 +119,9 @@ export const AccountBillingSettings = (props) => {
           />
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
-              justifyContent: "space-between",
+              alignItems: 'center',
+              display: 'flex',
+              justifyContent: 'space-between',
             }}
           >
             <Typography variant="h6">Billing details</Typography>
@@ -130,59 +130,39 @@ export const AccountBillingSettings = (props) => {
           <Box
             sx={{
               border: 1,
-              borderColor: "divider",
+              borderColor: 'divider',
               borderRadius: 1,
               mt: 3,
             }}
           >
             <PropertyList>
-              <PropertyListItem
-                align="horizontal"
-                divider
-                label="Billing name"
-                value="John Doe"
-              />
-              <PropertyListItem
-                align="horizontal"
-                divider
-                label="Card number"
-                value="**** 1111"
-              />
-              <PropertyListItem
-                align="horizontal"
-                divider
-                label="Country"
-                value="Germany"
-              />
-              <PropertyListItem
-                align="horizontal"
-                label="Zip / Postal code"
-                value="667123"
-              />
+              <PropertyListItem align="horizontal" divider label="Billing name" value="John Doe" />
+              <PropertyListItem align="horizontal" divider label="Card number" value="**** 1111" />
+              <PropertyListItem align="horizontal" divider label="Country" value="Germany" />
+              <PropertyListItem align="horizontal" label="Zip / Postal code" value="667123" />
             </PropertyList>
           </Box>
           <Box
             sx={{
-              alignItems: "center",
-              display: "flex",
+              alignItems: 'center',
+              display: 'flex',
               mb: 4,
               mt: 3,
             }}
           >
             <Typography color="textSecondary" variant="body2">
-              We cannot refund once you purchased a subscription, but you can
-              always
+              We cannot refund once you purchased a subscription, but you can always
             </Typography>
             <Link href="#" underline="none">
-              <Typography sx={{ ml: "4px" }} variant="body2">
+              <Typography sx={{ ml: '4px' }} variant="body2">
                 Cancel
               </Typography>
             </Link>
           </Box>
           <Box
             sx={{
-              display: "flex",
-              justifyContent: "flex-end",
+              display: 'flex',
+              justifyContent: 'flex-end',
             }}
           >
             <Button variant="contained">Upgrade Plan</Button>
@@ -194,9 +174,8 @@ export const AccountBillingSettings = (props) => {
           <div>
             <Typography variant="h6">Invoice history</Typography>
             <Typography variant="body2" color="textSecondary" sx={{ mt: 1 }}>
-              You can view and download all your previous invoices here. If
-              you’ve just made a payment, it may take a few hours for it to
-              appear in the table below.
+              You can view and download all your previous invoices here. If you’ve just made a payment, it may take a
+              few hours for it to appear in the table below.
             </Typography>
           </div>
         </CardContent>

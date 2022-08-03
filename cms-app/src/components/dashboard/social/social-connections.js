@@ -1,6 +1,6 @@
-import { useCallback, useEffect, useState } from "react";
-import NextLink from "next/link";
-import toast from "react-hot-toast";
+import { useCallback, useEffect, useState } from 'react';
+import NextLink from 'next/link';
+import toast from 'react-hot-toast';
 import {
   Avatar,
   Box,
@@ -14,22 +14,22 @@ import {
   Link,
   Paper,
   Typography,
-} from "@mui/material";
-import { socialApi } from "../../../__fake-api__/social-api";
-import { useMounted } from "../../../hooks/use-mounted";
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
-import { Search as SearchIcon } from "../../../icons/search";
+} from '@mui/material';
+import { socialApi } from '../../../__fake-api__/social-api';
+import { useMounted } from '../../../hooks/use-mounted';
+import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
+import { Search as SearchIcon } from '../../../icons/search';
 
 const connectStatusMap = {
-  connected: "Connected",
-  not_connected: "Connect",
-  pending: "Pending",
+  connected: 'Connected',
+  not_connected: 'Connect',
+  pending: 'Pending',
 };
 
-export const SocialConnections = (props) => {
+export const SocialConnections = props => {
   const isMounted = useMounted();
   const [connections, setConnections] = useState([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState('');
 
   const getConnections = useCallback(async () => {
     const data = await socialApi.getConnections();
@@ -43,26 +43,24 @@ export const SocialConnections = (props) => {
     getConnections();
   }, [getConnections]);
 
-  const handleConnectToggle = (connectionId) => {
-    setConnections((prevConnections) =>
-      prevConnections.map((connection) => {
+  const handleConnectToggle = connectionId => {
+    setConnections(prevConnections =>
+      prevConnections.map(connection => {
         if (connection.id === connectionId) {
           const updatedConnection = { ...connection };
 
           updatedConnection.status =
-            connection.status === "connected" || connection.status === "pending"
-              ? "not_connected"
-              : "pending";
+            connection.status === 'connected' || connection.status === 'pending' ? 'not_connected' : 'pending';
 
-          if (updatedConnection.status === "pending") {
-            toast.success("Request sent!");
+          if (updatedConnection.status === 'pending') {
+            toast.success('Request sent!');
           }
 
           return updatedConnection;
         }
 
         return connection;
-      })
+      }),
     );
   };
 
@@ -72,8 +70,8 @@ export const SocialConnections = (props) => {
       <Divider />
       <Box
         sx={{
-          alignItems: "center",
-          display: "flex",
+          alignItems: 'center',
+          display: 'flex',
           px: 3,
           py: 2,
         }}
@@ -82,7 +80,7 @@ export const SocialConnections = (props) => {
         <Box sx={{ ml: 2 }}>
           <Input
             disableUnderline
-            onChange={(event) => setSearch(event.target.value)}
+            onChange={event => setSearch(event.target.value)}
             placeholder="Search connections"
             value={search}
           />
@@ -92,15 +90,13 @@ export const SocialConnections = (props) => {
       <Box sx={{ p: 3 }}>
         <Grid container spacing={3}>
           {connections
-            .filter((connection) =>
-              connection.name.toLowerCase().includes(search)
-            )
-            .map((connection) => (
+            .filter(connection => connection.name.toLowerCase().includes(search))
+            .map(connection => (
               <Grid item key={connection.id} md={6} xs={12}>
-                <Paper sx={{ height: "100%" }} variant="outlined">
+                <Paper sx={{ height: '100%' }} variant="outlined">
                   <Box
                     sx={{
-                      display: "flex",
+                      display: 'flex',
                       p: 2,
                     }}
                   >
@@ -125,19 +121,11 @@ export const SocialConnections = (props) => {
                           {connection.name}
                         </Link>
                       </NextLink>
-                      <Typography
-                        color="textSecondary"
-                        gutterBottom
-                        variant="body2"
-                      >
+                      <Typography color="textSecondary" gutterBottom variant="body2">
                         {connection.commonConnections} connections in common
                       </Typography>
-                      {connection.status !== "rejected" && (
-                        <Button
-                          onClick={() => handleConnectToggle(connection.id)}
-                          size="small"
-                          variant="outlined"
-                        >
+                      {connection.status !== 'rejected' && (
+                        <Button onClick={() => handleConnectToggle(connection.id)} size="small" variant="outlined">
                           {connectStatusMap[connection.status]}
                         </Button>
                       )}

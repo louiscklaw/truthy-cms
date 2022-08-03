@@ -1,5 +1,5 @@
-import PropTypes from "prop-types"
-import { Box, Checkbox, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material"
+import PropTypes from "prop-types";
+import { Box, Checkbox, FormControlLabel, Grid, Radio, RadioGroup, TextField, Typography } from "@mui/material";
 
 const paymentMethods = [
   {
@@ -10,10 +10,10 @@ const paymentMethods = [
     label: "PayPal",
     value: "paypal",
   },
-]
+];
 
 export const CheckoutBilling = props => {
-  const { billing, onChange, ...other } = props
+  const { billing, onChange, ...other } = props;
 
   return (
     <div {...other}>
@@ -54,7 +54,13 @@ export const CheckoutBilling = props => {
             <TextField fullWidth label="Street Address" name="address" onChange={onChange} value={billing.address} />
           </Grid>
           <Grid item sm={6} xs={12}>
-            <TextField fullWidth label="Street Line 2 (optional)" name="optionalAddress" onChange={onChange} value={billing.optionalAddress} />
+            <TextField
+              fullWidth
+              label="Street Line 2 (optional)"
+              name="optionalAddress"
+              onChange={onChange}
+              value={billing.optionalAddress}
+            />
           </Grid>
           <Grid item sm={3} xs={12}>
             <TextField fullWidth label="State" name="state" onChange={onChange} value={billing.state} />
@@ -125,7 +131,12 @@ export const CheckoutBilling = props => {
         </Typography>
       </Box>
       <Box sx={{ mt: 3 }}>
-        <RadioGroup name="paymentMethod" onChange={onChange} sx={{ flexDirection: "row" }} value={billing.paymentMethod}>
+        <RadioGroup
+          name="paymentMethod"
+          onChange={onChange}
+          sx={{ flexDirection: "row" }}
+          value={billing.paymentMethod}
+        >
           {paymentMethods.map(paymentMethod => (
             <FormControlLabel
               control={<Radio />}
@@ -147,18 +158,31 @@ export const CheckoutBilling = props => {
           </Grid>
           <Grid item sm={6} />
           <Grid item sm={3} xs={12}>
-            <TextField fullWidth label="Expire Date" name="cardExpirationDate" onChange={onChange} placeholder="MM/YY" value={billing.cardExpirationDate} />
+            <TextField
+              fullWidth
+              label="Expire Date"
+              name="cardExpirationDate"
+              onChange={onChange}
+              placeholder="MM/YY"
+              value={billing.cardExpirationDate}
+            />
           </Grid>
           <Grid item sm={3} xs={12}>
-            <TextField fullWidth label="Security Code" name="cardSecurityCode" onChange={onChange} value={billing.cardSecurityCode} />
+            <TextField
+              fullWidth
+              label="Security Code"
+              name="cardSecurityCode"
+              onChange={onChange}
+              value={billing.cardSecurityCode}
+            />
           </Grid>
         </Grid>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 CheckoutBilling.propTypes = {
   billing: PropTypes.object,
   onChange: PropTypes.func,
-}
+};

@@ -1,16 +1,16 @@
-import { useState } from "react";
-import toast from "react-hot-toast";
-import { Box, Button, Link, OutlinedInput, Typography } from "@mui/material";
-import { Plus as PlusIcon } from "../../../icons/plus";
-import { createColumn } from "../../../slices/kanban";
-import { useDispatch } from "../../../store";
+import { useState } from 'react';
+import toast from 'react-hot-toast';
+import { Box, Button, Link, OutlinedInput, Typography } from '@mui/material';
+import { Plus as PlusIcon } from '../../../icons/plus';
+import { createColumn } from '../../../slices/kanban';
+import { useDispatch } from '../../../store';
 
-export const KanbanColumnAdd = (props) => {
+export const KanbanColumnAdd = props => {
   const dispatch = useDispatch();
   const [isExpanded, setIsExpanded] = useState(false);
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
-  const handleChange = (event) => {
+  const handleChange = event => {
     setName(event.target.value);
   };
 
@@ -20,18 +20,18 @@ export const KanbanColumnAdd = (props) => {
 
   const handleAddCancel = () => {
     setIsExpanded(false);
-    setName("");
+    setName('');
   };
 
   const handleAddConfirm = async () => {
     try {
-      await dispatch(createColumn(name || "Untitled column"));
+      await dispatch(createColumn(name || 'Untitled column'));
       setIsExpanded(false);
-      setName("");
-      toast.success("Column created!");
+      setName('');
+      toast.success('Column created!');
     } catch (err) {
       console.error(err);
-      toast.error("Something went wrong!");
+      toast.error('Something went wrong!');
     }
   };
 
@@ -39,8 +39,7 @@ export const KanbanColumnAdd = (props) => {
     <div {...props}>
       <Box
         sx={{
-          backgroundColor: (theme) =>
-            theme.palette.mode === "dark" ? "neutral.800" : "neutral.200",
+          backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.200'),
           borderRadius: 1,
           mt: 7,
           mx: 1,
@@ -61,20 +60,20 @@ export const KanbanColumnAdd = (props) => {
                 onChange={handleChange}
                 value={name}
                 sx={{
-                  backgroundColor: "background.paper",
-                  "& .MuiInputBase-input": {
+                  backgroundColor: 'background.paper',
+                  '& .MuiInputBase-input': {
                     px: 2,
                     py: 1,
                   },
-                  "& .MuiOutlinedInput-notchedOutline": {
-                    borderColor: "neutral.400",
+                  '& .MuiOutlinedInput-notchedOutline': {
+                    borderColor: 'neutral.400',
                   },
                 }}
               />
               <Box
                 sx={{
-                  alignItems: "center",
-                  display: "flex",
+                  alignItems: 'center',
+                  display: 'flex',
                   mt: 2,
                 }}
               >
@@ -95,14 +94,14 @@ export const KanbanColumnAdd = (props) => {
             <Link
               onClick={handleAddInit}
               sx={{
-                alignItems: "center",
-                cursor: "pointer",
-                display: "flex",
-                justifyContent: "flex-start",
+                alignItems: 'center',
+                cursor: 'pointer',
+                display: 'flex',
+                justifyContent: 'flex-start',
               }}
               underline="none"
             >
-              <PlusIcon sx={{ color: "action.active" }} />
+              <PlusIcon sx={{ color: 'action.active' }} />
               <Typography color="textSecondary" variant="subtitle1">
                 Add Column
               </Typography>

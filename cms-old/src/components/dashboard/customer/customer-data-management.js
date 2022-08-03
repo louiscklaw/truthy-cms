@@ -1,4 +1,4 @@
-import { Box, Card, CardHeader, CardContent, Button, Divider, Typography } from "@mui/material"
+import { Box, Card, CardHeader, CardContent, Button, Divider, Typography } from "@mui/material";
 
 export const CustomerDataManagement = props => (
   <Card {...props}>
@@ -10,9 +10,10 @@ export const CustomerDataManagement = props => (
       </Button>
       <Box sx={{ mt: 1 }}>
         <Typography color="textSecondary" variant="body2">
-          Remove this customer’s chart if he requested that, if not please be aware that what has been deleted can never brought back
+          Remove this customer’s chart if he requested that, if not please be aware that what has been deleted can never
+          brought back
         </Typography>
       </Box>
     </CardContent>
   </Card>
-)
+);

@@ -1,6 +1,6 @@
-import { subDays, subHours, subMinutes, subSeconds } from "date-fns"
+import { subDays, subHours, subMinutes, subSeconds } from "date-fns";
 
-const now = new Date()
+const now = new Date();
 
 class CustomerApi {
   getCustomers() {
@@ -164,9 +164,9 @@ class CustomerApi {
         totalOrders: 7,
         updatedAt: subDays(subHours(now, 1), 9).getTime(),
       },
-    ]
+    ];
 
-    return Promise.resolve(customers)
+    return Promise.resolve(customers);
   }
 
   getCustomer() {
@@ -187,9 +187,9 @@ class CustomerApi {
       state: "New York",
       vatRate: 19,
       zipCode: "240355",
-    }
+    };
 
-    return Promise.resolve(customer)
+    return Promise.resolve(customer);
   }
 
   getCustomerEmails() {
@@ -204,9 +204,9 @@ class CustomerApi {
         createdAt: subDays(subHours(subMinutes(now, 49), 11), 4).getTime(),
         description: "Order confirmation",
       },
-    ]
+    ];
 
-    return Promise.resolve(emails)
+    return Promise.resolve(emails);
   }
 
   getCustomerInvoices() {
@@ -223,9 +223,9 @@ class CustomerApi {
         status: "unpaid",
         amount: 1451.75,
       },
-    ]
+    ];
 
-    return Promise.resolve(invoices)
+    return Promise.resolve(invoices);
   }
 
   getCustomerLogs() {
@@ -302,10 +302,10 @@ class CustomerApi {
         route: "/api/authentication/login",
         status: 200,
       },
-    ]
+    ];
 
-    return Promise.resolve(logs)
+    return Promise.resolve(logs);
   }
 }
 
-export const customerApi = new CustomerApi()
+export const customerApi = new CustomerApi();

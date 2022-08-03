@@ -1,41 +1,41 @@
-import { useState, useEffect, useCallback } from "react"
-import Head from "next/head"
-import { Box, Container, Typography } from "@mui/material"
-import { socialApi } from "../../../__fake-api__/social-api"
-import { AuthGuard } from "../../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../../components/dashboard/dashboard-layout"
-import { SocialPostAdd } from "../../../components/dashboard/social/social-post-add"
-import { SocialPostCard } from "../../../components/dashboard/social/social-post-card"
-import { useMounted } from "../../../hooks/use-mounted"
-import { gtm } from "../../../lib/gtm"
+import { useState, useEffect, useCallback } from "react";
+import Head from "next/head";
+import { Box, Container, Typography } from "@mui/material";
+import { socialApi } from "../../../__fake-api__/social-api";
+import { AuthGuard } from "../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
+import { SocialPostAdd } from "../../../components/dashboard/social/social-post-add";
+import { SocialPostCard } from "../../../components/dashboard/social/social-post-card";
+import { useMounted } from "../../../hooks/use-mounted";
+import { gtm } from "../../../lib/gtm";
 
 const SocialFeed = () => {
-  const isMounted = useMounted()
-  const [posts, setPosts] = useState([])
+  const isMounted = useMounted();
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const getPosts = useCallback(async () => {
     try {
-      const data = await socialApi.getFeed()
+      const data = await socialApi.getFeed();
 
       if (isMounted()) {
-        setPosts(data)
+        setPosts(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(
     () => {
-      getPosts()
+      getPosts();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   return (
     <>
@@ -74,13 +74,13 @@ const SocialFeed = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 SocialFeed.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default SocialFeed
+export default SocialFeed;

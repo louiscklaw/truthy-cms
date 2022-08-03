@@ -1,8 +1,8 @@
-import { useState } from "react"
-import { Box, Card, CardHeader, Checkbox, Divider, Tooltip, Typography } from "@mui/material"
-import { alpha, useTheme } from "@mui/material/styles"
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined"
-import { Chart } from "../../chart"
+import { useState } from "react";
+import { Box, Card, CardHeader, Checkbox, Divider, Tooltip, Typography } from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
+import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined";
+import { Chart } from "../../chart";
 
 const data = {
   series: [
@@ -23,23 +23,36 @@ const data = {
     },
   ],
   xaxis: {
-    dataPoints: ["01 Jan", "02 Jan", "03 Jan", "04 Jan", "05 Jan", "06 Jan", "07 Jan", "08 Jan", "09 Jan", "10 Jan", "11 Jan", "12 Jan"],
+    dataPoints: [
+      "01 Jan",
+      "02 Jan",
+      "03 Jan",
+      "04 Jan",
+      "05 Jan",
+      "06 Jan",
+      "07 Jan",
+      "08 Jan",
+      "09 Jan",
+      "10 Jan",
+      "11 Jan",
+      "12 Jan",
+    ],
   },
-}
+};
 
 export const AnalyticsTrafficSources = props => {
-  const theme = useTheme()
-  const [selectedSeries, setSelectedSeries] = useState(["Organic", "Referral", "Social Media"])
+  const theme = useTheme();
+  const [selectedSeries, setSelectedSeries] = useState(["Organic", "Referral", "Social Media"]);
 
   const handleChange = (event, name) => {
     if (!event.target.checked) {
-      setSelectedSeries(selectedSeries.filter(item => item !== name))
+      setSelectedSeries(selectedSeries.filter(item => item !== name));
     } else {
-      setSelectedSeries([...selectedSeries, name])
+      setSelectedSeries([...selectedSeries, name]);
     }
-  }
+  };
 
-  const chartSeries = data.series.filter(item => selectedSeries.includes(item.name))
+  const chartSeries = data.series.filter(item => selectedSeries.includes(item.name));
 
   const chartOptions = {
     chart: {
@@ -138,7 +151,7 @@ export const AnalyticsTrafficSources = props => {
         opposite: true,
       },
     ],
-  }
+  };
 
   return (
     <Card {...props}>
@@ -169,11 +182,16 @@ export const AnalyticsTrafficSources = props => {
               mr: 2,
             }}
           >
-            <Checkbox checked={selectedSeries.some(visibleItem => visibleItem === item.name)} onChange={event => handleChange(event, item.name)} />
+            <Checkbox
+              checked={selectedSeries.some(visibleItem => visibleItem === item.name)}
+              onChange={event => handleChange(event, item.name)}
+            />
             <Box
               sx={{
                 border: 3,
-                borderColor: selectedSeries.some(visibleItem => visibleItem === item.name) ? item.color : alpha(item.color, 0.4),
+                borderColor: selectedSeries.some(visibleItem => visibleItem === item.name)
+                  ? item.color
+                  : alpha(item.color, 0.4),
                 borderRadius: "50%",
                 height: 16,
                 mr: 1,
@@ -182,7 +200,9 @@ export const AnalyticsTrafficSources = props => {
             />
             <Typography
               sx={{
-                color: selectedSeries.some(visibleItem => visibleItem === item.name) ? "textPrimary" : alpha(theme.palette.text.primary, 0.4),
+                color: selectedSeries.some(visibleItem => visibleItem === item.name)
+                  ? "textPrimary"
+                  : alpha(theme.palette.text.primary, 0.4),
               }}
               variant="subtitle2"
             >
@@ -193,5 +213,5 @@ export const AnalyticsTrafficSources = props => {
       </Box>
       <Chart height={400} options={chartOptions} series={chartSeries} type="line" />
     </Card>
-  )
-}
+  );
+};

@@ -1,11 +1,23 @@
-import { useState } from "react"
-import { useRouter } from "next/router"
-import toast from "react-hot-toast"
-import * as Yup from "yup"
-import { useFormik } from "formik"
-import { Box, Button, Card, CardContent, FormControlLabel, FormHelperText, Grid, MenuItem, Switch, TextField, Typography } from "@mui/material"
-import { FileDropzone } from "../../file-dropzone"
-import { QuillEditor } from "../../quill-editor"
+import { useState } from "react";
+import { useRouter } from "next/router";
+import toast from "react-hot-toast";
+import * as Yup from "yup";
+import { useFormik } from "formik";
+import {
+  Box,
+  Button,
+  Card,
+  CardContent,
+  FormControlLabel,
+  FormHelperText,
+  Grid,
+  MenuItem,
+  Switch,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { FileDropzone } from "../../file-dropzone";
+import { QuillEditor } from "../../quill-editor";
 
 const categoryOptions = [
   {
@@ -32,11 +44,11 @@ const categoryOptions = [
     label: "Blouse",
     value: "blouse",
   },
-]
+];
 
 export const ProductCreateForm = props => {
-  const router = useRouter()
-  const [files, setFiles] = useState([])
+  const router = useRouter();
+  const [files, setFiles] = useState([]);
   const formik = useFormik({
     initialValues: {
       barcode: "925487986526",
@@ -62,29 +74,29 @@ export const ProductCreateForm = props => {
     onSubmit: async (values, helpers) => {
       try {
         // NOTE: Make API request
-        toast.success("Product created!")
-        router.push("/dashboard/products").catch(console.error)
+        toast.success("Product created!");
+        router.push("/dashboard/products").catch(console.error);
       } catch (err) {
-        console.error(err)
-        toast.error("Something went wrong!")
-        helpers.setStatus({ success: false })
-        helpers.setErrors({ submit: err.message })
-        helpers.setSubmitting(false)
+        console.error(err);
+        toast.error("Something went wrong!");
+        helpers.setStatus({ success: false });
+        helpers.setErrors({ submit: err.message });
+        helpers.setSubmitting(false);
       }
     },
-  })
+  });
 
   const handleDrop = newFiles => {
-    setFiles(prevFiles => [...prevFiles, ...newFiles])
-  }
+    setFiles(prevFiles => [...prevFiles, ...newFiles]);
+  };
 
   const handleRemove = file => {
-    setFiles(prevFiles => prevFiles.filter(_file => _file.path !== file.path))
-  }
+    setFiles(prevFiles => prevFiles.filter(_file => _file.path !== file.path));
+  };
 
   const handleRemoveAll = () => {
-    setFiles([])
-  }
+    setFiles([]);
+  };
 
   return (
     <form onSubmit={formik.handleSubmit} {...props}>
@@ -117,7 +129,7 @@ export const ProductCreateForm = props => {
               </Typography>
               <QuillEditor
                 onChange={value => {
-                  formik.setFieldValue("description", value)
+                  formik.setFieldValue("description", value);
                 }}
                 placeholder="Write something"
                 sx={{ height: 400 }}
@@ -142,7 +154,13 @@ export const ProductCreateForm = props => {
               </Typography>
             </Grid>
             <Grid item md={8} xs={12}>
-              <FileDropzone accept="image/*" files={files} onDrop={handleDrop} onRemove={handleRemove} onRemoveAll={handleRemoveAll} />
+              <FileDropzone
+                accept="image/*"
+                files={files}
+                onDrop={handleDrop}
+                onRemove={handleRemove}
+                onRemoveAll={handleRemoveAll}
+              />
             </Grid>
           </Grid>
         </CardContent>
@@ -258,5 +276,5 @@ export const ProductCreateForm = props => {
         </Button>
       </Box>
     </form>
-  )
-}
+  );
+};

@@ -1,78 +1,89 @@
-import { Fragment, useState } from "react"
-import PropTypes from "prop-types"
-import toast from "react-hot-toast"
-import { Box, Button, Card, CardActions, Divider, IconButton, Input, LinearProgress, OutlinedInput, Typography } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { deleteChecklist, updateChecklist } from "../../../slices/kanban"
-import { useDispatch } from "../../../store"
-import { KanbanCheckItem } from "./kanban-check-item"
-import { KanbanCheckItemAdd } from "./kanban-check-item-add"
-import { Trash as TrashIcon } from "../../../icons/trash"
+import { Fragment, useState } from "react";
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import {
+  Box,
+  Button,
+  Card,
+  CardActions,
+  Divider,
+  IconButton,
+  Input,
+  LinearProgress,
+  OutlinedInput,
+  Typography,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { deleteChecklist, updateChecklist } from "../../../slices/kanban";
+import { useDispatch } from "../../../store";
+import { KanbanCheckItem } from "./kanban-check-item";
+import { KanbanCheckItemAdd } from "./kanban-check-item-add";
+import { Trash as TrashIcon } from "../../../icons/trash";
 
-const KanbanChecklistRoot = styled("div")``
+const KanbanChecklistRoot = styled("div")``;
 
 export const KanbanChecklist = props => {
-  const { card, checklist, ...other } = props
-  const dispatch = useDispatch()
-  const [name, setName] = useState(checklist.name)
-  const [editingName, setEditingName] = useState(false)
-  const [editingCheckItem, setEditingCheckItem] = useState(null)
+  const { card, checklist, ...other } = props;
+  const dispatch = useDispatch();
+  const [name, setName] = useState(checklist.name);
+  const [editingName, setEditingName] = useState(false);
+  const [editingCheckItem, setEditingCheckItem] = useState(null);
 
   const handleNameEdit = () => {
-    setEditingName(true)
-  }
+    setEditingName(true);
+  };
 
   const handleNameChange = event => {
-    setName(event.target.value)
-  }
+    setName(event.target.value);
+  };
 
   const handleNameSave = async () => {
     try {
       if (!name || name === checklist.name) {
-        setEditingName(false)
-        setName(checklist.name)
-        return
+        setEditingName(false);
+        setName(checklist.name);
+        return;
       }
 
-      setEditingName(false)
-      await dispatch(updateChecklist(card.id, checklist.id, { name }))
-      toast.success("Checklist updated!")
+      setEditingName(false);
+      await dispatch(updateChecklist(card.id, checklist.id, { name }));
+      toast.success("Checklist updated!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   const handleCancel = () => {
-    setEditingName(false)
-    setName(checklist.name)
-  }
+    setEditingName(false);
+    setName(checklist.name);
+  };
 
   const handleDelete = async () => {
     try {
-      await dispatch(deleteChecklist(card.id, checklist.id))
-      toast.success("Checklist deleted!")
+      await dispatch(deleteChecklist(card.id, checklist.id));
+      toast.success("Checklist deleted!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   const handleCheckItemEditInit = checkItemId => {
-    setEditingCheckItem(checkItemId)
-  }
+    setEditingCheckItem(checkItemId);
+  };
 
   const handleCheckItemEditCancel = () => {
-    setEditingCheckItem(null)
-  }
+    setEditingCheckItem(null);
+  };
 
   const handleCheckItemEditComplete = () => {
-    setEditingCheckItem(null)
-  }
+    setEditingCheckItem(null);
+  };
 
-  const totalCheckItems = checklist.checkItems.length
-  const completedCheckItems = checklist.checkItems.filter(checkItem => checkItem.state === "complete").length
-  const completePercentage = totalCheckItems === 0 ? 100 : (completedCheckItems / totalCheckItems) * 100
+  const totalCheckItems = checklist.checkItems.length;
+  const completedCheckItems = checklist.checkItems.filter(checkItem => checkItem.state === "complete").length;
+  const completePercentage = totalCheckItems === 0 ? 100 : (completedCheckItems / totalCheckItems) * 100;
 
   return (
     <KanbanChecklistRoot {...other}>
@@ -197,11 +208,11 @@ export const KanbanChecklist = props => {
         </CardActions>
       </Card>
     </KanbanChecklistRoot>
-  )
-}
+  );
+};
 
 KanbanChecklist.propTypes = {
   card: PropTypes.object.isRequired,
   checklist: PropTypes.object.isRequired,
   sx: PropTypes.object,
-}
+};

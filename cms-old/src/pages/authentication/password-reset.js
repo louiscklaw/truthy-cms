@@ -1,30 +1,30 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import NextLink from "next/link"
-import { useRouter } from "next/router"
-import { Box, Card, Container, Divider, Link, Typography } from "@mui/material"
-import { GuestGuard } from "../../components/authentication/guest-guard"
-import { AuthBanner } from "../../components/authentication/auth-banner"
-import { AmplifyPasswordReset } from "../../components/authentication/amplify-password-reset"
-import { Logo } from "../../components/logo"
-import { useAuth } from "../../hooks/use-auth"
-import { gtm } from "../../lib/gtm"
+import { useEffect } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import { Box, Card, Container, Divider, Link, Typography } from "@mui/material";
+import { GuestGuard } from "../../components/authentication/guest-guard";
+import { AuthBanner } from "../../components/authentication/auth-banner";
+import { AmplifyPasswordReset } from "../../components/authentication/amplify-password-reset";
+import { Logo } from "../../components/logo";
+import { useAuth } from "../../hooks/use-auth";
+import { gtm } from "../../lib/gtm";
 
 const platformIcons = {
   Amplify: "/static/icons/amplify.svg",
   Auth0: "/static/icons/auth0.svg",
   Firebase: "/static/icons/firebase.svg",
   JWT: "/static/icons/jwt.svg",
-}
+};
 
 const PasswordReset = () => {
-  const router = useRouter()
-  const { platform } = useAuth()
-  const { disableGuard } = router.query
+  const router = useRouter();
+  const { platform } = useAuth();
+  const { disableGuard } = router.query;
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -111,7 +111,14 @@ const PasswordReset = () => {
             <Divider sx={{ my: 3 }} />
             {platform === "Amplify" && (
               <div>
-                <NextLink href={disableGuard ? `/authentication/password-recovery?disableGuard=${disableGuard}` : "/authentication/password-recovery"} passHref>
+                <NextLink
+                  href={
+                    disableGuard
+                      ? `/authentication/password-recovery?disableGuard=${disableGuard}`
+                      : "/authentication/password-recovery"
+                  }
+                  passHref
+                >
                   <Link color="textSecondary" variant="body2">
                     Did you not receive the code?
                   </Link>
@@ -122,9 +129,9 @@ const PasswordReset = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
-PasswordReset.getLayout = page => <GuestGuard>{page}</GuestGuard>
+PasswordReset.getLayout = page => <GuestGuard>{page}</GuestGuard>;
 
-export default PasswordReset
+export default PasswordReset;

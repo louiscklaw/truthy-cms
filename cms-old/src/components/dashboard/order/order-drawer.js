@@ -1,14 +1,28 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import numeral from "numeral"
-import { Box, Button, Divider, Drawer, IconButton, Table, TableBody, TableCell, TableHead, TableRow, TextField, Typography, useMediaQuery } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import EditIcon from "@mui/icons-material/Edit"
-import { X as XIcon } from "../../../icons/x"
-import { PropertyList } from "../../property-list"
-import { PropertyListItem } from "../../property-list-item"
-import { Scrollbar } from "../../scrollbar"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import numeral from "numeral";
+import {
+  Box,
+  Button,
+  Divider,
+  Drawer,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableRow,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import EditIcon from "@mui/icons-material/Edit";
+import { X as XIcon } from "../../../icons/x";
+import { PropertyList } from "../../property-list";
+import { PropertyListItem } from "../../property-list-item";
+import { Scrollbar } from "../../scrollbar";
 
 const statusOptions = [
   {
@@ -27,11 +41,11 @@ const statusOptions = [
     label: "Rejected",
     value: "rejected",
   },
-]
+];
 
 const OrderPreview = props => {
-  const { lgUp, onApprove, onEdit, onReject, order } = props
-  const align = lgUp ? "horizontal" : "vertical"
+  const { lgUp, onApprove, onEdit, onReject, order } = props;
+  const align = lgUp ? "horizontal" : "vertical";
 
   return (
     <>
@@ -92,9 +106,19 @@ const OrderPreview = props => {
             {order.customer.country}
           </Typography>
         </PropertyListItem>
-        <PropertyListItem align={align} disableGutters label="Date" value={format(order.createdAt, "dd/MM/yyyy HH:mm")} />
+        <PropertyListItem
+          align={align}
+          disableGutters
+          label="Date"
+          value={format(order.createdAt, "dd/MM/yyyy HH:mm")}
+        />
         <PropertyListItem align={align} disableGutters label="Promotion Code" value={order.promotionCode} />
-        <PropertyListItem align={align} disableGutters label="Total Amount" value={`${order.currency}${order.totalAmount}`} />
+        <PropertyListItem
+          align={align}
+          disableGutters
+          label="Total Amount"
+          value={`${order.currency}${order.totalAmount}`}
+        />
         <PropertyListItem align={align} disableGutters label="Status" value={order.status} />
       </PropertyList>
       <Divider sx={{ my: 3 }} />
@@ -124,11 +148,11 @@ const OrderPreview = props => {
         </Table>
       </Scrollbar>
     </>
-  )
-}
+  );
+};
 
 const OrderForm = props => {
-  const { onCancel, onSave, order } = props
+  const { onCancel, onSave, order } = props;
 
   return (
     <>
@@ -170,13 +194,35 @@ const OrderForm = props => {
       </Typography>
       <TextField disabled fullWidth label="ID" margin="normal" name="id" value={order.id} />
       <TextField disabled fullWidth label="Number" margin="normal" name="number" value={order.number} />
-      <TextField disabled fullWidth label="Customer name" margin="normal" name="customer_name" value={order.customer.name} />
-      <TextField disabled fullWidth label="Date" margin="normal" name="date" value={format(order.createdAt, "dd/MM/yyyy HH:mm")} />
+      <TextField
+        disabled
+        fullWidth
+        label="Customer name"
+        margin="normal"
+        name="customer_name"
+        value={order.customer.name}
+      />
+      <TextField
+        disabled
+        fullWidth
+        label="Date"
+        margin="normal"
+        name="date"
+        value={format(order.createdAt, "dd/MM/yyyy HH:mm")}
+      />
       <TextField fullWidth label="Address" margin="normal" name="address" value={order.customer.address1} />
       <TextField fullWidth label="Country" margin="normal" name="country" value={order.customer.country} />
       <TextField fullWidth label="State/Region" margin="normal" name="state_region" value={order.customer.city} />
       <TextField fullWidth label="Total Amount" margin="normal" name="amount" value={order.totalAmount} />
-      <TextField fullWidth label="Status" margin="normal" name="status" select SelectProps={{ native: true }} value={order.status}>
+      <TextField
+        fullWidth
+        label="Status"
+        margin="normal"
+        name="status"
+        select
+        SelectProps={{ native: true }}
+        value={order.status}
+      >
         {statusOptions.map(statusOption => (
           <option key={statusOption.value} value={statusOption.value}>
             {statusOption.label}
@@ -187,8 +233,8 @@ const OrderForm = props => {
         Delete order
       </Button>
     </>
-  )
-}
+  );
+};
 
 const OrderDrawerDesktop = styled(Drawer)({
   width: 500,
@@ -197,7 +243,7 @@ const OrderDrawerDesktop = styled(Drawer)({
     position: "relative",
     width: 500,
   },
-})
+});
 
 const OrderDrawerMobile = styled(Drawer)({
   flexShrink: 0,
@@ -210,20 +256,20 @@ const OrderDrawerMobile = styled(Drawer)({
     top: 64,
     width: 500,
   },
-})
+});
 
 export const OrderDrawer = props => {
-  const { containerRef, onClose, open, order, ...other } = props
-  const [isEditing, setIsEditing] = useState(false)
-  const lgUp = useMediaQuery(theme => theme.breakpoints.up("lg"))
+  const { containerRef, onClose, open, order, ...other } = props;
+  const [isEditing, setIsEditing] = useState(false);
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up("lg"));
 
   const handleEdit = () => {
-    setIsEditing(true)
-  }
+    setIsEditing(true);
+  };
 
   const handleCancel = () => {
-    setIsEditing(false)
-  }
+    setIsEditing(false);
+  };
 
   // The reason for doing this, is that the persistent drawer has to be rendered, but not it's
   // content if an order is not passed.
@@ -260,14 +306,20 @@ export const OrderDrawer = props => {
         )}
       </Box>
     </>
-  ) : null
+  ) : null;
 
   if (lgUp) {
     return (
-      <OrderDrawerDesktop anchor="right" open={open} SlideProps={{ container: containerRef?.current }} variant="persistent" {...other}>
+      <OrderDrawerDesktop
+        anchor="right"
+        open={open}
+        SlideProps={{ container: containerRef?.current }}
+        variant="persistent"
+        {...other}
+      >
         {content}
       </OrderDrawerDesktop>
-    )
+    );
   }
 
   return (
@@ -282,12 +334,12 @@ export const OrderDrawer = props => {
     >
       {content}
     </OrderDrawerMobile>
-  )
-}
+  );
+};
 
 OrderDrawer.propTypes = {
   containerRef: PropTypes.any,
   onClose: PropTypes.func,
   open: PropTypes.bool,
   order: PropTypes.object,
-}
+};

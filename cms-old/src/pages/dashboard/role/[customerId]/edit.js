@@ -1,46 +1,46 @@
-import { useState, useCallback, useEffect } from "react"
-import NextLink from "next/link"
-import Head from "next/head"
-import { Avatar, Box, Chip, Container, Link, Typography } from "@mui/material"
-import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import { customerApi } from "../../../../__fake-api__/customer-api"
-import { AuthGuard } from "../../../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../../../components/dashboard/dashboard-layout"
-import { CustomerEditForm } from "../../../../components/dashboard/customer/customer-edit-form"
-import { useMounted } from "../../../../hooks/use-mounted"
-import { gtm } from "../../../../lib/gtm"
-import { getInitials } from "../../../../utils/get-initials"
+import { useState, useCallback, useEffect } from "react";
+import NextLink from "next/link";
+import Head from "next/head";
+import { Avatar, Box, Chip, Container, Link, Typography } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { customerApi } from "../../../../__fake-api__/customer-api";
+import { AuthGuard } from "../../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../../components/dashboard/dashboard-layout";
+import { CustomerEditForm } from "../../../../components/dashboard/customer/customer-edit-form";
+import { useMounted } from "../../../../hooks/use-mounted";
+import { gtm } from "../../../../lib/gtm";
+import { getInitials } from "../../../../utils/get-initials";
 
 const CustomerEdit = () => {
-  const isMounted = useMounted()
-  const [customer, setCustomer] = useState(null)
+  const isMounted = useMounted();
+  const [customer, setCustomer] = useState(null);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const getCustomer = useCallback(async () => {
     try {
-      const data = await customerApi.getCustomer()
+      const data = await customerApi.getCustomer();
 
       if (isMounted()) {
-        setCustomer(data)
+        setCustomer(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(
     () => {
-      getCustomer()
+      getCustomer();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   if (!customer) {
-    return null
+    return null;
   }
 
   return (
@@ -113,13 +113,13 @@ const CustomerEdit = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 CustomerEdit.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default CustomerEdit
+export default CustomerEdit;

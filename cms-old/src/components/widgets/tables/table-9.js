@@ -1,11 +1,23 @@
-import { format } from "date-fns"
-import { Box, Card, CardHeader, Divider, IconButton, Table, TableBody, TableCell, TableHead, TablePagination, TableRow } from "@mui/material"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+import { format } from "date-fns";
+import {
+  Box,
+  Card,
+  CardHeader,
+  Divider,
+  IconButton,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+} from "@mui/material";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
-const now = new Date()
+const now = new Date();
 
 const invoices = [
   {
@@ -26,7 +38,7 @@ const invoices = [
     status: "paid",
     value: 5.25,
   },
-]
+];
 
 export const Table9 = () => (
   <Box
@@ -94,4 +106,4 @@ export const Table9 = () => (
       />
     </Card>
   </Box>
-)
+);

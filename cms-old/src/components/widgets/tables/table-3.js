@@ -1,5 +1,5 @@
-import numeral from "numeral"
-import { subDays, subHours } from "date-fns"
+import numeral from "numeral";
+import { subDays, subHours } from "date-fns";
 import {
   Avatar,
   Box,
@@ -19,13 +19,13 @@ import {
   Tabs,
   TextField,
   Typography,
-} from "@mui/material"
-import { Scrollbar } from "../../scrollbar"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt"
-import { Search as SearchIcon } from "../../../icons/search"
+} from "@mui/material";
+import { Scrollbar } from "../../scrollbar";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
+import { Search as SearchIcon } from "../../../icons/search";
 
-const now = new Date()
+const now = new Date();
 
 const customers = [
   {
@@ -108,7 +108,7 @@ const customers = [
     state: "California",
     updatedAt: subDays(subHours(now, 7), 3).getTime(),
   },
-]
+];
 
 const tabs = [
   {
@@ -127,7 +127,7 @@ const tabs = [
     label: "Returning",
     value: "isReturning",
   },
-]
+];
 
 const sortOptions = [
   {
@@ -146,7 +146,7 @@ const sortOptions = [
     label: "Total orders (lowest)",
     value: "orders|asc",
   },
-]
+];
 
 export const Table3 = () => (
   <Box
@@ -156,7 +156,14 @@ export const Table3 = () => (
     }}
   >
     <Card>
-      <Tabs indicatorColor="primary" scrollButtons="auto" textColor="primary" value="all" sx={{ px: 3 }} variant="scrollable">
+      <Tabs
+        indicatorColor="primary"
+        scrollButtons="auto"
+        textColor="primary"
+        value="all"
+        sx={{ px: 3 }}
+        variant="scrollable"
+      >
         {tabs.map(tab => (
           <Tab key={tab.value} label={tab.label} value={tab.value} />
         ))}
@@ -276,4 +283,4 @@ export const Table3 = () => (
       />
     </Card>
   </Box>
-)
+);

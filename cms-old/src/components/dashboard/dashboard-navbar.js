@@ -1,24 +1,24 @@
-import { useRef, useState } from "react"
-import PropTypes from "prop-types"
-import { useTranslation } from "react-i18next"
-import { AppBar, Avatar, Badge, Box, ButtonBase, IconButton, Toolbar, Tooltip } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { Menu as MenuIcon } from "../../icons/menu"
-import { Bell as BellIcon } from "../../icons/bell"
-import { Search as SearchIcon } from "../../icons/search"
-import { UserCircle as UserCircleIcon } from "../../icons/user-circle"
-import { Users as UsersIcon } from "../../icons/users"
-import { AccountPopover } from "./account-popover"
-import { ContactsPopover } from "./contacts-popover"
-import { ContentSearchDialog } from "./content-search-dialog"
-import { NotificationsPopover } from "./notifications-popover"
-import { LanguagePopover } from "./language-popover"
+import { useRef, useState } from "react";
+import PropTypes from "prop-types";
+import { useTranslation } from "react-i18next";
+import { AppBar, Avatar, Badge, Box, ButtonBase, IconButton, Toolbar, Tooltip } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { Menu as MenuIcon } from "../../icons/menu";
+import { Bell as BellIcon } from "../../icons/bell";
+import { Search as SearchIcon } from "../../icons/search";
+import { UserCircle as UserCircleIcon } from "../../icons/user-circle";
+import { Users as UsersIcon } from "../../icons/users";
+import { AccountPopover } from "./account-popover";
+import { ContactsPopover } from "./contacts-popover";
+import { ContentSearchDialog } from "./content-search-dialog";
+import { NotificationsPopover } from "./notifications-popover";
+import { LanguagePopover } from "./language-popover";
 
 const languages = {
   en: "/static/icons/uk_flag.svg",
   de: "/static/icons/de_flag.svg",
   es: "/static/icons/es_flag.svg",
-}
+};
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -33,20 +33,20 @@ const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({
         borderBottomWidth: 1,
         boxShadow: "none",
       }),
-}))
+}));
 
 const LanguageButton = () => {
-  const anchorRef = useRef(null)
-  const { i18n } = useTranslation()
-  const [openPopover, setOpenPopover] = useState(false)
+  const anchorRef = useRef(null);
+  const { i18n } = useTranslation();
+  const [openPopover, setOpenPopover] = useState(false);
 
   const handleOpenPopover = () => {
-    setOpenPopover(true)
-  }
+    setOpenPopover(true);
+  };
 
   const handleClosePopover = () => {
-    setOpenPopover(false)
-  }
+    setOpenPopover(false);
+  };
 
   return (
     <>
@@ -66,19 +66,19 @@ const LanguageButton = () => {
       </IconButton>
       <LanguagePopover anchorEl={anchorRef.current} onClose={handleClosePopover} open={openPopover} />
     </>
-  )
-}
+  );
+};
 
 const ContentSearchButton = () => {
-  const [openDialog, setOpenDialog] = useState(false)
+  const [openDialog, setOpenDialog] = useState(false);
 
   const handleOpenSearchDialog = () => {
-    setOpenDialog(true)
-  }
+    setOpenDialog(true);
+  };
 
   const handleCloseSearchDialog = () => {
-    setOpenDialog(false)
-  }
+    setOpenDialog(false);
+  };
 
   return (
     <>
@@ -89,20 +89,20 @@ const ContentSearchButton = () => {
       </Tooltip>
       <ContentSearchDialog onClose={handleCloseSearchDialog} open={openDialog} />
     </>
-  )
-}
+  );
+};
 
 const ContactsButton = () => {
-  const anchorRef = useRef(null)
-  const [openPopover, setOpenPopover] = useState(false)
+  const anchorRef = useRef(null);
+  const [openPopover, setOpenPopover] = useState(false);
 
   const handleOpenPopover = () => {
-    setOpenPopover(true)
-  }
+    setOpenPopover(true);
+  };
 
   const handleClosePopover = () => {
-    setOpenPopover(false)
-  }
+    setOpenPopover(false);
+  };
 
   return (
     <>
@@ -113,27 +113,27 @@ const ContactsButton = () => {
       </Tooltip>
       <ContactsPopover anchorEl={anchorRef.current} onClose={handleClosePopover} open={openPopover} />
     </>
-  )
-}
+  );
+};
 
 const NotificationsButton = () => {
-  const anchorRef = useRef(null)
-  const [unread, setUnread] = useState(0)
-  const [openPopover, setOpenPopover] = useState(false)
+  const anchorRef = useRef(null);
+  const [unread, setUnread] = useState(0);
+  const [openPopover, setOpenPopover] = useState(false);
   // Unread notifications should come from a context and be shared with both this component and
   // notifications popover. To simplify the demo, we get it from the popover
 
   const handleOpenPopover = () => {
-    setOpenPopover(true)
-  }
+    setOpenPopover(true);
+  };
 
   const handleClosePopover = () => {
-    setOpenPopover(false)
-  }
+    setOpenPopover(false);
+  };
 
   const handleUpdateUnread = value => {
-    setUnread(value)
-  }
+    setUnread(value);
+  };
 
   return (
     <>
@@ -144,28 +144,33 @@ const NotificationsButton = () => {
           </Badge>
         </IconButton>
       </Tooltip>
-      <NotificationsPopover anchorEl={anchorRef.current} onClose={handleClosePopover} onUpdateUnread={handleUpdateUnread} open={openPopover} />
+      <NotificationsPopover
+        anchorEl={anchorRef.current}
+        onClose={handleClosePopover}
+        onUpdateUnread={handleUpdateUnread}
+        open={openPopover}
+      />
     </>
-  )
-}
+  );
+};
 
 const AccountButton = () => {
-  const anchorRef = useRef(null)
-  const [openPopover, setOpenPopover] = useState(false)
+  const anchorRef = useRef(null);
+  const [openPopover, setOpenPopover] = useState(false);
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
     avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
     name: "Anika Visser",
-  }
+  };
 
   const handleOpenPopover = () => {
-    setOpenPopover(true)
-  }
+    setOpenPopover(true);
+  };
 
   const handleClosePopover = () => {
-    setOpenPopover(false)
-  }
+    setOpenPopover(false);
+  };
 
   return (
     <>
@@ -191,11 +196,11 @@ const AccountButton = () => {
       </Box>
       <AccountPopover anchorEl={anchorRef.current} onClose={handleClosePopover} open={openPopover} />
     </>
-  )
-}
+  );
+};
 
 export const DashboardNavbar = props => {
-  const { onOpenSidebar, ...other } = props
+  const { onOpenSidebar, ...other } = props;
 
   return (
     <>
@@ -238,9 +243,9 @@ export const DashboardNavbar = props => {
         </Toolbar>
       </DashboardNavbarRoot>
     </>
-  )
-}
+  );
+};
 
 DashboardNavbar.propTypes = {
   onOpenSidebar: PropTypes.func,
-}
+};

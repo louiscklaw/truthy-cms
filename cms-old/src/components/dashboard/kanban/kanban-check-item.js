@@ -1,11 +1,11 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import toast from "react-hot-toast"
-import { Box, Button, Checkbox, IconButton, Input, OutlinedInput } from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { Trash as TrashIcon } from "../../../icons/trash"
-import { deleteCheckItem, updateCheckItem } from "../../../slices/kanban"
-import { useDispatch } from "../../../store"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import toast from "react-hot-toast";
+import { Box, Button, Checkbox, IconButton, Input, OutlinedInput } from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { Trash as TrashIcon } from "../../../icons/trash";
+import { deleteCheckItem, updateCheckItem } from "../../../slices/kanban";
+import { useDispatch } from "../../../store";
 
 const KanbanCheckItemRoot = styled("div")(({ theme }) => ({
   alignItems: "center",
@@ -14,54 +14,54 @@ const KanbanCheckItemRoot = styled("div")(({ theme }) => ({
   paddingLeft: theme.spacing(3),
   paddingRight: theme.spacing(3),
   paddingTop: theme.spacing(1),
-}))
+}));
 
 export const KanbanCheckItem = props => {
-  const { cardId, checkItem, checklistId, editing, onEditCancel, onEditComplete, onEditInit, ...other } = props
-  const dispatch = useDispatch()
-  const [name, setName] = useState(checkItem.name)
+  const { cardId, checkItem, checklistId, editing, onEditCancel, onEditComplete, onEditInit, ...other } = props;
+  const dispatch = useDispatch();
+  const [name, setName] = useState(checkItem.name);
 
   const handleStateChange = async event => {
     try {
-      const state = event.target.checked ? "complete" : "incomplete"
+      const state = event.target.checked ? "complete" : "incomplete";
 
-      await dispatch(updateCheckItem(cardId, checklistId, checkItem.id, { state }))
-      toast.success("Check item updated!")
+      await dispatch(updateCheckItem(cardId, checklistId, checkItem.id, { state }));
+      toast.success("Check item updated!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   const handleNameChange = event => {
-    setName(event.target.value)
-  }
+    setName(event.target.value);
+  };
 
   const handleSave = async () => {
     try {
-      await dispatch(updateCheckItem(cardId, checklistId, checkItem.id, { name }))
-      toast.success("Check item updated!")
-      onEditComplete?.()
+      await dispatch(updateCheckItem(cardId, checklistId, checkItem.id, { name }));
+      toast.success("Check item updated!");
+      onEditComplete?.();
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   const handleCancel = () => {
-    setName(checkItem.name)
-    onEditCancel?.()
-  }
+    setName(checkItem.name);
+    onEditCancel?.();
+  };
 
   const handleDelete = async () => {
     try {
-      await dispatch(deleteCheckItem(cardId, checklistId, checkItem.id))
-      toast.success("Check item deleted!")
+      await dispatch(deleteCheckItem(cardId, checklistId, checkItem.id));
+      toast.success("Check item deleted!");
     } catch (err) {
-      console.error(err)
-      toast.error("Something went wrong!")
+      console.error(err);
+      toast.error("Something went wrong!");
     }
-  }
+  };
 
   return (
     <KanbanCheckItemRoot {...other}>
@@ -129,8 +129,8 @@ export const KanbanCheckItem = props => {
         </Box>
       )}
     </KanbanCheckItemRoot>
-  )
-}
+  );
+};
 
 KanbanCheckItem.propTypes = {
   cardId: PropTypes.string.isRequired,
@@ -141,8 +141,8 @@ KanbanCheckItem.propTypes = {
   onEditComplete: PropTypes.func,
   onEditInit: PropTypes.func,
   sx: PropTypes.object,
-}
+};
 
 KanbanCheckItem.defaultProps = {
   editing: false,
-}
+};

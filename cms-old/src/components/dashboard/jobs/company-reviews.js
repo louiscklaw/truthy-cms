@@ -1,23 +1,23 @@
-import { useState } from "react"
-import PropTypes from "prop-types"
-import { formatDistanceStrict } from "date-fns"
-import { Avatar, Box, Button, Card, CardContent, Rating, TextField, Typography } from "@mui/material"
-import { Star as StarIcon } from "../../../icons/star"
-import { getInitials } from "../../../utils/get-initials"
+import { useState } from "react";
+import PropTypes from "prop-types";
+import { formatDistanceStrict } from "date-fns";
+import { Avatar, Box, Button, Card, CardContent, Rating, TextField, Typography } from "@mui/material";
+import { Star as StarIcon } from "../../../icons/star";
+import { getInitials } from "../../../utils/get-initials";
 
 export const CompanyReviews = props => {
-  const { reviews, averageRating, ...other } = props
-  const [rating, setRating] = useState(null)
+  const { reviews, averageRating, ...other } = props;
+  const [rating, setRating] = useState(null);
   // To get the user from the authContext, you can use
   // `const { user } = useAuth();`
   const user = {
     avatar: "/static/mock-images/avatars/avatar-anika_visser.png",
     name: "Anika Visser",
-  }
+  };
 
   const handleRatingChange = (event, newRating) => {
-    setRating(newRating)
-  }
+    setRating(newRating);
+  };
 
   return (
     <div {...other}>
@@ -168,15 +168,15 @@ export const CompanyReviews = props => {
         </Box>
       </Box>
     </div>
-  )
-}
+  );
+};
 
 CompanyReviews.defaultProps = {
   reviews: [],
   averageRating: 0,
-}
+};
 
 CompanyReviews.propTypes = {
   reviews: PropTypes.array.isRequired,
   averageRating: PropTypes.number.isRequired,
-}
+};

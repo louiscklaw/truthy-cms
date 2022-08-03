@@ -1,6 +1,6 @@
-import { Box, Button, Divider, ListItemIcon, ListItemText, MenuItem, Paper, Typography } from "@mui/material"
-import { Cog as CogIcon } from "../../../icons/cog"
-import { User as UserIcon } from "../../../icons/user"
+import { Box, Button, Divider, ListItemIcon, ListItemText, MenuItem, Paper, Typography } from "@mui/material";
+import { Cog as CogIcon } from "../../../icons/cog";
+import { User as UserIcon } from "../../../icons/user";
 
 export const Modal6 = () => (
   <Box
@@ -57,4 +57,4 @@ export const Modal6 = () => (
       </Box>
     </Paper>
   </Box>
-)
+);

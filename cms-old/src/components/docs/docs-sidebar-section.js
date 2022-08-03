@@ -1,6 +1,6 @@
-import PropTypes from "prop-types"
-import { List, ListSubheader } from "@mui/material"
-import { DocsSidebarItem } from "./docs-sidebar-item"
+import PropTypes from "prop-types";
+import { List, ListSubheader } from "@mui/material";
+import { DocsSidebarItem } from "./docs-sidebar-item";
 
 const renderNavItems = ({ depth = 0, items, path }) => (
   <List disablePadding>
@@ -15,12 +15,12 @@ const renderNavItems = ({ depth = 0, items, path }) => (
       [],
     )}
   </List>
-)
+);
 
 const reduceChildRoutes = ({ acc, depth, item, path }) => {
-  const key = `${item.title}-${depth}`
-  const partialMatch = item.path ? path.includes(item.path) : false
-  const exactMatch = path.split("?")[0] === item.path // We don't compare query params
+  const key = `${item.title}-${depth}`;
+  const partialMatch = item.path ? path.includes(item.path) : false;
+  const exactMatch = path.split("?")[0] === item.path; // We don't compare query params
 
   if (item.children) {
     acc.push(
@@ -41,18 +41,27 @@ const reduceChildRoutes = ({ acc, depth, item, path }) => {
           path,
         })}
       </DocsSidebarItem>,
-    )
+    );
   } else {
     acc.push(
-      <DocsSidebarItem active={exactMatch} chip={item.chip} depth={depth} icon={item.icon} info={item.info} key={key} path={item.path} title={item.title} />,
-    )
+      <DocsSidebarItem
+        active={exactMatch}
+        chip={item.chip}
+        depth={depth}
+        icon={item.icon}
+        info={item.info}
+        key={key}
+        path={item.path}
+        title={item.title}
+      />,
+    );
   }
 
-  return acc
-}
+  return acc;
+};
 
 export const DocsSidebarSection = props => {
-  const { items, path, title, ...other } = props
+  const { items, path, title, ...other } = props;
 
   return (
     <List
@@ -79,11 +88,11 @@ export const DocsSidebarSection = props => {
         path,
       })}
     </List>
-  )
-}
+  );
+};
 
 DocsSidebarSection.propTypes = {
   items: PropTypes.array,
   path: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-}
+};

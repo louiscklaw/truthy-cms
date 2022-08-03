@@ -12,14 +12,14 @@ export const getStaticPaths = () => {
   const articles = getArticles(['slug']);
 
   return {
-    paths: articles.map((article) => {
+    paths: articles.map(article => {
       return {
         params: {
-          slug: article.slug
-        }
+          slug: article.slug,
+        },
       };
     }),
-    fallback: false
+    fallback: false,
   };
 };
 
@@ -28,12 +28,12 @@ export const getStaticProps = ({ params }) => {
 
   return {
     props: {
-      article
-    }
+      article,
+    },
   };
 };
 
-const Article = (props) => {
+const Article = props => {
   const { article } = props;
   const router = useRouter();
 
@@ -48,24 +48,15 @@ const Article = (props) => {
   return (
     <>
       <Head>
-        <title>
-          {`Docs: ${article.title} | Material Kit Pro`}
-        </title>
+        <title>{`Docs: ${article.title} | Material Kit Pro`}</title>
       </Head>
-      <Container
-        maxWidth="lg"
-        sx={{ pb: '120px' }}
-      >
+      <Container maxWidth="lg" sx={{ pb: '120px' }}>
         <DocsContent content={article.content} />
       </Container>
     </>
   );
 };
 
-Article.getLayout = (page) => (
-  <DocsLayout>
-    {page}
-  </DocsLayout>
-);
+Article.getLayout = page => <DocsLayout>{page}</DocsLayout>;
 
 export default Article;

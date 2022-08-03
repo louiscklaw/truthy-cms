@@ -1,5 +1,5 @@
-import { useRef, useState } from "react"
-import PropTypes from "prop-types"
+import { useRef, useState } from "react";
+import PropTypes from "prop-types";
 import {
   Avatar,
   Box,
@@ -14,72 +14,72 @@ import {
   Popper,
   TextField,
   Typography,
-} from "@mui/material"
-import { chatApi } from "../../../__fake-api__/chat-api"
-import { Search as SearchIcon } from "../../../icons/search"
-import { Scrollbar } from "../../scrollbar"
+} from "@mui/material";
+import { chatApi } from "../../../__fake-api__/chat-api";
+import { Search as SearchIcon } from "../../../icons/search";
+import { Scrollbar } from "../../scrollbar";
 
 const filterSearchResults = (searchResults, recipients) => {
-  const recipientIds = recipients.reduce((acc, recipient) => [...acc, recipient.id], [])
+  const recipientIds = recipients.reduce((acc, recipient) => [...acc, recipient.id], []);
 
-  return searchResults.filter(result => !recipientIds.includes(result.id))
-}
+  return searchResults.filter(result => !recipientIds.includes(result.id));
+};
 
 export const ChatComposerToolbar = props => {
-  const { onAddRecipient, onRemoveRecipient, recipients, ...other } = props
-  const containerRef = useRef(null)
-  const [query, setQuery] = useState("")
-  const [isSearchFocused, setIsSearchFocused] = useState(true)
-  const [searchResults, setSearchResults] = useState([])
+  const { onAddRecipient, onRemoveRecipient, recipients, ...other } = props;
+  const containerRef = useRef(null);
+  const [query, setQuery] = useState("");
+  const [isSearchFocused, setIsSearchFocused] = useState(true);
+  const [searchResults, setSearchResults] = useState([]);
 
-  const displaySearchResults = query && isSearchFocused
-  const filteredSearchResults = filterSearchResults(searchResults, recipients)
+  const displaySearchResults = query && isSearchFocused;
+  const filteredSearchResults = filterSearchResults(searchResults, recipients);
 
   const handleSearchChange = async event => {
     try {
-      const { value } = event.target
+      const { value } = event.target;
 
-      setQuery(value)
+      setQuery(value);
 
       if (value) {
-        const data = await chatApi.getContacts(value)
+        const data = await chatApi.getContacts(value);
 
-        setSearchResults(data)
+        setSearchResults(data);
       } else {
-        setSearchResults([])
+        setSearchResults([]);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }
+  };
 
   const handleSearchBlur = () => {
     if (!displaySearchResults) {
-      setIsSearchFocused(false)
+      setIsSearchFocused(false);
     }
-  }
+  };
 
   const handleSearchFocus = () => {
-    setIsSearchFocused(true)
-  }
+    setIsSearchFocused(true);
+  };
 
   const handleSearchResultsClickAway = () => {
-    setIsSearchFocused(false)
-  }
+    setIsSearchFocused(false);
+  };
 
   const handleAddRecipient = contact => {
-    setQuery("")
+    setQuery("");
 
     if (onAddRecipient) {
-      onAddRecipient(contact)
+      onAddRecipient(contact);
     }
-  }
+  };
 
   const handleRemoveRecipient = recipientId => {
     if (onRemoveRecipient) {
-      onRemoveRecipient(recipientId)
+      onRemoveRecipient(recipientId);
     }
-  }
+  };
 
   return (
     <>
@@ -208,15 +208,15 @@ export const ChatComposerToolbar = props => {
         </ClickAwayListener>
       )}
     </>
-  )
-}
+  );
+};
 
 ChatComposerToolbar.propTypes = {
   onAddRecipient: PropTypes.func,
   onRemoveRecipient: PropTypes.func,
   recipients: PropTypes.array,
-}
+};
 
 ChatComposerToolbar.defaultProps = {
   recipients: [],
-}
+};

@@ -1,13 +1,13 @@
-import { useCallback, useEffect, useState } from "react";
-import PropTypes from "prop-types";
-import { Box, Grid } from "@mui/material";
-import { socialApi } from "../../../__fake-api__/social-api";
-import { useMounted } from "../../../hooks/use-mounted";
-import { SocialPostAdd } from "./social-post-add";
-import { SocialPostCard } from "./social-post-card";
-import { SocialAbout } from "./social-about";
+import { useCallback, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
+import { Box, Grid } from '@mui/material';
+import { socialApi } from '../../../__fake-api__/social-api';
+import { useMounted } from '../../../hooks/use-mounted';
+import { SocialPostAdd } from './social-post-add';
+import { SocialPostCard } from './social-post-card';
+import { SocialAbout } from './social-about';
 
-export const SocialTimeline = (props) => {
+export const SocialTimeline = props => {
   const isMounted = useMounted();
   const { profile, ...other } = props;
   const [posts, setPosts] = useState([]);
@@ -46,7 +46,7 @@ export const SocialTimeline = (props) => {
         </Grid>
         <Grid item lg={8} xs={12}>
           <SocialPostAdd />
-          {posts.map((post) => (
+          {posts.map(post => (
             <Box key={post.id} sx={{ mt: 3 }}>
               <SocialPostCard
                 authorAvatar={post.author.avatar}

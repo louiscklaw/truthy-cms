@@ -1,4 +1,3 @@
-
 // Colors
 
 const neutral = {
@@ -10,12 +9,12 @@ const neutral = {
   600: '#4B5563',
   700: '#374151',
   800: '#1F2937',
-  900: '#111827'
+  900: '#111827',
 };
 
 const background = {
   default: '#F9FAFC',
-  paper: '#FFFFFF'
+  paper: '#FFFFFF',
 };
 
 const divider = '#E6E8F0';
@@ -24,48 +23,48 @@ const primary = {
   main: '#5048E5',
   light: '#828DF8',
   dark: '#3832A0',
-  contrastText: '#FFFFFF'
+  contrastText: '#FFFFFF',
 };
 
 const secondary = {
   main: '#10B981',
   light: '#3FC79A',
   dark: '#0B815A',
-  contrastText: '#FFFFFF'
+  contrastText: '#FFFFFF',
 };
 
 const success = {
   main: '#14B8A6',
   light: '#43C6B7',
   dark: '#0E8074',
-  contrastText: '#FFFFFF'
+  contrastText: '#FFFFFF',
 };
 
 const info = {
   main: '#2196F3',
   light: '#64B6F7',
   dark: '#0B79D0',
-  contrastText: '#FFFFFF'
+  contrastText: '#FFFFFF',
 };
 
 const warning = {
   main: '#FFB020',
   light: '#FFBF4C',
   dark: '#B27B16',
-  contrastText: '#FFFFFF'
+  contrastText: '#FFFFFF',
 };
 
 const error = {
   main: '#D14343',
   light: '#DA6868',
   dark: '#922E2E',
-  contrastText: '#FFFFFF'
+  contrastText: '#FFFFFF',
 };
 
 const text = {
   primary: '#121828',
   secondary: '#65748B',
-  disabled: 'rgba(55, 65, 81, 0.48)'
+  disabled: 'rgba(55, 65, 81, 0.48)',
 };
 
 export const lightThemeOptions = {
@@ -74,9 +73,9 @@ export const lightThemeOptions = {
       styleOverrides: {
         root: {
           backgroundColor: neutral[500],
-          color: '#FFFFFF'
-        }
-      }
+          color: '#FFFFFF',
+        },
+      },
     },
     MuiChip: {
       styleOverrides: {
@@ -84,80 +83,80 @@ export const lightThemeOptions = {
           '&.MuiChip-filledDefault': {
             backgroundColor: neutral[200],
             '& .MuiChip-deleteIcon': {
-              color: neutral[400]
-            }
+              color: neutral[400],
+            },
           },
           '&.MuiChip-outlinedDefault': {
             '& .MuiChip-deleteIcon': {
-              color: neutral[300]
-            }
-          }
-        }
-      }
+              color: neutral[300],
+            },
+          },
+        },
+      },
     },
     MuiInputBase: {
       styleOverrides: {
         input: {
           '&::placeholder': {
             opacity: 1,
-            color: text.secondary
-          }
-        }
-      }
+            color: text.secondary,
+          },
+        },
+      },
     },
     MuiOutlinedInput: {
       styleOverrides: {
         notchedOutline: {
-          borderColor: divider
-        }
-      }
+          borderColor: divider,
+        },
+      },
     },
     MuiMenu: {
       styleOverrides: {
         paper: {
           borderColor: divider,
           borderStyle: 'solid',
-          borderWidth: 1
-        }
-      }
+          borderWidth: 1,
+        },
+      },
     },
     MuiPopover: {
       styleOverrides: {
         paper: {
           borderColor: divider,
           borderStyle: 'solid',
-          borderWidth: 1
-        }
-      }
+          borderWidth: 1,
+        },
+      },
     },
     MuiSwitch: {
       styleOverrides: {
         switchBase: {
-          color: neutral[500]
+          color: neutral[500],
         },
         track: {
           backgroundColor: neutral[400],
-          opacity: 1
-        }
-      }
+          opacity: 1,
+        },
+      },
     },
     MuiTableCell: {
       styleOverrides: {
         root: {
-          borderBottom: `1px solid ${divider}`
-        }
-      }
+          borderBottom: `1px solid ${divider}`,
+        },
+      },
     },
     MuiTableHead: {
       styleOverrides: {
         root: {
           backgroundColor: neutral[100],
           '.MuiTableCell-root': {
-            color: neutral[700]
-          }
-        }
-      }
-    }
+            color: neutral[700],
+          },
+        },
+      },
+    },
   },
   palette: {
     action: {
@@ -166,7 +165,7 @@ export const lightThemeOptions = {
       hover: 'rgba(55, 65, 81, 0.04)',
       selected: 'rgba(55, 65, 81, 0.08)',
       disabledBackground: 'rgba(55, 65, 81, 0.12)',
-      disabled: 'rgba(55, 65, 81, 0.26)'
+      disabled: 'rgba(55, 65, 81, 0.26)',
     },
     background,
     divider,
@@ -178,7 +177,7 @@ export const lightThemeOptions = {
     secondary,
     success,
     text,
-    warning
+    warning,
   },
   shadows: [
     'none',
@@ -205,6 +204,6 @@ export const lightThemeOptions = {
     '0px 25px 50px rgba(100, 116, 139, 0.25)',
     '0px 25px 50px rgba(100, 116, 139, 0.25)',
     '0px 25px 50px rgba(100, 116, 139, 0.25)',
-    '0px 25px 50px rgba(100, 116, 139, 0.25)'
-  ]
+    '0px 25px 50px rgba(100, 116, 139, 0.25)',
+  ],
 };

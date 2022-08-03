@@ -1,8 +1,22 @@
-import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns"
-import { Avatar, Box, Card, CardHeader, Container, Divider, IconButton, Link, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
+import { formatDistanceToNowStrict, subHours, subMinutes } from "date-fns";
+import {
+  Avatar,
+  Box,
+  Card,
+  CardHeader,
+  Container,
+  Divider,
+  IconButton,
+  Link,
+  List,
+  ListItem,
+  ListItemAvatar,
+  ListItemText,
+  Typography,
+} from "@mui/material";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
 
-const now = new Date()
+const now = new Date();
 
 const activities = [
   {
@@ -60,7 +74,7 @@ const activities = [
     description: "Subscription Purchase",
     type: "payment",
   },
-]
+];
 
 export const GroupedList1 = () => (
   <Box
@@ -143,4 +157,4 @@ export const GroupedList1 = () => (
       </Card>
     </Container>
   </Box>
-)
+);

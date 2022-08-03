@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useRef, useState } from 'react';
 import {
   Box,
   Button,
@@ -15,37 +15,37 @@ import {
   MenuItem,
   Tooltip,
   Typography,
-} from "@mui/material";
-import { blueGrey } from "@mui/material/colors";
-import { Archive as ArchiveIcon } from "../../../icons/archive";
-import { DocumentText as DocumentTextIcon } from "../../../icons/document-text";
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
-import { Download as DownloadIcon } from "../../../icons/download";
-import { PencilAlt as PencilAltIcon } from "../../../icons/pencil-alt";
-import { Trash as TrashIcon } from "../../../icons/trash";
-import { bytesToSize } from "../../../utils/bytes-to-size";
+} from '@mui/material';
+import { blueGrey } from '@mui/material/colors';
+import { Archive as ArchiveIcon } from '../../../icons/archive';
+import { DocumentText as DocumentTextIcon } from '../../../icons/document-text';
+import { DotsHorizontal as DotsHorizontalIcon } from '../../../icons/dots-horizontal';
+import { Download as DownloadIcon } from '../../../icons/download';
+import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
+import { Trash as TrashIcon } from '../../../icons/trash';
+import { bytesToSize } from '../../../utils/bytes-to-size';
 
 const files = [
   {
-    id: "5e8dd0721b9e0fab56d7238b",
-    mimeType: "image/png",
-    name: "example-project1.jpg",
+    id: '5e8dd0721b9e0fab56d7238b',
+    mimeType: 'image/png',
+    name: 'example-project1.jpg',
     size: 1024 * 1024 * 3,
-    url: "/static/mock-images/projects/project_4.png",
+    url: '/static/mock-images/projects/project_4.png',
   },
   {
-    id: "5e8dd0784431995a30eb2586",
-    mimeType: "application/zip",
-    name: "docs.zip",
+    id: '5e8dd0784431995a30eb2586',
+    mimeType: 'application/zip',
+    name: 'docs.zip',
     size: 1024 * 1024 * 25,
-    url: "#",
+    url: '#',
   },
   {
-    id: "5e8dd07cbb62749296ecee1c",
-    mimeType: "image/png",
-    name: "example-project2.jpg",
+    id: '5e8dd07cbb62749296ecee1c',
+    mimeType: 'image/png',
+    name: 'example-project2.jpg',
     size: 1024 * 1024 * 2,
-    url: "/static/mock-images/projects/project_1.png",
+    url: '/static/mock-images/projects/project_1.png',
   },
 ];
 
@@ -64,28 +64,28 @@ export const GridList3 = () => {
   return (
     <Box
       sx={{
-        backgroundColor: "background.default",
-        display: "flex",
-        justifyContent: "center",
-        minHeight: "100%",
+        backgroundColor: 'background.default',
+        display: 'flex',
+        justifyContent: 'center',
+        minHeight: '100%',
         p: 3,
       }}
     >
       <Grid container spacing={3}>
-        {files.map((file) => (
+        {files.map(file => (
           <Grid item key={file.id} md={4} xs={12}>
             <Card>
-              {file.mimeType.includes("image/") ? (
+              {file.mimeType.includes('image/') ? (
                 <CardMedia image={file.url} sx={{ height: 140 }} />
               ) : (
                 <Box
                   sx={{
-                    alignItems: "center",
-                    backgroundColor: blueGrey["50"],
-                    color: "#000000",
-                    display: "flex",
+                    alignItems: 'center',
+                    backgroundColor: blueGrey['50'],
+                    color: '#000000',
+                    display: 'flex',
                     height: 140,
-                    justifyContent: "center",
+                    justifyContent: 'center',
                   }}
                 >
                   <DocumentTextIcon fontSize="large" />
@@ -93,8 +93,8 @@ export const GridList3 = () => {
               )}
               <CardContent
                 sx={{
-                  display: "flex",
-                  justifyContent: "space-between",
+                  display: 'flex',
+                  justifyContent: 'space-between',
                 }}
               >
                 <div>
@@ -105,12 +105,7 @@ export const GridList3 = () => {
                 </div>
                 <div>
                   <Tooltip title="More options">
-                    <IconButton
-                      edge="end"
-                      onClick={handleMenuOpen}
-                      ref={moreRef}
-                      size="small"
-                    >
+                    <IconButton edge="end" onClick={handleMenuOpen} ref={moreRef} size="small">
                       <DotsHorizontalIcon fontSize="small" />
                     </IconButton>
                   </Tooltip>
@@ -125,21 +120,21 @@ export const GridList3 = () => {
               <Menu
                 anchorEl={moreRef.current}
                 anchorOrigin={{
-                  horizontal: "left",
-                  vertical: "top",
+                  horizontal: 'left',
+                  vertical: 'top',
                 }}
                 elevation={1}
                 onClose={handleMenuClose}
                 open={openMenu}
                 PaperProps={{
                   sx: {
-                    maxWidth: "100%",
+                    maxWidth: '100%',
                     width: 250,
                   },
                 }}
                 transformOrigin={{
-                  horizontal: "left",
-                  vertical: "top",
+                  horizontal: 'left',
+                  vertical: 'top',
                 }}
               >
                 <MenuItem divider>

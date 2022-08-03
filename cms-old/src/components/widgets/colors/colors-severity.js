@@ -1,8 +1,8 @@
-import { Box, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
+import { Box, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 
 export const ColorsSeverity = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const colors = [
     {
@@ -21,7 +21,7 @@ export const ColorsSeverity = () => {
       name: "Info",
       code: theme.palette.info.main,
     },
-  ]
+  ];
 
   return (
     <Box
@@ -67,5 +67,5 @@ export const ColorsSeverity = () => {
         ))}
       </List>
     </Box>
-  )
-}
+  );
+};

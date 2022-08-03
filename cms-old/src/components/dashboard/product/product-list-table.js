@@ -1,7 +1,7 @@
-import { Fragment, useState } from "react"
-import numeral from "numeral"
-import PropTypes from "prop-types"
-import { toast } from "react-hot-toast"
+import { Fragment, useState } from "react";
+import numeral from "numeral";
+import PropTypes from "prop-types";
+import { toast } from "react-hot-toast";
 import {
   Box,
   Button,
@@ -21,13 +21,13 @@ import {
   TableRow,
   TextField,
   Typography,
-} from "@mui/material"
-import { ChevronDown as ChevronDownIcon } from "../../../icons/chevron-down"
-import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Image as ImageIcon } from "../../../icons/image"
-import { Scrollbar } from "../../scrollbar"
-import { SeverityPill } from "../../severity-pill"
+} from "@mui/material";
+import { ChevronDown as ChevronDownIcon } from "../../../icons/chevron-down";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Image as ImageIcon } from "../../../icons/image";
+import { Scrollbar } from "../../scrollbar";
+import { SeverityPill } from "../../severity-pill";
 
 const categoryOptions = [
   {
@@ -54,28 +54,28 @@ const categoryOptions = [
     label: "Blouse",
     value: "blouse",
   },
-]
+];
 
 export const ProductListTable = props => {
-  const { onPageChange, onRowsPerPageChange, page, products, productsCount, rowsPerPage, ...other } = props
-  const [openProduct, setOpenProduct] = useState(null)
+  const { onPageChange, onRowsPerPageChange, page, products, productsCount, rowsPerPage, ...other } = props;
+  const [openProduct, setOpenProduct] = useState(null);
 
   const handleOpenProduct = productId => {
-    setOpenProduct(prevValue => (prevValue === productId ? null : productId))
-  }
+    setOpenProduct(prevValue => (prevValue === productId ? null : productId));
+  };
 
   const handleUpdateProduct = () => {
-    setOpenProduct(null)
-    toast.success("Product updated")
-  }
+    setOpenProduct(null);
+    toast.success("Product updated");
+  };
 
   const handleCancelEdit = () => {
-    setOpenProduct(null)
-  }
+    setOpenProduct(null);
+  };
 
   const handleDeleteProduct = () => {
-    toast.error("Product cannot be deleted")
-  }
+    toast.error("Product cannot be deleted");
+  };
 
   return (
     <div {...other}>
@@ -94,7 +94,7 @@ export const ProductListTable = props => {
           </TableHead>
           <TableBody>
             {products.map(product => {
-              const open = product.id === openProduct
+              const open = product.id === openProduct;
 
               return (
                 <Fragment key={product.id}>
@@ -190,7 +190,9 @@ export const ProductListTable = props => {
                     <TableCell>{numeral(product.price).format(`${product.currency}0,0.00`)}</TableCell>
                     <TableCell>{product.sku}</TableCell>
                     <TableCell>
-                      <SeverityPill color={product.status === "published" ? "success" : "info"}>{product.status}</SeverityPill>
+                      <SeverityPill color={product.status === "published" ? "success" : "info"}>
+                        {product.status}
+                      </SeverityPill>
                     </TableCell>
                     <TableCell align="right">
                       <IconButton>
@@ -238,7 +240,13 @@ export const ProductListTable = props => {
                                   </TextField>
                                 </Grid>
                                 <Grid item md={6} xs={12}>
-                                  <TextField defaultValue={product.id} disabled fullWidth label="Barcode" name="barcode" />
+                                  <TextField
+                                    defaultValue={product.id}
+                                    disabled
+                                    fullWidth
+                                    label="Barcode"
+                                    name="barcode"
+                                  />
                                 </Grid>
                               </Grid>
                             </Grid>
@@ -253,7 +261,9 @@ export const ProductListTable = props => {
                                     label="Old price"
                                     name="old-price"
                                     InputProps={{
-                                      startAdornment: <InputAdornment position="start">{product.currency}</InputAdornment>,
+                                      startAdornment: (
+                                        <InputAdornment position="start">{product.currency}</InputAdornment>
+                                      ),
                                     }}
                                     type="number"
                                   />
@@ -316,7 +326,7 @@ export const ProductListTable = props => {
                     </TableRow>
                   )}
                 </Fragment>
-              )
+              );
             })}
           </TableBody>
         </Table>
@@ -331,8 +341,8 @@ export const ProductListTable = props => {
         rowsPerPageOptions={[5, 10, 25]}
       />
     </div>
-  )
-}
+  );
+};
 
 ProductListTable.propTypes = {
   products: PropTypes.array.isRequired,
@@ -341,4 +351,4 @@ ProductListTable.propTypes = {
   onRowsPerPageChange: PropTypes.func,
   page: PropTypes.number.isRequired,
   rowsPerPage: PropTypes.number.isRequired,
-}
+};

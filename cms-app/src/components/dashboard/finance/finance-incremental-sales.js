@@ -1,4 +1,4 @@
-import numeral from "numeral";
+import numeral from 'numeral';
 import {
   Box,
   Card,
@@ -11,52 +11,52 @@ import {
   TableHead,
   TableRow,
   Typography,
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { Chart } from "../../chart";
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Chart } from '../../chart';
 
 const data = {
   series: [
     {
-      color: "#2F3EB1",
-      category: "Email",
+      color: '#2F3EB1',
+      category: 'Email',
       data: 37530,
     },
     {
-      color: "#7BC67E",
-      category: "GDN",
+      color: '#7BC67E',
+      category: 'GDN',
       data: 52717,
     },
     {
-      color: "#FFB547",
-      category: "Instagram",
+      color: '#FFB547',
+      category: 'Instagram',
       data: 62935,
     },
     {
-      color: "#9DA4DD",
-      category: "Facebook",
+      color: '#9DA4DD',
+      category: 'Facebook',
       data: 90590,
     },
     {
-      color: "#0C7CD5",
-      category: "Google Ads Search",
+      color: '#0C7CD5',
+      category: 'Google Ads Search',
       data: 13219,
     },
   ],
 };
 
-export const FinanceIncrementalSales = (props) => {
+export const FinanceIncrementalSales = props => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       stacked: false,
       toolbar: {
         show: false,
       },
     },
-    colors: data.series.map((item) => item.color),
+    colors: data.series.map(item => item.color),
     dataLabels: {
       enabled: false,
     },
@@ -82,7 +82,7 @@ export const FinanceIncrementalSales = (props) => {
     plotOptions: {
       bar: {
         horizontal: true,
-        barHeight: "45",
+        barHeight: '45',
         distributed: true,
       },
     },
@@ -98,7 +98,7 @@ export const FinanceIncrementalSales = (props) => {
         color: theme.palette.divider,
         show: true,
       },
-      categories: data.series.map((item) => item.category),
+      categories: data.series.map(item => item.category),
     },
     yaxis: {
       labels: {
@@ -109,8 +109,8 @@ export const FinanceIncrementalSales = (props) => {
 
   const chartSeries = [
     {
-      data: data.series.map((item) => item.data),
-      name: "Sales",
+      data: data.series.map(item => item.data),
+      name: 'Sales',
     },
   ];
 
@@ -119,12 +119,7 @@ export const FinanceIncrementalSales = (props) => {
       <CardHeader title="Incremental Sales" />
       <Divider />
       <CardContent>
-        <Chart
-          height={350}
-          options={chartOptions}
-          series={chartSeries}
-          type="bar"
-        />
+        <Chart height={350} options={chartOptions} series={chartSeries} type="bar" />
       </CardContent>
       <Table>
         <TableHead>
@@ -134,21 +129,21 @@ export const FinanceIncrementalSales = (props) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.series.map((item) => (
+          {data.series.map(item => (
             <TableRow key={item.data}>
               <TableCell>
                 <Box
                   key={item.category}
                   sx={{
-                    alignItems: "center",
-                    display: "flex",
+                    alignItems: 'center',
+                    display: 'flex',
                   }}
                 >
                   <Box
                     sx={{
                       border: 3,
                       borderColor: item.color,
-                      borderRadius: "50%",
+                      borderRadius: '50%',
                       height: 16,
                       mr: 1,
                       width: 16,
@@ -159,7 +154,7 @@ export const FinanceIncrementalSales = (props) => {
               </TableCell>
               <TableCell align="right">
                 <Typography color="textSecondary" variant="body2">
-                  {numeral(item.data).format("$0,0.00")}
+                  {numeral(item.data).format('$0,0.00')}
                 </Typography>
               </TableCell>
             </TableRow>

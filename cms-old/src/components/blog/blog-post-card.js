@@ -1,11 +1,11 @@
-import NextLink from "next/link"
-import PropTypes from "prop-types"
-import { format } from "date-fns"
-import { Avatar, Box, Card, CardContent, CardMedia, Chip, Link, Typography } from "@mui/material"
-import { getInitials } from "../../utils/get-initials"
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import { Avatar, Box, Card, CardContent, CardMedia, Chip, Link, Typography } from "@mui/material";
+import { getInitials } from "../../utils/get-initials";
 
 export const BlogPostCard = props => {
-  const { authorAvatar, authorName, category, cover, publishedAt, readTime, shortDescription, title, ...other } = props
+  const { authorAvatar, authorName, category, cover, publishedAt, readTime, shortDescription, title, ...other } = props;
 
   return (
     <Card
@@ -69,8 +69,8 @@ export const BlogPostCard = props => {
         </Box>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
 BlogPostCard.propTypes = {
   authorAvatar: PropTypes.string.isRequired,
@@ -81,4 +81,4 @@ BlogPostCard.propTypes = {
   readTime: PropTypes.string.isRequired,
   shortDescription: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-}
+};

@@ -1,6 +1,6 @@
-import { deepCopy } from "../utils/deep-copy"
+import { deepCopy } from "../utils/deep-copy";
 
-const now = new Date()
+const now = new Date();
 
 const labels = [
   {
@@ -81,7 +81,7 @@ const labels = [
     type: "custom",
     unreadCount: 0,
   },
-]
+];
 
 const emails = [
   {
@@ -216,11 +216,11 @@ My market leading client has another fantastic opportunity for an experienced So
       },
     ],
   },
-]
+];
 
 class MailApi {
   getLabels() {
-    return Promise.resolve(deepCopy(labels))
+    return Promise.resolve(deepCopy(labels));
   }
 
   getEmails({ label }) {
@@ -228,67 +228,67 @@ class MailApi {
       try {
         // Initially we make a copy of all emails.
         // On a real server this will be different since there will be a real DB query.
-        let filteredEmails = []
+        let filteredEmails = [];
 
         // Get all user custom labels
         const customLabels = labels.reduce((acc, label) => {
           if (label.type === "custom") {
-            acc.push(label.id)
+            acc.push(label.id);
           }
 
-          return acc
-        }, [])
+          return acc;
+        }, []);
 
         if (label && customLabels.includes(label)) {
-          filteredEmails = emails.filter(email => email.labelIds.includes(label))
+          filteredEmails = emails.filter(email => email.labelIds.includes(label));
         } else {
           switch (label) {
             case undefined:
             case "inbox":
-              filteredEmails = emails.filter(email => email.folder === "inbox")
-              break
+              filteredEmails = emails.filter(email => email.folder === "inbox");
+              break;
             case "all":
-              filteredEmails = [...emails]
-              break
+              filteredEmails = [...emails];
+              break;
             case "sent":
             case "trash":
-              filteredEmails = emails.filter(email => email.folder === label)
-              break
+              filteredEmails = emails.filter(email => email.folder === label);
+              break;
             case "starred":
-              filteredEmails = emails.filter(email => email.isStarred)
-              break
+              filteredEmails = emails.filter(email => email.isStarred);
+              break;
             case "important":
-              filteredEmails = emails.filter(email => email.isImportant)
-              break
+              filteredEmails = emails.filter(email => email.isImportant);
+              break;
           }
         }
 
-        resolve(deepCopy(filteredEmails))
+        resolve(deepCopy(filteredEmails));
       } catch (err) {
-        console.error("[Mail Api]: ", err)
-        reject(new Error("Internal server error"))
+        console.error("[Mail Api]: ", err);
+        reject(new Error("Internal server error"));
       }
-    })
+    });
   }
 
   getEmail(emailId) {
     return new Promise((resolve, reject) => {
       try {
         // Find the mail
-        const email = emails.find(_mail => _mail.id === emailId)
+        const email = emails.find(_mail => _mail.id === emailId);
 
         if (!email) {
-          reject(new Error("Email not found"))
-          return
+          reject(new Error("Email not found"));
+          return;
         }
 
-        resolve(deepCopy(email))
+        resolve(deepCopy(email));
       } catch (err) {
-        console.error("[Mail Api]: ", err)
-        reject(new Error("Internal server error"))
+        console.error("[Mail Api]: ", err);
+        reject(new Error("Internal server error"));
       }
-    })
+    });
   }
 }
 
-export const mailApi = new MailApi()
+export const mailApi = new MailApi();

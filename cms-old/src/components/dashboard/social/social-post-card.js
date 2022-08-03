@@ -1,30 +1,52 @@
-import { useState } from "react"
-import NextLink from "next/link"
-import PropTypes from "prop-types"
-import { formatDistanceToNowStrict } from "date-fns"
-import { Avatar, Box, Card, CardActionArea, CardHeader, CardMedia, Divider, IconButton, Link, Tooltip, Typography } from "@mui/material"
-import FavoriteIcon from "@mui/icons-material/Favorite"
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder"
-import { Clock as ClockIcon } from "../../../icons/clock"
-import { Share as ShareIcon } from "../../../icons/share"
-import { SocialComment } from "./social-comment"
-import { SocialCommentAdd } from "./social-comment-add"
+import { useState } from "react";
+import NextLink from "next/link";
+import PropTypes from "prop-types";
+import { formatDistanceToNowStrict } from "date-fns";
+import {
+  Avatar,
+  Box,
+  Card,
+  CardActionArea,
+  CardHeader,
+  CardMedia,
+  Divider,
+  IconButton,
+  Link,
+  Tooltip,
+  Typography,
+} from "@mui/material";
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { Clock as ClockIcon } from "../../../icons/clock";
+import { Share as ShareIcon } from "../../../icons/share";
+import { SocialComment } from "./social-comment";
+import { SocialCommentAdd } from "./social-comment-add";
 
 export const SocialPostCard = props => {
-  const { authorAvatar, authorName, comments, createdAt, isLiked: isLikedProp, likes: likesProp, media, message, ...other } = props
-  const [expandMedia, setExpandMedia] = useState(false)
-  const [isLiked, setIsLiked] = useState(isLikedProp)
-  const [likes, setLikes] = useState(likesProp)
+  const {
+    authorAvatar,
+    authorName,
+    comments,
+    createdAt,
+    isLiked: isLikedProp,
+    likes: likesProp,
+    media,
+    message,
+    ...other
+  } = props;
+  const [expandMedia, setExpandMedia] = useState(false);
+  const [isLiked, setIsLiked] = useState(isLikedProp);
+  const [likes, setLikes] = useState(likesProp);
 
   const handleLike = () => {
-    setIsLiked(true)
-    setLikes(prevLikes => prevLikes + 1)
-  }
+    setIsLiked(true);
+    setLikes(prevLikes => prevLikes + 1);
+  };
 
   const handleUnlike = () => {
-    setIsLiked(false)
-    setLikes(prevLikes => prevLikes - 1)
-  }
+    setIsLiked(false);
+    setLikes(prevLikes => prevLikes - 1);
+  };
 
   return (
     <Card {...other}>
@@ -129,8 +151,8 @@ export const SocialPostCard = props => {
         <SocialCommentAdd />
       </Box>
     </Card>
-  )
-}
+  );
+};
 
 SocialPostCard.propTypes = {
   authorAvatar: PropTypes.string.isRequired,
@@ -141,4 +163,4 @@ SocialPostCard.propTypes = {
   likes: PropTypes.number.isRequired,
   media: PropTypes.string,
   message: PropTypes.string.isRequired,
-}
+};

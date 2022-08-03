@@ -1,48 +1,48 @@
-import { useCallback, useState, useEffect } from "react"
-import Head from "next/head"
-import NextLink from "next/link"
-import { Avatar, Box, Button, Card, CardContent, Container, Grid, IconButton, Link, Typography } from "@mui/material"
-import { jobApi } from "../../../__fake-api__/job-api"
-import { AuthGuard } from "../../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../../components/dashboard/dashboard-layout"
-import { JobsBrowseFilter } from "../../../components/dashboard/jobs/jobs-browse-filter"
-import { CompanyJobs } from "../../../components/dashboard/jobs/company-jobs"
-import { useMounted } from "../../../hooks/use-mounted"
-import { BadgeCheckOutlined as BadgeCheckOutlinedIcon } from "../../../icons/badge-check-outlined"
-import { ChevronLeft as ChevronLeftIcon } from "../../../icons/chevron-left"
-import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right"
-import { Star as StarIcon } from "../../../icons/star"
-import { Users as UsersIcon } from "../../../icons/users"
-import { gtm } from "../../../lib/gtm"
-import { getInitials } from "../../../utils/get-initials"
+import { useCallback, useState, useEffect } from "react";
+import Head from "next/head";
+import NextLink from "next/link";
+import { Avatar, Box, Button, Card, CardContent, Container, Grid, IconButton, Link, Typography } from "@mui/material";
+import { jobApi } from "../../../__fake-api__/job-api";
+import { AuthGuard } from "../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../components/dashboard/dashboard-layout";
+import { JobsBrowseFilter } from "../../../components/dashboard/jobs/jobs-browse-filter";
+import { CompanyJobs } from "../../../components/dashboard/jobs/company-jobs";
+import { useMounted } from "../../../hooks/use-mounted";
+import { BadgeCheckOutlined as BadgeCheckOutlinedIcon } from "../../../icons/badge-check-outlined";
+import { ChevronLeft as ChevronLeftIcon } from "../../../icons/chevron-left";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
+import { Star as StarIcon } from "../../../icons/star";
+import { Users as UsersIcon } from "../../../icons/users";
+import { gtm } from "../../../lib/gtm";
+import { getInitials } from "../../../utils/get-initials";
 
 const JobBrowse = () => {
-  const isMounted = useMounted()
-  const [companies, setCompanies] = useState([])
+  const isMounted = useMounted();
+  const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const getCompanies = useCallback(async () => {
     try {
-      const data = await jobApi.getCompanies()
+      const data = await jobApi.getCompanies();
 
       if (isMounted()) {
-        setCompanies(data)
+        setCompanies(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(
     () => {
-      getCompanies()
+      getCompanies();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   return (
     <>
@@ -209,13 +209,13 @@ const JobBrowse = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 JobBrowse.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default JobBrowse
+export default JobBrowse;

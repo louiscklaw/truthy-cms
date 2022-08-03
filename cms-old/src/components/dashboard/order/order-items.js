@@ -1,10 +1,22 @@
-import PropTypes from "prop-types"
-import numeral from "numeral"
-import { Box, Card, CardHeader, Divider, Table, TableBody, TableCell, TableHead, TablePagination, TableRow, Typography } from "@mui/material"
-import { Scrollbar } from "../../scrollbar"
+import PropTypes from "prop-types";
+import numeral from "numeral";
+import {
+  Box,
+  Card,
+  CardHeader,
+  Divider,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TablePagination,
+  TableRow,
+  Typography,
+} from "@mui/material";
+import { Scrollbar } from "../../scrollbar";
 
 export const OrderItems = props => {
-  const { orderItems, ...other } = props
+  const { orderItems, ...other } = props;
 
   return (
     <Card {...other}>
@@ -46,9 +58,9 @@ export const OrderItems = props => {
         rowsPerPageOptions={[5, 10, 25]}
       />
     </Card>
-  )
-}
+  );
+};
 
 OrderItems.propTypes = {
   orderItems: PropTypes.array.isRequired,
-}
+};

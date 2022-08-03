@@ -1,18 +1,18 @@
-import { useEffect } from "react"
-import Head from "next/head"
-import { Box, Container } from "@mui/material"
-import { BrowseLayout } from "../../components/browse-layout"
-import { MainLayout } from "../../components/main-layout"
-import { WidgetPreviewer } from "../../components/widget-previewer"
-import { Buttons1 } from "../../components/widgets/buttons/buttons-1"
-import { Buttons2 } from "../../components/widgets/buttons/buttons-2"
-import { Buttons3 } from "../../components/widgets/buttons/buttons-3"
-import { gtm } from "../../lib/gtm"
+import { useEffect } from "react";
+import Head from "next/head";
+import { Box, Container } from "@mui/material";
+import { BrowseLayout } from "../../components/browse-layout";
+import { MainLayout } from "../../components/main-layout";
+import { WidgetPreviewer } from "../../components/widget-previewer";
+import { Buttons1 } from "../../components/widgets/buttons/buttons-1";
+import { Buttons2 } from "../../components/widgets/buttons/buttons-2";
+import { Buttons3 } from "../../components/widgets/buttons/buttons-3";
+import { gtm } from "../../lib/gtm";
 
 const BrowseButtons = () => {
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   return (
     <>
@@ -34,13 +34,13 @@ const BrowseButtons = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 BrowseButtons.getLayout = page => (
   <MainLayout>
     <BrowseLayout>{page}</BrowseLayout>
   </MainLayout>
-)
+);
 
-export default BrowseButtons
+export default BrowseButtons;

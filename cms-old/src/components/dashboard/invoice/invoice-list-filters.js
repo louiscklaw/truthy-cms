@@ -1,5 +1,5 @@
-import { useRef } from "react"
-import PropTypes from "prop-types"
+import { useRef } from "react";
+import PropTypes from "prop-types";
 import {
   Box,
   Checkbox,
@@ -13,14 +13,21 @@ import {
   TextField,
   Typography,
   useMediaQuery,
-} from "@mui/material"
-import { styled } from "@mui/material/styles"
-import { DatePicker } from "@mui/lab"
-import { Search as SearchIcon } from "../../../icons/search"
-import { X } from "../../../icons/x"
-import { Scrollbar } from "../../scrollbar"
+} from "@mui/material";
+import { styled } from "@mui/material/styles";
+import { DatePicker } from "@mui/lab";
+import { Search as SearchIcon } from "../../../icons/search";
+import { X } from "../../../icons/x";
+import { Scrollbar } from "../../scrollbar";
 
-const customers = ["Blind Spots Inc.", "Dispatcher Inc.", "ACME SRL", "Novelty I.S", "Beauty Clinic SRL", "Division Inc."]
+const customers = [
+  "Blind Spots Inc.",
+  "Dispatcher Inc.",
+  "ACME SRL",
+  "Novelty I.S",
+  "Beauty Clinic SRL",
+  "Division Inc.",
+];
 
 const FiltersDrawerDesktop = styled(Drawer)({
   flexShrink: 0,
@@ -29,7 +36,7 @@ const FiltersDrawerDesktop = styled(Drawer)({
     position: "relative",
     width: 380,
   },
-})
+});
 
 const FiltersDrawerMobile = styled(Drawer)({
   maxWidth: "100%",
@@ -40,69 +47,69 @@ const FiltersDrawerMobile = styled(Drawer)({
     top: 64,
     width: 380,
   },
-})
+});
 
 export const InvoiceListFilters = props => {
-  const { containerRef, filters = {}, onChange, onClose, open, ...other } = props
-  const queryRef = useRef(null)
-  const lgUp = useMediaQuery(theme => theme.breakpoints.up("lg"))
+  const { containerRef, filters = {}, onChange, onClose, open, ...other } = props;
+  const queryRef = useRef(null);
+  const lgUp = useMediaQuery(theme => theme.breakpoints.up("lg"));
 
   const handleQueryChange = event => {
-    event.preventDefault()
+    event.preventDefault();
     onChange?.({
       ...filters,
       query: queryRef.current?.value,
-    })
-  }
+    });
+  };
 
   const handleStartDateChange = date => {
     const newFilters = {
       ...filters,
       startDate: date,
-    }
+    };
 
     // Prevent end date to be before start date
     if (newFilters.endDate && date && date > newFilters.endDate) {
-      newFilters.endDate = date
+      newFilters.endDate = date;
     }
 
-    onChange?.(newFilters)
-  }
+    onChange?.(newFilters);
+  };
 
   const handleEndDateChange = date => {
     const newFilters = {
       ...filters,
       endDate: date,
-    }
+    };
 
     // Prevent start date to be after end date
     if (newFilters.startDate && date && date < newFilters.startDate) {
-      newFilters.startDate = date
+      newFilters.startDate = date;
     }
 
-    onChange?.(newFilters)
-  }
+    onChange?.(newFilters);
+  };
 
   const handleCustomerChange = event => {
     if (event.target.checked) {
       onChange?.({
         ...filters,
         customer: [...(filters.customer || []), event.target.value],
-      })
+      });
     } else {
       onChange?.({
         ...filters,
         customer: (filters.customer || []).filter(customer => customer !== event.target.value),
-      })
+      });
     }
-  }
+  };
 
   const handleStatusChange = event => {
     onChange?.({
       ...filters,
       status: event.target.checked ? "paid" : undefined,
-    })
-  }
+    });
+  };
 
   const content = (
     <Box
@@ -193,16 +200,26 @@ export const InvoiceListFilters = props => {
           </FormGroup>
         </Scrollbar>
       </Box>
-      <FormControlLabel control={<Switch checked={filters.status === "paid"} onChange={handleStatusChange} />} label="Show paid only" sx={{ mt: 2 }} />
+      <FormControlLabel
+        control={<Switch checked={filters.status === "paid"} onChange={handleStatusChange} />}
+        label="Show paid only"
+        sx={{ mt: 2 }}
+      />
     </Box>
-  )
+  );
 
   if (lgUp) {
     return (
-      <FiltersDrawerDesktop anchor="left" open={open} SlideProps={{ container: containerRef?.current }} variant="persistent" {...other}>
+      <FiltersDrawerDesktop
+        anchor="left"
+        open={open}
+        SlideProps={{ container: containerRef?.current }}
+        variant="persistent"
+        {...other}
+      >
         {content}
       </FiltersDrawerDesktop>
-    )
+    );
   }
 
   return (
@@ -217,8 +234,8 @@ export const InvoiceListFilters = props => {
     >
       {content}
     </FiltersDrawerMobile>
-  )
-}
+  );
+};
 
 InvoiceListFilters.propTypes = {
   containerRef: PropTypes.any,
@@ -226,4 +243,4 @@ InvoiceListFilters.propTypes = {
   onChange: PropTypes.func,
   onClose: PropTypes.func,
   open: PropTypes.bool,
-}
+};

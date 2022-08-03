@@ -1,10 +1,10 @@
-import { useState } from "react"
-import { Avatar, Box, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material"
-import { alpha, useTheme } from "@mui/material/styles"
-import { Cog as CogIcon } from "../../icons/cog"
-import { Lock as LockIcon } from "../../icons/lock"
-import { MinusOutlined as MinusOutlinedIcon } from "../../icons/minus-outlined"
-import { Template as TemplateIcon } from "../../icons/template"
+import { useState } from "react";
+import { Avatar, Box, Container, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
+import { alpha, useTheme } from "@mui/material/styles";
+import { Cog as CogIcon } from "../../icons/cog";
+import { Lock as LockIcon } from "../../icons/lock";
+import { MinusOutlined as MinusOutlinedIcon } from "../../icons/minus-outlined";
+import { Template as TemplateIcon } from "../../icons/template";
 
 const getFeatures = theme => [
   {
@@ -16,7 +16,16 @@ const getFeatures = theme => [
   },
   {
     icon: CogIcon,
-    items: ["Dashboard", "Checkout", "User Management", "Product Management", "Invoice Generator", "Charts API", "Landing/Home", "And many more"],
+    items: [
+      "Dashboard",
+      "Checkout",
+      "User Management",
+      "Product Management",
+      "Invoice Generator",
+      "Charts API",
+      "Landing/Home",
+      "And many more",
+    ],
     subheader: "Get started with ready-to-deploy templates.",
     image: `/static/home/flows_${theme}.png`,
     title: "Management Pages",
@@ -28,17 +37,17 @@ const getFeatures = theme => [
     subheader: "We also have included all the necessary layouts for a startup.",
     title: "Landing Pages",
   },
-]
+];
 
 export const HomeFeatures = props => {
-  const theme = useTheme()
-  const [selectedFeature, setSelectedFeature] = useState(0)
+  const theme = useTheme();
+  const [selectedFeature, setSelectedFeature] = useState(0);
 
-  const features = getFeatures(theme.palette.mode)
+  const features = getFeatures(theme.palette.mode);
 
   const handleChangeFeature = index => {
-    setSelectedFeature(index)
-  }
+    setSelectedFeature(index);
+  };
 
   return (
     <Box
@@ -53,12 +62,13 @@ export const HomeFeatures = props => {
           <Grid item md={6} xs={12}>
             <Typography variant="h3">Modern technology stack</Typography>
             <Typography color="textSecondary" sx={{ py: 2 }} variant="subtitle1">
-              Comes packed with 21 custom templates and many individual components built to meet almost any type of admin or customer application requirements.
+              Comes packed with 21 custom templates and many individual components built to meet almost any type of
+              admin or customer application requirements.
             </Typography>
             {features.map((feature, index) => {
-              const { icon: Icon, items, subheader, title } = feature
+              const { icon: Icon, items, subheader, title } = feature;
 
-              const selected = index === selectedFeature
+              const selected = index === selectedFeature;
 
               return (
                 <Box
@@ -123,7 +133,7 @@ export const HomeFeatures = props => {
                     )}
                   </div>
                 </Box>
-              )
+              );
             })}
           </Grid>
           <Grid item md={6} xs={12}>
@@ -145,5 +155,5 @@ export const HomeFeatures = props => {
         </Grid>
       </Container>
     </Box>
-  )
-}
+  );
+};

@@ -1,13 +1,13 @@
-import { MenuItem, Popover } from "@mui/material"
+import { MenuItem, Popover } from "@mui/material";
 
-const organizations = ["Acme Inc", "Division Inc"]
+const organizations = ["Acme Inc", "Division Inc"];
 
 export const OrganizationPopover = props => {
-  const { anchorEl, onClose, open, ...other } = props
+  const { anchorEl, onClose, open, ...other } = props;
 
   const handleChange = organization => {
-    onClose?.()
-  }
+    onClose?.();
+  };
 
   return (
     <Popover
@@ -29,5 +29,5 @@ export const OrganizationPopover = props => {
         </MenuItem>
       ))}
     </Popover>
-  )
-}
+  );
+};

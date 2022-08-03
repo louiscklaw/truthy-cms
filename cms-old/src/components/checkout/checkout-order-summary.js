@@ -1,5 +1,5 @@
-import PropTypes from "prop-types"
-import numeral from "numeral"
+import PropTypes from "prop-types";
+import numeral from "numeral";
 import {
   Box,
   Button,
@@ -15,10 +15,10 @@ import {
   Select,
   TextField,
   Typography,
-} from "@mui/material"
+} from "@mui/material";
 
 export const CheckoutOrderSummary = props => {
-  const { onQuantityChange, products, shippingTax, subtotal, total, ...other } = props
+  const { onQuantityChange, products, shippingTax, subtotal, total, ...other } = props;
 
   return (
     <Card variant="outlined" sx={{ p: 3 }} {...other}>
@@ -109,8 +109,8 @@ export const CheckoutOrderSummary = props => {
         <Typography variant="subtitle2">${numeral(total).format("00.00")}</Typography>
       </Box>
     </Card>
-  )
-}
+  );
+};
 
 CheckoutOrderSummary.propTypes = {
   onQuantityChange: PropTypes.func,
@@ -118,11 +118,11 @@ CheckoutOrderSummary.propTypes = {
   shippingTax: PropTypes.number.isRequired,
   subtotal: PropTypes.number.isRequired,
   total: PropTypes.number.isRequired,
-}
+};
 
 CheckoutOrderSummary.defaultProps = {
   products: [],
   shippingTax: 0,
   subtotal: 0,
   total: 0,
-}
+};

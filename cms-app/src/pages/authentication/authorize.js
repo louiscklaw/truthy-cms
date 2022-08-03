@@ -1,10 +1,10 @@
 // This page is only for Auth0. If you use some other Auth Provider, you can (should) delete this.
 // The role of this page is to handle the "authorize" callback.
 
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { useAuth } from "../../hooks/use-auth";
-import { useMounted } from "../../hooks/use-mounted";
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { useAuth } from '../../hooks/use-auth';
+import { useMounted } from '../../hooks/use-mounted';
 
 const Authorize = () => {
   const isMounted = useMounted();
@@ -14,19 +14,19 @@ const Authorize = () => {
   useEffect(() => {
     const query = window.location.search;
 
-    if (query.includes("code=") && query.includes("state=")) {
+    if (query.includes('code=') && query.includes('state=')) {
       handleRedirectCallback()
-        .then((appState) => {
+        .then(appState => {
           if (isMounted()) {
-            const returnUrl = appState?.returnUrl || "/dashboard";
+            const returnUrl = appState?.returnUrl || '/dashboard';
             router.push(returnUrl).catch(console.error);
           }
         })
-        .catch((err) => {
+        .catch(err => {
           console.error(err);
 
           if (isMounted()) {
-            router.push("/authentication/login").catch(console.error);
+            router.push('/authentication/login').catch(console.error);
           }
         });
     }

@@ -1,66 +1,66 @@
-import { useEffect, useState } from "react"
-import PropTypes from "prop-types"
-import { Box, Checkbox, IconButton, InputAdornment, TextField, Tooltip, Typography } from "@mui/material"
-import { ChevronLeft as ChevronLeftIcon } from "../../../icons/chevron-left"
-import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { MenuAlt4 as MenuAlt4Icon } from "../../../icons/menu-alt-4"
-import { Refresh as RefreshIcon } from "../../../icons/refresh"
-import { Search as SearchIcon } from "../../../icons/search"
-import { getEmails } from "../../../slices/mail"
-import { useDispatch, useSelector } from "../../../store"
-import { MailItem } from "./mail-item"
+import { useEffect, useState } from "react";
+import PropTypes from "prop-types";
+import { Box, Checkbox, IconButton, InputAdornment, TextField, Tooltip, Typography } from "@mui/material";
+import { ChevronLeft as ChevronLeftIcon } from "../../../icons/chevron-left";
+import { ChevronRight as ChevronRightIcon } from "../../../icons/chevron-right";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { MenuAlt4 as MenuAlt4Icon } from "../../../icons/menu-alt-4";
+import { Refresh as RefreshIcon } from "../../../icons/refresh";
+import { Search as SearchIcon } from "../../../icons/search";
+import { getEmails } from "../../../slices/mail";
+import { useDispatch, useSelector } from "../../../store";
+import { MailItem } from "./mail-item";
 
 export const MailList = props => {
-  const { label, onToggleSidebar, ...other } = props
-  const dispatch = useDispatch()
-  const { emails } = useSelector(state => state.mail)
-  const [selectedEmails, setSelectedEmails] = useState([])
+  const { label, onToggleSidebar, ...other } = props;
+  const dispatch = useDispatch();
+  const { emails } = useSelector(state => state.mail);
+  const [selectedEmails, setSelectedEmails] = useState([]);
 
   useEffect(
     () => {
-      dispatch(getEmails({ label }))
+      dispatch(getEmails({ label }));
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [label],
-  )
+  );
 
   const handleSelectAllEmails = () => {
-    setSelectedEmails(emails.allIds.map(emailId => emailId))
-  }
+    setSelectedEmails(emails.allIds.map(emailId => emailId));
+  };
 
   const handleDeselectAllEmails = () => {
-    setSelectedEmails([])
-  }
+    setSelectedEmails([]);
+  };
 
   const handleSelectOneEmail = emailId => {
     setSelectedEmails(prevSelectedMails => {
       if (!prevSelectedMails.includes(emailId)) {
-        return [...prevSelectedMails, emailId]
+        return [...prevSelectedMails, emailId];
       }
 
-      return prevSelectedMails
-    })
-  }
+      return prevSelectedMails;
+    });
+  };
 
   const handleDeselectOneEmail = emailId => {
-    setSelectedEmails(prevSelectedMails => prevSelectedMails.filter(id => id !== emailId))
-  }
+    setSelectedEmails(prevSelectedMails => prevSelectedMails.filter(id => id !== emailId));
+  };
 
   const handleCheckboxChange = event => {
-    const { checked } = event.target
+    const { checked } = event.target;
 
     if (checked) {
-      handleSelectAllEmails()
+      handleSelectAllEmails();
     }
 
     if (!checked) {
-      handleDeselectAllEmails()
+      handleDeselectAllEmails();
     }
-  }
+  };
 
-  const selectedAllMails = selectedEmails.length === emails.allIds.length
-  const selectedSomeMails = selectedEmails.length > 0 && selectedEmails.length < emails.allIds.length
+  const selectedAllMails = selectedEmails.length === emails.allIds.length;
+  const selectedSomeMails = selectedEmails.length > 0 && selectedEmails.length < emails.allIds.length;
 
   return (
     <Box
@@ -175,7 +175,11 @@ export const MailList = props => {
             {emails.allIds.map(emailId => (
               <MailItem
                 email={emails.byId[emailId]}
-                href={label && label !== "inbox" ? `/dashboard/mail?emailId=${emailId}&label=${label}` : `/dashboard/mail?emailId=${emailId}`}
+                href={
+                  label && label !== "inbox"
+                    ? `/dashboard/mail?emailId=${emailId}&label=${label}`
+                    : `/dashboard/mail?emailId=${emailId}`
+                }
                 key={emailId}
                 onDeselect={() => handleDeselectOneEmail(emailId)}
                 onSelect={() => handleSelectOneEmail(emailId)}
@@ -186,10 +190,10 @@ export const MailList = props => {
         </>
       )}
     </Box>
-  )
-}
+  );
+};
 
 MailList.propTypes = {
   label: PropTypes.string,
   onToggleSidebar: PropTypes.func,
-}
+};

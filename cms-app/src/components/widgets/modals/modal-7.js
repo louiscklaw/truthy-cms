@@ -1,18 +1,10 @@
-import {
-  Box,
-  Button,
-  FormControlLabel,
-  Paper,
-  Switch,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, FormControlLabel, Paper, Switch, TextField, Typography } from '@mui/material';
 
 export const Modal7 = () => (
   <Box
     sx={{
-      backgroundColor: "background.default",
-      minHeight: "100%",
+      backgroundColor: 'background.default',
+      minHeight: '100%',
       p: 3,
     }}
   >
@@ -20,19 +12,14 @@ export const Modal7 = () => (
       elevation={12}
       sx={{
         maxWidth: 320,
-        mx: "auto",
+        mx: 'auto',
         p: 2,
       }}
     >
       <Typography variant="h6">Settings</Typography>
       <Box sx={{ mt: 3 }}>
-        <TextField
-          fullWidth
-          label="Theme"
-          select
-          SelectProps={{ native: true }}
-        >
-          {["Light", "Dark", "Nature"].map((theme) => (
+        <TextField fullWidth label="Theme" select SelectProps={{ native: true }}>
+          {['Light', 'Dark', 'Nature'].map(theme => (
             <option key={theme} value={theme}>
               {theme}
             </option>
@@ -53,10 +40,7 @@ export const Modal7 = () => (
           px: 1.5,
         }}
       >
-        <FormControlLabel
-          control={<Switch edge="start" />}
-          label="Responsive font sizes"
-        />
+        <FormControlLabel control={<Switch edge="start" />} label="Responsive font sizes" />
       </Box>
       <Box
         sx={{
@@ -72,10 +56,7 @@ export const Modal7 = () => (
           px: 1.5,
         }}
       >
-        <FormControlLabel
-          control={<Switch color="primary" edge="start" />}
-          label="Rounded Corners"
-        />
+        <FormControlLabel control={<Switch color="primary" edge="start" />} label="Rounded Corners" />
       </Box>
       <Box sx={{ mt: 3 }}>
         <Button fullWidth variant="contained">

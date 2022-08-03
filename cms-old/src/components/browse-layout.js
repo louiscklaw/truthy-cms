@@ -1,8 +1,8 @@
-import NextLink from "next/link"
-import { useRouter } from "next/router"
-import PropTypes from "prop-types"
-import { Box, Button, Container, Divider, Grid, Typography } from "@mui/material"
-import { ArrowLeft as ArrowLeftIcon } from "../icons/arrow-left"
+import NextLink from "next/link";
+import { useRouter } from "next/router";
+import PropTypes from "prop-types";
+import { Box, Button, Container, Divider, Grid, Typography } from "@mui/material";
+import { ArrowLeft as ArrowLeftIcon } from "../icons/arrow-left";
 
 const getTitle = pathname =>
   pathname
@@ -10,13 +10,13 @@ const getTitle = pathname =>
     .pop()
     .split("-")
     .map(word => word[0].toUpperCase() + word.slice(1))
-    .join(" ")
+    .join(" ");
 
 export const BrowseLayout = props => {
-  const { children } = props
-  const router = useRouter()
-  const isBase = router.pathname === "/browse"
-  const title = isBase ? "Browse components" : getTitle(router.pathname)
+  const { children } = props;
+  const router = useRouter();
+  const isBase = router.pathname === "/browse";
+  const title = isBase ? "Browse components" : getTitle(router.pathname);
 
   return (
     <>
@@ -63,9 +63,9 @@ export const BrowseLayout = props => {
       <Divider />
       {children}
     </>
-  )
-}
+  );
+};
 
 BrowseLayout.propTypes = {
   children: PropTypes.node,
-}
+};

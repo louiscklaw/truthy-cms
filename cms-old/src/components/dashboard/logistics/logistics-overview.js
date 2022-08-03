@@ -1,8 +1,8 @@
-import { Avatar, Box, Card, Grid, Typography } from "@mui/material"
-import { alpha } from "@mui/material/styles"
-import ErrorIcon from "@mui/icons-material/Error"
-import TimelapseIcon from "@mui/icons-material/Timelapse"
-import WarningIcon from "@mui/icons-material/Warning"
+import { Avatar, Box, Card, Grid, Typography } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import ErrorIcon from "@mui/icons-material/Error";
+import TimelapseIcon from "@mui/icons-material/Timelapse";
+import WarningIcon from "@mui/icons-material/Warning";
 
 export const LogisticsOverview = props => (
   <Grid container spacing={4} {...props}>
@@ -133,4 +133,4 @@ export const LogisticsOverview = props => (
       </Card>
     </Grid>
   </Grid>
-)
+);

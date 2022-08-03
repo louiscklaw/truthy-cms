@@ -1,9 +1,18 @@
-import PropTypes from "prop-types"
-import { formatDistanceToNow } from "date-fns"
-import { Avatar, Box, Typography } from "@mui/material"
+import PropTypes from "prop-types";
+import { formatDistanceToNow } from "date-fns";
+import { Avatar, Box, Typography } from "@mui/material";
 
 export const BlogComment = props => {
-  const { authorAvatar, authorName, authorRole, content, createdAt, isLiked: isLikedProp, likes: likesProp, ...other } = props
+  const {
+    authorAvatar,
+    authorName,
+    authorRole,
+    content,
+    createdAt,
+    isLiked: isLikedProp,
+    likes: likesProp,
+    ...other
+  } = props;
 
   return (
     <Box
@@ -40,8 +49,8 @@ export const BlogComment = props => {
         </Typography>
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 BlogComment.propTypes = {
   authorAvatar: PropTypes.string.isRequired,
@@ -51,4 +60,4 @@ BlogComment.propTypes = {
   createdAt: PropTypes.number.isRequired,
   isLiked: PropTypes.bool.isRequired,
   likes: PropTypes.number.isRequired,
-}
+};

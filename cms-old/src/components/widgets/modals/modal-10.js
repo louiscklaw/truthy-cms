@@ -1,6 +1,6 @@
-import { Avatar, Box, Button, Container, Paper, Typography } from "@mui/material"
-import { alpha } from "@mui/material/styles"
-import { Check as CheckIcon } from "../../../icons/check"
+import { Avatar, Box, Button, Container, Paper, Typography } from "@mui/material";
+import { alpha } from "@mui/material/styles";
+import { Check as CheckIcon } from "../../../icons/check";
 
 export const Modal10 = () => (
   <Box
@@ -32,8 +32,9 @@ export const Modal10 = () => (
             Payment successful
           </Typography>
           <Typography align="center" color="textSecondary" sx={{ mt: 1 }} variant="body2">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident facere eum obcaecati pariatur magnam eius fugit nostrum sint enim, amet rem
-            aspernatur distinctio tempora repudiandae, maiores quod. Ad, expedita assumenda!
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Provident facere eum obcaecati pariatur magnam
+            eius fugit nostrum sint enim, amet rem aspernatur distinctio tempora repudiandae, maiores quod. Ad, expedita
+            assumenda!
           </Typography>
         </Box>
         <Box
@@ -52,4 +53,4 @@ export const Modal10 = () => (
       </Paper>
     </Container>
   </Box>
-)
+);

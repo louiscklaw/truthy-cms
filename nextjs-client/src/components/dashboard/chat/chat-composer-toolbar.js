@@ -13,22 +13,19 @@ import {
   Paper,
   Popper,
   TextField,
-  Typography
+  Typography,
 } from '@mui/material';
 import { chatApi } from '../../../__fake-api__/chat-api';
 import { Search as SearchIcon } from '../../../icons/search';
 import { Scrollbar } from '../../scrollbar';
 
 const filterSearchResults = (searchResults, recipients) => {
-  const recipientIds = recipients.reduce((acc, recipient) => [
-    ...acc,
-    recipient.id
-  ], []);
+  const recipientIds = recipients.reduce((acc, recipient) => [...acc, recipient.id], []);
 
-  return searchResults.filter((result) => !recipientIds.includes(result.id));
+  return searchResults.filter(result => !recipientIds.includes(result.id));
 };
 
-export const ChatComposerToolbar = (props) => {
+export const ChatComposerToolbar = props => {
   const { onAddRecipient, onRemoveRecipient, recipients, ...other } = props;
   const containerRef = useRef(null);
   const [query, setQuery] = useState('');
@@ -38,7 +35,7 @@ export const ChatComposerToolbar = (props) => {
   const displaySearchResults = query && isSearchFocused;
   const filteredSearchResults = filterSearchResults(searchResults, recipients);
 
-  const handleSearchChange = async (event) => {
+  const handleSearchChange = async event => {
     try {
       const { value } = event.target;
 
@@ -70,7 +67,7 @@ export const ChatComposerToolbar = (props) => {
     setIsSearchFocused(false);
   };
 
-  const handleAddRecipient = (contact) => {
+  const handleAddRecipient = contact => {
     setQuery('');
 
     if (onAddRecipient) {
@@ -78,7 +75,7 @@ export const ChatComposerToolbar = (props) => {
     }
   };
 
-  const handleRemoveRecipient = (recipientId) => {
+  const handleRemoveRecipient = recipientId => {
     if (onRemoveRecipient) {
       onRemoveRecipient(recipientId);
     }
@@ -90,15 +87,16 @@ export const ChatComposerToolbar = (props) => {
         sx={{
           borderBottomColor: 'divider',
           borderBottomStyle: 'solid',
-          borderBottomWidth: 1
+          borderBottomWidth: 1,
         }}
-        {...other}>
+        {...other}
+      >
         <Scrollbar>
           <Box
             sx={{
               alignItems: 'center',
               display: 'flex',
-              p: 2
+              p: 2,
             }}
           >
             <Box
@@ -110,8 +108,8 @@ export const ChatComposerToolbar = (props) => {
                 '& .MuiInputBase-root': {
                   backgroundColor: 'background.paper',
                   height: 40,
-                  minWidth: 260
-                }
+                  minWidth: 260,
+                },
               }}
             >
               <TextField
@@ -125,23 +123,17 @@ export const ChatComposerToolbar = (props) => {
                     <InputAdornment position="start">
                       <SearchIcon fontSize="small" />
                     </InputAdornment>
-                  )
+                  ),
                 }}
                 value={query}
               />
             </Box>
-            <Typography
-              color="textSecondary"
-              sx={{ mr: 2 }}
-              variant="body2"
-            >
+            <Typography color="textSecondary" sx={{ mr: 2 }} variant="body2">
               To:
             </Typography>
-            {recipients.reverse().map((recipient) => (
+            {recipients.reverse().map(recipient => (
               <Chip
-                avatar={(
-                  <Avatar src={recipient.avatar} />
-                )}
+                avatar={<Avatar src={recipient.avatar} />}
                 key={recipient.id}
                 label={recipient.name}
                 onDelete={() => handleRemoveRecipient(recipient.id)}
@@ -153,11 +145,7 @@ export const ChatComposerToolbar = (props) => {
       </Box>
       {displaySearchResults && (
         <ClickAwayListener onClickAway={handleSearchResultsClickAway}>
-          <Popper
-            anchorEl={containerRef?.current}
-            open={isSearchFocused}
-            placement="bottom-start"
-          >
+          <Popper anchorEl={containerRef?.current} open={isSearchFocused} placement="bottom-start">
             <Paper
               elevation={16}
               sx={{
@@ -166,72 +154,55 @@ export const ChatComposerToolbar = (props) => {
                 borderWidth: 1,
                 maxWidth: '100%',
                 mt: 1,
-                width: 320
+                width: 320,
               }}
             >
-              {filteredSearchResults.length === 0
-                ? (
+              {filteredSearchResults.length === 0 ? (
+                <Box
+                  sx={{
+                    p: 2,
+                    textAlign: 'center',
+                  }}
+                >
+                  <Typography gutterBottom variant="h6">
+                    Nothing Found
+                  </Typography>
+                  <Typography color="textSecondary" variant="body2">
+                    We couldn&apos;t find any matches for &quot;
+                    {query}
+                    &quot;. Try checking for typos or using complete words.
+                  </Typography>
+                </Box>
+              ) : (
+                <>
                   <Box
                     sx={{
-                      p: 2,
-                      textAlign: 'center'
+                      px: 2,
+                      pt: 2,
                     }}
                   >
-                    <Typography
-                      gutterBottom
-                      variant="h6"
-                    >
-                      Nothing Found
-                    </Typography>
-                    <Typography
-                      color="textSecondary"
-                      variant="body2"
-                    >
-                      We couldn&apos;t find any matches
-                      for &quot;
-                      {query}
-                      &quot;. Try checking for typos or using
-                      complete words.
+                    <Typography color="textSecondary" variant="subtitle2">
+                      Contacts
                     </Typography>
                   </Box>
-                )
-                : (
-                  <>
-                    <Box
-                      sx={{
-                        px: 2,
-                        pt: 2
-                      }}
-                    >
-                      <Typography
-                        color="textSecondary"
-                        variant="subtitle2"
-                      >
-                        Contacts
-                      </Typography>
-                    </Box>
-                    <List>
-                      {filteredSearchResults.map((result) => (
-                        <ListItem
-                          button
-                          key={result.id}
-                          onClick={() => handleAddRecipient(result)}
-                        >
-                          <ListItemAvatar>
-                            <Avatar src={result.avatar} />
-                          </ListItemAvatar>
-                          <ListItemText
-                            primary={result.name}
-                            primaryTypographyProps={{
-                              noWrap: true,
-                              variant: 'subtitle2'
-                            }}
-                          />
-                        </ListItem>
-                      ))}
-                    </List>
-                  </>
-                )}
+                  <List>
+                    {filteredSearchResults.map(result => (
+                      <ListItem button key={result.id} onClick={() => handleAddRecipient(result)}>
+                        <ListItemAvatar>
+                          <Avatar src={result.avatar} />
+                        </ListItemAvatar>
+                        <ListItemText
+                          primary={result.name}
+                          primaryTypographyProps={{
+                            noWrap: true,
+                            variant: 'subtitle2',
+                          }}
+                        />
+                      </ListItem>
+                    ))}
+                  </List>
+                </>
+              )}
             </Paper>
           </Popper>
         </ClickAwayListener>
@@ -243,9 +214,9 @@ export const ChatComposerToolbar = (props) => {
 ChatComposerToolbar.propTypes = {
   onAddRecipient: PropTypes.func,
   onRemoveRecipient: PropTypes.func,
-  recipients: PropTypes.array
+  recipients: PropTypes.array,
 };
 
 ChatComposerToolbar.defaultProps = {
-  recipients: []
+  recipients: [],
 };

@@ -1,5 +1,5 @@
-import { createContext, useEffect, useReducer } from "react";
-import PropTypes from "prop-types";
+import { createContext, useEffect, useReducer } from 'react';
+import PropTypes from 'prop-types';
 import {
   createUserWithEmailAndPassword,
   getAuth,
@@ -8,14 +8,14 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
-} from "firebase/auth";
-import { firebaseApp } from "../lib/firebase";
+} from 'firebase/auth';
+import { firebaseApp } from '../lib/firebase';
 
 const auth = getAuth(firebaseApp);
 
 var ActionType;
 (function (ActionType) {
-  ActionType["AUTH_STATE_CHANGED"] = "AUTH_STATE_CHANGED";
+  ActionType['AUTH_STATE_CHANGED'] = 'AUTH_STATE_CHANGED';
 })(ActionType || (ActionType = {}));
 
 const initialState = {
@@ -25,7 +25,7 @@ const initialState = {
 };
 
 const reducer = (state, action) => {
-  if (action.type === "AUTH_STATE_CHANGED") {
+  if (action.type === 'AUTH_STATE_CHANGED') {
     const { isAuthenticated, user } = action.payload;
 
     return {
@@ -41,20 +41,20 @@ const reducer = (state, action) => {
 
 export const AuthContext = createContext({
   ...initialState,
-  platform: "Firebase",
+  platform: 'Firebase',
   createUserWithEmailAndPassword: () => Promise.resolve(),
   signInWithEmailAndPassword: () => Promise.resolve(),
   signInWithGoogle: () => Promise.resolve(),
   logout: () => Promise.resolve(),
 });
 
-export const AuthProvider = (props) => {
+export const AuthProvider = props => {
   const { children } = props;
   const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(
     () =>
-      onAuthStateChanged(auth, (user) => {
+      onAuthStateChanged(auth, user => {
         if (user) {
           // Here you should extract the complete user profile to make it available in your entire app.
           // The auth state only provides basic information.
@@ -65,9 +65,9 @@ export const AuthProvider = (props) => {
               user: {
                 id: user.uid,
                 avatar: user.photoURL || undefined,
-                email: user.email || "anika.visser@devias.io",
-                name: "Anika Visser",
-                plan: "Premium",
+                email: user.email || 'anika.visser@devias.io',
+                name: 'Anika Visser',
+                plan: 'Premium',
               },
             },
           });
@@ -81,7 +81,7 @@ export const AuthProvider = (props) => {
           });
         }
       }),
-    [dispatch]
+    [dispatch],
   );
 
   const _signInWithEmailAndPassword = async (email, password) => {
@@ -106,7 +106,7 @@ export const AuthProvider = (props) => {
     <AuthContext.Provider
       value={{
         ...state,
-        platform: "Firebase",
+        platform: 'Firebase',
         createUserWithEmailAndPassword: _createUserWithEmailAndPassword,
         signInWithEmailAndPassword: _signInWithEmailAndPassword,
         signInWithGoogle,

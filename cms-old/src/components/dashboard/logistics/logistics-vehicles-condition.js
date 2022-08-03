@@ -1,6 +1,6 @@
-import { Card, CardHeader, Divider, Grid, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
+import { Card, CardHeader, Divider, Grid, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { Chart } from "../../chart";
 
 const items = [
   {
@@ -21,10 +21,10 @@ const items = [
     subtitle: "Needs attention",
     value: 5,
   },
-]
+];
 
 export const LogisticsVehiclesCondition = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -80,7 +80,7 @@ export const LogisticsVehiclesCondition = props => {
     theme: {
       mode: theme.palette.mode,
     },
-  }
+  };
 
   return (
     <Card {...props}>
@@ -119,5 +119,5 @@ export const LogisticsVehiclesCondition = props => {
         ))}
       </Grid>
     </Card>
-  )
-}
+  );
+};

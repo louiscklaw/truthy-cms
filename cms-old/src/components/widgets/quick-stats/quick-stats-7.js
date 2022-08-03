@@ -1,4 +1,4 @@
-import { Box, Card, CardContent, CardHeader, Divider, LinearProgress, Typography } from "@mui/material"
+import { Box, Card, CardContent, CardHeader, Divider, LinearProgress, Typography } from "@mui/material";
 
 export const QuickStats7 = () => (
   <Box
@@ -21,4 +21,4 @@ export const QuickStats7 = () => (
       </CardContent>
     </Card>
   </Box>
-)
+);

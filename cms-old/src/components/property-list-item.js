@@ -1,8 +1,8 @@
-import PropTypes from "prop-types"
-import { Box, ListItem, ListItemText, Typography } from "@mui/material"
+import PropTypes from "prop-types";
+import { Box, ListItem, ListItemText, Typography } from "@mui/material";
 
 export const PropertyListItem = props => {
-  const { align, children, disableGutters, value, label, ...other } = props
+  const { align, children, disableGutters, value, label, ...other } = props;
 
   return (
     <ListItem
@@ -40,12 +40,12 @@ export const PropertyListItem = props => {
         }}
       />
     </ListItem>
-  )
-}
+  );
+};
 
 PropertyListItem.defaultProps = {
   align: "vertical",
-}
+};
 
 PropertyListItem.propTypes = {
   align: PropTypes.oneOf(["horizontal", "vertical"]),
@@ -53,4 +53,4 @@ PropertyListItem.propTypes = {
   disableGutters: PropTypes.bool,
   label: PropTypes.string.isRequired,
   value: PropTypes.string,
-}
+};

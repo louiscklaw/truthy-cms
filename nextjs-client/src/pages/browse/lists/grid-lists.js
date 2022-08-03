@@ -20,54 +20,32 @@ const BrowseGridLists = () => {
   return (
     <>
       <Head>
-        <title>
-          Browse: Grid Lists | Material Kit Pro
-        </title>
+        <title>Browse: Grid Lists | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           backgroundColor: 'background.paper',
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
-          <WidgetPreviewer
-            element={<GridList1 />}
-            name="Grid list with image"
-          />
-          <WidgetPreviewer
-            element={<GridList2 />}
-            name="Mixed grid list"
-          />
-          <WidgetPreviewer
-            element={<GridList3 />}
-            name="Grid list with bottom button"
-          />
-          <WidgetPreviewer
-            element={<GridList4 />}
-            name="Grid list with avatar and cover picture "
-          />
-          <WidgetPreviewer
-            element={<GridList5 />}
-            name="Grid list with picture and bottom buttons"
-          />
-          <WidgetPreviewer
-            element={<GridList6 />}
-            name="Grid list with picture and bottom buttons"
-          />
+          <WidgetPreviewer element={<GridList1 />} name="Grid list with image" />
+          <WidgetPreviewer element={<GridList2 />} name="Mixed grid list" />
+          <WidgetPreviewer element={<GridList3 />} name="Grid list with bottom button" />
+          <WidgetPreviewer element={<GridList4 />} name="Grid list with avatar and cover picture " />
+          <WidgetPreviewer element={<GridList5 />} name="Grid list with picture and bottom buttons" />
+          <WidgetPreviewer element={<GridList6 />} name="Grid list with picture and bottom buttons" />
         </Container>
       </Box>
     </>
   );
 };
 
-BrowseGridLists.getLayout = (page) => (
+BrowseGridLists.getLayout = page => (
   <MainLayout>
-    <BrowseLayout>
-      {page}
-    </BrowseLayout>
+    <BrowseLayout>{page}</BrowseLayout>
   </MainLayout>
 );
 

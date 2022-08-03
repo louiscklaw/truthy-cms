@@ -1,11 +1,11 @@
-import { Box, Button, Card, CardContent, CardHeader, Container, Tooltip, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right"
-import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined"
-import { Chart } from "../../chart"
+import { Box, Button, Card, CardContent, CardHeader, Container, Tooltip, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
+import { InformationCircleOutlined as InformationCircleOutlinedIcon } from "../../../icons/information-circle-outlined";
+import { Chart } from "../../chart";
 
 export const Chart8 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -15,7 +15,13 @@ export const Chart8 = () => {
         show: false,
       },
     },
-    colors: [theme.palette.primary.light, theme.palette.warning.light, theme.palette.success.light, theme.palette.info.light, "#455a64"],
+    colors: [
+      theme.palette.primary.light,
+      theme.palette.warning.light,
+      theme.palette.success.light,
+      theme.palette.info.light,
+      "#455a64",
+    ],
     dataLabels: {
       enabled: false,
     },
@@ -35,9 +41,9 @@ export const Chart8 = () => {
     theme: {
       mode: theme.palette.mode,
     },
-  }
+  };
 
-  const chartSeries = [10, 10, 20, 10, 70]
+  const chartSeries = [10, 10, 20, 10, 70];
 
   return (
     <Box
@@ -79,5 +85,5 @@ export const Chart8 = () => {
         </Card>
       </Container>
     </Box>
-  )
-}
+  );
+};

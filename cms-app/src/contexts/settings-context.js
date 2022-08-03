@@ -1,27 +1,25 @@
-import { createContext, useEffect, useState } from "react";
-import PropTypes from "prop-types";
+import { createContext, useEffect, useState } from 'react';
+import PropTypes from 'prop-types';
 
 const initialSettings = {
-  direction: "ltr",
+  direction: 'ltr',
   responsiveFontSizes: true,
-  theme: "light",
+  theme: 'light',
 };
 
 export const restoreSettings = () => {
   let settings = null;
 
   try {
-    const storedData = globalThis.localStorage.getItem("settings");
+    const storedData = globalThis.localStorage.getItem('settings');
 
     if (storedData) {
       settings = JSON.parse(storedData);
     } else {
       settings = {
-        direction: "ltr",
+        direction: 'ltr',
         responsiveFontSizes: true,
-        theme: globalThis.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light",
+        theme: globalThis.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light',
       };
     }
   } catch (err) {
@@ -33,8 +31,8 @@ export const restoreSettings = () => {
   return settings;
 };
 
-export const storeSettings = (settings) => {
-  globalThis.localStorage.setItem("settings", JSON.stringify(settings));
+export const storeSettings = settings => {
+  globalThis.localStorage.setItem('settings', JSON.stringify(settings));
 };
 
 export const SettingsContext = createContext({
@@ -42,7 +40,7 @@ export const SettingsContext = createContext({
   saveSettings: () => {},
 });
 
-export const SettingsProvider = (props) => {
+export const SettingsProvider = props => {
   const { children } = props;
   const [settings, setSettings] = useState(initialSettings);
 
@@ -54,7 +52,7 @@ export const SettingsProvider = (props) => {
     }
   }, []);
 
-  const saveSettings = (updatedSettings) => {
+  const saveSettings = updatedSettings => {
     setSettings(updatedSettings);
     storeSettings(updatedSettings);
   };

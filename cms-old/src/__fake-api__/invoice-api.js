@@ -1,6 +1,6 @@
-import { subHours, subDays, addDays } from "date-fns"
+import { subHours, subDays, addDays } from "date-fns";
 
-const now = new Date()
+const now = new Date();
 
 class InvoiceApi {
   getInvoices() {
@@ -109,9 +109,9 @@ class InvoiceApi {
         status: "canceled",
         totalAmount: 496.23,
       },
-    ]
+    ];
 
-    return Promise.resolve(invoices)
+    return Promise.resolve(invoices);
   }
 
   getInvoice() {
@@ -140,10 +140,10 @@ class InvoiceApi {
       subtotalAmount: 50.0,
       taxAmount: 5.5,
       totalAmount: 55.5,
-    }
+    };
 
-    return Promise.resolve(invoice)
+    return Promise.resolve(invoice);
   }
 }
 
-export const invoiceApi = new InvoiceApi()
+export const invoiceApi = new InvoiceApi();

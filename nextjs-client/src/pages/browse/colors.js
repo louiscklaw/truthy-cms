@@ -16,38 +16,28 @@ const BrowseColors = () => {
   return (
     <>
       <Head>
-        <title>
-          Browse: Colors | Material Kit Pro
-        </title>
+        <title>Browse: Colors | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           backgroundColor: 'background.paper',
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="lg">
-          <WidgetPreviewer
-            element={<ColorsMain />}
-            name="Main colors"
-          />
-          <WidgetPreviewer
-            element={<ColorsSeverity />}
-            name="Severity colors"
-          />
+          <WidgetPreviewer element={<ColorsMain />} name="Main colors" />
+          <WidgetPreviewer element={<ColorsSeverity />} name="Severity colors" />
         </Container>
       </Box>
     </>
   );
 };
 
-BrowseColors.getLayout = (page) => (
+BrowseColors.getLayout = page => (
   <MainLayout>
-    <BrowseLayout>
-      {page}
-    </BrowseLayout>
+    <BrowseLayout>{page}</BrowseLayout>
   </MainLayout>
 );
 

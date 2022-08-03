@@ -1,7 +1,7 @@
-import { Box, Card, CardHeader, Divider, IconButton, Typography } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal"
-import { Chart } from "../../chart"
+import { Box, Card, CardHeader, Divider, IconButton, Typography } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { DotsHorizontal as DotsHorizontalIcon } from "../../../icons/dots-horizontal";
+import { Chart } from "../../chart";
 
 const data = {
   series: [
@@ -21,10 +21,10 @@ const data = {
       name: "Sales",
     },
   ],
-}
+};
 
 export const QuickStats1 = () => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
@@ -51,9 +51,9 @@ export const QuickStats1 = () => {
     theme: {
       mode: theme.palette.mode,
     },
-  }
+  };
 
-  const chartSeries = data.series.map(item => item.data)
+  const chartSeries = data.series.map(item => item.data);
 
   return (
     <Box
@@ -103,5 +103,5 @@ export const QuickStats1 = () => {
         </Box>
       </Card>
     </Box>
-  )
-}
+  );
+};

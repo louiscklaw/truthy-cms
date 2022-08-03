@@ -17,8 +17,8 @@ const ChatSidebarDesktop = styled(Drawer)({
   width: 380,
   '& .MuiDrawer-paper': {
     position: 'relative',
-    width: 380
-  }
+    width: 380,
+  },
 });
 
 const ChatSidebarMobile = styled(Drawer)({
@@ -28,18 +28,18 @@ const ChatSidebarMobile = styled(Drawer)({
     height: 'calc(100% - 64px)',
     maxWidth: '100%',
     top: 64,
-    width: 380
-  }
+    width: 380,
+  },
 });
 
-export const ChatSidebar = (props) => {
+export const ChatSidebar = props => {
   const { containerRef, onClose, open, ...other } = props;
   const router = useRouter();
-  const { threads, activeThreadId } = useSelector((state) => state.chat);
+  const { threads, activeThreadId } = useSelector(state => state.chat);
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [searchResults, setSearchResults] = useState([]);
-  const mdUp = useMediaQuery((theme) => theme.breakpoints.up('md'));
+  const mdUp = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   const handleGroupClick = () => {
     if (!mdUp) {
@@ -52,7 +52,7 @@ export const ChatSidebar = (props) => {
     setSearchQuery('');
   };
 
-  const handleSearchChange = async (event) => {
+  const handleSearchChange = async event => {
     try {
       const { value } = event.target;
 
@@ -74,7 +74,7 @@ export const ChatSidebar = (props) => {
     setIsSearchFocused(true);
   };
 
-  const handleSearchSelect = (result) => {
+  const handleSearchSelect = result => {
     setIsSearchFocused(false);
     setSearchQuery('');
 
@@ -85,7 +85,7 @@ export const ChatSidebar = (props) => {
     router.push(`/dashboard/chat?threadKey=${result.id}`).catch(console.error);
   };
 
-  const handleSelectThread = (threadId) => {
+  const handleSelectThread = threadId => {
     const thread = threads.byId[threadId];
     let threadKey;
 
@@ -96,9 +96,7 @@ export const ChatSidebar = (props) => {
       // with the auth provider.
       // When implementing this app with a real database, replace this
       // ID with the ID from Auth Context.
-      threadKey =
-        thread.participantIds.find((participantId) => (participantId
-          !== '5e86809283e28b96d2d38537'));
+      threadKey = thread.participantIds.find(participantId => participantId !== '5e86809283e28b96d2d38537');
     }
 
     if (!mdUp) {
@@ -114,23 +112,13 @@ export const ChatSidebar = (props) => {
         sx={{
           alignItems: 'center',
           display: 'flex',
-          p: 2
+          p: 2,
         }}
       >
-        <Typography variant="h5">
-          Chats
-        </Typography>
+        <Typography variant="h5">Chats</Typography>
         <Box sx={{ flexGrow: 1 }} />
-        <NextLink
-          href="/dashboard/chat?compose=true"
-          passHref
-        >
-          <Button
-            component="a"
-            onClick={handleGroupClick}
-            startIcon={<PlusIcon />}
-            variant="contained"
-          >
+        <NextLink href="/dashboard/chat?compose=true" passHref>
+          <Button component="a" onClick={handleGroupClick} startIcon={<PlusIcon />} variant="contained">
             Group
           </Button>
         </NextLink>
@@ -138,9 +126,9 @@ export const ChatSidebar = (props) => {
           onClick={onClose}
           sx={{
             display: {
-              sm: 'none'
+              sm: 'none',
             },
-            ml: 2
+            ml: 2,
           }}
         >
           <XIcon fontSize="small" />
@@ -160,12 +148,12 @@ export const ChatSidebar = (props) => {
           borderTopColor: 'divider',
           borderTopStyle: 'solid',
           borderTopWidth: 1,
-          display: isSearchFocused ? 'none' : 'block'
+          display: isSearchFocused ? 'none' : 'block',
         }}
       >
         <Scrollbar>
           <List disablePadding>
-            {threads.allIds.map((threadId) => (
+            {threads.allIds.map(threadId => (
               <ChatThreadItem
                 active={activeThreadId === threadId}
                 key={threadId}
@@ -186,7 +174,8 @@ export const ChatSidebar = (props) => {
         open={open}
         SlideProps={{ container: containerRef?.current }}
         variant="persistent"
-        {...other}>
+        {...other}
+      >
         {content}
       </ChatSidebarDesktop>
     );
@@ -200,7 +189,8 @@ export const ChatSidebar = (props) => {
       open={open}
       SlideProps={{ container: containerRef?.current }}
       variant="temporary"
-      {...other}>
+      {...other}
+    >
       {content}
     </ChatSidebarMobile>
   );
@@ -209,5 +199,5 @@ export const ChatSidebar = (props) => {
 ChatSidebar.propTypes = {
   containerRef: PropTypes.any,
   onClose: PropTypes.func,
-  open: PropTypes.bool
+  open: PropTypes.bool,
 };

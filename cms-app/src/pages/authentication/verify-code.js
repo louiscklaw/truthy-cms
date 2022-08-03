@@ -1,20 +1,20 @@
-import { useEffect } from "react";
-import Head from "next/head";
-import NextLink from "next/link";
-import { useRouter } from "next/router";
-import { Box, Card, Container, Divider, Link, Typography } from "@mui/material";
-import { GuestGuard } from "../../components/authentication/guest-guard";
-import { AuthBanner } from "../../components/authentication/auth-banner";
-import { AmplifyVerifyCode } from "../../components/authentication/amplify-verify-code";
-import { Logo } from "../../components/logo";
-import { useAuth } from "../../hooks/use-auth";
-import { gtm } from "../../lib/gtm";
+import { useEffect } from 'react';
+import Head from 'next/head';
+import NextLink from 'next/link';
+import { useRouter } from 'next/router';
+import { Box, Card, Container, Divider, Link, Typography } from '@mui/material';
+import { GuestGuard } from '../../components/authentication/guest-guard';
+import { AuthBanner } from '../../components/authentication/auth-banner';
+import { AmplifyVerifyCode } from '../../components/authentication/amplify-verify-code';
+import { Logo } from '../../components/logo';
+import { useAuth } from '../../hooks/use-auth';
+import { gtm } from '../../lib/gtm';
 
 const platformIcons = {
-  Amplify: "/static/icons/amplify.svg",
-  Auth0: "/static/icons/auth0.svg",
-  Firebase: "/static/icons/firebase.svg",
-  JWT: "/static/icons/jwt.svg",
+  Amplify: '/static/icons/amplify.svg',
+  Auth0: '/static/icons/auth0.svg',
+  Firebase: '/static/icons/firebase.svg',
+  JWT: '/static/icons/jwt.svg',
 };
 
 const VerifyCode = () => {
@@ -23,7 +23,7 @@ const VerifyCode = () => {
   const { disableGuard } = router.query;
 
   useEffect(() => {
-    gtm.push({ event: "page_view" });
+    gtm.push({ event: 'page_view' });
   }, []);
 
   return (
@@ -34,10 +34,10 @@ const VerifyCode = () => {
       <Box
         component="main"
         sx={{
-          backgroundColor: "background.default",
-          display: "flex",
-          flexDirection: "column",
-          minHeight: "100vh",
+          backgroundColor: 'background.default',
+          display: 'flex',
+          flexDirection: 'column',
+          minHeight: '100vh',
         }}
       >
         <AuthBanner />
@@ -45,28 +45,27 @@ const VerifyCode = () => {
           maxWidth="sm"
           sx={{
             py: {
-              xs: "60px",
-              md: "120px",
+              xs: '60px',
+              md: '120px',
             },
           }}
         >
           <Box
             sx={{
-              alignItems: "center",
-              backgroundColor: (theme) =>
-                theme.palette.mode === "dark" ? "neutral.900" : "neutral.100",
-              borderColor: "divider",
+              alignItems: 'center',
+              backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.900' : 'neutral.100'),
+              borderColor: 'divider',
               borderRadius: 1,
-              borderStyle: "solid",
+              borderStyle: 'solid',
               borderWidth: 1,
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "space-between",
+              display: 'flex',
+              flexWrap: 'wrap',
+              justifyContent: 'space-between',
               mb: 4,
               p: 2,
-              "& > img": {
+              '& > img': {
                 height: 32,
-                width: "auto",
+                width: 'auto',
                 flexGrow: 0,
                 flexShrink: 0,
               },
@@ -80,10 +79,10 @@ const VerifyCode = () => {
           <Card elevation={16} sx={{ p: 4 }}>
             <Box
               sx={{
-                alignItems: "center",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
+                alignItems: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
               }}
             >
               <NextLink href="/" passHref>
@@ -107,17 +106,13 @@ const VerifyCode = () => {
                 mt: 3,
               }}
             >
-              {platform === "Amplify" && <AmplifyVerifyCode />}
+              {platform === 'Amplify' && <AmplifyVerifyCode />}
             </Box>
             <Divider sx={{ my: 3 }} />
-            {platform === "Amplify" && (
+            {platform === 'Amplify' && (
               <div>
                 <NextLink
-                  href={
-                    disableGuard
-                      ? `/authentication/login?disableGuard=${disableGuard}`
-                      : "/authentication/login"
-                  }
+                  href={disableGuard ? `/authentication/login?disableGuard=${disableGuard}` : '/authentication/login'}
                   passHref
                 >
                   <Link color="textSecondary" variant="body2">
@@ -133,6 +128,6 @@ const VerifyCode = () => {
   );
 };
 
-VerifyCode.getLayout = (page) => <GuestGuard>{page}</GuestGuard>;
+VerifyCode.getLayout = page => <GuestGuard>{page}</GuestGuard>;
 
 export default VerifyCode;

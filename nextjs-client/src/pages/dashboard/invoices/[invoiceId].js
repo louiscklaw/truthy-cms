@@ -2,17 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import Head from 'next/head';
 import { PDFDownloadLink, PDFViewer } from '@react-pdf/renderer';
-import {
-  Avatar,
-  Box,
-  Button,
-  Container,
-  Dialog,
-  Divider,
-  Grid,
-  Link,
-  Typography
-} from '@mui/material';
+import { Avatar, Box, Button, Container, Dialog, Divider, Grid, Link, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { invoiceApi } from '../../../__fake-api__/invoice-api';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
@@ -45,11 +35,13 @@ const InvoiceDetails = () => {
     }
   }, [isMounted]);
 
-  useEffect(() => {
+  useEffect(
+    () => {
       getInvoice();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    []);
+    [],
+  );
 
   if (!invoice) {
     return null;
@@ -58,94 +50,65 @@ const InvoiceDetails = () => {
   return (
     <>
       <Head>
-        <title>
-          Dashboard: Invoice Details | Material Kit Pro
-        </title>
+        <title>Dashboard: Invoice Details | Material Kit Pro</title>
       </Head>
       <Box
         component="main"
         sx={{
           flexGrow: 1,
-          py: 8
+          py: 8,
         }}
       >
         <Container maxWidth="md">
           <Box sx={{ mb: 3 }}>
             <Box sx={{ mb: 4 }}>
-              <NextLink
-                href="/dashboard/invoices"
-                passHref
-              >
-                <Link
-                  color="textPrimary"
-                  variant="subtitle2"
-                >
+              <NextLink href="/dashboard/invoices" passHref>
+                <Link color="textPrimary" variant="subtitle2">
                   <Box
                     sx={{
                       alignItems: 'center',
-                      display: 'flex'
+                      display: 'flex',
                     }}
                   >
-                    <ArrowBackIcon
-                      fontSize="small"
-                      sx={{ mr: 1 }}
-                    />
-                    <Typography variant="subtitle2">
-                      Invoices
-                    </Typography>
+                    <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
+                    <Typography variant="subtitle2">Invoices</Typography>
                   </Box>
                 </Link>
               </NextLink>
             </Box>
-            <Grid
-              container
-              justifyContent="space-between"
-              spacing={3}
-            >
+            <Grid container justifyContent="space-between" spacing={3}>
               <Grid
                 item
                 sx={{
                   alignItems: 'center',
-                  display: 'flex'
+                  display: 'flex',
                 }}
               >
                 <Avatar
                   sx={{
                     height: 42,
                     mr: 2,
-                    width: 42
+                    width: 42,
                   }}
                 >
                   {getInitials(invoice.customer.name)}
                 </Avatar>
                 <div>
-                  <Typography variant="h4">
-                    {invoice.number}
-                  </Typography>
+                  <Typography variant="h4">{invoice.number}</Typography>
                   <Box
                     sx={{
                       display: 'flex',
-                      alignItems: 'center'
+                      alignItems: 'center',
                     }}
                   >
-                    <Typography
-                      color="textSecondary"
-                      variant="body2"
-                    >
+                    <Typography color="textSecondary" variant="body2">
                       {invoice.customer.name}
                     </Typography>
                   </Box>
                 </div>
               </Grid>
-              <Grid
-                item
-                sx={{ m: -1 }}
-              >
-                <Button
-                  onClick={() => setViewPDF(true)}
-                  sx={{ m: 1 }}
-                  variant="outlined"
-                >
+              <Grid item sx={{ m: -1 }}>
+                <Button onClick={() => setViewPDF(true)} sx={{ m: 1 }} variant="outlined">
                   Preview
                 </Button>
                 <PDFDownloadLink
@@ -153,11 +116,7 @@ const InvoiceDetails = () => {
                   fileName="invoice"
                   style={{ textDecoration: 'none' }}
                 >
-                  <Button
-                    color="primary"
-                    sx={{ m: 1 }}
-                    variant="contained"
-                  >
+                  <Button color="primary" sx={{ m: 1 }} variant="contained">
                     Download
                   </Button>
                 </PDFDownloadLink>
@@ -168,21 +127,18 @@ const InvoiceDetails = () => {
           <InvoicePreview invoice={invoice} />
         </Container>
       </Box>
-      <Dialog
-        fullScreen
-        open={viewPDF}
-      >
+      <Dialog fullScreen open={viewPDF}>
         <Box
           sx={{
             display: 'flex',
             flexDirection: 'column',
-            height: '100%'
+            height: '100%',
           }}
         >
           <Box
             sx={{
               backgroundColor: 'background.default',
-              p: 2
+              p: 2,
             }}
           >
             <Button
@@ -194,11 +150,7 @@ const InvoiceDetails = () => {
             </Button>
           </Box>
           <Box sx={{ flexGrow: 1 }}>
-            <PDFViewer
-              height="100%"
-              style={{ border: 'none' }}
-              width="100%"
-            >
+            <PDFViewer height="100%" style={{ border: 'none' }} width="100%">
               <InvoicePDF invoice={invoice} />
             </PDFViewer>
           </Box>
@@ -208,11 +160,9 @@ const InvoiceDetails = () => {
   );
 };
 
-InvoiceDetails.getLayout = (page) => (
+InvoiceDetails.getLayout = page => (
   <AuthGuard>
-    <DashboardLayout>
-      {page}
-    </DashboardLayout>
+    <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 

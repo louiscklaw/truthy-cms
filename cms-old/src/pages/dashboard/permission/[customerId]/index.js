@@ -1,64 +1,64 @@
-import { useCallback, useState, useEffect } from "react"
-import NextLink from "next/link"
-import Head from "next/head"
-import { Avatar, Box, Button, Chip, Container, Divider, Grid, Link, Tab, Tabs, Typography } from "@mui/material"
-import ArrowBackIcon from "@mui/icons-material/ArrowBack"
-import { customerApi } from "../../../../__fake-api__/customer-api"
-import { AuthGuard } from "../../../../components/authentication/auth-guard"
-import { DashboardLayout } from "../../../../components/dashboard/dashboard-layout"
-import { CustomerBasicDetails } from "../../../../components/dashboard/customer/customer-basic-details"
-import { CustomerDataManagement } from "../../../../components/dashboard/customer/customer-data-management"
-import { CustomerEmailsSummary } from "../../../../components/dashboard/customer/customer-emails-summary"
-import { CustomerInvoices } from "../../../../components/dashboard/customer/customer-invoices"
-import { CustomerPayment } from "../../../../components/dashboard/customer/customer-payment"
-import { CustomerLogs } from "../../../../components/dashboard/customer/customer-logs"
-import { useMounted } from "../../../../hooks/use-mounted"
-import { ChevronDown as ChevronDownIcon } from "../../../../icons/chevron-down"
-import { PencilAlt as PencilAltIcon } from "../../../../icons/pencil-alt"
-import { gtm } from "../../../../lib/gtm"
-import { getInitials } from "../../../../utils/get-initials"
+import { useCallback, useState, useEffect } from "react";
+import NextLink from "next/link";
+import Head from "next/head";
+import { Avatar, Box, Button, Chip, Container, Divider, Grid, Link, Tab, Tabs, Typography } from "@mui/material";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { customerApi } from "../../../../__fake-api__/customer-api";
+import { AuthGuard } from "../../../../components/authentication/auth-guard";
+import { DashboardLayout } from "../../../../components/dashboard/dashboard-layout";
+import { CustomerBasicDetails } from "../../../../components/dashboard/customer/customer-basic-details";
+import { CustomerDataManagement } from "../../../../components/dashboard/customer/customer-data-management";
+import { CustomerEmailsSummary } from "../../../../components/dashboard/customer/customer-emails-summary";
+import { CustomerInvoices } from "../../../../components/dashboard/customer/customer-invoices";
+import { CustomerPayment } from "../../../../components/dashboard/customer/customer-payment";
+import { CustomerLogs } from "../../../../components/dashboard/customer/customer-logs";
+import { useMounted } from "../../../../hooks/use-mounted";
+import { ChevronDown as ChevronDownIcon } from "../../../../icons/chevron-down";
+import { PencilAlt as PencilAltIcon } from "../../../../icons/pencil-alt";
+import { gtm } from "../../../../lib/gtm";
+import { getInitials } from "../../../../utils/get-initials";
 
 const tabs = [
   { label: "Details", value: "details" },
   { label: "Invoices", value: "invoices" },
   { label: "Logs", value: "logs" },
-]
+];
 
 const CustomerDetails = () => {
-  const isMounted = useMounted()
-  const [customer, setCustomer] = useState(null)
-  const [currentTab, setCurrentTab] = useState("details")
+  const isMounted = useMounted();
+  const [customer, setCustomer] = useState(null);
+  const [currentTab, setCurrentTab] = useState("details");
 
   useEffect(() => {
-    gtm.push({ event: "page_view" })
-  }, [])
+    gtm.push({ event: "page_view" });
+  }, []);
 
   const getCustomer = useCallback(async () => {
     try {
-      const data = await customerApi.getCustomer()
+      const data = await customerApi.getCustomer();
 
       if (isMounted()) {
-        setCustomer(data)
+        setCustomer(data);
       }
     } catch (err) {
-      console.error(err)
+      console.error(err);
     }
-  }, [isMounted])
+  }, [isMounted]);
 
   useEffect(
     () => {
-      getCustomer()
+      getCustomer();
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [],
-  )
+  );
 
   const handleTabsChange = (event, value) => {
-    setCurrentTab(value)
-  }
+    setCurrentTab(value);
+  };
 
   if (!customer) {
-    return null
+    return null;
   }
 
   return (
@@ -179,13 +179,13 @@ const CustomerDetails = () => {
         </Container>
       </Box>
     </>
-  )
-}
+  );
+};
 
 CustomerDetails.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
-)
+);
 
-export default CustomerDetails
+export default CustomerDetails;

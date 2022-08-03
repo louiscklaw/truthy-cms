@@ -1,10 +1,21 @@
-import { Fragment, useState } from "react"
-import PropTypes from "prop-types"
-import { Badge, Box, CircularProgress, Dialog, DialogContent, Divider, IconButton, InputAdornment, TextField, Typography } from "@mui/material"
-import { Search as SearchIcon } from "../../icons/search"
-import { wait } from "../../utils/wait"
-import { X as XIcon } from "../../icons/x"
-import { Tip } from "../tip"
+import { Fragment, useState } from "react";
+import PropTypes from "prop-types";
+import {
+  Badge,
+  Box,
+  CircularProgress,
+  Dialog,
+  DialogContent,
+  Divider,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Typography,
+} from "@mui/material";
+import { Search as SearchIcon } from "../../icons/search";
+import { wait } from "../../utils/wait";
+import { X as XIcon } from "../../icons/x";
+import { Tip } from "../tip";
 
 const results = {
   Platform: [
@@ -15,7 +26,8 @@ const results = {
       path: "Users / Api-usage",
     },
     {
-      description: "Algolia is a search-as-a-service API that helps marketplaces build performant search experiences at scale while reducing engineering time.",
+      description:
+        "Algolia is a search-as-a-service API that helps marketplaces build performant search experiences at scale while reducing engineering time.",
       title: "Build performant marketplace search at scale",
       path: "Users / Api-usage",
     },
@@ -27,28 +39,29 @@ const results = {
       path: "Resources / Blog posts",
     },
     {
-      description: "Algolia is a search-as-a-service API that helps marketplaces build performant search experiences at scale while reducing engineering time.",
+      description:
+        "Algolia is a search-as-a-service API that helps marketplaces build performant search experiences at scale while reducing engineering time.",
       title: "Build performance",
       path: "Resources / UI libraries",
     },
   ],
-}
+};
 
 export const ContentSearchDialog = props => {
-  const { onClose, open, ...other } = props
-  const [value, setValue] = useState("")
-  const [isLoading, setIsLoading] = useState(false)
-  const [showResults, setShowResults] = useState(false)
+  const { onClose, open, ...other } = props;
+  const [value, setValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [showResults, setShowResults] = useState(false);
 
   const handleSubmit = async event => {
-    event.preventDefault()
-    setShowResults(false)
-    setIsLoading(true)
+    event.preventDefault();
+    setShowResults(false);
+    setIsLoading(true);
     // Do search here
-    await wait(1500)
-    setIsLoading(false)
-    setShowResults(true)
-  }
+    await wait(1500);
+    setIsLoading(false);
+    setShowResults(true);
+  };
 
   return (
     <Dialog fullWidth maxWidth="sm" onClose={onClose} open={!!open} {...other}>
@@ -144,10 +157,10 @@ export const ContentSearchDialog = props => {
         )}
       </DialogContent>
     </Dialog>
-  )
-}
+  );
+};
 
 ContentSearchDialog.propTypes = {
   onClose: PropTypes.func,
   open: PropTypes.bool,
-}
+};
