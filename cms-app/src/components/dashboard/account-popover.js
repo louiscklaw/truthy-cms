@@ -8,6 +8,7 @@ import { useAuth } from '../../hooks/use-auth';
 import { Cog as CogIcon } from '../../icons/cog';
 import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
 import { SwitchHorizontalOutlined as SwitchHorizontalOutlinedIcon } from '../../icons/switch-horizontal-outlined';
+import { useTranslation } from 'react-i18next';
 
 export const AccountPopover = props => {
   const { anchorEl, onClose, open, ...other } = props;
@@ -15,6 +16,7 @@ export const AccountPopover = props => {
   const { logout } = useAuth();
   // To get the user from the authContext, you can use
   const { user } = useAuth();
+  const { t } = useTranslation();
 
   const handleLogout = async () => {
     try {
