@@ -44,7 +44,7 @@ export const AccountPopover = props => {
       {...other}
     >
       <Box sx={{ alignItems: 'center', p: 2, display: 'flex' }}>
-        <Avatar src={user.avatar} sx={{ height: 40, width: 40 }}>
+        <Avatar src={user?.avatar} sx={{ height: 40, width: 40 }}>
           <UserCircleIcon fontSize="small" />
         </Avatar>
         <Box sx={{ ml: 1 }}>

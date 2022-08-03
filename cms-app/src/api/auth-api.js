@@ -14,6 +14,10 @@ class AuthApi {
 
   async register({ email, name, password }) {}
 
+  async logout() {
+    return axios.post('/api/logout', {});
+  }
+
   me(accessToken) {
     return new Promise((resolve, reject) => {
       try {

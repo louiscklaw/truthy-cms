@@ -122,7 +122,10 @@ export const AuthProvider = props => {
   };
 
   const logout = async () => {
+    await authApi.logout();
+
     localStorage.removeItem('accessToken');
+
     dispatch({ type: ActionType.LOGOUT });
   };
 
