@@ -30,9 +30,22 @@ import { InformationCircleOutlined as InformationCircleOutlinedIcon } from '../.
 import { Reports as ReportsIcon } from '../../icons/reports';
 import { Users as UsersIcon } from '../../icons/users';
 import { gtm } from '../../lib/gtm';
+import { CardTest1 } from '../../components/dashboard/overview/card-test-1';
+import { CardTest2 } from '../../components/dashboard/overview/card-test-2';
+import { CardTest3 } from '../../components/dashboard/overview/card-test-3';
+import { CardTest4 } from '../../components/dashboard/overview/card-test-4';
+import { AnalyticsGeneralOverview } from '../../components/dashboard/analytics/analytics-general-overview';
+import { AnalyticsTrafficSources } from '../../components/dashboard/analytics/analytics-traffic-sources';
+import { AnalyticsVisitsByCountry } from '../../components/dashboard/analytics/analytics-visits-by-country';
+import { AnalyticsMostVisited } from '../../components/dashboard/analytics/analytics-most-visited';
+import { AnalyticsSocialSources } from '../../components/dashboard/analytics/analytics-social-sources';
+import { useTranslation } from 'react-i18next';
+
+import DebugPrint from '../../components/debug-print';
 
 const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
@@ -58,31 +71,18 @@ const Overview = () => {
       <Head>
         <title>Dashboard: Overview | Material Kit Pro</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+      <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="xl">
           <Box sx={{ mb: 4 }}>
             <Grid container justifyContent="space-between" spacing={3}>
               <Grid item>
-                <Typography variant="h4">Good Morning</Typography>
+                <Typography variant="h4">{t('Analytics')}</Typography>
               </Grid>
-              <Grid
-                item
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  m: -1,
-                }}
-              >
-                <Button startIcon={<ReportsIcon fontSize="small" />} sx={{ m: 1 }} variant="outlined">
-                  Reports
+              <Grid item sx={{ alignItems: 'center', display: 'flex', m: -1 }}>
+                <Button startIcon={<ReportsIcon fontSize="small" />} sx={{ m: 1 }} variant="outlined" size={'small'}>
+                  {t('Reports')}
                 </Button>
-                <TextField defaultValue="week" label="Period" select size="small" sx={{ m: 1 }}>
+                <TextField defaultValue="week" label="Period" select size="small" sx={{ m: 1 }} size={'small'}>
                   <MenuItem value="week">Last week</MenuItem>
                   <MenuItem value="month">Last month</MenuItem>
                   <MenuItem value="year">Last year</MenuItem>
@@ -91,152 +91,46 @@ const Overview = () => {
             </Grid>
           </Box>
           <Grid container spacing={4}>
-            {displayBanner && (
-              <Grid item xs={12}>
-                <OverviewBanner onDismiss={handleDismissBanner} />
-              </Grid>
-            )}
-            <Grid item md={6} xs={12}>
-              <OverviewCryptoWallet />
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest1 />
             </Grid>
-            <Grid item md={6} xs={12}>
-              <OverviewPrivateWallet />
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest2 />
             </Grid>
-            <Grid item md={8} xs={12}>
-              <OverviewTotalTransactions />
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest3 />
             </Grid>
-            <Grid item md={4} xs={12}>
-              <OverviewTotalBalance />
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest4 />
             </Grid>
-            <Grid item md={8} xs={12}>
-              <OverviewLatestTransactions />
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest1 />
             </Grid>
-            <Grid item md={4} xs={12}>
-              <OverviewInbox />
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest2 />
             </Grid>
-            <Grid item md={6} xs={12}>
-              <Card>
-                <CardContent>
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                    }}
-                  >
-                    <BriefcaseIcon color="primary" fontSize="small" />
-                    <Typography color="primary.main" sx={{ pl: 1 }} variant="subtitle2">
-                      Jobs
-                    </Typography>
-                  </Box>
-                  <Typography variant="h6" sx={{ mt: 2 }}>
-                    Find your dream job
-                  </Typography>
-                  <Typography color="textSecondary" variant="body2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                  </Typography>
-                </CardContent>
-                <Divider />
-                <CardActions>
-                  <Button endIcon={<ArrowRightIcon fontSize="small" />} size="small">
-                    Search Jobs
-                  </Button>
-                </CardActions>
-              </Card>
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest3 />
             </Grid>
-            <Grid item md={6} xs={12}>
-              <Card>
-                <CardContent>
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                    }}
-                  >
-                    <InformationCircleOutlinedIcon color="primary" />
-                    <Typography color="primary.main" sx={{ pl: 1 }} variant="subtitle2">
-                      Help Center
-                    </Typography>
-                  </Box>
-                  <Typography sx={{ mt: 2 }} variant="h6">
-                    Need help figuring things out?
-                  </Typography>
-                  <Typography color="textSecondary" variant="body2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                  </Typography>
-                </CardContent>
-                <Divider />
-                <CardActions>
-                  <Button endIcon={<ExternalLinkIcon fontSize="small" />} size="small">
-                    Help Center
-                  </Button>
-                </CardActions>
-              </Card>
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest4 />
             </Grid>
-            <Grid item md={6} xs={12}>
-              <Card>
-                <CardContent>
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                    }}
-                  >
-                    <DownloadIcon color="primary" />
-                    <Typography color="primary.main" sx={{ pl: 1 }} variant="subtitle2">
-                      Download
-                    </Typography>
-                  </Box>
-                  <Typography sx={{ mt: 2 }} variant="h6">
-                    Download our Free PDF and learn how to get more job leads
-                  </Typography>
-                  <Typography color="textSecondary" variant="body2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                  </Typography>
-                </CardContent>
-                <Divider />
-                <CardActions>
-                  <Button endIcon={<DownloadIcon fontSize="small" />} size="small" variant="outlined">
-                    Download Free PDF
-                  </Button>
-                </CardActions>
-              </Card>
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest1 />
             </Grid>
-            <Grid item md={6} xs={12}>
-              <Card>
-                <CardContent>
-                  <Box
-                    sx={{
-                      alignItems: 'center',
-                      display: 'flex',
-                    }}
-                  >
-                    <UsersIcon color="primary" />
-                    <Typography color="primary.main" sx={{ pl: 1 }} variant="subtitle2">
-                      Contacts
-                    </Typography>
-                  </Box>
-                  <Typography sx={{ mt: 2 }} variant="h6">
-                    Contacts allow you to manage your company contracts
-                  </Typography>
-                  <Typography color="textSecondary" variant="body2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
-                    et dolore magna aliqua.
-                  </Typography>
-                </CardContent>
-                <Divider />
-                <CardActions>
-                  <Button endIcon={<ArrowRightIcon fontSize="small" />} size="small" variant="outlined">
-                    My Contacts
-                  </Button>
-                </CardActions>
-              </Card>
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest2 />
+            </Grid>
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest3 />
+            </Grid>
+            <Grid item md={3} sm={6} xs={12}>
+              <CardTest4 />
             </Grid>
           </Grid>
         </Container>
       </Box>
+      <DebugPrint>dashboard/index.js</DebugPrint>
     </>
   );
 };
