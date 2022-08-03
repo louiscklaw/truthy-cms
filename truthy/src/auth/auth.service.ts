@@ -491,6 +491,7 @@ export class AuthService {
         await token.save();
       }
     } catch (e) {
+      console.log(e);
       throw new CustomHttpException(
         ExceptionTitleList.InvalidRefreshToken,
         HttpStatus.PRECONDITION_FAILED,

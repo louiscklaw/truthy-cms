@@ -80,7 +80,7 @@ const Overview = () => {
               </Grid>
               <Grid item sx={{ alignItems: 'center', display: 'flex', m: -1 }}>
                 <Button startIcon={<ReportsIcon fontSize="small" />} sx={{ m: 1 }} variant="outlined" size={'small'}>
-                  {t('Reports')}
+                  {t('REPORTS')}
                 </Button>
                 <TextField defaultValue="week" label="Period" select size="small" sx={{ m: 1 }} size={'small'}>
                   <MenuItem value="week">Last week</MenuItem>

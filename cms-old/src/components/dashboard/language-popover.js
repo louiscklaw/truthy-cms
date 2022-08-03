@@ -4,18 +4,9 @@ import { useTranslation } from "react-i18next";
 import { Box, ListItemIcon, ListItemText, MenuItem, Popover, Typography } from "@mui/material";
 
 const languageOptions = {
-  en: {
-    icon: "/static/icons/uk_flag.svg",
-    label: "English",
-  },
-  de: {
-    icon: "/static/icons/de_flag.svg",
-    label: "German",
-  },
-  es: {
-    icon: "/static/icons/es_flag.svg",
-    label: "Spanish",
-  },
+  en: { icon: "/static/icons/uk_flag.svg", label: "English",},
+  de: { icon: "/static/icons/de_flag.svg", label: "German",},
+  es: { icon: "/static/icons/es_flag.svg", label: "Spanish",},
 };
 
 export const LanguagePopover = props => {
@@ -25,15 +16,13 @@ export const LanguagePopover = props => {
   const handleChange = async language => {
     onClose?.();
     await i18n.changeLanguage(language);
-    toast.success(t("Language changed"));
+    toast.success(t("LANGUAGE_CHANGED"));
   };
 
   return (
     <Popover
       anchorEl={anchorEl}
-      anchorOrigin={{
-        horizontal: "center",
-        vertical: "bottom",
+      anchorOrigin={{ horizontal: "center", vertical: "bottom",
       }}
       keepMounted
       onClose={onClose}

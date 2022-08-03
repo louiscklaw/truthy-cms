@@ -25,7 +25,7 @@ export const LanguagePopover = props => {
   const handleChange = async language => {
     onClose?.();
     await i18n.changeLanguage(language);
-    toast.success(t('Language changed'));
+    toast.success(t('LANGUAGE_CHANGED'));
   };
 
   return (
