@@ -1,10 +1,13 @@
 import { Avatar, Box, Button, Card, CardContent, Divider, Grid, Switch, TextField, Typography } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { useAuth } from '../../../hooks/use-auth';
 import { UserCircle as UserCircleIcon } from '../../../icons/user-circle';
+import DebugPrint from '../../../components/debug-print';
 
 export const AccountGeneralSettings = props => {
   // To get the user from the authContext, you can use
   const { user } = useAuth();
+  const { t } = useTranslation();
   // const user = {
   //   avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
   //   name: 'Anika Visser',
@@ -16,24 +19,24 @@ export const AccountGeneralSettings = props => {
         <CardContent>
           <Grid container spacing={3}>
             <Grid item md={4} xs={12}>
-              <Typography variant="h6">Basic details</Typography>
+              <Typography variant="h6">{t('Basic details')}</Typography>
             </Grid>
             <Grid item md={8} xs={12}>
               <Box sx={{ alignItems: 'center', display: 'flex' }}>
                 <Avatar src={user.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
                   <UserCircleIcon fontSize="small" />
                 </Avatar>
-                <Button>Change</Button>
+                <Button>{t('Change')}</Button>
               </Box>
               <Box sx={{ display: 'flex', mt: 3, alignItems: 'center' }}>
-                <TextField defaultValue={user.name} label="Full Name" size="small" sx={{ flexGrow: 1, mr: 3 }} />
-                <Button>Save</Button>
+                <TextField defaultValue={user.name} label={t('Full Name')} size="small" sx={{ flexGrow: 1, mr: 3 }} />
+                <Button>{t('Save')}</Button>
               </Box>
               <Box sx={{ display: 'flex', mt: 3, alignItems: 'center' }}>
                 <TextField
-                  defaultValue="dummy.account@gmail.com"
+                  defaultValue={user?.email}
                   disabled
-                  label="Email Address"
+                  label={t('Email Address')}
                   required
                   size="small"
                   sx={{
@@ -57,14 +60,7 @@ export const AccountGeneralSettings = props => {
               <Typography variant="h6">Public profile</Typography>
             </Grid>
             <Grid item md={8} sm={12} xs={12}>
-              <Box
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  mb: 3,
-                }}
-              >
+              <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', mb: 3 }}>
                 <div>
                   <Typography variant="subtitle1">Make Contact Info Public</Typography>
                   <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
@@ -104,6 +100,7 @@ export const AccountGeneralSettings = props => {
           </Grid>
         </CardContent>
       </Card>
+      <DebugPrint>{user}</DebugPrint>
     </Box>
   );
 };
