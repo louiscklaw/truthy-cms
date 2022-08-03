@@ -106,8 +106,14 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost/api/helloworld/1
+PATCH http://localhost/api/helloworld/13
+Content-Type: application/json
 
+{
+  "firstName":"restaurant_113",
+  "lastName":"restaurant_address_1",
+  "isActive":true
+}
 
 ###
-DELETE http://localhost/api/helloworld
+DELETE http://localhost/api/helloworld/14

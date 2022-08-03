@@ -33,8 +33,10 @@ export class HelloworldService {
     return `This action returns a #${id} helloworld`;
   }
 
-  update(id: number, updateHelloworldDto: UpdateHelloworldDto) {
-    return `This action updates a #${id} helloworld`;
+  async update(id: number, updateHelloworldDto: UpdateHelloworldDto): Promise<any> {
+    console.log({ updateHelloworldDto });
+    let result = await this.helloworldRepository.update(id, updateHelloworldDto);
+    return result;
   }
 
   async remove(id: number): Promise<void> {
