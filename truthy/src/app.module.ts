@@ -24,6 +24,8 @@ import { CustomThrottlerGuard } from 'src/common/guard/custom-throttle.guard';
 import { DashboardModule } from 'src/dashboard/dashboard.module';
 import { AppController } from 'src/app.controller';
 import { MenyServiceTypeModule } from './meny_service_type/meny_service_type.module';
+import { HelloworldModule } from './helloworld/helloworld.module';
+import { RestaurantsModule } from './restaurants/restaurants.module';
 import winstonConfig from 'src/config/winston';
 
 const appConfig = config.get('app');
@@ -68,6 +70,8 @@ const appConfig = config.get('app');
     TwofaModule,
     DashboardModule,
     MenyServiceTypeModule,
+    HelloworldModule,
+    RestaurantsModule,
   ],
   providers: [
     {

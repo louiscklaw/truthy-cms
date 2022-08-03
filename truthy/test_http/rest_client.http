@@ -85,3 +85,29 @@ content-type: application/json
 {
   "contact_info_public": false
 }
+
+
+###
+GET http://localhost/api/helloworld/1
+
+
+###
+GET http://localhost/api/helloworld
+
+
+###
+POST http://localhost/api/helloworld
+Content-Type: application/json
+
+{
+  "firstName":"restaurant_1",
+  "lastName":"restaurant_address_1",
+  "isActive":true
+}
+
+###
+PATCH http://localhost/api/helloworld/1
+
+
+###
+DELETE http://localhost/api/helloworld

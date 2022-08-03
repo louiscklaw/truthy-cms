@@ -17,7 +17,7 @@ import { Exclude } from 'class-transformer';
 import { UserStatusEnum } from '../../auth/user-status.enum';
 import { CustomBaseEntity } from '../../common/entity/custom-base.entity';
 import { RoleEntity } from '../../role/entities/role.entity';
-import { MenyServiceType } from 'src/meny_service_type/entities/meny_service_type.entity';
+import { MenyServiceTypeEntity } from 'src/meny_service_type/entities/meny_service_type.entity';
 
 /**
  * User Entity
@@ -117,13 +117,13 @@ export class UserEntity extends CustomBaseEntity {
   @Column()
   roleId: number;
 
-  @ManyToMany(() => MenyServiceType, meny_service_type => meny_service_type.users)
+  @ManyToMany(() => MenyServiceTypeEntity, meny_service_type => meny_service_type.users)
   @JoinTable({
     name: 'user_meny_service_type',
     joinColumn: { name: 'userId', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'meny_service_type_id', referencedColumnName: 'id' },
   })
-  meny_service_type: MenyServiceType[];
+  meny_service_type: MenyServiceTypeEntity[];
 
   @BeforeInsert()
   async hashPasswordBeforeInsert() {

@@ -3,7 +3,7 @@ import { CustomBaseEntity } from 'src/common/entity/custom-base.entity';
 import { Column, Entity, Index, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'meny_service_type' })
-export class MenyServiceType extends CustomBaseEntity {
+export class MenyServiceTypeEntity extends CustomBaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
