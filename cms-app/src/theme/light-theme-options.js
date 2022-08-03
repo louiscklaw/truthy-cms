@@ -1,3 +1,4 @@
+import chroma from 'chroma-js';
 // Colors
 
 const neutral = {
@@ -20,17 +21,17 @@ const background = {
 const divider = '#E6E8F0';
 
 const primary = {
-  main: '#5048E5',
-  light: '#828DF8',
-  dark: '#3832A0',
-  contrastText: '#FFFFFF',
+  main: '#800000',
+  light: chroma('#800000').brighten().hex(),
+  dark: chroma('#800000').darken().hex(),
+  contrastText: chroma('#FFFFFF').hex(),
 };
 
 const secondary = {
-  main: '#10B981',
-  light: '#3FC79A',
-  dark: '#0B815A',
-  contrastText: '#FFFFFF',
+  main: '#34495e',
+  light: chroma('#34495e').brighten().hex(),
+  dark: chroma('#34495e').darken().hex(),
+  contrastText: chroma('#FFFFFF').hex(),
 };
 
 const success = {
