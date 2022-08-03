@@ -2,5 +2,4 @@
 
 set -ex
 
-
 docker build . -t test
