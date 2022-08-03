@@ -15,6 +15,7 @@
     "format": "prettier --loglevel warn --write \"**/*.{js,css,html,jsx,tsx,ts,json,sh}\"",
     "restart_proxy": "docker compose -f docker-compose.dev.yml restart proxy",
     "restart_api": "docker compose -f docker-compose.dev.yml restart api",
+    "restart_cms_app": "docker compose -f docker-compose.dev.yml restart cms-app",
     "seed": "docker compose -f docker-compose.dev.yml exec -it api npm run seed",
     "into_api": "docker compose -f docker-compose.dev.yml exec -it api bash",
     "into_cms_app": "docker compose -f docker-compose.dev.yml exec -it cms-app bash",
