@@ -6,6 +6,7 @@ import DebugPrint from '../../../components/debug-print';
 import { useFormik } from 'formik';
 
 import { toast } from 'react-hot-toast';
+import axios from 'axios';
 
 export const AccountGeneralSettings = props => {
   // To get the user from the authContext, you can use
@@ -17,8 +18,9 @@ export const AccountGeneralSettings = props => {
       contact_info_public: user.contact_info_public,
     },
     onSubmit: async (values, helpers) => {
-      console.log(values);
-      toast.success(t('account settings changed'));
+      await axios.put('/api/auth/profile', values).then(res => {
+        toast.success(t('UPDATE_DONE'));
+      });
     },
   });
 
@@ -79,14 +81,13 @@ export const AccountGeneralSettings = props => {
                   }}
                 >
                   <div>
-                    <Typography variant="subtitle1">Make Contact Info Public</Typography>
+                    <Typography variant="subtitle1">{t('MAKE_CONTACT_INFO_PUBLIC')}</Typography>
                     <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">
                       Means that anyone viewing your profile will be able to see your contacts details.
                     </Typography>
                   </div>
                   <Switch
                     name="contact_info_public"
-                    defaultChecked={formik.values.contact_info_public}
                     onChange={e => {
                       formik.handleChange(e);
                       formik.handleSubmit();

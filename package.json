@@ -17,7 +17,8 @@
     "restart_api": "docker compose -f docker-compose.dev.yml restart api",
     "seed": "docker compose -f docker-compose.dev.yml exec -it api npm run seed",
     "into_api": "docker compose -f docker-compose.dev.yml exec -it api bash",
-    "into_cms_app": "docker compose -f docker-compose.dev.yml exec -it cms-app bash"
+    "into_cms_app": "docker compose -f docker-compose.dev.yml exec -it cms-app bash",
+    "show_docker_log": "docker compose -f docker-compose.dev.yml logs -f "
   },
   "repository": {
     "type": "git",

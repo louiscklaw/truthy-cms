@@ -165,7 +165,7 @@ export const CustomerEditForm = props => {
           >
             <div>
               <Typography gutterBottom variant="subtitle1">
-                Make Contact Info Public
+                {t('MAKE_CONTACT_INFO_PUBLIC')}
               </Typography>
               <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
                 Means that anyone viewing your profile will be able to see your contacts details
