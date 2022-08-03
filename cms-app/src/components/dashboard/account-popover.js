@@ -16,11 +16,6 @@ export const AccountPopover = props => {
   // To get the user from the authContext, you can use
   const { user } = useAuth();
 
-  // const user = {
-  //   avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-  //   name: 'Anika Visser',
-  // };
-
   const handleLogout = async () => {
     try {
       onClose?.();
@@ -85,7 +80,7 @@ export const AccountPopover = props => {
           <ListItemIcon>
             <LogoutIcon fontSize="small" />
           </ListItemIcon>
-          <ListItemText primary={<Typography variant="body1">Logout</Typography>} />
+          <ListItemText primary={<Typography variant="body1">{t('Logout')}</Typography>} />
         </MenuItem>
       </Box>
     </Popover>
