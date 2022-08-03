@@ -7,22 +7,43 @@ import { useFormik } from 'formik';
 
 import { toast } from 'react-hot-toast';
 import axios from 'axios';
+import { useEffect, useState } from 'react';
 
 export const AccountGeneralSettings = props => {
   // To get the user from the authContext, you can use
   const { user } = useAuth();
   const { t } = useTranslation();
 
+  const [isLoading, setIsLoading] = useState(true);
+  const [current_profile, setCurrentProfile] = useState({});
+
   const formik = useFormik({
-    initialValues: {
-      contact_info_public: user.contact_info_public,
-    },
+    initialValues: current_profile,
     onSubmit: async (values, helpers) => {
-      await axios.put('/api/auth/profile', values).then(res => {
-        toast.success(t('UPDATE_DONE'));
-      });
+      await axios
+        .put('/api/auth/profile', values)
+        .then(res => {
+          toast.success(t('UPDATE_DONE'));
+        })
+        .catch(err => {
+          console.log({ err });
+        });
     },
   });
+
+  useEffect(() => {
+    axios
+      .get('/api/auth/profile')
+      .then(({ data }) => {
+        setCurrentProfile(data);
+        setIsLoading(false);
+      })
+      .catch(err => console.log({ err }));
+  }, []);
+
+  const [helloworld, setHelloworld] = useState(false);
+
+  if (isLoading) return <>isLoading</>;
 
   return (
     <form noValidate onSubmit={formik.handleSubmit} {...props}>
@@ -31,7 +52,7 @@ export const AccountGeneralSettings = props => {
           <CardContent>
             <Grid container spacing={3}>
               <Grid item md={4} xs={12}>
-                <Typography variant="h6">{t('Basic details')}</Typography>
+                <Typography variant="h6">{t('BASIC_DETAILS')}</Typography>
               </Grid>
               <Grid item md={8} xs={12}>
                 <Box sx={{ alignItems: 'center', display: 'flex' }}>
@@ -41,14 +62,14 @@ export const AccountGeneralSettings = props => {
                   <Button>{t('Change')}</Button>
                 </Box>
                 <Box sx={{ display: 'flex', mt: 3, alignItems: 'center' }}>
-                  <TextField defaultValue={user.name} label={t('Full Name')} size="small" sx={{ flexGrow: 1, mr: 3 }} />
+                  <TextField defaultValue={user.name} label={t('FULL_NAME')} size="small" sx={{ flexGrow: 1, mr: 3 }} />
                   <Button>{t('Save')}</Button>
                 </Box>
                 <Box sx={{ display: 'flex', mt: 3, alignItems: 'center' }}>
                   <TextField
                     defaultValue={user?.email}
                     disabled
-                    label={t('Email Address')}
+                    label={t('EMAIL_ADDRESS')}
                     required
                     size="small"
                     sx={{
@@ -86,12 +107,11 @@ export const AccountGeneralSettings = props => {
                       Means that anyone viewing your profile will be able to see your contacts details.
                     </Typography>
                   </div>
+
                   <Switch
-                    name="contact_info_public"
-                    onChange={e => {
-                      formik.handleChange(e);
-                      formik.handleSubmit();
-                    }}
+                    checked={formik.values.contact_info_public}
+                    onChange={e => formik.setFieldValue('contact_info_public', e.target.checked)}
+                    inputProps={{ 'aria-label': 'controlled' }}
                   />
                 </Box>
                 <Divider />
@@ -119,20 +139,20 @@ export const AccountGeneralSettings = props => {
           <CardContent>
             <Grid container spacing={3}>
               <Grid item md={4} xs={12}>
-                <Typography variant="h6">Delete Account</Typography>
+                <Typography variant="h6">{t('DELETE_ACCOUNT')}</Typography>
               </Grid>
               <Grid item md={8} xs={12}>
                 <Typography sx={{ mb: 3 }} variant="subtitle1">
                   Delete your account and all of your source data. This is irreversible.
                 </Typography>
                 <Button color="error" variant="outlined">
-                  Delete account
+                  {t('DELETE_ACCOUNT')}
                 </Button>
               </Grid>
             </Grid>
           </CardContent>
         </Card>
-        <DebugPrint>{(user, formik.values)}</DebugPrint>
+        <DebugPrint>{current_profile}</DebugPrint>
       </Box>
     </form>
   );

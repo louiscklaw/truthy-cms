@@ -25,7 +25,7 @@ export const AccountPopover = props => {
       router.push('/').catch(console.error);
     } catch (err) {
       console.error(err);
-      toast.error('Unable to logout.');
+      toast.error(t('UNABLE_TO_LOGOUT'));
     }
   };
 

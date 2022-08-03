@@ -28,7 +28,7 @@ content-type: application/json
 }
 
 ###
-POST http://localhost:{{PORT}}/logout
+POST http://localhost/api/logout
 content-type: application/json
 
 {}
