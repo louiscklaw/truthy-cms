@@ -12,7 +12,12 @@
     "docker_seed": "yarn docker_dev exec -it api yarn seed",
     "gitSync": "git fetch --all && git stash && git pull --all && git stash pop",
     "gitUpdate": "git add . && git commit -m \"update hello-truthy,\" && yarn gitSync && git push",
-    "format": "prettier --loglevel warn --write \"**/*.{js,css,html,jsx,tsx,ts,json,sh}\""
+    "format": "prettier --loglevel warn --write \"**/*.{js,css,html,jsx,tsx,ts,json,sh}\"",
+    "restart_proxy": "docker compose -f docker-compose.dev.yml restart proxy",
+    "restart_api": "docker compose -f docker-compose.dev.yml restart api",
+    "seed": "docker compose -f docker-compose.dev.yml exec -it api npm run seed",
+    "into_api": "docker compose -f docker-compose.dev.yml exec -it api bash",
+    "into_cms_app": "docker compose -f docker-compose.dev.yml exec -it cms-app bash"
   },
   "repository": {
     "type": "git",
