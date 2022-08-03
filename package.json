@@ -26,5 +26,8 @@
   "homepage": "https://github.com/louiscklaw/hello-truthy#readme",
   "devDependencies": {
     "@faker-js/faker": "^7.3.0"
+  },
+  "dependencies": {
+    "jwt-decode": "^3.1.2"
   }
 }

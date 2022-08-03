@@ -14,11 +14,12 @@ export const AccountPopover = props => {
   const router = useRouter();
   const { logout } = useAuth();
   // To get the user from the authContext, you can use
-  // `const { user } = useAuth();`
-  const user = {
-    avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-    name: 'Anika Visser',
-  };
+  const { user } = useAuth();
+
+  // const user = {
+  //   avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+  //   name: 'Anika Visser',
+  // };
 
   const handleLogout = async () => {
     try {
@@ -34,10 +35,7 @@ export const AccountPopover = props => {
   return (
     <Popover
       anchorEl={anchorEl}
-      anchorOrigin={{
-        horizontal: 'center',
-        vertical: 'bottom',
-      }}
+      anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
       keepMounted
       onClose={onClose}
       open={!!open}
@@ -45,30 +43,14 @@ export const AccountPopover = props => {
       transitionDuration={0}
       {...other}
     >
-      <Box
-        sx={{
-          alignItems: 'center',
-          p: 2,
-          display: 'flex',
-        }}
-      >
-        <Avatar
-          src={user.avatar}
-          sx={{
-            height: 40,
-            width: 40,
-          }}
-        >
+      <Box sx={{ alignItems: 'center', p: 2, display: 'flex' }}>
+        <Avatar src={user.avatar} sx={{ height: 40, width: 40 }}>
           <UserCircleIcon fontSize="small" />
         </Avatar>
-        <Box
-          sx={{
-            ml: 1,
-          }}
-        >
+        <Box sx={{ ml: 1 }}>
           <Typography variant="body1">{user.name}</Typography>
           <Typography color="textSecondary" variant="body2">
-            Acme Inc
+            {user?.country}
           </Typography>
         </Box>
       </Box>

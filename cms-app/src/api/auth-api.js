@@ -5,6 +5,8 @@ import { decode, JWT_EXPIRES_IN, JWT_SECRET, sign } from '../utils/jwt';
 import { wait } from '../utils/wait';
 import axios from 'axios';
 
+import jwt_decode from 'jwt-decode';
+
 class AuthApi {
   async login({ email, password }) {
     return axios.post(`/api/auth/login`, { email, password, remember: true }, { withCredentials: true });
@@ -12,7 +14,26 @@ class AuthApi {
 
   async register({ email, name, password }) {}
 
-  me(accessToken) {}
+  me(accessToken) {
+    return new Promise((resolve, reject) => {
+      try {
+        let jwt_decoded = jwt_decode(accessToken);
+        let { user } = jwt_decoded;
+
+        console.log({ user });
+
+        if (!user) {
+          reject(new Error('Invalid authorization token'));
+          return;
+        }
+
+        resolve(user);
+      } catch (err) {
+        console.error('[Auth Api]: ', err);
+        reject(new Error('Internal server error'));
+      }
+    });
+  }
 }
 
 export const authApi = new AuthApi();

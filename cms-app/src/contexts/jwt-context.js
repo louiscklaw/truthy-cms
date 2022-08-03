@@ -1,7 +1,7 @@
 import { createContext, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 import { authApi as fakeAuthApi } from '../__fake-api__/auth-api';
-import { authApi  } from '../api/auth-api';
+import { authApi } from '../api/auth-api';
 
 var ActionType;
 (function (ActionType) {
@@ -73,7 +73,7 @@ export const AuthProvider = props => {
         const accessToken = globalThis.localStorage.getItem('accessToken');
 
         if (accessToken) {
-          const user = await fakeAuthApi.me(accessToken);
+          const user = await authApi.me(accessToken);
 
           dispatch({
             type: ActionType.INITIALIZE,
@@ -105,18 +105,19 @@ export const AuthProvider = props => {
 
     initialize();
   }, []);
-const login = async (email, password) => {
 
-    const accessToken = await authApi.login({ email, password });
-    const user = await fakeAuthApi.me(accessToken);
+  const login = async (email, password) => {
+    const {
+      data: { accessToken },
+    } = await authApi.login({ email, password });
+
+    const user = await authApi.me(accessToken);
 
     localStorage.setItem('accessToken', accessToken);
 
     dispatch({
       type: ActionType.LOGIN,
-      payload: {
-        user,
-      },
+      payload: { user },
     });
   };
 
@@ -127,15 +128,13 @@ const login = async (email, password) => {
 
   const register = async (email, name, password) => {
     const accessToken = await fakeAuthApi.register({ email, name, password });
-    const user = await fakeAuthApi.me(accessToken);
+    const user = await authApi.me(accessToken);
 
     localStorage.setItem('accessToken', accessToken);
 
     dispatch({
       type: ActionType.REGISTER,
-      payload: {
-        user,
-      },
+      payload: { user },
     });
   };
 

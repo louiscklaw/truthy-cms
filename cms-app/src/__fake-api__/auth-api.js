@@ -2,6 +2,8 @@ import { createResourceId } from '../utils/create-resource-id';
 import { decode, JWT_EXPIRES_IN, JWT_SECRET, sign } from '../utils/jwt';
 import { wait } from '../utils/wait';
 
+import jwt_decode from 'jwt-decode';
+
 const users = [
   {
     id: '5e86809283e28b96d2d38537',
@@ -76,7 +78,12 @@ class AuthApi {
     return new Promise((resolve, reject) => {
       try {
         // Decode access token
-        const { userId } = decode(accessToken);
+        // const decoded = decode(accessToken);
+        // const { userId } = decoded;
+        // console.log({ decoded });
+        var jwt_decoded = jwt_decode(accessToken);
+
+        console.log(jwt_decoded);
 
         // Find the user
         const user = users.find(_user => _user.id === userId);

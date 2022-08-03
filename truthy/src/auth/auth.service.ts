@@ -177,9 +177,14 @@ export class AuthService {
       ...BASE_OPTIONS,
       subject: String(user.id),
     };
+
+    delete user.password;
+    delete user.salt;
+
     return this.jwt.signAsync({
       ...opts,
       isTwoFAAuthenticated,
+      user,
     });
   }
 
