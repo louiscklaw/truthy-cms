@@ -1,26 +1,30 @@
-import { format } from "date-fns"
-import { Box, Card, CardHeader, Divider } from "@mui/material"
-import { useTheme } from "@mui/material/styles"
-import { Chart } from "../../chart"
-import { Scrollbar } from "../../scrollbar"
+import { format } from 'date-fns';
+import { Box, Card, CardHeader, Divider } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { Chart } from '../../chart';
+import { Scrollbar } from '../../scrollbar';
 
 const data = {
-  series: [{ data: [12, 24, 36, 48, 60, 72, 84] }, { data: [12, 24, 36, 48, 60, 72, 84] }, { data: [12, 24, 36, 48, 60, 72, 84] }],
-  categories: ["Capital One", "Ally Bank", "ING", "Ridgewood", "BT Transilvania", "CEC", "CBC"],
-}
+  series: [
+    { data: [12, 24, 36, 48, 60, 72, 84] },
+    { data: [12, 24, 36, 48, 60, 72, 84] },
+    { data: [12, 24, 36, 48, 60, 72, 84] },
+  ],
+  categories: ['Capital One', 'Ally Bank', 'ING', 'Ridgewood', 'BT Transilvania', 'CEC', 'CBC'],
+};
 
 export const OverviewTotalTransactions = props => {
-  const theme = useTheme()
+  const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       stacked: true,
       toolbar: {
         show: false,
       },
     },
-    colors: ["#6E7AD8", "#4655CE", "#2F3EB1"],
+    colors: ['#6E7AD8', '#4655CE', '#2F3EB1'],
     dataLabels: {
       enabled: false,
     },
@@ -43,12 +47,12 @@ export const OverviewTotalTransactions = props => {
     states: {
       active: {
         filter: {
-          type: "none",
+          type: 'none',
         },
       },
       hover: {
         filter: {
-          type: "none",
+          type: 'none',
         },
       },
     },
@@ -56,7 +60,7 @@ export const OverviewTotalTransactions = props => {
       show: false,
     },
     stroke: {
-      colors: ["transparent"],
+      colors: ['transparent'],
       show: true,
       width: 2,
     },
@@ -73,7 +77,7 @@ export const OverviewTotalTransactions = props => {
       categories: data.categories,
       labels: {
         style: {
-          colors: "#A3A3A3",
+          colors: '#A3A3A3',
         },
       },
     },
@@ -81,17 +85,17 @@ export const OverviewTotalTransactions = props => {
       labels: {
         offsetX: -12,
         style: {
-          colors: "#A3A3A3",
+          colors: '#A3A3A3',
         },
       },
     },
-  }
+  };
 
-  const chartSeries = data.series
+  const chartSeries = data.series;
 
   return (
     <Card {...props}>
-      <CardHeader subheader={format(new Date(), "MMM yyyy")} title="Total Transactions" />
+      <CardHeader subheader={format(new Date(), 'MMM yyyy')} title="Total Transactions" />
       <Divider />
       <Scrollbar>
         <Box
@@ -105,5 +109,5 @@ export const OverviewTotalTransactions = props => {
         </Box>
       </Scrollbar>
     </Card>
-  )
-}
+  );
+};

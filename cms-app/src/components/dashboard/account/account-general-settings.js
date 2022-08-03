@@ -1,13 +1,14 @@
 import { Avatar, Box, Button, Card, CardContent, Divider, Grid, Switch, TextField, Typography } from '@mui/material';
+import { useAuth } from '../../../hooks/use-auth';
 import { UserCircle as UserCircleIcon } from '../../../icons/user-circle';
 
 export const AccountGeneralSettings = props => {
   // To get the user from the authContext, you can use
-  // `const { user } = useAuth();`
-  const user = {
-    avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
-    name: 'Anika Visser',
-  };
+  const { user } = useAuth();
+  // const user = {
+  //   avatar: '/static/mock-images/avatars/avatar-anika_visser.png',
+  //   name: 'Anika Visser',
+  // };
 
   return (
     <Box sx={{ mt: 4 }} {...props}>
@@ -18,49 +19,17 @@ export const AccountGeneralSettings = props => {
               <Typography variant="h6">Basic details</Typography>
             </Grid>
             <Grid item md={8} xs={12}>
-              <Box
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                }}
-              >
-                <Avatar
-                  src={user.avatar}
-                  sx={{
-                    height: 64,
-                    mr: 2,
-                    width: 64,
-                  }}
-                >
+              <Box sx={{ alignItems: 'center', display: 'flex' }}>
+                <Avatar src={user.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
                   <UserCircleIcon fontSize="small" />
                 </Avatar>
                 <Button>Change</Button>
               </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  mt: 3,
-                  alignItems: 'center',
-                }}
-              >
-                <TextField
-                  defaultValue={user.name}
-                  label="Full Name"
-                  size="small"
-                  sx={{
-                    flexGrow: 1,
-                    mr: 3,
-                  }}
-                />
+              <Box sx={{ display: 'flex', mt: 3, alignItems: 'center' }}>
+                <TextField defaultValue={user.name} label="Full Name" size="small" sx={{ flexGrow: 1, mr: 3 }} />
                 <Button>Save</Button>
               </Box>
-              <Box
-                sx={{
-                  display: 'flex',
-                  mt: 3,
-                  alignItems: 'center',
-                }}
-              >
+              <Box sx={{ display: 'flex', mt: 3, alignItems: 'center' }}>
                 <TextField
                   defaultValue="dummy.account@gmail.com"
                   disabled
@@ -105,14 +74,7 @@ export const AccountGeneralSettings = props => {
                 <Switch />
               </Box>
               <Divider />
-              <Box
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  mt: 3,
-                }}
-              >
+              <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', mt: 3 }}>
                 <div>
                   <Typography variant="subtitle1">Available to hire</Typography>
                   <Typography color="textSecondary" sx={{ mt: 1 }} variant="body2">

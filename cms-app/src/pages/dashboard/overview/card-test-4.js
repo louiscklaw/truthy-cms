@@ -1,14 +1,14 @@
-import { Avatar, Box, Card, CardActions, Divider, Typography } from "@mui/material";
-import { alpha, useTheme } from "@mui/material/styles";
-import { ChevronUp as ChevronUpIcon } from "../../../icons/chevron-up";
-import { Chart } from "../../chart";
+import { Avatar, Box, Card, CardActions, Divider, Typography } from '@mui/material';
+import { alpha, useTheme } from '@mui/material/styles';
+import { ChevronUp as ChevronUpIcon } from '../../../icons/chevron-up';
+import { Chart } from '../../chart';
 
 const LineChart = () => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       toolbar: {
         show: false,
       },
@@ -16,7 +16,7 @@ const LineChart = () => {
         enabled: false,
       },
     },
-    colors: ["#2F3EB1"],
+    colors: ['#2F3EB1'],
     dataLabels: {
       enabled: false,
     },
@@ -61,7 +61,7 @@ const BarChart = () => {
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       toolbar: {
         show: false,
       },
@@ -69,7 +69,7 @@ const BarChart = () => {
         enabled: false,
       },
     },
-    colors: ["#2F3EB1"],
+    colors: ['#2F3EB1'],
     dataLabels: {
       enabled: false,
     },
@@ -82,7 +82,7 @@ const BarChart = () => {
     states: {
       normal: {
         filter: {
-          type: "none",
+          type: 'none',
           value: 0,
         },
       },
@@ -121,9 +121,9 @@ export const CardTest4 = () => (
   <Card>
     <Box
       sx={{
-        alignItems: "center",
-        display: "flex",
-        justifyContent: "space-between",
+        alignItems: 'center',
+        display: 'flex',
+        justifyContent: 'space-between',
         px: 3,
         py: 2,
       }}
@@ -141,14 +141,14 @@ export const CardTest4 = () => (
     <Divider />
     <CardActions
       sx={{
-        alignItems: "center",
-        display: "flex",
+        alignItems: 'center',
+        display: 'flex',
       }}
     >
       <Avatar
         sx={{
           backgroundColor: theme => alpha(theme.palette.success.main, 0.08),
-          color: "success.main",
+          color: 'success.main',
           height: 36,
           width: 36,
         }}

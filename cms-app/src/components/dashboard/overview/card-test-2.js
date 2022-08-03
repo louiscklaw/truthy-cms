@@ -1,14 +1,14 @@
-import { Box, Button, Card, CardActions, Divider, Typography } from "@mui/material";
-import { useTheme } from "@mui/material/styles";
-import { ArrowRight as ArrowRightIcon } from "../../../icons/arrow-right";
-import { Chart } from "../../chart";
+import { Box, Button, Card, CardActions, Divider, Typography } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
+import { Chart } from '../../chart';
 
 const LineChart = () => {
   const theme = useTheme();
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       toolbar: {
         show: false,
       },
@@ -16,7 +16,7 @@ const LineChart = () => {
         enabled: false,
       },
     },
-    colors: ["#2F3EB1"],
+    colors: ['#2F3EB1'],
     dataLabels: {
       enabled: false,
     },
@@ -61,7 +61,7 @@ const BarChart = () => {
 
   const chartOptions = {
     chart: {
-      background: "transparent",
+      background: 'transparent',
       toolbar: {
         show: false,
       },
@@ -69,7 +69,7 @@ const BarChart = () => {
         enabled: false,
       },
     },
-    colors: ["#2F3EB1"],
+    colors: ['#2F3EB1'],
     dataLabels: {
       enabled: false,
     },
@@ -82,7 +82,7 @@ const BarChart = () => {
     states: {
       normal: {
         filter: {
-          type: "none",
+          type: 'none',
           value: 0,
         },
       },
@@ -121,9 +121,9 @@ export const CardTest2 = () => (
   <Card>
     <Box
       sx={{
-        alignItems: "center",
-        display: "flex",
-        justifyContent: "space-between",
+        alignItems: 'center',
+        display: 'flex',
+        justifyContent: 'space-between',
         px: 3,
         py: 2,
       }}
