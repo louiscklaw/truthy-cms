@@ -30,8 +30,8 @@ export const CustomerEditForm = props => {
       address2: customer.address2 || '',
       country: customer.country || '',
       email: customer.email || '',
-      hasDiscount: customer.hasDiscount || false,
-      isVerified: customer.isVerified || false,
+      isActive: customer.isActive || false,
+
       name: customer.name || '',
       phone: customer.phone || '',
       state: customer.state || '',
@@ -42,8 +42,7 @@ export const CustomerEditForm = props => {
       address2: Yup.string().max(255),
       country: Yup.string().max(255),
       email: Yup.string().email('Must be a valid email').max(255).required('Email is required'),
-      hasDiscount: Yup.bool(),
-      isVerified: Yup.bool(),
+      isActive: Yup.bool(),
       name: Yup.string().max(255).required('Name is required'),
       phone: Yup.string().max(15),
       state: Yup.string().max(255),
@@ -56,20 +55,7 @@ export const CustomerEditForm = props => {
         // helpers.setSubmitting(false);
         // toast.success('Customer updated!');
 
-        await restaurantApi.updateRestaurant(16, {
-          address: 'address test 16',
-          address1: 'address1 test',
-          address2: 'address2 test',
-          country: 'country test',
-          email: 'user1@truthy.com',
-          isActive: true,
-          location: 'Hong Kong',
-          name: 'user1',
-          orders: 0,
-          phone: '91234567',
-          spent: 0,
-          state: 'state test',
-        });
+        await restaurantApi.updateRestaurant(16, values);
       } catch (err) {
         console.error(err);
         toast.error('Something went wrong!');
@@ -186,12 +172,12 @@ export const CustomerEditForm = props => {
               </Typography>
             </div>
             <Switch
-              checked={formik.values.hasDiscount}
+              checked={formik.values.isActive}
               color="primary"
               edge="start"
-              name="hasDiscount"
+              name="isActive"
               onChange={formik.handleChange}
-              value={formik.values.hasDiscount}
+              value={formik.values.isActive}
             />
           </Box>
         </CardContent>

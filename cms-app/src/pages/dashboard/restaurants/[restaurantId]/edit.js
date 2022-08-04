@@ -12,11 +12,13 @@ import { gtm } from '../../../../lib/gtm';
 import { getInitials } from '../../../../utils/get-initials';
 import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../../api/restaurant-api';
+import { useRouter } from 'next/router';
 
 const CustomerEdit = () => {
   const { t } = useTranslation();
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
+  const { restaurantId } = useRouter().query;
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
@@ -25,7 +27,7 @@ const CustomerEdit = () => {
   const getCustomer = useCallback(async () => {
     try {
       // const data = await fakeCustomerApi.getCustomer();
-      const { data } = await restaurantApi.getRestaurant(15);
+      const { data } = await restaurantApi.getRestaurant(restaurantId);
 
       console.log(data);
 
@@ -54,6 +56,7 @@ const CustomerEdit = () => {
       <Head>
         <title>Dashboard: Customer Edit | Material Kit Pro</title>
       </Head>
+
       <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">
           <Box sx={{ mb: 4 }}>
