@@ -7,9 +7,6 @@ export class CreateRestaurantDto {
   @IsString()
   location: string;
 
-  // @IsNumber())
-  // orders: number;
-
   // @IsNumber()
   // spent: number;
 

@@ -13,8 +13,8 @@ export class RestaurantEntity {
   @Column({ default: '' })
   location: string;
 
-  // @Column({ type: 'int', default: 0 })
-  // orders: number;
+  @Column({ type: 'int', default: 0 })
+  orders: number;
 
   // @Column({ type: 'float', default: 0 })
   // spent: number;
