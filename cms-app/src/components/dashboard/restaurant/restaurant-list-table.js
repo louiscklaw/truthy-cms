@@ -161,6 +161,7 @@ export const RestaurantListTable = props => {
           </TableBody>
         </Table>
       </Scrollbar>
+
       <TablePagination
         component="div"
         count={customersCount}
