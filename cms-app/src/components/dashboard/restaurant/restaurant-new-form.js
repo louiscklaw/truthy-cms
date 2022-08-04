@@ -21,7 +21,7 @@ import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../api/restaurant-api';
 import Router, { useRouter } from 'next/router';
 
-export const RestaurantEditForm = props => {
+export const RestaurantNewForm = props => {
   const { t } = useTranslation();
   const router = useRouter();
   const { restaurantId, restaurantUuid } = router.query;
@@ -92,7 +92,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.name && formik.errors.name)}
                 fullWidth
                 helperText={formik.touched.name && formik.errors.name}
-                label={t('RESTAURANT_NAME')}
+                label="Full name"
                 name="name"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -105,7 +105,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.email && formik.errors.email)}
                 fullWidth
                 helperText={formik.touched.email && formik.errors.email}
-                label={t('RESTAURANT_EMAIL')}
+                label="Email address"
                 name="email"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -118,7 +118,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.country && formik.errors.country)}
                 fullWidth
                 helperText={formik.touched.country && formik.errors.country}
-                label={t('COUNTRY')}
+                label="Country"
                 name="country"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -130,7 +130,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.state && formik.errors.state)}
                 fullWidth
                 helperText={formik.touched.state && formik.errors.state}
-                label={t('STATE/Region')}
+                label="State/Region"
                 name="state"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -142,7 +142,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.spent && formik.errors.spent)}
                 fullWidth
                 helperText={formik.touched.spent && formik.errors.spent}
-                label={t('SPENT')}
+                label="Spent"
                 name="spent"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -155,7 +155,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.orders && formik.errors.orders)}
                 fullWidth
                 helperText={formik.touched.orders && formik.errors.orders}
-                label={t('ORDERS')}
+                label="Orders"
                 name="orders"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -168,7 +168,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.location && formik.errors.location)}
                 fullWidth
                 helperText={formik.touched.location && formik.errors.location}
-                label={t('LOCATION')}
+                label="Location"
                 name="location"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -180,7 +180,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.address && formik.errors.address)}
                 fullWidth
                 helperText={formik.touched.address && formik.errors.address}
-                label={t('ADDRESS')}
+                label="Address"
                 name="address"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -192,7 +192,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.address1 && formik.errors.address1)}
                 fullWidth
                 helperText={formik.touched.address1 && formik.errors.address1}
-                label={t('ADDRESS1')}
+                label="Address 1"
                 name="address1"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -204,7 +204,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.address2 && formik.errors.address2)}
                 fullWidth
                 helperText={formik.touched.address2 && formik.errors.address2}
-                label={t('ADDRESS2')}
+                label="Address 2"
                 name="address2"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -216,7 +216,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.phone && formik.errors.phone)}
                 fullWidth
                 helperText={formik.touched.phone && formik.errors.phone}
-                label={t('PHONE_NUMBER')}
+                label="Phone number"
                 name="phone"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -262,6 +262,6 @@ export const RestaurantEditForm = props => {
     </form>
   );
 };
-RestaurantEditForm.propTypes = {
+RestaurantNewForm.propTypes = {
   customer: PropTypes.object.isRequired,
 };

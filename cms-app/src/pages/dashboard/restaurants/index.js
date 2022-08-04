@@ -1,5 +1,3 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import Head from 'next/head';
 import {
   Box,
   Button,
@@ -13,10 +11,14 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { customerApi } from '../../../__fake-api__/customer-api';
+import Head from 'next/head';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { restaurantApi } from '../../../api/restaurant-api';
 
+import LoadingButton from '@mui/lab/LoadingButton';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
 import { RestaurantListTable } from '../../../components/dashboard/restaurant/restaurant-list-table';
@@ -26,7 +28,6 @@ import { Plus as PlusIcon } from '../../../icons/plus';
 import { Search as SearchIcon } from '../../../icons/search';
 import { Upload as UploadIcon } from '../../../icons/upload';
 import { gtm } from '../../../lib/gtm';
-import { useTranslation } from 'react-i18next';
 
 const tabs = [
   { label: 'All', value: 'all' },
@@ -115,6 +116,7 @@ const applyPagination = (customers, page, rowsPerPage) =>
 
 const RestaurantList = () => {
   const { t } = useTranslation();
+  const router = useRouter();
 
   const isMounted = useMounted();
   const queryRef = useRef(null);
@@ -210,9 +212,13 @@ const RestaurantList = () => {
                 <Typography variant="h4">{t('RESTAURANTS')}</Typography>
               </Grid>
               <Grid item>
-                <Button startIcon={<PlusIcon fontSize="small" />} variant="contained">
+                <LoadingButton
+                  onClick={e => router.push('/dashboard/restaurants/new')}
+                  startIcon={<PlusIcon fontSize="small" />}
+                  variant="contained"
+                >
                   Add
-                </Button>
+                </LoadingButton>
               </Grid>
             </Grid>
             <Box sx={{ m: -1, mt: 3, display: 'none' }}>
