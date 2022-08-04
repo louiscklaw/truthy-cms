@@ -31,7 +31,25 @@ class RestaurantApi {
     delete values.createdAt;
     delete values.id;
 
-    console.log(values);
+    console.log({
+      updateRestaurant: values,
+    });
+    console.log({
+      ok_value: {
+        address: 'address test',
+        address1: 'address1 test',
+        address2: 'address2 test',
+        country: 'country test',
+        email: 'user1@truthy.com',
+        isActive: true,
+        location: 'Hong Kong',
+        name: 'user1',
+        orders: 0,
+        phone: '91234567',
+        spent: 0,
+        state: 'state test',
+      },
+    });
 
     return axios.patch(`/api/restaurants/${id}`, values, { withCredentials: true });
   }

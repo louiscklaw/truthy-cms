@@ -19,6 +19,8 @@ const RestaurantEdit = () => {
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
   const { restaurantId } = useRouter().query;
+  const [is_loading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
@@ -32,6 +34,7 @@ const RestaurantEdit = () => {
       console.log(data);
 
       if (isMounted()) {
+        console.log({ setCustomer: data });
         setCustomer(data);
       }
     } catch (err) {
@@ -47,6 +50,16 @@ const RestaurantEdit = () => {
     [],
   );
 
+  if (error) {
+    return (
+      <>
+        <pre>
+          {t('some error occured')} {JSON.stringify(error, null, 2)}
+        </pre>
+      </>
+    );
+  }
+
   if (!customer) {
     return null;
   }
@@ -56,6 +69,7 @@ const RestaurantEdit = () => {
       <Head>
         <title>Dashboard: Customer Edit | Material Kit Pro</title>
       </Head>
+      {JSON.stringify({ error })}
 
       <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">

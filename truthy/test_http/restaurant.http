@@ -28,7 +28,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost/api/restaurants/16
+PATCH http://localhost/api/restaurants/15
 Content-Type: application/json
 
 {
