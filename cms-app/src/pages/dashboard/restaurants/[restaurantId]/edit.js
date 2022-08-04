@@ -98,7 +98,7 @@ const RestaurantEdit = () => {
                   whiteSpace: 'nowrap',
                 }}
               >
-                <Typography variant="subtitle2">user_id:</Typography>
+                <Typography variant="subtitle2">restaurant_id:</Typography>
                 <Chip label={customer.id} size="small" sx={{ ml: 1 }} />
               </Box>
             </div>
