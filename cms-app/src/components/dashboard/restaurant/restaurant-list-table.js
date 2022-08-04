@@ -145,11 +145,15 @@ export const RestaurantListTable = props => {
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <NextLink href={`/dashboard/restaurants/${customer.id}/edit`} passHref>
-                      <IconButton component="a">
-                        <PencilAltIcon fontSize="small" />
-                      </IconButton>
-                    </NextLink>
+                    {process.env.NODE_ENV === 'development' ? (
+                      <NextLink href={`/dashboard/restaurants/${customer.id}/edit`} passHref>
+                        <IconButton component="a">
+                          <PencilAltIcon fontSize="small" />
+                        </IconButton>
+                      </NextLink>
+                    ) : (
+                      <></>
+                    )}
                     <NextLink href={`/dashboard/restaurants/edit/${customer.uuid}`} passHref>
                       <IconButton component="a">
                         <PencilAltIcon fontSize="small" />

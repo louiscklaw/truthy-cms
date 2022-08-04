@@ -78,7 +78,6 @@ const RestaurantEdit = () => {
       <Head>
         <title>Dashboard: Customer Edit | Material Kit Pro</title>
       </Head>
-      {JSON.stringify({ error })}
 
       <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">
