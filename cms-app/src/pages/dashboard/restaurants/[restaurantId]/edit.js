@@ -11,6 +11,7 @@ import { useMounted } from '../../../../hooks/use-mounted';
 import { gtm } from '../../../../lib/gtm';
 import { getInitials } from '../../../../utils/get-initials';
 import { useTranslation } from 'react-i18next';
+import { restaurantApi } from '../../../../api/restaurant-api';
 
 const CustomerEdit = () => {
   const { t } = useTranslation();
@@ -23,7 +24,10 @@ const CustomerEdit = () => {
 
   const getCustomer = useCallback(async () => {
     try {
-      const data = await fakeCustomerApi.getCustomer();
+      // const data = await fakeCustomerApi.getCustomer();
+      const { data } = await restaurantApi.getRestaurant(id);
+
+      console.log(data);
 
       if (isMounted()) {
         setCustomer(data);

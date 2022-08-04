@@ -23,6 +23,7 @@ export class RestaurantsService {
   }
 
   findOne(id: number) {
+    return this.restaurantRepository.findOne(+id);
     return `This action returns a #${id} restaurant`;
   }
 

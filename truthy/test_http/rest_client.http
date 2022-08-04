@@ -128,6 +128,9 @@ GET http://localhost/api/helloworld/1
 ###
 GET http://localhost/api/restaurants
 
+###
+GET http://localhost/api/restaurants/15
+
 
 ###
 POST http://localhost/api/restaurants
