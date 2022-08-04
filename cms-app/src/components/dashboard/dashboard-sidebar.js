@@ -35,21 +35,9 @@ const getSections = t => [
   {
     title: t('General'),
     items: [
-      {
-        title: t('Overview'),
-        path: '/dashboard',
-        icon: <HomeIcon fontSize="small" />,
-      },
-      {
-        title: t('Analytics'),
-        path: '/dashboard/analytics',
-        icon: <ChartBarIcon fontSize="small" />,
-      },
-      {
-        title: t('Finance'),
-        path: '/dashboard/finance',
-        icon: <ChartPieIcon fontSize="small" />,
-      },
+      { title: t('Overview'), path: '/dashboard', icon: <HomeIcon fontSize="small" /> },
+      { title: t('Analytics'), path: '/dashboard/analytics', icon: <ChartBarIcon fontSize="small" /> },
+      { title: t('Finance'), path: '/dashboard/finance', icon: <ChartPieIcon fontSize="small" /> },
       {
         title: t('Logistics'),
         path: '/dashboard/logistics',
@@ -62,11 +50,7 @@ const getSections = t => [
           />
         ),
       },
-      {
-        title: t('Account'),
-        path: '/dashboard/account',
-        icon: <UserCircleIcon fontSize="small" />,
-      },
+      { title: t('Account'), path: '/dashboard/account', icon: <UserCircleIcon fontSize="small" /> },
     ],
   },
   {
@@ -158,26 +142,10 @@ const getSections = t => [
   {
     title: t('Apps'),
     items: [
-      {
-        title: t('Kanban'),
-        path: '/dashboard/kanban',
-        icon: <ClipboardListIcon fontSize="small" />,
-      },
-      {
-        title: t('Mail'),
-        path: '/dashboard/mail',
-        icon: <MailIcon fontSize="small" />,
-      },
-      {
-        title: t('Chat'),
-        path: '/dashboard/chat',
-        icon: <ChatAlt2Icon fontSize="small" />,
-      },
-      {
-        title: t('Calendar'),
-        path: '/dashboard/calendar',
-        icon: <CalendarIcon fontSize="small" />,
-      },
+      { title: t('Kanban'), path: '/dashboard/kanban', icon: <ClipboardListIcon fontSize="small" /> },
+      { title: t('Mail'), path: '/dashboard/mail', icon: <MailIcon fontSize="small" /> },
+      { title: t('Chat'), path: '/dashboard/chat', icon: <ChatAlt2Icon fontSize="small" /> },
+      { title: t('Calendar'), path: '/dashboard/calendar', icon: <CalendarIcon fontSize="small" /> },
     ],
   },
   {
@@ -192,21 +160,9 @@ const getSections = t => [
           { title: t('Login'), path: '/authentication/login?disableGuard=true' },
         ],
       },
-      {
-        title: t('Pricing'),
-        path: '/dashboard/pricing',
-        icon: <CreditCardIcon fontSize="small" />,
-      },
-      {
-        title: t('Checkout'),
-        path: '/checkout',
-        icon: <CashIcon fontSize="small" />,
-      },
-      {
-        title: t('Contact'),
-        path: '/contact',
-        icon: <MailOpenIcon fontSize="small" />,
-      },
+      { title: t('Pricing'), path: '/dashboard/pricing', icon: <CreditCardIcon fontSize="small" /> },
+      { title: t('Checkout'), path: '/checkout', icon: <CashIcon fontSize="small" /> },
+      { title: t('Contact'), path: '/contact', icon: <MailOpenIcon fontSize="small" /> },
       {
         title: t('Error'),
         path: '/error',
