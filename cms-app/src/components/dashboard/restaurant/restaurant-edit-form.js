@@ -199,6 +199,7 @@ export const RestaurantEditForm = props => {
                 value={formik.values.address1}
               />
             </Grid>
+
             <Grid item md={6} xs={12}>
               <TextField
                 error={Boolean(formik.touched.address2 && formik.errors.address2)}
@@ -221,6 +222,19 @@ export const RestaurantEditForm = props => {
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 value={formik.values.phone}
+              />
+            </Grid>
+
+            <Grid item md={6} xs={12}>
+              <TextField
+                error={Boolean(formik.touched.slug && formik.errors.slug)}
+                fullWidth
+                helperText={formik.touched.slug && formik.errors.slug}
+                label={t('SLUG')}
+                name="slug"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={formik.values.slug}
               />
             </Grid>
           </Grid>
