@@ -18,6 +18,8 @@ import {
 } from '@mui/material';
 import { wait } from '../../../utils/wait';
 import { useTranslation } from 'react-i18next';
+import { restaurantApi } from '../../../api/restaurant-api';
+import { useRouter } from 'next/router';
 
 export const CustomerEditForm = props => {
   const { t } = useTranslation();
@@ -49,10 +51,25 @@ export const CustomerEditForm = props => {
     onSubmit: async (values, helpers) => {
       try {
         // NOTE: Make API request
-        await wait(500);
-        helpers.setStatus({ success: true });
-        helpers.setSubmitting(false);
-        toast.success('Customer updated!');
+        // await wait(3000);
+        // helpers.setStatus({ success: true });
+        // helpers.setSubmitting(false);
+        // toast.success('Customer updated!');
+
+        await restaurantApi.updateRestaurant(16, {
+          address: 'address test 16',
+          address1: 'address1 test',
+          address2: 'address2 test',
+          country: 'country test',
+          email: 'user1@truthy.com',
+          isActive: true,
+          location: 'Hong Kong',
+          name: 'user1',
+          orders: 0,
+          phone: '91234567',
+          spent: 0,
+          state: 'state test',
+        });
       } catch (err) {
         console.error(err);
         toast.error('Something went wrong!');
@@ -162,7 +179,7 @@ export const CustomerEditForm = props => {
           <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
             <div>
               <Typography gutterBottom variant="subtitle1">
-                restaurant is active
+                restaurant is active ?
               </Typography>
               <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
                 Toggle restaurant to show on main screen

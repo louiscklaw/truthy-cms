@@ -19,7 +19,8 @@
     "seed": "docker compose -f docker-compose.dev.yml exec -it api npm run seed",
     "into_api": "docker compose -f docker-compose.dev.yml exec -it api bash",
     "into_cms_app": "docker compose -f docker-compose.dev.yml exec -it cms-app bash",
-    "show_docker_log": "docker compose -f docker-compose.dev.yml logs -f "
+    "show_docker_log": "docker compose -f docker-compose.dev.yml logs -f ",
+    "show_api_log": "docker compose -f docker-compose.dev.yml logs -f api"
   },
   "repository": {
     "type": "git",

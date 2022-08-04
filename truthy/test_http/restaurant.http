@@ -1,0 +1,50 @@
+@PORT=7777
+
+@JWT=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3N1ZXIiOiJodHRwOi8vbG9jYWxob3N0Ojc3NzciLCJhdWRpZW5jZSI6Imh0dHA6Ly9sb2NhbGhvc3Q6MzAwMCIsInN1YmplY3QiOiIxIiwiaXNUd29GQUF1dGhlbnRpY2F0ZWQiOmZhbHNlLCJ1c2VyIjp7InNraXBIYXNoUGFzc3dvcmQiOmZhbHNlLCJpZCI6MSwiY3JlYXRlZEF0IjoiMjAyMi0wOC0wM1QxMTo1ODoxMC4zMTlaIiwidXBkYXRlZEF0IjoiMjAyMi0wOC0wM1QxMTo1ODoxMC4zMTlaIiwidXNlcm5hbWUiOiJ1c2VyMSIsImVtYWlsIjoidXNlcjFAdHJ1dGh5LmNvbSIsIm5hbWUiOiJ1c2VyMV90cnV0aHkiLCJwaG9uZSI6InBob25lIHRlc3QiLCJzdGF0ZSI6InN0YXRlIHRlc3QiLCJ1c2VyX3R5cGUiOm51bGwsImNvdW50cnkiOiJjb3VudHJ5IHRlc3QiLCJhZGRyZXNzIjoiYWRkcmVzcyB0ZXN0IiwiYWRkcmVzczEiOiJhZGRyZXNzMSB0ZXN0IiwiYWRkcmVzczIiOiJhZGRyZXNzMiB0ZXN0IiwiY29udGFjdCI6bnVsbCwiYXZhdGFyIjpudWxsLCJzdGF0dXMiOiJhY3RpdmUiLCJ0b2tlbiI6bnVsbCwidG9rZW5WYWxpZGl0eURhdGUiOiIyMDIyLTA4LTAzVDExOjU4OjEwLjMxOVoiLCJ0d29GQVNlY3JldCI6bnVsbCwidHdvRkFUaHJvdHRsZVRpbWUiOiIyMDIyLTA4LTAzVDExOjU4OjEwLjMxOVoiLCJpc1R3b0ZBRW5hYmxlZCI6ZmFsc2UsImhhc0Rpc2NvdW50IjpmYWxzZSwiaXNWZXJpZmllZCI6ZmFsc2UsImNvbnRhY3RfaW5mb19wdWJsaWMiOnRydWUsImF2YWlsYWJsZV90b19oaXJlIjp0cnVlLCJyb2xlSWQiOjF9LCJpYXQiOjE2NTk1MjgyMjYsImV4cCI6MTY1OTUyOTEyNn0.BzzojikngUeTbOdDPnYHdjWrDFasA23jh59w3ZjtSGI
+
+@BASEURL=api
+
+# restaurant
+
+###
+GET http://localhost/api/helloworld/1
+
+
+###
+GET http://localhost/api/restaurants
+
+###
+GET http://localhost/api/restaurants/16
+
+
+###
+POST http://localhost/api/restaurants
+Content-Type: application/json
+
+{
+  "name":"restaurant 1",
+  "location":"hong kong",
+  "isActive":true
+}
+
+###
+PATCH http://localhost/api/restaurants/16
+Content-Type: application/json
+
+{
+  "address": "address test",
+  "address1": "address1 test",
+  "address2": "address2 test",
+  "country": "country test",
+  "email": "user1@truthy.com",
+  "isActive": true,
+  "location": "Hong Kong",
+  "name": "user1",
+  "orders": 0,
+  "phone": "91234567",
+  "spent": 0,
+  "state": "state test"
+}
+
+###
+DELETE http://localhost/api/restaurants/14

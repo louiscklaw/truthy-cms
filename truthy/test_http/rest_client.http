@@ -124,35 +124,3 @@ DELETE http://localhost/api/helloworld/14
 ###
 GET http://localhost/api/helloworld/1
 
-
-###
-GET http://localhost/api/restaurants
-
-###
-GET http://localhost/api/restaurants/15
-
-
-###
-POST http://localhost/api/restaurants
-Content-Type: application/json
-
-{
-  "name":"restaurant 1",
-  "location":"hong kong",
-  "isActive":true
-}
-
-###
-PATCH http://localhost/api/restaurants/14
-Content-Type: application/json
-
-{
-  "name":"restaurant 2",
-  "location":"hong kong",
-  "orders":1,
-  "spent":0.1,
-  "isActive":false
-}
-
-###
-DELETE http://localhost/api/restaurants/14

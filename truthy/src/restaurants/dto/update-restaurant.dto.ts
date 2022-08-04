@@ -9,11 +9,32 @@ export class UpdateRestaurantDto extends PartialType(CreateRestaurantDto) {
   @IsString()
   location: string;
 
+  @IsString()
+  address: string;
+
+  @IsString()
+  address1: string;
+
+  @IsString()
+  address2: string;
+
+  @IsString()
+  country: string;
+
+  @IsString()
+  email: string;
+
   @IsNumber()
   orders: number;
 
   @IsNumber()
   spent: number;
+
+  @IsString()
+  state: string;
+
+  @IsString()
+  phone: string;
 
   @IsBoolean()
   isActive: boolean;
