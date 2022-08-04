@@ -66,7 +66,7 @@ export const CustomerEditForm = props => {
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
       <Card>
-        <CardHeader title="Edit customer" />
+        <CardHeader title={t('EDIT_RESTAURANT')} />
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
@@ -157,32 +157,15 @@ export const CustomerEditForm = props => {
               />
             </Grid>
           </Grid>
-          <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', mt: 3 }}>
-            <div>
-              <Typography gutterBottom variant="subtitle1">
-                {t('MAKE_CONTACT_INFO_PUBLIC')}
-              </Typography>
-              <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
-                Means that anyone viewing your profile will be able to see your contacts details
-              </Typography>
-            </div>
-            <Switch
-              checked={formik.values.isVerified}
-              color="primary"
-              edge="start"
-              name="isVerified"
-              onChange={formik.handleChange}
-              value={formik.values.isVerified}
-            />
-          </Box>
+
           <Divider sx={{ my: 3 }} />
           <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
             <div>
               <Typography gutterBottom variant="subtitle1">
-                Available to hire
+                restaurant is active
               </Typography>
               <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
-                Toggling this will let your teammates know that you are available for acquiring new projects
+                Toggle restaurant to show on main screen
               </Typography>
             </div>
             <Switch
@@ -197,15 +180,15 @@ export const CustomerEditForm = props => {
         </CardContent>
         <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
           <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
-            Update
+            {t('UPDATE')}
           </Button>
           <NextLink href="/dashboard/customers/1" passHref>
             <Button component="a" disabled={formik.isSubmitting} sx={{ m: 1, mr: 'auto' }} variant="outlined">
-              Cancel
+              {t('CANCEL')}
             </Button>
           </NextLink>
           <Button color="error" disabled={formik.isSubmitting}>
-            Delete user
+            {t('DELETE_RESTAURANT')}
           </Button>
         </CardActions>
       </Card>
