@@ -135,11 +135,12 @@ Content-Type: application/json
 
 {
   "name":"restaurant 1",
-  "location":"hong kong"
+  "location":"hong kong",
+  "isActive":true
 }
 
 ###
-PATCH http://localhost/api/restaurants/8
+PATCH http://localhost/api/restaurants/9
 Content-Type: application/json
 
 {
@@ -148,4 +149,4 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost/api/restaurants/7
+DELETE http://localhost/api/restaurants/9

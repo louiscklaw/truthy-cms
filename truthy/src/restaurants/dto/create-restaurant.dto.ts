@@ -13,6 +13,6 @@ export class CreateRestaurantDto {
   // @IsNumber()
   // spent: number;
 
-  // @IsBoolean()
-  // isActive: boolean;
+  @IsBoolean()
+  isActive: boolean;
 }
