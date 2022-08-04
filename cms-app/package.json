@@ -46,6 +46,7 @@
     "@mui/system": "^5.8.0",
     "@react-pdf/renderer": "^2.1.1",
     "@reduxjs/toolkit": "^1.8.1",
+    "@sindresorhus/slugify": "^2.1.0",
     "apexcharts": "^3.35.2",
     "aws-amplify": "^4.3.22",
     "axios": "^0.27.2",
