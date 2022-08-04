@@ -21,11 +21,11 @@ export default class CreateUserSeed {
       .insert()
       .into(RestaurantEntity)
       .values(
-        Array(3000)
+        Array(30)
           .fill(0)
           .map((a, i) => {
             return {
-              name: `${faker_ja.company.bs()} ${i}`,
+              name: `${faker_ja.company.companyName()} ${i}`,
               email: faker_ja.internet.email(),
               country: faker_ja.address.country(),
               state: 'state test',

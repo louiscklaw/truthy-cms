@@ -7,6 +7,7 @@ import {
   Box,
   Button,
   Checkbox,
+  Chip,
   IconButton,
   Link,
   Table,
@@ -144,7 +145,7 @@ export const RestaurantListTable = props => {
                         {getInitials(restaurant.name)}
                       </Avatar>
                       <Box sx={{ ml: 1 }}>
-                        <NextLink href="/dashboard/customers/1" passHref>
+                        <NextLink href={`/dashboard/restaurants/edit/${restaurant.uuid}`} passHref>
                           <Link color="inherit" variant="subtitle2">
                             {restaurant.name}
                           </Link>
@@ -156,16 +157,20 @@ export const RestaurantListTable = props => {
                     </Box>
                   </TableCell>
                   <TableCell>{`${restaurant.address}, ${restaurant.address1}, ${restaurant.address2}`}</TableCell>
-                  <TableCell>{restaurant.totalOrders}</TableCell>
+
+                  <TableCell>
+                    <Typography color="success.main" variant="subtitle2">
+                      {123}
+                    </Typography>
+                  </TableCell>
+
                   <TableCell>
                     <Typography color="success.main" variant="subtitle2">
                       {numeral(restaurant.totalAmountSpent).format(`${restaurant.currency}0,0.00`)}
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Typography color="success.main" variant="subtitle2">
-                      active ?
-                    </Typography>
+                    <Chip label={restaurant.isActive ? t('ACTIVE') : t('NOT_ACTIVE')} />
                   </TableCell>
                   <TableCell align="right">
                     <NextLink href={`/dashboard/restaurants/edit/${restaurant.uuid}`} passHref>
