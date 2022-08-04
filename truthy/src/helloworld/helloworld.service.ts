@@ -25,7 +25,7 @@ export class HelloworldService {
     return { ...createHelloworldDto, id };
   }
 
-  findAll(): Promise<HelloworldEntity[]> {
+  async findAll(): Promise<HelloworldEntity[]> {
     return this.helloworldRepository.find();
   }
 

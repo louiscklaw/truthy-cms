@@ -1,4 +1,5 @@
 // https://docs.nestjs.com/techniques/database#repository-pattern
+// https://orkhan.gitbook.io/typeorm/docs/entities#column-types-for-postgres
 
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
@@ -7,6 +8,10 @@ export class HelloworldEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
+  // @PrimaryGeneratedColumn('uuid')
+  // id: string;
+
+  // https://orkhan.gitbook.io/typeorm/docs/entities#what-is-entity
   @Column()
   firstName: string;
 
