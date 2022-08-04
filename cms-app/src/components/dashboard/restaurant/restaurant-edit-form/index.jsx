@@ -26,6 +26,7 @@ import slugify from '@sindresorhus/slugify';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ConfirmDelete from './confirm-delete';
 import { useState } from 'react';
+import { FaSave, FaBackspace } from 'react-icons/fa';
 
 export const RestaurantEditForm = props => {
   const { t } = useTranslation();
@@ -283,11 +284,17 @@ export const RestaurantEditForm = props => {
           </Box>
         </CardContent>
         <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
-          <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
+          <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained" startIcon={<FaSave />}>
             {t('UPDATE')}
           </Button>
-          <NextLink href="/dashboard/customers/1" passHref>
-            <Button component="a" disabled={formik.isSubmitting} sx={{ m: 1, mr: 'auto' }} variant="outlined">
+          <NextLink href="/dashboard/restaurants" passHref>
+            <Button
+              component="a"
+              disabled={formik.isSubmitting}
+              sx={{ m: 1, mr: 'auto' }}
+              variant="outlined"
+              startIcon={<FaBackspace />}
+            >
               {t('CANCEL')}
             </Button>
           </NextLink>

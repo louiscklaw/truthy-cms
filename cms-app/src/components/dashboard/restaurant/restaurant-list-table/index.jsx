@@ -88,7 +88,6 @@ export const RestaurantListTable = props => {
 
   return (
     <div {...other}>
-      <pre>{JSON.stringify({ is_processing })}</pre>
       <DeleteingModal open={is_processing} />
       <Box
         sx={{
@@ -156,7 +155,7 @@ export const RestaurantListTable = props => {
                       </Box>
                     </Box>
                   </TableCell>
-                  <TableCell>{`${restaurant.city}, ${restaurant.state}, ${restaurant.country}`}</TableCell>
+                  <TableCell>{`${restaurant.address}, ${restaurant.address1}, ${restaurant.address2}`}</TableCell>
                   <TableCell>{restaurant.totalOrders}</TableCell>
                   <TableCell>
                     <Typography color="success.main" variant="subtitle2">

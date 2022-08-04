@@ -25,7 +25,7 @@ export default class CreateUserSeed {
           .fill(0)
           .map((a, i) => {
             return {
-              name: `${faker_zh_tw.name.findName()} the very new restaurant ${i}`,
+              name: `${faker_ja.company.bs()} ${i}`,
               email: faker_ja.internet.email(),
               country: faker_ja.address.country(),
               state: 'state test',
