@@ -47,7 +47,7 @@ export const HomeHero = props => {
           </Typography>
           {['JavaScript', 'TypeScript', 'Figma', 'Sketch'].map(item => (
             <Box key={item} sx={{ alignItems: 'center', display: 'flex', m: 2 }}>
-              <CheckCircleOutlinedIcon color="success" sx={{ mr: 1 }} />
+              <CheckCircleOutlinedIcon color="primary" sx={{ mr: 1 }} />
               <Typography variant="subtitle2">{item}</Typography>
             </Box>
           ))}
