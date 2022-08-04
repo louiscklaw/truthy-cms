@@ -2,13 +2,14 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
-import { Avatar, Box, Divider, ListItemIcon, ListItemText, MenuItem, Popover, Typography } from '@mui/material';
+import { Avatar, Box, Button, Divider, ListItemIcon, ListItemText, MenuItem, Popover, Typography } from '@mui/material';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { useAuth } from '../../hooks/use-auth';
 import { Cog as CogIcon } from '../../icons/cog';
 import { UserCircle as UserCircleIcon } from '../../icons/user-circle';
 import { SwitchHorizontalOutlined as SwitchHorizontalOutlinedIcon } from '../../icons/switch-horizontal-outlined';
 import { useTranslation } from 'react-i18next';
+import { useEffect } from 'react';
 
 export const AccountPopover = props => {
   const { anchorEl, onClose, open, ...other } = props;
@@ -29,7 +30,12 @@ export const AccountPopover = props => {
     }
   };
 
-  if (!user) return <></>;
+  const go = url => {
+    onClose?.();
+    router.push(url).catch(console.error);
+  };
+
+  if (!user) return <>some error occured</>;
 
   return (
     <Popover
@@ -55,30 +61,26 @@ export const AccountPopover = props => {
       </Box>
       <Divider />
       <Box sx={{ my: 1 }}>
-        <NextLink href="/dashboard/social/profile" passHref>
-          <MenuItem component="a">
-            <ListItemIcon>
-              <UserCircleIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={<Typography variant="body1">Profile</Typography>} />
-          </MenuItem>
-        </NextLink>
-        <NextLink href="/dashboard/account" passHref>
-          <MenuItem component="a">
-            <ListItemIcon>
-              <CogIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={<Typography variant="body1">Settings</Typography>} />
-          </MenuItem>
-        </NextLink>
-        <NextLink href="/dashboard" passHref>
-          <MenuItem component="a">
-            <ListItemIcon>
-              <SwitchHorizontalOutlinedIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText primary={<Typography variant="body1">Change organization</Typography>} />
-          </MenuItem>
-        </NextLink>
+        <MenuItem onClick={e => go('/dashboard/social/profile')}>
+          <ListItemIcon>
+            <SwitchHorizontalOutlinedIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary={<Typography variant="body1">{t('PROFILE')}</Typography>} />
+        </MenuItem>
+
+        <MenuItem onClick={e => go('/dashboard/account')}>
+          <ListItemIcon>
+            <SwitchHorizontalOutlinedIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary={<Typography variant="body1">{t('SETTINGS')}</Typography>} />
+        </MenuItem>
+
+        <MenuItem onClick={e => go('/dashboard')}>
+          <ListItemIcon>
+            <SwitchHorizontalOutlinedIcon fontSize="small" />
+          </ListItemIcon>
+          <ListItemText primary={<Typography variant="body1">{t('CHANGE_ORGANIZATION')}</Typography>} />
+        </MenuItem>
         <Divider />
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
