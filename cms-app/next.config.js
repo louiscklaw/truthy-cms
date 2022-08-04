@@ -31,6 +31,9 @@ nextConfigProd = withTM({
 });
 
 nextConfigDev = withTM({
+  env: {
+    GREETING: 'Hello World',
+  },
   basePath: '/cms',
   reactStrictMode: true,
   webpack(config) {

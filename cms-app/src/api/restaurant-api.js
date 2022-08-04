@@ -8,8 +8,8 @@ class RestaurantApi {
     return axios.get('/api/restaurants', { withCredentials: true });
   }
 
-  getRestaurant() {
-    return {};
+  getRestaurant(id) {
+    return axios.get(`/api/restaurants/${id}`, { withCredentials: true });
   }
 
   getRestaurantEmails() {

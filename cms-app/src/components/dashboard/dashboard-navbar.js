@@ -14,10 +14,12 @@ import { ContentSearchDialog } from './content-search-dialog';
 import { NotificationsPopover } from './notifications-popover';
 import { LanguagePopover } from './language-popover';
 
+const BASE_URL = '/api';
+
 const languages = {
-  en: '/static/icons/uk_flag.svg',
-  de: '/static/icons/de_flag.svg',
-  es: '/static/icons/es_flag.svg',
+  en: `${BASE_URL}/static/icons/uk_flag.svg`,
+  de: `${BASE_URL}/static/icons/de_flag.svg`,
+  es: `${BASE_URL}/static/icons/es_flag.svg`,
 };
 
 const DashboardNavbarRoot = styled(AppBar)(({ theme }) => ({

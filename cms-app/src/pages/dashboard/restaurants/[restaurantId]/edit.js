@@ -25,7 +25,7 @@ const CustomerEdit = () => {
   const getCustomer = useCallback(async () => {
     try {
       // const data = await fakeCustomerApi.getCustomer();
-      const { data } = await restaurantApi.getRestaurant(id);
+      const { data } = await restaurantApi.getRestaurant(15);
 
       console.log(data);
 
