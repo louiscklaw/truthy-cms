@@ -24,6 +24,9 @@ export class RestaurantEntity {
   state: string;
 
   @Column({ default: '' })
+  address: string;
+
+  @Column({ default: '' })
   address1: string;
 
   @Column({ default: '' })
