@@ -3,15 +3,17 @@ import NextLink from 'next/link';
 import Head from 'next/head';
 import { Avatar, Box, Chip, Container, Link, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { customerApi } from '../../../../__fake-api__/customer-api';
+import { fakeCustomerApi } from '../../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
 import { CustomerEditForm } from '../../../../components/dashboard/restaurant/restaurant-edit-form';
 import { useMounted } from '../../../../hooks/use-mounted';
 import { gtm } from '../../../../lib/gtm';
 import { getInitials } from '../../../../utils/get-initials';
+import { useTranslation } from 'react-i18next';
 
 const CustomerEdit = () => {
+  const { t } = useTranslation();
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
 
@@ -21,7 +23,7 @@ const CustomerEdit = () => {
 
   const getCustomer = useCallback(async () => {
     try {
-      const data = await customerApi.getCustomer();
+      const data = await fakeCustomerApi.getCustomer();
 
       if (isMounted()) {
         setCustomer(data);
@@ -48,45 +50,18 @@ const CustomerEdit = () => {
       <Head>
         <title>Dashboard: Customer Edit | Material Kit Pro</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          backgroundColor: 'background.default',
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+      <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
         <Container maxWidth="md">
           <Box sx={{ mb: 4 }}>
             <NextLink href="/dashboard/restaurants" passHref>
-              <Link
-                color="textPrimary"
-                component="a"
-                sx={{
-                  alignItems: 'center',
-                  display: 'flex',
-                }}
-              >
+              <Link color="textPrimary" component="a" sx={{ alignItems: 'center', display: 'flex' }}>
                 <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
-                <Typography variant="subtitle2">Customers</Typography>
+                <Typography variant="subtitle2">{t('RESTAURANTS')}</Typography>
               </Link>
             </NextLink>
           </Box>
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              overflow: 'hidden',
-            }}
-          >
-            <Avatar
-              src={customer.avatar}
-              sx={{
-                height: 64,
-                mr: 2,
-                width: 64,
-              }}
-            >
+          <Box sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
+            <Avatar src={customer.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
               {getInitials(customer.name)}
             </Avatar>
             <div>

@@ -308,4 +308,4 @@ class CustomerApi {
   }
 }
 
-export const customerApi = new CustomerApi();
+export const fakeCustomerApi = new CustomerApi();

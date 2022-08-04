@@ -1,15 +1,13 @@
 // https://docs.nestjs.com/techniques/database#repository-pattern
 
+import { CustomBaseEntity } from 'src/common/entity/custom-base.entity';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 // @PrimaryGeneratedColumn('uuid')
 // id: string;
 
 @Entity({ name: 'restaurants' })
-export class RestaurantEntity {
-  @PrimaryGeneratedColumn()
-  id: number;
-
+export class RestaurantEntity extends CustomBaseEntity {
   // Full name
   @Column({ default: '' })
   name: string;

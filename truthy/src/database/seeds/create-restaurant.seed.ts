@@ -22,7 +22,7 @@ export default class CreateUserSeed {
       .into(RestaurantEntity)
       .values([
         {
-          name: 'user1',
+          name: 'the very new restaurant',
           email: 'user1@truthy.com',
           country: 'country test',
           state: 'state test',
