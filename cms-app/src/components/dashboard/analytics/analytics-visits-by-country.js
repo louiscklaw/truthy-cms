@@ -34,39 +34,41 @@ const applySort = (countries, sortDir) =>
     return sortDir === 'asc' ? newOrder : -newOrder;
   });
 
+const BASE_URL = '/cms';
+
 const countries = [
   {
-    flag: '/static/icons/us_flag.svg',
+    flag: `${BASE_URL}/static/icons/us_flag.svg`,
     name: 'United States',
     seo: 40,
     visits: 31200,
   },
   {
-    flag: '/static/icons/uk_flag.svg',
+    flag: `${BASE_URL}/static/icons/uk_flag.svg`,
     name: 'United Kingdom',
     seo: 47,
     visits: 12700,
   },
   {
-    flag: '/static/icons/ru_flag.svg',
+    flag: `${BASE_URL}/static/icons/ru_flag.svg`,
     name: 'Russia',
     seo: 65,
     visits: 10360,
   },
   {
-    flag: '/static/icons/ca_flag.svg',
+    flag: `${BASE_URL}/static/icons/ca_flag.svg`,
     name: 'Canada',
     seo: 23,
     visits: 5749,
   },
   {
-    flag: '/static/icons/de_flag.svg',
+    flag: `${BASE_URL}/static/icons/de_flag.svg`,
     name: 'Germany',
     seo: 45,
     visits: 2932,
   },
   {
-    flag: '/static/icons/es_flag.svg',
+    flag: `${BASE_URL}/static/icons/es_flag.svg`,
     name: 'Spain',
     seo: 56,
     visits: 200,

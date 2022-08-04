@@ -1,16 +1,16 @@
 import { Box, ListItemIcon, ListItemText, MenuItem, Paper, Typography } from '@mui/material';
-
+const BASE_URL = '/cms';
 const languageOptions = [
   {
-    icon: '/static/icons/uk_flag.svg',
+    icon: `${BASE_URL}/static/icons/uk_flag.svg`,
     label: 'English',
   },
   {
-    icon: '/static/icons/de_flag.svg',
+    icon: `${BASE_URL}/static/icons/de_flag.svg`,
     label: 'German',
   },
   {
-    icon: '/static/icons/es_flag.svg',
+    icon: `${BASE_URL}/static/icons/es_flag.svg`,
     label: 'Spanish',
   },
 ];

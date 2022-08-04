@@ -14,7 +14,7 @@ import { ContentSearchDialog } from './content-search-dialog';
 import { NotificationsPopover } from './notifications-popover';
 import { LanguagePopover } from './language-popover';
 
-const BASE_URL = '/api';
+const BASE_URL = '/cms';
 
 const languages = {
   en: `${BASE_URL}/static/icons/uk_flag.svg`,
