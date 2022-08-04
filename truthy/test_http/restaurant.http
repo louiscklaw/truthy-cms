@@ -18,6 +18,9 @@ GET http://localhost/api/restaurants/16
 
 
 ###
+GET http://localhost/api/restaurants/uid/34f3b870-fa0e-49f7-b32f-1fd74e0b494f
+
+###
 POST http://localhost/api/restaurants
 Content-Type: application/json
 

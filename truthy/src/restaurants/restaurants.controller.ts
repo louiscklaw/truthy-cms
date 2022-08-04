@@ -17,6 +17,11 @@ export class RestaurantsController {
     return this.restaurantsService.findAll();
   }
 
+  @Get('/uid/:uuid')
+  findOneByUUID(@Param('uuid') uuid: string) {
+    return this.restaurantsService.findOneByUuid(uuid);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.restaurantsService.findOne(+id);

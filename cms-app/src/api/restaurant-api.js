@@ -12,6 +12,10 @@ class RestaurantApi {
     return axios.get(`/api/restaurants/${id}`, { withCredentials: true });
   }
 
+  getRestaurantByUuid(id) {
+    return axios.get(`/api/restaurants/uid/${id}`, { withCredentials: true });
+  }
+
   getRestaurantEmails() {
     return {};
   }

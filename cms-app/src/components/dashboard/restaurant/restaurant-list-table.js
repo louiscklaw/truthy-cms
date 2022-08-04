@@ -150,6 +150,12 @@ export const RestaurantListTable = props => {
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
+                    <NextLink href={`/dashboard/restaurants/edit/${customer.uuid}`} passHref>
+                      <IconButton component="a">
+                        <PencilAltIcon fontSize="small" />
+                      </IconButton>
+                    </NextLink>
+
                     <NextLink href={`/dashboard/restaurants/${customer.id}`} passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />

@@ -35,31 +35,20 @@ const NotFound = () => {
           <Typography align="center" color="textSecondary" sx={{ mt: 0.5 }} variant="subtitle2">
             You either tried some shady route or you came here by mistake. Whichever it is, try using the navigation.
           </Typography>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              mt: 6,
-            }}
-          >
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6 }}>
             <Box
               alt="Under development"
               component="img"
               src={`/static/error/error404_${theme.palette.mode}.svg`}
-              sx={{
-                height: 'auto',
-                maxWidth: '100%',
-                width: 400,
-              }}
+              sx={{ height: 'auto', maxWidth: '100%', width: 400 }}
             />
           </Box>
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              mt: 6,
-            }}
-          >
+          <Box>
+            <Typography>
+              http://localhost/cms/dashboard/restaurants/edit/97af2ba5-0088-42e8-9e8c-7bc6a0623a22
+            </Typography>
+          </Box>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6 }}>
             <NextLink href="/dashboard" passHref>
               <Button component="a" variant="outlined">
                 Back to Dashboard

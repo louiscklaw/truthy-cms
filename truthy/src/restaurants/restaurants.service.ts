@@ -21,6 +21,11 @@ export class RestaurantsService {
     return this.restaurantRepository.find();
     // return `This action returns all restaurants`;
   }
+  // findOneByUuid
+  findOneByUuid(uuid: string) {
+    return this.restaurantRepository.findOneOrFail({ uuid });
+    // return `This action returns a #${id} restaurant`;
+  }
 
   findOne(id: number) {
     return this.restaurantRepository.findOne(+id);
