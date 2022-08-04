@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { fakeCustomerApi } from '../../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
-import { CustomerEditForm } from '../../../../components/dashboard/restaurant/restaurant-edit-form';
+import { RestaurantEditForm } from '../../../../components/dashboard/restaurant/restaurant-edit-form';
 import { useMounted } from '../../../../hooks/use-mounted';
 import { gtm } from '../../../../lib/gtm';
 import { getInitials } from '../../../../utils/get-initials';
@@ -90,7 +90,7 @@ const CustomerEdit = () => {
             </div>
           </Box>
           <Box mt={3}>
-            <CustomerEditForm customer={customer} />
+            <RestaurantEditForm customer={customer} />
           </Box>
         </Container>
       </Box>

@@ -21,7 +21,7 @@ import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../api/restaurant-api';
 import { useRouter } from 'next/router';
 
-export const CustomerEditForm = props => {
+export const RestaurantEditForm = props => {
   const { t } = useTranslation();
   const { customer, ...other } = props;
   const formik = useFormik({
@@ -198,7 +198,6 @@ export const CustomerEditForm = props => {
     </form>
   );
 };
-
-CustomerEditForm.propTypes = {
+RestaurantEditForm.propTypes = {
   customer: PropTypes.object.isRequired,
 };
