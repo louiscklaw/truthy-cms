@@ -4,10 +4,12 @@
 
 @BASEURL=api
 
+@API_HOST=192.168.10.61:81
+
 # restaurant
 
 ###
-GET http://localhost/api/helloworld/1
+GET http://{{API_HOST}}/api/helloworld/1
 
 
 ###

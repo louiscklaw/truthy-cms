@@ -4,6 +4,10 @@ import { useFormik } from 'formik';
 import { Alert, Box, Button, FormHelperText, TextField } from '@mui/material';
 import { useAuth } from '../../hooks/use-auth';
 import { useMounted } from '../../hooks/use-mounted';
+import LoadingButton from '@mui/lab/LoadingButton';
+import SaveIcon from '@mui/icons-material/Save';
+
+import { FiLogIn } from 'react-icons/fi';
 
 export const JWTLogin = props => {
   const isMounted = useMounted();
@@ -72,10 +76,19 @@ export const JWTLogin = props => {
         </Box>
       )}
       <Box sx={{ mt: 2 }}>
-        <Button disabled={formik.isSubmitting} fullWidth size="large" type="submit" variant="contained">
+        <LoadingButton
+          loading={formik.isSubmitting}
+          disabled={formik.isSubmitting}
+          startIcon={<FiLogIn />}
+          fullWidth
+          size="large"
+          type="submit"
+          variant="contained"
+        >
           Log In
-        </Button>
+        </LoadingButton>
       </Box>
+      <Box></Box>
       <Box sx={{ mt: 2 }}>
         <Alert severity="info">
           <div>
