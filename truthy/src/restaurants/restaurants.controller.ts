@@ -22,6 +22,11 @@ export class RestaurantsController {
     return this.restaurantsService.findOneByUuid(uuid);
   }
 
+  @Patch('/uid/:uuid')
+  updateByUuid(@Param('uuid') uuid: string, @Body() updateRestaurantDto: UpdateRestaurantDto) {
+    return this.restaurantsService.updateByUuid(uuid, updateRestaurantDto);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.restaurantsService.findOne(+id);

@@ -27,6 +27,14 @@ export class RestaurantsService {
     // return `This action returns a #${id} restaurant`;
   }
 
+  // updateByUuid
+  async updateByUuid(uuid: string, updateRestaurantDto: UpdateRestaurantDto): Promise<any> {
+    console.log({ uuid });
+    // return `This action updates a #${uuid} restaurant`;
+    let result = await this.restaurantRepository.update({ uuid }, updateRestaurantDto);
+    return result;
+  }
+
   findOne(id: number) {
     return this.restaurantRepository.findOne(+id);
     return `This action returns a #${id} restaurant`;

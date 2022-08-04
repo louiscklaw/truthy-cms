@@ -31,6 +31,25 @@ Content-Type: application/json
 }
 
 ###
+PATCH http://localhost/api/restaurants/uid/34f3b870-fa0e-49f7-b32f-1fd74e0b494f
+Content-Type: application/json
+
+{
+  "address": "address test",
+  "address1": "address1 test",
+  "address2": "address2 test",
+  "country": "country test",
+  "email": "user1@truthy.com",
+  "isActive": true,
+  "location": "Hong Kong",
+  "name": "user1",
+  "orders": 0,
+  "phone": "91234567",
+  "spent": 0,
+  "state": "state test"
+}
+
+###
 PATCH http://localhost/api/restaurants/15
 Content-Type: application/json
 

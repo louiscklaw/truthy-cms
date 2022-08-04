@@ -24,7 +24,7 @@ import Router, { useRouter } from 'next/router';
 export const RestaurantEditForm = props => {
   const { t } = useTranslation();
   const router = useRouter();
-  const { restaurantId } = router.query;
+  const { restaurantId, restaurantUuid } = router.query;
   const { customer, ...other } = props;
   const formik = useFormik({
     initialValues: {
@@ -61,7 +61,11 @@ export const RestaurantEditForm = props => {
         // await wait(3000);
 
         // console.log({ formik_values: values });
-        await restaurantApi.updateRestaurant(restaurantId, values);
+        if (restaurantUuid) {
+          await restaurantApi.updateRestaurantByUuid(restaurantUuid, values);
+        } else {
+          await restaurantApi.updateRestaurant(restaurantId, values);
+        }
         router.replace('/dashboard/restaurants');
         helpers.setStatus({ success: true });
         helpers.setSubmitting(false);
@@ -133,7 +137,7 @@ export const RestaurantEditForm = props => {
                 value={formik.values.state}
               />
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item md={6} xs={12} sx={{ display: 'none' }}>
               <TextField
                 error={Boolean(formik.touched.spent && formik.errors.spent)}
                 fullWidth
@@ -146,7 +150,7 @@ export const RestaurantEditForm = props => {
                 disabled
               />
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item md={6} xs={12} sx={{ display: 'none' }}>
               <TextField
                 error={Boolean(formik.touched.orders && formik.errors.orders)}
                 fullWidth
@@ -169,18 +173,6 @@ export const RestaurantEditForm = props => {
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 value={formik.values.location}
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <TextField
-                error={Boolean(formik.touched.country && formik.errors.country)}
-                fullWidth
-                helperText={formik.touched.country && formik.errors.country}
-                label="Country"
-                name="country"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={formik.values.country}
               />
             </Grid>
             <Grid item md={6} xs={12}>

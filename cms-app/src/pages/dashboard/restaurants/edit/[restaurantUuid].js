@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import NextLink from 'next/link';
 import Head from 'next/head';
-import { Avatar, Box, Button, Chip, Container, Link, Typography } from '@mui/material';
+import { Avatar, Box, Button, Chip, Container, Grid, Link, Stack, Typography } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { fakeCustomerApi } from '../../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../../components/authentication/auth-guard';
@@ -90,13 +90,54 @@ const RestaurantEdit = () => {
               </Link>
             </NextLink>
           </Box>
-          <Box sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
+          <Grid container sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
+            <Grid item xs={12} lg={6} sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
+              <Avatar src={restaurant.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
+                {getInitials(restaurant.name)}
+              </Avatar>
+              <div>
+                <Typography noWrap variant="h4">
+                  {restaurant.name}
+                </Typography>
+                <Box
+                  sx={{
+                    alignItems: 'center',
+                    display: 'flex',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    whiteSpace: 'nowrap',
+                  }}
+                >
+                  <Typography variant="subtitle2">restaurant_id:</Typography>
+                  <Chip label={restaurant.uuid} size="small" sx={{ ml: 1 }} />
+                </Box>
+              </div>
+            </Grid>
+
+            <Grid item xs={12} lg={3} container sx={{ justifyContent: 'center', alignItems: 'flex-end' }}>
+              <Box>
+                <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
+                  Orders
+                </Typography>
+                <Typography variant="h1">{restaurant.orders}</Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12} lg={3} container sx={{ justifyContent: 'center', alignItems: 'flex-end' }}>
+              <Box>
+                <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
+                  Spent
+                </Typography>
+                <Typography variant="h1">{restaurant.spent}</Typography>
+              </Box>
+            </Grid>
+          </Grid>
+          <Box sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden', display: 'none' }}>
             <Avatar src={restaurant.avatar} sx={{ height: 64, mr: 2, width: 64 }}>
               {getInitials(restaurant.name)}
             </Avatar>
             <div>
               <Typography noWrap variant="h4">
-                {restaurant.email}
+                {restaurant.name}
               </Typography>
               <Box
                 sx={{
