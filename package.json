@@ -20,6 +20,7 @@
     "seed": "yarn extract_docker_cmd exec -it api npm run seed",
     "into_api": "yarn extract_docker_cmd exec -it api bash",
     "into_cms_app": "yarn extract_docker_cmd exec -it cms-app bash",
+    "kill_dev": "yarn extract_docker_cmd kill",
     "show_log": "yarn extract_docker_cmd logs -f ",
     "show_api_log": "yarn extract_docker_cmd logs -f api",
     "show_cms_app_log": "yarn extract_docker_cmd logs -f cms-app"
