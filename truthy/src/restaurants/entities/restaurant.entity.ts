@@ -7,18 +7,18 @@ export class RestaurantEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ default: '' })
   name: string;
 
-  @Column()
+  @Column({ default: '' })
   location: string;
 
-  @Column({ type: 'int' })
-  orders: number;
+  // @Column({ type: 'int', default: 0 })
+  // orders: number;
 
-  @Column({ type: 'float' })
-  spent: number;
+  // @Column({ type: 'float', default: 0 })
+  // spent: number;
 
-  @Column({ default: true })
-  isActive: boolean;
+  // @Column({ default: true })
+  // isActive: boolean;
 }

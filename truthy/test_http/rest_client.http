@@ -117,3 +117,35 @@ Content-Type: application/json
 
 ###
 DELETE http://localhost/api/helloworld/14
+
+
+# restaurant
+
+###
+GET http://localhost/api/helloworld/1
+
+
+###
+GET http://localhost/api/restaurants
+
+
+###
+POST http://localhost/api/restaurants
+Content-Type: application/json
+
+{
+  "name":"restaurant 1",
+  "location":"hong kong"
+}
+
+###
+PATCH http://localhost/api/restaurants/8
+Content-Type: application/json
+
+{
+  "name":"restaurant 2",
+  "location":"hong kong"
+}
+
+###
+DELETE http://localhost/api/restaurants/7
