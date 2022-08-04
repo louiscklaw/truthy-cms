@@ -140,15 +140,16 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://localhost/api/restaurants/6
+PATCH http://localhost/api/restaurants/14
 Content-Type: application/json
 
 {
   "name":"restaurant 2",
   "location":"hong kong",
   "orders":1,
+  "spent":0.1,
   "isActive":false
 }
 
 ###
-DELETE http://localhost/api/restaurants/6
+DELETE http://localhost/api/restaurants/14

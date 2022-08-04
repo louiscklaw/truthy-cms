@@ -16,8 +16,8 @@ export class RestaurantEntity {
   @Column({ type: 'int', default: 0 })
   orders: number;
 
-  // @Column({ type: 'float', default: 0 })
-  // spent: number;
+  @Column({ type: 'float', default: 0 })
+  spent: number;
 
   @Column({ default: true })
   isActive: boolean;
