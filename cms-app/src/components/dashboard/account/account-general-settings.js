@@ -43,7 +43,7 @@ export const AccountGeneralSettings = props => {
 
   const [helloworld, setHelloworld] = useState(false);
 
-  if (isLoading) return <>isLoading</>;
+  // if (isLoading) return <>isLoading</>;
 
   return (
     <form noValidate onSubmit={formik.handleSubmit} {...props}>
