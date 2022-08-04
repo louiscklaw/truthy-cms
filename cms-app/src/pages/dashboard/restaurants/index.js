@@ -123,7 +123,7 @@ const RestaurantList = () => {
   const [customers, setCustomers] = useState([]);
   const [currentTab, setCurrentTab] = useState('all');
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(100);
   const [sort, setSort] = useState(sortOptions[0].value);
   const [filters, setFilters] = useState({
     query: '',
@@ -131,7 +131,6 @@ const RestaurantList = () => {
     isProspect: undefined,
     isReturning: undefined,
   });
-  const [is_loading, setIsLoading] = useState(true);
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
@@ -174,8 +173,11 @@ const RestaurantList = () => {
     setCurrentTab(value);
   };
 
+  const [table_updating, setTableUpdating] = useState(false);
+
   const handleQueryChange = event => {
     event.preventDefault();
+
     setFilters(prevState => ({
       ...prevState,
       query: queryRef.current?.value,

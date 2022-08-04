@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 
-export const Logo = styled(props => {
+export const Logo1 = styled(props => {
   const { variant, ...other } = props;
 
   const color = variant === 'light' ? '#C1C4D6' : '#5048E5';
@@ -26,6 +26,14 @@ export const Logo = styled(props => {
       />
     </svg>
   );
+})``;
+
+export const Logo = styled(props => {
+  const { variant, ...other } = props;
+
+  const color = variant === 'light' ? '#C1C4D6' : '#5048E5';
+
+  return <img src="/cms/static/restaurant_logo.jpg" height={'100px'} width={'auto'} />;
 })``;
 
 Logo.defaultProps = {

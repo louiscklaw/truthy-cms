@@ -9,10 +9,10 @@ import { RestaurantEntity } from 'src/restaurants/entities/restaurant.entity';
 // import { faker } from '@faker-js/faker';
 // import { UserTypeEnum } from 'src/auth/user-type.enum';
 
-// const { faker: faker_zh_tw } = require('@faker-js/faker/locale/zh_TW');
+const { faker: faker_zh_tw } = require('@faker-js/faker/locale/zh_TW');
 // const { faker: faker_zh_cn } = require('@faker-js/faker/locale/zh_CN');
 // const { faker: faker_en_us } = require('@faker-js/faker/locale/en_US');
-// const { faker: faker_ja } = require('@faker-js/faker/locale/ja');
+const { faker: faker_ja } = require('@faker-js/faker/locale/ja');
 
 export default class CreateUserSeed {
   public async run(factory: Factory, connection: Connection): Promise<any> {
@@ -20,22 +20,26 @@ export default class CreateUserSeed {
       .createQueryBuilder()
       .insert()
       .into(RestaurantEntity)
-      .values([
-        {
-          name: 'the very new restaurant',
-          email: 'user1@truthy.com',
-          country: 'country test',
-          state: 'state test',
-          address: 'address test',
-          address1: 'address1 test',
-          address2: 'address2 test',
-          phone: '91234567',
-          location: 'Hong Kong',
-          spent: 0,
-          orders: 0,
-          isActive: true,
-        },
-      ])
+      .values(
+        Array(3000)
+          .fill(0)
+          .map((a, i) => {
+            return {
+              name: `${faker_zh_tw.name.findName()} the very new restaurant ${i}`,
+              email: faker_ja.internet.email(),
+              country: faker_ja.address.country(),
+              state: 'state test',
+              address: faker_ja.address.streetAddress(),
+              address1: faker_ja.address.streetAddress(),
+              address2: faker_ja.address.streetAddress(),
+              phone: faker_ja.phone.number(),
+              location: faker_ja.address.city(),
+              spent: 0,
+              orders: 0,
+              isActive: true,
+            };
+          }),
+      )
       .orIgnore()
       .execute();
   }

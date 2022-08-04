@@ -72,10 +72,10 @@ export const RestaurantListTable = props => {
           onChange={handleSelectAllCustomers}
         />
         <Button size="small" sx={{ ml: 2 }}>
-          Delete
+          {t('DELETE')}
         </Button>
         <Button size="small" sx={{ ml: 2 }}>
-          Edit
+          {t('EDIT')}
         </Button>
       </Box>
       <Scrollbar>
@@ -110,19 +110,8 @@ export const RestaurantListTable = props => {
                     />
                   </TableCell>
                   <TableCell>
-                    <Box
-                      sx={{
-                        alignItems: 'center',
-                        display: 'flex',
-                      }}
-                    >
-                      <Avatar
-                        src={customer.avatar}
-                        sx={{
-                          height: 42,
-                          width: 42,
-                        }}
-                      >
+                    <Box sx={{ alignItems: 'center', display: 'flex' }}>
+                      <Avatar src={customer.avatar} sx={{ height: 42, width: 42 }}>
                         {getInitials(customer.name)}
                       </Avatar>
                       <Box sx={{ ml: 1 }}>
@@ -179,7 +168,7 @@ export const RestaurantListTable = props => {
         onRowsPerPageChange={onRowsPerPageChange}
         page={page}
         rowsPerPage={rowsPerPage}
-        rowsPerPageOptions={[5, 10, 25]}
+        rowsPerPageOptions={[100, 200, 500]}
       />
     </div>
   );
