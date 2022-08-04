@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { Box, Button, Chip, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Chip, Divider, Drawer, Stack, Typography, useMediaQuery } from '@mui/material';
 import { Calendar as CalendarIcon } from '../../icons/calendar';
 import { Cash as CashIcon } from '../../icons/cash';
 import { ChartBar as ChartBarIcon } from '../../icons/chart-bar';
@@ -216,14 +216,22 @@ export const DashboardSidebar = props => {
       <Scrollbar sx={{ height: '100%', '& .simplebar-content': { height: '100%' } }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           <div>
-            <Box sx={{ p: 3 }}>
-              <NextLink href="/" passHref>
-                <a>
-                  <Logo sx={{ height: 42, width: 42 }} />
-                </a>
-              </NextLink>
+            <Box sx={{ p: 2 }}>
+              <Stack direction="column" spacing={3}>
+                <Stack direction="row" justifyContent="center">
+                  <NextLink href="/" passHref>
+                    <a>
+                      <Logo sx={{ height: 42, width: 42 }} />
+                    </a>
+                  </NextLink>
+                </Stack>
+                <Stack direction="row" justifyContent="center">
+                  <Typography variant="body2">restaurant name</Typography>
+                </Stack>
+              </Stack>
             </Box>
-            <Box sx={{ px: 2 }}>
+
+            <Box sx={{ px: 2, display: 'none' }}>
               <Box
                 onClick={handleOpenOrganizationsPopover}
                 ref={organizationsRef}
@@ -250,7 +258,7 @@ export const DashboardSidebar = props => {
               </Box>
             </Box>
           </div>
-          <Divider sx={{ borderColor: '#2D3748', my: 3 }} />
+          <Divider sx={{ borderColor: '#2D3748', my: 1 }} />
           <Box sx={{ flexGrow: 1 }}>
             {sections.map(section => (
               <DashboardSidebarSection
