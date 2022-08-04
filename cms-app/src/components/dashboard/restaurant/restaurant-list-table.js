@@ -97,45 +97,45 @@ export const RestaurantListTable = props => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map(customer => {
-              const isCustomerSelected = selectedCustomers.includes(customer.id);
+            {customers.map(restaurant => {
+              const isCustomerSelected = selectedCustomers.includes(restaurant.id);
 
               return (
-                <TableRow hover key={customer.id} selected={isCustomerSelected}>
+                <TableRow hover key={restaurant.id} selected={isCustomerSelected}>
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={isCustomerSelected}
-                      onChange={event => handleSelectOneCustomer(event, customer.id)}
+                      onChange={event => handleSelectOneCustomer(event, restaurant.id)}
                       value={isCustomerSelected}
                     />
                   </TableCell>
                   <TableCell>
                     <Box sx={{ alignItems: 'center', display: 'flex' }}>
-                      <Avatar src={customer.avatar} sx={{ height: 42, width: 42 }}>
-                        {getInitials(customer.name)}
+                      <Avatar src={restaurant.avatar} sx={{ height: 42, width: 42 }}>
+                        {getInitials(restaurant.name)}
                       </Avatar>
                       <Box sx={{ ml: 1 }}>
                         <NextLink href="/dashboard/customers/1" passHref>
                           <Link color="inherit" variant="subtitle2">
-                            {customer.name}
+                            {restaurant.name}
                           </Link>
                         </NextLink>
                         <Typography color="textSecondary" variant="body2">
-                          {customer.email}
+                          {restaurant.email}
                         </Typography>
                       </Box>
                     </Box>
                   </TableCell>
-                  <TableCell>{`${customer.city}, ${customer.state}, ${customer.country}`}</TableCell>
-                  <TableCell>{customer.totalOrders}</TableCell>
+                  <TableCell>{`${restaurant.city}, ${restaurant.state}, ${restaurant.country}`}</TableCell>
+                  <TableCell>{restaurant.totalOrders}</TableCell>
                   <TableCell>
                     <Typography color="success.main" variant="subtitle2">
-                      {numeral(customer.totalAmountSpent).format(`${customer.currency}0,0.00`)}
+                      {numeral(restaurant.totalAmountSpent).format(`${restaurant.currency}0,0.00`)}
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
                     {process.env.NODE_ENV === 'development' ? (
-                      <NextLink href={`/dashboard/restaurants/${customer.id}/edit`} passHref>
+                      <NextLink href={`/dashboard/restaurants/${restaurant.id}/edit`} passHref>
                         <IconButton component="a">
                           <PencilAltIcon fontSize="small" />
                         </IconButton>
@@ -143,13 +143,13 @@ export const RestaurantListTable = props => {
                     ) : (
                       <></>
                     )}
-                    <NextLink href={`/dashboard/restaurants/edit/${customer.uuid}`} passHref>
+                    <NextLink href={`/dashboard/restaurants/edit/${restaurant.uuid}`} passHref>
                       <IconButton component="a">
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
 
-                    <NextLink href={`/dashboard/restaurants/${customer.id}`} passHref>
+                    <NextLink href={`/dashboard/restaurants/${restaurant.uuid}`} passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>
