@@ -110,7 +110,9 @@ const applySort = (customers, sort) => {
 const applyPagination = (customers, page, rowsPerPage) =>
   customers.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
-const CustomerList = () => {
+const RestaurantList = () => {
+  const { t } = useTranslation();
+
   const isMounted = useMounted();
   const queryRef = useRef(null);
   const [customers, setCustomers] = useState([]);
@@ -124,8 +126,6 @@ const CustomerList = () => {
     isProspect: undefined,
     isReturning: undefined,
   });
-
-  const { t } = useTranslation();
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
@@ -281,10 +281,10 @@ const CustomerList = () => {
   );
 };
 
-CustomerList.getLayout = page => (
+RestaurantList.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 
-export default CustomerList;
+export default RestaurantList;
