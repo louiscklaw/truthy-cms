@@ -8,32 +8,30 @@ import DialogTitle from '@mui/material/DialogTitle';
 import { useTranslation } from 'react-i18next';
 import { useRouter } from 'next/router';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 export default function ConfirmDelete({ open = false, setOpen }) {
   const { restaurantUuid } = useRouter().query;
   const { t } = useTranslation();
+  const router = useRouter();
 
   const handleClickOpen = () => setOpen(true);
 
   const handleClose = () => setOpen(false);
   const [is_processing, setIsProcessing] = React.useState(false);
 
-  const handleConfirmDelete1 = () => {
-    setIsProcessing(true);
-    axios.delete(`/api/restaurants/16`);
-    // .then(res => {
-    //   toast.success(t('RESTAURANT_DELETED'));
-    //   router.replace('/dashboard/restaurants');
-    //   setOpen(false);
-    // })
-    // .catch(err => {
-    //   console.error({ err });
-    // });
-  };
-
   const handleConfirmDelete = () => {
-    axios.delete(`/api/restaurants/16`).catch(err => console.error(err));
-    console.log('helloworld');
+    setIsProcessing(true);
+    axios
+      .delete(`/api/restaurants/16`)
+      .then(res => {
+        toast.success(t('RESTAURANT_DELETED'));
+        router.replace('/dashboard/restaurants');
+        setOpen(false);
+      })
+      .catch(err => {
+        console.error({ err });
+      });
   };
 
   if (!restaurantUuid) return <>{JSON.stringify(useRouter().query)} error during pop confirm delete dialog</>;
@@ -42,7 +40,7 @@ export default function ConfirmDelete({ open = false, setOpen }) {
     <div>
       <Dialog
         open={open}
-        onClose={handleClose}
+        // onClose={handleClose}
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
@@ -51,7 +49,7 @@ export default function ConfirmDelete({ open = false, setOpen }) {
           <DialogContentText id="alert-dialog-description">Delete restaurant ?</DialogContentText>
         </DialogContent>
         <DialogActions>
-          <Button disabled={is_processing} onClick={handleClose}>
+          <Button disabled={is_processing} onClick={handleClose} variant="contained">
             {t('CANCEL')}
           </Button>
           <Button disabled={is_processing} onClick={handleConfirmDelete} autoFocus>

@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { RestaurantsService } from './restaurants.service';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
@@ -38,11 +38,13 @@ export class RestaurantsController {
   }
 
   @Delete(':id')
+  @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: number) {
     return this.restaurantsService.remove(+id);
   }
 
   @Delete('uid/:uuid')
+  @HttpCode(HttpStatus.NO_CONTENT)
   removeRestaurantsByUuid(@Param('uuid') uuid: string) {
     return this.restaurantsService.removeRestaurantsByUuid(uuid);
   }
@@ -53,6 +55,7 @@ export class RestaurantsController {
   // }
 
   @Post('delete_multiple')
+  @HttpCode(HttpStatus.NO_CONTENT)
   removeRestaurantsByUuids(@Body() uuids: string[]) {
     return this.restaurantsService.removeRestaurantsByUuids(uuids);
   }
