@@ -25,41 +25,17 @@ import { Upload as UploadIcon } from '../../../icons/upload';
 import { gtm } from '../../../lib/gtm';
 
 const tabs = [
-  {
-    label: 'All',
-    value: 'all',
-  },
-  {
-    label: 'Accepts Marketing',
-    value: 'hasAcceptedMarketing',
-  },
-  {
-    label: 'Prospect',
-    value: 'isProspect',
-  },
-  {
-    label: 'Returning',
-    value: 'isReturning',
-  },
+  { label: 'All', value: 'all' },
+  { label: 'Accepts Marketing', value: 'hasAcceptedMarketing' },
+  { label: 'Prospect', value: 'isProspect' },
+  { label: 'Returning', value: 'isReturning' },
 ];
 
 const sortOptions = [
-  {
-    label: 'Last update (newest)',
-    value: 'updatedAt|desc',
-  },
-  {
-    label: 'Last update (oldest)',
-    value: 'updatedAt|asc',
-  },
-  {
-    label: 'Total orders (highest)',
-    value: 'totalOrders|desc',
-  },
-  {
-    label: 'Total orders (lowest)',
-    value: 'totalOrders|asc',
-  },
+  { label: 'Last update (newest)', value: 'updatedAt|desc' },
+  { label: 'Last update (oldest)', value: 'updatedAt|asc' },
+  { label: 'Total orders (highest)', value: 'totalOrders|desc' },
+  { label: 'Total orders (lowest)', value: 'totalOrders|asc' },
 ];
 
 const applyFilters = (customers, filters) =>
@@ -148,6 +124,8 @@ const CustomerList = () => {
     isReturning: undefined,
   });
 
+  const { t } = useTranslation();
+
   useEffect(() => {
     gtm.push({ event: 'page_view' });
   }, []);
@@ -218,18 +196,12 @@ const CustomerList = () => {
       <Head>
         <title>Dashboard: Customer List | Material Kit Pro</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+      <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="xl">
           <Box sx={{ mb: 4 }}>
             <Grid container justifyContent="space-between" spacing={3}>
               <Grid item>
-                <Typography variant="h4">Customers</Typography>
+                <Typography variant="h4">{t('RESTAURANTS')}}</Typography>
               </Grid>
               <Grid item>
                 <Button startIcon={<PlusIcon fontSize="small" />} variant="contained">
@@ -237,12 +209,7 @@ const CustomerList = () => {
                 </Button>
               </Grid>
             </Grid>
-            <Box
-              sx={{
-                m: -1,
-                mt: 3,
-              }}
-            >
+            <Box sx={{ m: -1, mt: 3 }}>
               <Button startIcon={<UploadIcon fontSize="small" />} sx={{ m: 1 }}>
                 Import
               </Button>
@@ -275,14 +242,7 @@ const CustomerList = () => {
                 p: 3,
               }}
             >
-              <Box
-                component="form"
-                onSubmit={handleQueryChange}
-                sx={{
-                  flexGrow: 1,
-                  m: 1.5,
-                }}
-              >
+              <Box component="form" onSubmit={handleQueryChange} sx={{ flexGrow: 1, m: 1.5 }}>
                 <TextField
                   defaultValue=""
                   fullWidth
