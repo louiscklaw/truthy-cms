@@ -113,22 +113,39 @@ const RestaurantEdit = () => {
                 </Box>
               </div>
             </Grid>
-
-            <Grid item xs={12} lg={3} container sx={{ justifyContent: 'center', alignItems: 'flex-end' }}>
-              <Box>
-                <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
-                  Orders
-                </Typography>
-                <Typography variant="h1">{restaurant.orders}</Typography>
-              </Box>
-            </Grid>
-            <Grid item xs={12} lg={3} container sx={{ justifyContent: 'center', alignItems: 'flex-end' }}>
-              <Box>
-                <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
-                  Spent
-                </Typography>
-                <Typography variant="h1">{restaurant.spent}</Typography>
-              </Box>
+            <Grid item xs={12} lg={6} sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden' }}>
+              <Grid item xs={12} lg={3} container sx={{ justifyContent: 'center', alignItems: 'flex-end' }}>
+                <Box>
+                  <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
+                    Favourite
+                  </Typography>
+                  <Typography variant="h2">{restaurant.orders}</Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={12} lg={3} container sx={{ justifyContent: 'center', alignItems: 'flex-end' }}>
+                <Box>
+                  <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
+                    Bookmark
+                  </Typography>
+                  <Typography variant="h2">{restaurant.spent}</Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={12} lg={3} container sx={{ justifyContent: 'center', alignItems: 'flex-end' }}>
+                <Box>
+                  <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
+                    Orders
+                  </Typography>
+                  <Typography variant="h2">{restaurant.orders}</Typography>
+                </Box>
+              </Grid>
+              <Grid item xs={12} lg={3} container sx={{ justifyContent: 'center', alignItems: 'flex-end' }}>
+                <Box>
+                  <Typography variant="body1" color="primary" sx={{ fontWeight: 'bold' }}>
+                    Spent
+                  </Typography>
+                  <Typography variant="h2">{restaurant.spent}</Typography>
+                </Box>
+              </Grid>
             </Grid>
           </Grid>
           <Box sx={{ alignItems: 'center', display: 'flex', overflow: 'hidden', display: 'none' }}>

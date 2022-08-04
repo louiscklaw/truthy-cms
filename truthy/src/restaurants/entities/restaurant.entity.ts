@@ -41,6 +41,12 @@ export class RestaurantEntity extends CustomBaseEntity {
   location: string;
 
   @Column({ type: 'int', default: 0 })
+  favorite: number;
+
+  @Column({ type: 'int', default: 0 })
+  bookmark: number;
+
+  @Column({ type: 'int', default: 0 })
   orders: number;
 
   @Column({ type: 'float', default: 0 })
