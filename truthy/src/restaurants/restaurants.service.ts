@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateRestaurantDto } from './dto/create-restaurant.dto';
 import { UpdateRestaurantDto } from './dto/update-restaurant.dto';
 import { RestaurantEntity } from './entities/restaurant.entity';
@@ -9,7 +10,7 @@ export class RestaurantsService {
   constructor(
     @InjectRepository(RestaurantEntity)
     private restaurantRepository: Repository<RestaurantEntity>,
-  );
+  ) {}
 
   async create(createRestaurantDto: CreateRestaurantDto): Promise<any> {
     let { id } = await this.restaurantRepository.save(createRestaurantDto);

@@ -1,4 +1,6 @@
 // https://docs.nestjs.com/techniques/database#repository-pattern
+
+// Typeorm column type definitions
 // https://orkhan.gitbook.io/typeorm/docs/entities#column-types-for-postgres
 
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';

@@ -34,7 +34,6 @@ export class HelloworldService {
   }
 
   async update(id: number, updateHelloworldDto: UpdateHelloworldDto): Promise<any> {
-    console.log({ updateHelloworldDto });
     let result = await this.helloworldRepository.update(id, updateHelloworldDto);
     return result;
   }
