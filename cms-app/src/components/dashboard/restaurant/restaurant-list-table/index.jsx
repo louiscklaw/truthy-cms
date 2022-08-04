@@ -30,6 +30,7 @@ import DeleteingModal from './deleteing';
 
 import { FiDelete } from 'react-icons/fi';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { GoCheck } from 'react-icons/go';
 
 export const RestaurantListTable = props => {
   const { t } = useTranslation();
@@ -170,7 +171,7 @@ export const RestaurantListTable = props => {
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Chip label={restaurant.isActive ? t('ACTIVE') : t('NOT_ACTIVE')} />
+                    <Chip icon={<GoCheck />} label={restaurant.isActive ? t('ACTIVE') : t('NOT_ACTIVE')} />
                   </TableCell>
                   <TableCell align="right">
                     <NextLink href={`/dashboard/restaurants/edit/${restaurant.uuid}`} passHref>
