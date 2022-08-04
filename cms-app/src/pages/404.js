@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import NextLink from 'next/link';
 import Head from 'next/head';
-import { Box, Button, Container, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Container, TextField, Typography, useMediaQuery } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { gtm } from '../lib/gtm';
 
@@ -44,9 +44,7 @@ const NotFound = () => {
             />
           </Box>
           <Box>
-            <Typography>
-              http://localhost/cms/dashboard/restaurants/edit/97af2ba5-0088-42e8-9e8c-7bc6a0623a22
-            </Typography>
+            <TextField value={window.location.pathname} fullWidth></TextField>
           </Box>
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 6 }}>
             <NextLink href="/dashboard" passHref>

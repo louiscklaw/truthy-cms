@@ -149,7 +149,7 @@ export const RestaurantListTable = props => {
                       </IconButton>
                     </NextLink>
 
-                    <NextLink href={`/dashboard/restaurants/${restaurant.uuid}`} passHref>
+                    <NextLink href={`/dashboard/restaurants/uid/${restaurant.uuid}`} passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>
