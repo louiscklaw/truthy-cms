@@ -21,6 +21,8 @@ import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../api/restaurant-api';
 import Router, { useRouter } from 'next/router';
 
+import slugify from '@sindresorhus/slugify';
+
 export const RestaurantEditForm = props => {
   const { t } = useTranslation();
   const router = useRouter();
@@ -234,7 +236,21 @@ export const RestaurantEditForm = props => {
                 name="slug"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
-                value={formik.values.slug}
+                value={slugify(formik.values.name)}
+                disabled
+              />
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <TextField
+                error={Boolean(formik.touched.url_shortcut && formik.errors.url_shortcut)}
+                fullWidth
+                helperText={formik.touched.url_shortcut && formik.errors.url_shortcut}
+                label={t('RESTAURANT_URL_SHORTCUT')}
+                name="url_shortcut"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={`http://${slugify(formik.values.name)}.iamon99.com`}
+                disabled
               />
             </Grid>
           </Grid>
