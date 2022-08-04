@@ -111,41 +111,17 @@ const customers = [
 ];
 
 const tabs = [
-  {
-    label: 'All',
-    value: 'all',
-  },
-  {
-    label: 'Accepts Marketing',
-    value: 'hasAcceptedMarketing',
-  },
-  {
-    label: 'Prospect',
-    value: 'isProspect',
-  },
-  {
-    label: 'Returning',
-    value: 'isReturning',
-  },
+  { label: 'All', value: 'all' },
+  { label: 'Accepts Marketing', value: 'hasAcceptedMarketing' },
+  { label: 'Prospect', value: 'isProspect' },
+  { label: 'Returning', value: 'isReturning' },
 ];
 
 const sortOptions = [
-  {
-    label: 'Last update (newest)',
-    value: 'updatedAt|desc',
-  },
-  {
-    label: 'Last update (oldest)',
-    value: 'updatedAt|asc',
-  },
-  {
-    label: 'Total orders (highest)',
-    value: 'orders|desc',
-  },
-  {
-    label: 'Total orders (lowest)',
-    value: 'orders|asc',
-  },
+  { label: 'Last update (newest)', value: 'updatedAt|desc' },
+  { label: 'Last update (oldest)', value: 'updatedAt|asc' },
+  { label: 'Total orders (highest)', value: 'orders|desc' },
+  { label: 'Total orders (lowest)', value: 'orders|asc' },
 ];
 
 export const Table3 = () => (

@@ -25,41 +25,17 @@ import { Upload as UploadIcon } from '../../../icons/upload';
 import { gtm } from '../../../lib/gtm';
 
 const tabs = [
-  {
-    label: 'All',
-    value: 'all',
-  },
-  {
-    label: 'Accepts Marketing',
-    value: 'hasAcceptedMarketing',
-  },
-  {
-    label: 'Prospect',
-    value: 'isProspect',
-  },
-  {
-    label: 'Returning',
-    value: 'isReturning',
-  },
+  { label: 'All', value: 'all' },
+  { label: 'Accepts Marketing', value: 'hasAcceptedMarketing' },
+  { label: 'Prospect', value: 'isProspect' },
+  { label: 'Returning', value: 'isReturning' },
 ];
 
 const sortOptions = [
-  {
-    label: 'Last update (newest)',
-    value: 'updatedAt|desc',
-  },
-  {
-    label: 'Last update (oldest)',
-    value: 'updatedAt|asc',
-  },
-  {
-    label: 'Total orders (highest)',
-    value: 'totalOrders|desc',
-  },
-  {
-    label: 'Total orders (lowest)',
-    value: 'totalOrders|asc',
-  },
+  { label: 'Last update (newest)', value: 'updatedAt|desc' },
+  { label: 'Last update (oldest)', value: 'updatedAt|asc' },
+  { label: 'Total orders (highest)', value: 'totalOrders|desc' },
+  { label: 'Total orders (lowest)', value: 'totalOrders|asc' },
 ];
 
 const applyFilters = (customers, filters) =>

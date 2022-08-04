@@ -31,8 +31,8 @@ import { useTranslation } from 'react-i18next';
 const tabs = [
   { label: 'All', value: 'all' },
   { label: 'Accepts Marketing', value: 'hasAcceptedMarketing' },
-  { label: 'Prospect', value: 'isProspect' },
-  { label: 'Returning', value: 'isReturning' },
+  { label: 'Not Active', value: 'isProspect' },
+  { label: 'Active', value: 'isReturning' },
 ];
 
 const sortOptions = [
