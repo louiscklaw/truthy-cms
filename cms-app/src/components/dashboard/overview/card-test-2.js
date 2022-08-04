@@ -1,5 +1,7 @@
 import { Box, Button, Card, CardActions, Divider, Typography } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 import { Chart } from '../../chart';
@@ -35,6 +37,17 @@ const LineChart = () => {
 
 export const CardTest2 = () => {
   const { t } = useTranslation();
+  const [is_loading, setIsLoading] = useState(true);
+  const [num_of_restaurant, setNumOfRestaurant] = useState(0);
+
+  useEffect(() => {
+    axios.get('/api/restaurants').then(({ data }) => {
+      setNumOfRestaurant(data?.length);
+      setIsLoading(false);
+    });
+  }, []);
+
+  if (is_loading) return <>Loading</>;
 
   return (
     <Card>
@@ -52,7 +65,7 @@ export const CardTest2 = () => {
             {t('NUMBER_OF_RESTAURANTS')}
           </Typography>
           <Typography sx={{ mt: 1 }} variant="h5">
-            {1000}
+            {num_of_restaurant}
           </Typography>
         </div>
         <LineChart />
