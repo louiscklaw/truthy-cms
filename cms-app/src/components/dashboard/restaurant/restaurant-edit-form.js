@@ -59,13 +59,13 @@ export const RestaurantEditForm = props => {
       try {
         // NOTE: Make API request
         // await wait(3000);
-        // helpers.setStatus({ success: true });
-        // helpers.setSubmitting(false);
-        // toast.success('Customer updated!');
 
         // console.log({ formik_values: values });
         await restaurantApi.updateRestaurant(restaurantId, values);
         router.replace('/dashboard/restaurants');
+        helpers.setStatus({ success: true });
+        helpers.setSubmitting(false);
+        toast.success('Customer updated!');
       } catch (err) {
         console.error(err);
         toast.error('Something went wrong!');
