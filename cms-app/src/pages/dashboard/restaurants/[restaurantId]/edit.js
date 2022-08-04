@@ -14,7 +14,7 @@ import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../../api/restaurant-api';
 import { useRouter } from 'next/router';
 
-const CustomerEdit = () => {
+const RestaurantEdit = () => {
   const { t } = useTranslation();
   const isMounted = useMounted();
   const [customer, setCustomer] = useState(null);
@@ -98,10 +98,10 @@ const CustomerEdit = () => {
   );
 };
 
-CustomerEdit.getLayout = page => (
+RestaurantEdit.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 
-export default CustomerEdit;
+export default RestaurantEdit;
