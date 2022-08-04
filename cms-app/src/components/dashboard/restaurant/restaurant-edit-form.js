@@ -19,11 +19,12 @@ import {
 import { wait } from '../../../utils/wait';
 import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../api/restaurant-api';
-import { useRouter } from 'next/router';
+import Router, { useRouter } from 'next/router';
 
 export const RestaurantEditForm = props => {
   const { t } = useTranslation();
-  const { restaurantId } = useRouter().query;
+  const router = useRouter();
+  const { restaurantId } = router.query;
   const { customer, ...other } = props;
   const formik = useFormik({
     initialValues: {
@@ -64,6 +65,7 @@ export const RestaurantEditForm = props => {
 
         // console.log({ formik_values: values });
         await restaurantApi.updateRestaurant(restaurantId, values);
+        router.replace('/dashboard/restaurants');
       } catch (err) {
         console.error(err);
         toast.error('Something went wrong!');

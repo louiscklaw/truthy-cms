@@ -21,8 +21,11 @@ import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
 import { getInitials } from '../../../utils/get-initials';
 import { Scrollbar } from '../../scrollbar';
+import { useTranslation } from 'react-i18next';
 
 export const RestaurantListTable = props => {
+  const { t } = useTranslation();
+
   const { customers, customersCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props;
   const [selectedCustomers, setSelectedCustomers] = useState([]);
 
@@ -86,11 +89,11 @@ export const RestaurantListTable = props => {
                   onChange={handleSelectAllCustomers}
                 />
               </TableCell>
-              <TableCell>Name</TableCell>
-              <TableCell>Location</TableCell>
-              <TableCell>Orders</TableCell>
-              <TableCell>Spent</TableCell>
-              <TableCell align="right">Actions</TableCell>
+              <TableCell>{t('NAME')}</TableCell>
+              <TableCell>{t('LOCATION')}</TableCell>
+              <TableCell>{t('ORDERS')}</TableCell>
+              <TableCell>{t('SPENT')}</TableCell>
+              <TableCell align="right">{t('ACTIONS')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -142,12 +145,12 @@ export const RestaurantListTable = props => {
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <NextLink href="/dashboard/restaurants/1/edit" passHref>
+                    <NextLink href={`/dashboard/restaurants/${customer.id}/edit`} passHref>
                       <IconButton component="a">
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
-                    <NextLink href="/dashboard/restaurants/1" passHref>
+                    <NextLink href={`/dashboard/restaurants/${customer.id}`} passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>

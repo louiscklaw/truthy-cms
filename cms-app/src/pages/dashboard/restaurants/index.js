@@ -14,6 +14,9 @@ import {
   Typography,
 } from '@mui/material';
 import { customerApi } from '../../../__fake-api__/customer-api';
+
+import { restaurantApi } from '../../../api/restaurant-api';
+
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
 import { RestaurantListTable } from '../../../components/dashboard/restaurant/restaurant-list-table';
@@ -126,6 +129,7 @@ const RestaurantList = () => {
     isProspect: undefined,
     isReturning: undefined,
   });
+  const [is_loading, setIsLoading] = useState(true);
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
@@ -133,7 +137,8 @@ const RestaurantList = () => {
 
   const getCustomers = useCallback(async () => {
     try {
-      const data = await customerApi.getCustomers();
+      // const data = await customerApi.getCustomers();
+      const { data } = await restaurantApi.getRestaurants();
 
       if (isMounted()) {
         setCustomers(data);
