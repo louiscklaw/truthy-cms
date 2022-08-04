@@ -70,5 +70,18 @@ Content-Type: application/json
   "state": "state test"
 }
 
+
 ###
-DELETE http://localhost/api/restaurants/14
+DELETE http://localhost/api/restaurants/16
+
+
+###
+DELETE http://localhost/api/restaurants/uid/59d1ad8e-0e73-43c7-a748-c1a6be8fbe6c
+
+###
+POST http://localhost/api/restaurants/delete_multiple
+Content-Type: application/json
+
+[
+  "bc7d94e7-0684-47b3-a6d8-7c1a5e64d03d"
+]

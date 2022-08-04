@@ -17,47 +17,79 @@ import {
   TableRow,
   Typography,
 } from '@mui/material';
-import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
-import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
-import { getInitials } from '../../../utils/get-initials';
-import { Scrollbar } from '../../scrollbar';
+import { ArrowRight as ArrowRightIcon } from '../../../../icons/arrow-right';
+import { PencilAlt as PencilAltIcon } from '../../../../icons/pencil-alt';
+import { getInitials } from '../../../../utils/get-initials';
+import { Scrollbar } from '../../../scrollbar';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import Debug from '../../../debug';
+import DeleteingModal from './deleteing';
+
+import { FiDelete } from 'react-icons/fi';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 export const RestaurantListTable = props => {
   const { t } = useTranslation();
 
-  const { customers, customersCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props;
-  const [selectedCustomers, setSelectedCustomers] = useState([]);
+  const {
+    customers: restaurants,
+    customersCount,
+    onPageChange,
+    onRowsPerPageChange,
+    page,
+    rowsPerPage,
+    ...other
+  } = props;
+  const [selectedRestaurants, setSelectedRestaurants] = useState([]);
 
   // Reset selected customers when customers change
   useEffect(
     () => {
-      if (selectedCustomers.length) {
-        setSelectedCustomers([]);
+      if (selectedRestaurants.length) {
+        setSelectedRestaurants([]);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [customers],
+    [restaurants],
   );
 
-  const handleSelectAllCustomers = event => {
-    setSelectedCustomers(event.target.checked ? customers.map(customer => customer.id) : []);
+  const handleSelectAllRestaurants = event => {
+    setSelectedRestaurants(event.target.checked ? restaurants.map(restaurant => restaurant.uuid) : []);
   };
 
-  const handleSelectOneCustomer = (event, customerId) => {
-    if (!selectedCustomers.includes(customerId)) {
-      setSelectedCustomers(prevSelected => [...prevSelected, customerId]);
+  const handleSelectOneRestaurant = (event, restaurantId) => {
+    if (!selectedRestaurants.includes(restaurantId)) {
+      setSelectedRestaurants(prevSelected => [...prevSelected, restaurantId]);
     } else {
-      setSelectedCustomers(prevSelected => prevSelected.filter(id => id !== customerId));
+      setSelectedRestaurants(prevSelected => prevSelected.filter(id => id !== restaurantId));
     }
   };
 
-  const enableBulkActions = selectedCustomers.length > 0;
-  const selectedSomeCustomers = selectedCustomers.length > 0 && selectedCustomers.length < customers.length;
-  const selectedAllCustomers = selectedCustomers.length === customers.length;
+  const enableBulkActions = selectedRestaurants.length > 0;
+  const selectedSomeCustomers = selectedRestaurants.length > 0 && selectedRestaurants.length < restaurants.length;
+  const selectedAllCustomers = selectedRestaurants.length === restaurants.length;
+
+  const [is_processing, setIsProcessing] = useState(false);
+  const router = useRouter();
+
+  const multiItemDelete = () => {
+    setIsProcessing(true);
+    console.log({ selectedRestaurants });
+    axios
+      .post('/api/restaurants/delete_multiple', selectedRestaurants, { withCredentials: true })
+      .then(res => {
+        setIsProcessing(false);
+        router.reload();
+      })
+      .catch(err => console.error({ err }));
+  };
 
   return (
     <div {...other}>
+      <pre>{JSON.stringify({ is_processing })}</pre>
+      <DeleteingModal open={is_processing} />
       <Box
         sx={{
           backgroundColor: theme => (theme.palette.mode === 'dark' ? 'neutral.800' : 'neutral.100'),
@@ -69,13 +101,10 @@ export const RestaurantListTable = props => {
         <Checkbox
           checked={selectedAllCustomers}
           indeterminate={selectedSomeCustomers}
-          onChange={handleSelectAllCustomers}
+          onChange={handleSelectAllRestaurants}
         />
-        <Button size="small" sx={{ ml: 2 }}>
+        <Button onClick={multiItemDelete} size="small" sx={{ ml: 2 }}>
           {t('DELETE')}
-        </Button>
-        <Button size="small" sx={{ ml: 2 }}>
-          {t('EDIT')}
         </Button>
       </Box>
       <Scrollbar>
@@ -86,26 +115,27 @@ export const RestaurantListTable = props => {
                 <Checkbox
                   checked={selectedAllCustomers}
                   indeterminate={selectedSomeCustomers}
-                  onChange={handleSelectAllCustomers}
+                  onChange={handleSelectAllRestaurants}
                 />
               </TableCell>
               <TableCell>{t('NAME')}</TableCell>
               <TableCell>{t('LOCATION')}</TableCell>
               <TableCell>{t('ORDERS')}</TableCell>
               <TableCell>{t('SPENT')}</TableCell>
+              <TableCell>{t('ACTIVE')}</TableCell>
               <TableCell align="right">{t('ACTIONS')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {customers.map(restaurant => {
-              const isCustomerSelected = selectedCustomers.includes(restaurant.id);
+            {restaurants.map(restaurant => {
+              const isCustomerSelected = selectedRestaurants.includes(restaurant.uuid);
 
               return (
-                <TableRow hover key={restaurant.id} selected={isCustomerSelected}>
+                <TableRow hover key={restaurant.uuid} selected={isCustomerSelected}>
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={isCustomerSelected}
-                      onChange={event => handleSelectOneCustomer(event, restaurant.id)}
+                      onChange={event => handleSelectOneRestaurant(event, restaurant.uuid)}
                       value={isCustomerSelected}
                     />
                   </TableCell>
@@ -133,16 +163,12 @@ export const RestaurantListTable = props => {
                       {numeral(restaurant.totalAmountSpent).format(`${restaurant.currency}0,0.00`)}
                     </Typography>
                   </TableCell>
+                  <TableCell>
+                    <Typography color="success.main" variant="subtitle2">
+                      active ?
+                    </Typography>
+                  </TableCell>
                   <TableCell align="right">
-                    {process.env.NODE_ENV === 'development' ? (
-                      <NextLink href={`/dashboard/restaurants/${restaurant.id}/edit`} passHref>
-                        <IconButton component="a">
-                          <PencilAltIcon fontSize="small" />
-                        </IconButton>
-                      </NextLink>
-                    ) : (
-                      <></>
-                    )}
                     <NextLink href={`/dashboard/restaurants/edit/${restaurant.uuid}`} passHref>
                       <IconButton component="a">
                         <PencilAltIcon fontSize="small" />
@@ -152,6 +178,12 @@ export const RestaurantListTable = props => {
                     <NextLink href={`/dashboard/restaurants/uid/${restaurant.uuid}`} passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
+                      </IconButton>
+                    </NextLink>
+
+                    <NextLink href={`/dashboard/restaurants/uid/${restaurant.uuid}`} passHref>
+                      <IconButton component="a">
+                        <DeleteIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
                   </TableCell>
@@ -169,7 +201,7 @@ export const RestaurantListTable = props => {
         onRowsPerPageChange={onRowsPerPageChange}
         page={page}
         rowsPerPage={rowsPerPage}
-        rowsPerPageOptions={[100, 200, 500]}
+        rowsPerPageOptions={[100, 500, 1000]}
       />
     </div>
   );

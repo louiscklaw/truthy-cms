@@ -28,6 +28,7 @@ import { Plus as PlusIcon } from '../../../icons/plus';
 import { Search as SearchIcon } from '../../../icons/search';
 import { Upload as UploadIcon } from '../../../icons/upload';
 import { gtm } from '../../../lib/gtm';
+import Debug from '../../../components/debug';
 
 const tabs = [
   { label: 'All', value: 'all' },
@@ -213,6 +214,11 @@ const RestaurantList = () => {
               <Grid item>
                 <Typography variant="h4">{t('RESTAURANTS')}</Typography>
               </Grid>
+              <Debug>
+                <Grid item>
+                  <Typography variant="caption">{`${t('total')}: ${customers.length}`}</Typography>
+                </Grid>
+              </Debug>
               <Grid item>
                 <LoadingButton
                   onClick={e => router.push('/dashboard/restaurants/new')}

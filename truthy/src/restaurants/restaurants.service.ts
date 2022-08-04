@@ -49,5 +49,21 @@ export class RestaurantsService {
   async remove(id: number): Promise<void> {
     // return `This action removes a #${id} restaurant`;
     await this.restaurantRepository.delete(id);
+    return;
+  }
+
+  // removeRestaurantsByUuid
+
+  async removeRestaurantsByUuid(uuid: string): Promise<void> {
+    // return `This action removes a #${id} restaurant`;
+    await this.restaurantRepository.delete({ uuid });
+  }
+
+  async removeRestaurantsByUuids(uuids: string[]): Promise<void> {
+    // return `This action removes a #${id} restaurant`;
+    for (let i = 0; i < uuids.length; i++) {
+      let uuid = uuids[i];
+      await this.restaurantRepository.delete({ uuid });
+    }
   }
 }

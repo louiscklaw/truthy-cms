@@ -16,12 +16,16 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { wait } from '../../../utils/wait';
+import { wait } from '../../../../utils/wait';
 import { useTranslation } from 'react-i18next';
-import { restaurantApi } from '../../../api/restaurant-api';
+import { restaurantApi } from '../../../../api/restaurant-api';
 import Router, { useRouter } from 'next/router';
 
 import slugify from '@sindresorhus/slugify';
+
+import DeleteIcon from '@mui/icons-material/Delete';
+import ConfirmDelete from './confirm-delete';
+import { useState } from 'react';
 
 export const RestaurantEditForm = props => {
   const { t } = useTranslation();
@@ -82,8 +86,11 @@ export const RestaurantEditForm = props => {
     },
   });
 
+  const [open_delete_dialog, setOpenDeleteDialog] = useState(false);
+
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
+      <ConfirmDelete open={open_delete_dialog} setOpen={setOpenDeleteDialog} />
       <Card>
         <CardHeader title={t('EDIT_RESTAURANT')} />
         <Divider />
@@ -284,7 +291,12 @@ export const RestaurantEditForm = props => {
               {t('CANCEL')}
             </Button>
           </NextLink>
-          <Button color="error" disabled={formik.isSubmitting}>
+          <Button
+            onClick={e => setOpenDeleteDialog(true)}
+            color="error"
+            disabled={formik.isSubmitting}
+            startIcon={<DeleteIcon />}
+          >
             {t('DELETE_RESTAURANT')}
           </Button>
         </CardActions>
@@ -292,6 +304,7 @@ export const RestaurantEditForm = props => {
     </form>
   );
 };
+
 RestaurantEditForm.propTypes = {
   customer: PropTypes.object.isRequired,
 };

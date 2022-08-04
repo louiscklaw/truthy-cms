@@ -38,7 +38,22 @@ export class RestaurantsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: number) {
     return this.restaurantsService.remove(+id);
+  }
+
+  @Delete('uid/:uuid')
+  removeRestaurantsByUuid(@Param('uuid') uuid: string) {
+    return this.restaurantsService.removeRestaurantsByUuid(uuid);
+  }
+
+  // @Delete('/uuid/:uuid')
+  // removeRestaurantById(@Param('uuid') uuid: string) {
+  //   return this.restaurantsService.remove(uuid);
+  // }
+
+  @Post('delete_multiple')
+  removeRestaurantsByUuids(@Body() uuids: string[]) {
+    return this.restaurantsService.removeRestaurantsByUuids(uuids);
   }
 }
