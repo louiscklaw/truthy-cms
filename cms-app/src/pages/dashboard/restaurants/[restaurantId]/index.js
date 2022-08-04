@@ -6,12 +6,12 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { customerApi } from '../../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
-import { CustomerBasicDetails } from '../../../../components/dashboard/customer/customer-basic-details';
-import { CustomerDataManagement } from '../../../../components/dashboard/customer/customer-data-management';
-import { CustomerEmailsSummary } from '../../../../components/dashboard/customer/customer-emails-summary';
-import { CustomerInvoices } from '../../../../components/dashboard/customer/customer-invoices';
-import { CustomerPayment } from '../../../../components/dashboard/customer/customer-payment';
-import { CustomerLogs } from '../../../../components/dashboard/customer/customer-logs';
+import { CustomerBasicDetails } from '../../../../components/dashboard/restaurant/restaurant-basic-details';
+import { CustomerDataManagement } from '../../../../components/dashboard/restaurant/restaurant-data-management';
+import { CustomerEmailsSummary } from '../../../../components/dashboard/restaurant/restaurant-emails-summary';
+import { CustomerInvoices } from '../../../../components/dashboard/restaurant/restaurant-invoices';
+import { CustomerPayment } from '../../../../components/dashboard/restaurant/restaurant-payment';
+import { CustomerLogs } from '../../../../components/dashboard/restaurant/restaurant-logs';
 import { useMounted } from '../../../../hooks/use-mounted';
 import { ChevronDown as ChevronDownIcon } from '../../../../icons/chevron-down';
 import { PencilAlt as PencilAltIcon } from '../../../../icons/pencil-alt';
@@ -76,7 +76,7 @@ const CustomerDetails = () => {
         <Container maxWidth="md">
           <div>
             <Box sx={{ mb: 4 }}>
-              <NextLink href="/dashboard/customers" passHref>
+              <NextLink href="/dashboard/restaurants" passHref>
                 <Link
                   color="textPrimary"
                   component="a"
@@ -123,7 +123,7 @@ const CustomerDetails = () => {
                 </div>
               </Grid>
               <Grid item sx={{ m: -1 }}>
-                <NextLink href="/dashboard/customers/1/edit" passHref>
+                <NextLink href="/dashboard/restaurants/1/edit" passHref>
                   <Button component="a" endIcon={<PencilAltIcon fontSize="small" />} sx={{ m: 1 }} variant="outlined">
                     Edit
                   </Button>

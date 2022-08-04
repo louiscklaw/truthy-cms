@@ -16,7 +16,7 @@ import {
 import { customerApi } from '../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
-import { CustomerListTable } from '../../../components/dashboard/customer/customer-list-table';
+import { CustomerListTable } from '../../../components/dashboard/restaurant/restaurant-list-table';
 import { useMounted } from '../../../hooks/use-mounted';
 import { Download as DownloadIcon } from '../../../icons/download';
 import { Plus as PlusIcon } from '../../../icons/plus';

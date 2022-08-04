@@ -6,7 +6,7 @@ import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { customerApi } from '../../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
-import { CustomerEditForm } from '../../../../components/dashboard/customer/customer-edit-form';
+import { CustomerEditForm } from '../../../../components/dashboard/restaurant/restaurant-edit-form';
 import { useMounted } from '../../../../hooks/use-mounted';
 import { gtm } from '../../../../lib/gtm';
 import { getInitials } from '../../../../utils/get-initials';
@@ -58,7 +58,7 @@ const CustomerEdit = () => {
       >
         <Container maxWidth="md">
           <Box sx={{ mb: 4 }}>
-            <NextLink href="/dashboard/customers" passHref>
+            <NextLink href="/dashboard/restaurants" passHref>
               <Link
                 color="textPrimary"
                 component="a"
