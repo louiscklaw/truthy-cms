@@ -23,6 +23,7 @@ import { Plus as PlusIcon } from '../../../icons/plus';
 import { Search as SearchIcon } from '../../../icons/search';
 import { Upload as UploadIcon } from '../../../icons/upload';
 import { gtm } from '../../../lib/gtm';
+import { useTranslation } from 'react-i18next';
 
 const tabs = [
   { label: 'All', value: 'all' },
@@ -201,7 +202,7 @@ const CustomerList = () => {
           <Box sx={{ mb: 4 }}>
             <Grid container justifyContent="space-between" spacing={3}>
               <Grid item>
-                <Typography variant="h4">{t('RESTAURANTS')}}</Typography>
+                <Typography variant="h4">{t('RESTAURANTS')}</Typography>
               </Grid>
               <Grid item>
                 <Button startIcon={<PlusIcon fontSize="small" />} variant="contained">
@@ -209,7 +210,7 @@ const CustomerList = () => {
                 </Button>
               </Grid>
             </Grid>
-            <Box sx={{ m: -1, mt: 3 }}>
+            <Box sx={{ m: -1, mt: 3, display: 'none' }}>
               <Button startIcon={<UploadIcon fontSize="small" />} sx={{ m: 1 }}>
                 Import
               </Button>
