@@ -22,7 +22,7 @@ import { PencilAlt as PencilAltIcon } from '../../../icons/pencil-alt';
 import { getInitials } from '../../../utils/get-initials';
 import { Scrollbar } from '../../scrollbar';
 
-export const CustomerListTable = props => {
+export const RestaurantListTable = props => {
   const { customers, customersCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props;
   const [selectedCustomers, setSelectedCustomers] = useState([]);
 
@@ -142,12 +142,12 @@ export const CustomerListTable = props => {
                     </Typography>
                   </TableCell>
                   <TableCell align="right">
-                    <NextLink href="/dashboard/customers/1/edit" passHref>
+                    <NextLink href="/dashboard/restaurants/1/edit" passHref>
                       <IconButton component="a">
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
-                    <NextLink href="/dashboard/customers/1" passHref>
+                    <NextLink href="/dashboard/restaurants/1" passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>
@@ -172,7 +172,7 @@ export const CustomerListTable = props => {
   );
 };
 
-CustomerListTable.propTypes = {
+RestaurantListTable.propTypes = {
   customers: PropTypes.array.isRequired,
   customersCount: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,

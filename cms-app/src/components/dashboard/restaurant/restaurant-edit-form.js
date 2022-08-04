@@ -17,8 +17,10 @@ import {
   Typography,
 } from '@mui/material';
 import { wait } from '../../../utils/wait';
+import { useTranslation } from 'react-i18next';
 
 export const CustomerEditForm = props => {
+  const { t } = useTranslation();
   const { customer, ...other } = props;
   const formik = useFormik({
     initialValues: {
@@ -155,14 +157,7 @@ export const CustomerEditForm = props => {
               />
             </Grid>
           </Grid>
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
-              mt: 3,
-            }}
-          >
+          <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', mt: 3 }}>
             <div>
               <Typography gutterBottom variant="subtitle1">
                 {t('MAKE_CONTACT_INFO_PUBLIC')}
@@ -181,13 +176,7 @@ export const CustomerEditForm = props => {
             />
           </Box>
           <Divider sx={{ my: 3 }} />
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              justifyContent: 'space-between',
-            }}
-          >
+          <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
             <div>
               <Typography gutterBottom variant="subtitle1">
                 Available to hire
@@ -206,25 +195,12 @@ export const CustomerEditForm = props => {
             />
           </Box>
         </CardContent>
-        <CardActions
-          sx={{
-            flexWrap: 'wrap',
-            m: -1,
-          }}
-        >
+        <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
           <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
             Update
           </Button>
           <NextLink href="/dashboard/customers/1" passHref>
-            <Button
-              component="a"
-              disabled={formik.isSubmitting}
-              sx={{
-                m: 1,
-                mr: 'auto',
-              }}
-              variant="outlined"
-            >
+            <Button component="a" disabled={formik.isSubmitting} sx={{ m: 1, mr: 'auto' }} variant="outlined">
               Cancel
             </Button>
           </NextLink>

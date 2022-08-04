@@ -16,7 +16,7 @@ import {
 import { customerApi } from '../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
-import { CustomerListTable } from '../../../components/dashboard/restaurant/restaurant-list-table';
+import { RestaurantListTable } from '../../../components/dashboard/restaurant/restaurant-list-table';
 import { useMounted } from '../../../hooks/use-mounted';
 import { Download as DownloadIcon } from '../../../icons/download';
 import { Plus as PlusIcon } from '../../../icons/plus';
@@ -234,15 +234,7 @@ const CustomerList = () => {
               ))}
             </Tabs>
             <Divider />
-            <Box
-              sx={{
-                alignItems: 'center',
-                display: 'flex',
-                flexWrap: 'wrap',
-                m: -1.5,
-                p: 3,
-              }}
-            >
+            <Box sx={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap', m: -1.5, p: 3 }}>
               <Box component="form" onSubmit={handleQueryChange} sx={{ flexGrow: 1, m: 1.5 }}>
                 <TextField
                   defaultValue=""
@@ -255,7 +247,7 @@ const CustomerList = () => {
                       </InputAdornment>
                     ),
                   }}
-                  placeholder="Search customers"
+                  placeholder={t('SEARCH_RESTAURANTS')}
                 />
               </Box>
               <TextField
@@ -274,7 +266,7 @@ const CustomerList = () => {
                 ))}
               </TextField>
             </Box>
-            <CustomerListTable
+            <RestaurantListTable
               customers={paginatedCustomers}
               customersCount={filteredCustomers.length}
               onPageChange={handlePageChange}
