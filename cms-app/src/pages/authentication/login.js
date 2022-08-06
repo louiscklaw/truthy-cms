@@ -40,9 +40,9 @@ const Login = () => {
           // backgroundColor: 'background.default',
           backgroundImage:
             'url("https://unsplash.com/photos/nmpW_WwwVSc/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHx8fDE2NTk2MjY1NDM&force=true&w=2400")',
-          backgroundSize: 'contain',
+          backgroundSize: 'cover',
           backgroundPosition: 'center',
-          bakcgroundRepeat: 'no-repeat',
+          backgroundRepeat: 'no-repeat',
           display: 'flex',
           flexDirection: 'column',
           position: 'fixed',
