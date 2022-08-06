@@ -1,4 +1,4 @@
-version: "3.7"
+version: '3.7'
 
 services:
   api:
@@ -27,7 +27,7 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres:Aa1234567@postgres:5432/truthy?sslmode=disable
     ports:
-      - "8081:8081"
+      - '8081:8081'
     depends_on:
       - postgres
 
@@ -45,14 +45,14 @@ services:
       - 5432:5432
     volumes:
       - pgdata:/var/lib/postgresql/data
-    shm_size: "256m"
+    shm_size: '256m'
 
   redis:
-    image: "redis:alpine"
+    image: 'redis:alpine'
     container_name: redis
     restart: always
     healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
+      test: ['CMD', 'redis-cli', 'ping']
     volumes:
       - redisdata:/data
     ports:

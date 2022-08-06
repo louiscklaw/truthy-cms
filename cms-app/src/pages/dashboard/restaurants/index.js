@@ -1,5 +1,3 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
-import Head from 'next/head';
 import {
   Box,
   Button,
@@ -13,10 +11,14 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { customerApi } from '../../../__fake-api__/customer-api';
+import Head from 'next/head';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { restaurantApi } from '../../../api/restaurant-api';
 
+import LoadingButton from '@mui/lab/LoadingButton';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'react-i18next';
 import { AuthGuard } from '../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../components/dashboard/dashboard-layout';
 import { RestaurantListTable } from '../../../components/dashboard/restaurant/restaurant-list-table';
@@ -26,7 +28,7 @@ import { Plus as PlusIcon } from '../../../icons/plus';
 import { Search as SearchIcon } from '../../../icons/search';
 import { Upload as UploadIcon } from '../../../icons/upload';
 import { gtm } from '../../../lib/gtm';
-import { useTranslation } from 'react-i18next';
+import Debug from '../../../components/debug';
 
 const tabs = [
   { label: 'All', value: 'all' },
@@ -115,13 +117,14 @@ const applyPagination = (customers, page, rowsPerPage) =>
 
 const RestaurantList = () => {
   const { t } = useTranslation();
+  const router = useRouter();
 
   const isMounted = useMounted();
   const queryRef = useRef(null);
   const [customers, setCustomers] = useState([]);
   const [currentTab, setCurrentTab] = useState('all');
   const [page, setPage] = useState(0);
-  const [rowsPerPage, setRowsPerPage] = useState(10);
+  const [rowsPerPage, setRowsPerPage] = useState(100);
   const [sort, setSort] = useState(sortOptions[0].value);
   const [filters, setFilters] = useState({
     query: '',
@@ -129,7 +132,6 @@ const RestaurantList = () => {
     isProspect: undefined,
     isReturning: undefined,
   });
-  const [is_loading, setIsLoading] = useState(true);
 
   useEffect(() => {
     gtm.push({ event: 'page_view' });
@@ -172,8 +174,11 @@ const RestaurantList = () => {
     setCurrentTab(value);
   };
 
+  const [table_updating, setTableUpdating] = useState(false);
+
   const handleQueryChange = event => {
     event.preventDefault();
+
     setFilters(prevState => ({
       ...prevState,
       query: queryRef.current?.value,
@@ -209,10 +214,19 @@ const RestaurantList = () => {
               <Grid item>
                 <Typography variant="h4">{t('RESTAURANTS')}</Typography>
               </Grid>
+              <Debug>
+                <Grid item>
+                  <Typography variant="caption">{`${t('total')}: ${customers.length}`}</Typography>
+                </Grid>
+              </Debug>
               <Grid item>
-                <Button startIcon={<PlusIcon fontSize="small" />} variant="contained">
+                <LoadingButton
+                  onClick={e => router.push('/dashboard/restaurants/new')}
+                  startIcon={<PlusIcon fontSize="small" />}
+                  variant="contained"
+                >
                   Add
-                </Button>
+                </LoadingButton>
               </Grid>
             </Grid>
             <Box sx={{ m: -1, mt: 3, display: 'none' }}>

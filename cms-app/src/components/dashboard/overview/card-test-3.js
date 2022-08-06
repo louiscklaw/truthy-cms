@@ -1,5 +1,8 @@
 import { Avatar, Box, Card, CardActions, Divider, Typography } from '@mui/material';
 import { alpha, useTheme } from '@mui/material/styles';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { ChevronDown as ChevronDownIcon } from '../../../icons/chevron-down';
 import { Chart } from '../../chart';
 
@@ -56,108 +59,62 @@ const LineChart = () => {
   return <Chart options={chartOptions} series={chartSeries} type="line" width={120} />;
 };
 
-const BarChart = () => {
-  const theme = useTheme();
+export const CardTest3 = () => {
+  const { t } = useTranslation();
+  const [is_loading, setIsLoading] = useState(true);
+  const [num_of_customers, setNumOfCustomers] = useState(0);
 
-  const chartOptions = {
-    chart: {
-      background: 'transparent',
-      toolbar: {
-        show: false,
-      },
-      zoom: {
-        enabled: false,
-      },
-    },
-    colors: ['#2F3EB1'],
-    dataLabels: {
-      enabled: false,
-    },
-    fill: {
-      opacity: 1,
-    },
-    grid: {
-      show: false,
-    },
-    states: {
-      normal: {
-        filter: {
-          type: 'none',
-          value: 0,
-        },
-      },
-    },
-    stroke: {
-      width: 0,
-    },
-    theme: {
-      mode: theme.palette.mode,
-    },
-    tooltip: {
-      enabled: false,
-    },
-    xaxis: {
-      axisBorder: {
-        show: false,
-      },
-      axisTicks: {
-        show: false,
-      },
-      labels: {
-        show: false,
-      },
-    },
-    yaxis: {
-      show: false,
-    },
-  };
+  useEffect(() => {
+    axios.get('/api/users', { withCredentials: true }).then(({ data }) => {
+      setNumOfCustomers(data?.length);
+      setIsLoading(false);
+    });
+  }, []);
 
-  const chartSeries = [{ data: [10, 20, 30, 40, 50, 60, 5] }];
+  if (is_loading) return <>is loading</>;
 
-  return <Chart options={chartOptions} series={chartSeries} type="bar" width={120} />;
-};
-
-export const CardTest3 = () => (
-  <Card>
-    <Box
-      sx={{
-        alignItems: 'center',
-        display: 'flex',
-        justifyContent: 'space-between',
-        px: 3,
-        py: 2,
-      }}
-    >
-      <div>
-        <Typography color="textSecondary" variant="body2">
-          Engagements
-        </Typography>
-        <Typography sx={{ mt: 1 }} variant="h5">
-          36,6K
-        </Typography>
-      </div>
-      <LineChart />
-    </Box>
-    <Divider />
-    <CardActions
-      sx={{
-        alignItems: 'center',
-        display: 'flex',
-      }}
-    >
-      <Avatar
+  return (
+    <Card>
+      <Box
         sx={{
-          backgroundColor: theme => alpha(theme.palette.error.main, 0.08),
-          color: 'error.main',
-          height: 36,
-          width: 36,
+          alignItems: 'center',
+          display: 'flex',
+          justifyContent: 'space-between',
+          px: 3,
+          py: 2,
         }}
       >
-        <ChevronDownIcon fontSize="small" />
-      </Avatar>
-      <Typography color="textSecondary" sx={{ ml: 1 }} variant="caption">
-        30% less then last month
-      </Typography>
-    </CardActions>
-  </Card>
-);
+        <div>
+          <Typography color="textSecondary" variant="body2">
+            {t('ENGAGEMENTS')}
+          </Typography>
+          <Typography sx={{ mt: 1 }} variant="h5">
+            {num_of_customers}
+          </Typography>
+        </div>
+        <LineChart />
+      </Box>
+      <Divider />
+      <CardActions
+        sx={{
+          alignItems: 'center',
+          display: 'flex',
+        }}
+      >
+        <Avatar
+          sx={{
+            backgroundColor: theme => alpha(theme.palette.error.main, 0.08),
+            color: 'error.main',
+            height: 36,
+            width: 36,
+          }}
+        >
+          <ChevronDownIcon fontSize="small" />
+        </Avatar>
+        <Typography color="textSecondary" sx={{ ml: 1 }} variant="caption">
+          30% less then last month
+        </Typography>
+      </CardActions>
+    </Card>
+  );
+};

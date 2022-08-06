@@ -16,10 +16,17 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
-import { wait } from '../../../utils/wait';
+import { wait } from '../../../../utils/wait';
 import { useTranslation } from 'react-i18next';
-import { restaurantApi } from '../../../api/restaurant-api';
+import { restaurantApi } from '../../../../api/restaurant-api';
 import Router, { useRouter } from 'next/router';
+
+import slugify from '@sindresorhus/slugify';
+
+import DeleteIcon from '@mui/icons-material/Delete';
+import ConfirmDelete from './confirm-delete';
+import { useState } from 'react';
+import { FaSave, FaBackspace } from 'react-icons/fa';
 
 export const RestaurantEditForm = props => {
   const { t } = useTranslation();
@@ -80,8 +87,11 @@ export const RestaurantEditForm = props => {
     },
   });
 
+  const [open_delete_dialog, setOpenDeleteDialog] = useState(false);
+
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
+      <ConfirmDelete open={open_delete_dialog} setOpen={setOpenDeleteDialog} />
       <Card>
         <CardHeader title={t('EDIT_RESTAURANT')} />
         <Divider />
@@ -92,7 +102,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.name && formik.errors.name)}
                 fullWidth
                 helperText={formik.touched.name && formik.errors.name}
-                label="Full name"
+                label={t('RESTAURANT_NAME')}
                 name="name"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -105,7 +115,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.email && formik.errors.email)}
                 fullWidth
                 helperText={formik.touched.email && formik.errors.email}
-                label="Email address"
+                label={t('RESTAURANT_EMAIL')}
                 name="email"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -118,7 +128,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.country && formik.errors.country)}
                 fullWidth
                 helperText={formik.touched.country && formik.errors.country}
-                label="Country"
+                label={t('COUNTRY')}
                 name="country"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -130,7 +140,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.state && formik.errors.state)}
                 fullWidth
                 helperText={formik.touched.state && formik.errors.state}
-                label="State/Region"
+                label={t('STATE/Region')}
                 name="state"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -142,7 +152,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.spent && formik.errors.spent)}
                 fullWidth
                 helperText={formik.touched.spent && formik.errors.spent}
-                label="Spent"
+                label={t('SPENT')}
                 name="spent"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -155,7 +165,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.orders && formik.errors.orders)}
                 fullWidth
                 helperText={formik.touched.orders && formik.errors.orders}
-                label="Orders"
+                label={t('ORDERS')}
                 name="orders"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -168,7 +178,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.location && formik.errors.location)}
                 fullWidth
                 helperText={formik.touched.location && formik.errors.location}
-                label="Location"
+                label={t('LOCATION')}
                 name="location"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -180,7 +190,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.address && formik.errors.address)}
                 fullWidth
                 helperText={formik.touched.address && formik.errors.address}
-                label="Address"
+                label={t('ADDRESS')}
                 name="address"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -192,19 +202,20 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.address1 && formik.errors.address1)}
                 fullWidth
                 helperText={formik.touched.address1 && formik.errors.address1}
-                label="Address 1"
+                label={t('ADDRESS1')}
                 name="address1"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 value={formik.values.address1}
               />
             </Grid>
+
             <Grid item md={6} xs={12}>
               <TextField
                 error={Boolean(formik.touched.address2 && formik.errors.address2)}
                 fullWidth
                 helperText={formik.touched.address2 && formik.errors.address2}
-                label="Address 2"
+                label={t('ADDRESS2')}
                 name="address2"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -216,11 +227,38 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.phone && formik.errors.phone)}
                 fullWidth
                 helperText={formik.touched.phone && formik.errors.phone}
-                label="Phone number"
+                label={t('PHONE_NUMBER')}
                 name="phone"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 value={formik.values.phone}
+              />
+            </Grid>
+
+            <Grid item md={6} xs={12}>
+              <TextField
+                error={Boolean(formik.touched.slug && formik.errors.slug)}
+                fullWidth
+                helperText={formik.touched.slug && formik.errors.slug}
+                label={t('SLUG')}
+                name="slug"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={slugify(formik.values.name)}
+                disabled
+              />
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <TextField
+                error={Boolean(formik.touched.url_shortcut && formik.errors.url_shortcut)}
+                fullWidth
+                helperText={formik.touched.url_shortcut && formik.errors.url_shortcut}
+                label={t('RESTAURANT_URL_SHORTCUT')}
+                name="url_shortcut"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                value={`http://${slugify(formik.values.name)}.iamon99.com`}
+                disabled
               />
             </Grid>
           </Grid>
@@ -246,15 +284,26 @@ export const RestaurantEditForm = props => {
           </Box>
         </CardContent>
         <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
-          <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
+          <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained" startIcon={<FaSave />}>
             {t('UPDATE')}
           </Button>
-          <NextLink href="/dashboard/customers/1" passHref>
-            <Button component="a" disabled={formik.isSubmitting} sx={{ m: 1, mr: 'auto' }} variant="outlined">
+          <NextLink href="/dashboard/restaurants" passHref>
+            <Button
+              component="a"
+              disabled={formik.isSubmitting}
+              sx={{ m: 1, mr: 'auto' }}
+              variant="outlined"
+              startIcon={<FaBackspace />}
+            >
               {t('CANCEL')}
             </Button>
           </NextLink>
-          <Button color="error" disabled={formik.isSubmitting}>
+          <Button
+            onClick={e => setOpenDeleteDialog(true)}
+            color="error"
+            disabled={formik.isSubmitting}
+            startIcon={<DeleteIcon />}
+          >
             {t('DELETE_RESTAURANT')}
           </Button>
         </CardActions>
@@ -262,6 +311,7 @@ export const RestaurantEditForm = props => {
     </form>
   );
 };
+
 RestaurantEditForm.propTypes = {
   customer: PropTypes.object.isRequired,
 };

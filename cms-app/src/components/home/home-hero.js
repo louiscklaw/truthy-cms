@@ -19,14 +19,7 @@ export const HomeHero = props => {
       }}
       {...props}
     >
-      <Container
-        maxWidth="md"
-        sx={{
-          alignItems: 'center',
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
+      <Container maxWidth="md" sx={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
         <Typography color="primary" variant="overline">
           Introducing
         </Typography>
@@ -39,15 +32,9 @@ export const HomeHero = props => {
         </Typography>
         <Box
           sx={{
-            alignItems: {
-              sm: 'center',
-              xs: 'flex-start',
-            },
+            alignItems: { sm: 'center', xs: 'flex-start' },
             display: 'flex',
-            flexDirection: {
-              sm: 'row',
-              xs: 'column',
-            },
+            flexDirection: { sm: 'row', xs: 'column' },
             py: 3,
             m: -1,
             '& > *': {
@@ -59,15 +46,8 @@ export const HomeHero = props => {
             Available For:
           </Typography>
           {['JavaScript', 'TypeScript', 'Figma', 'Sketch'].map(item => (
-            <Box
-              key={item}
-              sx={{
-                alignItems: 'center',
-                display: 'flex',
-                m: 2,
-              }}
-            >
-              <CheckCircleOutlinedIcon color="success" sx={{ mr: 1 }} />
+            <Box key={item} sx={{ alignItems: 'center', display: 'flex', m: 2 }}>
+              <CheckCircleOutlinedIcon color="primary" sx={{ mr: 1 }} />
               <Typography variant="subtitle2">{item}</Typography>
             </Box>
           ))}
@@ -80,9 +60,7 @@ export const HomeHero = props => {
             mx: -1,
             mt: 2,
             mb: 6,
-            '& > a': {
-              m: 1,
-            },
+            '& > a': { m: 1 },
           }}
         >
           <NextLink href="/browse" passHref>
@@ -97,13 +75,7 @@ export const HomeHero = props => {
           </NextLink>
         </Box>
       </Container>
-      <Box
-        sx={{
-          maxWidth: 980,
-          width: '100%',
-          mx: 'auto',
-        }}
-      >
+      <Box sx={{ maxWidth: 980, width: '100%', mx: 'auto' }}>
         <Box
           sx={{
             position: 'relative',
@@ -126,38 +98,15 @@ export const HomeHero = props => {
             alignItems: 'center',
             display: 'flex',
             justifyContent: 'space-between',
-            flexDirection: {
-              xs: 'column',
-              md: 'row',
-            },
+            flexDirection: { xs: 'column', md: 'row' },
             px: 3,
           }}
         >
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <Avatar
-              sx={{
-                backgroundColor: 'primary.main',
-                height: 40,
-                mb: 2,
-                width: 40,
-              }}
-              variant="rounded"
-            >
+          <Box sx={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
+            <Avatar sx={{ backgroundColor: 'primary.main', height: 40, mb: 2, width: 40 }} variant="rounded">
               <UsersIcon fontSize="small" />
             </Avatar>
-            <Typography
-              sx={{
-                color: 'textPrimary',
-                textAlign: 'center',
-              }}
-              variant="h4"
-            >
+            <Typography sx={{ color: 'textPrimary', textAlign: 'center' }} variant="h4">
               4.5k+
             </Typography>
             <Typography sx={{ color: 'textPrimary' }} variant="overline">
@@ -171,86 +120,32 @@ export const HomeHero = props => {
               flexDirection: 'column',
             }}
           >
-            <Avatar
-              sx={{
-                backgroundColor: 'secondary.main',
-                height: 40,
-                mb: 2,
-                width: 40,
-              }}
-              variant="rounded"
-            >
+            <Avatar sx={{ backgroundColor: 'secondary.main', height: 40, mb: 2, width: 40 }} variant="rounded">
               <StarIcon fontSize="small" />
             </Avatar>
-            <Typography
-              sx={{
-                color: 'textPrimary',
-                textAlign: 'center',
-              }}
-              variant="h4"
-            >
+            <Typography sx={{ color: 'textPrimary', textAlign: 'center' }} variant="h4">
               4.9/5
             </Typography>
             <Typography sx={{ color: 'textPrimary' }} variant="overline">
               CUSTOMER Rating
             </Typography>
           </Box>
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <Avatar
-              sx={{
-                backgroundColor: 'warning.main',
-                height: 40,
-                mb: 2,
-                width: 40,
-              }}
-              variant="rounded"
-            >
+          <Box sx={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
+            <Avatar sx={{ backgroundColor: 'warning.main', height: 40, mb: 2, width: 40 }} variant="rounded">
               <TemplateIcon fontSize="small" />
             </Avatar>
-            <Typography
-              sx={{
-                color: 'textPrimary',
-                textAlign: 'center',
-              }}
-              variant="h4"
-            >
+            <Typography sx={{ color: 'textPrimary', textAlign: 'center' }} variant="h4">
               UX
             </Typography>
             <Typography sx={{ color: 'textPrimary' }} variant="overline">
               complete flows
             </Typography>
           </Box>
-          <Box
-            sx={{
-              alignItems: 'center',
-              display: 'flex',
-              flexDirection: 'column',
-            }}
-          >
-            <Avatar
-              sx={{
-                backgroundColor: 'info.main',
-                height: 40,
-                mb: 2,
-                width: 40,
-              }}
-              variant="rounded"
-            >
+          <Box sx={{ alignItems: 'center', display: 'flex', flexDirection: 'column' }}>
+            <Avatar sx={{ backgroundColor: 'info.main', height: 40, mb: 2, width: 40 }} variant="rounded">
               <UsersIcon fontSize="small" />
             </Avatar>
-            <Typography
-              sx={{
-                color: 'textPrimary',
-                textAlign: 'center',
-              }}
-              variant="h4"
-            >
+            <Typography sx={{ color: 'textPrimary', textAlign: 'center' }} variant="h4">
               $10k+
             </Typography>
             <Typography sx={{ color: 'textPrimary' }} variant="overline">

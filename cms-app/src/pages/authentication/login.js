@@ -37,22 +37,44 @@ const Login = () => {
       <Box
         component="main"
         sx={{
-          backgroundColor: 'background.default',
+          // backgroundColor: 'background.default',
+          backgroundImage:
+            'url("https://unsplash.com/photos/nmpW_WwwVSc/download?ixid=MnwxMjA3fDB8MXxzZWFyY2h8M3x8cmVzdGF1cmFudHxlbnwwfHx8fDE2NTk2MjY1NDM&force=true&w=2400")',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          bakcgroundRepeat: 'no-repeat',
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '100vh',
+          position: 'fixed',
+          minHeight: 'calc(100vh + 50px)',
+          top: '-25px',
+          width: 'calc(100vw + 50px)',
+          left: '-25px',
+          filter: 'blur(5px) grayscale(30%);',
+          overflow: 'hidden',
+        }}
+      ></Box>
+      <Box
+        component="main"
+        sx={{
+          // backgroundColor: 'background.default',
+          position: 'absolute',
+          width: '100%',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          bakcgroundRepeat: 'no-repeat',
+          display: 'flex',
+          flexDirection: 'column',
         }}
       >
-        <Container maxWidth="sm" sx={{ py: { xs: '60px', md: '120px' } }}>
+        <Container
+          maxWidth="sm"
+          sx={{
+            py: { xs: '60px', md: '120px' },
+          }}
+        >
           <Card elevation={16} sx={{ p: 4 }}>
-            <Box
-              sx={{
-                alignItems: 'center',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
+            <Box sx={{ alignItems: 'center', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
               <NextLink href="/" passHref>
                 <a>
                   <Logo sx={{ height: 40, width: 40 }} />

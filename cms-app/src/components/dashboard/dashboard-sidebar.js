@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
-import { Box, Button, Chip, Divider, Drawer, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Chip, Divider, Drawer, Stack, Typography, useMediaQuery } from '@mui/material';
 import { Calendar as CalendarIcon } from '../../icons/calendar';
 import { Cash as CashIcon } from '../../icons/cash';
 import { ChartBar as ChartBarIcon } from '../../icons/chart-bar';
@@ -31,42 +31,25 @@ import { Scrollbar } from '../scrollbar';
 import { DashboardSidebarSection } from './dashboard-sidebar-section';
 import { OrganizationPopover } from './organization-popover';
 
+const NewChip = () => {
+  return (
+    <Chip
+      color="secondary"
+      label={<Typography sx={{ fontSize: '10px', fontWeight: '600' }}>NEW</Typography>}
+      size="small"
+    />
+  );
+};
+
 const getSections = t => [
   {
     title: t('General'),
     items: [
-      {
-        title: t('Overview'),
-        path: '/dashboard',
-        icon: <HomeIcon fontSize="small" />,
-      },
-      {
-        title: t('Analytics'),
-        path: '/dashboard/analytics',
-        icon: <ChartBarIcon fontSize="small" />,
-      },
-      {
-        title: t('Finance'),
-        path: '/dashboard/finance',
-        icon: <ChartPieIcon fontSize="small" />,
-      },
-      {
-        title: t('Logistics'),
-        path: '/dashboard/logistics',
-        icon: <TruckIcon fontSize="small" />,
-        chip: (
-          <Chip
-            color="secondary"
-            label={<Typography sx={{ fontSize: '10px', fontWeight: '600' }}>NEW</Typography>}
-            size="small"
-          />
-        ),
-      },
-      {
-        title: t('Account'),
-        path: '/dashboard/account',
-        icon: <UserCircleIcon fontSize="small" />,
-      },
+      { title: t('Overview'), path: '/dashboard', icon: <HomeIcon fontSize="small" /> },
+      { title: t('Analytics'), path: '/dashboard/analytics', icon: <ChartBarIcon fontSize="small" /> },
+      // { title: t('Finance'), path: '/dashboard/finance', icon: <ChartPieIcon fontSize="small" /> },
+      // { title: t('Logistics'), path: '/dashboard/logistics', icon: <TruckIcon fontSize="small" />, chip: <NewChip /> },
+      // { title: t('Account'), path: '/dashboard/account', icon: <UserCircleIcon fontSize="small" /> },
     ],
   },
   {
@@ -158,26 +141,10 @@ const getSections = t => [
   {
     title: t('Apps'),
     items: [
-      {
-        title: t('Kanban'),
-        path: '/dashboard/kanban',
-        icon: <ClipboardListIcon fontSize="small" />,
-      },
-      {
-        title: t('Mail'),
-        path: '/dashboard/mail',
-        icon: <MailIcon fontSize="small" />,
-      },
-      {
-        title: t('Chat'),
-        path: '/dashboard/chat',
-        icon: <ChatAlt2Icon fontSize="small" />,
-      },
-      {
-        title: t('Calendar'),
-        path: '/dashboard/calendar',
-        icon: <CalendarIcon fontSize="small" />,
-      },
+      { title: t('Kanban'), path: '/dashboard/kanban', icon: <ClipboardListIcon fontSize="small" /> },
+      { title: t('Mail'), path: '/dashboard/mail', icon: <MailIcon fontSize="small" /> },
+      { title: t('Chat'), path: '/dashboard/chat', icon: <ChatAlt2Icon fontSize="small" /> },
+      { title: t('Calendar'), path: '/dashboard/calendar', icon: <CalendarIcon fontSize="small" /> },
     ],
   },
   {
@@ -192,21 +159,9 @@ const getSections = t => [
           { title: t('Login'), path: '/authentication/login?disableGuard=true' },
         ],
       },
-      {
-        title: t('Pricing'),
-        path: '/dashboard/pricing',
-        icon: <CreditCardIcon fontSize="small" />,
-      },
-      {
-        title: t('Checkout'),
-        path: '/checkout',
-        icon: <CashIcon fontSize="small" />,
-      },
-      {
-        title: t('Contact'),
-        path: '/contact',
-        icon: <MailOpenIcon fontSize="small" />,
-      },
+      { title: t('Pricing'), path: '/dashboard/pricing', icon: <CreditCardIcon fontSize="small" /> },
+      { title: t('Checkout'), path: '/checkout', icon: <CashIcon fontSize="small" /> },
+      { title: t('Contact'), path: '/contact', icon: <MailOpenIcon fontSize="small" /> },
       {
         title: t('Error'),
         path: '/error',
@@ -261,14 +216,22 @@ export const DashboardSidebar = props => {
       <Scrollbar sx={{ height: '100%', '& .simplebar-content': { height: '100%' } }}>
         <Box sx={{ display: 'flex', flexDirection: 'column', height: '100%' }}>
           <div>
-            <Box sx={{ p: 3 }}>
-              <NextLink href="/" passHref>
-                <a>
-                  <Logo sx={{ height: 42, width: 42 }} />
-                </a>
-              </NextLink>
+            <Box sx={{ p: 2 }}>
+              <Stack direction="column" spacing={3}>
+                <Stack direction="row" justifyContent="center">
+                  <NextLink href="/" passHref>
+                    <a>
+                      <Logo sx={{ height: 42, width: 42 }} />
+                    </a>
+                  </NextLink>
+                </Stack>
+                <Stack direction="row" justifyContent="center">
+                  <Typography variant="body2">restaurant name</Typography>
+                </Stack>
+              </Stack>
             </Box>
-            <Box sx={{ px: 2 }}>
+
+            <Box sx={{ px: 2, display: 'none' }}>
               <Box
                 onClick={handleOpenOrganizationsPopover}
                 ref={organizationsRef}
@@ -295,7 +258,7 @@ export const DashboardSidebar = props => {
               </Box>
             </Box>
           </div>
-          <Divider sx={{ borderColor: '#2D3748', my: 3 }} />
+          <Divider sx={{ borderColor: '#2D3748', my: 1 }} />
           <Box sx={{ flexGrow: 1 }}>
             {sections.map(section => (
               <DashboardSidebarSection
