@@ -37,7 +37,7 @@ try {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name: 'meny',
+      name: 'meny_light',
       description: 'hello description',
       canEditMenu: true,
       canEditRestaurant: true,
@@ -61,7 +61,7 @@ try {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      name: 'meny',
+      name: 'meny_takeaway',
       description: 'hello description',
       canEditMenu: true,
       canEditRestaurant: true,
