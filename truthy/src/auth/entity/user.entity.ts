@@ -118,12 +118,8 @@ export class UserEntity extends CustomBaseEntity {
   roleId: number;
 
   @ManyToMany(() => MenyServiceTypeEntity, meny_service_type => meny_service_type.users)
-  @JoinTable({
-    name: 'user_meny_service_type',
-    joinColumn: { name: 'userId', referencedColumnName: 'id' },
-    inverseJoinColumn: { name: 'meny_service_type_id', referencedColumnName: 'id' },
-  })
-  meny_service_type: MenyServiceTypeEntity[];
+  @JoinTable()
+  meny_service_type: MenyServiceTypeEntity;
 
   @BeforeInsert()
   async hashPasswordBeforeInsert() {

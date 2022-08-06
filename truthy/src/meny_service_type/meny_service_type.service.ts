@@ -1,10 +1,20 @@
 import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 import { CreateMenyServiceTypeDto } from './dto/create-meny_service_type.dto';
 import { UpdateMenyServiceTypeDto } from './dto/update-meny_service_type.dto';
+import { MenyServiceTypeEntity } from './entities/meny_service_type.entity';
 
 @Injectable()
 export class MenyServiceTypeService {
-  create(createMenyServiceTypeDto: CreateMenyServiceTypeDto) {
+  constructor(
+    @InjectRepository(MenyServiceTypeEntity)
+    private restaurantRepository: Repository<MenyServiceTypeEntity>,
+  ) {}
+
+  async create(createMenyServiceTypeDto: CreateMenyServiceTypeDto): Promise<any> {
+    let { id } = await this.restaurantRepository.save(createMenyServiceTypeDto);
+    return { ...createMenyServiceTypeDto, id };
     return 'This action adds a new menyServiceType';
   }
 

@@ -1,0 +1,16 @@
+{
+  "name": "seed",
+  "version": "1.0.0",
+  "description": "",
+  "main": "user.js",
+  "type": "module",
+  "scripts": {
+    "test": "node ./test_insert_meny_service_type.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-fetch": "^3.2.10"
+  }
+}

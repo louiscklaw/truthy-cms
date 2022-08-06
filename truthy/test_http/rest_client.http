@@ -35,7 +35,7 @@ content-type: application/json
 }
 
 ###
-POST http://localhost/api/logout
+POST http://test.docker.localhost/api/logout
 content-type: application/json
 
 {}

@@ -9,6 +9,7 @@ export class MenyServiceTypeController {
 
   @Post()
   create(@Body() createMenyServiceTypeDto: CreateMenyServiceTypeDto) {
+    console.log('running meny service type post');
     return this.menyServiceTypeService.create(createMenyServiceTypeDto);
   }
 
