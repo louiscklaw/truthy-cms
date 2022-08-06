@@ -6,6 +6,55 @@ import login from './login.js';
 import logout from './logout.js';
 
 try {
+  console.log('create meny service type');
+  var auth_cookie = await login();
+
+  var response = await fetch(`http://${config.API_HOST}/api/meny-service-type`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: 'meny',
+      description: 'hello description',
+      canEditMenu: true,
+      canEditRestaurant: true,
+      canProcessStayOrder: true,
+      canProcessTakeAwayOrder: true,
+    }),
+  });
+
+  var res_json = await response;
+  console.log(res_json);
+  await logout(auth_cookie);
+} catch (error) {
+  console.log(error);
+}
+
+try {
+  console.log('create meny_light service type');
+  var auth_cookie = await login();
+
+  var response = await fetch(`http://${config.API_HOST}/api/meny-service-type`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: 'meny',
+      description: 'hello description',
+      canEditMenu: true,
+      canEditRestaurant: true,
+      canProcessStayOrder: true,
+      canProcessTakeAwayOrder: true,
+    }),
+  });
+
+  var res_json = await response;
+  console.log(res_json);
+  await logout(auth_cookie);
+} catch (error) {
+  console.log(error);
+}
+
+try {
+  console.log('create meny_takeaway service type');
   var auth_cookie = await login();
 
   var response = await fetch(`http://${config.API_HOST}/api/meny-service-type`, {
