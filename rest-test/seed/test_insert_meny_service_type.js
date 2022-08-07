@@ -11,83 +11,85 @@ try {
 
   var response = await fetch(`${config.API_ENDPOINT}/meny-service-type/delete_all`, {
     method: 'DELETE',
+    headers: { cookie: auth_cookie },
+  });
+
+  var res = await response;
+  var res_json = await res.text();
+  console.log(res_json);
+  await logout(auth_cookie);
+} catch (error) {
+  console.log('error');
+}
+
+try {
+  console.log('create meny service type');
+  var auth_cookie = await login();
+
+  var response = await fetch(`${config.API_ENDPOINT}/meny-service-type`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: 'meny',
+      description: 'hello description',
+      canEditMenu: true,
+      canEditRestaurant: true,
+      canProcessStayOrder: true,
+      canProcessTakeAwayOrder: true,
+    }),
   });
 
   var res_json = await response;
-  console.log(res_json);
+  // console.log(res_json);
   await logout(auth_cookie);
 } catch (error) {
   console.log(error);
 }
 
-// try {
-//   console.log('create meny service type');
-//   var auth_cookie = await login();
+try {
+  console.log('create meny_light service type');
+  var auth_cookie = await login();
 
-//   var response = await fetch(`${config.API_ENDPOINT}/meny-service-type`, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       name: 'meny',
-//       description: 'hello description',
-//       canEditMenu: true,
-//       canEditRestaurant: true,
-//       canProcessStayOrder: true,
-//       canProcessTakeAwayOrder: true,
-//     }),
-//   });
+  var response = await fetch(`${config.API_ENDPOINT}/meny-service-type`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: 'meny_light',
+      description: 'meny light description',
+      canEditMenu: true,
+      canEditRestaurant: true,
+      canProcessStayOrder: true,
+      canProcessTakeAwayOrder: true,
+    }),
+  });
 
-//   var res_json = await response;
-//   console.log(res_json);
-//   await logout(auth_cookie);
-// } catch (error) {
-//   console.log(error);
-// }
+  var res_json = await response;
+  // console.log(res_json);
+  await logout(auth_cookie);
+} catch (error) {
+  console.log(error);
+}
 
-// try {
-//   console.log('create meny_light service type');
-//   var auth_cookie = await login();
+try {
+  console.log('create meny_takeaway service type');
+  var auth_cookie = await login();
 
-//   var response = await fetch(`${config.API_ENDPOINT}/meny-service-type`, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       name: 'meny_light',
-//       description: 'hello description',
-//       canEditMenu: true,
-//       canEditRestaurant: true,
-//       canProcessStayOrder: true,
-//       canProcessTakeAwayOrder: true,
-//     }),
-//   });
+  var response = await fetch(`${config.API_ENDPOINT}/meny-service-type`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: 'meny_takeaway',
+      description: 'meny takeaway description',
+      canEditMenu: true,
+      canEditRestaurant: true,
+      canProcessStayOrder: true,
+      canProcessTakeAwayOrder: true,
+    }),
+  });
 
-//   var res_json = await response;
-//   console.log(res_json);
-//   await logout(auth_cookie);
-// } catch (error) {
-//   console.log(error);
-// }
-
-// try {
-//   console.log('create meny_takeaway service type');
-//   var auth_cookie = await login();
-
-//   var response = await fetch(`${config.API_ENDPOINT}/meny-service-type`, {
-//     method: 'POST',
-//     headers: { 'Content-Type': 'application/json' },
-//     body: JSON.stringify({
-//       name: 'meny_takeaway',
-//       description: 'hello description',
-//       canEditMenu: true,
-//       canEditRestaurant: true,
-//       canProcessStayOrder: true,
-//       canProcessTakeAwayOrder: true,
-//     }),
-//   });
-
-//   var res_json = await response;
-//   console.log(res_json);
-//   await logout(auth_cookie);
-// } catch (error) {
-//   console.log(error);
-// }
+  var res_json = await response;
+  // console.log(res_json);
+  await logout(auth_cookie);
+} catch (error) {
+  console.log(error);
+}
