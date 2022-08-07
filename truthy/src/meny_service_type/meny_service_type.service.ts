@@ -33,4 +33,8 @@ export class MenyServiceTypeService {
   remove(id: number) {
     return `This action removes a #${id} menyServiceType`;
   }
+
+  removeAll() {
+    return `This action removes all menyServiceType`;
+  }
 }

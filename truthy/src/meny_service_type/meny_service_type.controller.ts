@@ -32,4 +32,9 @@ export class MenyServiceTypeController {
   remove(@Param('id') id: string) {
     return this.menyServiceTypeService.remove(+id);
   }
+
+  @Delete('/delete_all')
+  removeAll() {
+    return this.menyServiceTypeService.removeAll();
+  }
 }
