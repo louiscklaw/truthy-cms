@@ -5,6 +5,8 @@ set -x
 # docker compose -f docker-compose.dev.yml kill cms-app-dev
 # docker compose -f docker-compose.dev.yml rm -s -v -f cms-app-dev
 
+docker network create traefik-proxy-network
+
 docker compose -f docker-compose.dev.yml up -d postgres pgweb redis
 
 sleep 5
