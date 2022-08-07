@@ -5,7 +5,7 @@
 
 @BASEURL=api
 
-@API_HOST=192.168.10.61:81
+@API_HOST=test.docker.localhost
 
 # restaurant
 
@@ -30,7 +30,8 @@ Content-Type: application/json
 {
   "name":"restaurant 1",
   "location":"hong kong",
-  "isActive":true
+  "isActive":true,
+  "meny_service_types":1
 }
 
 ###
