@@ -21,7 +21,7 @@ export default class CreateUserSeed {
       .insert()
       .into(RestaurantEntity)
       .values(
-        Array(30)
+        Array(1)
           .fill(0)
           .map((a, i) => {
             return {

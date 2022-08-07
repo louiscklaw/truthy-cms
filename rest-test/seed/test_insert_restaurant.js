@@ -7,7 +7,7 @@ import logout from './logout.js';
 
 var auth_cookie = await login();
 
-await fetch(`${config.API_ENDPOINT}/restaurants`, {
+var response = await fetch(`${config.API_ENDPOINT}/restaurants`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
@@ -16,5 +16,9 @@ await fetch(`${config.API_ENDPOINT}/restaurants`, {
     isActive: true,
   }),
 });
+
+var res = await response;
+var res_text = await response.text();
+console.log(res_text);
 
 await logout(auth_cookie);

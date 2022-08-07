@@ -9,11 +9,11 @@ import { MenyServiceTypeEntity } from './entities/meny_service_type.entity';
 export class MenyServiceTypeService {
   constructor(
     @InjectRepository(MenyServiceTypeEntity)
-    private restaurantRepository: Repository<MenyServiceTypeEntity>,
+    private menyServiceTypeRepository: Repository<MenyServiceTypeEntity>,
   ) {}
 
   async create(createMenyServiceTypeDto: CreateMenyServiceTypeDto): Promise<any> {
-    let { id } = await this.restaurantRepository.save(createMenyServiceTypeDto);
+    let { id } = await this.menyServiceTypeRepository.save(createMenyServiceTypeDto);
     return { ...createMenyServiceTypeDto, id };
     return 'This action adds a new menyServiceType';
   }
@@ -34,7 +34,12 @@ export class MenyServiceTypeService {
     return `This action removes a #${id} menyServiceType`;
   }
 
-  removeAll() {
-    return `This action removes all menyServiceType`;
+  async removeAll() {
+    let all_record = await this.menyServiceTypeRepository.find();
+    for (var i = 0; i < all_record.length; i++) {
+      console.log('deleting: ', all_record[i].id);
+      await this.menyServiceTypeRepository.delete(all_record[i].id);
+    }
+    return;
   }
 }

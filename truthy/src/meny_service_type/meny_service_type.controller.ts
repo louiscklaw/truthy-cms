@@ -28,13 +28,14 @@ export class MenyServiceTypeController {
     return this.menyServiceTypeService.update(+id, updateMenyServiceTypeDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.menyServiceTypeService.remove(+id);
-  }
-
   @Delete('/delete_all')
   removeAll() {
+    console.log('delete all');
     return this.menyServiceTypeService.removeAll();
+  }
+
+  @Delete('/id/:id')
+  remove(@Param('id') id: string) {
+    return this.menyServiceTypeService.remove(+id);
   }
 }

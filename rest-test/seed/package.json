@@ -5,7 +5,7 @@
   "main": "user.js",
   "type": "module",
   "scripts": {
-    "test": "node ./test_insert_meny_service_type.js"
+    "test": "node ./test_insert_restaurant.js"
   },
   "keywords": [],
   "author": "",
