@@ -79,7 +79,7 @@ services:
     ports:
       - 6379:6379
 
-  reverse-proxy:
+  proxy:
     # The official v2 Traefik docker image
     image: traefik:v2.8
     # Enables the web UI and tells Traefik to listen to docker

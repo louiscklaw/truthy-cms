@@ -11,7 +11,7 @@ timeout /T 5
 docker compose -f docker-compose.dev.yml up -d cms-app
 
 timeout /T 10
-docker compose -f docker-compose.dev.yml up -d proxy
+docker compose -f docker-compose.dev.yml up -d proxy whoami
 
 # docker compose -f docker-compose.dev.yml logs -f proxy
 docker compose -f docker-compose.dev.yml logs -f
