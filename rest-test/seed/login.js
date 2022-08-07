@@ -20,7 +20,7 @@ async function login() {
 
   var res_cookie = response.headers.raw()['set-cookie'];
 
-  console.assert(res_cookie, 'cookie after login not found');
+  console.assert(!res_cookie, 'cookie after login not found');
   return res_cookie;
 }
 
