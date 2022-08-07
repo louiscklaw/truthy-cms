@@ -8,7 +8,7 @@ const email = 'user1@truthy.com';
 const password = 'Truthy@123';
 
 async function login() {
-  var response = await fetch(`http://${config.API_HOST}/api/auth/login`, {
+  var response = await fetch(`${config.API_ENDPOINT}/auth/login`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -19,6 +19,8 @@ async function login() {
   });
 
   var res_cookie = response.headers.raw()['set-cookie'];
+
+  console.assert(res_cookie, 'cookie after login not found');
   return res_cookie;
 }
 
