@@ -6,14 +6,16 @@ import fetch, { FormData, Blob, blobFrom, blobFromSync, File, fileFrom, fileFrom
 
 import config from './config.js';
 
-const cookie = await login();
-
 async function logout(cookie) {
-  return await fetch(`http://${config.API_HOST}/api/logout`, {
+  var response = await fetch(`${config.API_ENDPOINT}/logout`, {
     method: 'POST',
     body: JSON.stringify({}),
     headers: { 'content-type': 'application/json', cookie },
   });
+  console.assert(response.status == 204, 'logout failed');
 }
 
 export default logout;
+
+// const cookie = await login();
+// logout(cookie);
