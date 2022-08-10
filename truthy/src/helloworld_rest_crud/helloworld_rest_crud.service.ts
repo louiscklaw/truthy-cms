@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, UpdateResult } from 'typeorm';
 import { CreateHelloworldRestCrudDto } from './dto/create-helloworld_rest_crud.dto';
 import { UpdateHelloworldRestCrudDto } from './dto/update-helloworld_rest_crud.dto';
 import { HelloworldRestCrud } from './entities/helloworld_rest_crud.entity';
@@ -18,7 +18,7 @@ export class HelloworldRestCrudService {
   }
 
   async findAll(): Promise<HelloworldRestCrud[]> {
-    return await this.repository.find();
+    return await this.repository.find({ relations: ['tags'] });
     // return `This action returns all helloworldRestCrud`;
   }
 
@@ -27,11 +27,14 @@ export class HelloworldRestCrudService {
     return await this.repository.findOne({ id });
   }
 
-  update(id: number, updateHelloworldRestCrudDto: UpdateHelloworldRestCrudDto) {
-    return `This action updates a #${id} helloworldRestCrud`;
+  async update(id: number, updateHelloworldRestCrudDto: UpdateHelloworldRestCrudDto): Promise<UpdateResult> {
+    // return `This action updates a #${id} helloworldRestCrud`;
+    return await this.repository.update({ id }, updateHelloworldRestCrudDto);
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} helloworldRestCrud`;
+  async remove(id: number): Promise<void> {
+    // return `This action removes a #${id} helloworldRestCrud`;
+    await this.repository.delete({ id });
+    return;
   }
 }

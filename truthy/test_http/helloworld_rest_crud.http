@@ -13,9 +13,9 @@ POST http://{{API_HOST}}/api/helloworld-rest-crud
 Content-Type: application/json
 
 {
-  "firstName":"restaurant_113",
-  "lastName":"restaurant_address_1",
-  "isActive":true,
+  "firstName": "restaurant_113",
+  "lastName": "restaurant_address_1",
+  "isActive": true,
   "tags":[{"id":1}]
 }
 

@@ -8,13 +8,8 @@ export class HelloworldRestCrudController {
   constructor(private readonly helloworldRestCrudService: HelloworldRestCrudService) {}
 
   @Post()
-  create(@Body() createHelloworldRestCrudDto: CreateHelloworldRestCrudDto) {
-    let temp = new CreateHelloworldRestCrudDto();
-    temp.firstName = 'hello';
-    temp.lastName = 'world';
-    temp.isActive = true;
-    console.log(createHelloworldRestCrudDto);
-    return this.helloworldRestCrudService.create(temp);
+  async create(@Body() createHelloworldRestCrudDto: CreateHelloworldRestCrudDto): Promise<CreateHelloworldRestCrudDto> {
+    return this.helloworldRestCrudService.create(createHelloworldRestCrudDto);
   }
 
   @Get()
