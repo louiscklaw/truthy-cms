@@ -1,0 +1,42 @@
+version: '3'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    shm_size: '256m'
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+      POSTGRES_DB: test
+    # volumes:
+    #   - postgres:/data/postgres
+    ports:
+      - '5432:5432'
+
+  pgweb:
+    container_name: pgweb
+    restart: always
+    image: sosedoff/pgweb
+    ports:
+      - '8081:8081'
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/test?sslmode=disable
+    depends_on:
+      - postgres
+    links:
+      - postgres:postgres # my database container is called postgres, not db
+
+  api:
+    image: node:16-buster
+    working_dir: /app
+    volumes:
+      - ./:/app
+    ports:
+      - 3000:3000
+    command: sleep infinity
+
+volumes:
+  postgres:
+  pgadmin-data:

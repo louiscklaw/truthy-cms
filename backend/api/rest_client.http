@@ -1,0 +1,57 @@
+###
+GET http://127.0.0.1:3000/tags
+
+###
+GET http://127.0.0.1:3000/tags/1
+
+###
+GET http://127.0.0.1:3000/users/22
+
+###
+GET http://127.0.0.1:3000/users
+
+###
+POST http://127.0.0.1:3000/tags
+Content-Type: application/json
+
+{ "name": "hello_tags2" }
+
+###
+POST http://127.0.0.1:3000/users
+Content-Type: application/json
+
+{
+  "firstName": "hello",
+  "lastName": "world",
+  "tags": [
+    { "id": 2, "name": "hello_tags2"}
+  ]
+}
+
+###
+POST http://127.0.0.1:3000/users
+Content-Type: application/json
+
+{
+  "firstName": "hello",
+  "lastName": "world",
+  "tags": [
+    { "id": 1, "name": "hello_tags" },
+    { "id": 2, "name": "hello_tags2"}
+  ]
+}
+
+
+###
+PATCH http://127.0.0.1:3000/users/1
+Content-Type: application/json
+
+{
+  "id":1,
+  "firstName": "hello1",
+  "lastName": "world2",
+  "tags": [
+    { "id": 1, "name": "111111" },
+    { "id": 2, "name": "hello_tags2"}
+  ]
+}
