@@ -9,6 +9,15 @@ export class Tag {
   @Column()
   name: string;
 
+  @Column({ default: '' })
+  description: string;
+
+  @Column({ default: '' })
+  remarks: string;
+
+  @Column({ default: '' })
+  slug: string;
+
   @ManyToMany(() => HelloworldRestCrud, helloworldRestCrud => helloworldRestCrud.tags)
   helloworldRestCrud: HelloworldRestCrud[];
 }

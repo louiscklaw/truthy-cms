@@ -1,0 +1,42 @@
+@API_HOST=localhost:7777
+
+###
+GET http://{{API_HOST}}/api/user
+
+###
+GET http://{{API_HOST}}/api/user/12
+
+
+###
+GET http://{{API_HOST}}/api/user/not_found
+
+###
+POST http://{{API_HOST}}/api/user
+Content-Type: application/json
+
+{
+  "firstName": "aaaaaa",
+  "lastName": "bbbbbb",
+  "isActive": true,
+  "tags":[{"id":1}]
+}
+
+###
+PATCH http://{{API_HOST}}/api/user/13
+Content-Type: application/json
+
+{
+  "firstName":"restaurant_113",
+  "lastName":"restaurant_address_1",
+  "isActive":true
+}
+
+###
+DELETE http://{{API_HOST}}/api/user/14
+
+
+# restaurant
+
+###
+GET http://{{API_HOST}}/api/user/1
+

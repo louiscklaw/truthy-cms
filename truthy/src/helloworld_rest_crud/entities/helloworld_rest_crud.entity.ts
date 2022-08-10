@@ -6,11 +6,14 @@ export class HelloworldRestCrud {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  firstName: string;
+  @Column({ default: '' })
+  name: string;
 
-  @Column()
-  lastName: string;
+  @Column({ default: '' })
+  description: string;
+
+  @Column({ default: '' })
+  remarks: string;
 
   @Column({ default: true })
   isActive: boolean;

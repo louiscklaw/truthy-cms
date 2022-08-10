@@ -3,10 +3,10 @@ import { Tag } from 'src/tag/entities/tag.entity';
 
 export class CreateHelloworldRestCrudDto {
   @IsString()
-  firstName: string;
+  name: string;
 
   @IsString()
-  lastName: string;
+  description: string;
 
   @IsBoolean()
   isActive: boolean;

@@ -1,4 +1,6 @@
 **/*.del
+**/*.swp
+**/*.log
 
 tests/**/*.png
 

@@ -4,6 +4,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  Generated,
   Index,
   JoinColumn,
   JoinTable,
@@ -18,6 +19,7 @@ import { UserStatusEnum } from '../../auth/user-status.enum';
 import { CustomBaseEntity } from '../../common/entity/custom-base.entity';
 import { RoleEntity } from '../../role/entities/role.entity';
 import { MenyServiceTypeEntity } from 'src/meny_service_type/entities/meny_service_type.entity';
+import { RestaurantEntity } from 'src/restaurants/entities/restaurant.entity';
 
 /**
  * User Entity
@@ -26,6 +28,10 @@ import { MenyServiceTypeEntity } from 'src/meny_service_type/entities/meny_servi
 export class UserEntity extends CustomBaseEntity {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  @Generated('uuid')
+  uuid: string;
 
   @Index({ unique: true })
   @Column()
@@ -120,6 +126,10 @@ export class UserEntity extends CustomBaseEntity {
   @ManyToMany(() => MenyServiceTypeEntity, meny_service_type => meny_service_type.users)
   @JoinTable()
   meny_service_type: MenyServiceTypeEntity;
+
+  @ManyToMany(() => RestaurantEntity, restaurant => restaurant.operators)
+  @JoinTable()
+  restaurants: RestaurantEntity[];
 
   @BeforeInsert()
   async hashPasswordBeforeInsert() {
