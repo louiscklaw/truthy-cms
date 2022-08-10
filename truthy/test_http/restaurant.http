@@ -31,7 +31,7 @@ Content-Type: application/json
   "name":"restaurant 1",
   "location":"hong kong",
   "isActive":true,
-  "meny_service_types":[{"id": 1}]
+  "meny_service_types":[{"id": 3}]
 }
 
 ###

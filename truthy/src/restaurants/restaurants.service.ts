@@ -13,10 +13,7 @@ export class RestaurantsService {
   ) {}
 
   async create(createRestaurantDto: CreateRestaurantDto): Promise<any> {
-    // let { id } = await this.restaurantRepository.save(createRestaurantDto);
-    // return { ...createRestaurantDto, id };
-    console.log(createRestaurantDto);
-    return 'helloworld';
+    return await this.restaurantRepository.save(createRestaurantDto);
   }
 
   async findAll(): Promise<RestaurantEntity[]> {
