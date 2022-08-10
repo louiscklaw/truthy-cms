@@ -22,8 +22,9 @@ export class HelloworldRestCrudService {
     // return `This action returns all helloworldRestCrud`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} helloworldRestCrud`;
+  async findOne(id: number): Promise<HelloworldRestCrud> {
+    // return `This action returns a #${id} helloworldRestCrud`;
+    return await this.repository.findOne({ id });
   }
 
   update(id: number, updateHelloworldRestCrudDto: UpdateHelloworldRestCrudDto) {

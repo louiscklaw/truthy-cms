@@ -1,11 +1,11 @@
 @API_HOST=localhost:7777
 
 ###
-GET http://{{API_HOST}}/api/helloworld-rest-crud/1
-
+GET http://{{API_HOST}}/api/helloworld-rest-crud
 
 ###
-GET http://{{API_HOST}}/api/helloworld-rest-crud
+GET http://{{API_HOST}}/api/helloworld-rest-crud/1
+
 
 
 ###
@@ -15,7 +15,8 @@ Content-Type: application/json
 {
   "firstName":"restaurant_113",
   "lastName":"restaurant_address_1",
-  "isActive":true
+  "isActive":true,
+  "tags":[{"id":1}]
 }
 
 ###
