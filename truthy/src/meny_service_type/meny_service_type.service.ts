@@ -9,17 +9,18 @@ import { MenyServiceTypeEntity } from './entities/meny_service_type.entity';
 export class MenyServiceTypeService {
   constructor(
     @InjectRepository(MenyServiceTypeEntity)
-    private menyServiceTypeRepository: Repository<MenyServiceTypeEntity>,
+    private repository: Repository<MenyServiceTypeEntity>,
   ) {}
 
   async create(createMenyServiceTypeDto: CreateMenyServiceTypeDto): Promise<any> {
-    let { id } = await this.menyServiceTypeRepository.save(createMenyServiceTypeDto);
+    let { id } = await this.repository.save(createMenyServiceTypeDto);
     return { ...createMenyServiceTypeDto, id };
     return 'This action adds a new menyServiceType';
   }
 
-  findAll() {
-    return `This action returns all menyServiceType`;
+  async findAll(): Promise<MenyServiceTypeEntity[]> {
+    return await this.repository.find();
+    // return `This action returns all menyServiceType`;
   }
 
   findOne(id: number) {
@@ -35,10 +36,10 @@ export class MenyServiceTypeService {
   }
 
   async removeAll() {
-    let all_record = await this.menyServiceTypeRepository.find();
+    let all_record = await this.repository.find();
     for (var i = 0; i < all_record.length; i++) {
       console.log('deleting: ', all_record[i].id);
-      await this.menyServiceTypeRepository.delete(all_record[i].id);
+      await this.repository.delete(all_record[i].id);
     }
     return;
   }

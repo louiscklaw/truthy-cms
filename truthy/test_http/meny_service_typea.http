@@ -10,68 +10,58 @@
 # restaurant
 
 ###
-GET http://{{API_HOST}}/api/helloworld/1
+GET http://{{API_HOST}}/api/meny-service-type/1
 
 
 ###
-GET http://{{API_HOST}}/api/restaurants
+GET http://{{API_HOST}}/api/meny-service-type
 
 ###
-GET http://{{API_HOST}}/api/restaurants/16
+GET http://{{API_HOST}}/api/meny-service-type/16
 
 
 ###
-GET http://{{API_HOST}}/api/restaurants/uid/34f3b870-fa0e-49f7-b32f-1fd74e0b494f
+GET http://{{API_HOST}}/api/meny-service-type/uid/34f3b870-fa0e-49f7-b32f-1fd74e0b494f
 
 ###
-POST http://{{API_HOST}}/api/restaurants
+POST http://{{API_HOST}}/api/meny-service-type
 Content-Type: application/json
 
 {
-  "name":"restaurant 1",
-  "location":"hong kong",
-  "isActive":true,
-  "meny_service_types":[{"id": 1}]
+  "name":"meny",
+  "description":"test meny service",
+  "canEditMenu":true,
+  "canEditRestaurant":true,
+  "canProcessStayOrder":true,
+  "canProcessTakeAwayOrder":false
 }
 
 ###
-PATCH http://{{API_HOST}}/api/restaurants/uid/34f3b870-fa0e-49f7-b32f-1fd74e0b494f
+POST http://{{API_HOST}}/api/meny-service-type
 Content-Type: application/json
 
 {
-  "address": "address test",
-  "address1": "address1 test",
-  "address2": "address2 test",
-  "country": "country test",
-  "email": "user1@truthy.com",
-  "isActive": true,
-  "location": "Hong Kong",
-  "name": "user1",
-  "orders": 0,
-  "phone": "91234567",
-  "spent": 0,
-  "state": "state test"
+  "name":"meny light",
+  "description":"test meny light service",
+  "canEditMenu":true,
+  "canEditRestaurant":true,
+  "canProcessStayOrder":true,
+  "canProcessTakeAwayOrder":false
 }
+
 
 ###
-PATCH http://{{API_HOST}}/api/restaurants/15
+POST http://{{API_HOST}}/api/meny-service-type
 Content-Type: application/json
 
 {
-  "address": "address test",
-  "address1": "address1 test",
-  "address2": "address2 test",
-  "country": "country test",
-  "email": "user1@truthy.com",
-  "isActive": true,
-  "location": "Hong Kong",
-  "name": "user1",
-  "orders": 0,
-  "phone": "91234567",
-  "spent": 0,
-  "state": "state test"
+  "name":"meny takeaway",
+  "description":"test meny takeaway service",
+  "canEditMenu":true,
+  "canEditRestaurant":true,
+  "canProcessStayOrder":true,
+  "canProcessTakeAwayOrder":false
 }
-
 
 ###
 DELETE http://{{API_HOST}}/api/restaurants/16

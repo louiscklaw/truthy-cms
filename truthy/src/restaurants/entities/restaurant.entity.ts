@@ -1,7 +1,8 @@
 // https://docs.nestjs.com/techniques/database#repository-pattern
 
 import { CustomBaseEntity } from 'src/common/entity/custom-base.entity';
-import { Column, Entity, Generated } from 'typeorm';
+import { MenyServiceTypeEntity } from 'src/meny_service_type/entities/meny_service_type.entity';
+import { Column, Entity, Generated, JoinTable, ManyToMany } from 'typeorm';
 
 // @PrimaryGeneratedColumn('uuid')
 // id: string;
@@ -57,4 +58,12 @@ export class RestaurantEntity extends CustomBaseEntity {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @ManyToMany(() => MenyServiceTypeEntity, menyServiceType => menyServiceType.restaurants)
+  @JoinTable({
+    name: 'restaurant_meny_service_type',
+    joinColumn: { name: 'restaurantId', referencedColumnName: 'id' },
+    inverseJoinColumn: { name: 'menyServiceTypeId', referencedColumnName: 'id' },
+  })
+  meny_service_types: MenyServiceTypeEntity[];
 }

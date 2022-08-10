@@ -13,12 +13,14 @@ export class RestaurantsService {
   ) {}
 
   async create(createRestaurantDto: CreateRestaurantDto): Promise<any> {
-    let { id } = await this.restaurantRepository.save(createRestaurantDto);
-    return { ...createRestaurantDto, id };
+    // let { id } = await this.restaurantRepository.save(createRestaurantDto);
+    // return { ...createRestaurantDto, id };
+    console.log(createRestaurantDto);
+    return 'helloworld';
   }
 
   async findAll(): Promise<RestaurantEntity[]> {
-    return this.restaurantRepository.find();
+    return this.restaurantRepository.find({ relations: ['meny_service_types'] });
     // return `This action returns all restaurants`;
   }
   // findOneByUuid
