@@ -1,0 +1,39 @@
+@API_HOST=localhost:7777
+
+###
+GET http://{{API_HOST}}/api/helloworld-rest-crud/1
+
+
+###
+GET http://{{API_HOST}}/api/helloworld-rest-crud
+
+
+###
+POST http://{{API_HOST}}/api/helloworld-rest-crud
+Content-Type: application/json
+
+{
+  "firstName":"restaurant_113",
+  "lastName":"restaurant_address_1",
+  "isActive":true
+}
+
+###
+PATCH http://{{API_HOST}}/api/helloworld-rest-crud/13
+Content-Type: application/json
+
+{
+  "firstName":"restaurant_113",
+  "lastName":"restaurant_address_1",
+  "isActive":true
+}
+
+###
+DELETE http://{{API_HOST}}/api/helloworld-rest-crud/14
+
+
+# restaurant
+
+###
+GET http://{{API_HOST}}/api/helloworld-rest-crud/1
+

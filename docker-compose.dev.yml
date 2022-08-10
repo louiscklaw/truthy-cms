@@ -24,16 +24,18 @@ services:
   api:
     restart: always
     user: 1000:1000
-    build:
-      context: ./truthy
-      dockerfile: dockerfile
+    image: node:16-bullseye
+    # build:
+    #   context: ./truthy
+    #   dockerfile: dockerfile
+    working_dir: /usr/src/app
     volumes:
       - ./truthy:/usr/src/app
     ports:
       - 7777:7777
     env_file:
       - ./truthy/.env
-    command: bash -c "./dev.sh"
+    command: sleep infinity
     depends_on:
       - postgres
       - redis
@@ -79,7 +81,7 @@ services:
     ports:
       - 6379:6379
 
-  reverse-proxy:
+  proxy:
     # The official v2 Traefik docker image
     image: traefik:v2.8
     # Enables the web UI and tells Traefik to listen to docker

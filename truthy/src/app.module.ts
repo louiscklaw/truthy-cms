@@ -26,6 +26,9 @@ import { AppController } from 'src/app.controller';
 import { MenyServiceTypeModule } from './meny_service_type/meny_service_type.module';
 import { HelloworldModule } from './helloworld/helloworld.module';
 import { RestaurantsModule } from './restaurants/restaurants.module';
+
+import { TagModule } from './tag/tag.module';
+import { HelloworldRestCrudModule } from './helloworld_rest_crud/helloworld_rest_crud.module';
 import winstonConfig from 'src/config/winston';
 
 const appConfig = config.get('app');
@@ -72,6 +75,8 @@ const appConfig = config.get('app');
     MenyServiceTypeModule,
     HelloworldModule,
     RestaurantsModule,
+    TagModule,
+    HelloworldRestCrudModule,
   ],
   providers: [
     {

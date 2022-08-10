@@ -19,6 +19,7 @@
     "restart_cms_app": "yarn docker restart cms-app",
     "seed": "yarn docker exec -it api npm run seed",
     "into_api": "yarn docker exec -it api bash",
+    "into_test": "yarn docker exec -it test bash",
     "into_cms_app": "yarn docker exec -it cms-app bash",
     "kill_dev": "yarn docker kill",
     "show_log": "yarn docker logs -f ",

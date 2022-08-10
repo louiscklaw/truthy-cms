@@ -1,0 +1,37 @@
+@API_HOST=localhost:7777
+
+###
+GET http://test.docker.localhost/
+
+###
+GET http://{{API_HOST}}/api/tag
+
+###
+POST http://{{API_HOST}}/api/tag
+content-type: application/json
+
+{ "name": "tag1" }
+
+###
+POST http://{{API_HOST}}/api/tag
+content-type: application/json
+
+{ "name": "tag2" }
+
+###
+POST http://{{API_HOST}}/api/tag
+content-type: application/json
+
+{ "name": "tag3" }
+
+###
+PATCH http://{{API_HOST}}/api/tag
+content-type: application/json
+
+{ "name": "tag1" }
+
+###
+DELETE http://{{API_HOST}}/api/tag
+content-type: application/json
+
+{ "name": "tag1" }
