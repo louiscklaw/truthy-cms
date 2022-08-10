@@ -9,28 +9,34 @@ import { HelloworldRestCrud } from './entities/helloworld_rest_crud.entity';
 export class HelloworldRestCrudService {
   constructor(
     @InjectRepository(HelloworldRestCrud)
-    private readonly helloworldRestCrudRepository: Repository<HelloworldRestCrud>,
+    private readonly repository: Repository<HelloworldRestCrud>,
   ) {}
 
-  create(createHelloworldRestCrudDto: CreateHelloworldRestCrudDto) {
-    return this.helloworldRestCrudRepository.save(createHelloworldRestCrudDto);
+  async create(createHelloworldRestCrudDto: CreateHelloworldRestCrudDto): Promise<HelloworldRestCrud> {
+    return await this.repository.save(createHelloworldRestCrudDto);
     // return 'This action adds a new helloworldRestCrud';
   }
 
-  findAll() {
-    return this.helloworldRestCrudRepository.find({ relations: { tags: true } });
+  async findAll(): Promise<HelloworldRestCrud[]> {
+    return await this.repository.find({ relations: { tags: true } });
     // return `This action returns all helloworldRestCrud`;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} helloworldRestCrud`;
+  async findOne(id: number): Promise<HelloworldRestCrud> {
+    return await this.repository.findOneBy({ id });
+    // return `This action returns a #${id} helloworldRestCrud`;
   }
 
-  update(id: number, updateHelloworldRestCrudDto: UpdateHelloworldRestCrudDto) {
-    return `This action updates a #${id} helloworldRestCrud`;
+  async update(id: number, updateHelloworldRestCrudDto: UpdateHelloworldRestCrudDto): Promise<any> {
+    return await this.repository.update({ id }, updateHelloworldRestCrudDto);
+
+    // return `This action updates a #${id} helloworldRestCrud`;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} helloworldRestCrud`;
+  async remove(id: number): Promise<void> {
+    await this.repository.delete({ id });
+    return;
+
+    // return `This action removes a #${id} helloworldRestCrud`;
   }
 }

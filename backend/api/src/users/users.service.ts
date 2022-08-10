@@ -1,12 +1,12 @@
-import { Injectable } from "@nestjs/common";
-import { InjectRepository } from "@nestjs/typeorm";
-import { Tag } from "src/tags/entities/tag.entity";
-import { Repository } from "typeorm";
+import { Injectable } from '@nestjs/common';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Tag } from 'src/tags/entities/tag.entity';
+import { Repository } from 'typeorm';
 
-import { CreateUserDto } from "./dto/create-user.dto";
-import { UpdateUserDto } from "./dto/update-user.dto";
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
-import { User } from "./user.entity";
+import { User } from './user.entity';
 
 @Injectable()
 export class UsersService {
@@ -14,7 +14,7 @@ export class UsersService {
     @InjectRepository(User)
     private readonly usersRepository: Repository<User>,
     @InjectRepository(Tag)
-    private readonly tagsRepositoty: Repository<Tag>
+    private readonly tagsRepositoty: Repository<Tag>,
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
@@ -36,8 +36,8 @@ export class UsersService {
     return this.usersRepository.save(update_content);
   }
 
-  findOne(id: number): Promise<User> {
-    return this.usersRepository.findOneBy({ id: id });
+  async findOne(id: number): Promise<User> {
+    return await this.usersRepository.findOneBy({ id: id });
   }
 
   async remove(id: string): Promise<void> {

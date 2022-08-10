@@ -15,6 +15,27 @@ Content-Type: application/json
 }
 
 
+###
+PATCH http://127.0.0.1:3000/helloworld-rest-crud/1
+Content-Type: application/json
+
+{
+  "firstName": "aaaaaa",
+  "lastName": "world2"
+}
+
+
+###
+GET http://127.0.0.1:3000/helloworld-rest-crud/1
+
+###
+# get not found
+GET http://127.0.0.1:3000/helloworld-rest-crud/999999
+
+
+###
+DELETE http://127.0.0.1:3000/helloworld-rest-crud/1
+
 
 ###
 GET http://127.0.0.1:3000/tags
