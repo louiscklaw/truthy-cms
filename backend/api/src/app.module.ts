@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UsersModule } from './users/users.module';
 import { TagsModule } from './tags/tags.module';
+import { HelloworldRestCrudModule } from './helloworld_rest_crud/helloworld_rest_crud.module';
 
 const PG_HOST = process.env.HOST_ADDRESS || 'localhost';
 
@@ -19,6 +20,7 @@ const PG_HOST = process.env.HOST_ADDRESS || 'localhost';
     }),
     UsersModule,
     TagsModule,
+    HelloworldRestCrudModule,
   ],
 })
 export class AppModule {}
