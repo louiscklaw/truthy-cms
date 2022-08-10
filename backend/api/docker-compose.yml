@@ -28,7 +28,7 @@ services:
     links:
       - postgres:postgres # my database container is called postgres, not db
 
-  api:
+  api_dev:
     image: node:16-buster
     working_dir: /app
     volumes:

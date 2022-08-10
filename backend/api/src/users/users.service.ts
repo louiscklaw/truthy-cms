@@ -40,6 +40,10 @@ export class UsersService {
     return await this.usersRepository.findOneBy({ id: id });
   }
 
+  async findOneByUsername(username: string): Promise<User> {
+    return await this.usersRepository.findOneBy({ username: username });
+  }
+
   async remove(id: string): Promise<void> {
     await this.usersRepository.delete(id);
   }
