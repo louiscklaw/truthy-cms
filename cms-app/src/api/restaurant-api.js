@@ -9,7 +9,7 @@ class RestaurantApi {
   }
 
   getRestaurantsCount() {
-    return axios.get('/api/restaurants_count', { withCredentials: true });
+    return axios.get('/api/restaurants/count', { withCredentials: true });
   }
 
   getRestaurant(id) {

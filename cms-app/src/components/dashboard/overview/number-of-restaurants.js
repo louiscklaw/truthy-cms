@@ -39,7 +39,7 @@ export const NumberOfRestaurants = () => {
     restaurantApi
       .getRestaurantsCount()
       .then(res => {
-        console.log({ res });
+        console.log({ num_of_restaurant: res });
         setNumOfRestaurant(res.data.count);
       })
       .catch(err => {
