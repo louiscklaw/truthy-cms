@@ -24,6 +24,8 @@ import { Search as SearchIcon } from '../../../icons/search';
 import { Upload as UploadIcon } from '../../../icons/upload';
 import { gtm } from '../../../lib/gtm';
 
+import { useTranslation } from 'react-i18next';
+
 const tabs = [
   { label: 'All', value: 'all' },
   { label: 'Accepts Marketing', value: 'hasAcceptedMarketing' },
@@ -189,18 +191,14 @@ const CustomerList = () => {
   const sortedCustomers = applySort(filteredCustomers, sort);
   const paginatedCustomers = applyPagination(sortedCustomers, page, rowsPerPage);
 
+  const { t } = useTranslation();
+
   return (
     <>
       <Head>
         <title>Dashboard: Customer List | Material Kit Pro</title>
       </Head>
-      <Box
-        component="main"
-        sx={{
-          flexGrow: 1,
-          py: 8,
-        }}
-      >
+      <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="xl">
           <Box sx={{ mb: 4 }}>
             <Grid container justifyContent="space-between" spacing={3}>
@@ -209,16 +207,11 @@ const CustomerList = () => {
               </Grid>
               <Grid item>
                 <Button startIcon={<PlusIcon fontSize="small" />} variant="contained">
-                  Add
+                  {t('ADD')}
                 </Button>
               </Grid>
             </Grid>
-            <Box
-              sx={{
-                m: -1,
-                mt: 3,
-              }}
-            >
+            <Box sx={{ m: -1, mt: 3 }}>
               <Button startIcon={<UploadIcon fontSize="small" />} sx={{ m: 1 }}>
                 Import
               </Button>
@@ -242,23 +235,8 @@ const CustomerList = () => {
               ))}
             </Tabs>
             <Divider />
-            <Box
-              sx={{
-                alignItems: 'center',
-                display: 'flex',
-                flexWrap: 'wrap',
-                m: -1.5,
-                p: 3,
-              }}
-            >
-              <Box
-                component="form"
-                onSubmit={handleQueryChange}
-                sx={{
-                  flexGrow: 1,
-                  m: 1.5,
-                }}
-              >
+            <Box sx={{ alignItems: 'center', display: 'flex', flexWrap: 'wrap', m: -1.5, p: 3 }}>
+              <Box component="form" onSubmit={handleQueryChange} sx={{ flexGrow: 1, m: 1.5 }}>
                 <TextField
                   defaultValue=""
                   fullWidth
