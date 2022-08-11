@@ -99,7 +99,7 @@ services:
     # A container that exposes an API to show its IP address
     image: traefik/whoami
     labels:
-      - 'traefik.http.routers.whoami.rule=Host(`test.docker.localhost`)'
+      - 'traefik.http.routers.whoami.rule=Host(`test.docker.localhost`) && PathPrefix(`/whoami`)'
 
   # proxy:
   #   build:
@@ -111,6 +111,44 @@ services:
   #   depends_on:
   #     - cms-app
   #     - api
+  matomo:
+    image: matomo:4
+    ports:
+      - 8091:80
+      - 8092:443
+    volumes:
+      - ./volumes/matomo/config:/var/www/html/config:rw
+      - ./volumes/matomo/logs:/var/www/html/logs
+      # - matomo:/var/www/html
+    environment:
+      MATOMO_DATABASE_HOST: mysql
+      MATOMO_DATABASE_USERNAME: root
+      MATOMO_DATABASE_PASSWORD: password
+      MATOMO_DATABASE_DBNAME: matomo_db
+    depends_on:
+      - mysql
+    restart: unless-stopped
+    labels:
+      - 'traefik.http.routers.matomo.rule=Host(`matomo.test.docker.localhost`) '
+
+  mysql:
+    image: mysql:8.0.29
+    command: |
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --sql-mode=""
+    environment:
+      MYSQL_DATABASE: tests
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - 3306:3306
+    volumes:
+      - ./volumes/mysql/:/home/shared
+      - ./volumes/mysql:/var/lib/mysql
+    restart: unless-stopped
 
 volumes:
   pgdata:
