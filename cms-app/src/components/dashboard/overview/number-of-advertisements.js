@@ -3,6 +3,7 @@ import { useTheme } from '@mui/material/styles';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { advertisementApi } from '../../../api/advertisement-api';
 import { restaurantApi } from '../../../api/restaurant-api';
 import { ArrowRight as ArrowRightIcon } from '../../../icons/arrow-right';
 import { Chart } from '../../chart';
@@ -30,40 +31,40 @@ const LineChart = () => {
   return <Chart options={chartOptions} series={chartSeries} type="line" width={120} />;
 };
 
-export const NumberOfRestaurants = () => {
+export const NumberOfAdvertisements = () => {
   const { t } = useTranslation();
   const [is_loading, setIsLoading] = useState(true);
-  const [num_of_restaurant, setNumOfRestaurant] = useState(0);
+  const [num_of_advertisement, setNumOfAdvertisement] = useState(0);
 
   useEffect(() => {
-    restaurantApi
-      .getRestaurantsCount()
-      .then(res => {
-        console.log({ res });
-        setNumOfRestaurant(res.data.count);
-      })
+    advertisementApi
+      .getAdvertisementsCount()
+      .then(res => setNumOfAdvertisement(res.data.count))
       .catch(err => {
         toast.error(err.message);
+        console.error(err);
       });
   }, []);
 
   return (
-    <Card>
-      <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', px: 3, py: 2 }}>
-        <div>
-          <Typography color="textSecondary" variant="body2">
-            {t('NUMBER_OF_RESTAURANTS')}
-          </Typography>
-          <Typography sx={{ mt: 1 }} variant="h5">
-            {num_of_restaurant}
-          </Typography>
-        </div>
-        <LineChart />
-      </Box>
-      <Divider />
-      <CardActions>
-        <Button endIcon={<ArrowRightIcon fontSize="small" />}>{t('SEE_ALL_VISITS')}</Button>
-      </CardActions>
-    </Card>
+    <>
+      <Card>
+        <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between', px: 3, py: 2 }}>
+          <div>
+            <Typography color="textSecondary" variant="body2">
+              {t('NUMBER_OF_ADVERTISEMENTS')}
+            </Typography>
+            <Typography sx={{ mt: 1 }} variant="h5">
+              {num_of_advertisement}
+            </Typography>
+          </div>
+          <LineChart />
+        </Box>
+        <Divider />
+        <CardActions>
+          <Button endIcon={<ArrowRightIcon fontSize="small" />}>{t('SEE_ALL_VISITS')}</Button>
+        </CardActions>
+      </Card>
+    </>
   );
 };

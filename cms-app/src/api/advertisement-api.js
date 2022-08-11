@@ -6,6 +6,10 @@ class AdvertisementApi {
     return 'helloworld';
   }
 
+  getAdvertisementsCount() {
+    return axios.get('/api/advertisement/count', { withCredentials: true });
+  }
+
   getAdvertisements() {
     return axios.get('/api/advertisement', { withCredentials: true });
   }

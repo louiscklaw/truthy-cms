@@ -42,6 +42,8 @@ import { AnalyticsSocialSources } from '../../components/dashboard/analytics/ana
 import { useTranslation } from 'react-i18next';
 
 import DebugPrint from '../../components/debug-print';
+import { NumberOfRestaurants } from '../../components/dashboard/overview/number-of-restaurants';
+import { NumberOfAdvertisements } from '../../components/dashboard/overview/number-of-advertisements';
 
 const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
@@ -95,7 +97,7 @@ const Overview = () => {
               <CardTest1 />
             </Grid>
             <Grid item md={3} sm={6} xs={12}>
-              <CardTest2 />
+              <NumberOfRestaurants />
             </Grid>
             <Grid item md={3} sm={6} xs={12}>
               <CardTest3 />
@@ -107,7 +109,7 @@ const Overview = () => {
               <CardTest1 />
             </Grid>
             <Grid item md={3} sm={6} xs={12}>
-              <CardTest2 />
+              <NumberOfAdvertisements />
             </Grid>
             <Grid item md={3} sm={6} xs={12}>
               <CardTest3 />
