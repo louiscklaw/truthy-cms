@@ -11,7 +11,11 @@ import {
   CardContent,
   CardHeader,
   Divider,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
+  Select,
   Switch,
   TextField,
   Typography,
@@ -20,6 +24,7 @@ import { wait } from '../../../utils/wait';
 import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../api/restaurant-api';
 import Router, { useRouter } from 'next/router';
+import Debug from '../../../components/debug';
 
 export const RestaurantNewForm = props => {
   const { t } = useTranslation();
@@ -34,14 +39,11 @@ export const RestaurantNewForm = props => {
       country: customer.country || '',
       email: customer.email || '',
       location: customer.location || '',
-      orders: customer.orders || 0,
-      spent: customer.spent || 0,
       isActive: customer.isActive || false,
-
       name: customer.name || '',
       phone: customer.phone || '',
       state: customer.state || '',
-      submit: null,
+      meny_service_types: [{ id: 3 }],
     },
     validationSchema: Yup.object({
       address: Yup.string().max(255),
@@ -60,19 +62,17 @@ export const RestaurantNewForm = props => {
         // NOTE: Make API request
         // await wait(3000);
 
-        // console.log({ formik_values: values });
-        if (restaurantUuid) {
-          await restaurantApi.updateRestaurantByUuid(restaurantUuid, values);
-        } else {
-          await restaurantApi.updateRestaurant(restaurantId, values);
-        }
-        router.replace('/dashboard/restaurants');
+        let temp = formik.values;
+        await restaurantApi.createRestaurant(temp);
+
+        // router.replace('/dashboard/restaurants');
         helpers.setStatus({ success: true });
         helpers.setSubmitting(false);
-        toast.success('Customer updated!');
+        toast.success(t('RESTAURANT_ADDED'));
+        router.replace('/dashboard/restaurants');
       } catch (err) {
         console.error(err);
-        toast.error('Something went wrong!');
+        toast.error(t('RESTAURANT_ADD_FAILED'));
         helpers.setStatus({ success: false });
         helpers.setErrors({ submit: err.message });
         helpers.setSubmitting(false);
@@ -80,10 +80,12 @@ export const RestaurantNewForm = props => {
     },
   });
 
+  if (!formik.values) return <>preparing</>;
+
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
       <Card>
-        <CardHeader title={t('EDIT_RESTAURANT')} />
+        <CardHeader title={t('NEW_RESTAURANT')} />
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
@@ -137,7 +139,7 @@ export const RestaurantNewForm = props => {
                 value={formik.values.state}
               />
             </Grid>
-            <Grid item md={6} xs={12} sx={{ display: 'none' }}>
+            {/* <Grid item md={6} xs={12} sx={{ display: 'none' }}>
               <TextField
                 error={Boolean(formik.touched.spent && formik.errors.spent)}
                 fullWidth
@@ -162,7 +164,7 @@ export const RestaurantNewForm = props => {
                 value={formik.values.orders}
                 disabled
               />
-            </Grid>
+            </Grid> */}
             <Grid item md={6} xs={12}>
               <TextField
                 error={Boolean(formik.touched.location && formik.errors.location)}
@@ -223,6 +225,26 @@ export const RestaurantNewForm = props => {
                 value={formik.values.phone}
               />
             </Grid>
+
+            <Grid item md={6} xs={12}>
+              <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                <InputLabel id="demo-select-small">Age</InputLabel>
+                <Select
+                  labelId="demo-select-small"
+                  id="demo-select-small"
+                  value={1}
+                  label="Age"
+                  onChange={e => formik.setFieldValue('meny_service_types[0].id', e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={1}>Meny</MenuItem>
+                  <MenuItem value={2}>Meny light</MenuItem>
+                  <MenuItem value={3}>Meny takeaway</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
           </Grid>
 
           <Divider sx={{ my: 3 }} />
@@ -247,18 +269,39 @@ export const RestaurantNewForm = props => {
         </CardContent>
         <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
           <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained">
-            {t('UPDATE')}
+            {t('SAVE')}
           </Button>
           <NextLink href="/dashboard/customers/1" passHref>
             <Button component="a" disabled={formik.isSubmitting} sx={{ m: 1, mr: 'auto' }} variant="outlined">
               {t('CANCEL')}
             </Button>
           </NextLink>
-          <Button color="error" disabled={formik.isSubmitting}>
-            {t('DELETE_RESTAURANT')}
-          </Button>
         </CardActions>
       </Card>
+      <Debug>
+        <pre>{JSON.stringify(formik.values, null, 2)}</pre>
+      </Debug>
+      <Debug>
+        <pre>
+          {JSON.stringify(
+            {
+              address: 'address test',
+              address1: 'address1 test',
+              address2: 'address2 test',
+              country: 'country test',
+              email: 'user1@truthy.com',
+              isActive: true,
+              location: 'Hong Kong',
+              name: 'user1',
+              phone: '91234567',
+              state: 'state test',
+              meny_service_types: [{ id: 3 }],
+            },
+            null,
+            2,
+          )}
+        </pre>
+      </Debug>
     </form>
   );
 };

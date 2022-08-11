@@ -28,6 +28,16 @@ class RestaurantApi {
     return [];
   }
 
+  createRestaurant(values) {
+    console.log({ createRestaurant: values });
+    axios
+      .post(`/api/restaurants`, values)
+      .then(res => {
+        console.log('update done');
+      })
+      .catch(err => console.error(err));
+  }
+
   updateRestaurant(id, values) {
     // wash unwanted fields if any
     delete values.submit;

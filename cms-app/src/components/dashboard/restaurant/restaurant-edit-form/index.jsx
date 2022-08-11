@@ -54,7 +54,8 @@ export const RestaurantEditForm = props => {
       name: customer.name || '',
       phone: customer.phone || '',
       state: customer.state || '',
-      submit: null,
+      meny_service_types: [{ id: 1 }],
+
       ...customer,
     },
     validationSchema: Yup.object({
@@ -105,6 +106,8 @@ export const RestaurantEditForm = props => {
   });
 
   const [open_delete_dialog, setOpenDeleteDialog] = useState(false);
+
+  if (!formik.values.meny_service_types) return <>loading</>;
 
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
