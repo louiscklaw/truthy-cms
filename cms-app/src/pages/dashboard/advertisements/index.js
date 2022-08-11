@@ -140,12 +140,10 @@ const AdvertisementList = () => {
 
   const getAdvertisements = useCallback(async () => {
     try {
-      // const data = await customerApi.getCustomers();
       const { data } = await advertisementApi.getAdvertisements();
-      console.log({ data });
 
       if (isMounted()) {
-        setAdvertisements(temp);
+        setAdvertisements(data);
       }
     } catch (err) {
       console.error(err);

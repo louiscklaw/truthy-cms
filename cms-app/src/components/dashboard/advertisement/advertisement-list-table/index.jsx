@@ -218,7 +218,7 @@ export const AdvertisementListTable = props => {
 
 AdvertisementListTable.propTypes = {
   advertisements: PropTypes.array.isRequired,
-  customersCount: PropTypes.number.isRequired,
+  advertisementsCount: PropTypes.number.isRequired,
   onPageChange: PropTypes.func.isRequired,
   onRowsPerPageChange: PropTypes.func,
   page: PropTypes.number.isRequired,
