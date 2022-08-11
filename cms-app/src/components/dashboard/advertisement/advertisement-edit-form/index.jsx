@@ -34,7 +34,7 @@ import ConfirmDelete from './confirm-delete';
 import { useState } from 'react';
 import { FaSave, FaBackspace } from 'react-icons/fa';
 
-export const RestaurantEditForm = props => {
+export const AdvertisementEditForm = props => {
   const { t } = useTranslation();
   const router = useRouter();
   const { restaurantId, restaurantUuid } = router.query;
@@ -109,9 +109,9 @@ export const RestaurantEditForm = props => {
 
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
-      <ConfirmDelete open={open_delete_dialog} setOpen={setOpenDeleteDialog} />
+      {/* <ConfirmDelete open={open_delete_dialog} setOpen={setOpenDeleteDialog} /> */}
       <Card>
-        <CardHeader title={t('EDIT_RESTAURANT')} />
+        <CardHeader title={t('EDIT_ADVERTISEMENT')} />
         <Divider />
         <CardContent>
           <Grid container spacing={3}>
@@ -120,7 +120,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.name && formik.errors.name)}
                 fullWidth
                 helperText={formik.touched.name && formik.errors.name}
-                label={t('RESTAURANT_NAME')}
+                label={t('ADVERTISEMENT_NAME')}
                 name="name"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -133,7 +133,7 @@ export const RestaurantEditForm = props => {
                 error={Boolean(formik.touched.email && formik.errors.email)}
                 fullWidth
                 helperText={formik.touched.email && formik.errors.email}
-                label={t('RESTAURANT_EMAIL')}
+                label={t('ADVERTISEMENT_EMAIL')}
                 name="email"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
@@ -266,43 +266,27 @@ export const RestaurantEditForm = props => {
                 disabled
               />
             </Grid>
-            <Grid item md={6} xs={12}>
-              <TextField
-                error={Boolean(formik.touched.url_shortcut && formik.errors.url_shortcut)}
-                fullWidth
-                helperText={formik.touched.url_shortcut && formik.errors.url_shortcut}
-                label={t('RESTAURANT_URL_SHORTCUT')}
-                name="url_shortcut"
-                onBlur={formik.handleBlur}
-                onChange={formik.handleChange}
-                value={`http://${slugify(formik.values.name)}.iamon99.com`}
-                disabled
-              />
-            </Grid>
 
             <Grid item md={6} xs={12}>
               {formik.values.meny_service_types[0]?.id ? (
                 <>
-                  <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                    <InputLabel id="demo-select-small">Age</InputLabel>
+                  <FormControl sx={{ m: 1, minWidth: 120 }}>
+                    <InputLabel id="demo-select-small">{t('ADVERTISEMENT_WINDOW')}</InputLabel>
                     <Select
                       labelId="demo-select-small"
                       id="demo-select-small"
                       value={formik.values.meny_service_types[0].id}
-                      label="Age"
+                      label={t('ADVERTISEMENT_WINDOW')}
                       onChange={e => formik.setFieldValue('meny_service_types[0].id', e.target.value)}
                     >
-                      <MenuItem value="">
-                        <em>None</em>
-                      </MenuItem>
-                      <MenuItem value={1}>Meny</MenuItem>
-                      <MenuItem value={2}>Meny light</MenuItem>
-                      <MenuItem value={3}>Meny takeaway</MenuItem>
+                      <MenuItem value={1}>Food Menu</MenuItem>
+                      <MenuItem value={2}>Food Detail</MenuItem>
+                      <MenuItem value={3}>Order Page</MenuItem>
                     </Select>
                   </FormControl>
                 </>
               ) : (
-                <Box>sorry but meny service is not defined</Box>
+                <Box>{t('SORRY_BUT_THE_AD_WINDOW_NOT_DEFINED')}</Box>
               )}
             </Grid>
           </Grid>
@@ -310,10 +294,10 @@ export const RestaurantEditForm = props => {
           <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
             <div>
               <Typography gutterBottom variant="subtitle1">
-                restaurant is active ?
+                advertisement is active ?
               </Typography>
               <Typography color="textSecondary" variant="body2" sx={{ mt: 1 }}>
-                Toggle restaurant to show on main screen
+                Toggle advertisement to show on main screen
               </Typography>
             </div>
             <Switch
@@ -359,6 +343,6 @@ export const RestaurantEditForm = props => {
   );
 };
 
-RestaurantEditForm.propTypes = {
+AdvertisementEditForm.propTypes = {
   customer: PropTypes.object.isRequired,
 };
