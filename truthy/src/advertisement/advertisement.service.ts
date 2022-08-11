@@ -36,4 +36,12 @@ export class AdvertisementService {
     return await this.repository.delete(id);
     // return `This action removes a #${id} advertisement`;
   }
+
+  async removeAll() {
+    let all_record = await this.repository.find();
+    for (var i = 0; i < all_record.length; i++) {
+      await this.repository.delete(all_record[i].id);
+    }
+    return;
+  }
 }

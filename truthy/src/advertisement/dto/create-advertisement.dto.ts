@@ -1,4 +1,4 @@
-import { IsBoolean, IsString } from 'class-validator';
+import { IsBoolean, IsDefined, IsString } from 'class-validator';
 
 export class CreateAdvertisementDto {
   @IsString()
@@ -6,6 +6,9 @@ export class CreateAdvertisementDto {
 
   @IsString()
   description: string;
+
+  @IsDefined()
+  images: string;
 
   @IsString()
   remarks: string;

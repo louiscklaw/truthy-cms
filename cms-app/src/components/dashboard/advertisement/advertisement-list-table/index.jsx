@@ -126,44 +126,44 @@ export const AdvertisementListTable = props => {
                 />
               </TableCell>
               <TableCell>{t('NAME')}</TableCell>
-              <TableCell>{t('LOCATION')}</TableCell>
-              <TableCell>{t('ORDERS')}</TableCell>
-              <TableCell>{t('SPENT')}</TableCell>
+              <TableCell>{t('DESCRIPTION')}</TableCell>
+              <TableCell>{t('AD_WINDOW')}</TableCell>
+              <TableCell>{t('AD_TARGET')}</TableCell>
               <TableCell>{t('ACTIVE')}</TableCell>
               <TableCell align="right">{t('ACTIONS')}</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {advertisements.map(restaurant => {
-              const isCustomerSelected = selectedAdvertisements.includes(restaurant.uuid);
+            {advertisements.map(advertisement => {
+              const isAdvertisementSelected = selectedAdvertisements.includes(advertisement.uuid);
 
               return (
-                <TableRow hover key={restaurant.uuid} selected={isCustomerSelected}>
+                <TableRow hover key={advertisement.uuid} selected={isAdvertisementSelected}>
                   <TableCell padding="checkbox">
                     <Checkbox
-                      checked={isCustomerSelected}
-                      onChange={event => handleSelectOneAdvertisement(event, restaurant.uuid)}
-                      value={isCustomerSelected}
+                      checked={isAdvertisementSelected}
+                      onChange={event => handleSelectOneAdvertisement(event, advertisement.uuid)}
+                      value={isAdvertisementSelected}
                     />
                   </TableCell>
                   <TableCell>
                     <Box sx={{ alignItems: 'center', display: 'flex' }}>
-                      <Avatar src={restaurant.avatar} sx={{ height: 42, width: 42 }}>
-                        {getInitials(restaurant.name)}
+                      <Avatar src={advertisement.avatar} sx={{ height: 42, width: 42 }}>
+                        {getInitials(advertisement.name)}
                       </Avatar>
                       <Box sx={{ ml: 1 }}>
-                        <NextLink href={`/dashboard/advertisements/edit/${restaurant.uuid}`} passHref>
+                        <NextLink href={`/dashboard/advertisements/edit/${advertisement.uuid}`} passHref>
                           <Link color="inherit" variant="subtitle2">
-                            {restaurant.name}
+                            {advertisement.name}
                           </Link>
                         </NextLink>
                         <Typography color="textSecondary" variant="body2">
-                          {restaurant.email}
+                          {advertisement.email}
                         </Typography>
                       </Box>
                     </Box>
                   </TableCell>
-                  <TableCell>{`${restaurant.address}, ${restaurant.address1}, ${restaurant.address2}`}</TableCell>
+                  <TableCell>{`${advertisement.address}, ${advertisement.address1}, ${advertisement.address2}`}</TableCell>
 
                   <TableCell>
                     <Typography color="success.main" variant="subtitle2">
@@ -173,26 +173,26 @@ export const AdvertisementListTable = props => {
 
                   <TableCell>
                     <Typography color="success.main" variant="subtitle2">
-                      {numeral(restaurant.totalAmountSpent).format(`${restaurant.currency}0,0.00`)}
+                      {numeral(advertisement.totalAmountSpent).format(`${advertisement.currency}0,0.00`)}
                     </Typography>
                   </TableCell>
                   <TableCell>
-                    <Chip icon={<GoCheck />} label={restaurant.isActive ? t('ACTIVE') : t('NOT_ACTIVE')} />
+                    <Chip icon={<GoCheck />} label={advertisement.isActive ? t('ACTIVE') : t('NOT_ACTIVE')} />
                   </TableCell>
                   <TableCell align="right">
-                    <NextLink href={`/dashboard/advertisements/edit/${restaurant.uuid}`} passHref>
+                    <NextLink href={`/dashboard/advertisements/edit/${advertisement.uuid}`} passHref>
                       <IconButton component="a">
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
 
-                    <NextLink href={`/dashboard/advertisements/view/${restaurant.uuid}`} passHref>
+                    <NextLink href={`/dashboard/advertisements/view/${advertisement.uuid}`} passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
 
-                    <IconButton onClick={e => handleDeleteAdvertisementClick(e, restaurant.uuid)} component="a">
+                    <IconButton onClick={e => handleDeleteAdvertisementClick(e, advertisement.uuid)} component="a">
                       <DeleteIcon fontSize="small" />
                     </IconButton>
                   </TableCell>

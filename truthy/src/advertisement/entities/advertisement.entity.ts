@@ -13,6 +13,9 @@ export class Advertisement {
   name: string;
 
   @Column()
+  images: string;
+
+  @Column()
   slug: string;
 
   @Column({ default: '' })

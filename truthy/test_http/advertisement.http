@@ -13,9 +13,6 @@ GET http://{{API_HOST}}/api/helloworld-rest-crud/helloworld
 
 
 ###
-GET http://{{API_HOST}}/api/advertisement
-
-###
 GET http://{{API_HOST}}/api/advertisement/check-slug/advertisement1
 
 ###
@@ -31,6 +28,13 @@ Content-Type: application/json
 
 {
   "name":"name name name",
+  "images":[
+    "https://images.unsplash.com/photo-1632203171982-cc0df6e9ceb4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=828&q=80",
+    "https://images.unsplash.com/photo-1585297100016-9f49ab8c3c08?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=877&q=80",
+    "https://images.unsplash.com/photo-1552718752-c682d315b136?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=932&q=80",
+    "https://images.unsplash.com/photo-1585238341267-1cfec2046a55?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=874&q=80",
+    "https://images.unsplash.com/photo-1550950158-d0d960dff51b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=880&q=80"
+  ],
   "slug":"slug-slug-slug",
   "description":"description description description",
   "remarks":"remarks remarks remarks",
@@ -85,12 +89,8 @@ GET http://{{API_HOST}}/api/advertisement
 ###
 DELETE http://{{API_HOST}}/api/advertisement/id/27
 
-
-
 ###
 DELETE http://{{API_HOST}}/api/advertisement/util/delete_all
-
-
 
 ###
 DELETE http://{{API_HOST}}/api/advertisement/uid/5c1f0218-f596-43d0-8f51-667620f4a7b7
