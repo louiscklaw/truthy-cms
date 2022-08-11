@@ -25,6 +25,7 @@ import { wait } from '../../../../utils/wait';
 import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../../api/restaurant-api';
 import Router, { useRouter } from 'next/router';
+import Debug from '../../../../components/debug';
 
 import slugify from '@sindresorhus/slugify';
 
@@ -318,7 +319,9 @@ export const RestaurantEditForm = props => {
             />
           </Box>
 
-          <pre>{JSON.stringify({ customer, values: formik.values }, null, 2)}</pre>
+          <Debug>
+            <pre>{JSON.stringify({ customer, values: formik.values }, null, 2)}</pre>
+          </Debug>
         </CardContent>
         <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
           <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained" startIcon={<FaSave />}>
