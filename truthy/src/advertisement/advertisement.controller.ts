@@ -17,6 +17,12 @@ export class AdvertisementController {
     return this.service.findAll();
   }
 
+  @Get('count')
+  async advertisementCount(): Promise<any> {
+    let count = await this.service.findAll();
+    return { count: count.length };
+  }
+
   @Get('/uid/:uuid')
   findOneByUuid(@Param('uuid') uuid: string) {
     return this.service.findOneByUuid(uuid);

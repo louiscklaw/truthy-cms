@@ -16,7 +16,13 @@ GET http://{{API_HOST}}/api/helloworld-rest-crud/helloworld
 GET http://{{API_HOST}}/api/advertisement/check-slug/advertisement1
 
 ###
+GET http://{{API_HOST}}/api/advertisement/count
+
+###
 GET http://{{API_HOST}}/api/advertisement/11
+
+###
+GET http://{{API_HOST}}/api/advertisement/count
 
 
 ###
