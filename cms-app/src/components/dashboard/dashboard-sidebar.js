@@ -76,6 +76,36 @@ const getSections = t => [
         ],
       },
       {
+        title: t('ADVERTISEMENT'),
+        path: '/dashboard/advertisement',
+        icon: <UsersIcon fontSize="small" />,
+        children: [
+          { title: t('List'), path: '/dashboard/advertisements' },
+          { title: t('Details'), path: '/dashboard/advertisements/1' },
+          { title: t('Edit'), path: '/dashboard/advertisements/1/edit' },
+        ],
+      },
+      {
+        title: t('URL_SHORTCUT'),
+        path: '/dashboard/url_shortcut',
+        icon: <UsersIcon fontSize="small" />,
+        children: [
+          { title: t('List'), path: '/dashboard/url_shortcuts' },
+          { title: t('Details'), path: '/dashboard/url_shortcuts/1' },
+          { title: t('Edit'), path: '/dashboard/url_shortcuts/1/edit' },
+        ],
+      },
+      {
+        title: t('ORDERS'),
+        path: '/dashboard/order',
+        icon: <UsersIcon fontSize="small" />,
+        children: [
+          { title: t('List'), path: '/dashboard/orders' },
+          { title: t('Details'), path: '/dashboard/orders/1' },
+          { title: t('Edit'), path: '/dashboard/orders/1/edit' },
+        ],
+      },
+      {
         title: t('Products'),
         path: '/dashboard/products',
         icon: <ShoppingBagIcon fontSize="small" />,
