@@ -25,6 +25,7 @@ import { Upload as UploadIcon } from '../../../icons/upload';
 import { gtm } from '../../../lib/gtm';
 
 import { useTranslation } from 'react-i18next';
+import CustomerNewForm from './customer-new-form';
 
 const tabs = [
   { label: 'All', value: 'all' },
@@ -192,9 +193,11 @@ const CustomerList = () => {
   const paginatedCustomers = applyPagination(sortedCustomers, page, rowsPerPage);
 
   const { t } = useTranslation();
+  const [open_customer_new_form, setOpenCustomerNewForm] = useState(true);
 
   return (
     <>
+      <CustomerNewForm open={open_customer_new_form} setOpen={setOpenCustomerNewForm} />
       <Head>
         <title>Dashboard: Customer List | Material Kit Pro</title>
       </Head>
@@ -211,7 +214,7 @@ const CustomerList = () => {
                 </Button>
               </Grid>
             </Grid>
-            <Box sx={{ m: -1, mt: 3 }}>
+            <Box sx={{ m: -1, mt: 3, display: 'none' }}>
               <Button startIcon={<UploadIcon fontSize="small" />} sx={{ m: 1 }}>
                 Import
               </Button>
