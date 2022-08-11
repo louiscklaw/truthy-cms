@@ -26,7 +26,7 @@ const BrowseCharts = () => {
   return (
     <>
       <Head>
-        <title>Browse: Charts | Material Kit Pro</title>
+        <title>Browse: Charts | louislabs</title>
       </Head>
       <Box
         component="main"

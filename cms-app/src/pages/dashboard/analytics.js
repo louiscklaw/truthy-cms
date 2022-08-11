@@ -19,7 +19,7 @@ const Analytics = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Analytics | Material Kit Pro</title>
+        <title>Dashboard: Analytics | louislabs</title>
       </Head>
       <Box
         component="main"

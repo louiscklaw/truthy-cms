@@ -79,7 +79,7 @@ const Checkout = () => {
   return (
     <>
       <Head>
-        <title>Checkout | Material Kit Pro</title>
+        <title>Checkout | louislabs</title>
       </Head>
       <Box
         component="main"

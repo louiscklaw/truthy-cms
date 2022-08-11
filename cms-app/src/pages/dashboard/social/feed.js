@@ -40,7 +40,7 @@ const SocialFeed = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Social Feed | Material Kit Pro</title>
+        <title>Dashboard: Social Feed | louislabs</title>
       </Head>
       <Box
         component="main"

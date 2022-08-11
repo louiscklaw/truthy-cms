@@ -20,7 +20,7 @@ const Logistics = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Logistics | Material Kit Pro</title>
+        <title>Dashboard: Logistics | louislabs</title>
       </Head>
       <Box
         component="main"

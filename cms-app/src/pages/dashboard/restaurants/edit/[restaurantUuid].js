@@ -76,7 +76,7 @@ const RestaurantEdit = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Customer Edit | Material Kit Pro</title>
+        <title>Dashboard: Customer Edit | louislabs</title>
       </Head>
 
       <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>

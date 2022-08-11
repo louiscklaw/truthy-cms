@@ -26,7 +26,7 @@ export const BrowseModals = () => {
   return (
     <>
       <Head>
-        <title>Browse: Modals | Material Kit Pro</title>
+        <title>Browse: Modals | louislabs</title>
       </Head>
       <Box
         component="main"

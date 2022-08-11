@@ -163,7 +163,7 @@ const InvoiceList = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Invoice List | Material Kit Pro</title>
+        <title>Dashboard: Invoice List | louislabs</title>
       </Head>
       <Box
         component="main"

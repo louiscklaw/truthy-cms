@@ -47,7 +47,7 @@ const JobBrowse = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Job Browse | Material Kit Pro</title>
+        <title>Dashboard: Job Browse | louislabs</title>
       </Head>
       <Box
         component="main"

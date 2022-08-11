@@ -72,7 +72,7 @@ const Overview = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Overview | Material Kit Pro</title>
+        <title>Dashboard: Overview | louislabs</title>
       </Head>
       <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="xl">

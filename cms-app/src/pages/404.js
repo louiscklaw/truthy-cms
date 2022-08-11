@@ -16,7 +16,7 @@ const NotFound = () => {
   return (
     <>
       <Head>
-        <title>Error: Not Found | Material Kit Pro</title>
+        <title>Error: Not Found | louislabs</title>
       </Head>
       <Box
         component="main"

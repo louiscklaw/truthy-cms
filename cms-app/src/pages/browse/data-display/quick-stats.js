@@ -22,7 +22,7 @@ const BrowseQuickStats = () => {
   return (
     <>
       <Head>
-        <title>Browse: Quick Stats | Material Kit Pro</title>
+        <title>Browse: Quick Stats | louislabs</title>
       </Head>
       <Box
         component="main"

@@ -29,7 +29,7 @@ const VerifyCode = () => {
   return (
     <>
       <Head>
-        <title>Verify Code | Material Kit Pro</title>
+        <title>Verify Code | louislabs</title>
       </Head>
       <Box
         component="main"

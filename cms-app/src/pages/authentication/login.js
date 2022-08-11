@@ -32,7 +32,7 @@ const Login = () => {
   return (
     <>
       <Head>
-        <title>Login | Material Kit Pro</title>
+        <title>Login | louislabs</title>
       </Head>
       <Box
         component="main"

@@ -91,7 +91,7 @@ const Chat = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Chat | Material Kit Pro</title>
+        <title>Dashboard: Chat | louislabs</title>
       </Head>
       <Box
         component="main"

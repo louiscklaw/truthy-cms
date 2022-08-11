@@ -205,7 +205,7 @@ const RestaurantList = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Customer List | Material Kit Pro</title>
+        <title>Dashboard: Customer List | louislabs</title>
       </Head>
       <Box component="main" sx={{ flexGrow: 1, py: 8 }}>
         <Container maxWidth="xl">

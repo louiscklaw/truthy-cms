@@ -16,7 +16,7 @@ const ServerError = () => {
   return (
     <>
       <Head>
-        <title>Error: Server Error | Material Kit Pro</title>
+        <title>Error: Server Error | louislabs</title>
       </Head>
       <Box
         component="main"

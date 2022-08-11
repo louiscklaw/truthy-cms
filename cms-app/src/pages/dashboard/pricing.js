@@ -17,7 +17,7 @@ const Pricing = () => {
   return (
     <>
       <Head>
-        <title>Pricing | Material Kit Pro</title>
+        <title>Pricing | louislabs</title>
       </Head>
       <Box
         component="main"

@@ -46,7 +46,7 @@ const CustomerEdit = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Customer Edit | Material Kit Pro</title>
+        <title>Dashboard: Customer Edit | louislabs</title>
       </Head>
       <Box
         component="main"

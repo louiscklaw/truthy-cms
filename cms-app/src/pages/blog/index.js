@@ -38,7 +38,7 @@ const BlogPostList = () => {
   return (
     <>
       <Head>
-        <title>Blog: Post List | Material Kit Pro</title>
+        <title>Blog: Post List | louislabs</title>
       </Head>
       <Box
         component="main"

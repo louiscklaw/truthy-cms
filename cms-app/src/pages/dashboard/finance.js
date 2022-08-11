@@ -22,7 +22,7 @@ const Finance = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Finance | Material Kit Pro</title>
+        <title>Dashboard: Finance | louislabs</title>
       </Head>
       <Box
         component="main"

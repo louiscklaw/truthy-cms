@@ -17,7 +17,7 @@ const BrowseButtons = () => {
   return (
     <>
       <Head>
-        <title>Browse: Buttons | Material Kit Pro</title>
+        <title>Browse: Buttons | louislabs</title>
       </Head>
       <Box
         component="main"

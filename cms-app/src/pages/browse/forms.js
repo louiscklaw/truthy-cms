@@ -30,7 +30,7 @@ const BrowseForms = () => {
   return (
     <>
       <Head>
-        <title>Browse: Forms | Material Kit Pro</title>
+        <title>Browse: Forms | louislabs</title>
       </Head>
       <Box
         component="main"

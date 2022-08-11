@@ -95,7 +95,7 @@ const BlogPostDetails = () => {
   return (
     <>
       <Head>
-        <title>Blog: Post Details | Material Kit Pro</title>
+        <title>Blog: Post Details | louislabs</title>
       </Head>
       <Box
         component="main"

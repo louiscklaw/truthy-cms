@@ -98,7 +98,7 @@ const Mail = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Mail | Material Kit Pro</title>
+        <title>Dashboard: Mail | louislabs</title>
       </Head>
       <Box
         component="main"

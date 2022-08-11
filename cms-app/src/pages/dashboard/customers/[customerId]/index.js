@@ -64,7 +64,7 @@ const CustomerDetails = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Customer Details | Material Kit Pro</title>
+        <title>Dashboard: Customer Details | louislabs</title>
       </Head>
       <Box
         component="main"

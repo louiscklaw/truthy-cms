@@ -230,7 +230,7 @@ const Calendar = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Calendar | Material Kit Pro</title>
+        <title>Dashboard: Calendar | louislabs</title>
       </Head>
       <Box
         component="main"

@@ -51,7 +51,7 @@ const OrderDetails = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Order Details | Material Kit Pro</title>
+        <title>Dashboard: Order Details | louislabs</title>
       </Head>
       <Box
         component="main"

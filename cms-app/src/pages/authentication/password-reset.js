@@ -29,7 +29,7 @@ const PasswordReset = () => {
   return (
     <>
       <Head>
-        <title>Password Reset | Material Kit Pro</title>
+        <title>Password Reset | louislabs</title>
       </Head>
       <Box
         component="main"

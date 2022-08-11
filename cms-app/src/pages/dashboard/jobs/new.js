@@ -64,7 +64,7 @@ const JobCreate = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Job Create | Material Kit Pro</title>
+        <title>Dashboard: Job Create | louislabs</title>
       </Head>
       <Box
         component="main"

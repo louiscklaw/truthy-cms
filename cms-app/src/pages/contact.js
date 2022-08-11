@@ -15,7 +15,7 @@ const Contact = () => {
   return (
     <>
       <Head>
-        <title>Contact | Material Kit Pro</title>
+        <title>Contact | louislabs</title>
       </Head>
       <Box
         component="main"

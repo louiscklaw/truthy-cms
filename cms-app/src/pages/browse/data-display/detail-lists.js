@@ -22,7 +22,7 @@ const BrowseDetailLists = () => {
   return (
     <>
       <Head>
-        <title>Browse: Detail Lists | Material Kit Pro</title>
+        <title>Browse: Detail Lists | louislabs</title>
       </Head>
       <Box
         component="main"

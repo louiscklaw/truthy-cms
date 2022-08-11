@@ -19,7 +19,7 @@ const BrowseInputs = () => {
   return (
     <>
       <Head>
-        <title>Browse: Inputs | Material Kit Pro</title>
+        <title>Browse: Inputs | louislabs</title>
       </Head>
       <Box
         component="main"

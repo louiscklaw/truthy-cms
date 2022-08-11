@@ -16,7 +16,7 @@ const AuthorizationRequired = () => {
   return (
     <>
       <Head>
-        <title>Error: Authorization Required | Material Kit Pro</title>
+        <title>Error: Authorization Required | louislabs</title>
       </Head>
       <Box
         component="main"

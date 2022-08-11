@@ -50,7 +50,7 @@ const InvoiceDetails = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Invoice Details | Material Kit Pro</title>
+        <title>Dashboard: Invoice Details | louislabs</title>
       </Head>
       <Box
         component="main"

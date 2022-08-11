@@ -77,7 +77,7 @@ const CompanyDetails = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Company Details | Material Kit Pro</title>
+        <title>Dashboard: Company Details | louislabs</title>
       </Head>
       <Box
         component="main"

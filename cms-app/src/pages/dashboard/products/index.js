@@ -111,7 +111,7 @@ const ProductList = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Product List | Material Kit Pro</title>
+        <title>Dashboard: Product List | louislabs</title>
       </Head>
       <Box
         component="main"

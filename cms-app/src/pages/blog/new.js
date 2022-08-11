@@ -28,7 +28,7 @@ const BlogPostCreate = () => {
   return (
     <>
       <Head>
-        <title>Blog: Post Create | Material Kit Pro</title>
+        <title>Blog: Post Create | louislabs</title>
       </Head>
       <Box
         component="main"

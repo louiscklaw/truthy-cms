@@ -25,7 +25,7 @@ const BrowseGroupedLists = () => {
   return (
     <>
       <Head>
-        <title>Browse: Grouped Lists | Material Kit Pro</title>
+        <title>Browse: Grouped Lists | louislabs</title>
       </Head>
       <Box
         component="main"

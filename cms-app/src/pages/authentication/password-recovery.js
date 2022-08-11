@@ -26,7 +26,7 @@ const PasswordRecovery = () => {
   return (
     <>
       <Head>
-        <title>Password Recovery | Material Kit Pro</title>
+        <title>Password Recovery | louislabs</title>
       </Head>
       <Box
         component="main"

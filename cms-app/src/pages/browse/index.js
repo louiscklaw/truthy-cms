@@ -124,7 +124,7 @@ const Browse = () => {
   return (
     <>
       <Head>
-        <title>Browse | Material Kit Pro</title>
+        <title>Browse | louislabs</title>
       </Head>
       <Box
         component="main"

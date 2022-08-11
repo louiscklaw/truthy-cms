@@ -14,7 +14,7 @@ export const BrowseTypography = () => {
   return (
     <>
       <Head>
-        <title>Browse: Typography | Material Kit Pro</title>
+        <title>Browse: Typography | louislabs</title>
       </Head>
       <Box
         component="main"

@@ -20,7 +20,7 @@ const BrowseGridLists = () => {
   return (
     <>
       <Head>
-        <title>Browse: Grid Lists | Material Kit Pro</title>
+        <title>Browse: Grid Lists | louislabs</title>
       </Head>
       <Box
         component="main"

@@ -16,7 +16,7 @@ const BrowseColors = () => {
   return (
     <>
       <Head>
-        <title>Browse: Colors | Material Kit Pro</title>
+        <title>Browse: Colors | louislabs</title>
       </Head>
       <Box
         component="main"

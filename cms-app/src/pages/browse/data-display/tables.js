@@ -25,7 +25,7 @@ const BrowseTables = () => {
   return (
     <>
       <Head>
-        <title>Browse: Tables | Material Kit Pro</title>
+        <title>Browse: Tables | louislabs</title>
       </Head>
       <Box
         component="main"

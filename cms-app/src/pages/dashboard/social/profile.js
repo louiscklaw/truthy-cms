@@ -65,7 +65,7 @@ export const SocialProfile = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Social Profile | Material Kit Pro</title>
+        <title>Dashboard: Social Profile | louislabs</title>
       </Head>
       <Box
         component="main"

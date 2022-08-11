@@ -15,7 +15,7 @@ const ProductCreate = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Product Create | Material Kit Pro</title>
+        <title>Dashboard: Product Create | louislabs</title>
       </Head>
       <Box
         component="main"
