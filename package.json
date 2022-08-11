@@ -25,7 +25,8 @@
     "show_log": "yarn docker logs -f ",
     "show_api_log": "yarn docker logs -f api",
     "show_cms_app_log": "yarn docker logs -f cms-app",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "docker_rebuild": "yarn docker up -d --build --remove-orphans"
   },
   "repository": {
     "type": "git",
