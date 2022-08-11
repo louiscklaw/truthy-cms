@@ -17,12 +17,18 @@ export class RestaurantsController {
     return this.service.findAll();
   }
 
-  @Get('/uid/:uuid')
+  @Get('count')
+  async restaurantCount():Promise<any> {
+    let count = await this.service.findAll();
+    return { count: count.length };
+  }
+
+  @Get('uid/:uuid')
   findOneByUUID(@Param('uuid') uuid: string) {
     return this.service.findOneByUuid(uuid);
   }
 
-  @Get('/check-slug/:slug')
+  @Get('check-slug/:slug')
   findOneBySlug(@Param('slug') slug: string) {
     return this.service.findOneBySlug(slug);
   }
@@ -32,7 +38,7 @@ export class RestaurantsController {
     return this.service.updateByUuid(uuid, updateRestaurantDto);
   }
 
-  @Get(':id')
+  @Get('id/:id')
   findOne(@Param('id') id: string) {
     return this.service.findOne(+id);
   }

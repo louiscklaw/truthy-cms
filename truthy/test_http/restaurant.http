@@ -16,6 +16,9 @@ GET http://{{API_HOST}}/api/helloworld/12
 GET http://{{API_HOST}}/api/restaurants
 
 ###
+GET http://{{API_HOST}}/api/restaurants/count
+
+###
 GET http://{{API_HOST}}/api/restaurants/check-slug/user1
 
 ###
