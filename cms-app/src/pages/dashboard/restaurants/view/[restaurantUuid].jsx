@@ -53,6 +53,7 @@ const RestaurantNew = () => {
     </>
   );
 };
+
 RestaurantNew.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>

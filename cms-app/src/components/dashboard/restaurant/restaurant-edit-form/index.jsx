@@ -54,7 +54,7 @@ export const RestaurantEditForm = props => {
       name: customer.name || '',
       phone: customer.phone || '',
       state: customer.state || '',
-      meny_service_types: [{ id: 1 }],
+      meny_service_types: [{ id: 3 }],
 
       ...customer,
     },
@@ -106,8 +106,6 @@ export const RestaurantEditForm = props => {
   });
 
   const [open_delete_dialog, setOpenDeleteDialog] = useState(false);
-
-  if (!formik.values.meny_service_types) return <>loading</>;
 
   return (
     <form onSubmit={formik.handleSubmit} {...other}>
@@ -283,23 +281,29 @@ export const RestaurantEditForm = props => {
             </Grid>
 
             <Grid item md={6} xs={12}>
-              <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-                <InputLabel id="demo-select-small">Age</InputLabel>
-                <Select
-                  labelId="demo-select-small"
-                  id="demo-select-small"
-                  value={formik.values.meny_service_types[0].id}
-                  label="Age"
-                  onChange={e => formik.setFieldValue('meny_service_types[0].id', e.target.value)}
-                >
-                  <MenuItem value="">
-                    <em>None</em>
-                  </MenuItem>
-                  <MenuItem value={1}>Meny</MenuItem>
-                  <MenuItem value={2}>Meny light</MenuItem>
-                  <MenuItem value={3}>Meny takeaway</MenuItem>
-                </Select>
-              </FormControl>
+              {formik.values.meny_service_types[0]?.id ? (
+                <>
+                  <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                    <InputLabel id="demo-select-small">Age</InputLabel>
+                    <Select
+                      labelId="demo-select-small"
+                      id="demo-select-small"
+                      value={formik.values.meny_service_types[0].id}
+                      label="Age"
+                      onChange={e => formik.setFieldValue('meny_service_types[0].id', e.target.value)}
+                    >
+                      <MenuItem value="">
+                        <em>None</em>
+                      </MenuItem>
+                      <MenuItem value={1}>Meny</MenuItem>
+                      <MenuItem value={2}>Meny light</MenuItem>
+                      <MenuItem value={3}>Meny takeaway</MenuItem>
+                    </Select>
+                  </FormControl>
+                </>
+              ) : (
+                <Box>sorry but meny service is not defined</Box>
+              )}
             </Grid>
           </Grid>
           <Divider sx={{ my: 3 }} />
