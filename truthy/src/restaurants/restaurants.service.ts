@@ -29,12 +29,21 @@ export class RestaurantsService {
     // return `This action returns a #${id} restaurant`;
   }
 
+  async findIdByUuid(uuid: string) {
+    return await this.repository.findOne({ uuid });
+  }
+
   // updateByUuid
   async updateByUuid(uuid: string, updateRestaurantDto: UpdateRestaurantDto): Promise<any> {
-    console.log({ uuid });
-    // return `This action updates a #${uuid} restaurant`;
-    let result = await this.repository.save({ uuid, ...updateRestaurantDto });
-    return result;
+    try {
+      console.log({ uuid });
+      // return `This action updates a #${uuid} restaurant`;
+
+      let { id } = await this.findIdByUuid(uuid);
+
+      let result = await this.repository.save({ ...updateRestaurantDto, id });
+      return result;
+    } catch (error) {}
   }
 
   findOne(id: number) {
@@ -44,7 +53,7 @@ export class RestaurantsService {
 
   async update(id: number, updateRestaurantDto: UpdateRestaurantDto): Promise<any> {
     // return `This action updates a #${id} restaurant`;
-    return await this.repository.save({ id, ...updateRestaurantDto });
+    return await this.repository.save({ ...updateRestaurantDto, id });
   }
 
   async remove(id: number): Promise<void> {
@@ -66,5 +75,13 @@ export class RestaurantsService {
       let uuid = uuids[i];
       await this.repository.delete({ uuid });
     }
+  }
+
+  async removeAllRestaurants() {
+    try {
+      for (let i = 0; i < 999; i++) {
+        await this.repository.delete(i);
+      }
+    } catch (error) {}
   }
 }

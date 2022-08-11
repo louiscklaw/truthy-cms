@@ -57,6 +57,15 @@ export const RestaurantListTable = props => {
     [restaurants],
   );
 
+  const handleDeleteRestaurantClick = (e, uuid) => {
+    axios
+      .delete(`/api/restaurants/uid/${uuid}`)
+      .then(res => {
+        router.reload();
+      })
+      .catch(err => console.error(err));
+  };
+
   const handleSelectAllRestaurants = event => {
     setSelectedRestaurants(event.target.checked ? restaurants.map(restaurant => restaurant.uuid) : []);
   };
@@ -186,11 +195,9 @@ export const RestaurantListTable = props => {
                       </IconButton>
                     </NextLink>
 
-                    <NextLink href={`/dashboard/restaurants/uid/${restaurant.uuid}`} passHref>
-                      <IconButton component="a">
-                        <DeleteIcon fontSize="small" />
-                      </IconButton>
-                    </NextLink>
+                    <IconButton onClick={e => handleDeleteRestaurantClick(e, restaurant.uuid)} component="a">
+                      <DeleteIcon fontSize="small" />
+                    </IconButton>
                   </TableCell>
                 </TableRow>
               );

@@ -37,7 +37,7 @@ export class RestaurantsController {
     return this.service.update(+id, updateRestaurantDto);
   }
 
-  @Delete(':id')
+  @Delete('/id/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
   remove(@Param('id') id: number) {
     return this.service.remove(+id);
@@ -58,5 +58,11 @@ export class RestaurantsController {
   @HttpCode(HttpStatus.NO_CONTENT)
   removeRestaurantsByUuids(@Body() uuids: string[]) {
     return this.service.removeRestaurantsByUuids(uuids);
+  }
+
+  @Delete('/util/delete_all')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  removeAllRestaurant(@Body() uuids: string[]) {
+    return this.service.removeAllRestaurants();
   }
 }

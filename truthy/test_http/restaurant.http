@@ -10,32 +10,21 @@
 # restaurant
 
 ###
-GET http://{{API_HOST}}/api/helloworld/1
+GET http://{{API_HOST}}/api/helloworld/12
 
 
 ###
 GET http://{{API_HOST}}/api/restaurants
 
 ###
-GET http://{{API_HOST}}/api/restaurants/8
+GET http://{{API_HOST}}/api/restaurants/11
 
 
 ###
-GET http://{{API_HOST}}/api/restaurants/uid/9ad5dd3d-dc5c-4c7a-9447-570949f058fa
+GET http://{{API_HOST}}/api/restaurants/uid/3f77fae1-48b8-454d-998b-2a6ca5131e03
 
 ###
 POST http://{{API_HOST}}/api/restaurants
-Content-Type: application/json
-
-{
-  "name":"restaurant 1",
-  "location":"hong kong",
-  "isActive":true,
-  "meny_service_types":[{"id": 3}]
-}
-
-###
-PATCH http://{{API_HOST}}/api/restaurants/uid/9ad5dd3d-dc5c-4c7a-9447-570949f058fa
 Content-Type: application/json
 
 {
@@ -55,11 +44,11 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://{{API_HOST}}/api/restaurants/10
+PATCH http://{{API_HOST}}/api/restaurants/uid/4ca9bc1c-6670-40c1-8241-96ef19dc4e94
 Content-Type: application/json
 
 {
-  "address": "address 9 test",
+  "address": "address test",
   "address1": "address1 test",
   "address2": "address2 test",
   "country": "country test",
@@ -67,33 +56,50 @@ Content-Type: application/json
   "isActive": true,
   "location": "Hong Kong",
   "name": "user1",
-  "orders": 0,
   "phone": "91234567",
-  "spent": 0,
   "state": "state test",
   "meny_service_types":[{
-    "id": 1,
-            "createdAt": "2022-08-10T17:18:50.755Z",
-        "updatedAt": "2022-08-10T17:18:50.755Z",
-        "uuid": "e7a4a0ec-ca1b-4383-bff1-64d520062d76",
-        "name": "meny light",
-        "description": "test meny light service",
-        "canEditMenu": true,
-        "canEditRestaurant": true,
-        "canProcessStayOrder": true,
-        "canProcessTakeAwayOrder": false
+    "id": 1
+  }]
+}
 
+###
+PATCH http://{{API_HOST}}/api/restaurants/19
+Content-Type: application/json
 
-    }]
+{
+  "address": "address test",
+  "address1": "address1 test",
+  "address2": "address2 test",
+  "country": "country test",
+  "email": "user1@truthy.com",
+  "isActive": true,
+  "location": "Hong Kong",
+  "name": "user1",
+  "phone": "91234567",
+  "state": "state test",
+  "meny_service_types":[{
+    "id": 1
+  }]
 }
 
 
-###
-DELETE http://{{API_HOST}}/api/restaurants/1
-
 
 ###
-DELETE http://{{API_HOST}}/api/restaurants/uid/59d1ad8e-0e73-43c7-a748-c1a6be8fbe6c
+GET http://{{API_HOST}}/api/restaurants
+
+###
+DELETE http://{{API_HOST}}/api/restaurants/id/27
+
+
+
+###
+DELETE http://{{API_HOST}}/api/restaurants/util/delete_all
+
+
+
+###
+DELETE http://{{API_HOST}}/api/restaurants/uid/5c1f0218-f596-43d0-8f51-667620f4a7b7
 
 ###
 POST http://{{API_HOST}}/api/restaurants/delete_multiple

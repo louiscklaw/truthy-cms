@@ -291,9 +291,9 @@ export const RestaurantEditForm = props => {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={1}>Ten</MenuItem>
-                  <MenuItem value={2}>Twenty</MenuItem>
-                  <MenuItem value={3}>Thirty</MenuItem>
+                  <MenuItem value={1}>Meny</MenuItem>
+                  <MenuItem value={2}>Meny light</MenuItem>
+                  <MenuItem value={3}>Meny takeaway</MenuItem>
                 </Select>
               </FormControl>
             </Grid>
