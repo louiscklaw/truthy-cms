@@ -37,22 +37,22 @@ export const AdvertisementListTable = props => {
   const { t } = useTranslation();
 
   const { advertisements, advertisementsCount, onPageChange, onRowsPerPageChange, page, rowsPerPage, ...other } = props;
-  const [selectedRestaurants, setSelectedRestaurants] = useState([]);
+  const [selectedAdvertisements, setSelectedAdvertisements] = useState([]);
 
   // Reset selected customers when customers change
   useEffect(
     () => {
-      if (selectedRestaurants.length) {
-        setSelectedRestaurants([]);
+      if (selectedAdvertisements.length) {
+        setSelectedAdvertisements([]);
       }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [advertisements],
   );
 
-  const handleDeleteRestaurantClick = (e, uuid) => {
+  const handleDeleteAdvertisementClick = (e, uuid) => {
     axios
-      .delete(`/api/restaurants/uid/${uuid}`)
+      .delete(`/api/advertisements/uid/${uuid}`)
       .then(res => {
         toast.success('DELETE_DONE');
       })
@@ -62,30 +62,31 @@ export const AdvertisementListTable = props => {
       });
   };
 
-  const handleSelectAllRestaurants = event => {
-    setSelectedRestaurants(event.target.checked ? advertisements.map(restaurant => restaurant.uuid) : []);
+  const handleSelectAllAdvertisements = event => {
+    setSelectedAdvertisements(event.target.checked ? advertisements.map(restaurant => restaurant.uuid) : []);
   };
 
-  const handleSelectOneRestaurant = (event, restaurantId) => {
-    if (!selectedRestaurants.includes(restaurantId)) {
-      setSelectedRestaurants(prevSelected => [...prevSelected, restaurantId]);
+  const handleSelectOneAdvertisement = (event, restaurantId) => {
+    if (!selectedAdvertisements.includes(restaurantId)) {
+      setSelectedAdvertisements(prevSelected => [...prevSelected, restaurantId]);
     } else {
-      setSelectedRestaurants(prevSelected => prevSelected.filter(id => id !== restaurantId));
+      setSelectedAdvertisements(prevSelected => prevSelected.filter(id => id !== restaurantId));
     }
   };
 
-  const enableBulkActions = selectedRestaurants.length > 0;
-  const selectedSomeCustomers = selectedRestaurants.length > 0 && selectedRestaurants.length < advertisements.length;
-  const selectedAllCustomers = selectedRestaurants.length === advertisements.length;
+  const enableBulkActions = selectedAdvertisements.length > 0;
+  const selectedSomeCustomers =
+    selectedAdvertisements.length > 0 && selectedAdvertisements.length < advertisements.length;
+  const selectedAllCustomers = selectedAdvertisements.length === advertisements.length;
 
   const [is_processing, setIsProcessing] = useState(false);
   const router = useRouter();
 
   const multiItemDelete = () => {
     setIsProcessing(true);
-    console.log({ selectedRestaurants });
+    console.log({ selectedRestaurants: selectedAdvertisements });
     axios
-      .post('/api/restaurants/delete_multiple', selectedRestaurants, { withCredentials: true })
+      .post('/api/advertisements/delete_multiple', selectedAdvertisements, { withCredentials: true })
       .then(res => {
         setIsProcessing(false);
         router.reload();
@@ -107,7 +108,7 @@ export const AdvertisementListTable = props => {
         <Checkbox
           checked={selectedAllCustomers}
           indeterminate={selectedSomeCustomers}
-          onChange={handleSelectAllRestaurants}
+          onChange={handleSelectAllAdvertisements}
         />
         <Button onClick={multiItemDelete} size="small" sx={{ ml: 2 }}>
           {t('DELETE')}
@@ -121,7 +122,7 @@ export const AdvertisementListTable = props => {
                 <Checkbox
                   checked={selectedAllCustomers}
                   indeterminate={selectedSomeCustomers}
-                  onChange={handleSelectAllRestaurants}
+                  onChange={handleSelectAllAdvertisements}
                 />
               </TableCell>
               <TableCell>{t('NAME')}</TableCell>
@@ -134,14 +135,14 @@ export const AdvertisementListTable = props => {
           </TableHead>
           <TableBody>
             {advertisements.map(restaurant => {
-              const isCustomerSelected = selectedRestaurants.includes(restaurant.uuid);
+              const isCustomerSelected = selectedAdvertisements.includes(restaurant.uuid);
 
               return (
                 <TableRow hover key={restaurant.uuid} selected={isCustomerSelected}>
                   <TableCell padding="checkbox">
                     <Checkbox
                       checked={isCustomerSelected}
-                      onChange={event => handleSelectOneRestaurant(event, restaurant.uuid)}
+                      onChange={event => handleSelectOneAdvertisement(event, restaurant.uuid)}
                       value={isCustomerSelected}
                     />
                   </TableCell>
@@ -151,7 +152,7 @@ export const AdvertisementListTable = props => {
                         {getInitials(restaurant.name)}
                       </Avatar>
                       <Box sx={{ ml: 1 }}>
-                        <NextLink href={`/dashboard/restaurants/edit/${restaurant.uuid}`} passHref>
+                        <NextLink href={`/dashboard/advertisements/edit/${restaurant.uuid}`} passHref>
                           <Link color="inherit" variant="subtitle2">
                             {restaurant.name}
                           </Link>
@@ -179,19 +180,19 @@ export const AdvertisementListTable = props => {
                     <Chip icon={<GoCheck />} label={restaurant.isActive ? t('ACTIVE') : t('NOT_ACTIVE')} />
                   </TableCell>
                   <TableCell align="right">
-                    <NextLink href={`/dashboard/restaurants/edit/${restaurant.uuid}`} passHref>
+                    <NextLink href={`/dashboard/advertisements/edit/${restaurant.uuid}`} passHref>
                       <IconButton component="a">
                         <PencilAltIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
 
-                    <NextLink href={`/dashboard/restaurants/view/${restaurant.uuid}`} passHref>
+                    <NextLink href={`/dashboard/advertisements/view/${restaurant.uuid}`} passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>
                     </NextLink>
 
-                    <IconButton onClick={e => handleDeleteRestaurantClick(e, restaurant.uuid)} component="a">
+                    <IconButton onClick={e => handleDeleteAdvertisementClick(e, restaurant.uuid)} component="a">
                       <DeleteIcon fontSize="small" />
                     </IconButton>
                   </TableCell>

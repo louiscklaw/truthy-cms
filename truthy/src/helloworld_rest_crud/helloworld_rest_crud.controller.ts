@@ -7,6 +7,11 @@ import { UpdateHelloworldRestCrudDto } from './dto/update-helloworld_rest_crud.d
 export class HelloworldRestCrudController {
   constructor(private readonly helloworldRestCrudService: HelloworldRestCrudService) {}
 
+  @Get('/helloworld')
+  helloworld() {
+    return { hello: 'world' };
+  }
+
   @Post()
   async create(@Body() createHelloworldRestCrudDto: CreateHelloworldRestCrudDto): Promise<CreateHelloworldRestCrudDto> {
     return this.helloworldRestCrudService.create(createHelloworldRestCrudDto);

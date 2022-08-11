@@ -7,7 +7,7 @@ import { fakeCustomerApi } from '../../../../__fake-api__/customer-api';
 import { AuthGuard } from '../../../../components/authentication/auth-guard';
 import { DashboardLayout } from '../../../../components/dashboard/dashboard-layout';
 import { RestaurantEditForm } from '../../../../components/dashboard/restaurant/restaurant-edit-form';
-import { RestaurantNewForm } from '../../../../components/dashboard/restaurant/restaurant-new-form';
+import { AdvertisementNewForm } from '../../../../components/dashboard/advertisement/restaurant-new-form';
 
 import { useMounted } from '../../../../hooks/use-mounted';
 import { gtm } from '../../../../lib/gtm';
@@ -16,7 +16,7 @@ import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../../api/restaurant-api';
 import { useRouter } from 'next/router';
 
-const RestaurantNew = () => {
+const AdvertisementNew = () => {
   const { t } = useTranslation();
   const isMounted = useMounted();
   const [restaurant, setRestaurant] = useState(null);
@@ -33,23 +33,23 @@ const RestaurantNew = () => {
   return (
     <>
       <Head>
-        <title>Dashboard: Customer Edit | Material Kit Pro</title>
+        <title>Dashboard: Advertisement Edit | louislabs</title>
       </Head>
 
       <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
         <Box component="main" sx={{ backgroundColor: 'background.default', flexGrow: 1, py: 8 }}>
           <Container maxWidth="md">
             <Box sx={{ mb: 4 }}>
-              <NextLink href="/dashboard/restaurants" passHref>
+              <NextLink href="/dashboard/advertisement" passHref>
                 <Link color="textPrimary" component="a" sx={{ alignItems: 'center', display: 'flex' }}>
                   <ArrowBackIcon fontSize="small" sx={{ mr: 1 }} />
-                  <Typography variant="subtitle2">{t('RESTAURANTS')}</Typography>
+                  <Typography variant="subtitle2">{t('ADVERTISEMENTS')}</Typography>
                 </Link>
               </NextLink>
             </Box>
 
             <Box mt={3}>
-              <RestaurantNewForm customer={{}} />
+              <AdvertisementNewForm advertisement={{}} />
             </Box>
           </Container>
         </Box>
@@ -58,10 +58,10 @@ const RestaurantNew = () => {
   );
 };
 
-RestaurantNew.getLayout = page => (
+AdvertisementNew.getLayout = page => (
   <AuthGuard>
     <DashboardLayout>{page}</DashboardLayout>
   </AuthGuard>
 );
 
-export default RestaurantNew;
+export default AdvertisementNew;

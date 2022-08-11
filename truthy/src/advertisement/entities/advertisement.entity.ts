@@ -12,6 +12,9 @@ export class Advertisement {
   @Column()
   name: string;
 
+  @Column()
+  slug: string;
+
   @Column({ default: '' })
   description: string;
 

@@ -6,32 +6,32 @@ class AdvertisementApi {
     return 'helloworld';
   }
 
-  getRestaurants() {
-    return axios.get('/api/advertisements', { withCredentials: true });
+  getAdvertisements() {
+    return axios.get('/api/advertisement', { withCredentials: true });
   }
 
-  getRestaurant(id) {
-    return axios.get(`/api/advertisements/${id}`, { withCredentials: true });
+  getAdvertisement(id) {
+    return axios.get(`/api/advertisement/${id}`, { withCredentials: true });
   }
 
-  getRestaurantByUuid(uuid) {
-    return axios.get(`/api/advertisements/uid/${uuid}`, { withCredentials: true });
+  getAdvertisementByUuid(uuid) {
+    return axios.get(`/api/advertisement/uid/${uuid}`, { withCredentials: true });
   }
 
-  getRestaurantEmails() {
+  getAdvertisementEmails() {
     return {};
   }
 
-  getRestaurantInvoices() {
+  getAdvertisementInvoices() {
     return [];
   }
 
-  getRestaurantsLogs() {
+  getAdvertisementsLogs() {
     return [];
   }
 
-  createRestaurant(values) {
-    console.log({ createRestaurant: values });
+  createAdvertisement(values) {
+    console.log({ createAdvertisement: values });
     axios
       .post(`/api/advertisements`, values)
       .then(res => {
@@ -40,7 +40,7 @@ class AdvertisementApi {
       .catch(err => console.error(err));
   }
 
-  updateRestaurant(id, values) {
+  updateAdvertisement(id, values) {
     // wash unwanted fields if any
     delete values.submit;
     delete values.updatedAt;
@@ -50,7 +50,7 @@ class AdvertisementApi {
     return axios.patch(`/api/advertisements/${id}`, values, { withCredentials: true });
   }
 
-  updateRestaurantByUuid(uuid, values) {
+  updateAdvertisementByUuid(uuid, values) {
     // wash unwanted fields if any
     delete values.submit;
     delete values.updatedAt;
@@ -61,4 +61,4 @@ class AdvertisementApi {
   }
 }
 
-export const restaurantApi = new AdvertisementApi();
+export const advertisementApi = new AdvertisementApi();

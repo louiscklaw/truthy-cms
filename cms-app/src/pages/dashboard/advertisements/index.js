@@ -45,14 +45,14 @@ const sortOptions = [
   { label: 'Total orders (lowest)', value: 'totalOrders|asc' },
 ];
 
-const applyFilters = (customers, filters) =>
-  customers.filter(customer => {
+const applyFilters = (advertisements, filters) =>
+  advertisements.filter(advertisement => {
     if (filters.query) {
       let queryMatched = false;
       const properties = ['email', 'name'];
 
       properties.forEach(property => {
-        if (customer[property].toLowerCase().includes(filters.query.toLowerCase())) {
+        if (advertisement[property].toLowerCase().includes(filters.query.toLowerCase())) {
           queryMatched = true;
         }
       });
@@ -62,15 +62,15 @@ const applyFilters = (customers, filters) =>
       }
     }
 
-    if (filters.hasAcceptedMarketing && !customer.hasAcceptedMarketing) {
+    if (filters.hasAcceptedMarketing && !advertisement.hasAcceptedMarketing) {
       return false;
     }
 
-    if (filters.isProspect && !customer.isProspect) {
+    if (filters.isProspect && !advertisement.isProspect) {
       return false;
     }
 
-    if (filters.isReturning && !customer.isReturning) {
+    if (filters.isReturning && !advertisement.isReturning) {
       return false;
     }
 
@@ -141,7 +141,7 @@ const AdvertisementList = () => {
   const getAdvertisements = useCallback(async () => {
     try {
       // const data = await customerApi.getCustomers();
-      const { data } = await advertisementApi.getHelloworld();
+      const { data } = await advertisementApi.getAdvertisements();
 
       if (isMounted()) {
         setAdvertisements(data);
