@@ -44,6 +44,7 @@ import { useTranslation } from 'react-i18next';
 import DebugPrint from '../../components/debug-print';
 import { NumberOfRestaurants } from '../../components/dashboard/overview/number-of-restaurants';
 import { NumberOfAdvertisements } from '../../components/dashboard/overview/number-of-advertisements';
+import Debug from '../../components/debug';
 
 const Overview = () => {
   const [displayBanner, setDisplayBanner] = useState(true);
@@ -132,7 +133,7 @@ const Overview = () => {
           </Grid>
         </Container>
       </Box>
-      <DebugPrint>dashboard/index.js</DebugPrint>
+      <Debug>dashboard/index.js</Debug>
     </>
   );
 };
