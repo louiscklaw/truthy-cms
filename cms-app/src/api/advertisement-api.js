@@ -34,6 +34,10 @@ class AdvertisementApi {
     return [];
   }
 
+  deleteAdvertisementByUuid(uuid) {
+    return axios.delete(`/api/advertisement/uid/${uuid}`, { withCredentials: true });
+  }
+
   createAdvertisement(values) {
     console.log({ createAdvertisement: values });
     axios

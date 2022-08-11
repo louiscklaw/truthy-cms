@@ -32,6 +32,7 @@ import { FiDelete } from 'react-icons/fi';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { GoCheck } from 'react-icons/go';
 import toast from 'react-hot-toast';
+import { advertisementApi } from '../../../../api/advertisement-api';
 
 export const AdvertisementListTable = props => {
   const { t } = useTranslation();
@@ -51,8 +52,8 @@ export const AdvertisementListTable = props => {
   );
 
   const handleDeleteAdvertisementClick = (e, uuid) => {
-    axios
-      .delete(`/api/advertisements/uid/${uuid}`)
+    advertisementApi
+      .deleteAdvertisementByUuid(uuid)
       .then(res => {
         toast.success('DELETE_DONE');
       })
@@ -127,8 +128,8 @@ export const AdvertisementListTable = props => {
               </TableCell>
               <TableCell>{t('NAME')}</TableCell>
               <TableCell>{t('DESCRIPTION')}</TableCell>
-              <TableCell>{t('AD_WINDOW')}</TableCell>
-              <TableCell>{t('AD_TARGET')}</TableCell>
+              <TableCell>{t('IMPRESSIONS')}</TableCell>
+              <TableCell>{t('CLICK')}</TableCell>
               <TableCell>{t('ACTIVE')}</TableCell>
               <TableCell align="right">{t('ACTIONS')}</TableCell>
             </TableRow>
