@@ -1,3 +1,4 @@
+import _ from 'lodash';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import toast from 'react-hot-toast';
@@ -11,7 +12,11 @@ import {
   CardContent,
   CardHeader,
   Divider,
+  FormControl,
   Grid,
+  InputLabel,
+  MenuItem,
+  Select,
   Switch,
   TextField,
   Typography,
@@ -49,6 +54,7 @@ export const RestaurantEditForm = props => {
       phone: customer.phone || '',
       state: customer.state || '',
       submit: null,
+      ...customer,
     },
     validationSchema: Yup.object({
       address: Yup.string().max(255),
@@ -67,10 +73,20 @@ export const RestaurantEditForm = props => {
         // NOTE: Make API request
         // await wait(3000);
 
-        // console.log({ formik_values: values });
+        delete values.orders;
+        delete values.spent;
+        delete values.uuid;
+        delete values.slug;
+        delete values.favorite;
+        delete values.bookmark;
+
+        console.log({ formik_values: values });
         if (restaurantUuid) {
+          console.log('updateRestaurantByUuid');
           await restaurantApi.updateRestaurantByUuid(restaurantUuid, values);
         } else {
+          console.log('updateRestaurantById');
+
           await restaurantApi.updateRestaurant(restaurantId, values);
         }
         router.replace('/dashboard/restaurants');
@@ -261,8 +277,27 @@ export const RestaurantEditForm = props => {
                 disabled
               />
             </Grid>
-          </Grid>
 
+            <Grid item md={6} xs={12}>
+              <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+                <InputLabel id="demo-select-small">Age</InputLabel>
+                <Select
+                  labelId="demo-select-small"
+                  id="demo-select-small"
+                  value={formik.values.meny_service_types[0].id}
+                  label="Age"
+                  onChange={e => formik.setFieldValue('meny_service_types[0].id', e.target.value)}
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={1}>Ten</MenuItem>
+                  <MenuItem value={2}>Twenty</MenuItem>
+                  <MenuItem value={3}>Thirty</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
           <Divider sx={{ my: 3 }} />
           <Box sx={{ alignItems: 'center', display: 'flex', justifyContent: 'space-between' }}>
             <div>
@@ -282,6 +317,8 @@ export const RestaurantEditForm = props => {
               value={formik.values.isActive}
             />
           </Box>
+
+          <pre>{JSON.stringify({ customer, values: formik.values }, null, 2)}</pre>
         </CardContent>
         <CardActions sx={{ flexWrap: 'wrap', m: -1 }}>
           <Button disabled={formik.isSubmitting} type="submit" sx={{ m: 1 }} variant="contained" startIcon={<FaSave />}>

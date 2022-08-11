@@ -8,6 +8,27 @@ export class CreateRestaurantDto {
   @IsString()
   location: string;
 
+  @IsString()
+  address: string;
+
+  @IsString()
+  address1: string;
+
+  @IsString()
+  address2: string;
+
+  @IsString()
+  country: string;
+
+  @IsString()
+  email: string;
+
+  @IsString()
+  phone: string;
+
+  @IsString()
+  state: string;
+
   @IsBoolean()
   isActive: boolean;
 

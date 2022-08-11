@@ -17,11 +17,11 @@ GET http://{{API_HOST}}/api/helloworld/1
 GET http://{{API_HOST}}/api/restaurants
 
 ###
-GET http://{{API_HOST}}/api/restaurants/16
+GET http://{{API_HOST}}/api/restaurants/8
 
 
 ###
-GET http://{{API_HOST}}/api/restaurants/uid/34f3b870-fa0e-49f7-b32f-1fd74e0b494f
+GET http://{{API_HOST}}/api/restaurants/uid/9ad5dd3d-dc5c-4c7a-9447-570949f058fa
 
 ###
 POST http://{{API_HOST}}/api/restaurants
@@ -35,7 +35,7 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://{{API_HOST}}/api/restaurants/uid/34f3b870-fa0e-49f7-b32f-1fd74e0b494f
+PATCH http://{{API_HOST}}/api/restaurants/uid/9ad5dd3d-dc5c-4c7a-9447-570949f058fa
 Content-Type: application/json
 
 {
@@ -47,18 +47,19 @@ Content-Type: application/json
   "isActive": true,
   "location": "Hong Kong",
   "name": "user1",
-  "orders": 0,
   "phone": "91234567",
-  "spent": 0,
-  "state": "state test"
+  "state": "state test",
+  "meny_service_types":[{
+    "id": 3
+  }]
 }
 
 ###
-PATCH http://{{API_HOST}}/api/restaurants/15
+PATCH http://{{API_HOST}}/api/restaurants/10
 Content-Type: application/json
 
 {
-  "address": "address test",
+  "address": "address 9 test",
   "address1": "address1 test",
   "address2": "address2 test",
   "country": "country test",
@@ -69,12 +70,26 @@ Content-Type: application/json
   "orders": 0,
   "phone": "91234567",
   "spent": 0,
-  "state": "state test"
+  "state": "state test",
+  "meny_service_types":[{
+    "id": 1,
+            "createdAt": "2022-08-10T17:18:50.755Z",
+        "updatedAt": "2022-08-10T17:18:50.755Z",
+        "uuid": "e7a4a0ec-ca1b-4383-bff1-64d520062d76",
+        "name": "meny light",
+        "description": "test meny light service",
+        "canEditMenu": true,
+        "canEditRestaurant": true,
+        "canProcessStayOrder": true,
+        "canProcessTakeAwayOrder": false
+
+
+    }]
 }
 
 
 ###
-DELETE http://{{API_HOST}}/api/restaurants/16
+DELETE http://{{API_HOST}}/api/restaurants/1
 
 
 ###

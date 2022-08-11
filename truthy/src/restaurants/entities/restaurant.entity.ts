@@ -3,7 +3,7 @@
 import { UserEntity } from 'src/auth/entity/user.entity';
 import { CustomBaseEntity } from 'src/common/entity/custom-base.entity';
 import { MenyServiceTypeEntity } from 'src/meny_service_type/entities/meny_service_type.entity';
-import { Column, Entity, Generated, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 // @PrimaryGeneratedColumn('uuid')
 // id: string;
