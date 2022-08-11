@@ -20,7 +20,7 @@ GET http://{{API_HOST}}/api/advertisement/11
 
 
 ###
-GET http://{{API_HOST}}/api/advertisement/uid/a64490a8-ae0c-40f5-8794-df1ab67fa74d
+GET http://{{API_HOST}}/api/advertisement/uid/b265253a-705c-4033-9c50-c5b1be29d4ac
 
 ###
 POST http://{{API_HOST}}/api/advertisement

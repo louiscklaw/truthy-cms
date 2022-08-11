@@ -22,6 +22,11 @@ export class AdvertisementService {
     // return `This action returns all advertisement`;
   }
 
+  async findOneByUuid(uuid: string): Promise<any> {
+    return await this.repository.findOne({ uuid });
+    // return `This action returns a #${id} advertisement`;
+  }
+
   async findOne(id: number): Promise<any> {
     return await this.repository.findOne({ id });
     // return `This action returns a #${id} advertisement`;

@@ -17,6 +17,11 @@ export class AdvertisementController {
     return this.service.findAll();
   }
 
+  @Get('/uid/:uuid')
+  findOneByUuid(@Param('uuid') uuid: string) {
+    return this.service.findOneByUuid(uuid);
+  }
+
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.service.findOne(+id);
