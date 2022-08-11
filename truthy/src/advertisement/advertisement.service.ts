@@ -42,6 +42,12 @@ export class AdvertisementService {
     // return `This action removes a #${id} advertisement`;
   }
 
+  async removeByUuid(uuid: string): Promise<any> {
+    console.log({ uuid });
+    return await this.repository.delete({ uuid });
+    // return `This action removes a #${id} advertisement`;
+  }
+
   async removeAll() {
     let all_record = await this.repository.find();
     for (var i = 0; i < all_record.length; i++) {

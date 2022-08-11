@@ -43,6 +43,11 @@ export class AdvertisementController {
     return this.service.remove(+id);
   }
 
+  @Delete('uid/:uuid')
+  removeByUuid(@Param('uuid') uuid: string) {
+    return this.service.removeByUuid(uuid);
+  }
+
   @Delete('/util/delete_all')
   @HttpCode(HttpStatus.NO_CONTENT)
   removeAllRestaurant(@Body() uuids: string[]) {

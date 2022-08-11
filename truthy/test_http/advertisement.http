@@ -99,7 +99,7 @@ DELETE http://{{API_HOST}}/api/advertisement/id/27
 DELETE http://{{API_HOST}}/api/advertisement/util/delete_all
 
 ###
-DELETE http://{{API_HOST}}/api/advertisement/uid/5c1f0218-f596-43d0-8f51-667620f4a7b7
+DELETE http://{{API_HOST}}/api/advertisement/uid/b265253a-705c-4033-9c50-c5b1be29d4ac
 
 ###
 POST http://{{API_HOST}}/api/advertisement/delete_multiple
