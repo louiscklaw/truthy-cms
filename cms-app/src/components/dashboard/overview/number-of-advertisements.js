@@ -46,6 +46,8 @@ export const NumberOfAdvertisements = () => {
       });
   }, []);
 
+  if (!num_of_advertisement) return <Loading />;
+
   return (
     <>
       <Card>

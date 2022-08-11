@@ -33,7 +33,7 @@ const LineChart = () => {
 export const NumberOfRestaurants = () => {
   const { t } = useTranslation();
   const [is_loading, setIsLoading] = useState(true);
-  const [num_of_restaurant, setNumOfRestaurant] = useState(0);
+  const [num_of_restaurant, setNumOfRestaurant] = useState(null);
 
   useEffect(() => {
     restaurantApi
@@ -46,6 +46,8 @@ export const NumberOfRestaurants = () => {
         toast.error(err.message);
       });
   }, []);
+
+  if (!num_of_restaurant) return <Loading />;
 
   return (
     <Card>
