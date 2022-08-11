@@ -31,6 +31,7 @@ import DeleteingModal from './deleteing';
 import { FiDelete } from 'react-icons/fi';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { GoCheck } from 'react-icons/go';
+import toast from 'react-hot-toast';
 
 export const RestaurantListTable = props => {
   const { t } = useTranslation();
@@ -61,9 +62,12 @@ export const RestaurantListTable = props => {
     axios
       .delete(`/api/restaurants/uid/${uuid}`)
       .then(res => {
-        router.reload();
+        toast.success('DELETE_DONE');
       })
-      .catch(err => console.error(err));
+      .catch(err => {
+        toast.error('DELETE_ERROR');
+        console.error(err);
+      });
   };
 
   const handleSelectAllRestaurants = event => {
@@ -189,7 +193,7 @@ export const RestaurantListTable = props => {
                       </IconButton>
                     </NextLink>
 
-                    <NextLink href={`/dashboard/restaurants/uid/${restaurant.uuid}`} passHref>
+                    <NextLink href={`/dashboard/restaurants/view/${restaurant.uuid}`} passHref>
                       <IconButton component="a">
                         <ArrowRightIcon fontSize="small" />
                       </IconButton>

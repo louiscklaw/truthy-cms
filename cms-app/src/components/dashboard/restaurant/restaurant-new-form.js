@@ -25,6 +25,11 @@ import { useTranslation } from 'react-i18next';
 import { restaurantApi } from '../../../api/restaurant-api';
 import Router, { useRouter } from 'next/router';
 import Debug from '../../../components/debug';
+import slugify from 'react-slugify';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
+import _ from 'lodash';
 
 export const RestaurantNewForm = props => {
   const { t } = useTranslation();
@@ -56,6 +61,15 @@ export const RestaurantNewForm = props => {
       name: Yup.string().max(255).required('Name is required'),
       phone: Yup.string().max(15),
       state: Yup.string().max(255),
+      slug: Yup.string().test(
+        'test slug taken',
+        d => `${d.path} is already taken`,
+        async value => {
+          let current_count = await axios.get(`/api/restaurants/check-slug/${value}`).then(res => res.data[1]);
+          if (current_count > 0) return false;
+          return true;
+        },
+      ),
     }),
     onSubmit: async (values, helpers) => {
       try {
@@ -80,6 +94,25 @@ export const RestaurantNewForm = props => {
     },
   });
 
+  const [restaurant_slug, setRestaurantSlug] = useState('');
+  const getRestaurantSlug = slug_input => slugify(slug_input);
+  const [slug_color, setSlugColor] = useState('primary');
+  const [slug_error, setSlugError] = useState(false);
+
+  useEffect(() => {
+    axios.get(`/api/restaurants/check-slug/${formik.values.slug}`).then(res => {
+      console.log({ res });
+      if (res.data[1] > 0) {
+        // slug taken
+        console.log('slug taken');
+        setSlugError(true);
+      } else {
+        console.log('slug available');
+        setSlugError(false);
+      }
+    });
+  }, [formik.values.slug]);
+
   if (!formik.values) return <>preparing</>;
 
   return (
@@ -94,12 +127,27 @@ export const RestaurantNewForm = props => {
                 error={Boolean(formik.touched.name && formik.errors.name)}
                 fullWidth
                 helperText={formik.touched.name && formik.errors.name}
-                label="Full name"
+                label={t('RESTAURANT_NAME')}
                 name="name"
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
                 required
                 value={formik.values.name}
+              />
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <TextField
+                error={Boolean(formik.touched.slug && formik.errors.slug)}
+                fullWidth
+                helperText={formik.touched.slug && formik.errors.slug}
+                label="slug"
+                name="slug"
+                onBlur={formik.handleBlur}
+                onChange={formik.handleChange}
+                required
+                value={formik.values.slug}
+                // color={slug_color}
+                error={slug_error}
               />
             </Grid>
             <Grid item md={6} xs={12}>
@@ -305,6 +353,7 @@ export const RestaurantNewForm = props => {
     </form>
   );
 };
+
 RestaurantNewForm.propTypes = {
   customer: PropTypes.object.isRequired,
 };

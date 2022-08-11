@@ -29,6 +29,9 @@ export class CreateRestaurantDto {
   @IsString()
   state: string;
 
+  @IsString()
+  slug: string;
+
   @IsBoolean()
   isActive: boolean;
 

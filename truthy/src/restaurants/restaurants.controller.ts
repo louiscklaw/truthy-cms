@@ -22,6 +22,11 @@ export class RestaurantsController {
     return this.service.findOneByUuid(uuid);
   }
 
+  @Get('/check-slug/:slug')
+  findOneBySlug(@Param('slug') slug: string) {
+    return this.service.findOneBySlug(slug);
+  }
+
   @Patch('/uid/:uuid')
   updateByUuid(@Param('uuid') uuid: string, @Body() updateRestaurantDto: UpdateRestaurantDto) {
     return this.service.updateByUuid(uuid, updateRestaurantDto);

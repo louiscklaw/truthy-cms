@@ -29,6 +29,11 @@ export class RestaurantsService {
     // return `This action returns a #${id} restaurant`;
   }
 
+  async findOneBySlug(slug: string): Promise<[RestaurantEntity[], number]> {
+    return await this.repository.findAndCount({ slug });
+    // return `This action returns a #${id} restaurant`;
+  }
+
   async findIdByUuid(uuid: string) {
     return await this.repository.findOne({ uuid });
   }

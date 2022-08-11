@@ -17,11 +17,14 @@ GET http://{{API_HOST}}/api/helloworld/12
 GET http://{{API_HOST}}/api/restaurants
 
 ###
+GET http://{{API_HOST}}/api/restaurants/check-slug/user1
+
+###
 GET http://{{API_HOST}}/api/restaurants/11
 
 
 ###
-GET http://{{API_HOST}}/api/restaurants/uid/3f77fae1-48b8-454d-998b-2a6ca5131e03
+GET http://{{API_HOST}}/api/restaurants/uid/a64490a8-ae0c-40f5-8794-df1ab67fa74d
 
 ###
 POST http://{{API_HOST}}/api/restaurants
@@ -38,6 +41,7 @@ Content-Type: application/json
   "name": "user1",
   "phone": "91234567",
   "state": "state test",
+  "slug": "user1",
   "meny_service_types":[{
     "id": 3
   }]
