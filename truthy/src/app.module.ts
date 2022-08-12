@@ -30,6 +30,8 @@ import { TagModule } from './tag/tag.module';
 import { HelloworldRestCrudModule } from './helloworld_rest_crud/helloworld_rest_crud.module';
 import { AdvertisementModule } from './advertisement/advertisement.module';
 import { UrlShortcutsModule } from './url-shortcuts/url-shortcuts.module';
+import { DockerModule } from './docker/docker.module';
+import { LogsModule } from './logs/logs.module';
 import winstonConfig from 'src/config/winston';
 
 const appConfig = config.get('app');
@@ -79,6 +81,8 @@ const appConfig = config.get('app');
     HelloworldRestCrudModule,
     AdvertisementModule,
     UrlShortcutsModule,
+    DockerModule,
+    LogsModule,
   ],
   providers: [
     {
