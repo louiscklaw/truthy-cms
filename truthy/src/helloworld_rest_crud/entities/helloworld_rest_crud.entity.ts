@@ -1,10 +1,14 @@
 import { Tag } from 'src/tag/entities/tag.entity';
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class HelloworldRestCrud {
   @PrimaryGeneratedColumn()
   id: number;
+
+  @Column()
+  @Generated('uuid')
+  uuid: string;
 
   @Column({ default: '' })
   name: string;
