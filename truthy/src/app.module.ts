@@ -29,6 +29,7 @@ import { RestaurantsModule } from './restaurants/restaurants.module';
 import { TagModule } from './tag/tag.module';
 import { HelloworldRestCrudModule } from './helloworld_rest_crud/helloworld_rest_crud.module';
 import { AdvertisementModule } from './advertisement/advertisement.module';
+import { UrlShortcutsModule } from './url-shortcuts/url-shortcuts.module';
 import winstonConfig from 'src/config/winston';
 
 const appConfig = config.get('app');
@@ -77,6 +78,7 @@ const appConfig = config.get('app');
     TagModule,
     HelloworldRestCrudModule,
     AdvertisementModule,
+    UrlShortcutsModule,
   ],
   providers: [
     {
