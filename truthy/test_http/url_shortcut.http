@@ -5,6 +5,13 @@
 
 @BASEURL=api
 
+###
+GET http://{{API_HOST}}/api/sc/helloworld
+
+###
+GET http://{{API_HOST}}/api/sc/545f72d4
+
+
 
 # url-shortcuts
 ###
@@ -39,8 +46,7 @@ Content-Type: application/json
 {
   "name":"hello link 1",
   "description":"link 1 description",
-  "longURL":"link 1 url ",
-  "uniqueID":"link 1 unique id",
+  "longURL":"http://www.google.com",
   "isActive": true,
   "tags":[{ "id": 3 }]
 }
@@ -53,7 +59,6 @@ Content-Type: application/json
   "name":"hello link 2",
   "description":"link 2 description",
   "longURL":"link 2 url ",
-  "uniqueID":"link 2 unique id",
   "isActive": true,
   "tags":[{ "id": 3 }]
 }
@@ -66,7 +71,6 @@ Content-Type: application/json
   "name":"hello link 3",
   "description":"link 3 description",
   "longURL":"link 3 url ",
-  "uniqueID":"link 3 unique id",
   "isActive": true,
   "tags":[{ "id": 3 }]
 }

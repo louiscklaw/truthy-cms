@@ -1,5 +1,5 @@
 import { Tag } from 'src/tag/entities/tag.entity';
-import { Column, Entity, Generated, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, Generated, Index, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class UrlShortcut {
@@ -19,6 +19,7 @@ export class UrlShortcut {
   @Column({ default: '' })
   longURL: string;
 
+  @Index()
   @Column({ default: '' })
   uniqueID: string;
 

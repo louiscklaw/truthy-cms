@@ -11,9 +11,6 @@ export class CreateUrlShortcutDto {
   @IsString()
   longURL: string;
 
-  @IsString()
-  uniqueID: string;
-
   @IsBoolean()
   isActive: boolean;
 

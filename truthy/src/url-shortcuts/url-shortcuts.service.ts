@@ -4,6 +4,7 @@ import { Repository, UpdateResult } from 'typeorm';
 import { CreateUrlShortcutDto } from './dto/create-url-shortcut.dto';
 import { UpdateUrlShortcutDto } from './dto/update-url-shortcut.dto';
 import { UrlShortcut } from './entities/url-shortcut.entity';
+import { generateKey } from './generateKey';
 
 @Injectable()
 export class UrlShortcutsService {
@@ -14,7 +15,12 @@ export class UrlShortcutsService {
 
   async create(createUrlShortcutDto: CreateUrlShortcutDto): Promise<UrlShortcut> {
     // return 'This action adds a new urlShortcut';
-    return await this.repository.save(createUrlShortcutDto);
+    const uniqueID = generateKey();
+    return await this.repository.save({
+      ...createUrlShortcutDto,
+      uniqueID,
+      shortURL: `http://test.docker.localhost/api/sc/${uniqueID}`,
+    });
   }
 
   async findAll(): Promise<UrlShortcut[]> {
@@ -36,5 +42,10 @@ export class UrlShortcutsService {
     // return `This action removes a #${id} urlShortcut`;
     await this.repository.delete({ id });
     return;
+  }
+
+  async findOneByUniqueID(uniqueID: string): Promise<any> {
+    // return `This action returns a #${uniqueID} urlShortcut`;
+    return await this.repository.findOne({ uniqueID });
   }
 }
