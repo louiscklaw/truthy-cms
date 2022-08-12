@@ -9,7 +9,7 @@ export class HelloworldRestCrudController {
 
   @Get('/helloworld')
   helloworld() {
-    return { hello: 'world' };
+    return { hello: `helloworld-rest-crud world` };
   }
 
   @Post()
