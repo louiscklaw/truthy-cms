@@ -32,6 +32,8 @@ import { AdvertisementModule } from './advertisement/advertisement.module';
 import { UrlShortcutsModule } from './url-shortcuts/url-shortcuts.module';
 import { DockerModule } from './docker/docker.module';
 import { AccessLogModule } from './access_log/access_log.module';
+import { InvoiceModule } from './invoice/invoice.module';
+import { OrderModule } from './order/order.module';
 import winstonConfig from 'src/config/winston';
 
 const appConfig = config.get('app');
@@ -83,6 +85,8 @@ const appConfig = config.get('app');
     UrlShortcutsModule,
     DockerModule,
     AccessLogModule,
+    InvoiceModule,
+    OrderModule,
   ],
   providers: [
     {
