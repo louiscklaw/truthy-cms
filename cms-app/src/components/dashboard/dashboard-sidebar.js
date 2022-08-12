@@ -95,7 +95,7 @@ const getSections = t => [
           { title: t('Edit'), path: '/dashboard/url_shortcuts/1/edit' },
         ],
       },
-            {
+      {
         title: t('LOG'),
         path: '/dashboard/log',
         icon: <UsersIcon fontSize="small" />,
@@ -103,6 +103,16 @@ const getSections = t => [
           { title: t('List'), path: '/dashboard/logs' },
           { title: t('Details'), path: '/dashboard/logs/1' },
           { title: t('Edit'), path: '/dashboard/logs/1/edit' },
+        ],
+      },
+      {
+        title: t('DOCKER_CONTROL'),
+        path: '/dashboard/docker-control',
+        icon: <UsersIcon fontSize="small" />,
+        children: [
+          { title: t('List'), path: '/dashboard/docker-controls' },
+          { title: t('Details'), path: '/dashboard/docker-controls/1' },
+          { title: t('Edit'), path: '/dashboard/docker-controls/1/edit' },
         ],
       },
       {
