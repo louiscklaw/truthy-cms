@@ -9,9 +9,7 @@
 GET http://{{API_HOST}}/api/sc/helloworld
 
 ###
-GET http://{{API_HOST}}/api/sc/545f72d4
-
-
+GET http://{{API_HOST}}/api/sc/e71b2375
 
 # url-shortcuts
 ###
@@ -99,4 +97,20 @@ Content-Type: application/json
 
 [
   "bc7d94e7-0684-47b3-a6d8-7c1a5e64d03d"
+]
+
+###
+POST http://{{API_HOST}}/api/url-shortcuts/uid/delete-multiple
+Content-Type: application/json
+
+[
+  "5859751f-79a3-45b6-8903-57aa78d222fe",
+  "0c4e5cab-75a1-4a7e-add3-fc303919603c",
+  "e5919cf3-085d-446a-ba93-64c6d5dfe5a0",
+  "0a3049fb-2313-4275-b182-bf12225c2e63",
+  "4baefa57-6626-416a-ae23-a555e4cd8173",
+  "d7cbdde3-76fb-4b7b-a67a-8be99a2a95cc",
+  "e8ca7f50-46a6-44af-b16d-aa187a8fb24c",
+  "ede3a81f-5e3b-48e3-9e28-505a0454f2d4",
+  "ff2d1545-b075-4616-a58a-11245b59f33a"
 ]

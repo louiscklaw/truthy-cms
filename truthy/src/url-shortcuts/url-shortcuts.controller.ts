@@ -39,6 +39,11 @@ export class UrlShortcutsController {
   remove(@Param('id') id: string) {
     return this.urlShortcutsService.remove(+id);
   }
+
+  @Post('uid/delete-multiple')
+  uidDeleteMultiple(@Body() uids: string[]) {
+    return this.urlShortcutsService.removeMultipleUid(uids);
+  }
 }
 
 // extract url

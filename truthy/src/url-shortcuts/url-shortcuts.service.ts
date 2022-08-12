@@ -44,6 +44,14 @@ export class UrlShortcutsService {
     return;
   }
 
+  async removeMultipleUid(uids: string[]): Promise<void> {
+    // return `This action removes a #${id} urlShortcut`;
+    for (const uid of uids) {
+      await this.repository.delete({ uuid: uid });
+    }
+    return;
+  }
+
   async findOneByUniqueID(uniqueID: string): Promise<any> {
     // return `This action returns a #${uniqueID} urlShortcut`;
     return await this.repository.findOne({ uniqueID });
