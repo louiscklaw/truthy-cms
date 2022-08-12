@@ -168,9 +168,6 @@ services:
     ports:
       - 8095:8080
     labels:
-      # Traefik Labels
-      - 'traefik.enable=true'
-      # HTTPS Labels
       - 'traefik.http.routers.teedy.rule=Host(`docu_share.test.docker.localhost`)' # Domain Name
       - 'traefik.http.services.teedy.loadbalancer.server.port=8080'
 
