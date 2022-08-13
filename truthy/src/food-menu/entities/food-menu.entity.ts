@@ -11,7 +11,7 @@ import {
 } from 'typeorm';
 
 @Entity()
-export class FoodItem {
+export class FoodMenu {
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -37,10 +37,10 @@ export class FoodItem {
   @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
   updatedAt: Date;
 
-  @ManyToMany(() => Tag, tag => tag.foodItem)
+  @ManyToMany(() => Tag, tag => tag.foodMenu)
   @JoinTable({
-    name: 'food_item_tag',
-    joinColumn: { name: 'foodItemId', referencedColumnName: 'id' },
+    name: 'food_menu_tag',
+    joinColumn: { name: 'foodMenuId', referencedColumnName: 'id' },
     inverseJoinColumn: { name: 'tagId', referencedColumnName: 'id' },
   })
   tags: Tag[];

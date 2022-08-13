@@ -35,6 +35,7 @@ import { AccessLogModule } from './access_log/access_log.module';
 import { InvoiceModule } from './invoice/invoice.module';
 import { OrderModule } from './order/order.module';
 import { FoodItemModule } from './food-item/food-item.module';
+import { FoodMenuModule } from './food-menu/food-menu.module';
 import winstonConfig from 'src/config/winston';
 
 const appConfig = config.get('app');
@@ -89,6 +90,7 @@ const appConfig = config.get('app');
     InvoiceModule,
     OrderModule,
     FoodItemModule,
+    FoodMenuModule,
   ],
   providers: [
     {
