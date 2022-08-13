@@ -1,6 +1,9 @@
 @API_HOST=localhost:7777
 
 ###
+GET http://{{API_HOST}}/api/access-log/helloworld
+
+###
 GET http://{{API_HOST}}/api/access-log
 
 ###
