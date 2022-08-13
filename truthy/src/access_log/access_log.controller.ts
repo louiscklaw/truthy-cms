@@ -7,6 +7,11 @@ import { UpdateAccessLogDto } from './dto/update-access_log.dto';
 export class AccessLogController {
   constructor(private readonly accessLogService: AccessLogService) {}
 
+  @Get('/helloworld')
+  helloworld() {
+    return { hello: `AccessLogController world` };
+  }
+
   @Post()
   create(@Body() createAccessLogDto: CreateAccessLogDto) {
     return this.accessLogService.create(createAccessLogDto);

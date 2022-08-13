@@ -4,6 +4,6 @@ import { AccessLogController } from './access_log.controller';
 
 @Module({
   controllers: [AccessLogController],
-  providers: [AccessLogService]
+  providers: [AccessLogService],
 })
 export class AccessLogModule {}
