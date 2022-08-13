@@ -4,7 +4,7 @@
 GET http://{{API_HOST}}/api/helloworld-rest-crud
 
 ###
-GET http://{{API_HOST}}/api/helloworld-rest-crud/12
+GET http://{{API_HOST}}/api/helloworld-rest-crud/44
 
 
 ###
@@ -22,17 +22,17 @@ Content-Type: application/json
 }
 
 ###
-PATCH http://{{API_HOST}}/api/helloworld-rest-crud/13
+PATCH http://{{API_HOST}}/api/helloworld-rest-crud/44
 Content-Type: application/json
 
 {
-  "firstName":"restaurant_113",
-  "lastName":"restaurant_address_1",
+  "name":"111111",
+  "description":"222222",
   "isActive":true
 }
 
 ###
-DELETE http://{{API_HOST}}/api/helloworld-rest-crud/14
+DELETE http://{{API_HOST}}/api/helloworld-rest-crud/45
 
 
 # restaurant
@@ -40,3 +40,9 @@ DELETE http://{{API_HOST}}/api/helloworld-rest-crud/14
 ###
 GET http://{{API_HOST}}/api/helloworld-rest-crud/1
 
+
+###
+POST http://{{API_HOST}}/api/helloworld-rest-crud/delete_all
+Content-Type: application/json
+
+{}
