@@ -28,6 +28,9 @@ export class HelloworldRestCrud {
   @Column({ default: '' })
   remarks: string;
 
+  @Column({ default: [''] })
+  images: string[];
+
   @Column({ default: true })
   isActive: boolean;
 
