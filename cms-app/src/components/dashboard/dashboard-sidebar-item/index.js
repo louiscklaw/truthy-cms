@@ -2,8 +2,8 @@ import { useState } from 'react';
 import NextLink from 'next/link';
 import PropTypes from 'prop-types';
 import { Box, Button, Collapse, ListItem } from '@mui/material';
-import { ChevronDown as ChevronDownIcon } from '../../icons/chevron-down';
-import { ChevronRight as ChevronRightIcon } from '../../icons/chevron-right';
+import { ChevronDown as ChevronDownIcon } from '../../../icons/chevron-down';
+import { ChevronRight as ChevronRightIcon } from '../../../icons/chevron-right';
 
 export const DashboardSidebarItem = props => {
   const { active, children, chip, depth, icon, info, open: openProp, path, title, ...other } = props;
@@ -22,16 +22,7 @@ export const DashboardSidebarItem = props => {
   // Branch
   if (children) {
     return (
-      <ListItem
-        disableGutters
-        sx={{
-          display: 'block',
-          mb: 0.5,
-          py: 0,
-          px: 2,
-        }}
-        {...other}
-      >
+      <ListItem disableGutters sx={{ display: 'block', mb: 0.5, py: 0, px: 2 }} {...other}>
         <Button
           endIcon={!open ? <ChevronRightIcon fontSize="small" /> : <ChevronDownIcon fontSize="small" />}
           disableRipple
@@ -68,15 +59,7 @@ export const DashboardSidebarItem = props => {
 
   // Leaf
   return (
-    <ListItem
-      disableGutters
-      sx={{
-        display: 'flex',
-        mb: 0.5,
-        py: 0,
-        px: 2,
-      }}
-    >
+    <ListItem disableGutters sx={{ display: 'flex', mb: 0.5, py: 0, px: 2 }}>
       <NextLink href={path} passHref>
         <Button
           component="a"

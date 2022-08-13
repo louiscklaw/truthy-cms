@@ -6,18 +6,9 @@ import { Box, ListItemIcon, ListItemText, MenuItem, Popover, Typography } from '
 const BASE_URL = '/cms';
 
 const languageOptions = {
-  en: {
-    icon: `${BASE_URL}/static/icons/uk_flag.svg`,
-    label: 'English',
-  },
-  de: {
-    icon: `${BASE_URL}/static/icons/de_flag.svg`,
-    label: 'German',
-  },
-  es: {
-    icon: `${BASE_URL}/static/icons/es_flag.svg`,
-    label: 'Spanish',
-  },
+  en: { icon: `${BASE_URL}/static/icons/uk_flag.svg`, label: 'English' },
+  de: { icon: `${BASE_URL}/static/icons/de_flag.svg`, label: 'German' },
+  es: { icon: `${BASE_URL}/static/icons/es_flag.svg`, label: 'Spanish' },
 };
 
 export const LanguagePopover = props => {
@@ -33,10 +24,7 @@ export const LanguagePopover = props => {
   return (
     <Popover
       anchorEl={anchorEl}
-      anchorOrigin={{
-        horizontal: 'center',
-        vertical: 'bottom',
-      }}
+      anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
       keepMounted
       onClose={onClose}
       open={!!open}
