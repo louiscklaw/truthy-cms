@@ -9,17 +9,17 @@ import { Tag } from './entities/tag.entity';
 export class TagService {
   constructor(
     @InjectRepository(Tag)
-    private readonly tagsRepository: Repository<Tag>,
+    private readonly repository: Repository<Tag>,
   ) {}
 
   create(createTagDto: CreateTagDto) {
     // return 'This action adds a new tag';
-    return this.tagsRepository.save(createTagDto);
+    return this.repository.save(createTagDto);
   }
 
   findAll() {
     // return `This action returns all tag`;
-    return this.tagsRepository.find();
+    return this.repository.find();
   }
 
   findOne(id: number) {
