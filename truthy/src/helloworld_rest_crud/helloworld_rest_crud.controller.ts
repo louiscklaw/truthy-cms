@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, HttpCode, HttpStatus } from '@nestjs/common';
 import { HelloworldRestCrudService } from './helloworld_rest_crud.service';
 import { CreateHelloworldRestCrudDto } from './dto/create-helloworld_rest_crud.dto';
 import { UpdateHelloworldRestCrudDto } from './dto/update-helloworld_rest_crud.dto';
@@ -20,6 +20,12 @@ export class HelloworldRestCrudController {
   @Get()
   findAll() {
     return this.helloworldRestCrudService.findAll();
+  }
+
+  @Get('/delete_all')
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async helloWorldBlaBlaBla(): Promise<void> {
+    return this.helloworldRestCrudService.removeAll();
   }
 
   @Get(':id')

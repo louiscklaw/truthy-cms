@@ -37,4 +37,12 @@ export class HelloworldRestCrudService {
     await this.repository.delete({ id });
     return;
   }
+
+  async removeAll(): Promise<void> {
+    const all_record = await this.repository.find();
+    for (let i = 0; i < all_record.length; i++) {
+      await this.repository.delete(all_record[i].id);
+    }
+    return;
+  }
 }
