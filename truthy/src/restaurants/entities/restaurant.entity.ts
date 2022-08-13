@@ -3,7 +3,17 @@
 import { UserEntity } from 'src/auth/entity/user.entity';
 import { CustomBaseEntity } from 'src/common/entity/custom-base.entity';
 import { MenyServiceTypeEntity } from 'src/meny_service_type/entities/meny_service_type.entity';
-import { Column, Entity, Generated, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Generated,
+  JoinTable,
+  ManyToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 
 // @PrimaryGeneratedColumn('uuid')
 // id: string;
@@ -62,6 +72,12 @@ export class RestaurantEntity extends CustomBaseEntity {
 
   @Column({ default: true })
   isActive: boolean;
+
+  @CreateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  createdAt: Date;
+
+  @UpdateDateColumn({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  updatedAt: Date;
 
   @ManyToMany(() => MenyServiceTypeEntity, menyServiceType => menyServiceType.restaurants)
   @JoinTable({
