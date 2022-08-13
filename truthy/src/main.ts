@@ -1,8 +1,10 @@
+import { useContainer } from 'class-validator';
+
 import { NestFactory } from '@nestjs/core';
 import { Logger, ValidationPipe } from '@nestjs/common';
-import { useContainer } from 'class-validator';
-import * as config from 'config';
 import { DocumentBuilder, SwaggerCustomOptions, SwaggerModule } from '@nestjs/swagger';
+
+import * as config from 'config';
 import * as cookieParser from 'cookie-parser';
 
 import { AppModule } from 'src/app.module';
@@ -32,9 +34,7 @@ async function bootstrap() {
       .build();
 
     const customOptions: SwaggerCustomOptions = {
-      swaggerOptions: {
-        persistAuthorization: true,
-      },
+      swaggerOptions: { persistAuthorization: true },
       customSiteTitle: apiConfig.description,
     };
 
@@ -49,17 +49,9 @@ async function bootstrap() {
     logger.log(`Accepting request only from: ${process.env.ORIGIN || serverConfig.origin}`);
   }
 
-  useContainer(app.select(AppModule), {
-    fallbackOnErrors: true,
-  });
+  useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
-  app.useGlobalPipes(
-    new ValidationPipe({
-      transform: true,
-      whitelist: true,
-      forbidNonWhitelisted: true,
-    }),
-  );
+  app.useGlobalPipes(new ValidationPipe({ transform: true, whitelist: true, forbidNonWhitelisted: true }));
 
   app.use(cookieParser());
   await app.listen(port);
