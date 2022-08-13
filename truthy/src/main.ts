@@ -33,7 +33,7 @@ async function bootstrap() {
   // http://localhost:7777/api/bull-board/queue/helloworld_queue
   const serverAdapter = new ExpressAdapter();
   serverAdapter.setBasePath('/api/bull-board');
-  const aQueue = new Bull('helloworld_queue', { redis: { ...connectionOpts } });
+  const aQueue = new Bull(config.get('mail.queueName'), { redis: { ...connectionOpts } });
   createBullBoard({ queues: [new BullAdapter(aQueue)], serverAdapter });
   app.use('/api/bull-board', serverAdapter.getRouter());
   logger.log({ redis_config: connectionOpts });
