@@ -23,19 +23,23 @@ async function bootstrap() {
       methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
       credentials: true,
     });
+
     const swaggerConfig = new DocumentBuilder()
       .setTitle(apiConfig.name)
       .setDescription(apiConfig.description)
       .setVersion(apiConfig.version)
       .addBearerAuth()
       .build();
+
     const customOptions: SwaggerCustomOptions = {
       swaggerOptions: {
         persistAuthorization: true,
       },
       customSiteTitle: apiConfig.description,
     };
+
     const document = SwaggerModule.createDocument(app, swaggerConfig);
+
     SwaggerModule.setup('api-docs', app, document, customOptions);
   } else {
     app.enableCors({
@@ -44,9 +48,11 @@ async function bootstrap() {
     });
     logger.log(`Accepting request only from: ${process.env.ORIGIN || serverConfig.origin}`);
   }
+
   useContainer(app.select(AppModule), {
     fallbackOnErrors: true,
   });
+
   app.useGlobalPipes(
     new ValidationPipe({
       transform: true,
